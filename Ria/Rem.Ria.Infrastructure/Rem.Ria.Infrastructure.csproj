@@ -1,0 +1,809 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CF42EAE9-0AFA-4BA0-BEDC-395BD079761E}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Ria.Infrastructure</RootNamespace>
+    <AssemblyName>Rem.Ria.Infrastructure</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Silverlight\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\Silverlight\debug\Rem.Ria.Infrastructure.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Silverlight\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Agatha.Common.Silverlight">
+      <HintPath>..\..\packages\Agatha-Common-Unity.1.3\lib\sl40\Agatha.Common.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.Unity.Silverlight">
+      <HintPath>..\..\packages\Agatha-Common-Unity.1.3\lib\sl40\Agatha.Unity.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\Microsoft.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Controls" />
+    <Reference Include="Microsoft.Expression.Effects" />
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Prism.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Prism.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Prism.UnityExtensions.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Silverlight, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.2.1.505.0\lib\SL30\Microsoft.Practices.Unity.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NLog.2.0.0.2000\lib\sl4\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rx-Main.1.0.11226\lib\SL5\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rx-Silverlight.1.0.11226\lib\SL5\System.Reactive.Windows.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data.DataForm.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Data.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="Telerik.Windows.Controls, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ScheduleView, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.ScheduleView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Documents.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Documents.Proofing.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="TerminologyService.Client.SL">
+      <HintPath>..\..\lib\Client-Silverlight\TerminologyService\TerminologyService.Client.SL.dll</HintPath>
+    </Reference>
+    <Reference Include="TerminologyService.Infrastructure.SL">
+      <HintPath>..\..\lib\Client-Silverlight\TerminologyService\TerminologyService.Infrastructure.SL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Domain\Rem.Domain.Core\SecurityModule\SystemRoleType.cs">
+      <Link>Common\Primitives\SystemRoleType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\IQueryRequest.cs">
+      <Link>Service\IQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\UserInformationDto.cs">
+      <Link>Service\UserInformationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Pillar\Pillar.Domain\IKnownTypeProvider.cs">
+      <Link>Common\IKnownTypeProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Pillar\Pillar.Domain\Primitives\EditStatus.cs">
+      <Link>Common\Primitives\EditStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Pillar\Pillar.Domain\PropertyNotFoundException.cs">
+      <Link>Common\PropertyNotFoundException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Bootstrapper\KnownTypeHelper.cs">
+      <Link>KnownTypeHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Metadata\MetadataKnownTypeProvider.cs">
+      <Link>Metadata\MetadataKnownTypeProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\AbstractDataTransferObject.cs">
+      <Link>DataTransferObject\AbstractDataTransferObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\AddressDto.cs">
+      <Link>DataTransferObject\AddressDto.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\DataErrorInfo.cs">
+      <Link>DataTransferObject\DataErrorInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\DataErrorInfoType.cs">
+      <Link>DataTransferObject\DataErrorInfoType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\DbInfoDto.cs">
+      <Link>DataTransferObject\DbInfoDto.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\EditableDataTransferObject.cs">
+      <Link>DataTransferObject\EditableDataTransferObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\ErrorLevel.cs">
+      <Link>DataTransferObject\ErrorLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\IDataTransferObject.cs">
+      <Link>DataTransferObject\IDataTransferObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\IValidatedObject.cs">
+      <Link>DataTransferObject\IValidatedObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\KeyedDataTransferObject.cs">
+      <Link>DataTransferObject\KeyedDataTransferObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\LookupValueDto.cs">
+      <Link>DataTransferObject\LookupValueDto.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DataTransferObject\ValidationFailureDto.cs">
+      <Link>DataTransferObject\ValidationFailureDto.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\DtoResponse.cs">
+      <Link>Service\DtoResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\GetDtoRequest.cs">
+      <Link>Service\GetDtoRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\IDtoResponse.cs">
+      <Link>Service\IDtoResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Service\SaveDtoRequest.cs">
+      <Link>Service\SaveDtoRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Infrastructure\Rem.Infrastructure\Utility\Compressor.cs">
+      <Link>Common\Utility\Compressor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\DataTransferObject\CodedConceptDto.cs">
+      <Link>DataTransferObject\CodedConceptDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\DataTransferObject\CodedConceptLookupValueDto.cs">
+      <Link>DataTransferObject\CodedConceptLookupValueDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\DataTransferObject\DisplayNameDto.cs">
+      <Link>Service\DisplayNameDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\DataTransferObject\PagedDto.cs">
+      <Link>DataTransferObject\PagedDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\DataTransferObject\PagedSystemAccountSearchResultDto.cs">
+      <Link>DataTransferObject\PagedSystemAccountSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\DataTransferObject\PageSortBaseDto.cs">
+      <Link>DataTransferObject\PageSortBaseDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\DataTransferObject\SystemAccountSearchResultDto.cs">
+      <Link>DataTransferObject\SystemAccountSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Permissions\AgencyPermission.cs">
+      <Link>Permissions\AgencyPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Permissions\BillingPermission.cs">
+      <Link>Permissions\BillingPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Permissions\InfrastructurePermission.cs">
+      <Link>Permissions\InfrastructurePermission.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Permissions\NewCropPermission.cs">
+      <Link>Permissions\NewCropPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Permissions\PatientPermission.cs">
+      <Link>Permissions\PatientPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Permissions\ReportPermission.cs">
+      <Link>Permissions\ReportPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\QuickPickers\GetLookupListByKeywordRequest.cs">
+      <Link>QuickPickers\GetLookupListByKeywordRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\QuickPickers\GetLookupListByKeywordResponse.cs">
+      <Link>QuickPickers\GetLookupListByKeywordResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\QuickPickers\PagedLookupListDto.cs">
+      <Link>QuickPickers\PagedLookupListDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\ExerciseEmergencyAccessRequest.cs">
+      <Link>Service\ExerciseEmergencyAccessRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\ExerciseEmergencyAccessResponse.cs">
+      <Link>Service\ExerciseEmergencyAccessResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\GetDtoByKeyRequest.cs">
+      <Link>Service\GetDtoByKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\GetLookupValuesRequest.cs">
+      <Link>Service\GetLookupValuesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\GetLookupValuesResponse.cs">
+      <Link>Service\GetLookupValuesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\GetMetadataForModuleRequest.cs">
+      <Link>Service\GetMetadataForModuleRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\GetMetadataForModuleResponse.cs">
+      <Link>Service\GetMetadataForModuleResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\GetNHibernateInformationRequest.cs">
+      <Link>DataTransferObject\GetNHibernateInformationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\GetNHibernateInformationResponse.cs">
+      <Link>DataTransferObject\GetNHibernateInformationResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\GetTimeOutIntervalRequest.cs">
+      <Link>Service\GetTimeOutIntervalRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\GetTimeOutIntervalResponse.cs">
+      <Link>Service\GetTimeOutIntervalResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\GetUserInformationRequest.cs">
+      <Link>Service\GetUserInformationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\GetUserInformationResponse.cs">
+      <Link>Service\GetUserInformationResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\RollbackEmergencyAccessRequest.cs">
+      <Link>Service\RollbackEmergencyAccessRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\RollbackEmergencyAccessResponse.cs">
+      <Link>Service\RollbackEmergencyAccessResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\SignOffRequest.cs">
+      <Link>Service\SignOffRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.Infrastructure.Web\Service\SignOffResponse.cs">
+      <Link>Service\SignOffResponse.cs</Link>
+    </Compile>
+    <Compile Include="ClientPermissionDescriptor.cs" />
+    <Compile Include="Commands\CommandFactoryHelper.cs" />
+    <Compile Include="Commands\ICommandFactoryHelper.cs" />
+    <Compile Include="Commands\IExecutionManager.cs" />
+    <Compile Include="Commands\VirtualDelegateCommand.cs" />
+    <Compile Include="Common\Extension\UnityContainerExtensions.cs" />
+    <Compile Include="Common\PrismToNLogLoggerBridge.cs" />
+    <Compile Include="Common\Extension\DateTimeExtensions.cs" />
+    <Compile Include="Common\Extension\DependencyObjectExtensions.cs" />
+    <Compile Include="Common\Extension\FrameworkElementExtensions.cs" />
+    <Compile Include="Common\Extension\ObservableCollectionExtensions.cs" />
+    <Compile Include="Common\Extension\RegionManagerExtensions.cs" />
+    <Compile Include="Common\NLogLoggerTarget.cs" />
+    <Compile Include="Common\Utility\ImageHelper.cs" />
+    <Compile Include="Const.cs" />
+    <Compile Include="Context\AccountContext.cs" />
+    <Compile Include="Context\AgencyContext.cs" />
+    <Compile Include="Context\ICurrentUserContextService.cs" />
+    <Compile Include="Context\CurrentUserContext.cs" />
+    <Compile Include="Context\LocationContext.cs" />
+    <Compile Include="Context\StaffContext.cs" />
+    <Compile Include="DataTransferObject\AbstractDataTransferObject.Client.cs" />
+    <Compile Include="DataTransferObject\CodedConceptDto.Client.cs" />
+    <Compile Include="DataTransferObject\DateRange.cs" />
+    <Compile Include="DataTransferObject\DtoFactory.cs" />
+    <Compile Include="DataTransferObject\EditableDataTransferObject_Client.cs" />
+    <Compile Include="DataTransferObject\EditableDtoWrapper.cs" />
+    <Compile Include="DataTransferObject\IActiveDto.cs" />
+    <Compile Include="DataTransferObject\ICopyableDto.cs" />
+    <Compile Include="DataTransferObject\IDataTransferObject.Client.cs" />
+    <Compile Include="DataTransferObject\IDtoFactory.cs" />
+    <Compile Include="DataTransferObject\IDtsSearchResultDto.cs" />
+    <Compile Include="DataTransferObject\IEditableDtoWrapper.cs" />
+    <Compile Include="DataTransferObject\INonResponseDto.cs" />
+    <Compile Include="DataTransferObject\ISearchResultDto.cs" />
+    <Compile Include="DataTransferObject\KeyedDataTransferObject.Client.cs" />
+    <Compile Include="DataTransferObject\LookupValueDto.Client.cs" />
+    <Compile Include="DataTransferObject\SystemAccountSearchResultDto.Client.cs" />
+    <Compile Include="EmergencyAccess\EmergencyAccessView.xaml.cs">
+      <DependentUpon>EmergencyAccessView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmergencyAccess\EmergencyAccessViewModel.cs" />
+    <Compile Include="FluentRuleEngineExtensions.cs" />
+    <Compile Include="Friends.cs" />
+    <Compile Include="InfrastructureModule.cs" />
+    <Compile Include="LogOutWarning\LogOutWarningView.xaml.cs">
+      <DependentUpon>LogOutWarningView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Navigation\CollapsingPanelRegionAdapter.cs" />
+    <Compile Include="Navigation\INavigationCommand.cs" />
+    <Compile Include="Navigation\INavigationCommandManager.cs" />
+    <Compile Include="Navigation\INavigationService.cs" />
+    <Compile Include="Navigation\NavigationCommand.cs" />
+    <Compile Include="Navigation\NavigationCommandManager.cs" />
+    <Compile Include="Navigation\NavigationCommandProcessor.cs" />
+    <Compile Include="Navigation\NavigationExtensions.cs" />
+    <Compile Include="Navigation\NavigationService.cs" />
+    <Compile Include="Navigation\NavigationViewModel.cs" />
+    <Compile Include="Navigation\RadTabControlRegionAdapter.cs" />
+    <Compile Include="Navigation\RadTabControlRegionSyncBehavior.cs" />
+    <Compile Include="QuickPickers\LookupQuickPickerView.xaml.cs">
+      <DependentUpon>LookupQuickPickerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuickPickers\LookupQuickPickerViewModel.cs" />
+    <Compile Include="Security\CurrentUserService.cs" />
+    <Compile Include="Security\IEmergencyAccessService.cs" />
+    <Compile Include="Security\SecureRegionNavigationContentLoader.cs" />
+    <Compile Include="Security\SecurityNavigationAccessDeniedException.cs" />
+    <Compile Include="Service\AsyncRequestDispatcher.cs" />
+    <Compile Include="Service\IMetadataService.cs" />
+    <Compile Include="Service\IPopupService.cs" />
+    <Compile Include="Service\INotification.cs" />
+    <Compile Include="Service\INotificationService.cs" />
+    <Compile Include="Navigation\RadTileViewRegionAdapter.cs" />
+    <Compile Include="Navigation\RegionNavigationContentLoader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IRedirectService.cs" />
+    <Compile Include="Service\ISignOffService.cs" />
+    <Compile Include="Service\MetadataService.cs" />
+    <Compile Include="Service\PopupService.cs" />
+    <Compile Include="Service\NotificationService.cs" />
+    <Compile Include="Service\RedirectService.cs" />
+    <Compile Include="Service\RequestDispatcherExtensions.cs" />
+    <Compile Include="Service\SignOffService.cs" />
+    <Compile Include="Service\UserDialogService.cs" />
+    <Compile Include="Service\UserDialogServiceOptions.cs" />
+    <Compile Include="Service\UserDialogServiceResult.cs" />
+    <Compile Include="Service\IUserDialogService.cs" />
+    <Compile Include="ViewModel\IPopupTitleProvider.cs" />
+    <Compile Include="ViewModel\LookupQuickPickerCommunicator.cs" />
+    <Compile Include="ViewModel\PageController.cs" />
+    <Compile Include="ViewModel\WorkspaceType.cs" />
+    <Compile Include="View\Behavior\AddEditableItemsControlItemBehavior.cs" />
+    <Compile Include="View\Behavior\FrameworkElementDropBehavior.cs" />
+    <Compile Include="View\Behavior\RadGridViewRowToolTipBehavior.cs" />
+    <Compile Include="View\Behavior\RadGridViewSelectionChangedCommandBehavior.cs" />
+    <Compile Include="View\Behavior\RadGridViewSelectionChangingBehavior.cs" />
+    <Compile Include="View\Behavior\DragBehavior.cs" />
+    <Compile Include="View\Behavior\DropBehavior.cs" />
+    <Compile Include="View\Behavior\FrameworkElementDragBehavior.cs" />
+    <Compile Include="View\Behavior\RadGridViewBeginningEditBehavior.cs" />
+    <Compile Include="View\Behavior\RadGridViewDragBehavior.cs" />
+    <Compile Include="View\Behavior\RadGridViewGroupBySelectedPropertyBehavior.cs" />
+    <Compile Include="View\Behavior\DoubleClickDetector.cs" />
+    <Compile Include="View\Behavior\DoubleClickTrigger.cs" />
+    <Compile Include="View\Behavior\DragDropTargetDraggableBehavior.cs" />
+    <Compile Include="View\Behavior\EditableExpanderLoadingBehavior.cs" />
+    <Compile Include="View\Behavior\PopupHeaderBehavior.cs" />
+    <Compile Include="View\Behavior\RadTreeViewBeginEditBehavior.cs" />
+    <Compile Include="View\Behavior\RadTreeViewSelectionChangedBehavior.cs" />
+    <Compile Include="View\Behavior\SelectionChangedCommandBehavior.cs" />
+    <Compile Include="View\Behavior\SharedGridLength.cs" />
+    <Compile Include="View\Behavior\ShowFocusBehavior.cs" />
+    <Compile Include="View\Behavior\StopMouseLeftButtonDownEventBubblingBehavior.cs" />
+    <Compile Include="View\Behavior\StopMouseLeftButtonUpEventBubblingBehavior.cs" />
+    <Compile Include="View\Configuration\ControlDisabledMetadataItemApplicator.cs" />
+    <Compile Include="View\Converter\BooleanToFluidContentControlStateLargeConverter.cs" />
+    <Compile Include="View\Converter\ArithmeticIntegerConverter.cs" />
+    <Compile Include="View\Converter\BooleanToYesNoConverter.cs" />
+    <Compile Include="View\Converter\EnumListConverter.cs" />
+    <Compile Include="View\Converter\InvertedNullableBooleanToTrueVisibilityConverter.cs" />
+    <Compile Include="View\Converter\InvertedVisibilityConverter.cs" />
+    <Compile Include="View\Converter\LongToBooleanConverter.cs" />
+    <Compile Include="View\Converter\LongToVisibilityConverter.cs" />
+    <Compile Include="View\Converter\NullableBooleanToTrueConverter.cs" />
+    <Compile Include="View\Converter\NullableBooleanToBooleanConverter.cs" />
+    <Compile Include="View\Converter\InvertedNullableBooleanToTrueConverter.cs" />
+    <Compile Include="View\Converter\ProvenanceRadGridViewRowBackgroundConverter.cs" />
+    <Compile Include="View\CustomControls\EditableContentPresenter.cs" />
+    <Compile Include="View\CustomControls\EditableDatePicker.cs" />
+    <Compile Include="View\CustomControls\FloatableWindow.cs" />
+    <Compile Include="View\CustomControls\IPopup.cs" />
+    <Compile Include="View\CustomControls\PopupHeader.cs" />
+    <Compile Include="View\CustomControls\RemCurrencyTextBox.cs" />
+    <Compile Include="View\CustomControls\ScrollToElementQuickPicker.cs" />
+    <Compile Include="View\CustomControls\ScrollToQuickPicker.cs" />
+    <Compile Include="View\CustomControls\ShowFocus.cs" />
+    <Compile Include="View\CustomControls\ValueWrapper.cs" />
+    <Compile Include="View\HasBillingOfficeEvent.cs" />
+    <Compile Include="View\SetterValueBindingHelper.cs" />
+    <Compile Include="ViewModel\AdvancedSearchCriteriaBase.cs" />
+    <Compile Include="ViewModel\CustomNotificationObject.cs" />
+    <Compile Include="ViewModel\DtsAdvancedSearchCriteria.cs" />
+    <Compile Include="ViewModel\DtsSearchResult.cs" />
+    <Compile Include="ViewModel\DTSSearchViewModel.cs" />
+    <Compile Include="ViewModel\IViewClosable.cs" />
+    <Compile Include="ViewModel\IViewRefreshable.cs" />
+    <Compile Include="ViewModel\IWorkspaceHeaderContextProvider.cs" />
+    <Compile Include="ViewModel\ISetRegionManager.cs" />
+    <Compile Include="ViewModel\LookupValueDescriptor.cs" />
+    <Compile Include="ViewModel\PagedCollectionViewWrapper.cs" />
+    <Compile Include="ViewModel\PanelEditorViewModel.cs" />
+    <Compile Include="ViewModel\PopupViewModel.cs" />
+    <Compile Include="ViewModel\QuickPickerCommunicator.cs" />
+    <Compile Include="ViewModel\QuickPickerViewModelBase.cs" />
+    <Compile Include="ViewModel\SearchCommunicater.cs" />
+    <Compile Include="ViewModel\SearchState.cs" />
+    <Compile Include="ViewModel\SearchViewModelBase.cs" />
+    <Compile Include="View\Behavior\BindableCellTemplateBehavior.cs" />
+    <Compile Include="View\Behavior\BindingCollection.cs" />
+    <Compile Include="View\Behavior\BindToActualHeightBehavior.cs" />
+    <Compile Include="View\Behavior\BindToActualWidthBehavior.cs" />
+    <Compile Include="View\Behavior\CheckBoxListBindingBehavior.cs" />
+    <Compile Include="View\Behavior\CloseViewBehavior.cs" />
+    <Compile Include="View\Behavior\CreateScopedRegionBehavior.cs" />
+    <Compile Include="View\Behavior\DataPagerVisibilityBehavior.cs" />
+    <Compile Include="View\Behavior\DoubleClickBehavior.cs" />
+    <Compile Include="View\Behavior\DoubleClickGridViewRowBehavior.cs" />
+    <Compile Include="View\Behavior\DragDropTargetDropCastBehavior.cs" />
+    <Compile Include="View\Behavior\DropFilesBehavior.cs" />
+    <Compile Include="View\Behavior\ExportRadGridViewBehavior.cs" />
+    <Compile Include="View\Behavior\GetRegionContextBehavior.cs" />
+    <Compile Include="View\Behavior\GridViewHideFocusVisualBehavior.cs" />
+    <Compile Include="View\Behavior\HeaderClickRadGridViewSortingBehavior.cs" />
+    <Compile Include="View\Behavior\IndicateAddBehavior.cs" />
+    <Compile Include="View\Behavior\ListBoxSelectionBehavior.cs" />
+    <Compile Include="View\Behavior\MultiBindingsBehavior.cs" />
+    <Compile Include="View\Behavior\NoOverlapDragDropBehavior.cs" />
+    <Compile Include="View\Behavior\OpenFileDialogBoxTriggerAction.cs" />
+    <Compile Include="View\Behavior\RadGridViewDropBehavior.cs" />
+    <Compile Include="View\Behavior\RadGridViewPagedSortBehavior.cs" />
+    <Compile Include="View\Behavior\RemOperatingScheduleBehavior.cs" />
+    <Compile Include="View\Behavior\RemRadSchedulerBehavior.cs" />
+    <Compile Include="View\Behavior\ScrollViewerAnimationHelper.cs" />
+    <Compile Include="View\Behavior\SelectedItemsBindingBehavior.cs" />
+    <Compile Include="View\Behavior\SetFocusTriggerBehavior.cs" />
+    <Compile Include="View\Behavior\StylizedBehaviorCollection.cs" />
+    <Compile Include="View\Behavior\StylizedBehaviors.cs" />
+    <Compile Include="View\Behavior\TextBoxTextChangedBehavior.cs" />
+    <Compile Include="View\Behavior\DataContextCompareNotEqualMouseDownBehavior.cs" />
+    <Compile Include="View\Behavior\ToolTipWidthOffsetBehavior.cs" />
+    <Compile Include="View\Behavior\UpdateOnPropertyChangedBehavior.cs" />
+    <Compile Include="View\BindingSetterProxy.cs" />
+    <Compile Include="View\Configuration\Configuration.cs" />
+    <Compile Include="View\Configuration\ConfigurationBehavior.cs" />
+    <Compile Include="View\Configuration\ConfigurationBehaviorExtensions.cs" />
+    <Compile Include="View\Configuration\ConfigurationBehaviorService.cs" />
+    <Compile Include="View\Configuration\ControlReadonlyMetadataItemApplicator.cs" />
+    <Compile Include="View\Configuration\FrameworkElementHiddenMetadataItemApplicator.cs" />
+    <Compile Include="View\Configuration\IMetadataItemApplicator.cs" />
+    <Compile Include="View\Configuration\IMetadataItemApplicatorService.cs" />
+    <Compile Include="View\Configuration\MetadataChangedEventArgs.cs" />
+    <Compile Include="View\Configuration\MetadataItemApplicatorBase.cs" />
+    <Compile Include="View\Configuration\MetadataItemApplicatorService.cs" />
+    <Compile Include="View\Configuration\MetadataProxy.cs" />
+    <Compile Include="View\Configuration\ComboBoxFilterLookupMetadataItemApplicator.cs" />
+    <Compile Include="View\Configuration\TemplatedParentConfigurationBehavior.cs" />
+    <Compile Include="View\Configuration\TextBlockDisplayNameMetadataItemApplicator.cs" />
+    <Compile Include="View\Configuration\TextBlockRequiredMetadataItemApplicator.cs" />
+    <Compile Include="View\ControlProxyElement.cs" />
+    <Compile Include="View\Converter\ArithmeticConverter.cs" />
+    <Compile Include="View\Converter\BooleanIndexToCustomTextConverter.cs" />
+    <Compile Include="View\Converter\FluideStateToTileConverter.cs" />
+    <Compile Include="View\Converter\GetLookupValuesFromBindingPathNonResponseConverter.cs" />
+    <Compile Include="View\Converter\IndexToCustomTextConverter.cs" />
+    <Compile Include="View\Converter\IntegerToCsvValueConverter.cs" />
+    <Compile Include="View\Converter\InvertedBooleanConverter.cs" />
+    <Compile Include="View\Converter\InvertedBooleanIndexToCustomTextConverter.cs" />
+    <Compile Include="View\Converter\InvertedNullableBooleanToVisibilityConverter.cs" />
+    <Compile Include="View\Converter\InvertedNullableIntToNullableBooleanConverter.cs" />
+    <Compile Include="View\Converter\ListIndexToValueConverter.cs" />
+    <Compile Include="View\Converter\MultiNullToVisibilityConverter.cs" />
+    <Compile Include="View\Converter\NullableBooleanToVisibilityConverter.cs" />
+    <Compile Include="View\Converter\ByteToImageConverter.cs" />
+    <Compile Include="View\Converter\DictionaryKeyValueConverter.cs" />
+    <Compile Include="View\Converter\DivisionConverter.cs" />
+    <Compile Include="View\Converter\Hl7SyndromicSurveillanceVisitAssociationConverter.cs" />
+    <Compile Include="View\Converter\IntegerToNullableConverter.cs" />
+    <Compile Include="View\Converter\NullableBooleanToYesNoConverter.cs" />
+    <Compile Include="View\Converter\NullableIntToNullableBooleanConverter.cs" />
+    <Compile Include="View\Converter\QuestionAnswerToVisibilityConverter.cs" />
+    <Compile Include="View\Converter\RangeToVisibilityConverter.cs" />
+    <Compile Include="View\Converter\StringToNullableConverter.cs" />
+    <Compile Include="View\Converter\ToUpperCaseConverter.cs" />
+    <Compile Include="View\Converter\VisitStatusToBrushConverter.cs" />
+    <Compile Include="View\CustomControls\AddRemoveCommentControl.cs" />
+    <Compile Include="View\CustomControls\BasicScreenQuestionControl.cs" />
+    <Compile Include="View\CustomControls\CollapsingContentControl.cs" />
+    <Compile Include="View\CustomControls\CollapsingPanel.cs" />
+    <Compile Include="View\CustomControls\CollapsingUserControl.cs" />
+    <Compile Include="View\CustomControls\DetailsSelector.cs" />
+    <Compile Include="View\CustomControls\EditableExpander.cs" />
+    <Compile Include="View\CustomControls\EditableItemsControl.cs" />
+    <Compile Include="View\CustomControls\EditableItemsControlItem.cs" />
+    <Compile Include="View\CustomControls\Editor.cs" />
+    <Compile Include="View\CustomControls\ExtendedChildWindow.cs" />
+    <Compile Include="View\CustomControls\ExtendedCollectionViewSource.cs" />
+    <Compile Include="View\CustomControls\HintControl.cs" />
+    <Compile Include="View\CustomControls\HintPopup.xaml.cs">
+      <DependentUpon>HintPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomControls\ICollapsingControl.cs" />
+    <Compile Include="View\CustomControls\IReadOnly.cs" />
+    <Compile Include="View\CustomControls\LoadingControl.cs" />
+    <Compile Include="View\CustomControls\NonResponseQuestionControl.cs" />
+    <Compile Include="View\CustomControls\NotificationItem.cs" />
+    <Compile Include="View\CustomControls\NotificationTongue.cs" />
+    <Compile Include="View\CustomControls\NotifyContentControl.cs" />
+    <Compile Include="View\CustomControls\PopupExpander.cs" />
+    <Compile Include="View\CustomControls\PopupWindow.xaml.cs">
+      <DependentUpon>PopupWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomControls\PrintControl.cs" />
+    <Compile Include="View\CustomControls\PrintPage.xaml.cs">
+      <DependentUpon>PrintPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomControls\QuestionItem.cs" />
+    <Compile Include="View\CustomControls\QuickPicker.cs" />
+    <Compile Include="View\CustomControls\EditableGrid.cs" />
+    <Compile Include="View\CustomControls\EditableStackPanel.cs" />
+    <Compile Include="View\CustomControls\ScreenerHeaderItemsControl.cs" />
+    <Compile Include="View\CustomControls\ScreenerHeaderItem.cs" />
+    <Compile Include="View\CustomControls\SearchBox.cs" />
+    <Compile Include="View\CustomControls\SecureContentControl.cs" />
+    <Compile Include="View\CustomControls\SecureControl.cs" />
+    <Compile Include="View\CustomControls\SlideoutContentControl.cs" />
+    <Compile Include="View\CustomControls\ToolSetGroup.cs" />
+    <Compile Include="View\CustomControls\ToolSetButton.cs" />
+    <Compile Include="View\CustomControls\ToolSetListButton.cs" />
+    <Compile Include="View\CustomControls\UniformGrid.cs" />
+    <Compile Include="View\CustomControls\UserChangedRadComboBox.cs" />
+    <Compile Include="View\CustomControls\TimeSpanPicker.cs" />
+    <Compile Include="View\CustomControls\ValidationControl.cs" />
+    <Compile Include="View\CustomPropertyGroupDescription.cs" />
+    <Compile Include="View\DataContextProxyElement.cs" />
+    <Compile Include="View\DTSSearchView.xaml.cs">
+      <DependentUpon>DTSSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IMultiValueConverter.cs" />
+    <Compile Include="View\Behavior\MultiBinding.cs" />
+    <Compile Include="View\PopupView.xaml.cs">
+      <DependentUpon>PopupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TemplateSelectors\WorkspaceTypeTemplateSelector.cs" />
+    <Compile Include="View\Theme\RemDefault\FormSectionDividerControl.xaml.cs">
+      <DependentUpon>FormSectionDividerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Theme\RemDefault\MultiSelectEditControl.xaml.cs">
+      <DependentUpon>MultiSelectEditControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Theme\RemDefault\RibbonSectionControl.xaml.cs">
+      <DependentUpon>RibbonSectionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\IViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\Behavior\CollectionEditorAttachedProperties.cs" />
+    <Compile Include="View\Behavior\ServerSideAutoCompleteBoxBehavior.cs" />
+    <Compile Include="View\Behavior\ViewModelBinder.cs" />
+    <Compile Include="View\IView.cs" />
+    <Compile Include="View\ViewUserControl.cs" />
+    <Compile Include="Service\BasicHttpBinaryBinding.cs" />
+    <Compile Include="Service\ServiceBindingConfiguration.cs" />
+    <Compile Include="Service\Dispatcher.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="EmergencyAccess\EmergencyAccessView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LogOutWarning\LogOutWarningView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuickPickers\LookupQuickPickerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\EditableExpander.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\FloatableWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\SearchBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CustomControls\HintPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CustomControls\PopupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CustomControls\PrintPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DTSSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PopupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Theme\RemDefault\Tiles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Resource Include="themes\generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Page Include="View\Theme\RemDefault\Brushes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Theme\RemDefault\DataGridResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Theme\RemDefault\DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Theme\RemDefault\FormSectionDividerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Theme\RemDefault\MultiSelectEditControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Theme\RemDefault\RadMenuResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Theme\RemDefault\RibbonSectionControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Theme\RemDefault\Styles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="ViewModel\ViewModelInfrastructure.cd" />
+    <None Include="View\Configuration\Configuration.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\DefaultStaffImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common.Silverlight\Pillar.Common.Silverlight.csproj">
+      <Project>{49D7FB03-A129-4E44-9327-51EC4E1E0FB4}</Project>
+      <Name>Pillar.Common.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.FluentRuleEngine.Castle.Silverlight\Pillar.FluentRuleEngine.Castle.Silverlight.csproj">
+      <Project>{586B36F9-F3CE-43F5-ADF4-17EB6987BE40}</Project>
+      <Name>Pillar.FluentRuleEngine.Castle.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.FluentRuleEngine.Silverlight\Pillar.FluentRuleEngine.Silverlight.csproj">
+      <Project>{E5664DBD-9741-4025-AE6E-56F289B10AF1}</Project>
+      <Name>Pillar.FluentRuleEngine.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Security.Silverlight\Pillar.Security.Silverlight.csproj">
+      <Project>{D0C24324-EBBE-450A-88D7-F71DA081B063}</Project>
+      <Name>Pillar.Security.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Rem.WellKnownNames\Rem.WellKnownNames.csproj">
+      <Project>{0CA1E92B-B1E0-4E22-8FA5-747753AA8E72}</Project>
+      <Name>Rem.WellKnownNames</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\Collections\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <Import Project="$(SolutionDir)\lib\Shared\Stylecop\StyleCop.Targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

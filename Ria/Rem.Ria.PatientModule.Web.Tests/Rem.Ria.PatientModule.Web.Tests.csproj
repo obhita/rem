@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{689AEF74-CBF9-4759-919C-26B18A3CAB8B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Ria.PatientModule.Web.Tests</RootNamespace>
+    <AssemblyName>Rem.Ria.PatientModule.Web.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Agatha.Common">
+      <HintPath>..\..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.ServiceLayer">
+      <HintPath>..\..\packages\Agatha-ServiceLayer-StructureMap.1.3\lib\net40\Agatha.ServiceLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.StructureMap">
+      <HintPath>..\..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=2.1.266.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\AutoMapper.2.1.266\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="C32Gen">
+      <HintPath>..\..\lib\Server\C32Gen\C32Gen.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Castle.Core.3.0.0.2001\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="HL7Generator.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\HL7Gen\HL7Generator.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Iesi.Collections.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq">
+      <HintPath>..\..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="NHapi.Base, Version=2.3.0.0, Culture=neutral, PublicKeyToken=d0d8ea960a3440eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\nHapi\NHapi.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="NHapi.Model.V251, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\nHapi\NHapi.Model.V251.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NHibernate.Castle.3.1.0.4000\lib\Net35\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="TerminologyService.WebService, Version=1.4.4139.18320, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\TerminologyService\TerminologyService.WebService.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Clinical\Rem.Domain.Clinical.csproj">
+      <Project>{C7837BA2-B4EC-40B6-96B6-00F9BE462A60}</Project>
+      <Name>Rem.Domain.Clinical</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Core\Rem.Domain.Core.csproj">
+      <Project>{AB046CD6-556B-4023-BAC1-3F0F3183B630}</Project>
+      <Name>Rem.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Clinical.Tests\Rem.Domain.Clinical.Tests.csproj">
+      <Project>{BF2AD9E6-9914-4E70-9EDA-14BBDB2B6CE4}</Project>
+      <Name>Rem.Domain.Clinical.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\Rem.Infrastructure.Tests\Rem.Infrastructure.Tests.csproj">
+      <Project>{9D7DB2FC-11D5-45AA-AB6E-F88C36CCA558}</Project>
+      <Name>Rem.Infrastructure.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\Rem.Infrastructure\Rem.Infrastructure.csproj">
+      <Project>{ADDD4155-DFBE-4450-96E4-0E730CE38861}</Project>
+      <Name>Rem.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common\Pillar.Common.csproj">
+      <Project>{6761BABC-8D45-4D08-B112-088FA47AB625}</Project>
+      <Name>Pillar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain.Tests\Pillar.Domain.Tests.csproj">
+      <Project>{4F931C9B-A090-4C7C-AD99-F530BB5FD8DE}</Project>
+      <Name>Pillar.Domain.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain\Pillar.Domain.csproj">
+      <Project>{88257D62-7FE9-4128-A39B-1FF4511C8B3A}</Project>
+      <Name>Pillar.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common.Tests\Pillar.Common.Tests.csproj">
+      <Project>{55E77316-2E6B-4D00-AAD6-C755C70FE812}</Project>
+      <Name>Pillar.Common.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Security\Pillar.Security.csproj">
+      <Project>{450A9049-224E-47D2-ADF8-D57A168DC266}</Project>
+      <Name>Pillar.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Rem.WellKnownNames\Rem.WellKnownNames.csproj">
+      <Project>{0CA1E92B-B1E0-4E22-8FA5-747753AA8E72}</Project>
+      <Name>Rem.WellKnownNames</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.AgencyModule.Web\Rem.Ria.AgencyModule.Web.csproj">
+      <Project>{328DE49F-A6FE-4922-BBE5-71BB375389EF}</Project>
+      <Name>Rem.Ria.AgencyModule.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.Infrastructure.Web.Tests\Rem.Ria.Infrastructure.Web.Tests.csproj">
+      <Project>{0D998ABC-E0B8-47EB-9D74-114209527419}</Project>
+      <Name>Rem.Ria.Infrastructure.Web.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.Infrastructure.Web\Rem.Ria.Infrastructure.Web.csproj">
+      <Project>{D0DD4451-BAFD-41E2-B6B8-566E3BAFD20A}</Project>
+      <Name>Rem.Ria.Infrastructure.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.PatientModule.Web\Rem.Ria.PatientModule.Web.csproj">
+      <Project>{D47EDC6B-0BE3-4BC8-A43A-B0DA90CCF465}</Project>
+      <Name>Rem.Ria.PatientModule.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Pillar\Pillar.Common.Tests\MSTestInitialize.cs">
+      <Link>MSTestInitialize.cs</Link>
+    </Compile>
+    <Compile Include="..\..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Mapping\DensAsiNonResponseTypeObjectMapperTests.cs" />
+    <Compile Include="Mapping\GpraNonResponseTypeObjectMapperTests.cs" />
+    <Compile Include="Mapping\PatientModuleWebEntityToDtoMappingTests.cs" />
+    <Compile Include="PatientDashboard\C32DtoFactoryTests.cs" />
+    <Compile Include="PatientDashboard\CreateNewPatientHandlerTests.cs" />
+    <Compile Include="PatientDashboard\GetGrowthRateInformationRequestHandlerTests.cs" />
+    <Compile Include="PatientDashboard\HL7ImmunizationFactoryTests.cs" />
+    <Compile Include="PatientDashboard\PatientReminderSearchRequestHandlerTests.cs" />
+    <Compile Include="PatientDashboard\SyndromicSurveillanceTests.cs" />
+    <Compile Include="PatientModuleTestFixture.cs" />
+    <Compile Include="PermissionDescriptorTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="HL7Generator.Infrastructure.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

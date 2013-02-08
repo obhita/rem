@@ -1,0 +1,13 @@
+
+print '------------------------------------------------------------------------------------------'
+print 'TedsModule_TedsMaritalStatusLkp.sql'
+print '------------------------------------------------------------------------------------------'
+
+INSERT INTO [TedsModule].[TedsMaritalStatusLkp] ( [TedsMaritalStatusLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [Code], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 1, current_timestamp, 1, current_timestamp, 1, 0, N'Never Married', NULL, N'Never Married', N'01', NULL, 1, '1/1/1900',NULL, 0, 0 )
+INSERT INTO [TedsModule].[TedsMaritalStatusLkp] ( [TedsMaritalStatusLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [Code], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 2, current_timestamp, 1, current_timestamp, 1, 0, N'Now Married', NULL, N'Now Married', N'02', NULL, 2, '1/1/1900',NULL, 0, 0 )
+INSERT INTO [TedsModule].[TedsMaritalStatusLkp] ( [TedsMaritalStatusLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [Code], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 3, current_timestamp, 1, current_timestamp, 1, 0, N'Separated', NULL, N'Separated', N'03', NULL, 3, '1/1/1900',NULL, 0, 0 )
+INSERT INTO [TedsModule].[TedsMaritalStatusLkp] ( [TedsMaritalStatusLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [Code], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 4, current_timestamp, 1, current_timestamp, 1, 0, N'Divorced', NULL, N'Divorced', N'04', NULL, 4, '1/1/1900',NULL, 0, 0 )
+INSERT INTO [TedsModule].[TedsMaritalStatusLkp] ( [TedsMaritalStatusLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [Code], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 5, current_timestamp, 1, current_timestamp, 1, 0, N'Widowed', NULL, N'Widowed', N'05', NULL, 5, '1/1/1900',NULL, 0, 0 )
+
+GO
+	

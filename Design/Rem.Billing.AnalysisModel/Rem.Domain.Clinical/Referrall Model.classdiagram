@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="70b19767-82aa-4b72-b77e-060a58ce6d61" name="Referrall Model" linkedPackageId="5cc4b787-9a55-4362-8ea7-d5d98f3544ee" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="e2a48c56-770c-4e5b-aad9-bbd4dba8ea1c">
+      <elementDefinition Id="0d29d997-2f50-46e8-88b8-d5abbc00da56" />
+      <body>The referral process should work something like this.
+
+1. A referral is created from agency/location/staff to agency/location/staff.  This is a referral request record
+2. if the request is for an internal agency/location/staff then the message is serialized into some form (maybe xml) (maybe a standard 278 document - not sure).  this message could possibly be sent on the bus
+3. the incoming referral is parsed and brought into the system as a referral request
+4. the user responds to the referral and a message is sent back to the originating agency.
+
+This would work similar to the 270/271 messages</body>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="8b4988a0-21f8-4fb1-a3a9-8ee96f5a1b62">
+      <profileInstance Id="c87b172f-3ebe-4e65-a7e6-f8101884af74" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="7842a0a1-f5df-40f3-8a1e-d0f98feafc73">
+      <profileInstance Id="511d6175-6a3a-4e1b-9053-b8601f62a51a" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b40cead2-0397-46f6-9a06-880b2b06e6aa" name="Referral Request" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3dd47601-3d61-4317-b069-2a8813d6e4a0" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8172eb6a-fc59-4b45-bf7d-071df877ce9d" name="Referral Response" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8130d207-5c75-499b-9c06-7bc81a412711" />
+        <targetEnds>
+          <association Id="234f1415-2b53-43e3-bb25-d3ee0a57c982" isDerived="false" sourceEndRoleName="Referral Response" targetEndRoleName="Referral Request" isLeaf="false" isAbstract="false">
+            <classMoniker Id="b40cead2-0397-46f6-9a06-880b2b06e6aa" LastKnownName="Referral Request" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="78d247d4-51a8-4cd3-bb80-6bf4571578af" name="Referral Response" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="33a504e0-5b46-495c-9ca2-ba49e1af7c06" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f88ffcfe-d1b3-416c-8e4d-fbb862fb3cc0" name="Referral Request" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="13783a76-d8e8-4e7b-9937-54a3e13d25eb" name="Lower" value="0">
+                      <elementDefinition Id="6caf6439-0909-4bd6-99bc-92e2c92738f9" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="ab60cba9-e926-41dc-92ed-c8cb5a09868a" name="Upper" value="1">
+                      <elementDefinition Id="139221f4-f2d2-4e20-b47f-45704756a83a" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="73548905-bbf8-403e-9452-ff048cfeacaa" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4cbef005-dae2-4b07-ab83-42c7610196bb" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="5cc4b787-9a55-4362-8ea7-d5d98f3544ee" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+  </package>
+</logicalClassDesignerModel>

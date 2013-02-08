@@ -1,0 +1,3 @@
+﻿ALTER TABLE [ProgramModule].[CapacityTypeLkp]
+    ADD CONSTRAINT [CapacityTypeLkp_SystemAccount_CreatedBySystemAccount_FK] FOREIGN KEY ([CreatedBySystemAccountKey]) REFERENCES [SecurityModule].[SystemAccount] ([SystemAccountKey]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+

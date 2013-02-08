@@ -1,0 +1,495 @@
+﻿<telerik:RadTileViewItem x:Class="Rem.Ria.PatientModule.PatientDashboard.Phq9View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    xmlns:Controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls" 
+    xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" 
+    xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"  
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    mc:Ignorable="d"
+    d:DesignHeight="10000" d:DesignWidth="1000" Header="The Patient Health Questionnaire (PHQ-9)" TileState="{Binding ElementName=frcContent,Path=State,Converter={StaticResource FluideStateToTileConverterInstance},Mode=TwoWay}"  Style="{StaticResource DashboardTileViewStyle}" HeaderStyle="{StaticResource DashboardTileHeaderStyle}">
+  
+     <telerik:RadTileViewItem.Resources>
+        <View:DataContextProxyElement x:Key="RootDataContext"/>
+        <Converter:RangeToVisibilityConverter x:Key="RangeToVisibilityConverter"/>
+        <Controls:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <Controls:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
+    </telerik:RadTileViewItem.Resources>
+
+  <telerik:RadTileViewItem.HeaderTemplate>
+    <DataTemplate>
+      <Grid Margin="0 0 10 0">
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+                <StackPanel Margin="0,0,2,0" Grid.Column="0">
+                    <telerik:RadButton Style="{StaticResource TileDeleteButtonStyle}" Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.CloseViewCommand}" ToolTipService.ToolTip="Delete activity"></telerik:RadButton>
+                </StackPanel>
+                <Viewbox x:Name="Header"  Grid.Column="1" StretchDirection="DownOnly" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="0"/>
+                    </StackPanel>
+            </Viewbox>
+            </Grid>
+    </DataTemplate>
+  </telerik:RadTileViewItem.HeaderTemplate>
+
+  <i:Interaction.Behaviors>
+        <Behavior:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <telerik:RadFluidContentControl x:Name="frcContent"  Margin="0,0,0,0" State="{Binding IsCurrentActivity,Mode=OneWay, Converter={StaticResource BooleanToFluidContentControlStateLargeConverterInstance}}" ContentChangeMode="Manual" Style="{StaticResource RfccRemStyle}">
+        <telerik:RadFluidContentControl.SmallContent>
+            <Grid/>
+        </telerik:RadFluidContentControl.SmallContent>
+        <telerik:RadFluidContentControl.Content>
+            <Grid/>
+        </telerik:RadFluidContentControl.Content>
+        <telerik:RadFluidContentControl.LargeContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Margin="0" Padding="0" BorderThickness="0">
+                <Grid>
+                    <CustomControls:Editor MaximizeHeader="The Patient Health Questionnaire (PHQ-9)" Style="{StaticResource TileEditorHeaderStyle}" StartOpen="True" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}" CanMaximize="True">
+                        <CustomControls:Editor.Expanders>
+                            <CustomControls:EditableExpander x:Name="Phq9" CanMaximize="False"
+                                         Content="{Binding EditingDto}" IsExpanded="True" Width="Auto" MaxWidth="800" MinWidth="700"
+                                         SaveCommand="{Binding SaveCommand}" 
+                                         CancelCommand="{Binding CancelCommand}" 
+                                         AccessControlManager="{Binding AccessControlManager}">
+                                <CustomControls:EditableExpander.HeaderTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <TextBlock Text="{Binding}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.HeaderTemplate>
+                                <CustomControls:EditableExpander.ContentTemplate>
+                                    <DataTemplate>
+                                        <ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="0" d:LayoutOverrides="Width" BorderThickness="0">
+                                            <Border >
+                                                <StackPanel>
+                                                    <Border>
+                                                        <TextBlock Text="Over the past 2 weeks, how often have you been bothered by any of the following problems?" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Left" HorizontalAlignment="Left" Margin="0,8,0,0" FontWeight="Bold" />
+                                                    </Border>
+                                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                    <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Margin="0,0,5,0">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="auto"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                                                <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                    <TextBlock Text="Not At All" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                                </Border>
+                                                                <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                    <TextBlock Text="Several Days" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                                </Border>
+                                                                <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                    <TextBlock Text="More Than Half The Days" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" />
+                                                                </Border>
+                                                                <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                    <TextBlock Text="Nearly Every Day" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                                </Border>
+                                                            </StackPanel>
+                                                        </Grid>
+                                                        <StackPanel>
+                                                            <CustomControls:QuestionItem Question="1. Little interest or pleasure in doing things?" Value="{Binding DataSource.EditingDto.LittleInterestInDoingThingsAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="2. Feeling down, depressed or hopeless?" Value="{Binding DataSource.EditingDto.FeelingDownAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="3. Trouble falling asleep, staying asleep, or sleeping too much?" Value="{Binding DataSource.EditingDto.TroubleSleepingAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="4. Feeling tired or having little energy?" Value="{Binding DataSource.EditingDto.FeelingTiredAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="5. Poor appetite or overeating?" Value="{Binding DataSource.EditingDto.PoorAppetiteAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="6. Feeling bad about yourself - or that you're a failure or have let yourself or your family down?" Value="{Binding DataSource.EditingDto.FeelingBadAboutSelfAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="7. Trouble concentrating on things, such as reading the newspaper or watching television?" Value="{Binding DataSource.EditingDto.TroubleConcentratingAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="8. Moving or speaking so slowly that other people could have noticed. Or, the opposite - being so fidgety or restless that you have been moving around a lot more than usual?" Value="{Binding DataSource.EditingDto.ActingSluggishOrFidgityAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="9. Thoughts that you would be better off dead or of hurting yourself in some way?" Value="{Binding DataSource.EditingDto.ThoughtsOfHurtingSelfAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="10. If you checked of any problems, how difficult have those problems made it for you to Do your work, take case of things at home, or get along with other people?" Value="{Binding DataSource.EditingDto.HaveTheseProblemsAffectedYouAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text="Not difficult at all" TextWrapping="Wrap"  VerticalAlignment="Center"/>
+                                                                        <ContentControl Width="100">
+                                                                            <TextBlock VerticalAlignment="Center">Somewhat<LineBreak></LineBreak>difficult</TextBlock>
+                                                                        </ContentControl>
+                                                                        <TextBlock Text="Very difficult" TextWrapping="Wrap" VerticalAlignment="Center" />
+                                                                        <TextBlock Text="Extremely difficult" TextWrapping="Wrap" VerticalAlignment="Center" />
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <StackPanel  Visibility="{Binding IsDirty, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" Margin="0,10">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="0.2*"/>
+                                                                <ColumnDefinition Width="0.8*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Border Style="{StaticResource ScreenerCommentsBorderStyle}" Grid.ColumnSpan="2" VerticalAlignment="Stretch"/>
+                                                            <Border Style="{StaticResource ScreenerScoreBorderStyle}" Grid.Column="0">
+                                                                <StackPanel  Orientation="Horizontal"  VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" >
+                                                                    <TextBlock Text="Score: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                                    <TextBlock Text ="{Binding SeverityScore, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource ScreenerLabelTextBlockStyleL}" Margin="0" VerticalAlignment="Center"/>
+                                                                </StackPanel>
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerScoreBorderStyle}" Grid.Column="2" >
+                                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" d:LayoutOverrides="Height">
+                                                                    <Grid>
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="0.535*"/>
+                                                                            <ColumnDefinition Width="0.465*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <TextBlock Text="Guidance Summary: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}" Grid.Column="0" />
+                                                                        <StackPanel Grid.Column="1" Visibility="{Binding DataSource.IsShowResult, Converter={StaticResource BooleanToVisibilityConverter}, Source={StaticResource RootDataContext}}">
+                                                                            <telerik:RadButton Content="Guidance" HorizontalAlignment="Right" Style="{StaticResource RemRadLinkButtonStyle}">
+                                                                                <i:Interaction.Triggers>
+                                                                                    <i:EventTrigger EventName="Click">
+                                                                                        <i:InvokeCommandAction Command="{Binding DataSource.ShowResultCommand, Source={StaticResource RootDataContext}}" CommandParameter="{Binding}"/>
+                                                                                    </i:EventTrigger>
+                                                                                </i:Interaction.Triggers>
+                                                                            </telerik:RadButton>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=null, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Text ="-"  Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=min\, 0, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Text ="-"  Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=1\, 4, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Text ="Reassess annually"  Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=5\, 9, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center" TextWrapping="Wrap">
+                                                        <Run>Support: educate patient to call if worse, and return in one month. </Run>
+                                                                        </TextBlock>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=10\, 14, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center" TextWrapping="Wrap">
+                                                        <Run>Give patient support, watchful waiting, prescribe an antidepressant or psychotherapy.</Run>
+                                                                        </TextBlock>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=15\, 19, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center">
+                                                        <Run>Major Depression, moderately severe - Antidepressant or psychotherapy</Run>
+                                                                        </TextBlock>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=20\, max, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center">
+                                                        <Run>Major Depression, severe - Antidepressant and psychotherapy</Run>
+                                                                        </TextBlock>
+                                                                    </StackPanel>
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                        <StackPanel>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </ScrollViewer>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentTemplate>
+                                <CustomControls:EditableExpander.ContentEditTemplate>
+                                    <DataTemplate>
+                                        <ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="0" d:LayoutOverrides="Width" BorderThickness="0">
+                                            <Border Style="{StaticResource ScreenerSectionBorderStyle}">
+                                                <StackPanel>
+                                                    <Border>
+                                                        <TextBlock Text="Over the past 2 weeks, how often have you been bothered by any of the following problems?" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Left" HorizontalAlignment="Left" FontWeight="Bold" />
+                                                    </Border>
+                                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                    <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Margin="0,0,5,0">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="auto"/>
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                                                <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                    <TextBlock Text="Not At All" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                                </Border>
+                                                                <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                    <TextBlock Text="Several Days" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                                </Border>
+                                                                <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                    <TextBlock Text="More Than Half The Days" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" />
+                                                                </Border>
+                                                                <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                    <TextBlock Text="Nearly Every Day" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                                </Border>
+                                                            </StackPanel>
+                                                        </Grid>
+                                                        <StackPanel>
+                                                            <CustomControls:QuestionItem Question="1. Little interest or pleasure in doing things?" Value="{Binding DataSource.EditingDto.LittleInterestInDoingThingsAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="2. Feeling down, depressed or hopeless?" Value="{Binding DataSource.EditingDto.FeelingDownAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="3. Trouble falling asleep, staying asleep, or sleeping too much?" Value="{Binding DataSource.EditingDto.TroubleSleepingAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="4. Feeling tired or having little energy?" Value="{Binding DataSource.EditingDto.FeelingTiredAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="5. Poor appetite or overeating?" Value="{Binding DataSource.EditingDto.PoorAppetiteAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="6. Feeling bad about yourself - or that you're a failure or have let yourself or your family down?" Value="{Binding DataSource.EditingDto.FeelingBadAboutSelfAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="7. Trouble concentrating on things, such as reading the newspaper or watching television?" Value="{Binding DataSource.EditingDto.TroubleConcentratingAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="8. Moving or speaking so slowly that other people could have noticed. Or, the opposite - being so fidgety or restless that you have been moving around a lot more than usual?" Value="{Binding DataSource.EditingDto.ActingSluggishOrFidgityAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="9. Thoughts that you would be better off dead or of hurting yourself in some way?" Value="{Binding DataSource.EditingDto.ThoughtsOfHurtingSelfAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                        <TextBlock Text=""/>
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                            <CustomControls:QuestionItem Question="10. If you checked of any problems, how difficult have those problems made it for you to Do your work, take case of things at home, or get along with other people?" Value="{Binding DataSource.EditingDto.HaveTheseProblemsAffectedYouAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                                <CustomControls:QuestionItem.ItemsSource>
+                                                                    <toolkit:ObservableObjectCollection>
+                                                                        <TextBlock Text="Not difficult at all" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                                                        <ContentControl Width="100">
+                                                                            <TextBlock VerticalAlignment="Center">Somewhat<LineBreak></LineBreak>difficult</TextBlock>
+                                                                        </ContentControl>
+                                                                        <TextBlock Text="Very difficult" TextWrapping="Wrap" VerticalAlignment="Center" />
+                                                                        <TextBlock Text="Extremely difficult" TextWrapping="Wrap" VerticalAlignment="Center" />
+                                                                    </toolkit:ObservableObjectCollection>
+                                                                </CustomControls:QuestionItem.ItemsSource>
+                                                            </CustomControls:QuestionItem>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <StackPanel  Visibility="{Binding IsDirty, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" Margin="0,10">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="0.2*"/>
+                                                                <ColumnDefinition Width="0.8*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Border Style="{StaticResource ScreenerCommentsBorderStyle}" Grid.ColumnSpan="2" VerticalAlignment="Stretch"/>
+                                                            <Border Style="{StaticResource ScreenerScoreBorderStyle}" Grid.Column="0">
+                                                                <StackPanel  Orientation="Horizontal"  VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" >
+                                                                    <TextBlock Text="Score: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                                    <TextBlock Text ="{Binding SeverityScore, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                                </StackPanel>
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerScoreBorderStyle}" Grid.Column="2" >
+                                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" d:LayoutOverrides="Height">
+                                                                    <Grid>
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="0.535*"/>
+                                                                            <ColumnDefinition Width="0.465*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <TextBlock Text="Guidance Summary: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}" Grid.Column="0" />
+                                                                        <StackPanel Grid.Column="1" Visibility="{Binding DataSource.IsShowResult, Converter={StaticResource BooleanToVisibilityConverter}, Source={StaticResource RootDataContext}}">
+                                                                            <telerik:RadButton Content="Guidance" HorizontalAlignment="Right" Style="{StaticResource RemRadLinkButtonStyle}">
+                                                                                <i:Interaction.Triggers>
+                                                                                    <i:EventTrigger EventName="Click">
+                                                                                        <i:InvokeCommandAction Command="{Binding DataSource.ShowResultCommand, Source={StaticResource RootDataContext}}" CommandParameter="{Binding}"/>
+                                                                                    </i:EventTrigger>
+                                                                                </i:Interaction.Triggers>
+                                                                            </telerik:RadButton>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=null, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Text ="-"  Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=min\, 0, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Text ="-"  Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=1\, 4, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Text ="Reassess annually"  Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=5\, 9, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center" TextWrapping="Wrap">
+                                                        <Run>Support: educate patient to call if worse, and return in one month. </Run>
+                                                                        </TextBlock>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=10\, 14, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center" TextWrapping="Wrap">
+                                                        <Run>Give patient support, watchful waiting, prescribe an antidepressant or psychotherapy.</Run>
+                                                                        </TextBlock>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=15\, 19, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center">
+                                                        <Run>Major Depression, moderately severe - Antidepressant or psychotherapy</Run>
+                                                                        </TextBlock>
+                                                                    </StackPanel>
+                                                                    <StackPanel Visibility="{Binding SeverityScore, ConverterParameter=20\, max, Converter={StaticResource RangeToVisibilityConverter}}">
+                                                                        <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center">
+                                                        <Run>Major Depression, severe - Antidepressant and psychotherapy</Run>
+                                                                        </TextBlock>
+                                                                    </StackPanel>
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </ScrollViewer>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentEditTemplate>
+                            </CustomControls:EditableExpander>
+                        </CustomControls:Editor.Expanders>
+                    </CustomControls:Editor>
+                    <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+                </Grid>
+            </ScrollViewer>
+        </telerik:RadFluidContentControl.LargeContent>
+    </telerik:RadFluidContentControl>
+</telerik:RadTileViewItem>

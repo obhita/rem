@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Rem.Ria.AgencyModule.MainAgencyQuickPickersView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism" 
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"   
+    xmlns:ViewModel="clr-namespace:Rem.Ria.Infrastructure.ViewModel;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+    VerticalAlignment="Center" Margin="0,1,0,0">
+
+    <Grid x:Name="LayoutRoot" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,0,2">
+        <telerik:RadTabControl x:Name="TabControl" Style="{StaticResource MainSearchTabControlStyle}">
+            <telerik:RadTabItem Header="Agency" IsSelected="True" Style="{Binding ElementName=TabControl,Path=ItemContainerStyle}" Padding="10,3,10,4" Margin="5,0,10,0">
+                <ContentControl 
+    			Regions:RegionManager.RegionName="AgencyQuickPicker">
+                    <Regions:RegionManager.RegionContext>
+                        <ViewModel:QuickPickerCommunicator CanAdd="true" Height="28" SelectedItem="{Binding AgencyItem,Mode=TwoWay}" SelectedItemChangedCommand="{Binding GoToAgencyCommand}" ItemAddedCommand="{Binding AddAgencyCommand}" />
+                    </Regions:RegionManager.RegionContext>
+                </ContentControl>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="Location" Style="{Binding ElementName=TabControl,Path=ItemContainerStyle}" Padding="10,3,10,4">
+                <ContentControl Width="306" HorizontalContentAlignment="Stretch"
+    			Regions:RegionManager.RegionName="LocationQuickPicker">
+                    <Regions:RegionManager.RegionContext>
+                        <ViewModel:QuickPickerCommunicator CanAdd="true" Height="28" SelectedItem="{Binding LocationItem,Mode=TwoWay}" SelectedItemChangedCommand="{Binding GoToLocationCommand}" ItemAddedCommand="{Binding AddLocationCommand}" />
+                    </Regions:RegionManager.RegionContext>
+                </ContentControl>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="Staff" Style="{Binding ElementName=TabControl,Path=ItemContainerStyle}" Padding="10,3,10,4">
+                <ContentControl 
+    			Regions:RegionManager.RegionName="StaffQuickPicker">
+                    <Regions:RegionManager.RegionContext>
+                        <ViewModel:QuickPickerCommunicator CanAdd="true" Height="28" SelectedItem="{Binding StaffItem,Mode=TwoWay}"  SelectedItemChangedCommand="{Binding GoToStaffCommand}" ItemAddedCommand="{Binding AddStaffCommand}"/>
+                    </Regions:RegionManager.RegionContext>
+                </ContentControl>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+    </Grid>
+</UserControl>

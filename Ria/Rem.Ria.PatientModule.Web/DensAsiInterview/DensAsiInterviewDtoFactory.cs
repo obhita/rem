@@ -1,0 +1,155 @@
+#region License
+
+// Open Behavioral Health Information Technology Architecture (OBHITA.org)
+// 
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the <organization> nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+// DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+// DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+// (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+// ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+// SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+#endregion
+
+using System;
+using AutoMapper;
+using Rem.Domain.Clinical.DensAsiModule;
+using Rem.Domain.Clinical.VisitModule;
+using Rem.Infrastructure.Service;
+using Rem.Ria.PatientModule.Web.Common;
+
+namespace Rem.Ria.PatientModule.Web.DensAsiInterview
+{
+    /// <summary>
+    /// Factory for dens asi interview dto.
+    /// </summary>
+    public class DensAsiInterviewDtoFactory : IKeyedDtoFactory<DensAsiInterviewDto>
+    {
+        #region Constants and Fields
+
+        private readonly IKeyedDtoFactory<DensAsiClosureDto> _densAsiClosureDto;
+        private readonly IKeyedDtoFactory<DensAsiDrugAlcoholUseDto> _densAsiDrugAlcoholUseDtoFactory;
+        private readonly IKeyedDtoFactory<DensAsiDsmIvDto> _densAsiDsmIvDtoFactory;
+        private readonly IKeyedDtoFactory<DensAsiEmploymentStatusDto> _densAsiEmploymentStatusDtoFactory;
+        private readonly IKeyedDtoFactory<DensAsiFamilySocialRelationshipsDto> _densAsiFamilySocialRelationshipsDtoFactory;
+        private readonly IDensAsiInterviewRepository _densAsiInterviewRepository;
+        private readonly IKeyedDtoFactory<DensAsiLegalStatusDto> _densAsiLegalStatusDtoFactory;
+        private readonly IKeyedDtoFactory<DensAsiMedicalStatusDto> _densAsiMedicalStatusDtoFactory;
+        private readonly IKeyedDtoFactory<DensAsiPatientProfileDto> _densAsiPatientProfileDtoFactory;
+        private readonly IKeyedDtoFactory<DensAsiPsychiatricStatusDto> _densAsiPsychiatricStatusDtoFactory;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DensAsiInterviewDtoFactory"/> class.
+        /// </summary>
+        /// <param name="densAsiInterviewRepository">The dens asi interview repository.</param>
+        /// <param name="densAsiPatientProfileDtoFactory">The dens asi patient profile dto factory.</param>
+        /// <param name="densAsiMedicalStatusDtoFactory">The dens asi medical status dto factory.</param>
+        /// <param name="densAsiEmploymentStatusDtoFactory">The dens asi employment status dto factory.</param>
+        /// <param name="densAsiDrugAlcoholUseDtoFactory">The dens asi drug alcohol use dto factory.</param>
+        /// <param name="densAsiLegalStatusDtoFactory">The dens asi legal status dto factory.</param>
+        /// <param name="densAsiFamilySocialRelationshipsDtoFactory">The dens asi family social relationships dto factory.</param>
+        /// <param name="densAsiPsychiatricStatusDtoFactory">The dens asi psychiatric status dto factory.</param>
+        /// <param name="densAsiDsmIvDtoFactory">The dens asi DSM iv dto factory.</param>
+        /// <param name="densAsiClosureDto">The dens asi closure dto.</param>
+        public DensAsiInterviewDtoFactory (
+            IDensAsiInterviewRepository densAsiInterviewRepository,
+            IKeyedDtoFactory<DensAsiPatientProfileDto> densAsiPatientProfileDtoFactory,
+            IKeyedDtoFactory<DensAsiMedicalStatusDto> densAsiMedicalStatusDtoFactory,
+            IKeyedDtoFactory<DensAsiEmploymentStatusDto> densAsiEmploymentStatusDtoFactory,
+            IKeyedDtoFactory<DensAsiDrugAlcoholUseDto> densAsiDrugAlcoholUseDtoFactory,
+            IKeyedDtoFactory<DensAsiLegalStatusDto> densAsiLegalStatusDtoFactory,
+            IKeyedDtoFactory<DensAsiFamilySocialRelationshipsDto> densAsiFamilySocialRelationshipsDtoFactory,
+            IKeyedDtoFactory<DensAsiPsychiatricStatusDto> densAsiPsychiatricStatusDtoFactory,
+            IKeyedDtoFactory<DensAsiDsmIvDto> densAsiDsmIvDtoFactory,
+            IKeyedDtoFactory<DensAsiClosureDto> densAsiClosureDto )
+        {
+            _densAsiInterviewRepository = densAsiInterviewRepository;
+            _densAsiPatientProfileDtoFactory = densAsiPatientProfileDtoFactory;
+            _densAsiMedicalStatusDtoFactory = densAsiMedicalStatusDtoFactory;
+            _densAsiEmploymentStatusDtoFactory = densAsiEmploymentStatusDtoFactory;
+            _densAsiDrugAlcoholUseDtoFactory = densAsiDrugAlcoholUseDtoFactory;
+            _densAsiLegalStatusDtoFactory = densAsiLegalStatusDtoFactory;
+            _densAsiFamilySocialRelationshipsDtoFactory = densAsiFamilySocialRelationshipsDtoFactory;
+            _densAsiPsychiatricStatusDtoFactory = densAsiPsychiatricStatusDtoFactory;
+            _densAsiDsmIvDtoFactory = densAsiDsmIvDtoFactory;
+            _densAsiClosureDto = densAsiClosureDto;
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates the keyed dto.
+        /// </summary>
+        /// <param name="key">The key of the object.</param>
+        /// <returns>A <see cref="Rem.Ria.PatientModule.Web.DensAsiInterview.DensAsiInterviewDto"/></returns>
+        public DensAsiInterviewDto CreateKeyedDto ( long key )
+        {
+            var densAsiInterview = _densAsiInterviewRepository.GetByKey ( key );
+
+            var dto = new DensAsiInterviewDto ();
+            dto.Key = densAsiInterview.Key;
+
+            dto.ActivityStartDateTime = densAsiInterview.ActivityDateTimeRange.StartDateTime;
+            dto.ActivityEndDateTime = densAsiInterview.ActivityDateTimeRange.EndDateTime;
+            dto.AppointmentStartDateTime = Mapper.Map<DateTime?, DateTime> ( densAsiInterview.Visit.CheckedInDateTime );
+            dto.ActivityType = Mapper.Map<ActivityType, ActivityTypeDto> ( densAsiInterview.ActivityType );
+            dto.VisitKey = densAsiInterview.Visit.Key;
+            dto.ClinicianKey = densAsiInterview.Visit.Staff.Key;
+            dto.PatientKey = densAsiInterview.Visit.ClinicalCase.Patient.Key;
+            dto.VisitTemplateName = densAsiInterview.Visit.Name;
+
+            // DensAsiPatientProfileSection
+            dto.DensAsiPatientProfile = _densAsiPatientProfileDtoFactory.CreateKeyedDto ( densAsiInterview.DensAsiPatientProfile.Key );
+
+            // DensAsiMedicalStatusSection
+            dto.DensAsiMedicalStatus = _densAsiMedicalStatusDtoFactory.CreateKeyedDto ( densAsiInterview.DensAsiMedicalStatus.Key );
+
+            // DensAsiEmploymentStatusSection, DensAsiEmploymentStatusDto>();
+            dto.DensAsiEmploymentStatus = _densAsiEmploymentStatusDtoFactory.CreateKeyedDto ( densAsiInterview.DensAsiEmploymentStatus.Key );
+
+            // DensAsiDrugAlcoholUseSection
+            dto.DensAsiDrugAlcoholUse = _densAsiDrugAlcoholUseDtoFactory.CreateKeyedDto ( densAsiInterview.DensAsiDrugAlcoholUse.Key );
+
+            // DensAsiLegalStatusSection
+            dto.DensAsiLegalStatus = _densAsiLegalStatusDtoFactory.CreateKeyedDto ( densAsiInterview.DensAsiLegalStatus.Key );
+
+            // DensAsiFamilySocialRelationshipsSection
+            dto.DensAsiFamilySocialRelationships =
+                _densAsiFamilySocialRelationshipsDtoFactory.CreateKeyedDto ( densAsiInterview.DensAsiFamilySocialRelationships.Key );
+
+            // DensAsiPsychiatricStatusSection
+            dto.DensAsiPsychiatricStatus = _densAsiPsychiatricStatusDtoFactory.CreateKeyedDto ( densAsiInterview.DensAsiPsychiatricStatus.Key );
+
+            // DensAsiDsmIvSection
+            dto.DensAsiDsmIv = _densAsiDsmIvDtoFactory.CreateKeyedDto ( densAsiInterview.DensAsiDsmIv.Key );
+
+            // DensAsiClosureSection
+            dto.DensAsiClosure = _densAsiClosureDto.CreateKeyedDto ( densAsiInterview.DensAsiClosure.Key );
+
+            return dto;
+        }
+
+        #endregion
+    }
+}

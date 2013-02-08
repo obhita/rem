@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="Rem.Ria.ReportsModule.ReportsWorkspaceView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    xmlns:perpetuumsoft="clr-namespace:PerpetuumSoft.ReportingServices.Viewer.Client;assembly=PerpetuumSoft.ReportingServices.Viewer.Client" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:System="clr-namespace:System;assembly=mscorlib" 
+    xmlns:behaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" 
+    xmlns:reportsmodule="clr-namespace:Rem.Ria.ReportsModule" xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    
+    <i:Interaction.Behaviors>
+        <behaviors:CloseViewBehavior />
+    </i:Interaction.Behaviors>    
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="36" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Border BorderThickness="1,0" Grid.Row="2" BorderBrush="Black" Background="{StaticResource WorkPadToolBarBorderBrush}" Margin="0,0,0,-0.167" />
+        <Border Grid.Row="1" Style="{StaticResource MainHeaderBorder}" CornerRadius="8,8,0,0" Height="Auto">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center">
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Canvas Width="26" Height="26">
+                        <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 38.4503,44.8047L 16.033,44.8047C 11.909,44.8047 8.55163,41.4487 8.55163,37.3207L 8.55163,14.9061C 8.55163,10.7781 11.909,7.42206 16.033,7.42206L 38.4503,7.42206C 42.5783,7.42206 45.9343,10.7781 45.9343,14.9061L 45.9343,37.3207C 45.9343,41.4487 42.5783,44.8047 38.4503,44.8047 Z " UseLayoutRounding="False" Height="25.278" Canvas.Left="0.441" Canvas.Top="0.723" Width="25.279"/>
+                        <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 43.7907,42.3145L 11.04,9.5638" UseLayoutRounding="False" Height="22.253" Canvas.Left="2.066" Canvas.Top="2.122" Width="22.254"/>
+                        <Path Stretch="Fill" Data="F1 M 15.6787,5.648C 11.0187,5.648 7.20933,9.45867 7.20933,14.116L 7.20933,37.0133C 7.20933,41.668 11.0187,45.48 15.6787,45.48L 38.5707,45.48C 43.2307,45.48 47.04,41.668 47.04,37.0133L 47.04,14.116C 47.04,9.45867 43.2307,5.648 38.5707,5.648L 15.6787,5.648 Z " UseLayoutRounding="False" Height="26.007" Width="26.006">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0.499985,-5.26733e-006" EndPoint="0.499985,1.00003">
+                                    <GradientStop Color="#FF3F3F40" Offset="0"/>
+                                    <GradientStop Color="#FF7D7D7F" Offset="0.257324"/>
+                                    <GradientStop Color="#FFBBBCBF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path Stretch="Fill" Data="F1 M 15.9147,6.87333C 11.792,6.87333 8.43333,10.228 8.43333,14.356L 8.43333,36.772C 8.43333,40.9013 11.792,44.2547 15.9147,44.2547L 38.332,44.2547C 42.4613,44.2547 45.816,40.9013 45.816,36.772L 45.816,14.356C 45.816,10.228 42.4613,6.87333 38.332,6.87333L 15.9147,6.87333 Z " UseLayoutRounding="False" Height="24.408" Canvas.Left="0.799" Canvas.Top="0.8" Width="24.409">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0.499985,-7.44952e-006" EndPoint="0.499985,1.00003">
+                                    <GradientStop Color="#FF141E26" Offset="0"/>
+                                    <GradientStop Color="#FF343B43" Offset="0.200809"/>
+                                    <GradientStop Color="#FF555960" Offset="0.503067"/>
+                                    <GradientStop Color="#FF343B43" Offset="0.52366"/>
+                                    <GradientStop Color="#FF141E26" Offset="0.533737"/>
+                                    <GradientStop Color="#FF272E37" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path Stretch="Fill" Data="F1 M 15.9147,7.33733C 11.792,7.33733 8.43333,10.6933 8.43333,14.82L 8.43333,15.98C 8.43333,11.852 11.792,8.496 15.9147,8.496L 38.332,8.496C 42.4613,8.496 45.816,11.852 45.816,15.98L 45.816,14.82C 45.816,10.6933 42.4613,7.33733 38.332,7.33733L 15.9147,7.33733 Z " UseLayoutRounding="False" Height="5.644" Canvas.Left="0.799" Canvas.Top="1.102" Width="24.409">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0.499985,6.53242e-005" EndPoint="0.499985,0.999979">
+                                    <GradientStop Color="#FF808184" Offset="0"/>
+                                    <GradientStop Color="#FF5F6062" Offset="0.13"/>
+                                    <GradientStop Color="#FF3F3F40" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path Stretch="Fill" Fill="Black" Data="F1 M 169.333,13.8414L 169.333,11.7654C 169.333,5.47467 164.159,0.322693 157.88,0.322693L 11.9747,0.322693C 5.66135,0.322693 0.521338,5.47467 0.521338,11.7654L 0.521338,13.8414C 0.521338,20.144 5.66135,25.284 11.9747,25.284L 15.3493,25.284C 14.7333,28.8694 14.2893,32.516 14.2893,36.2707C 14.2893,64.264 52.9053,96.816 73.0453,111.849C 75.916,114.015 76.2373,120.113 73.592,122.087C 53.624,136.965 14.2893,169.86 14.2893,198.104C 14.2893,200.221 14.472,202.297 14.6893,204.372L 11.9747,204.372C 5.66135,204.372 0.521338,209.524 0.521338,215.815L 0.521338,217.891C 0.521338,224.183 5.66135,229.333 11.9747,229.333L 157.88,229.333C 164.159,229.333 169.333,224.183 169.333,217.891L 169.333,215.815C 169.333,209.524 164.159,204.372 157.88,204.372L 155.167,204.372C 155.371,202.297 155.553,200.221 155.553,198.104C 155.553,169.745 115.888,136.692 96,121.903C 93.4707,120.023 93.8453,114.073 96.6507,111.976C 116.744,96.964 155.553,64.332 155.553,36.2707C 155.553,32.516 155.12,28.8694 154.492,25.284L 157.88,25.284C 164.159,25.284 169.333,20.144 169.333,13.8414 Z " Height="13.763" Canvas.Left="7.105" Canvas.Top="5.746" UseLayoutRounding="False" Width="10.145"/>
+                        <Path Stretch="Fill" Fill="White" Data="F1 M 169.333,13.8414L 169.333,11.7654C 169.333,5.47467 164.159,0.322693 157.88,0.322693L 11.9747,0.322693C 5.66135,0.322693 0.521338,5.47467 0.521338,11.7654L 0.521338,13.8414C 0.521338,20.144 5.66135,25.284 11.9747,25.284L 15.3493,25.284C 14.7333,28.8694 14.2893,32.516 14.2893,36.2707C 14.2893,64.264 52.9053,96.816 73.0453,111.849C 75.916,114.015 76.2373,120.113 73.592,122.087C 53.624,136.965 14.2893,169.86 14.2893,198.104C 14.2893,200.221 14.472,202.297 14.6893,204.372L 11.9747,204.372C 5.66135,204.372 0.521338,209.524 0.521338,215.815L 0.521338,217.891C 0.521338,224.183 5.66135,229.333 11.9747,229.333L 157.88,229.333C 164.159,229.333 169.333,224.183 169.333,217.891L 169.333,215.815C 169.333,209.524 164.159,204.372 157.88,204.372L 155.167,204.372C 155.371,202.297 155.553,200.221 155.553,198.104C 155.553,169.745 115.888,136.692 96,121.903C 93.4707,120.023 93.8453,114.073 96.6507,111.976C 116.744,96.964 155.553,64.332 155.553,36.2707C 155.553,32.516 155.12,28.8694 154.492,25.284L 157.88,25.284C 164.159,25.284 169.333,20.144 169.333,13.8414 Z " Height="13.763" Canvas.Left="7.605" Canvas.Top="5.996" UseLayoutRounding="False" Width="10.145"/>
+                    </Canvas>
+                </Border>
+                <TextBlock Style="{StaticResource MainHeaderTextBlockStyle}" TextWrapping="Wrap" Text="Reports" d:LayoutOverrides="Width" />
+            </StackPanel>
+        </Border>
+        
+        <StackPanel Grid.Row="2" HorizontalAlignment="Left" >
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,5" HorizontalAlignment="Stretch">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Report" Foreground="White"/>
+                        <telerik:RadComboBox x:Name="cbxReports" FontWeight="Normal" EmptyText="Select Report" HorizontalAlignment="Stretch" DisplayMemberPath="Name" ItemsSource="{Binding ReportDtos}" />
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <telerik:RadButton x:Name="btnViewReport" Style="{StaticResource TileRoundedCornerSmallButtonStyle}" Content="View Report" Margin="5,15,5,5" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <reportsmodule:ViewReportBehavior TargetName="SSRSReportViewer" ReportsRootUri="{Binding ReportsRootUri}"  ReportDto="{Binding ElementName=cbxReports, Path=SelectedItem}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </telerik:RadButton>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Border Grid.Row="3" BorderThickness="1,0" BorderBrush="Black">
+            <ScrollViewer Grid.Row="2" Grid.ColumnSpan="5" BorderThickness="0" Padding="0" VerticalScrollBarVisibility="Auto">
+                <perpetuumsoft:ReportViewer x:Name="SSRSReportViewer" DebugMode="Full"/>
+            </ScrollViewer>
+        </Border>
+        <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" Grid.RowSpan="5" Grid.Row="2"/>
+    </Grid>
+</UserControl>

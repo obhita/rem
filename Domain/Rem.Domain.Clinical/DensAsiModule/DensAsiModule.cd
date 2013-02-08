@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiDsmIv" Collapsed="true">
+    <Position X="21" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DensAsiModule\DensAsiDsmIv.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiFamilySocialRelationships" Collapsed="true">
+    <Position X="14" Y="8.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DensAsiModule\DensAsiFamilySocialRelationships.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiInterview">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAHABgCAAIAFAApAACAAAEAYggAAABgAAEAACAAwQ=</HashCode>
+      <FileName>DensAsiModule\DensAsiInterview.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DensAsiPatientProfile" />
+      <Property Name="DensAsiPsychiatricStatus" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiLegalStatus" Collapsed="true">
+    <Position X="11" Y="8.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DensAsiModule\DensAsiLegalStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiMedicalStatus" Collapsed="true">
+    <Position X="4" Y="8.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DensAsiModule\DensAsiMedicalStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiPatientProfileSection" Collapsed="true">
+    <Position X="0.5" Y="11" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QBJKAAAAAAQARAgBCCIgCAESBbWAEgAyCkAoCBAEAAQ=</HashCode>
+      <FileName>DensAsiModule\DensAsiPatientProfileSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiDrugAlcoholUse" Collapsed="true">
+    <Position X="7.5" Y="8.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DensAsiModule\DensAsiDrugAlcoholUse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiPsychiatricStatusSection" Collapsed="true">
+    <Position X="17.75" Y="11" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>jnASYXDP6YPA4kMZhAiA6w/8QBtC4CSE8gTrhbFZfIM=</HashCode>
+      <FileName>DensAsiModule\DensAsiPsychiatricStatusSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiClosure" Collapsed="true">
+    <Position X="23.75" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DensAsiModule\DensAsiClosure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiInterviewSectionBase">
+    <Position X="6" Y="13.25" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAEAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DensAsiModule\DensAsiInterviewSectionBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiInterviewSectionAggregateNodeBase">
+    <Position X="7.5" Y="2.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAABAAiYAAAAAIAAIAIAAAAAAAAAAAIAAAAE=</HashCode>
+      <FileName>DensAsiModule\DensAsiInterviewSectionAggregateNodeBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiEmploymentStatus" Collapsed="true">
+    <Position X="26.75" Y="8.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>DensAsiModule\DensAsiEmploymentStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiClosureSection" Collapsed="true">
+    <Position X="23.75" Y="11" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ADADAAAAAAAAAAAAAAAAAAAAAAEAAABAAAAEAAGAAAg=</HashCode>
+      <FileName>DensAsiModule\DensAsiClosureSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiDrugAlcoholUseSection" Collapsed="true">
+    <Position X="7.5" Y="11" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>R/Hve3z92t898S60t55f1brT0s8Z3q2d28r3Tsnl+X8=</HashCode>
+      <FileName>DensAsiModule\DensAsiDrugAlcoholUseSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiDsmIvSection" Collapsed="true">
+    <Position X="21" Y="11" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAMgIOgjCFAYQA4AxAAMviwLABCEQkRkAgAAK1EBEaA=</HashCode>
+      <FileName>DensAsiModule\DensAsiDsmIvSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiEmploymentStatusSection" Collapsed="true">
+    <Position X="26.75" Y="11" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>uheAIEgRQgtAdZYERgaIoB1KGQNgEDDOA1VjwKtBIQQ=</HashCode>
+      <FileName>DensAsiModule\DensAsiEmploymentStatusSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiMedicalStatusSection" Collapsed="true">
+    <Position X="4" Y="11" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IBQVECAFERAAEhpEJAQMAQhAQAkGyMQgAAiBAggoIAk=</HashCode>
+      <FileName>DensAsiModule\DensAsiMedicalStatusSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiPatientProfile" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DensAsiModule\DensAsiPatientProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiPsychiatricStatus" Collapsed="true">
+    <Position X="17.75" Y="8.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>DensAsiModule\DensAsiPsychiatricStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiLegalStatusSection" Collapsed="true">
+    <Position X="11" Y="11" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AxEiV8Cp1Wux3ktABYs+BgxcLs03EUKJ5DDjAuVDNbQ=</HashCode>
+      <FileName>DensAsiModule\DensAsiLegalStatusSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.DensAsiModule.DensAsiFamilySocialRelationshipsSection" Collapsed="true">
+    <Position X="14" Y="11" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>VboukKifqM3aUFqZ/5KbRhHsnLNs0Q/f6ftvn6PVJIY=</HashCode>
+      <FileName>DensAsiModule\DensAsiFamilySocialRelationshipsSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

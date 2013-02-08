@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="Rem.Ria.AgencyModule.ProgramEditor.EditProgramView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism" 
+    xmlns:ViewModel="clr-namespace:Rem.Ria.Infrastructure.ViewModel;assembly=Rem.Ria.Infrastructure" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" 
+    xmlns:infrastructureBehaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" 
+    xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=System.Windows" xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+    d:DesignHeight="700" d:DesignWidth="600">
+    <i:Interaction.Behaviors>
+        <infrastructureBehaviors:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <Border Style="{StaticResource PopUpFormPanelStyle}">
+
+        <Grid x:Name="LayoutRoot" >
+            <Grid.Resources>
+                <View:DataContextProxyElement x:Key="RootDataContext"/>
+            </Grid.Resources>
+
+                <CustomControls:Editor x:Name="ProgramEditor"  Style="{StaticResource TileEditorHeaderStyle}" MaximizeHeader="Immunization" StartOpen="{Binding IsCreateMode}" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}">
+                
+                <CustomControls:Editor.Expanders>
+                    <CustomControls:EditableExpander x:Name="Profile" Header="Profile" Content="{Binding EditingDto}" IsExpanded="True" ShowNext="False">
+                        <CustomControls:EditableExpander.ContentTemplate>
+                            <DataTemplate>
+                                <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <TextBlock Text="Program Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock x:Name="ProgramName" Text="{Binding Name, FallbackValue='-', TargetNullValue='-'}"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <TextBlock Text="Display Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock x:Name="DisplayName" Text="{Binding DisplayName, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>                                 
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <TextBlock Text="Start Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock x:Name="StartDate" Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock x:Name="EndDate" Text="{Binding EndDate, StringFormat='{}{0:MM/dd/yyyy}', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>                                      
+                                       <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <TextBlock Text="Capacity Type"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock x:Name="CapacityType" Text="{Binding CapacityType, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                    <TextBlock Text="Program Category"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                    <TextBlock x:Name="ProgramCategory" Text="{Binding ProgramCategory, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                </StackPanel>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                    <TextBlock Text="Approach" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                    <TextBlock x:Name="Approach" Text="{Binding TreatmentApproach,StringFormat='{}{0:MM/dd/yyyy}', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                    <TextBlock Text="Gender Specific"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                    <TextBlock x:Name="GenderSpecific" Text="{Binding GenderSpecification, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                </StackPanel>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                    <TextBlock Text="Age Group" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                    <TextBlock x:Name="AgeGroup" Text="{Binding AgeGroup,StringFormat='{}{0:MM/dd/yyyy}', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </CustomControls:EditableExpander.ContentTemplate>
+       
+                        <CustomControls:EditableExpander.ContentEditTemplate>
+                            <DataTemplate>
+                                <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <TextBlock Text="Program Name"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <telerik:RadMaskedTextBox x:Name="ProgramName" EmptyContent="Program Name" MaskedText="{Binding Name,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <TextBlock Text="Display Name"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <telerik:RadMaskedTextBox x:Name="DisplayName" EmptyContent="Display Name" MaskedText="{Binding DisplayName,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <TextBlock Text="Start Date"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <telerik:RadDatePicker x:Name="StartDate" SelectedValue="{Binding StartDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy" />
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <telerik:RadDatePicker x:Name="EndDate" SelectedValue="{Binding EndDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <TextBlock  Text="Capacity Type" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <telerik:RadComboBox x:Name="CapacityType" ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[CapacityType]}" DisplayMemberPath="Name" SelectedItem="{Binding CapacityType,Mode=TwoWay}"/>
+                                            </StackPanel>                                           
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                    <TextBlock  Text="Program Category" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                    <telerik:RadComboBox x:Name="ProgramCategory" ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[ProgramCategory]}" DisplayMemberPath="Name" SelectedItem="{Binding ProgramCategory,Mode=TwoWay}"/>
+                                                </StackPanel>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                    <TextBlock  Text="Approach" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                    <telerik:RadComboBox x:Name="TreatmentApproach" ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[TreatmentApproach]}" DisplayMemberPath="Name" SelectedItem="{Binding TreatmentApproach,Mode=TwoWay}"/>
+                                                </StackPanel>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                    <TextBlock  Text="Gender Specific" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                    <telerik:RadComboBox x:Name="GenderSpecific" ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[GenderSpecification]}" DisplayMemberPath="Name" SelectedItem="{Binding GenderSpecification,Mode=TwoWay}"/>
+                                                </StackPanel>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                    <TextBlock  Text="Age Group" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                    <telerik:RadComboBox x:Name="AgeGroup" ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[AgeGroup]}" DisplayMemberPath="Name" SelectedItem="{Binding AgeGroup,Mode=TwoWay}"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </CustomControls:EditableExpander.ContentEditTemplate>
+                    </CustomControls:EditableExpander>
+
+                </CustomControls:Editor.Expanders>
+            </CustomControls:Editor>
+            <CustomControls:LoadingControl IsLoading="{Binding IsLoading}"/>
+        </Grid>
+    </Border>
+</UserControl>

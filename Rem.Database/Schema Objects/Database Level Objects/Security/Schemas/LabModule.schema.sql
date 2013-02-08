@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [LabModule]
+    AUTHORIZATION [dbo];
+

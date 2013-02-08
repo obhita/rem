@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="68c42dfc-37c8-4a71-8aff-28d1a615f6ab" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="46588bb6-0408-46b0-a7b9-92032023d259" name="Domain">
+      <childLayers>
+        <layer Id="518a800a-7ad7-49cf-ad72-8ffb49eecf1d" name="Rem.Domain.Clinical">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="725b6404-c972-4d26-8d98-7b3822f1540c" direction="Forward">
+              <layerMoniker Id="590fc44c-73be-4ab1-97c9-e6db8bef263e" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="d13d81b5-ef86-41e2-ae08-021d3ee1e2a2" name="Clinical Case Module" />
+            <layer Id="bf8f1b6d-4345-412c-bb5a-04a0450315b5" name="Dens Asi Module" />
+            <layer Id="7debbb76-48a8-497a-9485-de4a2010f710" name="Gain Short Screener Module" />
+            <layer Id="93ee242d-e46e-4ebc-a88e-6147808aac21" name="Gpra Module" />
+            <layer Id="5ac95417-6235-482e-957d-aa24c303301e" name="Immunization Module" />
+            <layer Id="e90b967d-4a9b-4057-9cfd-61b0d2e76048" name="Patient Module" />
+            <layer Id="246d82cb-71bb-46ed-ac78-da55e3ddf5c6" name="Program Module" />
+            <layer Id="6f5d9504-1c2d-48ea-b245-9ecb1ad1b892" name="Radiology Module" />
+            <layer Id="c88b3f57-7809-4ad3-813b-0a8aa6e05795" name="Reports Module" />
+            <layer Id="0fbe4404-f3c9-4901-a1ec-429ad17cad3d" name="Sbirt Module" />
+            <layer Id="0675d961-23de-47e9-8456-ceb97c949fbe" name="Visit Module" />
+          </childLayers>
+        </layer>
+        <layer Id="a0f97930-147f-477f-9a49-5127e54a38c2" name="Rem.Domain.Billing">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="bfeb61ad-a1be-46d9-8455-aac02ca3c95b" direction="Forward">
+              <layerMoniker Id="590fc44c-73be-4ab1-97c9-e6db8bef263e" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="84212c7b-0c19-4156-be4e-9c78e0b4993f" name="Billing Office Module" />
+            <layer Id="86d2bc68-7692-4623-a146-c73fe5f56709" name="Claim Module" />
+            <layer Id="fa391a5a-cc98-49d0-9712-32922163fd52" name="Contract Module" />
+            <layer Id="322c055d-7283-41fe-b921-6886c24ffacf" name="Encounter Module" />
+            <layer Id="4a63d878-41cc-4c1f-8676-d48507cb6fdc" name="Patient Account Module" />
+            <layer Id="f8f57b6c-87b9-4eff-9562-691f9687e614" name="Payor Module" />
+            <layer Id="6aa271be-be82-4896-87b7-87c6b5f86353" name="Rate Module" />
+          </childLayers>
+        </layer>
+        <layer Id="590fc44c-73be-4ab1-97c9-e6db8bef263e" name="Rem.Domain.Core">
+          <childLayers>
+            <layer Id="13aeb5f5-9a7b-4c96-bf92-67ba0aa9816c" name="Security Module" />
+            <layer Id="d52a9533-6ee7-4a89-8473-418c97a2ec91" name="Agency Module" />
+            <layer Id="23bd45ac-9321-4518-bd33-cc0ff3e4edd7" name="Common Module" />
+          </childLayers>
+        </layer>
+        <layer Id="87b9a0a9-f86e-43f7-b33c-e2aa9294f889" name="Rem.Domain.ClinicalBilling.ContextMap">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="0d1a2d14-5732-4319-afde-2337ea506cf6" direction="Forward">
+              <layerMoniker Id="518a800a-7ad7-49cf-ad72-8ffb49eecf1d" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="7e7d6a5e-dea0-4ca7-a433-1997fd612f5a" direction="Forward">
+              <layerMoniker Id="a0f97930-147f-477f-9a49-5127e54a38c2" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="ad0edc4e-4e53-40d0-8445-5337fbc2cf56" direction="Forward">
+              <layerMoniker Id="590fc44c-73be-4ab1-97c9-e6db8bef263e" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

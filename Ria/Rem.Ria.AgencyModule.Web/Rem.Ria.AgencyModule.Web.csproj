@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{328DE49F-A6FE-4922-BBE5-71BB375389EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Ria.AgencyModule.Web</RootNamespace>
+    <AssemblyName>Rem.Ria.AgencyModule.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\debug\Rem.Ria.AgencyModule.Web.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Agatha.Common">
+      <HintPath>..\..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.ServiceLayer">
+      <HintPath>..\..\packages\Agatha-ServiceLayer-StructureMap.1.3\lib\net40\Agatha.ServiceLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.StructureMap">
+      <HintPath>..\..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=2.1.266.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\AutoMapper.2.1.266\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="HL7Generator.Infrastructure">
+      <HintPath>..\..\lib\Server\HL7Gen\HL7Generator.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Iesi.Collections.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHapi.Base, Version=2.3.0.0, Culture=neutral, PublicKeyToken=d0d8ea960a3440eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\nHapi\NHapi.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="NHapi.Model.V251, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\nHapi\NHapi.Model.V251.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Thinktecture.IdentityServer.WebService.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\IdentityServer\Thinktecture.IdentityServer.WebService.Client.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="AgencyDashboard\DeleteProgramRequest.cs" />
+    <Compile Include="AgencyDashboard\DeleteProgramRequestHandler.cs" />
+    <Compile Include="AgencyDashboard\DeleteProgramResponse.cs" />
+    <Compile Include="AgencyDashboard\GetAllProgramsByAgencyRequest.cs" />
+    <Compile Include="AgencyDashboard\GetAllProgramsByAgencyRequestHandler.cs" />
+    <Compile Include="AgencyDashboard\GetAllProgramsByAgencyResponse.cs" />
+    <Compile Include="AgencyDashboard\ProgramDto.cs" />
+    <Compile Include="AgencyDashboard\ProgramDtoFactory.cs" />
+    <Compile Include="AgencyDashboard\SaveProgramRequestHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AgencyEditor\AgencyAddressesAndPhonesDtoFactory.cs" />
+    <Compile Include="AgencyEditor\AgencyContactsDtoFactory.cs" />
+    <Compile Include="AgencyEditor\AgencyFaqsDtoFactory.cs" />
+    <Compile Include="AgencyEditor\AgencyIdentifiersDtoFactory.cs" />
+    <Compile Include="AgencyEditor\AgencyProfileDtoFactory.cs" />
+    <Compile Include="AgencyEditor\GetAgencyByKeyRequest.cs" />
+    <Compile Include="AgencyEditor\GetAgencyByKeyRequestHandler.cs" />
+    <Compile Include="AgencyEditor\GetAgencyByKeyResponse.cs" />
+    <Compile Include="AgencyEditor\SaveAgencyAddressesAndPhonesRequestHandler.cs" />
+    <Compile Include="AgencyEditor\SaveAgencyContactsRequestHandler.cs" />
+    <Compile Include="AgencyEditor\SaveAgencyFAQsRequestHandler.cs" />
+    <Compile Include="AgencyEditor\SaveAgencyIdentifiersRequestHandler.cs" />
+    <Compile Include="AgencyEditor\SaveAgencyProfileRequestHandler.cs" />
+    <Compile Include="Common\AgencyAddressAndPhoneDto.cs" />
+    <Compile Include="Common\AgencyAddressesAndPhonesDto.cs" />
+    <Compile Include="Common\AgencyPhoneDto.cs" />
+    <Compile Include="Common\AgencyAliasDto.cs" />
+    <Compile Include="Common\AgencyCharacteristicDto.cs" />
+    <Compile Include="Common\AgencyContactDto.cs" />
+    <Compile Include="Common\AgencyContactsDto.cs" />
+    <Compile Include="Common\AgencyDisplayNameDto.cs" />
+    <Compile Include="Common\AgencyDto.cs" />
+    <Compile Include="Common\AgencyEmailAddressDto.cs" />
+    <Compile Include="Common\AgencyFaqDto.cs" />
+    <Compile Include="Common\AgencyFaqsDto.cs" />
+    <Compile Include="Common\AgencyIdentifierDto.cs" />
+    <Compile Include="Common\AgencyIdentifiersDto.cs" />
+    <Compile Include="Common\AgencyProfileDto.cs" />
+    <Compile Include="Common\AgencySummaryDto.cs" />
+    <Compile Include="Common\JobFunctionSystemRolesDto.cs" />
+    <Compile Include="Common\JobFunctionSystemRolesDtoFactory.cs" />
+    <Compile Include="Common\PagedAgencyNameSearchResultDto.cs" />
+    <Compile Include="Common\SystemPermissionsDto.cs" />
+    <Compile Include="Common\StaffNameDtoFactory.cs" />
+    <Compile Include="Common\SystemAccountDto.cs" />
+    <Compile Include="Common\StaffSystemRolesDto.cs" />
+    <Compile Include="Common\StaffSystemRoleDto.cs" />
+    <Compile Include="Common\SystemPermissionDto.cs" />
+    <Compile Include="Common\SystemPermissionsDtoFactory.cs" />
+    <Compile Include="Common\SystemRoleDto.cs" />
+    <Compile Include="Common\SystemRoleDtoFactory.cs" />
+    <Compile Include="Common\SystemRolesDtoBase.cs" />
+    <Compile Include="Common\SystemRolesDtoFactoryBase.cs" />
+    <Compile Include="Common\TaskAndTaskGroupSystemRolesDto.cs" />
+    <Compile Include="Common\TaskAndTaskGroupSystemRolesDtoFactory.cs" />
+    <Compile Include="Common\TaskGroupSystemRolesDto.cs" />
+    <Compile Include="Common\TaskGroupSystemRolesDtoFactory.cs" />
+    <Compile Include="Common\TaskSystemRolesDto.cs" />
+    <Compile Include="Common\TaskSystemRolesDtoFactory.cs" />
+    <Compile Include="LocationDashboard\DeleteProgramOfferingRequest.cs" />
+    <Compile Include="LocationDashboard\DeleteProgramOfferingRequestHandler.cs" />
+    <Compile Include="LocationDashboard\DeleteProgramOfferingResponse.cs" />
+    <Compile Include="LocationDashboard\GetProgramOfferingsByLocationRequest.cs" />
+    <Compile Include="LocationDashboard\GetProgramOfferingsByLocationRequestHandler.cs" />
+    <Compile Include="LocationDashboard\GetProgramOfferingsByLocationResponse.cs" />
+    <Compile Include="LocationEditor\LocationAddressAndPhoneDto.cs" />
+    <Compile Include="LocationEditor\LocationAddressesAndPhonesDto.cs" />
+    <Compile Include="LocationEditor\LocationPhoneDto.cs" />
+    <Compile Include="LocationEditor\LocationContactDto.cs" />
+    <Compile Include="LocationEditor\LocationContactsDto.cs" />
+    <Compile Include="Common\LocationDisplayNameDto.cs" />
+    <Compile Include="LocationEditor\LocationDto.cs" />
+    <Compile Include="LocationEditor\LocationEmailAddressDto.cs" />
+    <Compile Include="LocationEditor\LocationIdentifierDto.cs" />
+    <Compile Include="LocationEditor\LocationIdentifiersDto.cs" />
+    <Compile Include="LocationEditor\LocationOperationScheduleDto.cs" />
+    <Compile Include="LocationEditor\LocationOperationSchedulesDto.cs" />
+    <Compile Include="LocationEditor\LocationProfileDto.cs" />
+    <Compile Include="Common\LocationSearchResultDto.cs" />
+    <Compile Include="Common\LocationSummaryDto.cs" />
+    <Compile Include="LocationEditor\LocationWorkHourDto.cs" />
+    <Compile Include="Common\PagedAgencyStaffSearchResultDto.cs" />
+    <Compile Include="Common\PagedLocationNameSearchResultDto.cs" />
+    <Compile Include="Common\PagedLocationSearchResultDto.cs" />
+    <Compile Include="Common\PagedStaffNameSearchResultDto.cs" />
+    <Compile Include="Common\StaffAddressDto.cs" />
+    <Compile Include="Common\StaffAddressesDto.cs" />
+    <Compile Include="Common\StaffAddressSummaryDto.cs" />
+    <Compile Include="Common\StaffApprovedLocationDto.cs" />
+    <Compile Include="Common\StaffCertificationDto.cs" />
+    <Compile Include="Common\StaffChecklistItemDto.cs" />
+    <Compile Include="Common\StaffCollegeDegreeDto.cs" />
+    <Compile Include="Common\StaffCredentialsDto.cs" />
+    <Compile Include="Common\StaffDto.cs" />
+    <Compile Include="Common\StaffEventDto.cs" />
+    <Compile Include="Common\StaffHRDto.cs" />
+    <Compile Include="Common\StaffIdentifierDto.cs" />
+    <Compile Include="Common\StaffIdentifiersDto.cs" />
+    <Compile Include="Common\StaffIdentifierSummaryDto.cs" />
+    <Compile Include="Common\StaffLanguageDto.cs" />
+    <Compile Include="Common\StaffLicenseDto.cs" />
+    <Compile Include="Common\StaffLocationAssignmentDto.cs" />
+    <Compile Include="Common\StaffNameDto.cs" />
+    <Compile Include="Common\StaffPhoneNumberDto.cs" />
+    <Compile Include="Common\StaffPhoneNumbersDto.cs" />
+    <Compile Include="Common\StaffPhoneSummaryDto.cs" />
+    <Compile Include="Common\StaffPhotoDto.cs" />
+    <Compile Include="Common\StaffProfileDto.cs" />
+    <Compile Include="Common\StaffSearchResultDto.cs" />
+    <Compile Include="Common\StaffSummaryDto.cs" />
+    <Compile Include="Common\StaffTrainingCourseDto.cs" />
+    <Compile Include="LocationEditor\LocationAddressesAndPhonesDtoFactory.cs" />
+    <Compile Include="LocationEditor\LocationContactsDtoFactory.cs" />
+    <Compile Include="LocationEditor\LocationDtoFactory.cs" />
+    <Compile Include="LocationEditor\LocationIdentifiersDtoFactory.cs" />
+    <Compile Include="LocationEditor\LocationOperationSchedulesDtoFactory.cs" />
+    <Compile Include="LocationEditor\LocationProfileDtoFactory.cs" />
+    <Compile Include="LocationEditor\SaveLocationAddressesAndPhonesRequestHandler.cs" />
+    <Compile Include="LocationEditor\SaveLocationContactsRequestHandler.cs" />
+    <Compile Include="LocationEditor\SaveLocationIdentifiersRequestHandler.cs" />
+    <Compile Include="LocationEditor\SaveLocationOperationSchedulesRequestHandler.cs" />
+    <Compile Include="LocationEditor\SaveLocationProfileRequestHandler.cs" />
+    <Compile Include="LocationWorkspace\LocationSummaryDtoFactory.cs" />
+    <Compile Include="AutoMapperConfig.cs" />
+    <Compile Include="ProgramOfferingEditor\GetProgramsForLocationKeyRequest.cs" />
+    <Compile Include="ProgramOfferingEditor\GetProgramsForLocationKeyRequestHandler.cs" />
+    <Compile Include="ProgramOfferingEditor\GetProgramsForLocationKeyResponse.cs" />
+    <Compile Include="ProgramOfferingEditor\ProgramOfferingDto.cs" />
+    <Compile Include="ProgramOfferingEditor\ProgramOfferingDtoFactory.cs" />
+    <Compile Include="ProgramOfferingEditor\ProgramOfferingProfileDto.cs" />
+    <Compile Include="ProgramOfferingEditor\ProgramDisplayNameDto.cs" />
+    <Compile Include="ProgramOfferingEditor\ProgramOfferingProfileDtoFactory.cs" />
+    <Compile Include="ProgramOfferingEditor\ProgramSummaryDto.cs" />
+    <Compile Include="ProgramOfferingEditor\SaveProgramOfferingProfileDtoRequestHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuickPickers\CreateNewAgencyRequest.cs" />
+    <Compile Include="QuickPickers\CreateNewAgencyRequestHandler.cs" />
+    <Compile Include="QuickPickers\CreateNewLocationRequest.cs" />
+    <Compile Include="QuickPickers\CreateNewLocationRequestHandler.cs" />
+    <Compile Include="QuickPickers\CreateNewLocationResponse.cs" />
+    <Compile Include="QuickPickers\CreateNewStaffRequest.cs" />
+    <Compile Include="QuickPickers\CreateNewStaffRequestHandler.cs" />
+    <Compile Include="QuickPickers\CreateNewStaffResponse.cs" />
+    <Compile Include="QuickPickers\GetAgencyNamesByKeywordRequest.cs" />
+    <Compile Include="QuickPickers\GetAgencyNamesByKeywordRequestHandler.cs" />
+    <Compile Include="QuickPickers\GetAgencyNamesByKeywordResponse.cs" />
+    <Compile Include="QuickPickers\GetLocationNamesByKeywordRequest.cs" />
+    <Compile Include="QuickPickers\GetLocationNamesByKeywordRequestHandler.cs" />
+    <Compile Include="QuickPickers\GetLocationNamesByKeywordResponse.cs" />
+    <Compile Include="QuickPickers\GetStaffNamesByKeywordRequest.cs" />
+    <Compile Include="QuickPickers\GetStaffNamesByKeywordRequestHandler.cs" />
+    <Compile Include="QuickPickers\GetStaffNamesByKeywordResponse.cs" />
+    <Compile Include="PermissionDescriptor.cs" />
+    <Compile Include="RoleManagement\CloneSystemRoleRequestHandler.cs" />
+    <Compile Include="RoleManagement\CreateSystemRoleRequest.cs" />
+    <Compile Include="RoleManagement\CreateSystemRoleRequestHandler.cs" />
+    <Compile Include="RoleManagement\DeleteJobFunctionSystemRoleRequest.cs" />
+    <Compile Include="RoleManagement\DeleteJobFunctionSystemRoleRequestHandler.cs" />
+    <Compile Include="RoleManagement\DeleteJobFunctionSystemRoleResponse.cs" />
+    <Compile Include="RoleManagement\CloneSystemRoleRequest.cs" />
+    <Compile Include="RoleManagement\DeleteTaskOrTaskGroupRequest.cs" />
+    <Compile Include="RoleManagement\DeleteTaskOrTaskGroupRequestHandler.cs" />
+    <Compile Include="RoleManagement\DeleteTaskOrTaskGroupResponse.cs" />
+    <Compile Include="RoleManagement\GrantSystemPermissionRequest.cs" />
+    <Compile Include="RoleManagement\GrantSystemPermissionRequestHandler.cs" />
+    <Compile Include="RoleManagement\GrantSystemRoleRequest.cs" />
+    <Compile Include="RoleManagement\GrantSystemRoleRequestHandler.cs" />
+    <Compile Include="RoleManagement\RenameSystemRoleRequest.cs" />
+    <Compile Include="RoleManagement\RenameSystemRoleRequestHandler.cs" />
+    <Compile Include="RoleManagement\RevokeSystemPermissionRequest.cs" />
+    <Compile Include="RoleManagement\RevokeSystemPermissionRequestHandler.cs" />
+    <Compile Include="RoleManagement\RevokeSystemRoleRequest.cs" />
+    <Compile Include="RoleManagement\RevokeSystemRoleRequestHandler.cs" />
+    <Compile Include="RoleManagement\SystemRoleCommandRequestBase.cs" />
+    <Compile Include="RoleManagement\SystemRoleCommandRequestHandler.cs" />
+    <Compile Include="RoleManagement\SystemRoleCommandResponse.cs" />
+    <Compile Include="RoleManagement\SystemRoleDeleteCommandRequestHandler.cs" />
+    <Compile Include="StaffEditor\AddStaffTaskGroupRolesRequest.cs" />
+    <Compile Include="StaffEditor\AddStaffTaskGroupRolesRequestHandler.cs" />
+    <Compile Include="StaffEditor\AddStaffTaskGroupRolesResponse.cs" />
+    <Compile Include="StaffEditor\AddStaffTaskRolesRequest.cs" />
+    <Compile Include="StaffEditor\AddStaffTaskRolesRequestHandler.cs" />
+    <Compile Include="StaffEditor\AddStaffTaskRolesResponse.cs" />
+    <Compile Include="StaffEditor\RemoveStaffJobFunctionRoleRequest.cs" />
+    <Compile Include="StaffEditor\RemoveStaffJobFunctionRoleRequestHandler.cs" />
+    <Compile Include="StaffEditor\RemoveStaffJobFunctionRoleResponse.cs" />
+    <Compile Include="StaffEditor\RemoveStaffTaskGroupRoleRequest.cs" />
+    <Compile Include="StaffEditor\RemoveStaffTaskGroupRoleResponse.cs" />
+    <Compile Include="StaffEditor\RemoveStaffTaskRoleRequest.cs" />
+    <Compile Include="StaffEditor\RemoveStaffTaskRoleRequestHandler.cs" />
+    <Compile Include="StaffEditor\RemoveStaffTaskRoleResponse.cs" />
+    <Compile Include="StaffEditor\RemoveStaffTaskGroupRoleRequestHandler.cs" />
+    <Compile Include="StaffEditor\ReviseStaffJobFunctionRoleRequest.cs" />
+    <Compile Include="StaffEditor\ReviseStaffJobFunctionRoleRequestHandler.cs" />
+    <Compile Include="StaffEditor\ReviseStaffJobFunctionRoleResponse.cs" />
+    <Compile Include="StaffEditor\CreateSystemAccountRequest.cs" />
+    <Compile Include="StaffEditor\CreateSystemAccountRequestHandler.cs" />
+    <Compile Include="StaffEditor\CreateSystemAccountResponse.cs" />
+    <Compile Include="StaffEditor\LinkSystemAccountRequest.cs" />
+    <Compile Include="StaffEditor\LinkSystemAccountRequestHandler.cs" />
+    <Compile Include="StaffEditor\LinkSystemAccountResponse.cs" />
+    <Compile Include="StaffEditor\SaveLocationAssignmentRequestHandler.cs" />
+    <Compile Include="StaffEditor\SaveStaffSystemRolesRequestHandler.cs" />
+    <Compile Include="StaffEditor\StaffSystemRolesDtoFactory.cs" />
+    <Compile Include="StaffSearch\GetAgencyStaffsByKeywordRequest.cs" />
+    <Compile Include="StaffSearch\GetAgencyStaffsByKeywordRequestHandler.cs" />
+    <Compile Include="StaffSearch\GetAgencyStaffsByKeywordResponse.cs" />
+    <Compile Include="Service\GetAgencySummaryByKeyRequest.cs" />
+    <Compile Include="Service\GetAgencySummaryByKeyRequestHandler.cs" />
+    <Compile Include="Service\GetAgencySummaryByKeyResponse.cs" />
+    <Compile Include="Service\GetAllAgencyDisplayNamesRequest.cs" />
+    <Compile Include="Service\GetAllAgencyDisplayNamesRequestHandler.cs" />
+    <Compile Include="Service\GetAllAgencyDisplayNamesResponse.cs" />
+    <Compile Include="Service\GetLocationsByAgencyRequest.cs" />
+    <Compile Include="Service\GetLocationsByAgencyRequestHandler.cs" />
+    <Compile Include="Service\GetLocationsByAgencyResponse.cs" />
+    <Compile Include="Service\GetStaffsByAgencyRequest.cs" />
+    <Compile Include="Service\GetStaffsByAgencyRequestHandler.cs" />
+    <Compile Include="Service\GetStaffsByAgencyResponse.cs" />
+    <Compile Include="Service\SaveLabResultRequest.cs" />
+    <Compile Include="Service\SaveLabResultRequestHandler.cs" />
+    <Compile Include="Service\SaveLabResultResponse.cs" />
+    <Compile Include="StaffEditor\SaveStaffCredentialsRequestHandler.cs" />
+    <Compile Include="StaffEditor\SaveStaffHrRequestHandler.cs" />
+    <Compile Include="StaffEditor\SaveStaffIdentifiersRequestHandler.cs" />
+    <Compile Include="StaffEditor\SaveStaffPhoneNumbersRequestHandler.cs" />
+    <Compile Include="StaffEditor\SaveStaffPhotoRequestHandler.cs" />
+    <Compile Include="StaffEditor\StaffAddressesDtoFactory.cs" />
+    <Compile Include="StaffEditor\SaveStaffAddressRequestHandler.cs" />
+    <Compile Include="StaffEditor\SaveStaffProfileRequestHandler.cs" />
+    <Compile Include="StaffEditor\StaffCredentialsDtoFactory.cs" />
+    <Compile Include="StaffEditor\StaffDtoFactory.cs" />
+    <Compile Include="StaffEditor\StaffHRDtoFactory.cs" />
+    <Compile Include="StaffEditor\StaffIdentifiersDtoFactory.cs" />
+    <Compile Include="StaffEditor\StaffLocationAssignmentDtoFactory.cs" />
+    <Compile Include="StaffEditor\StaffPhoneNumbersDtoFactory.cs" />
+    <Compile Include="StaffEditor\StaffPhotoDtoFactory.cs" />
+    <Compile Include="StaffEditor\StaffProfileDtoFactory.cs" />
+    <Compile Include="StaffWorkspace\StaffSummaryDtoFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Clinical\Rem.Domain.Clinical.csproj">
+      <Project>{C7837BA2-B4EC-40B6-96B6-00F9BE462A60}</Project>
+      <Name>Rem.Domain.Clinical</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Core\Rem.Domain.Core.csproj">
+      <Project>{AB046CD6-556B-4023-BAC1-3F0F3183B630}</Project>
+      <Name>Rem.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\Rem.Infrastructure\Rem.Infrastructure.csproj">
+      <Project>{ADDD4155-DFBE-4450-96E4-0E730CE38861}</Project>
+      <Name>Rem.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common\Pillar.Common.csproj">
+      <Project>{6761BABC-8D45-4D08-B112-088FA47AB625}</Project>
+      <Name>Pillar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain.NHibernate\Pillar.Domain.NHibernate.csproj">
+      <Project>{E1332A3F-04D1-4D02-B0F0-A20046EAF437}</Project>
+      <Name>Pillar.Domain.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain\Pillar.Domain.csproj">
+      <Project>{88257D62-7FE9-4128-A39B-1FF4511C8B3A}</Project>
+      <Name>Pillar.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.FluentRuleEngine\Pillar.FluentRuleEngine.csproj">
+      <Project>{26BEFDB1-9762-4132-9F45-06CABE14D43C}</Project>
+      <Name>Pillar.FluentRuleEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Security\Pillar.Security.csproj">
+      <Project>{450A9049-224E-47D2-ADF8-D57A168DC266}</Project>
+      <Name>Pillar.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Rem.WellKnownNames\Rem.WellKnownNames.csproj">
+      <Project>{0CA1E92B-B1E0-4E22-8FA5-747753AA8E72}</Project>
+      <Name>Rem.WellKnownNames</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.Infrastructure.Web\Rem.Ria.Infrastructure.Web.csproj">
+      <Project>{D0DD4451-BAFD-41E2-B6B8-566E3BAFD20A}</Project>
+      <Name>Rem.Ria.Infrastructure.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\lib\Shared\Stylecop\StyleCop.Targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

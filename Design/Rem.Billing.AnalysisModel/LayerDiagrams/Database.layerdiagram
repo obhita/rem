@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="d9a0cf62-7e5d-46dc-8b7b-9a30f90e3036" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="5f4e2835-5dfd-4411-b1ce-fdf1c5b6d2da" name="Microsoft SQL Server 2008 R2">
+      <childLayers>
+        <layer Id="f70429ba-26bf-4c7c-bca3-babd8896a816" name="Rem.Database">
+          <childLayers>
+            <layer Id="70cd5178-40a7-435d-a39a-48dbae55c949" name="DensAsiModule Schema" />
+            <layer Id="b3e645cc-56c7-4658-b69c-9bcd51ced6a3" name="AgencyModule Schema" />
+            <layer Id="87e2f6f0-97eb-442e-82f5-7d56f6b36449" name="ClinicalCaseModule Schema" />
+            <layer Id="9337cfa7-4d41-4998-bb17-eea4a22c79fe" name="CommonModule Schema" />
+            <layer Id="e20db12c-0cb1-480e-879a-c8c3dde8030e" name="GpraModule Schema" />
+            <layer Id="ced105b3-407b-437a-9404-798acc0c1057" name="ImmunizationModule Schema" />
+            <layer Id="1dd06707-a6c2-4484-943e-26f6d32cf360" name="LabModule Schema" />
+            <layer Id="6bd1b8be-f66f-4f6d-837c-0b20a0764a61" name="PatientModule Schema" />
+            <layer Id="8c18c311-70d1-451d-8715-7d02ce817365" name="ProgramModule Schema" />
+            <layer Id="3cbd0fa9-2c00-4c7f-8e3b-6e0517f39208" name="RadiologyModule Schema" />
+            <layer Id="cefea2c1-5333-4e50-9bde-c64c012e05f2" name="ReportsModule Schema" />
+            <layer Id="a19d3499-c9c0-4ca3-84ac-655bc92242b8" name=" SbirtModule Schema" />
+            <layer Id="bb079d65-17ae-45de-a586-d0cad2360039" name="SecurityModule Schema" />
+            <layer Id="a24d4ad7-fa48-4557-b428-796c2334733b" name="VisitModule Schema" />
+          </childLayers>
+        </layer>
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

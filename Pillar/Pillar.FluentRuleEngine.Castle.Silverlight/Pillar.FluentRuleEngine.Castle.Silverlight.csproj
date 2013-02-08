@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{586B36F9-F3CE-43F5-ADF4-17EB6987BE40}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pillar.FluentRuleEngine</RootNamespace>
+    <AssemblyName>Pillar.FluentRuleEngine.Castle.Silverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\packages\Castle.Core.3.0.0.2001\lib\sl4\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Pillar.FluentRuleEngin.Castle\CheckRulesInterceptor.cs">
+      <Link>CheckRulesInterceptor.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngin.Castle\CommandFactoryExtensions.cs">
+      <Link>CommandFactoryExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngin.Castle\IExecuteRules.cs">
+      <Link>IExecuteRules.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngin.Castle\IRuleCommandInfo.cs">
+      <Link>IRuleCommandInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngin.Castle\NamespaceDoc.cs">
+      <Link>NamespaceDoc.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngin.Castle\Registry.cs">
+      <Link>Registry.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngin.Castle\RuleCommandInfo.cs">
+      <Link>RuleCommandInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngin.Castle\RuleExecutor.cs">
+      <Link>RuleExecutor.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pillar.Common.Castle.Silverlight\Pillar.Common.Castle.Silverlight.csproj">
+      <Project>{AABEE5A5-1FB6-405F-A2B0-44970D25D4DB}</Project>
+      <Name>Pillar.Common.Castle.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pillar.Common.Silverlight\Pillar.Common.Silverlight.csproj">
+      <Project>{49D7FB03-A129-4E44-9327-51EC4E1E0FB4}</Project>
+      <Name>Pillar.Common.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pillar.FluentRuleEngine.Silverlight\Pillar.FluentRuleEngine.Silverlight.csproj">
+      <Project>{E5664DBD-9741-4025-AE6E-56F289B10AF1}</Project>
+      <Name>Pillar.FluentRuleEngine.Silverlight</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <Import Project="$(SolutionDir)\lib\Shared\Stylecop\StyleCop.Targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

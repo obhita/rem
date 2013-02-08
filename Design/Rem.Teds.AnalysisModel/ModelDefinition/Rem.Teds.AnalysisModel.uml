@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="af32d734-bbd9-48a2-b006-f559ba075f3e"
+  name="Rem.Teds.AnalysisModel" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="cd901eaa-6d43-43d3-a5a2-84c63e1dc029">
+      <body>The purpose of TEDS module is to provide an electronic method for collecting and reporting substance abuse data for the support of National Outcome Measures (NOMS) research and programs to lead to   development of better services, substance abuse prevention and care.</body>
+    </comment>
+    <comment
+      Id="39a77415-8046-41a8-a0de-7e182f235818">
+      <body>As part of the clinical workflow, the clinician collects the detailed TEDS data as well as basic demographic information required for TEDS.</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="622843fb-57d8-48bc-a3f7-dad398557347"
+          LastKnownName="Clinician"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="1079cdb3-e3c8-4490-af5a-bb33b183b3a3">
+      <body>As part of the clinical workflow, the clinician collects the detailed TEDS data as well as basic demographic information required for TEDS.</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="4b34eca7-7e49-4f04-a590-936946a86c97"
+          LastKnownName="Clinician"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="1497ac83-e84d-496b-8fc2-ea0f9e526d36">
+      <body>The frondesk staff will collect patient demographic details that are required for TEDS, inlcuding payment and insurance information.</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="ed90aa48-77da-49fa-9076-13daf9c707bf"
+          LastKnownName="Front Desk"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="00973961-741f-48f2-88e3-d953d669a153">
+      <body>[TEDS Data Collected]
+
+A clinician is better able to assess if a patient is co-occuring during course of treatment.
+
+Other TEDS data may be collected as part of other activities such as assessments and screeners</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="1aff0c1c-29a5-47e7-9ee9-6d6af69f033c"
+          LastKnownName="Records Visits and Activities"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="258bd50c-f8bf-4a0d-a386-e49c055d84d2">
+      <body>The Agency Administrator is responsbile for submitting the TEDS Data to the FEDS</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="49f95462-ddb9-420b-831b-5810873282a6"
+          LastKnownName="Agency Administrator"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="5b76fde4-af43-44c8-94a4-9867a2735050">
+      <body>[TEDS Data Collected]
+
+TEDS data is collected at enrollment, change of modality, and concorrent programs.</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="b48f0ce0-88d9-43da-a56e-c8c0108603ec"
+          LastKnownName="Enrolls and Disenrolls Patient into Program(s)"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="4fd1a570-e476-49b2-8148-b52e8bc1a6bc">
+      <body>[TEDS Data Collected]</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="91c9a966-f985-448d-abbf-924c93a9b646"
+          LastKnownName="Collects Insurance Information"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="8f51afa3-afcc-43af-80bf-f23561115268">
+      <body>[TEDS Data Collected]
+
+Some data collected are KEY FIELDS</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="41e4dd83-1b93-4407-8a35-2de62cfc0a5a"
+          LastKnownName="Collects demographic information"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="6580d0f0-a4da-48aa-8f7c-79f9fd2dc2b5">
+      <body>[TEDS Data Collected]</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="ede6c233-f2b6-4eca-bbdc-fa2db9d54968"
+          LastKnownName="Performs Patient Discharge"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="3aa68893-1202-4ef3-b09f-85f1a549f9df">
+      <body>The Agency Administrator is responsbile for submitting the TEDS Data to the FEDS</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="74073a4e-c1e5-49e3-99a8-7a2a3c056afa"
+          LastKnownName="Agency Administrator"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="bea10711-610f-4307-b542-0130d4e80560">
+      <body>The State Agency may check the TEDS extract on the STSS (State TEDS Submission System) to validate the data before submitting file to Synectecs.</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="6ea3a730-3ccd-4808-aea8-5f68926e09c7"
+          LastKnownName="Generate the TEDS Extract"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="fe73af93-366f-4040-8ced-91267701c094">
+      <body>The State Agency will make any necessary corrections if warnings, or errors are found in the TEDS Results Summary</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="4840602f-3ba5-451f-a2e3-6e610e347002"
+          LastKnownName="Review TEDS Submission Processing Results Summary - Admission/Discharge"
+          LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="c0a7e297-c021-4e46-b898-3b2e912f5bb4"
+        name="Actor1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3aaf5e36-d638-411d-ac46-2352fd3e943a"
+        name="UseCase1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="4b34eca7-7e49-4f04-a590-936946a86c97"
+        name="Clinician"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="4040a3c7-4112-4d78-97a8-fbb6b5fcb3ed"
+            isDerived="false"
+            sourceEndRoleName="Clinician"
+            targetEndRoleName="TEDS"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="94637106-3d23-4760-8c5d-f5d85fba17cf"
+              LastKnownName="TEDS"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8db4a1f2-a5e8-4363-895e-0ccb8abb614d"
+                  name="Clinician"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b73f159f-9f5b-4968-931d-23d7e44ff52f"
+                  name="TEDS"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="ed90aa48-77da-49fa-9076-13daf9c707bf"
+        name="Front Desk"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="7bce8213-0844-4380-b301-597995e922b0"
+            isDerived="false"
+            sourceEndRoleName="Front Desk"
+            targetEndRoleName="TEDS"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="94637106-3d23-4760-8c5d-f5d85fba17cf"
+              LastKnownName="TEDS"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b55bd8ab-8341-4a34-824e-2b8b9c699a1d"
+                  name="Front Desk"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="50602b05-fc15-43d3-8be1-a8d0722f6aa8"
+                  name="TEDS"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="23631d16-6c47-462b-8d3e-a597dca83d31"
+        name="Time"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="94637106-3d23-4760-8c5d-f5d85fba17cf"
+        name="TEDS"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="622843fb-57d8-48bc-a3f7-dad398557347"
+        name="Clinician"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="9941af78-7099-4db3-98c8-3344be0dec63"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="94a45f0a-c10b-4626-bd66-6c065e2d9991"
+              LastKnownName="Front Desk"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="a6ece041-1197-4c8d-9fd3-7aa93bd189dd"
+            isDerived="false"
+            sourceEndRoleName="Clinician"
+            targetEndRoleName="Patient Intake"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="5615ad52-2755-4e48-90a9-a7360d89d2e6"
+              LastKnownName="Performs Patient Intake"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3cb8835a-f589-4a34-b6e4-67149273e547"
+                  name="Clinician"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6542e4b6-4aea-4f63-9b94-890496e58af5"
+                  name="Patient Intake"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="2a99489e-e630-4759-b355-0ee87d67c856"
+            isDerived="false"
+            sourceEndRoleName="Clinician"
+            targetEndRoleName="Records visits and Activits"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="1aff0c1c-29a5-47e7-9ee9-6d6af69f033c"
+              LastKnownName="Records Visits and Activities"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c9138706-5f75-4eac-8d63-c6bb68c5317d"
+                  name="Clinician"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fc33abbc-7e5c-4e75-aac1-c9da8742b139"
+                  name="Records visits and Activits"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="4b5e76aa-d8b4-453a-be57-f5c797b60f8c"
+            isDerived="false"
+            sourceEndRoleName="Clinician"
+            targetEndRoleName="Enrolls and Disenrolls Patient into Progrm"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b48f0ce0-88d9-43da-a56e-c8c0108603ec"
+              LastKnownName="Enrolls and Disenrolls Patient into Program(s)"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e8acbefd-603a-4b29-b9b9-d39446bf943b"
+                  name="Clinician"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fba6e3e8-0970-4550-9ef5-1991445b0080"
+                  name="Enrolls and Disenrolls Patient into Progrm"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="234f8ea9-13d6-4b95-b560-c041b2b9d804"
+            isDerived="false"
+            sourceEndRoleName="Clinician"
+            targetEndRoleName="Performs Patient Discharge"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="ede6c233-f2b6-4eca-bbdc-fa2db9d54968"
+              LastKnownName="Performs Patient Discharge"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e88735ae-148c-4032-9c46-1159a3b7be17"
+                  name="Clinician"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="72004568-fe29-46b1-9dd0-97f7a01331e0"
+                  name="Performs Patient Discharge"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5615ad52-2755-4e48-90a9-a7360d89d2e6"
+        name="Performs Patient Intake"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="a3a19349-f5c1-4697-b5a8-3f8c5dd53a57">
+            <useCaseMoniker
+              Id="41e4dd83-1b93-4407-8a35-2de62cfc0a5a"
+              LastKnownName="Collects demographic information"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+          </include>
+          <include
+            Id="3dd37b9c-13d6-48e0-82c7-f64ba39e7714">
+            <useCaseMoniker
+              Id="91c9a966-f985-448d-abbf-924c93a9b646"
+              LastKnownName="Collects Insurance Information"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+          </include>
+          <include
+            Id="7882df6a-2669-4e7c-a0a5-500e342f4518">
+            <useCaseMoniker
+              Id="69ab4358-573a-4525-811f-7c718943ef17"
+              LastKnownName="Performs Pre-Screener if Necessary"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="41e4dd83-1b93-4407-8a35-2de62cfc0a5a"
+        name="Collects demographic information"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="91c9a966-f985-448d-abbf-924c93a9b646"
+        name="Collects Insurance Information"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="94a45f0a-c10b-4626-bd66-6c065e2d9991"
+        name="Front Desk"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1aff0c1c-29a5-47e7-9ee9-6d6af69f033c"
+        name="Records Visits and Activities"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b48f0ce0-88d9-43da-a56e-c8c0108603ec"
+        name="Enrolls and Disenrolls Patient into Program(s)"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="69ab4358-573a-4525-811f-7c718943ef17"
+        name="Performs Pre-Screener if Necessary"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ede6c233-f2b6-4eca-bbdc-fa2db9d54968"
+        name="Performs Patient Discharge"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="49f95462-ddb9-420b-831b-5810873282a6"
+        name="Agency Administrator"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="d52f138d-8a07-4fea-8c33-193022514d26"
+            isDerived="false"
+            sourceEndRoleName="Agency Administrator"
+            targetEndRoleName="TEDS"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="94637106-3d23-4760-8c5d-f5d85fba17cf"
+              LastKnownName="TEDS"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="740e2d60-20a8-4405-b93c-392774fae458"
+                  name="Agency Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="112c8dc4-3eea-4a68-995a-3cc3d8d55d39"
+                  name="TEDS"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="74073a4e-c1e5-49e3-99a8-7a2a3c056afa"
+        name="Agency Administrator"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="f61a7b99-bdc5-4d80-bc83-a23d2cf3bd9e"
+            isDerived="false"
+            sourceEndRoleName="Agency Administrator"
+            targetEndRoleName="Create the TEDS Extract"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="6ea3a730-3ccd-4808-aea8-5f68926e09c7"
+              LastKnownName="Generate the TEDS Extract"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1df557d9-f05b-42ab-a121-817929f8d66d"
+                  name="Agency Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="353ae47c-abc0-46f3-a4d6-14a7651be013"
+                  name="Create the TEDS Extract"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e63396c6-e99e-4d3b-8d28-91a0d6de78ac"
+            isDerived="false"
+            sourceEndRoleName="Agency Administrator"
+            targetEndRoleName="Review TEDS Response for Errors"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="4840602f-3ba5-451f-a2e3-6e610e347002"
+              LastKnownName="Review TEDS Submission Processing Results Summary - Admission/Discharge"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="014cac9c-fc38-47a5-ae05-45e0847a7232"
+                  name="Agency Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="23a2cbdb-37b7-4b6b-a21a-39e9a86e2d17"
+                  name="Review TEDS Response for Errors"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0d2eb92c-b64d-4e91-8ce2-c93d63778e37"
+            isDerived="false"
+            sourceEndRoleName="Agency Administrator"
+            targetEndRoleName="Submit TEDS Data to Synectecs"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="1911f2f1-bae7-43dd-ac54-ebd834eab1c6"
+              LastKnownName="Submit TEDS Data to Synectecs"
+              LastKnownLocation="Rem.Teds.AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2a0d18e7-b8af-48a4-bce7-e753abaaf621"
+                  name="Agency Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1a2a7725-a139-4842-8426-9d36b4db4c75"
+                  name="Submit TEDS Data to Synectecs"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6ea3a730-3ccd-4808-aea8-5f68926e09c7"
+        name="Generate the TEDS Extract"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4840602f-3ba5-451f-a2e3-6e610e347002"
+        name="Review TEDS Submission Processing Results Summary - Admission/Discharge"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1911f2f1-bae7-43dd-ac54-ebd834eab1c6"
+        name="Submit TEDS Data to Synectecs"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

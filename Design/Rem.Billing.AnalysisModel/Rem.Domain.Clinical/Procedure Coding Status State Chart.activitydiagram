@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="2191db74-fdd4-4844-a526-b59faf23ba51" name="Procedure Coding Status State Chart" linkedPackageId="9065724e-83bf-4f86-b9d0-e68d0fc2869d" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="3c5c294e-0294-4028-bf75-07fe472ce51a">
+      <profileInstance Id="f1cb63f3-8b51-447f-ab25-b8fbb62c0780" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="929b7bab-efb7-4a5b-b1d1-feb7848bbd3e">
+      <profileInstance Id="93c0c718-8354-49ac-915c-f645cafa58a2" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="28310dde-35e4-4175-8201-547b6f35d6f3" name="Procedure Coding Status State Chart" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="a8fcc276-712e-4481-a3c3-086ea1bb3261" />
+        <nodes>
+          <initialNode Id="ee2b75be-a1b8-4349-8385-92ad752dd0de" name="Initial1" isLeaf="false">
+            <elementDefinition Id="bcec55ce-3e86-44df-b19e-9477bfbc2da2" />
+            <flowNodeTargets>
+              <controlFlow Id="98c1072a-03e1-4da5-b266-c3f49a567844" isLeaf="false">
+                <opaqueActionMoniker Id="6beac625-9426-4de2-b85b-ab57f82fec72" LastKnownName="Pending Review" />
+                <elementDefinition Id="337dcc67-3a1e-4580-8a8e-8720b510557b" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction Id="6beac625-9426-4de2-b85b-ab57f82fec72" name="Pending Review" isLeaf="false">
+            <elementDefinition Id="a14162f7-c4e9-4793-876c-4fbc9b06d591" />
+            <flowNodeTargets>
+              <controlFlow Id="da5de264-c0ca-4a1b-b993-6c23c8698fd5" guard="Reviewed by a certified coder" isLeaf="false">
+                <opaqueActionMoniker Id="e2e2ed18-3920-488e-8ec5-389cfb27a741" LastKnownName="Reviewed" />
+                <elementDefinition Id="81165975-109e-489d-ad1c-2b4c82c7302a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="e2e2ed18-3920-488e-8ec5-389cfb27a741" name="Reviewed" isLeaf="false">
+            <elementDefinition Id="38570ac6-3bb2-4415-88e4-f57c7bf63b71" />
+            <flowNodeTargets>
+              <controlFlow Id="d934409c-ef14-439e-b454-8d089995f323" isLeaf="false">
+                <opaqueActionMoniker Id="eb8b17c2-a470-4dc2-a68c-90eb23105907" LastKnownName="Sent To Billing" />
+                <elementDefinition Id="2a4263d4-80b8-409e-85b8-fe5c0c8c0235" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="eb8b17c2-a470-4dc2-a68c-90eb23105907" name="Sent To Billing" isLeaf="false">
+            <elementDefinition Id="899804e1-ff5c-4ce1-8ef9-411cf7553631" />
+            <flowNodeTargets>
+              <controlFlow Id="8ad5f979-2278-4f4d-87c8-174463f81da0" isLeaf="false">
+                <activityFinalNodeMoniker Id="d82de369-66ed-4e31-b3bf-40a90cb3af23" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="e7c76950-1d40-4555-854f-0c2d2515082b" />
+              </controlFlow>
+              <controlFlow Id="ddce7c12-3df1-4c19-b2e8-71f8e6baf7ec" guard="If relevant billing information has changed after being sent to the billing system" isLeaf="false">
+                <opaqueActionMoniker Id="8015d9d8-c2c4-4bfa-8c76-da3b9a4dc82b" LastKnownName="Changed and Pending Review" />
+                <elementDefinition Id="ab314f91-f3e2-4d7a-acf9-fb73d54e52ce" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode Id="d82de369-66ed-4e31-b3bf-40a90cb3af23" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="ee49fe7a-1b94-4805-97ca-85585e8c5734" />
+          </activityFinalNode>
+          <opaqueAction Id="8015d9d8-c2c4-4bfa-8c76-da3b9a4dc82b" name="Changed and Pending Review" isLeaf="false">
+            <elementDefinition Id="ad3ed191-8f0c-4d28-bfc3-50690429353f" />
+            <flowNodeTargets>
+              <controlFlow Id="c7a2e401-0b10-4e8e-a768-7598d0088b14" guard="Reviewed by a certified coder" isLeaf="false">
+                <opaqueActionMoniker Id="e2e2ed18-3920-488e-8ec5-389cfb27a741" LastKnownName="Reviewed" />
+                <elementDefinition Id="cb994377-1e65-4009-a9c9-06830069cc34" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="9065724e-83bf-4f86-b9d0-e68d0fc2869d" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+  </package>
+</activityRootModel>

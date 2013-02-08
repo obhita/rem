@@ -1,0 +1,151 @@
+﻿<EntityDescriptor
+  wsu:Id="59dcfb87-9620-4cb5-8351-7319bfc72e91"
+                  entityID="https://localhost/Rem.Web.LocalSTS"
+                  xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+  <Organization>
+    <OrganizationDisplayName xml:lang="">REM Project</OrganizationDisplayName>
+    <OrganizationName xml:lang="">REM Project</OrganizationName>
+    <OrganizationURL xml:lang="">http://feisystems.com</OrganizationURL>
+  </Organization>
+  <ContactPerson contactType="administrative">
+    <Company>FEI Systems</Company>
+    <GivenName>John</GivenName>
+    <SurName>Doe</SurName>
+    <EmailAddress>rem@feisystems.com</EmailAddress>
+    <TelephoneNumber>555-5555</TelephoneNumber>
+  </ContactPerson>
+  
+<RoleDescriptor xsi:type="fed:SecurityTokenServiceType"
+                  protocolSupportEnumeration="http://docs.oasis-open.org/wsfed/federation/200706"
+                  ServiceDescription="REM Local Passive STS"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:fed="http://docs.oasis-open.org/wsfed/federation/200706">
+    <KeyDescriptor use="signing">
+      <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <X509Data>
+          <X509Certificate>MIICBjCCAXOgAwIBAgIQQDqigUsySLdK7uyF3yU+IjAJBgUrDgMCHQUAMBwxGjAYBgNVBAMTEUlkZW50aXR5VEtTdHNDZXJ0MB4XDTAwMDEwMTAzMDAwMFoXDTM2MDEwMTAzMDAwMFowHDEaMBgGA1UEAxMRSWRlbnRpdHlUS1N0c0NlcnQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJ/KKzAtFhwfUBTOx/I8i/KmBd/gFBs29VgIPxL510BXpX7j2kJ/aoflxt44mx9wcXLpHnislBAB9guvOZiN9h0LZh5gintbL0qC+yudxoNJXT4HkTA8EIK/DmtARNneP0IhDHror6shqqoi7Z556MmSBWmw+ZKbvlhPw0TSlPJ/AgMBAAGjUTBPME0GA1UdAQRGMESAEFxTE2e7yEYZEK8X1BbsgBOhHjAcMRowGAYDVQQDExFJZGVudGl0eVRLU3RzQ2VydIIQQDqigUsySLdK7uyF3yU+IjAJBgUrDgMCHQUAA4GBAGIczwGzfhtYX8+zbsuzByYQc1TBCeihXe09CTYNxhm2BYkJ0Y9Lzwn/pPB1OcvN5Th9JMzUcFq2WyeboYWla0MFvotGnRMmAWeGcnHIUO7oWTTk0XhWp03NOej6T3QT9l3F7g2EwhPO600nt8EjJCUIfWBvpNaedCF+UuOVnTtJ</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </KeyDescriptor>
+    <fed:ClaimTypesOffered>
+      <auth:ClaimType Uri="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" Optional="True" xmlns:auth="http://docs.oasis-open.org/wsfed/authorization/200706">
+        <auth:DisplayName>Name</auth:DisplayName>
+        <auth:Description>The name of the subject.</auth:Description>
+      </auth:ClaimType>
+      <auth:ClaimType Uri="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/gender" Optional="True" xmlns:auth="http://docs.oasis-open.org/wsfed/authorization/200706">
+        <auth:DisplayName>Gender</auth:DisplayName>
+        <auth:Description>The gender of the subject.</auth:Description>
+      </auth:ClaimType>
+    </fed:ClaimTypesOffered>
+  
+  <fed:TokenTypesOffered>
+      <fed:TokenType Uri="urn:oasis:names:tc:SAML:1.0:assertion"/>
+    </fed:TokenTypesOffered>
+   
+  <fed:SecurityTokenServiceEndpoint>
+      <EndpointReference xmlns="http://www.w3.org/2005/08/addressing">
+        <Address>https://localhost/Rem.Web.LocalSTS</Address>
+      </EndpointReference>
+    </fed:SecurityTokenServiceEndpoint>
+    <fed:PassiveRequestorEndpoint>
+      <EndpointReference xmlns="http://www.w3.org/2005/08/addressing">
+        <Address>https://localhost<EntityDescriptor
+          wsu:Id="59dcfb87-9620-4cb5-8351-7319bfc72e91"
+                  entityID="https://localhost/Rem.Web.LocalSTS"
+                  xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+  <Organization>
+    <OrganizationDisplayName xml:lang="">REM</OrganizationDisplayName>
+    <OrganizationName xml:lang="">REM</OrganizationName>
+    <OrganizationURL xml:lang="">http://rem.feisystems.com</OrganizationURL>
+  </Organization>
+  <ContactPerson contactType="administrative">
+    <Company>GYM Fabrikam</Company>
+    <GivenName>GYM Fabrikam</GivenName>
+    <SurName>GYM Fabrikam</SurName>
+    <EmailAddress>gym@fabrikam.com</EmailAddress>
+    <TelephoneNumber>555-5555</TelephoneNumber>
+  </ContactPerson>
+  <RoleDescriptor xsi:type="fed:SecurityTokenServiceType"
+                  protocolSupportEnumeration="http://docs.oasis-open.org/wsfed/federation/200706"
+                  ServiceDescription="GYM Fabrikam Passive STS"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:fed="http://docs.oasis-open.org/wsfed/federation/200706">
+    <KeyDescriptor use="signing">
+      <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <X509Data>
+          <X509Certificate>MIICBjCCAXOgAwIBAgIQQDqigUsySLdK7uyF3yU+IjAJBgUrDgMCHQUAMBwxGjAYBgNVBAMTEUlkZW50aXR5VEtTdHNDZXJ0MB4XDTAwMDEwMTAzMDAwMFoXDTM2MDEwMTAzMDAwMFowHDEaMBgGA1UEAxMRSWRlbnRpdHlUS1N0c0NlcnQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJ/KKzAtFhwfUBTOx/I8i/KmBd/gFBs29VgIPxL510BXpX7j2kJ/aoflxt44mx9wcXLpHnislBAB9guvOZiN9h0LZh5gintbL0qC+yudxoNJXT4HkTA8EIK/DmtARNneP0IhDHror6shqqoi7Z556MmSBWmw+ZKbvlhPw0TSlPJ/AgMBAAGjUTBPME0GA1UdAQRGMESAEFxTE2e7yEYZEK8X1BbsgBOhHjAcMRowGAYDVQQDExFJZGVudGl0eVRLU3RzQ2VydIIQQDqigUsySLdK7uyF3yU+IjAJBgUrDgMCHQUAA4GBAGIczwGzfhtYX8+zbsuzByYQc1TBCeihXe09CTYNxhm2BYkJ0Y9Lzwn/pPB1OcvN5Th9JMzUcFq2WyeboYWla0MFvotGnRMmAWeGcnHIUO7oWTTk0XhWp03NOej6T3QT9l3F7g2EwhPO600nt8EjJCUIfWBvpNaedCF+UuOVnTtJ</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </KeyDescriptor>
+    <fed:ClaimTypesOffered>
+      <auth:ClaimType Uri="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" Optional="True" xmlns:auth="http://docs.oasis-open.org/wsfed/authorization/200706">
+        <auth:DisplayName>Name</auth:DisplayName>
+        <auth:Description>The name of the subject.</auth:Description>
+      </auth:ClaimType>
+      <auth:ClaimType Uri="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/gender" Optional="True" xmlns:auth="http://docs.oasis-open.org/wsfed/authorization/200706">
+        <auth:DisplayName>Gender</auth:DisplayName>
+        <auth:Description>The gender of the subject.</auth:Description>
+      </auth:ClaimType>
+   </fed:ClaimTypesOffered>
+    <fed:TokenTypesOffered>
+      <fed:TokenType Uri="urn:oasis:names:tc:SAML:1.0:assertion"/>
+    </fed:TokenTypesOffered>
+    <fed:SecurityTokenServiceEndpoint>
+      <EndpointReference xmlns="http://www.w3.org/2005/08/addressing">
+        <Address>https://https://localhost/Rem.Web.LocalSTS</Address>
+      </EndpointReference>
+    </fed:SecurityTokenServiceEndpoint>
+    <fed:PassiveRequestorEndpoint>
+      <EndpointReference xmlns="http://www.w3.org/2005/08/addressing">
+        <Address>https://https://localhost/Rem.Web.LocalSTS</Address>
+      </EndpointReference>
+    </fed:PassiveRequestorEndpoint>
+  </RoleDescriptor>
+  <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+    <ds:SignedInfo>
+      <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+      <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      <ds:Reference URI="#59dcfb87-9620-4cb5-8351-7319bfc72e91">
+        <ds:Transforms>
+          <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+          <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+        </ds:Transforms>
+        <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+        <ds:DigestValue>cW19k6DVxG6vPUL8F/T9MjbF/UE=</ds:DigestValue>
+      </ds:Reference>
+    </ds:SignedInfo>
+    <ds:SignatureValue>lVNL5XzkoZkcyXBiEYv5wN3D6UxNxiPnmnZok3jXBsPwJakg5qG5013Qgr/mRAy3M+EbLMeYoPQ805NUrWWNm7q36oWZroMARUzhuKJ1VzS/S/d/2jVcNk5H9AK59VuG+fa5rH3r/ZdRwy6efYlZldyXNwzvWQTN0zWHZTJ89ao=</ds:SignatureValue>
+    <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <X509Data>
+        <X509Certificate>MIICBjCCAXOgAwIBAgIQQDqigUsySLdK7uyF3yU+IjAJBgUrDgMCHQUAMBwxGjAYBgNVBAMTEUlkZW50aXR5VEtTdHNDZXJ0MB4XDTAwMDEwMTAzMDAwMFoXDTM2MDEwMTAzMDAwMFowHDEaMBgGA1UEAxMRSWRlbnRpdHlUS1N0c0NlcnQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJ/KKzAtFhwfUBTOx/I8i/KmBd/gFBs29VgIPxL510BXpX7j2kJ/aoflxt44mx9wcXLpHnislBAB9guvOZiN9h0LZh5gintbL0qC+yudxoNJXT4HkTA8EIK/DmtARNneP0IhDHror6shqqoi7Z556MmSBWmw+ZKbvlhPw0TSlPJ/AgMBAAGjUTBPME0GA1UdAQRGMESAEFxTE2e7yEYZEK8X1BbsgBOhHjAcMRowGAYDVQQDExFJZGVudGl0eVRLU3RzQ2VydIIQQDqigUsySLdK7uyF3yU+IjAJBgUrDgMCHQUAA4GBAGIczwGzfhtYX8+zbsuzByYQc1TBCeihXe09CTYNxhm2BYkJ0Y9Lzwn/pPB1OcvN5Th9JMzUcFq2WyeboYWla0MFvotGnRMmAWeGcnHIUO7oWTTk0XhWp03NOej6T3QT9l3F7g2EwhPO600nt8EjJCUIfWBvpNaedCF+UuOVnTtJ</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </ds:Signature>
+</EntityDescriptor>
+        </Address>
+      </EndpointReference>
+    </fed:PassiveRequestorEndpoint>
+  </RoleDescriptor>
+  <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+    <ds:SignedInfo>
+      <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+      <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      <ds:Reference URI="#59dcfb87-9620-4cb5-8351-7319bfc72e91">
+        <ds:Transforms>
+          <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+          <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+        </ds:Transforms>
+        <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+        <ds:DigestValue>cW19k6DVxG6vPUL8F/T9MjbF/UE=</ds:DigestValue>
+      </ds:Reference>
+    </ds:SignedInfo>
+    <ds:SignatureValue>lVNL5XzkoZkcyXBiEYv5wN3D6UxNxiPnmnZok3jXBsPwJakg5qG5013Qgr/mRAy3M+EbLMeYoPQ805NUrWWNm7q36oWZroMARUzhuKJ1VzS/S/d/2jVcNk5H9AK59VuG+fa5rH3r/ZdRwy6efYlZldyXNwzvWQTN0zWHZTJ89ao=</ds:SignatureValue>
+    <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <X509Data>
+        <X509Certificate>MIICBjCCAXOgAwIBAgIQQDqigUsySLdK7uyF3yU+IjAJBgUrDgMCHQUAMBwxGjAYBgNVBAMTEUlkZW50aXR5VEtTdHNDZXJ0MB4XDTAwMDEwMTAzMDAwMFoXDTM2MDEwMTAzMDAwMFowHDEaMBgGA1UEAxMRSWRlbnRpdHlUS1N0c0NlcnQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJ/KKzAtFhwfUBTOx/I8i/KmBd/gFBs29VgIPxL510BXpX7j2kJ/aoflxt44mx9wcXLpHnislBAB9guvOZiN9h0LZh5gintbL0qC+yudxoNJXT4HkTA8EIK/DmtARNneP0IhDHror6shqqoi7Z556MmSBWmw+ZKbvlhPw0TSlPJ/AgMBAAGjUTBPME0GA1UdAQRGMESAEFxTE2e7yEYZEK8X1BbsgBOhHjAcMRowGAYDVQQDExFJZGVudGl0eVRLU3RzQ2VydIIQQDqigUsySLdK7uyF3yU+IjAJBgUrDgMCHQUAA4GBAGIczwGzfhtYX8+zbsuzByYQc1TBCeihXe09CTYNxhm2BYkJ0Y9Lzwn/pPB1OcvN5Th9JMzUcFq2WyeboYWla0MFvotGnRMmAWeGcnHIUO7oWTTk0XhWp03NOej6T3QT9l3F7g2EwhPO600nt8EjJCUIfWBvpNaedCF+UuOVnTtJ</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </ds:Signature>
+</EntityDescriptor>

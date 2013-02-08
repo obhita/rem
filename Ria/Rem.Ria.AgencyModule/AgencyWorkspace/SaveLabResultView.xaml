@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Rem.Ria.AgencyModule.AgencyWorkspace.SaveLabResultView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls" 
+    xmlns:RemBehaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <i:Interaction.Behaviors>
+        <RemBehaviors:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+    <Grid Width="400" Height="auto" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Style="{StaticResource TileHeaderBorderStyle}" VerticalAlignment="Top" Margin="0">
+            <TextBlock Text="Save Lab Result"  Style="{StaticResource TileHeaderTextBlockStyle}"/>
+        </Border>
+        <Border Margin="0" Grid.Row="1" Background="#FFFFFDFD" BorderThickness="0,1,0,0" BorderBrush="#FF4D4D4D">
+            <Grid Margin="0,0,0,15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" HorizontalAlignment="Center" MinWidth="300" Margin="15,10,15,0">
+                    <TextBlock Text="Click Save button to save the lab results." Visibility="{Binding PreProcessing, Converter={StaticResource BooleanToVisibilityConverterInstance}}" TextWrapping="Wrap"/>
+                    <TextBlock Text="Errors while saving the Lab Result file:" FontWeight="Bold" Visibility="{Binding ErrorState, Converter={StaticResource BooleanToVisibilityConverterInstance}}" TextWrapping="Wrap" Margin="-10 0 0 5" />
+                    <TextBlock Text="{Binding UserMessage}" Visibility="{Binding PostProcessing, Converter={StaticResource BooleanToVisibilityConverterInstance}}" TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,10,0">
+                    <telerik:RadButton  Content="Cancel" 
+        				ToolTipService.ToolTip="Cancel" Style="{StaticResource StaticBorderlessButtonStyle}" Command="{Binding CloseViewCommand}" Width="60" Height="22" />
+                    <telerik:RadButton Content="Save Lab Result" 
+        				ToolTipService.ToolTip="Save Lab Result" IsEnabled="{Binding EnableSave}"
+        				Command="{Binding SaveLabResultCommand}" Style="{StaticResource StaticBorderlessButtonStyle}" Width="120" Height="22" />
+                    <telerik:RadButton  Content="Finish" 
+        				ToolTipService.ToolTip="Finish" Style="{StaticResource StaticBorderlessButtonStyle}" Command="{Binding FinishCommand}" Width="60" Height="22" />
+                </StackPanel>
+            </Grid>
+        </Border>
+        <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+    </Grid>
+</UserControl>

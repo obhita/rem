@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="4480f2f1-90ad-4c36-964b-af5c06673a43" name="Front Desk Clerk" linkedPackageId="0a69f095-f8b7-401a-9e0c-72da8767fa37" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="a96e1c6b-abe0-4734-a2ca-c45b93316e4f">
+      <elementDefinition Id="30eabc0b-c4dc-4136-aa3c-aae4ebbe64f4" />
+      <body>This includes patient co-pay</body>
+      <annotatedElements>
+        <useCaseMoniker Id="16e224c9-2c46-4b8c-bf60-118622103f5f" LastKnownName="Collect and record payment information" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="6e7c93c0-648d-4d52-9f84-a258daacb777" name="Front Desk Clerk" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="59e6e563-548c-4ec7-8b04-6def219a550b" />
+        <generalsInternal>
+          <generalization Id="812c9869-966a-410f-b418-82821f656b5d" isSubstitutable="false">
+            <actorMoniker Id="f6a64531-142f-4714-8dcb-05af9d061792" LastKnownName="Referral and Authorization Staff" />
+            <elementDefinition Id="2209f3f7-6677-45f3-bfb6-a6a79514dd5b" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="4b7492ae-c1d1-4154-9898-234ab1cdbb7d" isDerived="false" sourceEndRoleName="Front Desk Clerk" targetEndRoleName="UseCase1" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="2a2835b4-b210-4328-83de-9f746956436f" LastKnownName="Collect and record the patients' payor information" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="83a833bc-e119-46b2-b162-af7457d1afab" name="Front Desk Clerk" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8f316521-ca35-4734-a567-c32fe820ddb5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5cb0115f-fc0b-408e-a04e-c31bf5f025de" name="UseCase1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4043d206-c563-4302-9fdc-a40f14298b75" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0e2ed73b-d9d5-42bb-b409-28d2c241a078" />
+          </association>
+          <association Id="16101770-11a1-429d-a670-69f7dd4db6f1" isDerived="false" sourceEndRoleName="Front Desk Clerk" targetEndRoleName="UseCase2" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="16e224c9-2c46-4b8c-bf60-118622103f5f" LastKnownName="Collect and record payment information" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="75436e55-ac28-48dd-8e83-4a94c54475fe" name="Front Desk Clerk" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3c0a302c-b279-4353-8b1c-7b64d42e9648" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a4cc8f06-0c54-4d55-817a-3626e5bfe9ed" name="UseCase2" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9508a5fe-b337-4f91-9150-e1656c62c35c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0bbcbeaf-0f22-433a-89b4-44455cb2748b" />
+          </association>
+          <association Id="66083568-8f1a-4a60-98d0-8e7772c28cec" isDerived="false" sourceEndRoleName="Front Desk Clerk" targetEndRoleName="UseCase3" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="c7fcc657-44a4-497b-9090-5ae26a6568e9" LastKnownName="Send a request to the billing supervisor to provide a balance statement for the patient" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1f5ff591-cdfa-4b2f-a9d2-7b3f358d06c1" name="Front Desk Clerk" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4b25e99b-79b5-4495-9c2d-99a70142636d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="622db0dc-a8a3-4ed7-a8c0-422bf2405915" name="UseCase3" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="914b16d1-4df8-4a06-9fe0-36b4e8c83a0a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ac353c41-f723-4a70-aa40-b377ea9caa5f" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2a2835b4-b210-4328-83de-9f746956436f" name="Collect and record the patients' payor information" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b89b8a5c-c227-43f1-bb72-a085dad8266a" />
+        <additions>
+          <include Id="59a0618b-da08-4909-b3b8-779d504856b3">
+            <useCaseMoniker Id="4ced3800-2901-4f5d-af98-592154b8d430" LastKnownName="Scan and import a patients' insurance card" />
+            <elementDefinition Id="5577c0b0-820e-4290-a504-538de3b86244" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="16e224c9-2c46-4b8c-bf60-118622103f5f" name="Collect and record payment information" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="86797363-fb21-426b-ba3a-24bf747e1cd2" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c7fcc657-44a4-497b-9090-5ae26a6568e9" name="Send a request to the billing supervisor to provide a balance statement for the patient" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5aa2cb59-2eec-438a-9170-548fb9170910" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4ced3800-2901-4f5d-af98-592154b8d430" name="Scan and import a patients' insurance card" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="33de25c7-4264-4aa9-aa4e-959353ab37b5" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="f6a64531-142f-4714-8dcb-05af9d061792" name="Referral and Authorization Staff" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b53a2d77-36fc-4ab1-8ea5-f38338c92e83" />
+        <targetEnds>
+          <association Id="846750aa-f2c1-4f78-947c-e47ced6fe118" isDerived="false" sourceEndRoleName="Referral and Authorization Staff" targetEndRoleName="Manage referrals and authorizations" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="0d0df30a-4b32-404c-b4f9-6424e3e8cef7" LastKnownName="Manage referrals and authorizations" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="405471a8-6c09-40a2-8ab3-2fd2065bfab2" name="Referral and Authorization Staff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b7694f8a-eb2e-4e0c-a827-bdb853c6f718" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d0209008-83cb-4704-b1b6-c402bddc99a9" name="Manage referrals and authorizations" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9b3a8bfb-2c7f-45a7-a1e0-d7f0eebfd5ee" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="93da8252-e786-472e-b6ee-5ef130036218" />
+          </association>
+          <association Id="5c18e197-922e-46b7-b3f3-ddcb983e54a1" isDerived="false" sourceEndRoleName="Referral and Authorization Staff" targetEndRoleName="Refer a patient" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b202f0ca-eaa9-4f1e-98a4-4406495d7bb3" LastKnownName="Refer a patient" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="34f6a56f-df17-4ec3-a552-a582fe1fcd24" name="Referral and Authorization Staff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8caf9876-ac7a-409e-94e0-3007429ce4c3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0b23a41b-544f-41f7-b9d0-e6e58a3f479c" name="Refer a patient" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5876d2bf-8235-42ea-9542-2202b5ac6f23" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="779da1d8-b15d-416f-a653-4673dfdb1f23" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="0d0df30a-4b32-404c-b4f9-6424e3e8cef7" name="Manage referrals and authorizations" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a8c5b13f-dcaf-487c-b8f0-2476e54098e6" />
+        <additions>
+          <include Id="cdff6a21-88ff-444a-be64-37720335a42f">
+            <useCaseMoniker Id="da4c1d1e-30fc-4706-bdc9-2f8d495bc48e" LastKnownName="Manually enter an incoming referral" />
+            <elementDefinition Id="ecda9b4f-6f45-4c02-8712-71c93498248a" />
+          </include>
+          <include Id="4fa317b2-fad3-4f0d-93e3-d25b8a1b26c5">
+            <useCaseMoniker Id="e720e063-195a-4b24-8ee2-e474193b259b" LastKnownName="Manually enter an incoming authorization" />
+            <elementDefinition Id="159cb6aa-fc9e-4bd3-b782-f8f18de25f15" />
+          </include>
+          <include Id="35607862-94ed-4658-b501-da64090f6450">
+            <useCaseMoniker Id="718968db-7633-461e-99ee-c6e238393745" LastKnownName="Import a 278" />
+            <elementDefinition Id="42559f19-8823-410b-b11b-e91f648e6241" />
+          </include>
+          <include Id="bfa5e80b-bbb9-4b63-b941-7f6671d01d5c">
+            <useCaseMoniker Id="776fb792-a4ee-4530-b83f-717dc93f68d8" LastKnownName="Accept/reject a referral" />
+            <elementDefinition Id="3baffbd2-9a5f-49a0-9202-284d8242a031" />
+          </include>
+          <include Id="9791ad21-d394-4a9a-b641-b31b339526d9">
+            <useCaseMoniker Id="f0ea52e9-f1ee-4b3e-8abb-449834144572" LastKnownName="Create a 278" />
+            <elementDefinition Id="5370a19a-a5c6-4077-bbcd-acbcd0aa9a9d" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="da4c1d1e-30fc-4706-bdc9-2f8d495bc48e" name="Manually enter an incoming referral" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="53a4a34f-ecf6-4afc-a3e0-82620b98e8c9" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e720e063-195a-4b24-8ee2-e474193b259b" name="Manually enter an incoming authorization" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="70592e96-5352-4fad-99e4-d96bb3c98f17" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="718968db-7633-461e-99ee-c6e238393745" name="Import a 278" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9c20aa18-5e22-45d0-ae18-89bc4870aa24" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="776fb792-a4ee-4530-b83f-717dc93f68d8" name="Accept/reject a referral" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9617f87f-1277-4ec7-b4e9-309c1e93dd97" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f0ea52e9-f1ee-4b3e-8abb-449834144572" name="Create a 278" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f324e72c-f9e5-427a-8665-690871a91d3b" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b202f0ca-eaa9-4f1e-98a4-4406495d7bb3" name="Refer a patient" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a7990117-a1d3-4100-818a-1d623412051a" />
+        <additions>
+          <include Id="b7d71f9a-24f0-4546-867a-366c6ac08a79">
+            <useCaseMoniker Id="86ccc229-50f5-4071-ac09-ba892df9e1e6" LastKnownName="Create referral" />
+            <elementDefinition Id="312c8629-f05e-4afd-a7c0-66818817810b" />
+          </include>
+          <include Id="d9a6720c-01a6-4900-b76b-303fd7049eeb">
+            <useCaseMoniker Id="7f95559b-0de1-4a34-9081-efa9ea00760d" LastKnownName="Request that another staff person create a referral" />
+            <elementDefinition Id="5869196c-ea0d-4338-a6f1-433c1cc3c13f" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="86ccc229-50f5-4071-ac09-ba892df9e1e6" name="Create referral" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cd1e805f-49a8-4c3f-ada8-3a26b0d22581" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7f95559b-0de1-4a34-9081-efa9ea00760d" name="Request that another staff person create a referral" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="938a0216-8134-4ff0-99f3-422ea1f74e94" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="0a69f095-f8b7-401a-9e0c-72da8767fa37" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="bf36eb9c-59b2-46a0-9520-a02ebca9ab2e">
+        <profileInstance Id="7f97ef42-abf2-4568-802c-ec6160394a5a" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="aaf6ada3-7d09-4346-b562-9404799e414c">
+        <profileInstance Id="400b9835-5e89-43c0-8e90-cd222cddeb3e" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

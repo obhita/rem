@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="83804b14-9848-47f7-9a2f-2258fe7e301d" name="Service Bus" linkedPackageId="578d7ef4-42c1-43ef-83e7-5aabc9edb502" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="a83155ce-1f0e-4c45-8858-e1df6a6b54f3">
+      <elementDefinition Id="38e34dcd-87bf-4ce1-b121-3a687a917207" />
+      <body>Claims are automatically added to a claim batch.</body>
+      <annotatedElements>
+        <useCaseMoniker Id="4da1edc0-02e7-41f2-9d4a-fc70dbcf6b81" LastKnownName="Pull visit/activity/procedure data from the ehr and generate claims in the pms" />
+      </annotatedElements>
+    </comment>
+    <comment Id="e93313f7-ec96-4fac-925d-33f0eeedbf42">
+      <elementDefinition Id="13801843-5510-41fd-8945-6a2f7b7fd7d2" />
+      <body>Referrals and authorizations are automatically associated with claims</body>
+      <annotatedElements>
+        <useCaseMoniker Id="4da1edc0-02e7-41f2-9d4a-fc70dbcf6b81" LastKnownName="Pull visit/activity/procedure data from the ehr and generate claims in the pms" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="c61f10c4-c18a-406e-bfeb-0b46b5622e36" name="Windows Service" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="698a04ac-5e77-4071-9672-1088c156a58e" />
+        <targetEnds>
+          <association Id="c655b9cc-7dc1-4a2a-97a8-378997bc2dcb" isDerived="false" sourceEndRoleName="Service Bus" targetEndRoleName="Pull visit/activity/procedure data from the ehr and generate claims in the pms" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="4da1edc0-02e7-41f2-9d4a-fc70dbcf6b81" LastKnownName="Pull visit/activity/procedure data from the ehr and generate claims in the pms" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="020db87e-6227-46a0-9f52-04378053b9e0" name="Service Bus" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="46369bc7-1092-4e38-9277-2559e06a80cf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c0102462-0b2a-4e85-bff9-98cc5e8582cb" name="Pull visit/activity/procedure data from the ehr and generate claims in the pms" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="960460e8-a80e-47c4-9f50-9b739b362473" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="213e0987-9c6a-4a24-8c71-7ad8f804e529" />
+          </association>
+          <association Id="97da4aec-09f9-46b1-b1c1-780d6a483b49" isDerived="false" sourceEndRoleName="Service Bus" targetEndRoleName="UseCase5" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8ff114d6-02fa-43fc-85aa-aad2617f7dbe" LastKnownName="Generate an 837 Professional" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f1a44340-8310-4059-96b5-addb5b73f39a" name="Service Bus" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0f16c53f-14ce-4ad2-bfa4-4ef6352accc1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="93fbcafc-9856-43ee-8524-232aec2f27c7" name="UseCase5" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4514d175-bdb7-4bef-850d-eb8413c5d16a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="53ee4339-c8d0-4097-89b4-b7617836a3d0" />
+          </association>
+          <association Id="9f2a327a-75d7-4082-baa4-32749074c681" isDerived="false" sourceEndRoleName="Service Bus" targetEndRoleName="UseCase6" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="da457c35-4271-44ae-af6e-d6e10827365f" LastKnownName="Generate an 837 Institutional" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3ce2cf4f-2942-477e-bb29-1e5fa670c76e" name="Service Bus" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f3b15278-b900-43f6-9744-7bbd0c74c7e5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6f9cc457-0aa2-4f2a-9a35-48637f1b7da8" name="UseCase6" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b3fcc619-490d-4752-a0b3-c5c08b682538" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="eb92475d-faf5-4aa3-bdff-d9b980785155" />
+          </association>
+          <association Id="a0761b91-26d9-41b5-892f-be450a4d2995" isDerived="false" sourceEndRoleName="Service Bus" targetEndRoleName="UseCase7" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="38afd9f7-88d1-49a2-ba95-8b98c8e5abc1" LastKnownName="Parse and process an 835" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="17a1e186-c0c4-4bff-a544-88902ec40ab0" name="Service Bus" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4bf5fd90-58a9-450e-b394-1996c10a903f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="523f4228-078d-44b7-91bb-8b9cb2333632" name="UseCase7" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="99f457c1-2b34-41e0-b3ae-38d64c1df145" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="97f189d0-b8fd-480f-87c3-ed890ffbadbf" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4da1edc0-02e7-41f2-9d4a-fc70dbcf6b81" name="Pull visit/activity/procedure data from the ehr and generate claims in the pms" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7138b5e4-b5e6-49ea-81b8-33b98ee27bc1" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8ff114d6-02fa-43fc-85aa-aad2617f7dbe" name="Generate an 837 Professional" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b6bcabfa-ec09-4bf9-b58c-5635ab9655f9" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="da457c35-4271-44ae-af6e-d6e10827365f" name="Generate an 837 Institutional" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="68ad8582-4700-4964-820e-a0210e3da253" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="38afd9f7-88d1-49a2-ba95-8b98c8e5abc1" name="Parse and process an 835" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d3ddcf66-de8f-4e84-8f47-df0b11dc4cab" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="578d7ef4-42c1-43ef-83e7-5aabc9edb502" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="8ea2f526-743d-42ec-926b-54d97a89b0ec">
+        <profileInstance Id="8e232140-aac1-4cdd-871e-1414514af2c6" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="1677b6e6-f85a-4e73-988b-3046912cb783">
+        <profileInstance Id="5bba8165-efac-4124-a14b-9cb53f9ae9b5" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

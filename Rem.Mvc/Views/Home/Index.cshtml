@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Rem.Ria.PatientModule.Web.ClinicianDashboard.ClinicianPatientDto>
+           
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<table id="patientlist_table" role=grid class="RemDataGrid">
+    <thead>
+        <tr>
+           <th>Patient Name</th>
+           <th>Last Visit Date</th>
+           <th>Action</th>
+        </tr>
+    </thead>
+      <tbody>
+    @foreach (var patient in Model)
+    {
+         <tr>
+            <td>@string.Format("{0}, {1}", patient.LastName, patient.FirstName)</td>
+            <td>@string.Format("{0:MM/dd/yyyy}", patient.LastVisitDate)</td>
+            <td>@Html.ActionLink(string.Format("Dashboard for {0} {1}", patient.FirstName, patient.LastName), "GetAllClinicalCasesWithActivitiesForSelectedClinicalCase", "PatientDashboard", new { id = patient.Key }, null)</td>
+          </tr>
+    }
+     </tbody>
+
+</table>

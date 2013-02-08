@@ -1,0 +1,245 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.PatientReminder.PatientReminderView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"  
+    xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"  
+    xmlns:System="clr-namespace:System;assembly=mscorlib"  
+    xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism"  
+    xmlns:ViewModel="clr-namespace:Rem.Ria.Infrastructure.ViewModel;assembly=Rem.Ria.Infrastructure"  
+    xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input" 
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure" xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <i:Interaction.Behaviors>
+        <Behavior:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+    <UserControl.Resources>
+        <Converter:StringToNullableConverter x:Key="StringToNullableConvert"/>
+        <View:DataContextProxyElement x:Key="RootDataContext"/>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+            <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="36" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto" MinHeight="27"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="1,0" Grid.Row="2" BorderBrush="Black" Background="{StaticResource WorkPadToolBarBorderBrush}" Margin="0,0,0,-0.167" />
+        <Border Grid.Row="1" Style="{StaticResource MainHeaderBorder}" CornerRadius="8,8,0,0" Height="Auto">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center">
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Canvas Width="26" Height="26">
+                        <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 38.4503,44.8047L 16.033,44.8047C 11.909,44.8047 8.55163,41.4487 8.55163,37.3207L 8.55163,14.9061C 8.55163,10.7781 11.909,7.42206 16.033,7.42206L 38.4503,7.42206C 42.5783,7.42206 45.9343,10.7781 45.9343,14.9061L 45.9343,37.3207C 45.9343,41.4487 42.5783,44.8047 38.4503,44.8047 Z " UseLayoutRounding="False" Height="25.278" Canvas.Left="0.441" Canvas.Top="0.723" Width="25.279"/>
+                        <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 43.7907,42.3145L 11.04,9.5638" UseLayoutRounding="False" Height="22.253" Canvas.Left="2.066" Canvas.Top="2.122" Width="22.254"/>
+                        <Path Stretch="Fill" Data="F1 M 15.6787,5.648C 11.0187,5.648 7.20933,9.45867 7.20933,14.116L 7.20933,37.0133C 7.20933,41.668 11.0187,45.48 15.6787,45.48L 38.5707,45.48C 43.2307,45.48 47.04,41.668 47.04,37.0133L 47.04,14.116C 47.04,9.45867 43.2307,5.648 38.5707,5.648L 15.6787,5.648 Z " UseLayoutRounding="False" Height="26.007" Width="26.006">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0.499985,-5.26733e-006" EndPoint="0.499985,1.00003">
+                                    <GradientStop Color="#FF3F3F40" Offset="0"/>
+                                    <GradientStop Color="#FF7D7D7F" Offset="0.257324"/>
+                                    <GradientStop Color="#FFBBBCBF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path Stretch="Fill" Data="F1 M 15.9147,6.87333C 11.792,6.87333 8.43333,10.228 8.43333,14.356L 8.43333,36.772C 8.43333,40.9013 11.792,44.2547 15.9147,44.2547L 38.332,44.2547C 42.4613,44.2547 45.816,40.9013 45.816,36.772L 45.816,14.356C 45.816,10.228 42.4613,6.87333 38.332,6.87333L 15.9147,6.87333 Z " UseLayoutRounding="False" Height="24.408" Canvas.Left="0.799" Canvas.Top="0.8" Width="24.409">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0.499985,-7.44952e-006" EndPoint="0.499985,1.00003">
+                                    <GradientStop Color="#FF141E26" Offset="0"/>
+                                    <GradientStop Color="#FF343B43" Offset="0.200809"/>
+                                    <GradientStop Color="#FF555960" Offset="0.503067"/>
+                                    <GradientStop Color="#FF343B43" Offset="0.52366"/>
+                                    <GradientStop Color="#FF141E26" Offset="0.533737"/>
+                                    <GradientStop Color="#FF272E37" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path Stretch="Fill" Data="F1 M 15.9147,7.33733C 11.792,7.33733 8.43333,10.6933 8.43333,14.82L 8.43333,15.98C 8.43333,11.852 11.792,8.496 15.9147,8.496L 38.332,8.496C 42.4613,8.496 45.816,11.852 45.816,15.98L 45.816,14.82C 45.816,10.6933 42.4613,7.33733 38.332,7.33733L 15.9147,7.33733 Z " UseLayoutRounding="False" Height="5.644" Canvas.Left="0.799" Canvas.Top="1.102" Width="24.409">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0.499985,6.53242e-005" EndPoint="0.499985,0.999979">
+                                    <GradientStop Color="#FF808184" Offset="0"/>
+                                    <GradientStop Color="#FF5F6062" Offset="0.13"/>
+                                    <GradientStop Color="#FF3F3F40" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path Stretch="Fill" Fill="Black" Data="F1 M 169.333,13.8414L 169.333,11.7654C 169.333,5.47467 164.159,0.322693 157.88,0.322693L 11.9747,0.322693C 5.66135,0.322693 0.521338,5.47467 0.521338,11.7654L 0.521338,13.8414C 0.521338,20.144 5.66135,25.284 11.9747,25.284L 15.3493,25.284C 14.7333,28.8694 14.2893,32.516 14.2893,36.2707C 14.2893,64.264 52.9053,96.816 73.0453,111.849C 75.916,114.015 76.2373,120.113 73.592,122.087C 53.624,136.965 14.2893,169.86 14.2893,198.104C 14.2893,200.221 14.472,202.297 14.6893,204.372L 11.9747,204.372C 5.66135,204.372 0.521338,209.524 0.521338,215.815L 0.521338,217.891C 0.521338,224.183 5.66135,229.333 11.9747,229.333L 157.88,229.333C 164.159,229.333 169.333,224.183 169.333,217.891L 169.333,215.815C 169.333,209.524 164.159,204.372 157.88,204.372L 155.167,204.372C 155.371,202.297 155.553,200.221 155.553,198.104C 155.553,169.745 115.888,136.692 96,121.903C 93.4707,120.023 93.8453,114.073 96.6507,111.976C 116.744,96.964 155.553,64.332 155.553,36.2707C 155.553,32.516 155.12,28.8694 154.492,25.284L 157.88,25.284C 164.159,25.284 169.333,20.144 169.333,13.8414 Z " Height="13.763" Canvas.Left="7.105" Canvas.Top="5.746" UseLayoutRounding="False" Width="10.145"/>
+                        <Path Stretch="Fill" Fill="White" Data="F1 M 169.333,13.8414L 169.333,11.7654C 169.333,5.47467 164.159,0.322693 157.88,0.322693L 11.9747,0.322693C 5.66135,0.322693 0.521338,5.47467 0.521338,11.7654L 0.521338,13.8414C 0.521338,20.144 5.66135,25.284 11.9747,25.284L 15.3493,25.284C 14.7333,28.8694 14.2893,32.516 14.2893,36.2707C 14.2893,64.264 52.9053,96.816 73.0453,111.849C 75.916,114.015 76.2373,120.113 73.592,122.087C 53.624,136.965 14.2893,169.86 14.2893,198.104C 14.2893,200.221 14.472,202.297 14.6893,204.372L 11.9747,204.372C 5.66135,204.372 0.521338,209.524 0.521338,215.815L 0.521338,217.891C 0.521338,224.183 5.66135,229.333 11.9747,229.333L 157.88,229.333C 164.159,229.333 169.333,224.183 169.333,217.891L 169.333,215.815C 169.333,209.524 164.159,204.372 157.88,204.372L 155.167,204.372C 155.371,202.297 155.553,200.221 155.553,198.104C 155.553,169.745 115.888,136.692 96,121.903C 93.4707,120.023 93.8453,114.073 96.6507,111.976C 116.744,96.964 155.553,64.332 155.553,36.2707C 155.553,32.516 155.12,28.8694 154.492,25.284L 157.88,25.284C 164.159,25.284 169.333,20.144 169.333,13.8414 Z " Height="13.763" Canvas.Left="7.605" Canvas.Top="5.996" UseLayoutRounding="False" Width="10.145"/>
+                    </Canvas>
+                </Border>
+                <TextBlock Style="{StaticResource MainHeaderTextBlockStyle}" TextWrapping="Wrap" Text="Patient Reminder" d:LayoutOverrides="Width" />
+            </StackPanel>
+        </Border>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Left" >
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="6,0" VerticalAlignment="Center">
+                    <Controls:Label HorizontalAlignment="Left" Content="Medication:" Target="{Binding ElementName=MedicationSearch}" Foreground="White" />
+
+                    <ContentControl x:Name="MedicationSearch"
+    			    Regions:RegionManager.RegionName="MedicationDtsSearch" Height="30" Margin="6,0">
+                        <Regions:RegionManager.RegionContext>
+                            <ViewModel:SearchCommunicater x:Name="scMedication" SelectedItem="{Binding PatientReminderCriteria.Medication,Mode=TwoWay}"/>
+                        </Regions:RegionManager.RegionContext>
+                    </ContentControl>
+                </StackPanel>
+                <Border BorderThickness="0.75,0,0.5,0" Width="1.25" Height="34" VerticalAlignment="Center" Margin="10,4,10,-1" Canvas.ZIndex="-3">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="-89"/>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FF3F3F3F" Offset="0.492"/>
+                            <GradientStop Color="#FFB4B4B4" Offset="0.5"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                </Border>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="6,0" VerticalAlignment="Center">
+                    <Controls:Label HorizontalAlignment="Left" Content="Allergy:" Target="{Binding ElementName=AllergySearch}" Foreground="White" />
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Name="IsDrugAllergyCheckBox" Foreground="White" IsThreeState="False" IsChecked="{Binding Source={StaticResource RootDataContext}, Path=DataSource.IsDrugAllergy, Mode=TwoWay}" VerticalAlignment="Center">Drug Allergy</CheckBox>
+                        <ContentControl x:Name="AllergySearch"
+    			        Regions:RegionManager.RegionName="AllergyDtsSearch" Height="30" Margin="6,0" Visibility="{Binding Source={StaticResource RootDataContext}, Path=DataSource.IsDrugAllergy, Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}">
+                            <Regions:RegionManager.RegionContext>
+                                <ViewModel:SearchCommunicater x:Name="scAllergy" SelectedItem="{Binding PatientReminderCriteria.Allergy,Mode=TwoWay}"/>
+                            </Regions:RegionManager.RegionContext>
+                        </ContentControl>
+                        <ContentControl x:Name="DrugAllergySearch"
+    			        Regions:RegionManager.RegionName="DrugAllergyDtsSearch" Height="30" Margin="6,0" Visibility="{Binding Source={StaticResource RootDataContext}, Path=DataSource.IsDrugAllergy, Converter={StaticResource BooleanToVisibilityConverterInstance}}">
+                            <Regions:RegionManager.RegionContext>
+                                <ViewModel:SearchCommunicater SelectedItem="{Binding PatientReminderCriteria.Allergy,Mode=TwoWay}"/>
+                            </Regions:RegionManager.RegionContext>
+                        </ContentControl>
+                    </StackPanel>
+                </StackPanel>
+                <Border BorderThickness="0.75,0,0.5,0" Width="1.25" Height="34" VerticalAlignment="Center" Margin="10,4,10,-1" Canvas.ZIndex="-3">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="-89"/>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FF3F3F3F" Offset="0.492"/>
+                            <GradientStop Color="#FFB4B4B4" Offset="0.5"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                </Border>
+                <StackPanel Orientation="Vertical" Margin="6,0" VerticalAlignment="Center">
+                    <Controls:Label HorizontalAlignment="Left" Content="Problem:" Target="{Binding ElementName=ProblemSearch}" Foreground="White" />
+                    <ContentControl x:Name="ProblemSearch"
+    			    Regions:RegionManager.RegionName="ProblemDtsSearch" Height="30" Margin="6,0">
+                        <Regions:RegionManager.RegionContext>
+                            <ViewModel:SearchCommunicater x:Name="scProblem" SelectedItem="{Binding PatientReminderCriteria.Problem,Mode=TwoWay}"/>
+                        </Regions:RegionManager.RegionContext>
+                    </ContentControl>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="6,0" VerticalAlignment="Center">
+                    <Controls:Label VerticalAlignment="Center" Content="Age:" Target="{Binding ElementName=AgeModifier}" Foreground="White" />
+                    <StackPanel Orientation="Horizontal">
+                        <telerik:RadComboBox x:Name="AgeModifier" Style="{StaticResource RadComboBoxRemStyle}" MinWidth="40" Width="40" MaxWidth="40" ClearSelectionButtonVisibility="Collapsed"
+    				        ItemsSource="{Binding FilterModifierList, Mode=OneWay}"
+    				        SelectedItem="{Binding PatientReminderCriteria.AgeFilterModifier, Mode=TwoWay}"/>
+                        <TextBox x:Name="AgeText" Margin="5,0,0,0" MinWidth="30" Text="{Binding PatientReminderCriteria.Age,Mode=TwoWay,Converter={StaticResource StringToNullableConvert}}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="6,0" VerticalAlignment="Center">
+                    <Controls:Label VerticalAlignment="Center" Content="Gender:" Target="{Binding ElementName=GenderComboBox}" Foreground="White" />
+                    <telerik:RadComboBox x:Name="GenderComboBox" Style="{StaticResource RadComboBoxRemStyle}" ClearSelectionButtonContent="Clear" ClearSelectionButtonVisibility="Visible"  
+    				ItemsSource="{Binding Source={StaticResource RootDataContext}, Path=DataSource.LookupValueLists[PatientGender], Mode=OneWay}" 
+    				SelectedItem="{Binding PatientReminderCriteria.Gender, Mode=TwoWay}" 
+    				DisplayMemberPath="Name"/>
+                </StackPanel>
+
+                <Border BorderThickness="0.75,0,0.5,0" Width="1.25" Height="34" VerticalAlignment="Center" Margin="10,4,10,-1" Canvas.ZIndex="-3">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="-89"/>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FF3F3F3F" Offset="0.492"/>
+                            <GradientStop Color="#FFB4B4B4" Offset="0.5"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                </Border>
+                <StackPanel Margin="6,0" VerticalAlignment="Center">
+                    <Controls:Label VerticalAlignment="Center" Content="Lab Test:" Target="{Binding ElementName=LabTestComboBox}" Foreground="White" />
+                    <telerik:RadComboBox x:Name="LabTestSearch" ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[LabTestName]}" DisplayMemberPath="Name" SelectedItem="{Binding PatientReminderCriteria.LabTest,Mode=TwoWay}" Margin="0 0 10 0"/>
+                </StackPanel>
+                <StackPanel Margin="6,0" VerticalAlignment="Center">
+                    <Controls:Label VerticalAlignment="Center" Content="Result:" Target="{Binding ElementName=ResultModifier}" Foreground="White" />
+                    <StackPanel Orientation="Horizontal">
+                        <telerik:RadComboBox x:Name="ResultModifier" Style="{StaticResource RadComboBoxRemStyle}" MinWidth="40" Width="40" MaxWidth="40" ClearSelectionButtonVisibility="Collapsed"
+    				        ItemsSource="{Binding FilterModifierList, Mode=OneWay}"
+    				        SelectedItem="{Binding PatientReminderCriteria.LabResultFilterModifier, Mode=TwoWay}"/>
+                        <TextBox x:Name="ResultText" Margin="5,0,0,0" MinWidth="30" Text="{Binding PatientReminderCriteria.LabResultValue,Mode=TwoWay,Converter={StaticResource StringToNullableConvert}}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <Border BorderThickness="0.75,0,0.5,0" Width="1.25" Height="34" VerticalAlignment="Center" Margin="10,4,10,-1" Canvas.ZIndex="-3">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="-89"/>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FF3F3F3F" Offset="0.492"/>
+                            <GradientStop Color="#FFB4B4B4" Offset="0.5"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                </Border>
+                <StackPanel Orientation="Horizontal" d:LayoutOverrides="Height" VerticalAlignment="Center" Margin="8,16,0,0">
+                    <telerik:RadButton x:Name="SearchButton" Content="Go" Command="{Binding SearchCommand}" VerticalAlignment="Center" Margin="5,0" Style="{StaticResource TileRoundedCornerSmallButtonStyle}" Width="60" />
+                    <telerik:RadButton x:Name="ClearButton" Content="Clear" Command="{Binding ClearCommand}" VerticalAlignment="Center" Padding="5" Margin="5,0" Style="{StaticResource TileRoundedCornerSmallButtonStyle}" Width="60">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding ElementName=scMedication,Path=ClearSelectedItemCommand}"/>
+                                <i:InvokeCommandAction Command="{Binding ElementName=scAllergy,Path=ClearSelectedItemCommand}"/>
+                                <i:InvokeCommandAction Command="{Binding ElementName=scProblem,Path=ClearSelectedItemCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </telerik:RadButton>
+                    <telerik:RadButton x:Name="ExportButton" Content="Export" VerticalAlignment="Center" Padding="5" Margin="5,0" Style="{StaticResource TileRoundedCornerSmallButtonStyle}" Width="60">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <Behavior:ExportRadGridViewTriggerAction RadGridViewInstance="{Binding ElementName=PatientReminderGrid}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </telerik:RadButton>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Border Grid.Row="3" BorderThickness="1,0" BorderBrush="Black">
+            <telerik:RadGridView x:Name="PatientReminderGrid" ItemsSource="{Binding PatientReminderResults}" IsFilteringAllowed="False"
+    			IsReadOnly="True" AutoGenerateColumns="False" ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" AutoExpandGroups="True">
+                <i:Interaction.Behaviors>
+                    <Behavior:RadGridViewPagedSortBehavior SortBy="{Binding SortBy, Mode=TwoWay}" SortDirection="{Binding SortDirection, Mode=TwoWay}" SortCommand="{Binding SearchCommand}"/>
+                </i:Interaction.Behaviors>
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Width="*" Header="PID" HeaderTextAlignment="Center" DataMemberBinding="{Binding PatientIdentifier}"/>
+                    <telerik:GridViewDataColumn Width="*" Header="Salutation" HeaderTextAlignment="Center" DataMemberBinding="{Binding PatientPrefixName}" />
+                    <telerik:GridViewDataColumn Width="2*" Header="Name" HeaderTextAlignment="Center" DataMemberBinding="{Binding PatientName}" />
+                    <telerik:GridViewDataColumn Width="*" Header="Preferred Method" HeaderTextAlignment="Center" DataMemberBinding="{Binding PatientContactPreference}" />
+                    <telerik:GridViewDataColumn Width="3*" Header="Contact Information" HeaderTextAlignment="Center" DataMemberBinding="{Binding PatientContactInfosString}">
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <ItemsControl ItemsSource="{Binding PatientContactInfos}"/>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+        </Border>
+        <CustomControls:LoadingControl Grid.Row="3" Grid.RowSpan="2" IsLoading="{Binding IsLoading}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="5">
+            <Border x:Name="PagerBorder"  VerticalAlignment="Bottom" Height="36" BorderBrush="Black" Background="#FFF1F1F2">
+                <i:Interaction.Behaviors>
+                    <Behavior:DataPagerVisibilityBehavior NumberOfPages="{Binding PageCount, ElementName=dataPager}"/>
+                </i:Interaction.Behaviors>
+                <telerik:RadDataPager x:Name="dataPager" PageSize="{Binding PageSize, Mode=TwoWay}" ItemCount="{Binding TotalCount, Mode=TwoWay}" PageIndex="{Binding PageIndex, Mode=TwoWay}" 
+                                      VerticalAlignment="Center"/>
+            </Border>
+        </StackPanel>
+    </Grid>
+</UserControl>

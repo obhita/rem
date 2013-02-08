@@ -1,0 +1,4251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="510212e2-8665-4a82-b239-6f1cf0de67db"
+  name="AnalysisModel" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="f1025aca-cba8-42bd-9d3c-ea892e3f744c">
+      <body>Vision Statement:
+
+Create a system that provides a mechanism for billing payors and receiving payment for services provided to patients.
+</body>
+    </comment>
+    <comment
+      Id="7486e2fa-dda7-4064-9b1f-c90b5ee182e7">
+      <body>- Record Visits and Activities
+   Note: 
+   1. Procedures need to be automatically recorded
+   2. Activities are filtered by program
+- Records diagnosis
+- Accept or reject referrals/authorization
+  Note: The act of accepting a referral will automatically associate the referral and authorizations with the patient
+- Create referrals/authorizations
+- Enroll a patient in a program
+   Note: Business rules should honor the program capacity.  You cannot enroll if full.</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="51eeb1f0-093e-4bca-94f0-71f13c449f13"
+          LastKnownName="Clinician"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="22d914f6-9cfb-43bf-945f-0f048955fe1d">
+      <body>- Reviews and validates procedures and diagnosis
+- Define default mapping from visits and activities to procedures</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="b42858f4-7998-4c18-b905-2cd8695a06d1"
+          LastKnownName="Certified Coder"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="867837b8-0c87-4d64-9e1e-1f34b793e7ad">
+      <body>- Collect and record the patients' payor information 
+  -  Scan and import a patients' insurance card
+- Collect and record payment information (including co-pay)
+- Provide a balance statement for the patient
+- Process referrals/authorizations
+  - Create outgoing referrals/authorizations
+  - Manually Record incoming referrals/authorizations (maybe they received a fax)
+  - Accept/reject incoming electronic referrals/authorizations (for in-system referrals)
+- Schedule patient visits
+   Note:
+   1. The list of visit types should be filtered by program if the patient is enrolled
+</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="59e6e563-548c-4ec7-8b04-6def219a550b"
+          LastKnownName="Front Desk Clerk"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="cd2137bb-e5c1-43fb-bdad-d52e20b4415a">
+      <body>- Set up agency and location programs
+- Review number of beds/slots available in a program
+- Set up visit templates and lists of activity types that are supported by a given program</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="4e072232-95f6-4cd5-a3d5-d9b68d7034f9"
+          LastKnownName="Agency Administrator"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="6c6a1241-576f-4771-aa9e-d6da74df62d5">
+      <body>- Review and edit claims
+- Manually enter payments and adjustments
+- Processing denials
+- Import an 835
+- Request the generation of an 837 Professional
+- Request the generation of an 837 Institutional
+- Download an 837 Professional/Institutional
+- Generate a HCFA 1500
+- Generate a WITS Style Invoice
+- Generate a financial summary
+- Perform an eligibility inquiry for a patient
+- Post an adjustment
+</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="82ebbc9b-f7e0-40ed-b689-1e6073ee8e5e"
+          LastKnownName="Billing Supervisor"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="92ad169b-e660-4806-895d-f8e353e34f7a">
+      <body>- Post a request for the nightly export of visit data from the ehr to the pms</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="ac4f8b5e-7ceb-4b0a-bcad-076c27ab556b"
+          LastKnownName="Time"
+          LastKnownLocation="AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="e27edb09-c445-4f2e-871b-23628dcc2142">
+      <body>- Import an 837 Professional
+- Import an 837 Institutional
+- Adjudicate an 837
+   - Reject a claim
+   - Pay a claim
+   - Partial pay a claim
+- Request the generation of an 835
+- Download an 835</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="30a7b261-3889-441e-bfd7-92ef9618cfb4"
+          LastKnownName="Claims Adjudicator"
+          LastKnownLocation="Package_1246.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="ec8da443-e23e-49bb-8cf4-7ca2c25c17c3">
+      <body>- Parse and process an 837 Professional
+- Parse and process an 837 Institutional
+- Pre-Adjudicate an 837 Professional
+- Pre-Adjudicate an 837 Institutional
+- Generate an 835
+- Generate an 837 Professional
+- Generate an 837 Institutional
+- Parse and process an 835
+- Pull visit/activity/procedure data from the ehr and generate claims in the pms</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="698a04ac-5e77-4071-9672-1088c156a58e"
+          LastKnownName="Windows Service"
+          LastKnownLocation="AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="235c8097-1bbc-470f-bd8e-d795938aa885">
+      <body>Procedures need to be automatically recorded based on the default visit/activity procedures defined by the certified coder.
+</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="741bb9fd-01cb-48b2-842d-8c58866dd320"
+          LastKnownName="Record Visits and Activities"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="5c8b6c13-d881-4ba6-ae49-4678823caa41">
+      <body>The act of accepting a referral will automatically associate the referral and authorizations with the patient</body>
+    </comment>
+    <comment
+      Id="30eabc0b-c4dc-4136-aa3c-aae4ebbe64f4">
+      <body>This includes patient co-pay</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="86797363-fb21-426b-ba3a-24bf747e1cd2"
+          LastKnownName="Collect and record payment information"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="38e34dcd-87bf-4ce1-b121-3a687a917207">
+      <body>Claims are automatically added to a claim batch.</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="7138b5e4-b5e6-49ea-81b8-33b98ee27bc1"
+          LastKnownName="Pull visit/activity/procedure data from the ehr and generate claims in the pms"
+          LastKnownLocation="AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="13801843-5510-41fd-8945-6a2f7b7fd7d2">
+      <body>Referrals and authorizations are automatically associated with claims</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="7138b5e4-b5e6-49ea-81b8-33b98ee27bc1"
+          LastKnownName="Pull visit/activity/procedure data from the ehr and generate claims in the pms"
+          LastKnownLocation="AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="49fea95d-aa60-4eeb-9214-19f934f5b54f">
+      <body>Visit Templates are currently Agency based.  The new requirements define program specific templates.</body>
+      <annotatedElements>
+        <classMoniker
+          Id="820c5f08-722b-4122-9d05-b571ac245e3b"
+          LastKnownName="Visit Template"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="5f0a02c4-1877-43c1-ab74-b56e208604d2">
+      <body>If we create separate models then this entity represents a patient along with current payor information
+</body>
+      <annotatedElements>
+        <classMoniker
+          Id="1fa24bf8-9d7b-403e-97da-d57cb05d00d1"
+          LastKnownName="Patient Account"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="837d889a-9416-49e5-a1d0-8d0169b29296">
+      <body>- Set up payors
+- Set up fee schedules
+- Set up contracts
+  - Set up a managed care contract
+  - ** Set up an "Authorized" contract (need better name)
+  - ** Set up a "Pre-Authorized" contract (need better name)
+- Set up billing office rates
+- Set up billing office service providers' (doctor)
+- Set up billing office 'places of service' 
+</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="a666c8cd-8b98-438f-a659-e1a0ffa6df76"
+          LastKnownName="Billing Administrator"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="248a474c-661e-48df-b832-35eec9ebf022">
+      <body>Need to scope out the types of contracts that we will support (e.g. managed care, authorized, pre-authorized, etc.)</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="c54f1658-eb23-4554-975a-5bd538109e30"
+          LastKnownName="Set up contracts"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="e5f1d30c-d0f5-4219-907f-580bb2c60950">
+      <body>Rates are potentially managed differently if you are doing a sliding fee-scale, if locations are in different states, possibly based on contract though not sure</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="6f8779d2-b7ce-4873-8abb-b7c609e4356f"
+          LastKnownName="Set up billing office rates"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="e2b23a46-be5d-49cd-a583-f0b58a74a18d">
+      <body>A fee schedule is really a list of fee amounts that a payor agrees to pay for a given procedure.  There probably won't be an entity called 'fee schedule' but rather an entity called fee.</body>
+      <annotatedElements>
+        <classMoniker
+          Id="1fa784f3-6cef-4816-865a-de51825e4adb"
+          LastKnownName="Fee Schedule"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="2fbeb2b9-6160-4807-8d47-73e7bc43f82c">
+      <body>Where do rates belong?
+
+Thoughts:
+
+1. Rate could be an abstract base class and we could have AgencyRate, LocationRate, and ContractRate</body>
+      <annotatedElements>
+        <classMoniker
+          Id="d541e213-203e-4e9c-a9d2-fa1fcc4223b1"
+          LastKnownName="Rate"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="8a927731-5a53-40ef-8b43-a69d29bf329a">
+      <body>A contract may be associated in some way with programs but programs live in the ehr.</body>
+      <annotatedElements>
+        <classMoniker
+          Id="aeb1c02f-7b89-481a-9a38-663c73b12597"
+          LastKnownName="Contract"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="a74caf08-c63b-46ed-b1a3-b5c5b44deab5">
+      <body>Need a ui that provides a list of denials that haven't been "worked".  From that ui the user can select a denial and get detailed information about the claim, the patient, etc. so that they have all of the data in one place.  They need the ability to take notes against the denial and be able to mark it as "worked" (done).</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="769c9cf7-d61c-4590-a7e2-8326eccf6f0c"
+          LastKnownName="Working denials"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="71efc73c-9c9d-4b73-a2ad-f5d3f931a902">
+      <body>Emdeon is a clearing house for making eligibility requests for commerical insurance agencies using a 270/271.  An eligibility request is simply a fee-for-service provider checking to see if the given patient has the stated insurance.  Emdeon is a service where you pay per request (around 27 cents per request).  We need to find out how this process works so that we know how to integrate with Emdeon.
+
+</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="d127c080-c00d-4a83-afae-96b5f3116d87"
+          LastKnownName="Perform an eligibility inquiry for a patient"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="3e92470c-d8e9-433a-9685-a36aecbec0d0">
+      <body>Medicare/Medicaid is also a 270/271 but doesn't go through Emdeon.</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="d127c080-c00d-4a83-afae-96b5f3116d87"
+          LastKnownName="Perform an eligibility inquiry for a patient"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="bba660f2-ba70-49fe-bd4a-492f349f029f">
+      <body>For contract based insurance there isn't an official standard approach to eligibility.</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="d127c080-c00d-4a83-afae-96b5f3116d87"
+          LastKnownName="Perform an eligibility inquiry for a patient"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="6982819c-d1e0-41ed-bef7-2032585321b3">
+      <body>Aggregate Nodes - Visit Procedure might just use the "Procedure" value object and store it internally whereas the ActivityProcedure needs to be a separate table because there is a list.</body>
+    </comment>
+    <comment
+      Id="92e8d0dc-5a70-48bc-80ae-e16b556149d1">
+      <body>We skipped this set of use cases because we are not yet planning on building the payor system.</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="30a7b261-3889-441e-bfd7-92ef9618cfb4"
+          LastKnownName="Claims Adjudicator"
+          LastKnownLocation="Package_1246.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="ef46528d-b99b-4564-8cca-1a8cc89f33ab">
+      <body>Rodney says for an acitivty type we need the abilty to record one procedure code so that easy activities can be automated but for complex activities we need to have a certified coder manually enter the codes prior to sending to billing</body>
+      <annotatedElements>
+        <classMoniker
+          Id="91cb7752-db05-4c3e-911e-0794467b44ae"
+          LastKnownName="Activity Type"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="8bc471a2-0cae-4fc0-a108-89ec1b20e25e">
+      <body>Need the ability to mark Visit Templates and Activity Types as "Billable" as well as "Requires Review".  Those activities that are billable must have a procedure code in order to be sent to billing.  If the activity requires review then it must be reviewed first.</body>
+    </comment>
+    <comment
+      Id="0d29d997-2f50-46e8-88b8-d5abbc00da56">
+      <body>The referral process should work something like this.
+
+1. A referral is created from agency/location/staff to agency/location/staff.  This is a referral request record
+2. if the request is for an internal agency/location/staff then the message is serialized into some form (maybe xml) (maybe a standard 278 document - not sure).  this message could possibly be sent on the bus
+3. the incoming referral is parsed and brought into the system as a referral request
+4. the user responds to the referral and a message is sent back to the originating agency.
+
+This would work similar to the 270/271 messages</body>
+    </comment>
+    <comment
+      Id="8c579b2e-5c29-430b-b3ad-fe45b6a62225">
+      <body>The Self Payment is collected in the EHR.  We are not yet sure of how this will interface with the PMS.  Possibly a message is automatically sent to the PMS so that the patients' balance can be updated.  We are also not sure if there is a standard for this sort of thing.</body>
+      <annotatedElements>
+        <classMoniker
+          Id="eafba78d-0829-41ac-8940-0df0f85930dc"
+          LastKnownName="Self Payment"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="0cbee803-4d62-48fd-bcde-1483113763b8">
+      <body>We do not yet know how this relates to activity records</body>
+      <annotatedElements>
+        <classMoniker
+          Id="b58b878d-6b17-4a8c-b6e0-b3e20e948a1b"
+          LastKnownName="Activity Authorization"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="0bb80e9c-0a92-4285-a63b-88dfa9d9fb05">
+      <body>Per Rodney: On hold until a customer actually requests this feature</body>
+    </comment>
+    <comment
+      Id="51179c9a-77b5-45c2-bd8f-95329fc2df61">
+      <body>Per Rodney, this feature is put on hold until a customer specifically requests it.</body>
+    </comment>
+    <comment
+      Id="32df3de5-b33e-4848-b744-b080dbe21edd" />
+    <comment
+      Id="3fd33b38-2f66-4a9f-9edd-3fc015a0afb7">
+      <body>A visit needs to be associated with a location "Place of Service"</body>
+      <annotatedElements>
+        <classMoniker
+          Id="cb75a7b9-be85-46bd-8669-79a680ae1e40"
+          LastKnownName="Visit"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="c38a9e17-14ef-4720-bf6b-792929c4aef0">
+      <body>This includes credentialing as well as capturing Payor Provider ID (e.g. NPI, State License Number, DEA Code)</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="908d61a1-2af8-4ce9-bd9a-a04d795b1db0"
+          LastKnownName="Set up billing office service providers' (doctor)"
+          LastKnownLocation="Package_0849.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="31bd029d-7c65-4268-a03d-c811a6a25169">
+      <body>Certain changes (e.g. gender) might require recent visits to be resent to the PMS and therefore to payor.  The UI should prompt the user on whether they want these recent visits sent.</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="f299b966-f576-4fe8-8ee3-51a80160647d"
+          LastKnownName="Modify Patient Demographics"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="6a48cf9b-59e2-43b2-9faa-bce83a247393">
+      <body>We do not have an adjudication system or a partner that is capable of building an 835.  Do we build a mock adjudication system.</body>
+      <annotatedElements>
+        <opaqueActionMoniker
+          Id="cc1b5c3f-d36e-40e0-92e2-b8c7122a7b7a"
+          LastKnownName="Import an 835"
+          LastKnownLocation="AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="ebe85616-280d-4ff4-9ff8-1187f21b4a22">
+      <body>We can investigate using the WITS system as a payor system.</body>
+      <annotatedElements>
+        <opaqueActionMoniker
+          Id="cc1b5c3f-d36e-40e0-92e2-b8c7122a7b7a"
+          LastKnownName="Import an 835"
+          LastKnownLocation="AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="d81a0d04-5f44-457d-9f96-ed55c5e8be24">
+      <body>Refer to the front desk dashboard for use cases</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="b53a2d77-36fc-4ab1-8ea5-f38338c92e83"
+          LastKnownName="Referral and Authorization Staff"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="e245ed3c-e437-440d-b5d2-65d03d2d448b">
+      <body>Currently a visit template can only associate with activity types but not specific details about the activity (ex: schedule for a flu shot, mamogram, etc.)</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="e83b0d93-8dae-4928-8dea-a22fab011beb"
+          LastKnownName="Manage Activity Templates"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="291b0330-c7c7-4754-973b-43d5efb44d99">
+      <body>We aren't sure how this should work</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="32ec373b-3cac-46f8-beb7-a84b81d1bbfe"
+          LastKnownName="Define default mapping from visits and activities to procedures"
+          LastKnownLocation="Package_0850.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="2b6493a3-0b1c-473b-ad0b-489d7b1199fb">
+      <body>We reserve the right to rename this one.</body>
+      <annotatedElements>
+        <classMoniker
+          Id="6ba0a334-2c05-4996-aaa7-b798da1f6933"
+          LastKnownName="Coding Context"
+          LastKnownLocation="AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="62ef9f40-5292-4bcf-9a13-b4057ea8d4f2">
+      <body>This event is an asynchronous event (bus event)</body>
+      <annotatedElements>
+        <sendSignalActionMoniker
+          Id="b6e26aa8-515b-4b85-9327-b3b2eab8393c"
+          LastKnownName="Coding Context Reviewed Event"
+          LastKnownLocation="AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="74eb3f1b-ab9a-4db5-94c0-6d4dd24af0d6">
+      <body>A message is sent from clinical to billing whenever a visit is reviewed as long as a billing office has been set up.  If a billing office is not set up then the message will not be sent.  This will leave encounters in an unsent state.  The billing administrator will need the ability to send these encounters once the billing office is set up.</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="5626736e-7fe8-4ff1-9b22-46d78ee42b0e"
+          LastKnownName="Batch Pending Encounters From Clinical to Billing"
+          LastKnownLocation="AnalysisModel.uml" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <subsystem
+        Id="9f7b7fe0-0a08-4fc7-a549-a7bb528ef5c4"
+        name="REM"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="ac4f8b5e-7ceb-4b0a-bcad-076c27ab556b"
+        name="Time"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="e14b77ee-4525-4515-973d-ddb1a3524ffb"
+            isDerived="false"
+            sourceEndRoleName="Time"
+            targetEndRoleName="REM"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="9f7b7fe0-0a08-4fc7-a549-a7bb528ef5c4"
+              LastKnownName="REM"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="51c13d4d-5b8f-4f97-a6af-6937be7c62c3"
+                  name="Time"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2c30dba9-28d4-45ee-a21d-ba2a1b589d59"
+                  name="REM"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="18d1210c-a664-4b3b-8433-4f0b9c32c971"
+            isDerived="false"
+            sourceEndRoleName="Time"
+            targetEndRoleName="- Post a request for the nightly export of visit data from the ehr to the pms"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="0a3baabd-93a7-406f-b943-f12ecca36685"
+              LastKnownName="Post a request for the nightly export of visit data from the clinical system to the billing system"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5f28c11d-503c-4bbe-9753-542de1277e8a"
+                  name="Time"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3e1b7f27-da22-4157-acf5-81113ff81011"
+                  name="- Post a request for the nightly export of visit data from the ehr to the pms"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="698a04ac-5e77-4071-9672-1088c156a58e"
+        name="Windows Service"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="c7eeada6-f320-45e7-bd22-57b4bbf6821f"
+            isDerived="false"
+            sourceEndRoleName="Adjudication Engine"
+            targetEndRoleName="REM"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="9f7b7fe0-0a08-4fc7-a549-a7bb528ef5c4"
+              LastKnownName="REM"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0a9fad71-77e6-4dc1-8f02-0b24bbd16457"
+                  name="Adjudication Engine"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d94c1e0e-da77-4d04-9e18-63e9bc07b034"
+                  name="REM"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="213e0987-9c6a-4a24-8c71-7ad8f804e529"
+            isDerived="false"
+            sourceEndRoleName="Service Bus"
+            targetEndRoleName="Pull visit/activity/procedure data from the ehr and generate claims in the pms"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="7138b5e4-b5e6-49ea-81b8-33b98ee27bc1"
+              LastKnownName="Pull visit/activity/procedure data from the ehr and generate claims in the pms"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="46369bc7-1092-4e38-9277-2559e06a80cf"
+                  name="Service Bus"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="960460e8-a80e-47c4-9f50-9b739b362473"
+                  name="Pull visit/activity/procedure data from the ehr and generate claims in the pms"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="53ee4339-c8d0-4097-89b4-b7617836a3d0"
+            isDerived="false"
+            sourceEndRoleName="Service Bus"
+            targetEndRoleName="UseCase5"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b6bcabfa-ec09-4bf9-b58c-5635ab9655f9"
+              LastKnownName="Generate an 837 Professional"
+              LastKnownLocation="Package_0849.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0f16c53f-14ce-4ad2-bfa4-4ef6352accc1"
+                  name="Service Bus"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4514d175-bdb7-4bef-850d-eb8413c5d16a"
+                  name="UseCase5"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="eb92475d-faf5-4aa3-bdff-d9b980785155"
+            isDerived="false"
+            sourceEndRoleName="Service Bus"
+            targetEndRoleName="UseCase6"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="68ad8582-4700-4964-820e-a0210e3da253"
+              LastKnownName="Generate an 837 Institutional"
+              LastKnownLocation="Package_0849.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f3b15278-b900-43f6-9744-7bbd0c74c7e5"
+                  name="Service Bus"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b3fcc619-490d-4752-a0b3-c5c08b682538"
+                  name="UseCase6"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="97f189d0-b8fd-480f-87c3-ed890ffbadbf"
+            isDerived="false"
+            sourceEndRoleName="Service Bus"
+            targetEndRoleName="UseCase7"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d3ddcf66-de8f-4e84-8f47-df0b11dc4cab"
+              LastKnownName="Parse and process an 835"
+              LastKnownLocation="Package_0849.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4bf5fd90-58a9-450e-b394-1996c10a903f"
+                  name="Service Bus"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="99f457c1-2b34-41e0-b3ae-38d64c1df145"
+                  name="UseCase7"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0a3baabd-93a7-406f-b943-f12ecca36685"
+        name="Post a request for the nightly export of visit data from the clinical system to the billing system"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7138b5e4-b5e6-49ea-81b8-33b98ee27bc1"
+        name="Pull visit/activity/procedure data from the ehr and generate claims in the pms"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="ac6540ad-ec3a-40b2-a043-ef18d91cc015"
+        name="Currency" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="f1ea0cab-876f-4e6a-b78c-30ceba135681"
+        name="CodedConcept" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d9eab054-a403-4c5f-93cb-f6bae1ed0219"
+        name="BillingUnitCount" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+        name="string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="75da3007-427d-409f-ad0e-12b14335ef8e"
+        name="bool" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="e10ccdeb-bd61-4f8f-8b9e-5c3f762b18c3"
+        LastKnownName="Rem.Domain.Billing"
+        LastKnownLocation="Package_0849.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="bb60960b-2f23-4024-9963-a7558f5d326f"
+        LastKnownName="Rem.Domain.Clinical"
+        LastKnownLocation="Package_0850.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="a6a007a8-9c51-4417-b3a2-bc7f972a64a0"
+        name="Billing Work Flow"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="c1e68a4e-e011-44c2-afd4-3f0e78d24e17"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="3220fdf2-9506-4576-b779-b9a9822b3da4"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="df949ad8-c30f-4da8-937e-fbba3bf5284c"
+                  LastKnownName="Set Up Visit Templates &amp; Activities"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="21513bc0-001b-4891-8759-aa32a5e18dd7"
+            name="Enter Visits/Activities"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="5aa71517-33b9-4f4b-a399-b3c513340f3a"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="9ad548d3-713e-46f4-a947-6a13a5d60bd2"
+                  LastKnownName="Review Procedure Codes"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="df949ad8-c30f-4da8-937e-fbba3bf5284c"
+            name="Set Up Visit Templates &amp; Activities"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="50aac6cc-680d-414c-b18b-60095f114956"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="df70481f-2da0-48d0-96f3-a34eea7670d1"
+                  LastKnownName="Schedule Visit"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="9ad548d3-713e-46f4-a947-6a13a5d60bd2"
+            name="Review Procedure Codes"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="9018240e-672e-4692-be39-dc943e34c9c4"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="5149e523-18e1-41f5-83a0-d1c45c53fff5"
+                  LastKnownName="Nightly Encounter Extract"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="5149e523-18e1-41f5-83a0-d1c45c53fff5"
+            name="Nightly Encounter Extract"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="9e077587-b9cb-4e36-be82-01daea76f4c0"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="0ce882c6-43dd-4471-90f3-78be65143d79"
+                  LastKnownName="Nightly Encounter Billing Import"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="0ce882c6-43dd-4471-90f3-78be65143d79"
+            name="Nightly Encounter Billing Import"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="dacd5ee1-671d-4909-ac08-e6d78d456027"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="fbd8d9b0-7a5b-49db-a055-ab8ee79c7407"
+                  LastKnownName="Work Claim Errors"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="fbd8d9b0-7a5b-49db-a055-ab8ee79c7407"
+            name="Work Claim Errors"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="6704bcbe-f189-4072-92bf-e0923040f3a6"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="cc16d73c-cede-4db9-a042-da750971dd98"
+                  LastKnownName="Review and Edit Claims"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="cc16d73c-cede-4db9-a042-da750971dd98"
+            name="Review and Edit Claims"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="dc1d7716-7ca6-4131-bac8-8260843d5cce"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="5b123e43-460e-4dfa-a28b-d5b1df7e2ed0"
+                  LastKnownName="Request Generation of 837 Professional"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="5b123e43-460e-4dfa-a28b-d5b1df7e2ed0"
+            name="Request Generation of 837 Professional"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="e72655c6-27c5-46af-b17a-410e8e1cff2a"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="78c0c1a9-54bf-41e6-9778-f8abceaca6aa"
+                  LastKnownName="Generate 837 Professional"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="78c0c1a9-54bf-41e6-9778-f8abceaca6aa"
+            name="Generate 837 Professional"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="fec369b1-beb6-4d70-9640-68727e890993"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="ca4164e5-ea31-4066-8d75-86aa572dac6c"
+                  LastKnownName="Download 837 Professional"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="ca4164e5-ea31-4066-8d75-86aa572dac6c"
+            name="Download 837 Professional"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="e1339cc9-0254-449e-b19a-35faeba2cc3f"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="3f0cda28-8e7c-4045-963e-1c61a557c160"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="cc1b5c3f-d36e-40e0-92e2-b8c7122a7b7a"
+            name="Import an 835"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="846a9fa1-2bf8-4b21-b534-346f502f8954"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="282683d3-9ac8-4e18-9348-cc6d734f7730"
+                  LastKnownName="Parse and Process 835"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="3f0cda28-8e7c-4045-963e-1c61a557c160"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="efe9534f-2a3e-4cab-92e2-efe3217627c3"
+                guard="If we have access to an 835"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="cc1b5c3f-d36e-40e0-92e2-b8c7122a7b7a"
+                  LastKnownName="Import an 835"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="0a535636-33fb-4bfe-b451-b1b15c4758d7"
+                guard="If we do not have access to an 835"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="808f6610-f26b-4e5a-b75b-ff318c52587b"
+                  LastKnownName="Manually enter a payment"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="808f6610-f26b-4e5a-b75b-ff318c52587b"
+            name="Manually enter a payment"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="16c47122-1142-4a96-bd2b-e435d1826c9a"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="5b7fa956-db53-47d2-8220-0ea24a837dfc"
+                  LastKnownName="Work Denials"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="282683d3-9ac8-4e18-9348-cc6d734f7730"
+            name="Parse and Process 835"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="f7889128-d0ae-4a58-adc7-b6ea0a7b5c01"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="5b7fa956-db53-47d2-8220-0ea24a837dfc"
+                  LastKnownName="Work Denials"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="5b7fa956-db53-47d2-8220-0ea24a837dfc"
+            name="Work Denials"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="2a57395a-b0a0-46e0-812b-b9a35197af95"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="a1f84bac-4204-4f00-9694-eb296264c8d3"
+                  LastKnownName="Decision2"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="a1f84bac-4204-4f00-9694-eb296264c8d3"
+            name="Decision2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="4f1a48b9-a99d-4692-ad0e-844c811afd5c"
+                guard="If a claim requires a resubmission to the payor"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="71d4612a-4e60-4773-a4e8-eb51905a2e51"
+                  LastKnownName="Rebill"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="97777769-71c1-4afe-a370-7723f65d4207"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="150ef120-874e-4ecb-8a51-38352225d4d5"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="71d4612a-4e60-4773-a4e8-eb51905a2e51"
+            name="Rebill"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="5ffccc72-74ab-4130-b290-11a02bca4eae"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="cc16d73c-cede-4db9-a042-da750971dd98"
+                  LastKnownName="Review and Edit Claims"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode
+            Id="150ef120-874e-4ecb-8a51-38352225d4d5"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <opaqueAction
+            Id="df70481f-2da0-48d0-96f3-a34eea7670d1"
+            name="Schedule Visit"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="ecae0178-41cc-4463-bb87-f09f07125023"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="21513bc0-001b-4891-8759-aa32a5e18dd7"
+                  LastKnownName="Enter Visits/Activities"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="ad9c11cc-b98c-4f9a-b127-6895ce8e494a"
+        LastKnownName="Rem.Domain.Adjudication"
+        LastKnownLocation="Package_1246.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="a8fcc276-712e-4481-a3c3-086ea1bb3261"
+        name="Procedure Coding Status State Chart"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="bcec55ce-3e86-44df-b19e-9477bfbc2da2"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="337dcc67-3a1e-4580-8a8e-8720b510557b"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="a14162f7-c4e9-4793-876c-4fbc9b06d591"
+                  LastKnownName="Pending Review"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="a14162f7-c4e9-4793-876c-4fbc9b06d591"
+            name="Pending Review"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="81165975-109e-489d-ad1c-2b4c82c7302a"
+                guard="Reviewed by a certified coder"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="38570ac6-3bb2-4415-88e4-f57c7bf63b71"
+                  LastKnownName="Reviewed"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="38570ac6-3bb2-4415-88e4-f57c7bf63b71"
+            name="Reviewed"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="2a4263d4-80b8-409e-85b8-fe5c0c8c0235"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="899804e1-ff5c-4ce1-8ef9-411cf7553631"
+                  LastKnownName="Sent To Billing"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="899804e1-ff5c-4ce1-8ef9-411cf7553631"
+            name="Sent To Billing"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="e7c76950-1d40-4555-854f-0c2d2515082b"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="ee49fe7a-1b94-4805-97ca-85585e8c5734"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="ab314f91-f3e2-4d7a-acf9-fb73d54e52ce"
+                guard="If relevant billing information has changed after being sent to the billing system"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="ad3ed191-8f0c-4d28-bfc3-50690429353f"
+                  LastKnownName="Changed and Pending Review"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode
+            Id="ee49fe7a-1b94-4805-97ca-85585e8c5734"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <opaqueAction
+            Id="ad3ed191-8f0c-4d28-bfc3-50690429353f"
+            name="Changed and Pending Review"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="cb994377-1e65-4009-a9c9-06830069cc34"
+                guard="Reviewed by a certified coder"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="38570ac6-3bb2-4415-88e4-f57c7bf63b71"
+                  LastKnownName="Reviewed"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b8be1060-3033-4829-ae73-2ef429d0e80d"
+        name="Set up billing offices"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="2694ee2e-ff46-4ee1-9f8e-156c28c7f01e"
+        LastKnownName="Rem.Domain.Core"
+        LastKnownLocation="Package_0930.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <interaction
+        Id="3a47649b-7d82-449d-8364-4ed387fc6f16"
+        name="Contract Domain Model"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false">
+        <lifelines>
+          <lifeline
+            Id="c31d85f6-a84b-4630-8b28-5cfd6110c6e9"
+            name="contract : Contract"
+            isActor="false"
+            lifelineDisplayName="contract : Contract">
+            <represents>
+              <propertyMoniker
+                Id="053fdca1-c5bf-4f81-a055-f49e7f048e9d"
+                LastKnownLocation="AnalysisModel.uml" />
+            </represents>
+          </lifeline>
+        </lifelines>
+        <ownedAttributesInternal>
+          <property
+            Id="053fdca1-c5bf-4f81-a055-f49e7f048e9d"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="aeb1c02f-7b89-481a-9a38-663c73b12597"
+                LastKnownName="Contract"
+                LastKnownLocation="Package_0849.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="11be317b-2695-478d-91c2-fa0933391f49"
+        name="Component1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="38d41bb4-7c0e-4bb6-88f6-7483294389cd"
+        name="Visit"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="cf143d10-a181-4256-a397-1831ce5309a5"
+            isDerived="false"
+            sourceEndRoleName="Visit"
+            targetEndRoleName="Activity"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="28555158-baab-4816-8333-1b166bc891c5"
+              LastKnownName="Activity"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="37a575c6-72d9-453b-9049-0712b4db1095"
+                  name="Visit"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d43e6c03-3080-4070-8c6a-4b3ca2014a85"
+                  name="Activity"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="3cfa31d5-7b8e-47d1-97d3-53c58d41d655"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="b8fe52ab-461d-43ec-bd81-81d9ea5a0087"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="23085a51-bb3a-4c85-a609-0d144d2101eb"
+            isDerived="false"
+            sourceEndRoleName="Visit"
+            targetEndRoleName="Coding Context"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6ba0a334-2c05-4996-aaa7-b798da1f6933"
+              LastKnownName="Coding Context"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="44b4d5da-b101-494f-b91a-49c3eb254d2d"
+                  name="Visit"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ecec2d9c-8980-40ee-9dc9-f1873f95629c"
+                  name="Coding Context"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="8ac6b2f2-fb0c-4ce6-8e57-6f4cec1856ee"
+            name="Coding Context"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="8a8a7edb-4b45-4ad3-969a-5aa7a53bb682"
+                LastKnownName="Coding Context"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="28555158-baab-4816-8333-1b166bc891c5"
+        name="Activity"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="b4423886-999b-45aa-b866-b53568e977e9"
+            isDerived="false"
+            sourceEndRoleName="Activity"
+            targetEndRoleName="Procedure"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="00e009a6-08b4-45d5-be75-c6993902d741"
+              LastKnownName="Procedure"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0c1417b0-e80d-49d6-91bd-c102b6d126e3"
+                  name="Activity"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7e8f1097-9f81-4ccf-950c-394f8e5afcc7"
+                  name="Procedure"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="9bb2fa80-48c9-4703-87cd-12e10c25a235"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="8bd3d83a-54da-4391-a89d-3825fbeab819"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="c7ace03c-3d43-45b5-8db1-0e546d59a8cf"
+            name="Procedure"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="00e009a6-08b4-45d5-be75-c6993902d741"
+                LastKnownName="Procedure"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3fe36c79-5894-46fd-9fa2-c562fa1e0ee4"
+            name="Activity Date Time Range"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="e4fa8072-a8e7-4856-96aa-c75e009729d2"
+                LastKnownName="Date Time Range"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6ba0a334-2c05-4996-aaa7-b798da1f6933"
+        name="Coding Context"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="cb02b0b9-844e-49bd-bde3-87410256ded0"
+            isDerived="false"
+            sourceEndRoleName="Coding Context"
+            targetEndRoleName="Coding Status"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="9abf431b-ec49-4af4-a71f-7e0798139de3"
+              LastKnownName="Coding Status"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="837b5ab2-b902-4e36-8bd0-f78bd6b9eaf8"
+                  name="Coding Context"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="df2fe6e1-1175-431a-b714-d2a3f4575746"
+                  name="Coding Status"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="d39d2a7a-4554-4f65-b4a5-9fb047c81ee7"
+            isDerived="false"
+            sourceEndRoleName="Coding Context"
+            targetEndRoleName="Reviewed By Staff"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="8bf72ea6-57b3-423e-abe6-55b2de45fccc"
+              LastKnownName="Staff"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1f5e60bd-23a7-4bad-8dea-76f16df615c6"
+                  name="Coding Context"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d596e93b-44c1-43a1-9bba-3512148ba176"
+                  name="Reviewed By Staff"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="2d1cdcce-a486-4920-986b-4580f0dc41f5"
+            name="Coding Status"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="201814d1-1ca1-4ec3-8abb-ada823fbd50a"
+                LastKnownName="Coding Status"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="2b37d1f1-7eda-4a8c-9387-acb01915d8a6"
+            name="Coded By Staff"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="64687368-9c2a-42dd-9e9f-0d9a4067e1b0"
+                LastKnownName="Staff"
+                LastKnownLocation="Package_0930.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="232518fb-15fa-4743-9389-20e480bc771c"
+            name="Coded Date"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="bfdba72c-3b12-417c-ba80-268df4208ca2"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e46c6e9d-b857-4baf-848e-acf49be65a67"
+            name="Error Message"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="030e1120-8a46-4251-bead-53366c6fc16d"
+            name="MarkAsReviewed"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="e3b5692b-e592-4729-9dc4-d37ca2ed8692"
+            name="ReportError"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="71d19002-4987-4d11-bc9c-5fa8ee04251f"
+                  name="errorMessage"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                      LastKnownName="string"
+                      LastKnownLocation="AnalysisModel.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="00e009a6-08b4-45d5-be75-c6993902d741"
+        name="Procedure"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="4e46e270-53c7-4c23-8214-472211fb9839"
+            isDerived="false"
+            sourceEndRoleName="Procedures"
+            targetEndRoleName="Coding Context"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6ba0a334-2c05-4996-aaa7-b798da1f6933"
+              LastKnownName="Coding Context"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="249b8099-eeb6-4d14-9688-d986ee82edc9"
+                  name="Procedures"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="1e5c4c9d-72c8-4756-8e05-0bb8b183a6fd"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="c7288628-e328-440f-833c-76d5d92afb5d"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0f94601b-ce3b-49dd-9cac-bea13aaa6c83"
+                  name="Coding Context"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="ef783460-4138-4469-8a84-1acf5f88623c"
+            isDerived="false"
+            sourceEndRoleName="Procedure"
+            targetEndRoleName="Procedure Type"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="c3cd2d63-117a-4ee7-adff-134e3bd9fae7"
+              LastKnownName="Procedure Type"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f59d68ec-94a1-4da8-88d1-2e3813cb1336"
+                  name="Procedure"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="723b3f5c-088e-4db8-afef-eefe9db0d043"
+                  name="Procedure Type"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="ddb05db9-21c2-479a-a3c4-90c515ede6ce"
+            name="Procedure Type"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="744fd12b-b671-42d3-85dd-f85c3bcef62b"
+                LastKnownName="Procedure Type"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ddc0993a-fb25-413b-9e4b-129101eca16f"
+            name="Procedure Code"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="84ca4034-60ab-4f5a-8262-6ad99e959fd0"
+                LastKnownName="Coded Concept"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f462df06-b693-4b2c-8c81-74e708be92db"
+            name="First Modifier Code"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="84ca4034-60ab-4f5a-8262-6ad99e959fd0"
+                LastKnownName="Coded Concept"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="df7e2ab5-de7a-4c02-a834-62af101bcbc6"
+            name="Second Modifier Code"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="84ca4034-60ab-4f5a-8262-6ad99e959fd0"
+                LastKnownName="Coded Concept"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="5824f441-ce75-44ff-bf9a-4d22e683cdf3"
+            name="Third Modifier Code"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="84ca4034-60ab-4f5a-8262-6ad99e959fd0"
+                LastKnownName="Coded Concept"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="858969d7-c5ec-455d-96e4-238a3090bbc5"
+            name="Fourth Modifier Code"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="84ca4034-60ab-4f5a-8262-6ad99e959fd0"
+                LastKnownName="Coded Concept"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="606a8f1e-28fe-4570-aa76-8795af05188a"
+            name="Unit Count"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="782aafc7-9e2a-42f8-be43-423fee9576a9"
+                LastKnownName="Billing Unit Count"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="c3cd2d63-117a-4ee7-adff-134e3bd9fae7"
+        name="Procedure Type"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="215216cd-5575-4d7a-b410-285b585bb57f"
+            name="Visit" />
+          <enumerationLiteral
+            Id="8355f352-af1b-41d8-8b6d-de7d441aa51f"
+            name="Activity" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="9abf431b-ec49-4af4-a71f-7e0798139de3"
+        name="Coding Status"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="28ceeb53-9ede-405c-8a78-724f2d2c3cf2"
+            name="Reviewed" />
+          <enumerationLiteral
+            Id="de0bd1e9-274a-4bc5-a524-2d9223ea5b6b"
+            name="Pending Review" />
+          <enumerationLiteral
+            Id="873dee48-ffe7-4f8b-b2f1-6217949f8e14"
+            name="Changed and Pending Review" />
+          <enumerationLiteral
+            Id="740c76b7-b09d-4844-aa30-ccab670c24cb"
+            name="Received by Billing" />
+          <enumerationLiteral
+            Id="c5160be0-5361-4502-8ee3-5d67a06543ab"
+            name="Has Error" />
+          <enumerationLiteral
+            Id="098a5bf6-5f22-4ae7-a89b-1dad9eb58594"
+            name="Sent to Billing" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="84ca4034-60ab-4f5a-8262-6ad99e959fd0"
+        name="Coded Concept" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="782aafc7-9e2a-42f8-be43-423fee9576a9"
+        name="Billing Unit Count" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="e4fa8072-a8e7-4856-96aa-c75e009729d2"
+        name="Date Time Range" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="17471457-cd44-44d3-8ff8-deb874658e2b"
+        LastKnownName="Rem.Domain.ClinicalBilling.ContextMap"
+        LastKnownLocation="Package_0938.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="e4100e19-e0d3-45f9-ab2a-40020485e022"
+        name="Visit Coded Event"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="3eb7f382-bc1f-43bf-b44b-28c566c33769"
+            name="Initial1"
+            isLeaf="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="2595cb90-250c-4312-8272-225b5d27f7be"
+                guard="Mark as Reviewed"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="229d9c3a-19bc-444c-b367-7a5a8b2ac30c"
+                  LastKnownName="Coding Context"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </initialNode>
+          <objectNode
+            Id="229d9c3a-19bc-444c-b367-7a5a8b2ac30c"
+            name="Coding Context"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="037b11d1-74c7-44d6-9b9c-196771ea6803"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <sendSignalActionMoniker
+                  Id="b6e26aa8-515b-4b85-9327-b3b2eab8393c"
+                  LastKnownName="Coding Context Reviewed Event"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="7c95428d-47b3-40d2-b578-3ea4e9b4e8d2"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <sendSignalAction
+            Id="b6e26aa8-515b-4b85-9327-b3b2eab8393c"
+            name="Coding Context Reviewed Event"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="0d9f3c43-6ab5-432e-806a-72f91e159f9b"
+                isLeaf="false">
+                <acceptEventActionMoniker
+                  Id="7493b0b5-4932-46dc-b556-8a44507f8ff8"
+                  LastKnownName="Coding Context Reviewed Event Handler"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </sendSignalAction>
+          <acceptEventAction
+            Id="7493b0b5-4932-46dc-b556-8a44507f8ff8"
+            name="Coding Context Reviewed Event Handler"
+            isLeaf="false"
+            isUnmarshall="false" />
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <interaction
+        Id="d5aecd5b-e4ba-4164-9e0f-a0cba29feddc"
+        name="Vist Reviewed Sequence"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false">
+        <fragments>
+          <behaviorExecutionSpecification
+            Id="a0352341-e031-426c-8ac9-2e5a64775843"
+            name="BehaviorExecutionSpecification1">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="316d9bd4-c0c5-44f4-bf17-af1787ff9e90"
+                LastKnownName="context : Coding Context"
+                LastKnownLocation="AnalysisModel.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="a56dd44b-219d-4ffb-b1d1-74062c5e6c1a"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="AnalysisModel.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="827c35ef-3c46-482a-896d-85efd72caef1"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="AnalysisModel.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="f95dbae0-fb8f-4dcc-b032-23d28e871544"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="10d3cb0b-3fde-42a4-a4fe-14fc7dbbf5ba"
+                LastKnownName="MessageOccurrenceSpecification5"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="ed7607d4-3c42-4121-a1af-75c5574815c7"
+                LastKnownName="MessageOccurrenceSpecification8"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="9984a033-8360-40c5-90dc-c80bff60d5c9"
+                LastKnownName="MessageOccurrenceSpecification3"
+                LastKnownLocation="AnalysisModel.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="827c35ef-3c46-482a-896d-85efd72caef1"
+            name="ExecutionOccurrenceSpecification1">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="85df9ee9-dc35-433b-bb88-de838e28c82c"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="316d9bd4-c0c5-44f4-bf17-af1787ff9e90"
+                LastKnownName="context : Coding Context"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="50e600f6-6b6e-4754-b0ee-1ca89073a93d"
+            name="MessageOccurrenceSpecification1">
+            <covered>
+              <lifelineMoniker
+                Id="dfdf65ff-e057-4938-9e80-b5b274ef0b49"
+                LastKnownName="coder : Certified Coder"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="f95dbae0-fb8f-4dcc-b032-23d28e871544"
+            name="MessageOccurrenceSpecification2">
+            <covered>
+              <lifelineMoniker
+                Id="316d9bd4-c0c5-44f4-bf17-af1787ff9e90"
+                LastKnownName="context : Coding Context"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="dda4bb1f-2a0a-43dd-badd-04b3965441f8"
+            name="BehaviorExecutionSpecification2">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="3292b6ed-3b6b-4769-84dc-ab06146ba4ae"
+                LastKnownName="message : Visit Reviewed Message"
+                LastKnownLocation="AnalysisModel.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="f9ad2b7e-2866-4540-b714-a4ea466bef5c"
+                LastKnownName="ExecutionOccurrenceSpecification4"
+                LastKnownLocation="AnalysisModel.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="f1d60387-95f8-4ee9-b71f-5e2baf916e0a"
+                LastKnownName="ExecutionOccurrenceSpecification3"
+                LastKnownLocation="AnalysisModel.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="1728227e-c6e8-455b-8b78-89c6e58678e4"
+                LastKnownName="MessageOccurrenceSpecification6"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="cfca7c22-8ec3-4646-b88a-8f6af11ecfa1"
+                LastKnownName="MessageOccurrenceSpecification9"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="e146b721-b1fd-40eb-9e48-02480b0c9b68"
+                LastKnownName="MessageOccurrenceSpecification12"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="38237f35-1758-48f5-94a0-2e223b068d44"
+                LastKnownName="MessageOccurrenceSpecification7"
+                LastKnownLocation="AnalysisModel.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="f1d60387-95f8-4ee9-b71f-5e2baf916e0a"
+            name="ExecutionOccurrenceSpecification3">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="14bcad82-ab2b-42fb-9961-d20c69ee46d5"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="3292b6ed-3b6b-4769-84dc-ab06146ba4ae"
+                LastKnownName="message : Visit Reviewed Message"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="1728227e-c6e8-455b-8b78-89c6e58678e4"
+            name="MessageOccurrenceSpecification6">
+            <covered>
+              <lifelineMoniker
+                Id="3292b6ed-3b6b-4769-84dc-ab06146ba4ae"
+                LastKnownName="message : Visit Reviewed Message"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="10d3cb0b-3fde-42a4-a4fe-14fc7dbbf5ba"
+            name="MessageOccurrenceSpecification5">
+            <covered>
+              <lifelineMoniker
+                Id="316d9bd4-c0c5-44f4-bf17-af1787ff9e90"
+                LastKnownName="context : Coding Context"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="f52d19bd-d997-485a-97f2-2ae594bd2780"
+            name="BehaviorExecutionSpecification3">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="f4ab8515-c43c-4108-abb7-23621ab2fe25"
+                LastKnownName="service Bus : Service Bus"
+                LastKnownLocation="AnalysisModel.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="ed781d5d-7cf7-4f08-894e-4a93a7fdacba"
+                LastKnownName="ExecutionOccurrenceSpecification6"
+                LastKnownLocation="AnalysisModel.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="c3ef3532-12c1-47aa-af4b-54ef06e31cfe"
+                LastKnownName="ExecutionOccurrenceSpecification5"
+                LastKnownLocation="AnalysisModel.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="4500c208-a28c-4e16-8467-caeaf6810365"
+                LastKnownName="MessageOccurrenceSpecification10"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="f6c3d89f-4463-482e-a9d2-5566e79196b0"
+                LastKnownName="MessageOccurrenceSpecification11"
+                LastKnownLocation="AnalysisModel.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="c3ef3532-12c1-47aa-af4b-54ef06e31cfe"
+            name="ExecutionOccurrenceSpecification5">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="9281d885-0cb9-4031-8bde-755e38575b23"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="f4ab8515-c43c-4108-abb7-23621ab2fe25"
+                LastKnownName="service Bus : Service Bus"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="4500c208-a28c-4e16-8467-caeaf6810365"
+            name="MessageOccurrenceSpecification10">
+            <covered>
+              <lifelineMoniker
+                Id="f4ab8515-c43c-4108-abb7-23621ab2fe25"
+                LastKnownName="service Bus : Service Bus"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="cfca7c22-8ec3-4646-b88a-8f6af11ecfa1"
+            name="MessageOccurrenceSpecification9">
+            <covered>
+              <lifelineMoniker
+                Id="3292b6ed-3b6b-4769-84dc-ab06146ba4ae"
+                LastKnownName="message : Visit Reviewed Message"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="f6c3d89f-4463-482e-a9d2-5566e79196b0"
+            name="MessageOccurrenceSpecification11">
+            <covered>
+              <lifelineMoniker
+                Id="f4ab8515-c43c-4108-abb7-23621ab2fe25"
+                LastKnownName="service Bus : Service Bus"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="e146b721-b1fd-40eb-9e48-02480b0c9b68"
+            name="MessageOccurrenceSpecification12">
+            <covered>
+              <lifelineMoniker
+                Id="3292b6ed-3b6b-4769-84dc-ab06146ba4ae"
+                LastKnownName="message : Visit Reviewed Message"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="ed781d5d-7cf7-4f08-894e-4a93a7fdacba"
+            name="ExecutionOccurrenceSpecification6">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="1b86fb23-9194-44c5-acf3-fa1d94cb9ad8"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="f4ab8515-c43c-4108-abb7-23621ab2fe25"
+                LastKnownName="service Bus : Service Bus"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="38237f35-1758-48f5-94a0-2e223b068d44"
+            name="MessageOccurrenceSpecification7">
+            <covered>
+              <lifelineMoniker
+                Id="3292b6ed-3b6b-4769-84dc-ab06146ba4ae"
+                LastKnownName="message : Visit Reviewed Message"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="ed7607d4-3c42-4121-a1af-75c5574815c7"
+            name="MessageOccurrenceSpecification8">
+            <covered>
+              <lifelineMoniker
+                Id="316d9bd4-c0c5-44f4-bf17-af1787ff9e90"
+                LastKnownName="context : Coding Context"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="f9ad2b7e-2866-4540-b714-a4ea466bef5c"
+            name="ExecutionOccurrenceSpecification4">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="55413b7c-1414-402c-ad76-5ef9ba21c85f"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="3292b6ed-3b6b-4769-84dc-ab06146ba4ae"
+                LastKnownName="message : Visit Reviewed Message"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="b9aa268a-fad1-4201-b3a1-c81d6b52993b"
+            name="MessageOccurrenceSpecification4">
+            <covered>
+              <lifelineMoniker
+                Id="dfdf65ff-e057-4938-9e80-b5b274ef0b49"
+                LastKnownName="coder : Certified Coder"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="9984a033-8360-40c5-90dc-c80bff60d5c9"
+            name="MessageOccurrenceSpecification3">
+            <covered>
+              <lifelineMoniker
+                Id="316d9bd4-c0c5-44f4-bf17-af1787ff9e90"
+                LastKnownName="context : Coding Context"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="a56dd44b-219d-4ffb-b1d1-74062c5e6c1a"
+            name="ExecutionOccurrenceSpecification2">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="aead2e0c-26fd-4ca9-820c-4ccfcb92be13"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="316d9bd4-c0c5-44f4-bf17-af1787ff9e90"
+                LastKnownName="context : Coding Context"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline
+            Id="dfdf65ff-e057-4938-9e80-b5b274ef0b49"
+            name="coder : Certified Coder"
+            isActor="true"
+            lifelineDisplayName="coder : Certified Coder">
+            <represents>
+              <propertyMoniker
+                Id="3cfaba34-b138-4c6a-aa3f-e61737c539b4"
+                LastKnownLocation="AnalysisModel.uml" />
+            </represents>
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="50e600f6-6b6e-4754-b0ee-1ca89073a93d"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="b9aa268a-fad1-4201-b3a1-c81d6b52993b"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="AnalysisModel.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="316d9bd4-c0c5-44f4-bf17-af1787ff9e90"
+            name="context : Coding Context"
+            isActor="false"
+            lifelineDisplayName="context : Coding Context">
+            <represents>
+              <propertyMoniker
+                Id="7964fd73-ffea-4406-86db-2f53ca66d0e3"
+                LastKnownLocation="AnalysisModel.uml" />
+            </represents>
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="827c35ef-3c46-482a-896d-85efd72caef1"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="a56dd44b-219d-4ffb-b1d1-74062c5e6c1a"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="AnalysisModel.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="3292b6ed-3b6b-4769-84dc-ab06146ba4ae"
+            name="message : Visit Reviewed Message"
+            isActor="false"
+            lifelineDisplayName="message : Visit Reviewed Message">
+            <represents>
+              <propertyMoniker
+                Id="b0b701c6-a4aa-4867-83bd-a8cd7637b320"
+                LastKnownLocation="AnalysisModel.uml" />
+            </represents>
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="f1d60387-95f8-4ee9-b71f-5e2baf916e0a"
+                LastKnownName="ExecutionOccurrenceSpecification3"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="f9ad2b7e-2866-4540-b714-a4ea466bef5c"
+                LastKnownName="ExecutionOccurrenceSpecification4"
+                LastKnownLocation="AnalysisModel.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="f4ab8515-c43c-4108-abb7-23621ab2fe25"
+            name="service Bus : Service Bus"
+            isActor="true"
+            lifelineDisplayName="service Bus : Service Bus">
+            <represents>
+              <propertyMoniker
+                Id="374e310d-92bf-4fd4-bf6a-e2fcc748e849"
+                LastKnownLocation="AnalysisModel.uml" />
+            </represents>
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="c3ef3532-12c1-47aa-af4b-54ef06e31cfe"
+                LastKnownName="ExecutionOccurrenceSpecification5"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="ed781d5d-7cf7-4f08-894e-4a93a7fdacba"
+                LastKnownName="ExecutionOccurrenceSpecification6"
+                LastKnownLocation="AnalysisModel.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message
+            Id="f98ac8d5-b459-4572-92f4-5f460dd5b636"
+            name="Mark as Reviewed"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="50e600f6-6b6e-4754-b0ee-1ca89073a93d"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="f95dbae0-fb8f-4dcc-b032-23d28e871544"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="d175e46b-a2cc-45bd-9ffe-b8be706b52c3"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="9984a033-8360-40c5-90dc-c80bff60d5c9"
+                LastKnownName="MessageOccurrenceSpecification3"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="b9aa268a-fad1-4201-b3a1-c81d6b52993b"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="5b3c98cf-c10c-449f-924d-6016b013c841"
+            name="&lt;&lt;create&gt;&gt;"
+            messageKind="Complete"
+            messageSort="CreateMessage"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="10d3cb0b-3fde-42a4-a4fe-14fc7dbbf5ba"
+                LastKnownName="MessageOccurrenceSpecification5"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="1728227e-c6e8-455b-8b78-89c6e58678e4"
+                LastKnownName="MessageOccurrenceSpecification6"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="890966a7-f4c9-49ae-be1a-6f380a13990e"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="38237f35-1758-48f5-94a0-2e223b068d44"
+                LastKnownName="MessageOccurrenceSpecification7"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="ed7607d4-3c42-4121-a1af-75c5574815c7"
+                LastKnownName="MessageOccurrenceSpecification8"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="bd357494-d516-44f3-a79a-4776de562c8a"
+            name="Send"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="cfca7c22-8ec3-4646-b88a-8f6af11ecfa1"
+                LastKnownName="MessageOccurrenceSpecification9"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="4500c208-a28c-4e16-8467-caeaf6810365"
+                LastKnownName="MessageOccurrenceSpecification10"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="fd3aca0f-37ac-41c1-99fb-54b782f45c6f"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="f6c3d89f-4463-482e-a9d2-5566e79196b0"
+                LastKnownName="MessageOccurrenceSpecification11"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="e146b721-b1fd-40eb-9e48-02480b0c9b68"
+                LastKnownName="MessageOccurrenceSpecification12"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+        </messages>
+        <ownedAttributesInternal>
+          <property
+            Id="7964fd73-ffea-4406-86db-2f53ca66d0e3"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="8a8a7edb-4b45-4ad3-969a-5aa7a53bb682"
+                LastKnownName="Coding Context"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3cfaba34-b138-4c6a-aa3f-e61737c539b4"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <actorMoniker
+                Id="b42858f4-7998-4c18-b905-2cd8695a06d1"
+                LastKnownName="Certified Coder"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b0b701c6-a4aa-4867-83bd-a8cd7637b320"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="54ee953c-5775-4472-a25e-3afcd873e61b"
+                LastKnownName="Visit Reviewed Message"
+                LastKnownLocation="Package_0930.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="374e310d-92bf-4fd4-bf6a-e2fcc748e849"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <actorMoniker
+                Id="7115fb0f-bb9d-4067-ac61-4cfa41e5678a"
+                LastKnownName="Service Bus"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="85df9ee9-dc35-433b-bb88-de838e28c82c"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="aead2e0c-26fd-4ca9-820c-4ccfcb92be13"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="14bcad82-ab2b-42fb-9961-d20c69ee46d5"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="55413b7c-1414-402c-ad76-5ef9ba21c85f"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="7115fb0f-bb9d-4067-ac61-4cfa41e5678a"
+        name="Service Bus"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="9281d885-0cb9-4031-8bde-755e38575b23"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="1b86fb23-9194-44c5-acf3-fa1d94cb9ad8"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <interaction
+        Id="2b53f580-0f99-4698-b5ac-d557eaaba1e8"
+        name="Visit Reviewed Message Received - Patient Account Missing"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false">
+        <fragments>
+          <behaviorExecutionSpecification
+            Id="e3c1bcd1-7210-4d51-b473-2328d27400b1"
+            name="BehaviorExecutionSpecification1">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="5e6d30eb-8cf0-43c1-89d4-4b2d2f855b3a"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="AnalysisModel.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="4fc77235-447b-4cd1-8a51-15c1d5926546"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="AnalysisModel.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="eaecf0b7-c7c8-42f6-b0a3-b84710b62475"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="03a08fd7-bd67-44ed-a03b-a01f8e93e95e"
+                LastKnownName="MessageOccurrenceSpecification5"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="cdd5b429-e7e8-4e7c-aa0b-8bd1116c45f8"
+                LastKnownName="MessageOccurrenceSpecification8"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="9e361edf-f247-42be-a06f-020a9df707c2"
+                LastKnownName="MessageOccurrenceSpecification9"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="eca44576-aecc-413c-93c7-66bcf9abd8de"
+                LastKnownName="MessageOccurrenceSpecification12"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="ba2535f0-82a0-4b76-94c5-7aad548e142b"
+                LastKnownName="MessageOccurrenceSpecification13"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="41e744d8-81a0-4481-a559-357b87269f75"
+                LastKnownName="MessageOccurrenceSpecification16"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="5475a0b0-6313-46fd-b730-e4de2020d228"
+                LastKnownName="MessageOccurrenceSpecification17"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="87d82b4f-a6ba-46d5-b753-1c93106ccb80"
+                LastKnownName="ExecutionOccurrenceSpecification9"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="1630c018-0522-45d5-a65a-ccd695e04839"
+                LastKnownName="ExecutionOccurrenceSpecification10"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="0d9fc629-b281-4973-b86b-a10700627c66"
+                LastKnownName="MessageOccurrenceSpecification23"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="43569abd-0680-4e7c-92b6-1fde87fee910"
+                LastKnownName="ExecutionOccurrenceSpecification13"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="4d1e36fb-841c-4e0d-899d-328dffee0990"
+                LastKnownName="ExecutionOccurrenceSpecification14"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="8b76868b-5503-4847-9107-b01de2e8bd4c"
+                LastKnownName="MessageOccurrenceSpecification3"
+                LastKnownLocation="AnalysisModel.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="4fc77235-447b-4cd1-8a51-15c1d5926546"
+            name="ExecutionOccurrenceSpecification1">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="fc3d2e35-ab6c-4676-be43-82d956cd3c20"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="eaecf0b7-c7c8-42f6-b0a3-b84710b62475"
+            name="MessageOccurrenceSpecification2">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="1caf1816-21d2-437b-8e5e-10d75a890d5b"
+            name="MessageOccurrenceSpecification1">
+            <covered>
+              <lifelineMoniker
+                Id="f439e070-c246-454b-a47c-e2c579042d07"
+                LastKnownName="bus : Service Bus"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="eefe2f1e-01fe-445e-98b1-eaaa1ac426f0"
+            name="BehaviorExecutionSpecification2">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="f424e2e0-7c19-4869-a1a1-4046aca9b2d3"
+                LastKnownName="Visit Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="24f5fa4c-1f44-40dc-8484-74fd1778f3a3"
+                LastKnownName="ExecutionOccurrenceSpecification4"
+                LastKnownLocation="AnalysisModel.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="1357abc5-1fe3-498b-8015-ba1188630ad6"
+                LastKnownName="ExecutionOccurrenceSpecification3"
+                LastKnownLocation="AnalysisModel.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="9676dc28-bb2d-4713-8bac-f9a2e3360fa0"
+                LastKnownName="MessageOccurrenceSpecification6"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="700d0165-a2cd-4048-9b18-8bb9e5b97058"
+                LastKnownName="MessageOccurrenceSpecification7"
+                LastKnownLocation="AnalysisModel.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="1357abc5-1fe3-498b-8015-ba1188630ad6"
+            name="ExecutionOccurrenceSpecification3">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="93d5b2c7-7056-4ad7-b0d6-cb5592d36520"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="f424e2e0-7c19-4869-a1a1-4046aca9b2d3"
+                LastKnownName="Visit Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="03a08fd7-bd67-44ed-a03b-a01f8e93e95e"
+            name="MessageOccurrenceSpecification5">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="9676dc28-bb2d-4713-8bac-f9a2e3360fa0"
+            name="MessageOccurrenceSpecification6">
+            <covered>
+              <lifelineMoniker
+                Id="f424e2e0-7c19-4869-a1a1-4046aca9b2d3"
+                LastKnownName="Visit Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="700d0165-a2cd-4048-9b18-8bb9e5b97058"
+            name="MessageOccurrenceSpecification7">
+            <covered>
+              <lifelineMoniker
+                Id="f424e2e0-7c19-4869-a1a1-4046aca9b2d3"
+                LastKnownName="Visit Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="cdd5b429-e7e8-4e7c-aa0b-8bd1116c45f8"
+            name="MessageOccurrenceSpecification8">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="24f5fa4c-1f44-40dc-8484-74fd1778f3a3"
+            name="ExecutionOccurrenceSpecification4">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="7c48cde0-d53d-432f-82d4-3136ec8d4e40"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="f424e2e0-7c19-4869-a1a1-4046aca9b2d3"
+                LastKnownName="Visit Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="14845844-c71f-4cb4-b890-88dff590ac05"
+            name="BehaviorExecutionSpecification3">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="8d5c08c0-954e-458b-8ff5-fe1df264bfbb"
+                LastKnownName="Patient Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="425c5c5d-ea8b-4624-9d51-57315674c84f"
+                LastKnownName="ExecutionOccurrenceSpecification6"
+                LastKnownLocation="AnalysisModel.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="0968580a-9de3-4124-bd43-f6249472621f"
+                LastKnownName="ExecutionOccurrenceSpecification5"
+                LastKnownLocation="AnalysisModel.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="2daad52c-f2f0-47ed-be90-bb2611902940"
+                LastKnownName="MessageOccurrenceSpecification10"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="e7fae11b-3f2b-45cd-b5e1-dbf4cf24e272"
+                LastKnownName="MessageOccurrenceSpecification11"
+                LastKnownLocation="AnalysisModel.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="0968580a-9de3-4124-bd43-f6249472621f"
+            name="ExecutionOccurrenceSpecification5">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="ab52c700-0fe3-46af-9e84-eb35c118249e"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="8d5c08c0-954e-458b-8ff5-fe1df264bfbb"
+                LastKnownName="Patient Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="9e361edf-f247-42be-a06f-020a9df707c2"
+            name="MessageOccurrenceSpecification9">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="2daad52c-f2f0-47ed-be90-bb2611902940"
+            name="MessageOccurrenceSpecification10">
+            <covered>
+              <lifelineMoniker
+                Id="8d5c08c0-954e-458b-8ff5-fe1df264bfbb"
+                LastKnownName="Patient Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="eca44576-aecc-413c-93c7-66bcf9abd8de"
+            name="MessageOccurrenceSpecification12">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="e7fae11b-3f2b-45cd-b5e1-dbf4cf24e272"
+            name="MessageOccurrenceSpecification11">
+            <covered>
+              <lifelineMoniker
+                Id="8d5c08c0-954e-458b-8ff5-fe1df264bfbb"
+                LastKnownName="Patient Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="425c5c5d-ea8b-4624-9d51-57315674c84f"
+            name="ExecutionOccurrenceSpecification6">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="0d1bb7d3-1995-4baa-9b97-289d5a9c2a51"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="8d5c08c0-954e-458b-8ff5-fe1df264bfbb"
+                LastKnownName="Patient Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="6dbddb1a-e6d3-439d-87fc-64f7f4928b21"
+            name="BehaviorExecutionSpecification4">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="77992f7f-efd3-4a49-aca9-c4dd7894799e"
+                LastKnownName="Patient Account Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="cdb33d2f-27a6-4be9-98bf-01b8180b9ab3"
+                LastKnownName="ExecutionOccurrenceSpecification8"
+                LastKnownLocation="AnalysisModel.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="6e83668e-f7dc-4d42-aaee-134e87460ff2"
+                LastKnownName="ExecutionOccurrenceSpecification7"
+                LastKnownLocation="AnalysisModel.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="4b676619-5215-48a7-bd3e-a6ae5797a5ff"
+                LastKnownName="MessageOccurrenceSpecification14"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="a997b599-2f64-40de-a895-68b833523134"
+                LastKnownName="MessageOccurrenceSpecification15"
+                LastKnownLocation="AnalysisModel.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="6e83668e-f7dc-4d42-aaee-134e87460ff2"
+            name="ExecutionOccurrenceSpecification7">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="ce969523-627d-4b3e-8c5a-fa8ae2e7d60c"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="77992f7f-efd3-4a49-aca9-c4dd7894799e"
+                LastKnownName="Patient Account Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="ba2535f0-82a0-4b76-94c5-7aad548e142b"
+            name="MessageOccurrenceSpecification13">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="4b676619-5215-48a7-bd3e-a6ae5797a5ff"
+            name="MessageOccurrenceSpecification14">
+            <covered>
+              <lifelineMoniker
+                Id="77992f7f-efd3-4a49-aca9-c4dd7894799e"
+                LastKnownName="Patient Account Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="a997b599-2f64-40de-a895-68b833523134"
+            name="MessageOccurrenceSpecification15">
+            <covered>
+              <lifelineMoniker
+                Id="77992f7f-efd3-4a49-aca9-c4dd7894799e"
+                LastKnownName="Patient Account Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="41e744d8-81a0-4481-a559-357b87269f75"
+            name="MessageOccurrenceSpecification16">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="cdb33d2f-27a6-4be9-98bf-01b8180b9ab3"
+            name="ExecutionOccurrenceSpecification8">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="3027ada5-47dd-4caa-9427-1bcdc41cbf46"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="77992f7f-efd3-4a49-aca9-c4dd7894799e"
+                LastKnownName="Patient Account Repository"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="5475a0b0-6313-46fd-b730-e4de2020d228"
+            name="MessageOccurrenceSpecification17">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="15fd5869-acc5-4b2a-8fce-c423f7a0d30d"
+            name="BehaviorExecutionSpecification5">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="1630c018-0522-45d5-a65a-ccd695e04839"
+                LastKnownName="ExecutionOccurrenceSpecification10"
+                LastKnownLocation="AnalysisModel.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="87d82b4f-a6ba-46d5-b753-1c93106ccb80"
+                LastKnownName="ExecutionOccurrenceSpecification9"
+                LastKnownLocation="AnalysisModel.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="d70562c4-754c-4ca4-b70e-b9b8c1e31cea"
+                LastKnownName="MessageOccurrenceSpecification18"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="42719d99-eec4-4735-9941-2fb28e119991"
+                LastKnownName="MessageOccurrenceSpecification19"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="dcaac870-3c2b-4638-ab93-d6791b85889a"
+                LastKnownName="MessageOccurrenceSpecification22"
+                LastKnownLocation="AnalysisModel.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="87d82b4f-a6ba-46d5-b753-1c93106ccb80"
+            name="ExecutionOccurrenceSpecification9">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="0c1795a1-3487-4cde-ba95-f6b86d24b6ff"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="d70562c4-754c-4ca4-b70e-b9b8c1e31cea"
+            name="MessageOccurrenceSpecification18">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="c4804907-6f47-48fa-b5e1-c9f7a774068b"
+            name="BehaviorExecutionSpecification6">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="0bf97af4-fddc-4a9c-a676-613be0a41e18"
+                LastKnownName="Patient Account Factory"
+                LastKnownLocation="AnalysisModel.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="2d1bdd70-8f48-4cc3-9168-52674a1332b4"
+                LastKnownName="ExecutionOccurrenceSpecification12"
+                LastKnownLocation="AnalysisModel.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="dafe6ae1-1e77-4794-ba35-468bcbecbba8"
+                LastKnownName="ExecutionOccurrenceSpecification11"
+                LastKnownLocation="AnalysisModel.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="abd45dcb-d158-4978-9349-c9ff8baa808e"
+                LastKnownName="MessageOccurrenceSpecification20"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="230fcd7d-2b5f-4020-b0de-e52d398a0545"
+                LastKnownName="MessageOccurrenceSpecification21"
+                LastKnownLocation="AnalysisModel.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="dafe6ae1-1e77-4794-ba35-468bcbecbba8"
+            name="ExecutionOccurrenceSpecification11">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="e0df140f-564a-4c0e-879b-ded1373df552"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="0bf97af4-fddc-4a9c-a676-613be0a41e18"
+                LastKnownName="Patient Account Factory"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="abd45dcb-d158-4978-9349-c9ff8baa808e"
+            name="MessageOccurrenceSpecification20">
+            <covered>
+              <lifelineMoniker
+                Id="0bf97af4-fddc-4a9c-a676-613be0a41e18"
+                LastKnownName="Patient Account Factory"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="42719d99-eec4-4735-9941-2fb28e119991"
+            name="MessageOccurrenceSpecification19">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="230fcd7d-2b5f-4020-b0de-e52d398a0545"
+            name="MessageOccurrenceSpecification21">
+            <covered>
+              <lifelineMoniker
+                Id="0bf97af4-fddc-4a9c-a676-613be0a41e18"
+                LastKnownName="Patient Account Factory"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="dcaac870-3c2b-4638-ab93-d6791b85889a"
+            name="MessageOccurrenceSpecification22">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="2d1bdd70-8f48-4cc3-9168-52674a1332b4"
+            name="ExecutionOccurrenceSpecification12">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="320da3be-e4ab-4148-90cf-1a5edd5b68ad"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="0bf97af4-fddc-4a9c-a676-613be0a41e18"
+                LastKnownName="Patient Account Factory"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="1630c018-0522-45d5-a65a-ccd695e04839"
+            name="ExecutionOccurrenceSpecification10">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="ce8c81d1-ec22-4512-9092-e9258a23e33e"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="0d9fc629-b281-4973-b86b-a10700627c66"
+            name="MessageOccurrenceSpecification23">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="2be11834-e434-45fd-b0e2-bd6f596d3953"
+            name="BehaviorExecutionSpecification7">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="4d1e36fb-841c-4e0d-899d-328dffee0990"
+                LastKnownName="ExecutionOccurrenceSpecification14"
+                LastKnownLocation="AnalysisModel.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="43569abd-0680-4e7c-92b6-1fde87fee910"
+                LastKnownName="ExecutionOccurrenceSpecification13"
+                LastKnownLocation="AnalysisModel.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="51caf6be-d2ca-4dbc-914c-99f495a8fa7c"
+                LastKnownName="MessageOccurrenceSpecification24"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="6aa728b1-d10e-49f5-9240-fbd890a922c9"
+                LastKnownName="MessageOccurrenceSpecification25"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="9a46bbf1-e4da-47bd-ac23-e2d031dfe1cf"
+                LastKnownName="MessageOccurrenceSpecification28"
+                LastKnownLocation="AnalysisModel.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="43569abd-0680-4e7c-92b6-1fde87fee910"
+            name="ExecutionOccurrenceSpecification13">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="cf4f3901-597b-4796-aa3b-982c69626ab0"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="51caf6be-d2ca-4dbc-914c-99f495a8fa7c"
+            name="MessageOccurrenceSpecification24">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="89eef229-51d3-418f-918f-7960cf062acd"
+            name="BehaviorExecutionSpecification8">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="7dc4ec06-6969-4726-80c3-f162aa5ab381"
+                LastKnownName="Patient Account"
+                LastKnownLocation="AnalysisModel.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="d6d4ff02-11b4-4b52-9fb9-9fd61197fe40"
+                LastKnownName="ExecutionOccurrenceSpecification16"
+                LastKnownLocation="AnalysisModel.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="d8807d3f-96e4-4f65-9834-f9a27cd7b60b"
+                LastKnownName="ExecutionOccurrenceSpecification15"
+                LastKnownLocation="AnalysisModel.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="0d930111-6ce5-4513-b974-0045725e1986"
+                LastKnownName="MessageOccurrenceSpecification26"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="8a38a98a-8acd-4f25-b812-a8aaf9b3758b"
+                LastKnownName="MessageOccurrenceSpecification27"
+                LastKnownLocation="AnalysisModel.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="d8807d3f-96e4-4f65-9834-f9a27cd7b60b"
+            name="ExecutionOccurrenceSpecification15">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="54128da7-2140-4053-a4f5-bdb519bfeb83"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="7dc4ec06-6969-4726-80c3-f162aa5ab381"
+                LastKnownName="Patient Account"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="6aa728b1-d10e-49f5-9240-fbd890a922c9"
+            name="MessageOccurrenceSpecification25">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="0d930111-6ce5-4513-b974-0045725e1986"
+            name="MessageOccurrenceSpecification26">
+            <covered>
+              <lifelineMoniker
+                Id="7dc4ec06-6969-4726-80c3-f162aa5ab381"
+                LastKnownName="Patient Account"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="8a38a98a-8acd-4f25-b812-a8aaf9b3758b"
+            name="MessageOccurrenceSpecification27">
+            <covered>
+              <lifelineMoniker
+                Id="7dc4ec06-6969-4726-80c3-f162aa5ab381"
+                LastKnownName="Patient Account"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="9a46bbf1-e4da-47bd-ac23-e2d031dfe1cf"
+            name="MessageOccurrenceSpecification28">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="d6d4ff02-11b4-4b52-9fb9-9fd61197fe40"
+            name="ExecutionOccurrenceSpecification16">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="9a38db28-2cdf-4057-84ba-ab07d3134d93"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="7dc4ec06-6969-4726-80c3-f162aa5ab381"
+                LastKnownName="Patient Account"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="4d1e36fb-841c-4e0d-899d-328dffee0990"
+            name="ExecutionOccurrenceSpecification14">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="6ba07216-4127-465f-a77e-5d31422e0d21"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="8b76868b-5503-4847-9107-b01de2e8bd4c"
+            name="MessageOccurrenceSpecification3">
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="187d7291-64cd-43cb-8911-2f089f7a46b6"
+            name="MessageOccurrenceSpecification4">
+            <covered>
+              <lifelineMoniker
+                Id="f439e070-c246-454b-a47c-e2c579042d07"
+                LastKnownName="bus : Service Bus"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="5e6d30eb-8cf0-43c1-89d4-4b2d2f855b3a"
+            name="ExecutionOccurrenceSpecification2">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="35730dd0-cbca-4bf9-a76a-a2f1d392adfd"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="AnalysisModel.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+                LastKnownName="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+                LastKnownLocation="AnalysisModel.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline
+            Id="f439e070-c246-454b-a47c-e2c579042d07"
+            name="bus : Service Bus"
+            isActor="true"
+            lifelineDisplayName="bus : Service Bus">
+            <represents>
+              <propertyMoniker
+                Id="8c279617-f2ad-4e81-89d7-f450615bff66"
+                LastKnownLocation="AnalysisModel.uml" />
+            </represents>
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="1caf1816-21d2-437b-8e5e-10d75a890d5b"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="AnalysisModel.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="187d7291-64cd-43cb-8911-2f089f7a46b6"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="AnalysisModel.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="efa8cfb6-fcd8-4610-a200-efd8a2fc3aab"
+            name="visit Reviewed Message Handler : Visit Reviewed Message Handler"
+            isActor="false"
+            lifelineDisplayName="visit Reviewed Message Handler : Visit Reviewed Message Handler">
+            <represents>
+              <propertyMoniker
+                Id="3c338804-0696-42f2-8b1c-3d894f043f8a"
+                LastKnownLocation="AnalysisModel.uml" />
+            </represents>
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="4fc77235-447b-4cd1-8a51-15c1d5926546"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="5e6d30eb-8cf0-43c1-89d4-4b2d2f855b3a"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="AnalysisModel.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="f424e2e0-7c19-4869-a1a1-4046aca9b2d3"
+            name="Visit Repository"
+            isActor="false"
+            lifelineDisplayName="Visit Repository">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="1357abc5-1fe3-498b-8015-ba1188630ad6"
+                LastKnownName="ExecutionOccurrenceSpecification3"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="24f5fa4c-1f44-40dc-8484-74fd1778f3a3"
+                LastKnownName="ExecutionOccurrenceSpecification4"
+                LastKnownLocation="AnalysisModel.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="8d5c08c0-954e-458b-8ff5-fe1df264bfbb"
+            name="Patient Repository"
+            isActor="false"
+            lifelineDisplayName="Patient Repository">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="0968580a-9de3-4124-bd43-f6249472621f"
+                LastKnownName="ExecutionOccurrenceSpecification5"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="425c5c5d-ea8b-4624-9d51-57315674c84f"
+                LastKnownName="ExecutionOccurrenceSpecification6"
+                LastKnownLocation="AnalysisModel.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="77992f7f-efd3-4a49-aca9-c4dd7894799e"
+            name="Patient Account Repository"
+            isActor="false"
+            lifelineDisplayName="Patient Account Repository">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="6e83668e-f7dc-4d42-aaee-134e87460ff2"
+                LastKnownName="ExecutionOccurrenceSpecification7"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="cdb33d2f-27a6-4be9-98bf-01b8180b9ab3"
+                LastKnownName="ExecutionOccurrenceSpecification8"
+                LastKnownLocation="AnalysisModel.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="0bf97af4-fddc-4a9c-a676-613be0a41e18"
+            name="Patient Account Factory"
+            isActor="false"
+            lifelineDisplayName="Patient Account Factory">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="dafe6ae1-1e77-4794-ba35-468bcbecbba8"
+                LastKnownName="ExecutionOccurrenceSpecification11"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="2d1bdd70-8f48-4cc3-9168-52674a1332b4"
+                LastKnownName="ExecutionOccurrenceSpecification12"
+                LastKnownLocation="AnalysisModel.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="7dc4ec06-6969-4726-80c3-f162aa5ab381"
+            name="Patient Account"
+            isActor="false"
+            lifelineDisplayName="Patient Account">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="d8807d3f-96e4-4f65-9834-f9a27cd7b60b"
+                LastKnownName="ExecutionOccurrenceSpecification15"
+                LastKnownLocation="AnalysisModel.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="d6d4ff02-11b4-4b52-9fb9-9fd61197fe40"
+                LastKnownName="ExecutionOccurrenceSpecification16"
+                LastKnownLocation="AnalysisModel.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message
+            Id="8de7a813-ed9e-4820-8f7f-f35078dc4c49"
+            name="Handle"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="1caf1816-21d2-437b-8e5e-10d75a890d5b"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="eaecf0b7-c7c8-42f6-b0a3-b84710b62475"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="7a1b5b95-f289-40c5-b60f-692176eb5102"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="8b76868b-5503-4847-9107-b01de2e8bd4c"
+                LastKnownName="MessageOccurrenceSpecification3"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="187d7291-64cd-43cb-8911-2f089f7a46b6"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="1d0fab38-02c2-4d80-8148-1d8b1c1038fa"
+            name="Get Visit"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="03a08fd7-bd67-44ed-a03b-a01f8e93e95e"
+                LastKnownName="MessageOccurrenceSpecification5"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="9676dc28-bb2d-4713-8bac-f9a2e3360fa0"
+                LastKnownName="MessageOccurrenceSpecification6"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="f10b769b-3b25-40b4-86db-14aac260a05b"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="700d0165-a2cd-4048-9b18-8bb9e5b97058"
+                LastKnownName="MessageOccurrenceSpecification7"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="cdd5b429-e7e8-4e7c-aa0b-8bd1116c45f8"
+                LastKnownName="MessageOccurrenceSpecification8"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="bc42ee45-f606-4e50-8b8a-6d68486115a1"
+            name="Get Patient"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="9e361edf-f247-42be-a06f-020a9df707c2"
+                LastKnownName="MessageOccurrenceSpecification9"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="2daad52c-f2f0-47ed-be90-bb2611902940"
+                LastKnownName="MessageOccurrenceSpecification10"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="8c824abc-3162-41d5-835a-2995cc2293e2"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="e7fae11b-3f2b-45cd-b5e1-dbf4cf24e272"
+                LastKnownName="MessageOccurrenceSpecification11"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="eca44576-aecc-413c-93c7-66bcf9abd8de"
+                LastKnownName="MessageOccurrenceSpecification12"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="42c79015-f20c-4c42-8957-db407b53cedc"
+            name="Get Patient Account using Medical Record Number"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="ba2535f0-82a0-4b76-94c5-7aad548e142b"
+                LastKnownName="MessageOccurrenceSpecification13"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="4b676619-5215-48a7-bd3e-a6ae5797a5ff"
+                LastKnownName="MessageOccurrenceSpecification14"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="b20687a9-ed1f-4611-aa92-c3fde71624df"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="a997b599-2f64-40de-a895-68b833523134"
+                LastKnownName="MessageOccurrenceSpecification15"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="41e744d8-81a0-4481-a559-357b87269f75"
+                LastKnownName="MessageOccurrenceSpecification16"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="0ed7725f-37dc-4cd1-bea7-192d384ca38d"
+            name="If Patient Account Is Missing"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="true">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="5475a0b0-6313-46fd-b730-e4de2020d228"
+                LastKnownName="MessageOccurrenceSpecification17"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="d70562c4-754c-4ca4-b70e-b9b8c1e31cea"
+                LastKnownName="MessageOccurrenceSpecification18"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="4b40c3fe-7430-4b89-b57f-80874ec6f4ea"
+            name="Create Patient Account"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="42719d99-eec4-4735-9941-2fb28e119991"
+                LastKnownName="MessageOccurrenceSpecification19"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="abd45dcb-d158-4978-9349-c9ff8baa808e"
+                LastKnownName="MessageOccurrenceSpecification20"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="e19c893f-85a2-48bc-918f-26c3bf040960"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="230fcd7d-2b5f-4020-b0de-e52d398a0545"
+                LastKnownName="MessageOccurrenceSpecification21"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="dcaac870-3c2b-4638-ab93-d6791b85889a"
+                LastKnownName="MessageOccurrenceSpecification22"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="b50f259e-16fb-41fa-9346-a18d799d80f3"
+            name="Else"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="true">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="0d9fc629-b281-4973-b86b-a10700627c66"
+                LastKnownName="MessageOccurrenceSpecification23"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="51caf6be-d2ca-4dbc-914c-99f495a8fa7c"
+                LastKnownName="MessageOccurrenceSpecification24"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="08274785-3b9c-4b0d-b3bc-7a282b6a1913"
+            name="Update Patient Account Information To Be Current"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="6aa728b1-d10e-49f5-9240-fbd890a922c9"
+                LastKnownName="MessageOccurrenceSpecification25"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="0d930111-6ce5-4513-b974-0045725e1986"
+                LastKnownName="MessageOccurrenceSpecification26"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="47d2bf00-58d1-44dd-9474-86f72024cc33"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="8a38a98a-8acd-4f25-b812-a8aaf9b3758b"
+                LastKnownName="MessageOccurrenceSpecification27"
+                LastKnownLocation="AnalysisModel.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="9a46bbf1-e4da-47bd-ac23-e2d031dfe1cf"
+                LastKnownName="MessageOccurrenceSpecification28"
+                LastKnownLocation="AnalysisModel.uml" />
+            </receiveEvent>
+          </message>
+        </messages>
+        <ownedAttributesInternal>
+          <property
+            Id="8c279617-f2ad-4e81-89d7-f450615bff66"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <actorMoniker
+                Id="7115fb0f-bb9d-4067-ac61-4cfa41e5678a"
+                LastKnownName="Service Bus"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3c338804-0696-42f2-8b1c-3d894f043f8a"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="5cac2fc0-a620-42c8-bb16-c7be6062ff63"
+                LastKnownName="Visit Reviewed Message Handler"
+                LastKnownLocation="Package_0849.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="fc3d2e35-ab6c-4676-be43-82d956cd3c20"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="35730dd0-cbca-4bf9-a76a-a2f1d392adfd"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="93d5b2c7-7056-4ad7-b0d6-cb5592d36520"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="7c48cde0-d53d-432f-82d4-3136ec8d4e40"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="ab52c700-0fe3-46af-9e84-eb35c118249e"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="0d1bb7d3-1995-4baa-9b97-289d5a9c2a51"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="ce969523-627d-4b3e-8c5a-fa8ae2e7d60c"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="3027ada5-47dd-4caa-9427-1bcdc41cbf46"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="0c1795a1-3487-4cde-ba95-f6b86d24b6ff"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="ce8c81d1-ec22-4512-9092-e9258a23e33e"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="e0df140f-564a-4c0e-879b-ded1373df552"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="320da3be-e4ab-4148-90cf-1a5edd5b68ad"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="cf4f3901-597b-4796-aa3b-982c69626ab0"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="6ba07216-4127-465f-a77e-5d31422e0d21"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="54128da7-2140-4053-a4f5-bdb519bfeb83"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="9a38db28-2cdf-4057-84ba-ab07d3134d93"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5626736e-7fe8-4ff1-9b22-46d78ee42b0e"
+        name="Batch Pending Encounters From Clinical to Billing"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

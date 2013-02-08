@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Silverlight Attached DependencyProperty</Title>
+      <Author>Robby Ingebretsen</Author>
+      <Description>Create an attached Silverlight DependencyProperty</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>sldpa</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>type</ID>
+          <ToolTip>Property Type</ToolTip>
+          <Default>double</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>property</ID>
+          <ToolTip>Property Name</ToolTip>
+          <Default>MyAttachedProperty</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="false">
+          <ID>ownerclass</ID>
+          <ToolTip>The owning class of this Property.  Typically the class that it is declared in.</ToolTip>
+          <Default>ClassNamePlaceholder</Default>
+          <Function>ClassName()</Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>description</ID>
+          <ToolTip>Property Description</ToolTip>
+          <Default>A description of the property.</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[
+public static readonly DependencyProperty $property$Property =
+    DependencyProperty.RegisterAttached("$property$", typeof($type$), typeof($ownerclass$), new PropertyMetadata(new PropertyChangedCallback(On$property$Changed)));
+
+public static void Set$property$(DependencyObject o, $type$ value)
+{
+    o.SetValue($property$Property, value);
+}
+
+public static $type$ Get$property$(DependencyObject o)
+{
+    return ($type$)o.GetValue($property$Property);
+}
+
+private static void On$property$Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+{
+    
+}
+$end$]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,251 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.PatientDashboard.VisitListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:InfrastructureView="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+             xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+             xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=System.Windows"
+             xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:behaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <telerik:NullToVisibilityConverter x:Name="NullToVisibilityConverter"/>
+        <toolkit:ObservableObjectCollection x:Key="VisitCountOptions">
+            <System:Int32>2</System:Int32>
+            <System:Int32>3</System:Int32>
+            <System:Int32>4</System:Int32>
+            <System:Int32>5</System:Int32>
+        </toolkit:ObservableObjectCollection>
+        <InfrastructureView:CustomPropertyGroupDescription x:Name="GroupVisit" PropertyName="VisitKey" Description="Visit"/>
+        <CustomControls:ExtendedCollectionViewSource x:Name="RecentActivitiesSource" RadGridView="{Binding ElementName=RecentActivitiesListdataGrid}" Source="{Binding RecentActivities}"
+                                                     SelectedGroupDescription="{StaticResource GroupVisit}">
+            <CustomControls:ExtendedCollectionViewSource.SortDescriptions>
+                <ComponentModel:SortDescription PropertyName="AppointmentStartDateTime" Direction="Descending"/>
+            </CustomControls:ExtendedCollectionViewSource.SortDescriptions>
+        </CustomControls:ExtendedCollectionViewSource>
+        <CustomControls:ExtendedCollectionViewSource x:Name="ScheduledActivitiesSource" RadGridView="{Binding ElementName=ScheduledActivitiesListdataGrid}" Source="{Binding ScheduledActivities}"
+                                                     SelectedGroupDescription="{StaticResource GroupVisit}">
+            <CustomControls:ExtendedCollectionViewSource.SortDescriptions>
+                <ComponentModel:SortDescription PropertyName="AppointmentStartDateTime" Direction="Descending"/>
+            </CustomControls:ExtendedCollectionViewSource.SortDescriptions>
+        </CustomControls:ExtendedCollectionViewSource>
+        
+        <InfrastructureView:DataContextProxyElement x:Key="RootDataContext"/>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource TileCaseActivitiesBorderStyle}" Padding="0" BorderThickness="1,0,0,0" CornerRadius="0,0,4,0" Background="{StaticResource PatientDashboardTileBackground}" Margin="0,0,4,8" BorderBrush="#FF494949">
+        <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        		<Grid x:Name="RecentActivitiesHeader">
+        			<Border BorderBrush="DarkGray" BorderThickness="0,0.75" HorizontalAlignment="Stretch" Margin="6,0" Grid.ColumnSpan="2">
+        				<Grid Margin="10,0,0,0">
+        					<StackPanel HorizontalAlignment="Left" Margin="0,13,0,0" Orientation="Horizontal">
+        						<Grid Width="16" Margin="0,0,4,2" Height="15" VerticalAlignment="Center">
+        							<Path Stretch="Fill" Fill="#FF626262v" Data="F1 M132.43542,63.821568 L133.80443,63.821568 L133.80443,70.012276 L138.33842,70.012276 L138.33842,71.381081 L132.43542,71.381081 L132.43542,63.821568 z M124.422,68.635399 L122.865,63.7617 L125.046,64.6017 C126.681,61.580101 129.87801,59.527802 133.554,59.527802 C138.89301,59.527802 143.22099,63.855701 143.22099,69.194397 C143.22099,74.533203 138.89301,78.861099 133.554,78.861099 C129.97,78.861099 126.841,76.909798 125.171,74.011299 L126.637,73.019501 C127.985,75.451103 130.577,77.097198 133.554,77.097198 C137.91901,77.097198 141.457,73.558998 141.457,69.194397 C141.457,64.829903 137.91901,61.291698 133.554,61.291698 C130.63,61.291698 128.076,62.880402 126.709,65.241997 L128.84599,66.064598 L124.422,68.635399 z" HorizontalAlignment="Left" Height="15" UseLayoutRounding="False" VerticalAlignment="Top" Width="16"/>
+        						</Grid>
+        						<TextBlock Text="Recent Visits"  FontSize="14" Foreground="#FF626262" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+        					</StackPanel>
+        					<StackPanel HorizontalAlignment="Right" Margin="0,0,8,2" Orientation="Horizontal" VerticalAlignment="Bottom">
+        						<TextBlock Text="Display"  Foreground="#FF626262" VerticalAlignment="Center"/>
+                            <telerik:RadComboBox x:Name="DisplayRecentVisit" Height="20" ItemsSource="{StaticResource VisitCountOptions}" SelectedItem="{Binding RecentVisitCount, Mode=TwoWay}" Width="35" Style="{StaticResource TileBorderlessComboBoxStyle}" Margin="4,0,0,0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding RecentVisitCountChangedCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </telerik:RadComboBox>
+                        </StackPanel>
+        				</Grid>
+        			</Border>
+        		</Grid>
+
+        		<Grid  Grid.Row="2" x:Name="ScheduledActivitiesHeader">
+        			<Border BorderBrush="DarkGray" BorderThickness="0,0.75" HorizontalAlignment="Stretch" Margin="6,0" Grid.ColumnSpan="2" d:LayoutOverrides="Height, GridBox">
+        				<Grid Margin="10,0,0,0" d:LayoutOverrides="Height">
+							<StackPanel HorizontalAlignment="Left" Margin="0,13,0,0" Orientation="Horizontal">
+								<Grid Width="15" Margin="0,0,4,2" Height="15" VerticalAlignment="Center">
+									<Path Data="M8.8340197,3.6300066 L10.202841,3.6300066 L10.202841,9.8211174 L14.73702,9.8211174 L14.73702,11.190006 L8.8340197,11.190006 z M9.6669998,1.7639552 C5.3022642,1.7639554 1.7639551,5.3022614 1.7639551,9.6669979 C1.7639551,14.031734 5.3022642,17.570045 9.6669998,17.570045 C14.031735,17.570045 17.570045,14.031734 17.570045,9.6669979 C17.570045,5.3022614 14.031735,1.7639554 9.6669998,1.7639552 z M9.6669998,0 C15.005962,0 19.334,4.3281331 19.334,9.6669979 C19.334,15.005962 15.005962,19.334 9.6669998,19.334 C4.3281364,19.334 0,15.005962 0,9.6669979 C0,4.3281331 4.3281364,0 9.6669998,0 z" Fill="#FF626262" HorizontalAlignment="Center" Height="15" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Center" Width="15"/>
+								</Grid>
+        						<TextBlock Text="Scheduled Visits"  FontSize="14" Foreground="#FF626262" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+        					</StackPanel>
+        					<StackPanel HorizontalAlignment="Right" Margin="0,0,8,2" Orientation="Horizontal" VerticalAlignment="Bottom">
+        						<TextBlock Text="Display"  Foreground="#FF626262" VerticalAlignment="Center"/>
+                            <telerik:RadComboBox x:Name="DisplayScheduledVisit" ItemsSource="{StaticResource VisitCountOptions}" SelectedItem="{Binding ScheduledVisitCount, Mode=TwoWay}" Width="35" Style="{StaticResource TileBorderlessComboBoxStyle}" Margin="4,0,0,0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding ScheduledVisitCountChangedCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </telerik:RadComboBox>
+                        </StackPanel>
+        				</Grid>
+        			</Border>
+        		</Grid>
+        	<telerik:RadGridView Grid.Row="3" x:Name="ScheduledActivitiesListdataGrid" ItemsSource="{Binding Source={StaticResource ScheduledActivitiesSource}}"
+        		IsReadOnly="True" RowDetailsVisibilityMode="Collapsed" CanUserFreezeColumns="False" GroupRowStyle="{StaticResource DoubleClickableGroupStyle}"
+        		AutoGenerateColumns="False" CanUserReorderColumns="False" FontSize="9" Cursor="Hand" IsSynchronizedWithCurrentItem="False"
+        		ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top"
+        		ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" IsFilteringAllowed="False" RowHeight="20" BorderThickness="0" GridLinesVisibility="None" 
+        		AlternateRowBackground="{StaticResource AlternateGridViewRowBackground}" AlternationCount="2" ShowColumnHeaders="False" Margin="10,0,10,8" AutoExpandGroups="True" BorderBrush="#FFC2C2C2" Background="{x:Null}" >
+        		<i:Interaction.Behaviors>
+        			<behaviors:GridViewHideFocusVisualBehavior/>
+        			<behaviors:DoubleClickGridViewRowBehavior Command="{Binding GoToActivityCommand}" />
+        		</i:Interaction.Behaviors>
+        		<telerik:RadGridView.Columns>
+        			<telerik:GridViewDataColumn Header="Activity" DataMemberBinding="{Binding ActivityTypeName}" Width="Auto">
+        				<telerik:GridViewDataColumn.ToolTipTemplate>
+        					<DataTemplate>
+        						<TextBlock Text="{Binding ActivityTypeName}"/>
+        					</DataTemplate>
+        				</telerik:GridViewDataColumn.ToolTipTemplate>
+        			</telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="Results" Width="*">
+        				<telerik:GridViewDataColumn.ToolTipTemplate>
+        					<DataTemplate>
+                                <TextBlock Text="Passed" Visibility="{Binding ActivityTypeName, Converter={StaticResource NullToVisibilityConverter}}"/>
+        					</DataTemplate>
+        				</telerik:GridViewDataColumn.ToolTipTemplate>
+        				<telerik:GridViewDataColumn.CellTemplate>
+        					<DataTemplate>
+                                <TextBlock Text="Passed" Visibility="{Binding ActivityTypeName, Converter={StaticResource NullToVisibilityConverter}}"/>
+        					</DataTemplate>
+        				</telerik:GridViewDataColumn.CellTemplate>
+        			</telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="Completeness" Width="auto">
+        				<telerik:GridViewDataColumn.ToolTipTemplate>
+        					<DataTemplate>
+                                <TextBlock Text="Complete" Visibility="{Binding ActivityTypeName, Converter={StaticResource NullToVisibilityConverter}}"/>
+        					</DataTemplate>
+        				</telerik:GridViewDataColumn.ToolTipTemplate>
+        				<telerik:GridViewDataColumn.CellTemplate>
+        					<DataTemplate>
+                                <TextBlock Text="Complete" Visibility="{Binding ActivityTypeName, Converter={StaticResource NullToVisibilityConverter}}"/>
+        					</DataTemplate>
+        				</telerik:GridViewDataColumn.CellTemplate>
+        			</telerik:GridViewDataColumn>
+        		</telerik:RadGridView.Columns>
+        		<telerik:RadGridView.GroupHeaderTemplate>
+        			<DataTemplate>
+        				<Grid HorizontalAlignment="Stretch" Background="Transparent">
+        					<i:Interaction.Behaviors>
+        						<behaviors:DoubleClickBehavior DoubleClickCommand="{Binding DataSource.GoToVisitCommand, Source={StaticResource RootDataContext}}" CommandParameter="{Binding Group.Items[0], Mode=OneTime}"/>
+        					</i:Interaction.Behaviors>
+        					<StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Group.Items[0].VisitAppointmentStartDateTime, Mode=OneTime, StringFormat=\{0:M/d/yy\}}" Margin="0,0,10,0"/>
+                                <TextBlock Text="{Binding Group.Items[0].VisitName, Mode=OneTime}" TextTrimming="WordEllipsis" ToolTipService.ToolTip="{Binding Group.Items[0].VisitName, Mode=OneTime}"/>
+        					</StackPanel>
+        				</Grid>
+        			</DataTemplate>
+        		</telerik:RadGridView.GroupHeaderTemplate>
+        	</telerik:RadGridView>
+
+        	<telerik:RadGridView Grid.Row="1" x:Name="RecentActivitiesListdataGrid" ItemsSource="{Binding Source={StaticResource RecentActivitiesSource}}"
+        		IsReadOnly="True" RowDetailsVisibilityMode="Collapsed" CanUserFreezeColumns="False" GroupRowStyle="{StaticResource DoubleClickableGroupStyle}"
+        		AutoGenerateColumns="False" CanUserReorderColumns="False" FontSize="9" Cursor="Hand" IsSynchronizedWithCurrentItem="False"
+        		ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top"
+        		ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" IsFilteringAllowed="False" RowHeight="20" BorderThickness="0,0,0,1" GridLinesVisibility="None" 
+        		AlternateRowBackground="{StaticResource AlternateGridViewRowBackground}" AlternationCount="2" ShowColumnHeaders="False" Margin="10,0" AutoExpandGroups="True" BorderBrush="{x:Null}" Background="{x:Null}" >
+				<i:Interaction.Behaviors>
+        			<behaviors:GridViewHideFocusVisualBehavior/>
+        			<behaviors:DoubleClickGridViewRowBehavior Command="{Binding GoToActivityCommand}" />
+        		</i:Interaction.Behaviors>
+        		<telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Header="Activity" DataMemberBinding="{Binding ActivityTypeName}" Width="Auto">
+        				<telerik:GridViewDataColumn.ToolTipTemplate>
+        					<DataTemplate>
+                                <TextBlock Text="{Binding ActivityTypeName}"/>
+        					</DataTemplate>
+        				</telerik:GridViewDataColumn.ToolTipTemplate>
+        			</telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="Results" Width="*">
+        				<telerik:GridViewDataColumn.ToolTipTemplate>
+        					<DataTemplate>
+                                <TextBlock Text="Passed" Visibility="{Binding ActivityTypeName, Converter={StaticResource NullToVisibilityConverter}}"/>
+        					</DataTemplate>
+        				</telerik:GridViewDataColumn.ToolTipTemplate>
+        				<telerik:GridViewDataColumn.CellTemplate>
+        					<DataTemplate>
+                                <TextBlock Text="Passed" Visibility="{Binding ActivityTypeName, Converter={StaticResource NullToVisibilityConverter}}"/>
+        					</DataTemplate>
+        				</telerik:GridViewDataColumn.CellTemplate>
+        			</telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="Completeness" Width="auto">
+        				<telerik:GridViewDataColumn.ToolTipTemplate>
+        					<DataTemplate>
+                                <TextBlock Text="Complete" Visibility="{Binding ActivityTypeName, Converter={StaticResource NullToVisibilityConverter}}"/>
+        					</DataTemplate>
+        				</telerik:GridViewDataColumn.ToolTipTemplate>
+        				<telerik:GridViewDataColumn.CellTemplate>
+        					<DataTemplate>
+                                <TextBlock Text="Complete" Visibility="{Binding ActivityTypeName, Converter={StaticResource NullToVisibilityConverter}}"/>
+        					</DataTemplate>
+        				</telerik:GridViewDataColumn.CellTemplate>
+        			</telerik:GridViewDataColumn>
+        		</telerik:RadGridView.Columns>
+        		<telerik:RadGridView.GroupHeaderTemplate>
+        			<DataTemplate>
+        				<Grid HorizontalAlignment="Stretch" Background="Transparent">
+        					<i:Interaction.Behaviors>
+        						<behaviors:DoubleClickBehavior DoubleClickCommand="{Binding DataSource.GoToVisitCommand, Source={StaticResource RootDataContext}}" CommandParameter="{Binding Group.Items[0], Mode=OneTime}"/>
+        					</i:Interaction.Behaviors>
+        					<StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Group.Items[0].VisitAppointmentStartDateTime, Mode=OneTime, StringFormat=\{0:M/d/yy\}}" Margin="0,0,10,0"/>
+                                <TextBlock Text="{Binding Group.Items[0].VisitName, Mode=OneTime}" TextTrimming="WordEllipsis" ToolTipService.ToolTip="{Binding Group.Items[0].VisitName, Mode=OneTime}"/>
+        					</StackPanel>
+        				</Grid>
+        			</DataTemplate>
+        		</telerik:RadGridView.GroupHeaderTemplate>
+        	</telerik:RadGridView>
+        	<CustomControls:LoadingControl IsLoading="{Binding IsLoading}" Background="{StaticResource PatientDashboardTileBackground}" Foreground="DarkGray" Grid.Row="1" Margin="6,0,0,0"/>
+        	<CustomControls:LoadingControl IsLoading="{Binding IsLoading}" Background="{StaticResource PatientDashboardTileBackground}" Foreground="DarkGray" Grid.Row="3" Margin="6,0,0,0"/>
+			<Border VerticalAlignment="Top" Height="10" Margin="6,0" Grid.Row="3">
+        		<Border.Background>
+        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        				<GradientStop Color="#35474747"/>
+        				<GradientStop Color="#00F7F7F7" Offset="1"/>
+        			</LinearGradientBrush>
+        		</Border.Background>
+        	</Border>
+        	<Border VerticalAlignment="Top" Height="10" Margin="6,0" Grid.Row="1">
+        		<Border.Background>
+        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        				<GradientStop Color="#35474747"/>
+        				<GradientStop Color="#00F7F7F7" Offset="1"/>
+        			</LinearGradientBrush>
+        		</Border.Background>
+        	</Border>
+			<Border VerticalAlignment="Bottom" Height="10" Margin="6,0" Grid.Row="1">
+        		<Border.Background>
+        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        				<GradientStop Color="#35474747" Offset="1"/>
+        				<GradientStop Color="#00F7F7F7"/>
+        			</LinearGradientBrush>
+        		</Border.Background>
+        	</Border>
+			<Border Width="8" Grid.RowSpan="4" HorizontalAlignment="Left">
+				<Border.Background>
+        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        				<LinearGradientBrush.RelativeTransform>
+        					<CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="-90"/>
+        				</LinearGradientBrush.RelativeTransform>
+        				<GradientStop Color="#53474747"/>
+        				<GradientStop Color="#00F7F7F7" Offset="1"/>
+        				<GradientStop Color="#30545454" Offset="0.403"/>
+        			</LinearGradientBrush>
+        		</Border.Background>
+			</Border>
+        </Grid>
+    </Border>
+</UserControl>

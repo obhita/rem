@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DE7E4F9F-9917-4931-A44B-B21A18C86669}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pillar.FluentRuleEngine.Tests</RootNamespace>
+    <AssemblyName>Pillar.FluentRuleEngine.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq, Version=4.0.10827.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture, Version=2.9.1.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoFixture.2.9.1\lib\Ploeh.AutoFixture.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture.AutoMoq, Version=2.9.1.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoFixture.AutoMoq.2.9.1\lib\Ploeh.AutoFixture.AutoMoq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractRuleCollectionTests.cs" />
+    <Compile Include="Constraints\EqualToTests.cs" />
+    <Compile Include="Constraints\ExclusiveBetweenTests.cs" />
+    <Compile Include="Constraints\GreaterThenOrEqualToTests.cs" />
+    <Compile Include="Constraints\GreaterThenTests.cs" />
+    <Compile Include="Constraints\InclusiveBetweenTests.cs" />
+    <Compile Include="Constraints\InlineConstraintTests.cs" />
+    <Compile Include="Constraints\LessThenOrEqualToTests.cs" />
+    <Compile Include="Constraints\LessThenTests.cs" />
+    <Compile Include="Constraints\MaxLengthTests.cs" />
+    <Compile Include="Constraints\MeetsSpecificationTests.cs" />
+    <Compile Include="Constraints\MinLengthTests.cs" />
+    <Compile Include="Constraints\NotEqualToTests.cs" />
+    <Compile Include="Constraints\NotNullConstraintTests.cs" />
+    <Compile Include="Constraints\RegexTests.cs" />
+    <Compile Include="Fixture\Address.cs" />
+    <Compile Include="Fixture\AddressRuleCollection.cs" />
+    <Compile Include="Fixture\Customer.cs" />
+    <Compile Include="Fixture\CustomerRuleCollection.cs" />
+    <Compile Include="Fixture\CustomerRuleCollectionCustomizer.cs" />
+    <Compile Include="Fixture\Gender.cs" />
+    <Compile Include="Fixture\Name.cs" />
+    <Compile Include="Fixture\NoDuplicateZipCodeSpecification.cs" />
+    <Compile Include="Fixture\Patient.cs" />
+    <Compile Include="Fixture\PatientRuleCollection.cs" />
+    <Compile Include="Fixture\StringRuleCollection.cs" />
+    <Compile Include="NameProviders\TypePropertyNameNameProviderTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyChainTests.cs" />
+    <Compile Include="Resources\StringExtensionTests.cs" />
+    <Compile Include="RuleEngineTests.cs" />
+    <Compile Include="RuleProcessorTests.cs" />
+    <Compile Include="Rules\CollectionPropertyRuleTests.cs" />
+    <Compile Include="Rules\PropertyRuleBuilderTests.cs" />
+    <Compile Include="Rules\PropertyRuleTests.cs" />
+    <Compile Include="Rules\RuleBuilderTests.cs" />
+    <Compile Include="Rules\RuleTests.cs" />
+    <Compile Include="Rules\SpecificationRuleTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pillar.Common\Pillar.Common.csproj">
+      <Project>{6761BABC-8D45-4D08-B112-088FA47AB625}</Project>
+      <Name>Pillar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pillar.FluentRuleEngine\Pillar.FluentRuleEngine.csproj">
+      <Project>{26BEFDB1-9762-4132-9F45-06CABE14D43C}</Project>
+      <Name>Pillar.FluentRuleEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

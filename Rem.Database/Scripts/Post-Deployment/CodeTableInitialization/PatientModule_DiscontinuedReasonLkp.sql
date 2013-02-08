@@ -1,0 +1,11 @@
+
+print '------------------------------------------------------------------------------------------'
+print 'PatientModule_DiscontinuedReasonLkp.sql'
+print '------------------------------------------------------------------------------------------'
+
+INSERT INTO [PatientModule].[DiscontinuedReasonLkp] ( [DiscontinuedReasonLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 1, current_timestamp, 1, current_timestamp, 1, 0, N'Adverse Reaction', NULL, N'Adverse Reaction', N'Adverse Reaction', NULL, '12/18/2008',        NULL, 0, 0 )
+INSERT INTO [PatientModule].[DiscontinuedReasonLkp] ( [DiscontinuedReasonLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 2, current_timestamp, 1, current_timestamp, 1, 0,    N'Finished an episode', NULL, N'Finished an episode', N'Finished an episode', NULL, '12/18/2008',        NULL, 0, 0 )
+INSERT INTO [PatientModule].[DiscontinuedReasonLkp] ( [DiscontinuedReasonLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 3, current_timestamp, 1, current_timestamp, 1, 0,  N'Ineffective', NULL, N'Ineffective', N'Ineffective', NULL, '12/18/2008',        NULL, 0, 0 )
+INSERT INTO [PatientModule].[DiscontinuedReasonLkp] ( [DiscontinuedReasonLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 4, current_timestamp, 1, current_timestamp, 1, 0, N'Other', NULL, N'Other', N'Other', NULL, '12/18/2008',        NULL, 0, 0 )
+
+GO

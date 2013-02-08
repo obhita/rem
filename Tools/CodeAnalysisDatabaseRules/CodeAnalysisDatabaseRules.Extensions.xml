@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+  <extensions assembly=""
+    version="1"
+    xmlns="urn:Microsoft.Data.Schema.Extensions" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:Microsoft.Data.Schema.Extensions Microsoft.Data.Schema.Extensions.xsd">
+    
+    <extension type="CodeAnalysisDatabaseRules.Rules.PrimaryKeyRule"
+        assembly ="CodeAnalysisDatabaseRules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=95d7aefc792423b1"
+        enabled="true"/>
+
+    <extension type="CodeAnalysisDatabaseRules.Rules.PrimaryKeyNamingRule"
+        assembly ="CodeAnalysisDatabaseRules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=95d7aefc792423b1"
+        enabled="true"/>
+
+    <extension type="CodeAnalysisDatabaseRules.Rules.ForeignKeyExistsForReferencesRule"
+        assembly ="CodeAnalysisDatabaseRules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=95d7aefc792423b1"
+        enabled="true"/>
+
+    <extension type="CodeAnalysisDatabaseRules.Rules.ForeignKeyNamingRule"
+        assembly ="CodeAnalysisDatabaseRules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=95d7aefc792423b1"
+        enabled="true"/>
+
+    <extension type="CodeAnalysisDatabaseRules.Rules.PrimaryKeyColumnNamingRule"
+        assembly ="CodeAnalysisDatabaseRules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=95d7aefc792423b1"
+        enabled="true"/>
+
+    <extension type="CodeAnalysisDatabaseRules.Rules.SinglePrimaryKeyPerTableRule"
+        assembly ="CodeAnalysisDatabaseRules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=95d7aefc792423b1"
+        enabled="true"/>
+
+    <extension type="CodeAnalysisDatabaseRules.Rules.ForeignKeyColumnNamingRule"
+        assembly ="CodeAnalysisDatabaseRules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=95d7aefc792423b1"
+        enabled="true"/>
+    
+    <extension type="CodeAnalysisDatabaseRules.Rules.ExpectedIndexExistsForForeignKey"
+        assembly ="CodeAnalysisDatabaseRules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=95d7aefc792423b1"
+        enabled="true"/>
+
+    <extension type="CodeAnalysisDatabaseRules.Rules.ColumnNamingRule"
+      assembly ="CodeAnalysisDatabaseRules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=95d7aefc792423b1"
+      enabled="true"/>
+    
+  </extensions>

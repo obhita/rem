@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="98de62bb-2ad6-4247-bd1c-8361c756eb7f" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <comments>
+    <comment Id="5ec94bf6-3b48-4c83-a1d5-672369b62bd6" name="Comment1">
+      <body>We will have to Separate out Common Infrastructure</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="38c1d40a-6304-4aa3-baa6-69ba0b5e8289" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+  </comments>
+  <layers>
+    <layer Id="fb601717-593d-490b-bd1b-bd9a6a67e6b4" name="Client">
+      <childLayers>
+        <layer Id="bdad328d-39b2-4de6-8f6f-552bdad88ef8" name=" Browser">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="83770269-de72-4d7e-a57d-f0c7eed15084" direction="Forward">
+              <layerMoniker Id="9d1c58d6-9f7d-4fe8-b7c1-295d9b9fed60" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="f32cc389-1b75-43cd-a30c-f91a9e96f7c7" name="Silverlight">
+              <childLayers>
+                <layer Id="16057a12-6bfc-424a-9169-3fee288ed435" name="Rem.Ria.Infrastructure">
+                  <childLayers>
+                    <layer Id="ae7c9008-1f87-4505-a1e1-5899f94c2609" name="Commands" />
+                    <layer Id="447194dc-fc75-4717-9baf-904e6dba092f" name="DTOs" />
+                    <layer Id="92bf77ac-8dd0-4b77-a11f-7446d991744e" name="Navigation" />
+                    <layer Id="a4459235-e514-43ee-bc8e-bb50a64915a3" name="Security" />
+                    <layer Id="4e0ae49f-00b3-44bf-a512-839a6e5e98e1" name="Agatha" />
+                    <layer Id="e904d1e6-2933-4357-8b1f-207ec8777cdf" name="Views" />
+                    <layer Id="fde49833-e4ed-4546-8323-72cbbc908c2e" name="ViewModels" />
+                    <layer Id="48eeda80-8781-44fb-98db-dd0a34b053bd" name="Themes" />
+                    <layer Id="2f407e9b-503f-48c1-a13a-17045fbda25f" name="Logging" />
+                    <layer Id="f19bd19b-1890-4b45-8aa7-3185503cc6b0" name="Quick Pickers" />
+                  </childLayers>
+                </layer>
+                <layer Id="a078897d-f3f6-4860-af23-ed0ff75340f1" name="Rem.Ria.AgencyModule">
+                  <childLayers>
+                    <layer Id="ea2b8681-af6c-4bac-94ee-21a326c75621" name="Agatha" />
+                    <layer Id="677e8571-0214-46d1-8303-e10e98d902e8" name="DTOs" />
+                    <layer Id="355e7b76-426c-41ab-8646-fa9c7910b86f" name="Views" />
+                    <layer Id="8ee90d0a-52c8-4508-85fb-3f24b9356536" name="View Models" />
+                    <layer Id="597aa628-c56b-4ce7-9ea5-adb0ceb05b3d" name="Permissions" />
+                  </childLayers>
+                </layer>
+                <layer Id="d9de610a-8caf-4def-9563-8c0814bcd49c" name="Rem.Ria.PatientModule">
+                  <childLayers>
+                    <layer Id="4f251083-9b00-4b73-8bbd-c5d7ec083ec1" name="Agatha" />
+                    <layer Id="17f2c7be-7fc3-49c4-ac6f-0e13bfba2dfc" name="DTOs" />
+                    <layer Id="929d0431-0fa3-40bc-a580-5c6de1c97839" name="Views" />
+                    <layer Id="5436dbe9-8562-4664-bde3-83b1c7ba0133" name="View Models" />
+                    <layer Id="c7f1a1c8-3a87-4fe0-8fed-f2d5048b2784" name="Permissions" />
+                  </childLayers>
+                </layer>
+                <layer Id="1a4d436d-097d-466e-ad30-5120b41b6661" name="Rem.Ria.NewCropModule">
+                  <childLayers>
+                    <layer Id="92706641-496d-4879-bf11-71698b7afe9a" name="Agatha" />
+                    <layer Id="192a6f19-98ef-4226-b1cc-3a56c26ab716" name="DTOs" />
+                    <layer Id="3de8dbdd-704d-4d8a-9ccf-bbb9c5eff014" name="Views" />
+                    <layer Id="36565159-24ce-43b6-8a30-174ae6f267fa" name="View Models" />
+                    <layer Id="c260ed09-000f-4a9e-b5bb-edd4964da893" name="Permissions" />
+                  </childLayers>
+                </layer>
+                <layer Id="b75af535-cae5-4266-912f-605cf2045090" name="Rem.Ria.ReportsModule">
+                  <childLayers>
+                    <layer Id="14af78e2-8bff-4218-a9ad-0bfe6a6cfa4f" name="Agatha" />
+                    <layer Id="829636af-7181-47c5-990f-818158552bf7" name="DTOs" />
+                    <layer Id="15ae921e-b1da-4040-bbe4-7f3ea2c29701" name="Views" />
+                    <layer Id="34796d00-3810-4ad9-ae1a-f419fe850b30" name="View Models" />
+                    <layer Id="3138f8af-c6a9-4f70-ad28-a0115fe6cb96" name="Permissions" />
+                  </childLayers>
+                </layer>
+                <layer Id="69e946ea-7ef7-4919-a80a-b747b347db34" name="Rem.Shell">
+                  <childLayers>
+                    <layer Id="1a69c2ff-7953-4836-99a8-dd649d1bf45f" name="Bootstrapper" />
+                    <layer Id="d8175ef0-2289-4a2a-8800-46c3a6af1f26" name="Shell" />
+                  </childLayers>
+                </layer>
+                <layer Id="50e07fb0-fb32-44c0-bc42-3d49c5c6e939" name="Rem.Ria.BillingModule">
+                  <childLayers>
+                    <layer Id="79f211a0-dc9b-4181-b67c-f0be458c701f" name="Agatha" />
+                    <layer Id="9487c695-b4b3-43ad-8938-c64b6cc992fb" name="DTOs" />
+                    <layer Id="fd3a141f-68f4-453c-ac20-732ca2f116ac" name="Views" />
+                    <layer Id="da30a998-7974-4657-81fa-8a179c4ff3bb" name="View Models" />
+                    <layer Id="6855241d-7805-47dc-82db-7ca12d34af7f" name="Permissions" />
+                  </childLayers>
+                </layer>
+              </childLayers>
+            </layer>
+          </childLayers>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="9d1c58d6-9f7d-4fe8-b7c1-295d9b9fed60" name="Rem.Web">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="70c028e7-e31e-4e5a-be55-540f27f70578" direction="Forward">
+          <layerMoniker Id="53829161-bbdb-4a8e-a606-82716376f0ee" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="c6743afb-a9fd-4119-80dd-82fee2ea0879" name="Rem.Web.Infrastructure">
+          <childLayers>
+            <layer Id="1cca8d0c-8e00-4ed2-a657-fd2471de4aad" name="Security" />
+            <layer Id="236f8f8d-e860-4d72-9c42-a618350b9371" name="NHibernate Mapping" />
+            <layer Id="ed1fd70b-5206-439a-b935-e7e06cb078b4" name="Bootstrapper" />
+            <layer Id="3510f742-f1f1-43b1-acb6-fbcdd0fa746c" name="Repositories" />
+            <layer Id="abf47c7c-901a-468d-9f0c-5ae841b051bf" name="RavenDB" />
+            <layer Id="93761f11-6d8c-48b8-add7-ea6eee7b1914" name="Agatha" />
+            <layer Id="2ea37674-2a83-4202-8838-58657523c152" name="DTO" />
+            <layer Id="443d3a51-7cb9-40d3-a0fb-59620054c821" name="Dapper" />
+          </childLayers>
+        </layer>
+        <layer Id="5c78786c-c1bd-404c-8929-ff523445c6ac" name="WCF Services Layer">
+          <childLayers>
+            <layer Id="ed2bf61d-5c48-4845-9ca1-d2bed2f72d53" name="Rem.Ria.Infrastructure">
+              <childLayers>
+                <layer Id="4c2ddefd-f659-47b7-a5d8-defbc14fa5dd" name="Agatha" />
+                <layer Id="205ca29d-2f27-48a7-b452-110abfa09edd" name="DTOs" />
+                <layer Id="d55c9a83-c3c2-452a-8178-e2be106e0199" name="Security" />
+              </childLayers>
+            </layer>
+            <layer Id="f6239696-817c-4f2d-bc19-42c027f6679e" name="Rem.Ria.AgencyModule.Web">
+              <childLayers>
+                <layer Id="3652454f-ab5c-4cc6-8ddd-54fd5e5b8495" name="Agatha" />
+                <layer Id="c2878dcf-f263-455d-8eaf-b60253ea138d" name="DTOs" />
+              </childLayers>
+            </layer>
+            <layer Id="6508cc0c-f01d-4429-ac73-138b68bab204" name="Rem.Ria.NewCropModule.Web">
+              <childLayers>
+                <layer Id="7ae15b72-f7ef-4850-b7fc-712c9b8442a3" name="Agatha" />
+                <layer Id="21a88c3c-d896-4814-8e33-e860d80562ed" name="DTOs" />
+              </childLayers>
+            </layer>
+            <layer Id="d564a261-b0be-41be-a736-59bbf4c90d46" name="Rem.Ria.PatientModule.Web">
+              <childLayers>
+                <layer Id="65436d06-ec71-4987-a247-0436859cb5f4" name="Agatha" />
+                <layer Id="e05cefa7-9a94-44ec-9d1e-d59edcab6352" name="DTOs" />
+              </childLayers>
+            </layer>
+            <layer Id="1c00f11f-b1ac-40b2-9c77-a54481ad0f13" name="Rem.Ria.ReportsModule.Web">
+              <childLayers>
+                <layer Id="2f014ab9-3161-4e01-8d31-6023a96537e7" name="Agatha" />
+                <layer Id="45f3e0a2-156d-4ce4-851b-eac66c3e44d4" name="DTOs" />
+              </childLayers>
+            </layer>
+            <layer Id="272b6410-f09e-4960-8240-2dd621d58144" name="Rem.Ria.BillingModule.Web">
+              <childLayers>
+                <layer Id="e84d57dd-6bde-4a8c-ab98-ebc61ccde6e2" name="Agatha" />
+                <layer Id="040dda5d-ac1f-46e1-b847-f275576b8e94" name="DTOs" />
+              </childLayers>
+            </layer>
+          </childLayers>
+        </layer>
+        <layer Id="73fea00d-3ba3-4f71-a2f9-04ed9b610b5b" name="Rem.Domain.Clinical" />
+        <layer Id="2eaa5b82-0ca4-4941-8808-46ccbb9373df" name="Rem.Domain.Billing" />
+        <layer Id="d5040707-83c5-4807-88a6-ec835dc0dfa3" name="Rem.Domain.Common" />
+        <layer Id="344ef674-afa3-4c2d-a55b-71716d82e688" name="&lt;&lt;Context Map&gt;&gt;" />
+      </childLayers>
+    </layer>
+    <layer Id="2507a022-55f0-44b4-a0d0-9b33abd2ab53" name="Microsoft SQL Server 2008 R2">
+      <childLayers>
+        <layer Id="19bb13f1-3a8c-410d-a9d4-b2849ef67217" name="Rem.Database">
+          <childLayers>
+            <layer Id="d6b18390-559b-4249-be14-8dd3fb150c6b" name="BillingModule Schema" />
+            <layer Id="cc9f9d5b-07ae-4a5d-a88a-e33e03e26c76" name="AgencyModule Schema" />
+            <layer Id="38aa3f8f-b657-446c-9ca2-3e73383cdb19" name="PatientModule Schema" />
+            <layer Id="b352fbf3-7746-44dd-aff2-dc98b4eb95ca" name="VisitModule Schema" />
+            <layer Id="c83885de-83fa-4624-aeb4-1b8084076b56" name="other schemas" />
+          </childLayers>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="7a6353d5-7055-49d2-ba3a-baaa97c6ab03" name="Rem.WindowsService">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="ec44f7ee-b9bb-43c6-9433-316aeddf12c9" direction="Bidirectional">
+          <layerMoniker Id="53829161-bbdb-4a8e-a606-82716376f0ee" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="9719842f-45ce-475e-9e5f-7b78886ce727" name="NServiceBus Services Layer">
+          <childLayers>
+            <layer Id="a9b1b89b-0bc6-4a81-b04f-23596038be74" name="Rem.Bus.BillingModule">
+              <childLayers>
+                <layer Id="734f8a88-3be5-4db6-884b-0017431ba795" name="Data Transfer Objects" />
+                <layer Id="c75bd673-5418-4a56-9990-f1d8c65ee9d9" name="NServiceBus Requests, Responses, Handlers" />
+              </childLayers>
+            </layer>
+            <layer Id="494b2df7-b091-4f7f-99e9-11cb83b996b1" name="Rem.Bus.ClinicalModule">
+              <childLayers>
+                <layer Id="b269a396-317b-4082-8ab1-e9892be8f3f1" name="Data Transfer Objects" />
+                <layer Id="b82a8cbe-62d2-4897-8439-f54e8c785c4c" name="NServiceBus Requests, Responses, Handlers" />
+              </childLayers>
+            </layer>
+          </childLayers>
+        </layer>
+        <layer Id="38c1d40a-6304-4aa3-baa6-69ba0b5e8289" name="Rem.Bus.Infrastructure">
+          <childLayers>
+            <layer Id="554f2e8d-8e5d-4715-a3ec-614e4ac07d06" name="Security" />
+            <layer Id="97f315a5-09fe-407a-9a32-b417ad33eae8" name="NHibernate Mapping" />
+            <layer Id="73e8302f-fcf4-428e-b642-5fd885b43b24" name="Bootstrapper" />
+            <layer Id="41f05459-57f6-4a51-b2f6-468915aedbb8" name="Repositories" />
+            <layer Id="cceb06bb-3e2a-4a2f-97c4-c5e7f353b6ff" name="RavenDB" />
+            <layer Id="c5d578c7-46fc-48d8-a9e1-8927c9956658" name="Agatha" />
+            <layer Id="63e9959a-30fa-4273-bb15-790dbb2cf483" name="DTO" />
+            <layer Id="bebf5153-c688-4646-a079-c01864f8f386" name="Dapper" />
+          </childLayers>
+        </layer>
+        <layer Id="96f8b648-2cab-463e-9f83-16d618d4ec73" name="Rem.Clinical.Domain">
+          <childLayers>
+            <layer Id="bbe92cf6-9960-4c11-9018-8f3d8744ff46" name="Aggregates, entities, modules, rules, and services" />
+          </childLayers>
+        </layer>
+        <layer Id="522f903b-10eb-4031-ad47-f4fec16a4ef9" name="Rem.Billing.Domain">
+          <childLayers>
+            <layer Id="e1d07053-0a87-4245-a4fc-fb6b7bb6ee9d" name="Aggregates, entities, modules, rules, and services" />
+          </childLayers>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="c6eb6568-20ff-470f-a21f-9897b34e7958" name="RavenDB">
+      <childLayers>
+        <layer Id="b7cff382-38b1-45d0-a7b5-7581b8900b89" name="Metadata" />
+      </childLayers>
+    </layer>
+    <layer Id="6d264d59-e483-48fd-9f09-048d68299ac4" name="Apelon DTS">
+      <childLayers>
+        <layer Id="e452f5a7-13e4-4cf7-9766-c2f67b6b934c" name="SNOMED" />
+        <layer Id="4e9c7ee4-ec1c-4764-9615-3f902fd0f3a1" name="LOINC" />
+        <layer Id="80b763d1-8761-4e07-a040-120bc3975cb2" name="CPT" />
+        <layer Id="32e74f7f-dd87-49f3-a109-16b6c52cd087" name="CVX" />
+        <layer Id="0c9492e0-74a7-4328-9815-1651b00ae2e5" name="HCPCS" />
+        <layer Id="8ea7054c-e628-4acb-b7de-31a3113bf281" name="HL7" />
+        <layer Id="1fbb82e3-935c-4acf-aeab-f274d1242977" name="ICD9" />
+        <layer Id="7f5ce99e-cfe1-4aad-b533-d2ffa76b4839" name="RX Norm" />
+      </childLayers>
+    </layer>
+    <layer Id="53829161-bbdb-4a8e-a606-82716376f0ee" name="Service&#xD;&#xA;Bus" />
+  </layers>
+</layerModel>

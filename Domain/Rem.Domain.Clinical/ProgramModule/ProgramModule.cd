@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.ProgramModule.Program" Collapsed="true">
+    <Position X="3.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAMAAwAAgAIEIAAgAAAAQgABAgAAJBACAAAUAAAQA=</HashCode>
+      <FileName>ProgramModule\Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ProgramModule.ProgramOffering" Collapsed="true">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAUAgAIQAIAIgAIIAAAAgAAAAAAAAACAAgEEAAAA=</HashCode>
+      <FileName>ProgramModule\ProgramOffering.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ProgramModule.AgeGroup" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProgramModule\AgeGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ProgramModule.CapacityType" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProgramModule\CapacityType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ProgramModule.TreatmentApproach" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProgramModule\TreatmentApproach.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ProgramModule.GenderSpecification" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProgramModule\GenderSpecification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

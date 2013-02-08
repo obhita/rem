@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{53090AB1-0E1F-4C0D-B2A0-F5B2EC4D22B0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GenerateLoadScripts</RootNamespace>
+    <AssemblyName>GenerateLoadScripts</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\packages\Castle.Core.3.0.0.2001\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\packages\FluentNHibernate.1.2.0.712\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\packages\Iesi.Collections.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\packages\NHibernate.Castle.3.1.0.4000\lib\Net35\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.configuration" />
+    <Reference Include="uNhAddIns">
+      <HintPath>..\..\lib\Server\NHibernate\uNhAddIns.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionProvider.cs" />
+    <Compile Include="StringExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Clinical\Rem.Domain.Clinical.csproj">
+      <Project>{C7837BA2-B4EC-40B6-96B6-00F9BE462A60}</Project>
+      <Name>Rem.Domain.Clinical</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Core\Rem.Domain.Core.csproj">
+      <Project>{AB046CD6-556B-4023-BAC1-3F0F3183B630}</Project>
+      <Name>Rem.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\Rem.Infrastructure\Rem.Infrastructure.csproj">
+      <Project>{ADDD4155-DFBE-4450-96E4-0E730CE38861}</Project>
+      <Name>Rem.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common\Pillar.Common.csproj">
+      <Project>{6761BABC-8D45-4D08-B112-088FA47AB625}</Project>
+      <Name>Pillar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain.NHibernate\Pillar.Domain.NHibernate.csproj">
+      <Project>{E1332A3F-04D1-4D02-B0F0-A20046EAF437}</Project>
+      <Name>Pillar.Domain.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain\Pillar.Domain.csproj">
+      <Project>{88257D62-7FE9-4128-A39B-1FF4511C8B3A}</Project>
+      <Name>Pillar.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.FluentRuleEngine\Pillar.FluentRuleEngine.csproj">
+      <Project>{26BEFDB1-9762-4132-9F45-06CABE14D43C}</Project>
+      <Name>Pillar.FluentRuleEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.IoC.StructureMap\Pillar.IoC.StructureMap.csproj">
+      <Project>{1728DBDD-7471-4C03-809B-C2E83A4C8C7C}</Project>
+      <Name>Pillar.IoC.StructureMap</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

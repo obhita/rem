@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A44EB807-6781-4292-B9D5-2BA3C1BFA473}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Ria.BillingModule.Web</RootNamespace>
+    <AssemblyName>Rem.Ria.BillingModule.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\debug\Rem.Ria.BillingModule.Web.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Agatha.Common">
+      <HintPath>..\..\packages\Agatha-Common-Unity.1.3\lib\net40\Agatha.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.ServiceLayer">
+      <HintPath>..\..\packages\Agatha-ServiceLayer-StructureMap.1.3\lib\net40\Agatha.ServiceLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.StructureMap">
+      <HintPath>..\..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=2.1.266.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\AutoMapper.2.1.266\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="OopFactory.X12, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\X12Parser\OopFactory.X12.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapperConfig.cs" />
+    <Compile Include="BillingAdministrationDashboard\ClaimBatchListSummaryDto.cs" />
+    <Compile Include="BillingAdministrationDashboard\ClaimSummaryDto.cs" />
+    <Compile Include="BillingAdministrationDashboard\PagedClaimSummaryListDto.cs" />
+    <Compile Include="BillingAdministrationDashboard\GetClaimBatchListSummaryRequest.cs" />
+    <Compile Include="BillingAdministrationDashboard\GetClaimBatchListSummaryRequestHandler.cs" />
+    <Compile Include="BillingAdministrationDashboard\GetOpenClaimSummaryListByBusinessOfficeKeyRequestHandler.cs" />
+    <Compile Include="BillingAdministrationDashboard\GetOpenClaimSummaryListByBillingOfficeKeyRequest.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficeAddressDto.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficeAddressesDto.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficeAddressesDtoFactory.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficeDto.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficeDtoFactory.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficePhoneDto.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficePhonesDto.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficePhonesDtoFactory.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficeProfileDto.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficeProfileDtoFactory.cs" />
+    <Compile Include="BillingOfficeEditor\CheckBillingOfficeExistsByAgencyKeyRequest.cs" />
+    <Compile Include="BillingOfficeEditor\CheckBillingOfficeExistsByAgencyKeyRequestHandler.cs" />
+    <Compile Include="BillingOfficeEditor\CheckBillingOfficeExistsByAgencyKeyResponse.cs" />
+    <Compile Include="BillingOfficeEditor\CreateBillingOfficeRequest.cs" />
+    <Compile Include="BillingOfficeEditor\CreateBillingOfficeRequestHandler.cs" />
+    <Compile Include="BillingOfficeEditor\SaveBillingOfficeAddressesDtoRequestHandler.cs" />
+    <Compile Include="BillingOfficeEditor\SaveBillingOfficePhoneNumbersDtoRequestHandler.cs" />
+    <Compile Include="BillingOfficeEditor\SaveBillingOfficeProfileDtoRequestHandler.cs" />
+    <Compile Include="Claim\VisitForBillingDto.cs" />
+    <Compile Include="Common\GetPayorTypesByBillingOfficeKeyRequest.cs" />
+    <Compile Include="Common\GetPayorTypesByBillingOfficeKeyRequestHandler.cs" />
+    <Compile Include="Common\GetPayorTypesByBillingOfficeKeyResponse.cs" />
+    <Compile Include="PayorEditor\SavePayorTypeDtoRequestHandler.cs" />
+    <Compile Include="PayorEditor\PayorTypeDto.cs" />
+    <Compile Include="PayorEditor\PayorTypeDtoFactory.cs" />
+    <Compile Include="PermissionDescriptor.cs" />
+    <Compile Include="Common\BillingOfficeSummaryDto.cs" />
+    <Compile Include="Common\BillingOfficeSummaryDtoFactory.cs" />
+    <Compile Include="Common\GetBillingOfficeSummaryByAgencyKeyRequest.cs" />
+    <Compile Include="Common\GetBillingOfficeSummaryByAgencyKeyRequestHandler.cs" />
+    <Compile Include="Common\GetPayorsByBillingOfficeKeyRequest.cs" />
+    <Compile Include="Common\GetPayorsByBillingOfficeKeyRequestHandler.cs" />
+    <Compile Include="Common\GetPayorsByBillingOfficeKeyResponse.cs" />
+    <Compile Include="HttpHandler.cs" />
+    <Compile Include="PayorEditor\PayorAddressDto.cs" />
+    <Compile Include="PayorEditor\PayorAddressesDto.cs" />
+    <Compile Include="PayorEditor\PayorAddressesDtoFactory.cs" />
+    <Compile Include="PayorEditor\PayorDto.cs" />
+    <Compile Include="PayorEditor\PayorDtoFactory.cs" />
+    <Compile Include="PayorEditor\PayorPhoneDto.cs" />
+    <Compile Include="PayorEditor\PayorPhoneNumbersDto.cs" />
+    <Compile Include="PayorEditor\PayorPhoneNumbersDtoFactory.cs" />
+    <Compile Include="PayorEditor\PayorProfileDto.cs" />
+    <Compile Include="PayorEditor\PayorProfileDtoFactory.cs" />
+    <Compile Include="PayorEditor\SavePayorAddressesDtoRequestHandler.cs" />
+    <Compile Include="PayorEditor\SavePayorPhoneNumbersDtoRequestHandler.cs" />
+    <Compile Include="PayorEditor\SavePayorProfileDtoRequestHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Claim\ClaimBatchDisplayNameDto.cs" />
+    <Compile Include="Service\ResetTestDataRequest.cs" />
+    <Compile Include="Service\ResetTestDataRequestHandler.cs" />
+    <Compile Include="Service\ResetTestDataResponse.cs" />
+    <Compile Include="Service\SendToBillingRequest.cs" />
+    <Compile Include="Service\SendToBillingRequestHandler.cs" />
+    <Compile Include="Service\SendToBillingResponse.cs" />
+    <Compile Include="Service\GenerateHcc837ProfessionalHandler.cs" />
+    <Compile Include="Service\GenerateHcc837ProfessionalRequest.cs" />
+    <Compile Include="Service\GenerateHcc837ProfessionalResponse.cs" />
+    <Compile Include="Service\GetClaimBatchDisplayNamesByClaimBatchStatusRequestHandler.cs" />
+    <Compile Include="Service\GetClaimBatchDisplayNamesByClaimBatchStatusRequest.cs" />
+    <Compile Include="Service\GetClaimBatchDisplayNamesByClaimBatchStatusResponse.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Billing\Rem.Domain.Billing.csproj">
+      <Project>{1BF4EBC9-3BA5-4979-9F91-19AFFB3E5FAF}</Project>
+      <Name>Rem.Domain.Billing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.ClinicalBilling.ContextMap\Rem.Domain.ClinicalBilling.ContextMap.csproj">
+      <Project>{9A647497-1729-4D74-9E4C-58E6BEC25BEB}</Project>
+      <Name>Rem.Domain.ClinicalBilling.ContextMap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Clinical\Rem.Domain.Clinical.csproj">
+      <Project>{C7837BA2-B4EC-40B6-96B6-00F9BE462A60}</Project>
+      <Name>Rem.Domain.Clinical</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Core\Rem.Domain.Core.csproj">
+      <Project>{AB046CD6-556B-4023-BAC1-3F0F3183B630}</Project>
+      <Name>Rem.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\Rem.Infrastructure\Rem.Infrastructure.csproj">
+      <Project>{ADDD4155-DFBE-4450-96E4-0E730CE38861}</Project>
+      <Name>Rem.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common\Pillar.Common.csproj">
+      <Project>{6761BABC-8D45-4D08-B112-088FA47AB625}</Project>
+      <Name>Pillar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain\Pillar.Domain.csproj">
+      <Project>{88257D62-7FE9-4128-A39B-1FF4511C8B3A}</Project>
+      <Name>Pillar.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Security\Pillar.Security.csproj">
+      <Project>{450A9049-224E-47D2-ADF8-D57A168DC266}</Project>
+      <Name>Pillar.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Rem.WellKnownNames\Rem.WellKnownNames.csproj">
+      <Project>{0CA1E92B-B1E0-4E22-8FA5-747753AA8E72}</Project>
+      <Name>Rem.WellKnownNames</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.Infrastructure.Web\Rem.Ria.Infrastructure.Web.csproj">
+      <Project>{D0DD4451-BAFD-41E2-B6B8-566E3BAFD20A}</Project>
+      <Name>Rem.Ria.Infrastructure.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Service\ResetTestDataRequestHandler.sql" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

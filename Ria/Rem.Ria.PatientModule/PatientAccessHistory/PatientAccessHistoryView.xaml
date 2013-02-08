@@ -1,0 +1,198 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.PatientAccessHistory.PatientAccessHistoryView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"  
+    xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism"  
+    xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input" 
+    xmlns:Behaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" 
+    xmlns:ViewModel="clr-namespace:Rem.Ria.Infrastructure.ViewModel;assembly=Rem.Ria.Infrastructure" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+             mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="1000" Margin="4,4,4,0">
+    <i:Interaction.Behaviors>
+        <Behaviors:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="36" />
+            <RowDefinition Height="Auto" MinHeight="48"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.554*"/>
+            <ColumnDefinition Width="0.446*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0,0,67,0" Orientation="Horizontal" d:LayoutOverrides="Width" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Border Grid.Row="1" Style="{StaticResource MainHeaderBorder}" CornerRadius="8,8,0,0" Height="Auto" Grid.ColumnSpan="2">
+            <Grid Margin="4,4,0,4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.868*"/>
+                    <ColumnDefinition Width="0.132*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.ColumnSpan="2">
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Canvas Width="26" Height="26">
+                            <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 38.4503,44.8047L 16.033,44.8047C 11.909,44.8047 8.55163,41.4487 8.55163,37.3207L 8.55163,14.9061C 8.55163,10.7781 11.909,7.42206 16.033,7.42206L 38.4503,7.42206C 42.5783,7.42206 45.9343,10.7781 45.9343,14.9061L 45.9343,37.3207C 45.9343,41.4487 42.5783,44.8047 38.4503,44.8047 Z " UseLayoutRounding="False" Height="25.278" Canvas.Left="0.441" Canvas.Top="0.723" Width="25.279"/>
+                            <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 43.7907,42.3145L 11.04,9.5638" UseLayoutRounding="False" Height="22.253" Canvas.Left="2.066" Canvas.Top="2.122" Width="22.254"/>
+                            <Path Stretch="Fill" Data="F1 M 15.6787,5.648C 11.0187,5.648 7.20933,9.45867 7.20933,14.116L 7.20933,37.0133C 7.20933,41.668 11.0187,45.48 15.6787,45.48L 38.5707,45.48C 43.2307,45.48 47.04,41.668 47.04,37.0133L 47.04,14.116C 47.04,9.45867 43.2307,5.648 38.5707,5.648L 15.6787,5.648 Z " UseLayoutRounding="False" Height="26.007" Width="26.006">
+                                <Path.Fill>
+                                    <LinearGradientBrush StartPoint="0.499985,-5.26733e-006" EndPoint="0.499985,1.00003">
+                                        <GradientStop Color="#FF3F3F40" Offset="0"/>
+                                        <GradientStop Color="#FF7D7D7F" Offset="0.257324"/>
+                                        <GradientStop Color="#FFBBBCBF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+                            <Path Stretch="Fill" Data="F1 M 15.9147,6.87333C 11.792,6.87333 8.43333,10.228 8.43333,14.356L 8.43333,36.772C 8.43333,40.9013 11.792,44.2547 15.9147,44.2547L 38.332,44.2547C 42.4613,44.2547 45.816,40.9013 45.816,36.772L 45.816,14.356C 45.816,10.228 42.4613,6.87333 38.332,6.87333L 15.9147,6.87333 Z " UseLayoutRounding="False" Height="24.408" Canvas.Left="0.799" Canvas.Top="0.8" Width="24.409">
+                                <Path.Fill>
+                                    <LinearGradientBrush StartPoint="0.499985,-7.44952e-006" EndPoint="0.499985,1.00003">
+                                        <GradientStop Color="#FF141E26" Offset="0"/>
+                                        <GradientStop Color="#FF343B43" Offset="0.200809"/>
+                                        <GradientStop Color="#FF555960" Offset="0.503067"/>
+                                        <GradientStop Color="#FF343B43" Offset="0.52366"/>
+                                        <GradientStop Color="#FF141E26" Offset="0.533737"/>
+                                        <GradientStop Color="#FF272E37" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+                            <Path Stretch="Fill" Data="F1 M 15.9147,7.33733C 11.792,7.33733 8.43333,10.6933 8.43333,14.82L 8.43333,15.98C 8.43333,11.852 11.792,8.496 15.9147,8.496L 38.332,8.496C 42.4613,8.496 45.816,11.852 45.816,15.98L 45.816,14.82C 45.816,10.6933 42.4613,7.33733 38.332,7.33733L 15.9147,7.33733 Z " UseLayoutRounding="False" Height="5.644" Canvas.Left="0.799" Canvas.Top="1.102" Width="24.409">
+                                <Path.Fill>
+                                    <LinearGradientBrush StartPoint="0.499985,6.53242e-005" EndPoint="0.499985,0.999979">
+                                        <GradientStop Color="#FF808184" Offset="0"/>
+                                        <GradientStop Color="#FF5F6062" Offset="0.13"/>
+                                        <GradientStop Color="#FF3F3F40" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+                            <Path Stretch="Fill" Fill="Black" Data="F1 M 169.333,13.8414L 169.333,11.7654C 169.333,5.47467 164.159,0.322693 157.88,0.322693L 11.9747,0.322693C 5.66135,0.322693 0.521338,5.47467 0.521338,11.7654L 0.521338,13.8414C 0.521338,20.144 5.66135,25.284 11.9747,25.284L 15.3493,25.284C 14.7333,28.8694 14.2893,32.516 14.2893,36.2707C 14.2893,64.264 52.9053,96.816 73.0453,111.849C 75.916,114.015 76.2373,120.113 73.592,122.087C 53.624,136.965 14.2893,169.86 14.2893,198.104C 14.2893,200.221 14.472,202.297 14.6893,204.372L 11.9747,204.372C 5.66135,204.372 0.521338,209.524 0.521338,215.815L 0.521338,217.891C 0.521338,224.183 5.66135,229.333 11.9747,229.333L 157.88,229.333C 164.159,229.333 169.333,224.183 169.333,217.891L 169.333,215.815C 169.333,209.524 164.159,204.372 157.88,204.372L 155.167,204.372C 155.371,202.297 155.553,200.221 155.553,198.104C 155.553,169.745 115.888,136.692 96,121.903C 93.4707,120.023 93.8453,114.073 96.6507,111.976C 116.744,96.964 155.553,64.332 155.553,36.2707C 155.553,32.516 155.12,28.8694 154.492,25.284L 157.88,25.284C 164.159,25.284 169.333,20.144 169.333,13.8414 Z " Height="13.763" Canvas.Left="7.105" Canvas.Top="5.746" UseLayoutRounding="False" Width="10.145"/>
+                            <Path Stretch="Fill" Fill="White" Data="F1 M 169.333,13.8414L 169.333,11.7654C 169.333,5.47467 164.159,0.322693 157.88,0.322693L 11.9747,0.322693C 5.66135,0.322693 0.521338,5.47467 0.521338,11.7654L 0.521338,13.8414C 0.521338,20.144 5.66135,25.284 11.9747,25.284L 15.3493,25.284C 14.7333,28.8694 14.2893,32.516 14.2893,36.2707C 14.2893,64.264 52.9053,96.816 73.0453,111.849C 75.916,114.015 76.2373,120.113 73.592,122.087C 53.624,136.965 14.2893,169.86 14.2893,198.104C 14.2893,200.221 14.472,202.297 14.6893,204.372L 11.9747,204.372C 5.66135,204.372 0.521338,209.524 0.521338,215.815L 0.521338,217.891C 0.521338,224.183 5.66135,229.333 11.9747,229.333L 157.88,229.333C 164.159,229.333 169.333,224.183 169.333,217.891L 169.333,215.815C 169.333,209.524 164.159,204.372 157.88,204.372L 155.167,204.372C 155.371,202.297 155.553,200.221 155.553,198.104C 155.553,169.745 115.888,136.692 96,121.903C 93.4707,120.023 93.8453,114.073 96.6507,111.976C 116.744,96.964 155.553,64.332 155.553,36.2707C 155.553,32.516 155.12,28.8694 154.492,25.284L 157.88,25.284C 164.159,25.284 169.333,20.144 169.333,13.8414 Z " Height="13.763" Canvas.Left="7.605" Canvas.Top="5.996" UseLayoutRounding="False" Width="10.145"/>
+                        </Canvas>
+                    </Border>
+                    <TextBlock Style="{StaticResource MainHeaderTextBlockStyle}" TextWrapping="Wrap" Text="Access History Results" d:LayoutOverrides="Width" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical" d:LayoutOverrides="Height" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0">
+                    <telerik:RadButton x:Name="ExportButton" Content="Export" VerticalAlignment="Center" Style="{StaticResource BorderlessButtonStyle}" HorizontalAlignment="Center">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <Behaviors:ExportRadGridViewTriggerAction RadGridViewInstance="{Binding ElementName=PatientAccessHistorydataGrid}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </telerik:RadButton>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="0 1 0 0" HorizontalAlignment="Stretch"/>
+        <Border Grid.Row="2" Style="{StaticResource TileSubHeaderBackgroundBorderStyle}" Grid.ColumnSpan="2" BorderThickness="1,0,1,1" BorderBrush="Black" >
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+                    <ContentControl Regions:RegionManager.RegionName="PatientSearch" VerticalAlignment="Center">
+                        <Regions:RegionManager.RegionContext>
+                            <ViewModel:SearchCommunicater SelectedItem="{Binding Patient, Mode=TwoWay}"/>
+                        </Regions:RegionManager.RegionContext>
+                    </ContentControl>
+                    <ContentControl Regions:RegionManager.RegionName="SystemAccountSearch" Margin="10,0,0,0" VerticalAlignment="Center">
+                        <Regions:RegionManager.RegionContext>
+                            <ViewModel:SearchCommunicater SelectedItem="{Binding User, Mode=TwoWay}"/>
+                        </Regions:RegionManager.RegionContext>
+                    </ContentControl>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <telerik:RadDateTimePicker HorizontalAlignment="Left" x:Name="DateStartPicker" InputMode="DatePicker" SelectedValue="{Binding StartDate, Mode=TwoWay}" Width="100" Height="24" d:LayoutOverrides="Height, VerticalMargin" DateTimeWatermarkContent="Start Date" VerticalAlignment="Center" />
+
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10,0,20,0">
+                    <telerik:RadDateTimePicker x:Name="EndDatePicker" HorizontalAlignment="Left" Height="24" InputMode="DatePicker"  SelectedValue="{Binding EndDate, Mode=TwoWay}" Width="100" d:LayoutOverrides="Height, VerticalMargin" DateTimeWatermarkContent="End Date" VerticalAlignment="Center" />
+                </StackPanel>
+                <telerik:RadButton x:Name="SearchButton" Command="{Binding SearchCommand}" VerticalAlignment="Center" FontSize="12" Style="{StaticResource StaticBorderlessButtonStyle}" Foreground="#FF7E7E7E">
+                	<StackPanel Orientation="Horizontal">
+                		<Canvas Height="12" Width="12" VerticalAlignment="Top">
+                			<Path Stretch="Fill" VerticalAlignment="Center" Fill="{Binding Foreground, ElementName=SearchButton}" Data="F1 M 8.61733,3.074C 5.00533,3.074 2.068,6.01266 2.068,9.62333C 2.068,13.2353 5.00533,16.1727 8.61733,16.1727C 12.228,16.1727 15.1667,13.2353 15.1667,9.62333C 15.1667,6.01266 12.228,3.074 8.61733,3.074 Z M 8.61733,18.2407C 3.86533,18.2407 0,14.3753 0,9.62333C 0,4.87133 3.86533,1.006 8.61733,1.006C 13.368,1.006 17.2347,4.87133 17.2347,9.62333C 17.2347,11.3406 16.7297,12.9421 15.8605,14.2872L 23.9827,22.4093L 21.0573,25.3333L 12.8518,17.1266C 11.6004,17.8356 10.1552,18.2407 8.61733,18.2407 Z " Height="12" UseLayoutRounding="False" Width="12"/>
+                		</Canvas>
+                		<TextBlock Text="Search" FontSize="12" Foreground="{Binding Foreground, ElementName=SearchButton}" Margin="4,0,0,0" VerticalAlignment="Center"/>
+                	</StackPanel>
+            	</telerik:RadButton>
+                <telerik:RadButton x:Name="ClearButton" Command="{Binding ResetCommand}" VerticalAlignment="Center"  FontSize="12" Style="{StaticResource StaticBorderlessButtonStyle}" Foreground="#FF7E7E7E" Width="77">
+                	<StackPanel Orientation="Horizontal">
+                		<Canvas Width="12" Height="12">
+                			<Path Stretch="Fill" Data="F1 M70.638901,20.332384 L66.154221,15.7222 L69.530998,15.7222 C69.160599,11.8564 65.9039,8.8333502 61.941002,8.8333502 C57.7299,8.8333502 54.316002,12.2472 54.316002,16.4583 C54.316002,20.6695 57.7299,24.0833 61.941002,24.0833 C63.711201,24.0833 65.3405,23.480101 66.634598,22.4681 L68.300697,24.067499 C66.579102,25.507999 64.361298,26.375 61.941002,26.375 C56.464199,26.375 52.024399,21.9352 52.024399,16.4583 C52.024399,10.9815 56.464199,6.5416799 61.941002,6.5416799 C67.170197,6.5416799 71.454102,10.5892 71.830803,15.7222 L75.123505,15.7222 L70.638901,20.332384 z" Height="10.399"  Width="11.889" Canvas.Left="0.111" UseLayoutRounding="False" Fill="{Binding Foreground, ElementName=ClearButton}"/>
+                		</Canvas>           	
+                		<TextBlock Text="Reset"  FontSize="12" Margin="4 0 0 0"/>
+                	</StackPanel>            
+                </telerik:RadButton>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="4" BorderBrush="Black" Grid.ColumnSpan="2" BorderThickness="1,0">
+            <telerik:RadGridView x:Name="PatientAccessHistorydataGrid" ItemsSource="{Binding PatientAccessEvents}" 
+		    			IsReadOnly="True" AutoGenerateColumns="False" ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" AutoExpandGroups="True" BorderThickness="0">
+                <i:Interaction.Behaviors>
+                    <Behaviors:RadGridViewPagedSortBehavior SortBy="{Binding SortBy, Mode=TwoWay}" SortDirection="{Binding SortDirection, Mode=TwoWay}" SortCommand="{Binding SearchCommand}"/>
+                    <Behaviors:GridViewHideFocusVisualBehavior/>
+                </i:Interaction.Behaviors>
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Width="145" Header="Date" HeaderTextAlignment="Center" DataMemberBinding="{Binding CreatedTimestamp, StringFormat='MM/dd/yy hh:mm:ss tt'}"/>
+                    <telerik:GridViewDataColumn Width="1*" Header="Patient Name" HeaderTextAlignment="Center" DataMemberBinding="{Binding PatientName}" />
+                    <telerik:GridViewDataColumn Width="1*" Header="User Name" HeaderTextAlignment="Center" DataMemberBinding="{Binding UserName}" />
+                    <telerik:GridViewDataColumn Width="2*" Header="Audited Context" HeaderTextAlignment="Center" DataMemberBinding="{Binding AuditedContextDescription}" />
+                    <telerik:GridViewDataColumn Width="0.75*" Header="Access Type" HeaderTextAlignment="Center" DataMemberBinding="{Binding PatientAccessEventTypeName}" />
+                    <telerik:GridViewDataColumn Width="2.5*" Header="Note" HeaderTextAlignment="Center" DataMemberBinding="{Binding Note}" IsSortable="False" >
+                        <telerik:GridViewDataColumn.ToolTipTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Note}"/>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.ToolTipTemplate>
+                    </telerik:GridViewDataColumn>
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+        </Border>
+        <Border Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Grid.Row="5" VerticalAlignment="Center" Background="White" CornerRadius="0,0,8,8" BorderBrush="Black" BorderThickness="1,0,1,1">
+        	<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" MinHeight="18" >
+        		<Border x:Name="PagerBorder"  VerticalAlignment="Bottom" BorderBrush="Black" Background="White" Margin="0,4">
+        			<i:Interaction.Behaviors>
+        				<Behaviors:DataPagerVisibilityBehavior NumberOfPages="{Binding PageCount, ElementName=dataPager}"/>
+        			</i:Interaction.Behaviors>
+        			<telerik:RadDataPager x:Name="dataPager" PageSize="{Binding PageSize, Mode=TwoWay}" ItemCount="{Binding TotalItemCount, Mode=TwoWay}" PageIndex="{Binding PageIndex, Mode=TwoWay}" 
+        				VerticalAlignment="Center"/>
+        		</Border>
+        	</StackPanel>
+        </Border>
+        <Border Style="{StaticResource TileToolBarBorderStyle}" Grid.Row="3" BorderThickness="1,0,0,0" BorderBrush="Black" >
+            <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <Controls:Label VerticalAlignment="Center" Content="Access Type:" Target="{Binding ElementName=AccessTypeComboBox}" Foreground="White" Margin="0,0,4,0" />
+                    <telerik:RadComboBox x:Name="AccessTypeComboBox" Style="{StaticResource RadComboBoxRemStyle}" ClearSelectionButtonVisibility="Collapsed"  
+        			ItemsSource="{Binding LookupValueLists[PatientAccessEventType], Mode=OneWay}" EmptyText="Access Type"  EmptySelectionBoxTemplate="{StaticResource TileWatermarkTemplate}"
+        			SelectedItem="{Binding AccessType, Mode=TwoWay}" 
+        			DisplayMemberPath="Name"/>
+                </StackPanel>
+                <Border BorderBrush="#FFD4D4D4" BorderThickness="0,0,1,0" Height="24" Margin="10,4"/>
+                <StackPanel  VerticalAlignment="Center" Orientation="Horizontal">
+                    <Controls:Label VerticalAlignment="Center" Content="Group By:" Target="{Binding ElementName=GroupByComboBox}" Foreground="White" Margin="0,0,4,0" />
+
+                    <telerik:RadComboBox HorizontalAlignment="Left" x:Name="GroupByComboBox" Style="{StaticResource RadComboBoxRemStyle}" ClearSelectionButtonVisibility="Collapsed"
+        			ItemsSource="{Binding GroupingDescriptions}" DisplayMemberPath="Description"   EmptyText="Group By:"  EmptySelectionBoxTemplate="{StaticResource TileWatermarkTemplate}"
+        			SelectedItem="{Binding SelectedGroupingDescription, Mode=TwoWay}" Height="22" VerticalAlignment="Center"/>
+
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border  Style="{StaticResource TileToolBarBorderStyle}" Grid.Column="1" Grid.Row="3" BorderThickness="0,0,1,0" BorderBrush="Black">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" >
+                    <Controls:Label VerticalAlignment="Center" Content="Results Per page:" Target="{Binding ElementName=PageSizeComboBox}" Foreground="White" Margin="0,0,4,0"/>
+                    <telerik:RadComboBox  x:Name="PageSizeComboBox" Style="{StaticResource RadComboBoxRemStyle}" ClearSelectionButtonVisibility="Collapsed"  Width="50"  VerticalAlignment="Center"
+        			ItemsSource="{Binding PageSizeList, Mode=OneWay}" SelectedItem="{Binding PageSize, Mode=TwoWay}" EmptyText="Results Per Page:"  EmptySelectionBoxTemplate="{StaticResource TileWatermarkTemplate}" Height="22"/>
+
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <CustomControls:LoadingControl Grid.RowSpan="6" Grid.ColumnSpan="2" IsLoading="{Binding IsLoading}"/>
+    </Grid>
+</UserControl>

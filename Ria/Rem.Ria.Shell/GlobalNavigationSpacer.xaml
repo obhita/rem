@@ -1,0 +1,38 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="Rem.Ria.Shell.GlobalNavigationSpacer"
+	d:DesignWidth="10" d:DesignHeight="36">
+
+	<Grid x:Name="LayoutRoot">
+		<Grid d:LayoutOverrides="Height">
+			<Canvas Height="5" Margin="3,-6,3,0" VerticalAlignment="Top">
+				<Ellipse Fill="#FFD8D8D8" Height="2.5" Width="2.5" Canvas.Top="1"/>
+				<Ellipse Fill="#FF404041" Height="2.5" Width="2.5" d:LayoutOverrides="HorizontalAlignment"/>
+			</Canvas>
+			<Canvas Height="5" Margin="3,3,3,0" VerticalAlignment="Top">
+				<Ellipse Fill="#FFD8D8D8" Height="2.5" Width="2.5" Canvas.Top="1"/>
+				<Ellipse Fill="#FF404041" Height="2.5" Width="2.5" d:LayoutOverrides="HorizontalAlignment"/>
+			</Canvas>
+			<Canvas Height="5" Margin="3,11,3,0" VerticalAlignment="Top">
+				<Ellipse Fill="#FFD8D8D8" Height="2.5" Width="2.5" Canvas.Top="1"/>
+				<Ellipse Fill="#FF404041" Height="2.5" Width="2.5" d:LayoutOverrides="HorizontalAlignment"/>
+			</Canvas>
+			<Canvas Margin="3,0,3,11" Height="5" VerticalAlignment="Bottom">
+				<Ellipse Fill="#FFD8D8D8" Height="2.5" Width="2.5" Canvas.Top="1"/>
+				<Ellipse Fill="#FF404041" Height="2.5" Width="2.5" d:LayoutOverrides="HorizontalAlignment"/>
+			</Canvas>
+			<Canvas Margin="3,0,3,2" Height="5" VerticalAlignment="Bottom">
+				<Ellipse Fill="#FFD8D8D8" Height="2.5" Width="2.5" Canvas.Top="1"/>
+				<Ellipse Fill="#FF404041" Height="2.5" Width="2.5" d:LayoutOverrides="HorizontalAlignment"/>
+			</Canvas>
+			<Canvas Height="5" VerticalAlignment="Bottom" Margin="3,0,3,-7">
+				<Ellipse Fill="#FFD8D8D8" Height="2.5" Width="2.5" Canvas.Top="1"/>
+				<Ellipse Fill="#FF404041" Height="2.5" Width="2.5" d:LayoutOverrides="HorizontalAlignment"/>
+			</Canvas>
+		</Grid>
+	</Grid>
+</UserControl>

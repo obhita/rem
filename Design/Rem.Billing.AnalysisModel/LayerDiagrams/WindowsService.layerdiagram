@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="0e41b797-0053-4ded-b8bc-4679fd141661" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="c4905196-4f0b-4d1e-a88e-82cba88e557a" name="Rem.WindowsService">
+      <childLayers>
+        <layer Id="5df1125d-a645-4a1d-a45f-4ccf3ae538c4" name="NServiceBus Message Handler Layer">
+          <childLayers>
+            <layer Id="fb3c7dd0-cffc-41d6-b0bb-c243cfa07a1a" name="Rem.Bus.Handlers">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="7f1db96a-aa67-45d8-aab3-cfcd877e260e" direction="Forward">
+                  <layerMoniker Id="c5219963-8f3d-4bea-a8c0-39b1a0ff7a22" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <childLayers>
+                <layer Id="eb451956-7c38-49c4-bea2-8714be356059" name="Data Transfer Objects" />
+                <layer Id="a750cace-51b7-4ef7-876d-ceef495532d3" name="NServiceBus Requests, Responses, Handlers" />
+              </childLayers>
+            </layer>
+          </childLayers>
+        </layer>
+        <layer Id="ec5c5d7f-821c-4548-aed6-f40fd98a36b8" name="Rem.Bus.Infrastructure">
+          <childLayers>
+            <layer Id="6d4dec56-8809-4a3f-9089-9581aaad0a2c" name="Security" />
+            <layer Id="3947f45f-8a56-4691-b192-31c69f76b735" name="NHibernate Mapping" />
+            <layer Id="01f2be96-f617-4407-84bb-099f2f6408ac" name="Bootstrapper" />
+            <layer Id="7ebb2ec6-a947-4e94-a285-1805472e3bec" name="Repositories" />
+            <layer Id="675450ab-1267-4ac1-b791-9ec3b6e6b902" name="RavenDB" />
+            <layer Id="6ba8e53b-3e1f-4b3c-9403-30aa405aa4e3" name="Agatha" />
+            <layer Id="04135eb1-b4cc-41fa-8c2f-a0ebde12f384" name="DTO" />
+            <layer Id="825779ef-53db-4164-aa9c-bd2c8c629171" name="Dapper" />
+          </childLayers>
+        </layer>
+        <layer Id="c5219963-8f3d-4bea-a8c0-39b1a0ff7a22" name="Domain">
+          <childLayers>
+            <layer Id="f0098b23-4380-4947-9af5-71892010724f" name="Rem.Domain.Clinical" />
+            <layer Id="753964ab-4d42-4ee9-8e49-93bf31609e3a" name="Rem.Domain.Billing" />
+            <layer Id="729d4f38-fbf4-4577-adf3-d4179787d42a" name="Rem.Domain.Core" />
+            <layer Id="b3d21557-b51b-416a-94ca-47dc63f300be" name="Rem.Domain.ClinicalBilling.ContextMap" />
+          </childLayers>
+        </layer>
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

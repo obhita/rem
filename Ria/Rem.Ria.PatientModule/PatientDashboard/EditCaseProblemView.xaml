@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.PatientDashboard.EditCaseProblemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism" 
+    xmlns:ViewModel="clr-namespace:Rem.Ria.Infrastructure.ViewModel;assembly=Rem.Ria.Infrastructure" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" 
+    xmlns:infrastructureBehaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+    mc:Ignorable="d"
+    d:DesignHeight="700" d:DesignWidth="600">
+    <i:Interaction.Behaviors>
+        <infrastructureBehaviors:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <Border Style="{StaticResource PopUpFormPanelStyle}" CornerRadius="0">
+
+        <Grid Margin="10">
+    		<StackPanel>
+    			<Border>
+    				<StackPanel>
+    					<Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+    					<StackPanel Grid.Row="3" Margin="6,0">
+    						<StackPanel.Resources>
+                                <ViewModel:SearchCommunicater x:Key="DtsSearchCommunicater" SelectedItemChangedCommand="{Binding DtsSearchSelectionChangedCommand}" EmptyText="Problem Name" SelectedItem="{Binding Problem.ProblemCodeCodedConcept, Mode=TwoWay}"/>
+    						</StackPanel.Resources>
+    						<TextBlock Text="Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+    						<ContentControl x:Name="DtsSearch" FontSize="10" MaxHeight="30" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch"
+    							Regions:RegionManager.RegionName="ProblemDtsSearch"
+    							Regions:RegionManager.RegionContext="{StaticResource DtsSearchCommunicater}" Width="256" HorizontalAlignment="Left"/>                   
+    					</StackPanel>
+                          
+    					<Border Style="{StaticResource HorizontalLineFormDivider}" />
+    					<StackPanel Orientation="Horizontal">
+    						<StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+    							<TextBlock Text="Problem Code" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+    							<TextBlock Text="{Binding Problem.ProblemCodeCodedConcept.CodedConceptCode}" ToolTipService.ToolTip="{Binding ProblemCodeCodedConcept.DisplayName}"/>
+    						</StackPanel>
+    						<StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top" >
+    							<TextBlock Text="Problem Type Code:"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+    							<TextBlock Text="{Binding Problem.ProblemType.Name}"/>
+    						</StackPanel>
+    					</StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+    						<StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+    							<TextBlock Text="Determined By" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                <ContentControl Regions:RegionManager.RegionName="StaffSearch" HorizontalAlignment="Left" HorizontalContentAlignment="Left">
+    								<Regions:RegionManager.RegionContext>
+    									<ViewModel:SearchCommunicater SelectedItem="{Binding Problem.ObservedByStaff, Mode=TwoWay}" AdvancedSearchVisibility="Collapsed" ClearSelectionWhenAborted="False" />
+    								</Regions:RegionManager.RegionContext>
+    							</ContentControl>
+    						</StackPanel>
+    						<StackPanel Style="{StaticResource EditFormStackPanelStyleM}" Margin="10,2,0,2" >
+    							<TextBlock Text="Status" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+    							<telerik:RadComboBox ItemsSource="{Binding LookupValueLists[ProblemStatus]}" Height="28" DisplayMemberPath="Name" SelectedItem="{Binding Problem.ProblemStatus, Mode=TwoWay}"/>
+    						</StackPanel>
+    					</StackPanel>
+
+    					<StackPanel Orientation="Horizontal">
+    						<StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+    							<TextBlock Text="Observed Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+    							<telerik:RadDateTimePicker InputMode="DatePicker" x:Name="ObservedDateTextBlock1" SelectedValue="{Binding Problem.ObservedDate, Mode=TwoWay}"/>
+    						</StackPanel>
+    						<StackPanel Style="{StaticResource EditFormStackPanelStyleM}" >
+    							<TextBlock Text="Status Changed Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+    							<TextBlock Text="{Binding Problem.StatusChangedDate, StringFormat=d}"/>
+    						</StackPanel>
+    					</StackPanel>
+
+    					<StackPanel Orientation="Horizontal">
+    						<StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+    							<TextBlock Text="Onset Start Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+    							<telerik:RadDateTimePicker InputMode="DatePicker" SelectedValue="{Binding Problem.OnsetStartDate, Mode=TwoWay}"/>
+    						</StackPanel>
+    						<StackPanel Style="{StaticResource EditFormStackPanelStyleM}" >
+    							<TextBlock Text="Onset End Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+    							<telerik:RadDateTimePicker InputMode="DatePicker" SelectedValue="{Binding Problem.OnsetEndDate, Mode=TwoWay}" Width="Auto" Height="Auto" Margin="0,0,10,0"/>
+    						</StackPanel>
+    					</StackPanel>                            
+                           
+    					<StackPanel Orientation="Vertical" Visibility="{Binding Wrapper.IsDirty, Converter={StaticResource BooleanToVisibilityConverterInstance}}">
+    						<Border Style="{StaticResource HorizontalLineFormDivider}"/>
+    						<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0" >
+    							<telerik:RadButton Style="{StaticResource StaticBorderlessButtonStyle}" Command="{Binding SaveProblemCommand}" Content="Save" Width="60" Height="22" />
+    						</StackPanel>
+    					</StackPanel>
+
+    				</StackPanel>
+    			</Border>
+    		</StackPanel>
+    		<CustomControls:LoadingControl IsLoading="{Binding IsLoading}" VerticalAlignment="Top"/>
+    	</Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Infrastructure.Domain.MsSql2008PersistenceConfigurerProvider">
+    <Position X="6" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\MsSql2008PersistenceConfigurerProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Infrastructure.Domain.SessionProvider">
+    <Position X="8.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\SessionProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Infrastructure.Domain.FluentConfigurationProvider">
+    <Position X="11.25" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAQAAAABAAAAAAQAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Domain\FluentConfigurationProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="uNhAddIns.SessionEasier.AbstractConfigurationProvider" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Rem.Infrastructure.Domain.IPersistenceConfigurerProvider">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\IPersistenceConfigurerProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Rem.Infrastructure.Domain.ISessionProvider">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\ISessionProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="uNhAddIns.SessionEasier.IConfigurationProvider" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.SystemAccountSearch.SystemAccountSearchView"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"             
+    xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Rem_Ria_Infrastructure_View_Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="400">
+
+    <Grid x:Name="LayoutRoot">
+        <CustomControls:SearchBox x:Name="SearchBox" Results="{Binding SearchResults,Mode=TwoWay}" QuickSearchText="{Binding QuickSearchCriteria, Mode=TwoWay}" EmptyText="User Name" ShowDetailsButton="false"
+                                  PageSize="{Binding PageSize, Mode=TwoWay}" TotalItemCount="{Binding TotalItemCount, Mode=TwoWay}" PageIndex="{Binding PageIndex, Mode=TwoWay}" Status="{Binding Status, Mode=TwoWay}"
+                                  SelectionChangedCommand="{Binding InternalSelectionChangedCommand}" CornerRadius="0,0,3,3" BorderThickness="0,0,0,1" SelectedResult="{Binding SearchCommunicater.SelectedItem,Mode=TwoWay}"
+                                  ClearSelectionWhenAborted="{Binding SearchCommunicater.ClearSelectionWhenAborted}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SearchAborted">
+                    <i:InvokeCommandAction Command="{Binding SearchAbortedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <CustomControls:SearchBox.ResultTemplates>
+                <DataTemplate>
+                    <Grid Margin="10">
+                        <TextBlock Grid.Column="0" Margin="0,0,75,0" Text="{Binding Path=FullName}"/>
+                    </Grid>
+                </DataTemplate>
+                <DataTemplate>
+                    <Grid Margin="10">
+                        <TextBlock Margin="0,0,40,0" Text="{Binding Path=AccountName,StringFormat='{}Account Name: {0}'}"/>
+                    </Grid>
+                </DataTemplate>
+                <DataTemplate>
+                    <Grid Margin="10">
+                        <TextBlock Margin="0,0,40,0" Text="{Binding Path=LocationName,StringFormat='{}Location Assigned: {0}'}"/>
+                    </Grid>
+                </DataTemplate>
+            </CustomControls:SearchBox.ResultTemplates>
+            <CustomControls:SearchBox.ResultLevel1DetailTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Height="0"/>
+                </DataTemplate>
+            </CustomControls:SearchBox.ResultLevel1DetailTemplate>
+            <CustomControls:SearchBox.ResultLevel2DetailTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Height="0"/>
+                </DataTemplate>
+            </CustomControls:SearchBox.ResultLevel2DetailTemplate>
+            <CustomControls:SearchBox.ResultLevel3DetailTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Height="0"/>
+                </DataTemplate>
+            </CustomControls:SearchBox.ResultLevel3DetailTemplate>
+            <CustomControls:SearchBox.AdvancedContent>
+                <Grid x:Name="AdvancedSearchFacilityGrid" Margin="10,0" Width="728" VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" Margin="0,5" Grid.Row="0">
+                        <Controls:Label Content="Name: " Target="{Binding ElementName=FirstNameTextBox}" VerticalAlignment="Center" Margin="5,0" />
+                        <TextBox x:Name="FirstNameTextBox" VerticalAlignment="Center" Width="100" Margin="5,0">
+                            <i:Interaction.Behaviors>
+                                <Rem_Ria_Infrastructure_View_Behavior:TextBoxTextChangedBehavior Text="{Binding AdvancedSearchCriteria.FirstNameToSearch, Mode=TwoWay}" />
+                            </i:Interaction.Behaviors>
+                        </TextBox>
+                        <TextBox x:Name="MiddleNameTextBox" VerticalAlignment="Center" Width="100" Margin="5,0">
+                            <i:Interaction.Behaviors>
+                                <Rem_Ria_Infrastructure_View_Behavior:TextBoxTextChangedBehavior Text="{Binding AdvancedSearchCriteria.MiddleNameToSearch, Mode=TwoWay}" />
+                            </i:Interaction.Behaviors>
+                        </TextBox>
+                        <TextBox x:Name="LastNameTextBox" VerticalAlignment="Center" Width="100" Margin="5,0">
+                            <i:Interaction.Behaviors>
+                                <Rem_Ria_Infrastructure_View_Behavior:TextBoxTextChangedBehavior Text="{Binding AdvancedSearchCriteria.LastNameToSearch, Mode=TwoWay}" />
+                            </i:Interaction.Behaviors>
+                        </TextBox>
+                        <Controls:Label Content="Account Name: " Target="{Binding ElementName=AccountNameTextBox}" VerticalAlignment="Center" Margin="20,5,0,0" />
+                        <TextBox x:Name="AccountNameTextBox" VerticalAlignment="Center" Width="100" Margin="5,0">
+                            <i:Interaction.Behaviors>
+                                <Rem_Ria_Infrastructure_View_Behavior:TextBoxTextChangedBehavior Text="{Binding AdvancedSearchCriteria.AccountNameToSearch, Mode=TwoWay}" />
+                            </i:Interaction.Behaviors>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5" Grid.Row="1">
+                        <Controls:Label Content="Location: " Target="{Binding ElementName=LocationComboBox}" VerticalAlignment="Center" Margin="5,0" />
+                        <telerik:RadComboBox x:Name="LocationComboBox" ItemsSource="{Binding LocationsList}" DisplayMemberPath="DisplayName" SelectedItem="{Binding AdvancedSearchCriteria.LocationToSearch, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100" MaxWidth="300" Margin="5,0"/>
+                        <Controls:Label Content="Status: " Target="{Binding ElementName=StatusComboBox}" VerticalAlignment="Center" Margin="20,5,0,0" />
+                        <telerik:RadComboBox x:Name="StatusComboBox" ItemsSource="{Binding AdvancedSearchCriteria.ActiveIndicatorList}" SelectedItem="{Binding AdvancedSearchCriteria.ActiveIndicatorType, Mode=TwoWay}" ClearSelectionButtonVisibility="Collapsed" VerticalAlignment="Center" Width="100" Margin="5,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" Margin="0,5">
+                        <telerik:RadButton x:Name="ResetButton" Style="{StaticResource TileRoundedCornerSmallButtonStyle}" Content="Clear" Command="{Binding ResetAdvancedSearchCommand}" VerticalAlignment="Center" Padding="5" Margin="5,0"/>
+                        <telerik:RadButton x:Name="SearchButton" Style="{StaticResource TileRoundedCornerSmallButtonStyle}" Content="Search" Command="{Binding RunAdvancedSearchCommand}" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="5" Margin="5,0"/>
+                    </StackPanel>
+
+                </Grid>
+            </CustomControls:SearchBox.AdvancedContent>
+        </CustomControls:SearchBox>
+        <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+    </Grid>
+</UserControl>

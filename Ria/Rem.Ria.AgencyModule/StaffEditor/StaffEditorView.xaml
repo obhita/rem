@@ -1,0 +1,1553 @@
+﻿<UserControl x:Class="Rem.Ria.AgencyModule.StaffEditor.StaffEditorView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" 
+    xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input" 
+    xmlns:Controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"        
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+    xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=System.Windows"
+    xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism" 
+    xmlns:ViewModel="clr-namespace:Rem.Ria.Infrastructure.ViewModel;assembly=Rem.Ria.Infrastructure" 
+    xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" 
+    xmlns:Common="clr-namespace:Rem.Ria.AgencyModule.Web.Common"
+    mc:Ignorable="d"
+    xmlns:CustomConverters="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure"
+             xmlns:telerikGridView="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView" d:DesignHeight="5300" d:DesignWidth="1400">
+
+    <UserControl.Resources>
+        <View:DataContextProxyElement x:Key="RootDataContextProxy" />
+        <Controls:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+        <CustomConverters:NullableBooleanToVisibilityConverter x:Key="nullableBooleanToVisibilityConverter"/>
+        <CustomConverters:InvertedNullableBooleanToVisibilityConverter x:Key="invertedNullableBooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+
+            <DataTemplate x:Key="StaffAccountAccessDetailsLevel1NoBorder">
+                <StackPanel Style="{StaticResource EditFormStackPanelStyleXL}" Margin="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                <TextBlock Text="Role Type" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                <TextBlock Text="Role Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                <TextBlock Text="Create Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                <TextBlock Text="{Binding SystemRole.SystemRoleType, FallbackValue='-', TargetNullValue='-'}" VerticalAlignment="Top" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                <TextBlock Text="{Binding SystemRole.Name, FallbackValue='-', TargetNullValue='-'}" VerticalAlignment="Top" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                <TextBlock Text="{Binding CreatedTimestamp,StringFormat='MM/dd/yyyy', FallbackValue='-', TargetNullValue='-'}" VerticalAlignment="Top" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right"  Grid.Column="1"  Grid.RowSpan="2">
+                            <Controls:RadButton Content="Delete" HorizontalAlignment="Right"  VerticalAlignment="Center"  Style="{StaticResource BorderlessButtonStyle}" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.DeleteSystemRoleCommand}"  CommandParameter="{Binding}" />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Key="StaffAccountAccessDetailsLevel1">
+                <StackPanel>
+                    <ContentControl Content="{Binding}" ContentTemplate="{StaticResource StaffAccountAccessDetailsLevel1NoBorder}" HorizontalAlignment="Stretch"/>
+                    <Border Style="{StaticResource HorizontalLineAddFormDivider}"/>
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="StaffAccountAccessDetailsLevel2NoBorder">
+                <StackPanel>
+                    <ContentControl Content="{Binding}" ContentTemplate="{StaticResource StaffAccountAccessDetailsLevel1NoBorder}" HorizontalAlignment="Stretch"/>
+
+                    <Border Style="{StaticResource EditFormCommentsBorderStyle}">
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleXL}">
+                            <TextBlock Text="Role Description" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            <TextBlock Text="{Binding SystemRole.Description, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                <TextBlock Text="Permissions" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleA}">
+                                <TextBlock Text="Description" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <ItemsControl x:Name="PermissionDataGrid" ItemsSource="{Binding SystemRole.GrantedSystemPermissions}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                            <TextBlock Text="{Binding DisplayName, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleA}" VerticalAlignment="Top">
+                                            <TextBlock Text="{Binding Description, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="StaffAccountAccessDetailsLevel2">
+                <StackPanel>
+
+                    <StackPanel>
+                        <ContentControl Content="{Binding}" ContentTemplate="{StaticResource StaffAccountAccessDetailsLevel2NoBorder}" HorizontalAlignment="Stretch"/>
+                        <Border Margin="0,30" Style="{StaticResource HorizontalLineFormDivider}" />
+                    </StackPanel>
+                </StackPanel>
+            </DataTemplate>
+
+        </Grid.Resources>
+        <CustomControls:Editor Header="Staff Information" Grid.RowSpan="2" StartOpen="{Binding IsCreateMode}" FreezeFocused="{Binding IsEditMode}" Margin="0" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}">
+            <CustomControls:Editor.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Canvas Grid.Column="0" Height="26" Width="26" Margin="0" VerticalAlignment="Center">
+                            <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 38.4503,44.8047L 16.033,44.8047C 11.909,44.8047 8.55163,41.4487 8.55163,37.3207L 8.55163,14.9061C 8.55163,10.7781 11.909,7.42206 16.033,7.42206L 38.4503,7.42206C 42.5783,7.42206 45.9343,10.7781 45.9343,14.9061L 45.9343,37.3207C 45.9343,41.4487 42.5783,44.8047 38.4503,44.8047 Z " UseLayoutRounding="False" Height="25.278" Canvas.Left="0.441" Canvas.Top="0.723" Width="25.279"/>
+                            <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 43.7907,42.3145L 11.04,9.5638" UseLayoutRounding="False" Height="22.253" Canvas.Left="2.066" Canvas.Top="2.122" Width="22.254"/>
+                            <Path Stretch="Fill" Data="F1 M 15.6787,5.648C 11.0187,5.648 7.20933,9.45867 7.20933,14.116L 7.20933,37.0133C 7.20933,41.668 11.0187,45.48 15.6787,45.48L 38.5707,45.48C 43.2307,45.48 47.04,41.668 47.04,37.0133L 47.04,14.116C 47.04,9.45867 43.2307,5.648 38.5707,5.648L 15.6787,5.648 Z " UseLayoutRounding="False" Height="26.007" Width="26.006">
+                                <Path.Fill>
+                                    <LinearGradientBrush StartPoint="0.499985,-5.26733e-006" EndPoint="0.499985,1.00003">
+                                        <GradientStop Color="#FF3F3F40" Offset="0"/>
+                                        <GradientStop Color="#FF7D7D7F" Offset="0.257324"/>
+                                        <GradientStop Color="#FFBBBCBF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+                            <Path Stretch="Fill" Data="F1 M 15.9147,6.87333C 11.792,6.87333 8.43333,10.228 8.43333,14.356L 8.43333,36.772C 8.43333,40.9013 11.792,44.2547 15.9147,44.2547L 38.332,44.2547C 42.4613,44.2547 45.816,40.9013 45.816,36.772L 45.816,14.356C 45.816,10.228 42.4613,6.87333 38.332,6.87333L 15.9147,6.87333 Z " UseLayoutRounding="False" Height="24.408" Canvas.Left="0.799" Canvas.Top="0.8" Width="24.409">
+                                <Path.Fill>
+                                    <LinearGradientBrush StartPoint="0.499985,-7.44952e-006" EndPoint="0.499985,1.00003">
+                                        <GradientStop Color="#FF141E26" Offset="0"/>
+                                        <GradientStop Color="#FF343B43" Offset="0.200809"/>
+                                        <GradientStop Color="#FF555960" Offset="0.503067"/>
+                                        <GradientStop Color="#FF343B43" Offset="0.52366"/>
+                                        <GradientStop Color="#FF141E26" Offset="0.533737"/>
+                                        <GradientStop Color="#FF272E37" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+                            <Path Stretch="Fill" Fill="white" Data="F1 M 27.6807,27.0377C 31.4313,27.0377 34.4727,23.9964 34.4727,20.2471C 34.4727,16.4964 31.4313,13.4551 27.6807,13.4551C 23.9313,13.4551 20.89,16.4964 20.89,20.2471C 20.89,23.9964 23.9313,27.0377 27.6807,27.0377 Z " Height="7.578" UseLayoutRounding="False" Width="7.578" Canvas.Left="9.258" Canvas.Top="4.47"/>
+                            <Path Stretch="Fill" Fill="white" Data="F1 M 38.6508,32.7825C 38.6508,30.4772 36.7815,28.6039 34.4721,28.6039L 20.3695,28.6039C 18.0615,28.6039 16.1895,30.4772 16.1895,32.7825L 16.1895,41.6625L 19.9295,41.6625L 19.9295,37.0625C 19.9295,36.6799 20.2388,36.3692 20.6215,36.3692C 21.0041,36.3692 21.3135,36.6799 21.3135,37.0625L 21.3135,41.6625L 33.6001,41.6625L 33.6001,37.0625C 33.6001,36.6799 33.9108,36.3692 34.2921,36.3692C 34.6761,36.3692 34.9855,36.6799 34.9855,37.0625L 34.9855,41.6625L 38.6508,41.6625L 38.6508,32.7825 Z " Height="8.527" UseLayoutRounding="False" Canvas.Left="5.448" Canvas.Top="13.237" Width="15.155"/>
+                            <Path Stretch="Fill" Data="F1 M 15.9147,7.33733C 11.792,7.33733 8.43333,10.6933 8.43333,14.82L 8.43333,15.98C 8.43333,11.852 11.792,8.496 15.9147,8.496L 38.332,8.496C 42.4613,8.496 45.816,11.852 45.816,15.98L 45.816,14.82C 45.816,10.6933 42.4613,7.33733 38.332,7.33733L 15.9147,7.33733 Z " UseLayoutRounding="False" Height="5.644" Canvas.Left="0.799" Canvas.Top="1.102" Width="24.409">
+                                <Path.Fill>
+                                    <LinearGradientBrush StartPoint="0.499985,6.53242e-005" EndPoint="0.499985,0.999979">
+                                        <GradientStop Color="#FF808184" Offset="0"/>
+                                        <GradientStop Color="#FF5F6062" Offset="0.13"/>
+                                        <GradientStop Color="#FF3F3F40" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+                            <Rectangle Fill="#FF1A232C" Height="3" Canvas.Left="13" Canvas.Top="16" Width="5"/>
+                        </Canvas>
+                        <TextBlock Style="{StaticResource MainHeaderTextBlockStyle}" Grid.Column="1" VerticalAlignment="Center" Text="{Binding}"/>
+                    </Grid>
+                </DataTemplate>
+            </CustomControls:Editor.HeaderTemplate>
+
+            <!--Staff Profile-->
+            <CustomControls:Editor.Expanders>
+                <CustomControls:EditableExpander x:Name="Profile" Header="Profile" Content="{Binding EditingDto.StaffProfile}">
+                    <CustomControls:EditableExpander.Resources>
+
+                        <CollectionViewSource x:Key="LanguageSource" Source="{Binding EditingDto.StaffProfile.Languages}">
+                        </CollectionViewSource>
+                    </CustomControls:EditableExpander.Resources>
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Prefix" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock x:Name="Prefix" Text="{Binding PrefixName, StringFormat='({0})', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="First Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="FirstName" Text="{Binding FirstName, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Middle Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="MiddleName" Text="{Binding MiddleName, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Last Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="LastName" Text="{Binding LastName, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Suffix" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock x:Name="Suffix" Text="{Binding SuffixName, StringFormat='({0})', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Gender" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock  Text="{Binding Gender, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock  Text="Date of Birth" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock  Text="{Binding BirthDate, StringFormat='{}{0:MM/dd/yyyy}', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="S.S.N." Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock Text="{Binding SocialSecurityNumber, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Staff Type" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock Text="{Binding StaffType.Name, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                                        </StackPanel>
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Professional Credentials" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock Text="{Binding ProfessionalCredentialNote, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyleM}">
+                                            <TextBlock Text="Email Address" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock Text="{Binding EmailAddress, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Start Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock Text="{Binding EndDate, StringFormat='{}{0:MM/dd/yyyy}', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Language/Fluency" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <ItemsControl ItemsSource="{Binding Source={StaticResource LanguageSource}}" >
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyleA}" Height="18">
+                                                            <TextBlock Text="{Binding Language.Name}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyleA}" Height="18">
+                                                            <TextBlock Text="{Binding LanguageFluency.Name, StringFormat='/{0}'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}" />
+                                    <Border Style="{StaticResource EditFormCommentsBorderStyle}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXL}">
+                                                <TextBlock Text="Comments" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock Text="{Binding Note, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+
+
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Prefix" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadComboBox x:Name="Prefix" ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[Prefix]}" DisplayMemberPath="Name" SelectedValue="{Binding PrefixName,Mode=TwoWay}" SelectedValuePath="Name" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="First Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadMaskedTextBox x:Name="FirstName"  EmptyContent="Enter First Name" MaskedText="{Binding FirstName,Mode=TwoWay}" MaskType="None"  EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Middle Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadMaskedTextBox x:Name="MiddleName" EmptyContent="Enter Middle Name" MaskedText="{Binding MiddleName,Mode=TwoWay}"  MaskType="None"  EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Last Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadMaskedTextBox x:Name="LastName" EmptyContent="Enter Last Name" MaskedText="{Binding LastName,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Suffix"  Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadComboBox x:Name="Suffix" ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[Suffix]}" DisplayMemberPath="Name" SelectedValue="{Binding SuffixName,Mode=TwoWay}" SelectedValuePath="Name" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Gender" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadComboBox x:Name="Gender" ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[Gender]}" DisplayMemberPath="Name" SelectedItem="{Binding Gender,Mode=TwoWay}" />
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Date of Birth" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadDatePicker x:Name="BirthDate" SelectedValue="{Binding BirthDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="S.S.N." Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadMaskedTextBox x:Name="SocialSecurityNumber" EmptyContent="000-00-0000" MaskedText="{Binding SocialSecurityNumber,Mode=TwoWay}" Mask="###-##-####" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Staff Type" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadComboBox x:Name="StaffType" ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[StaffType]}" DisplayMemberPath="Name" SelectedItem="{Binding StaffType,Mode=TwoWay}" />
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Professional Credentials" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadMaskedTextBox x:Name="ProfessionalCredential" EmptyContent="Pro" MaskedText="{Binding ProfessionalCredentialNote,Mode=TwoWay}"  MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                            <TextBlock Text="Email Address" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadMaskedTextBox x:Name="EmailAddress" EmptyContent="Email Address" MaskedText="{Binding EmailAddress,Mode=TwoWay}"  MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Start Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadDatePicker x:Name="StartDate"  SelectedValue="{Binding StartDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy" />
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock  Text="End Date"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadDatePicker x:Name="EndDate"  SelectedValue="{Binding EndDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}" />
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                <TextBlock Text="Language/Fluency" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <CustomControls:EditableItemsControl ItemsSource="{Binding Source={StaticResource LanguageSource}}" >
+                                                <CustomControls:EditableItemsControl.AddingItem>
+                                                    <Common:StaffLanguageDto/>
+                                                </CustomControls:EditableItemsControl.AddingItem>
+                                                <CustomControls:EditableItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Vertical">
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                                    <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[Language]}" SelectedItem="{Binding Language,Mode=TwoWay}" DisplayMemberPath="Name" EmptyText="Language" />
+                                                                </StackPanel>
+                                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                                    <telerik:RadComboBox  ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[LanguageFluency]}" SelectedItem="{Binding LanguageFluency,Mode=TwoWay}" DisplayMemberPath="Name" EmptyText="Language Fluency"/>
+                                                                </StackPanel>
+                                                            </StackPanel>
+
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </CustomControls:EditableItemsControl.ItemTemplate>
+                                            </CustomControls:EditableItemsControl>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <Border Style="{StaticResource EditFormCommentsBorderStyle}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXL}">
+                                                <TextBlock Text="Comments" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBox AcceptsReturn="True" Style="{StaticResource EditFormCommentsTextBoxStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:TextBoxTextChangedBehavior Text="{Binding Note,Mode=TwoWay}"/>
+                                                    </i:Interaction.Behaviors>
+                                                </TextBox>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+                <CustomControls:EditableExpander x:Name="Addresses" Header="Addresses" Content="{Binding EditingDto.Addresses}">
+                    <CustomControls:EditableExpander.Resources>
+
+                        <CollectionViewSource x:Key="AddressesSource" Source="{Binding EditingDto.Addresses.Addresses}">
+                            <CollectionViewSource.SortDescriptions>
+                                <ComponentModel:SortDescription PropertyName="StaffAddressType.SortOrderNumber" Direction="Ascending"/>
+                                <ComponentModel:SortDescription PropertyName="StaffAddressType.Name" Direction="Ascending"/>
+                            </CollectionViewSource.SortDescriptions>
+                        </CollectionViewSource>
+                    </CustomControls:EditableExpander.Resources>
+
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <ItemsControl ItemsSource="{Binding Source={StaticResource AddressesSource}}" >
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Vertical">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleA}">
+                                                            <TextBlock Text="{Binding StaffAddressType.Name}" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListA}">
+                                                            <TextBlock Text="{Binding FirstStreetAddress}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListA}">
+                                                            <TextBlock Text="{Binding SecondStreetAddress}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListA}">
+                                                            <TextBlock Text="{Binding CityName}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListA}">
+                                                            <TextBlock Text="{Binding StateProvince.Name}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListA}">
+                                                            <TextBlock Text="{Binding PostalCode}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <Border Style="{StaticResource HorizontalLineReadFormDivider}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+
+
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <CustomControls:EditableItemsControl ItemsSource="{Binding Source={StaticResource AddressesSource}}">
+                                        <CustomControls:EditableItemsControl.ItemContainerStyle>
+                                            <Style TargetType="CustomControls:EditableItemsControlItem">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="CustomControls:EditableItemsControlItem">
+                                                            <StackPanel Orientation="Vertical">
+                                                                <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                                    <StackPanel Orientation="Vertical">
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                                                            <Button Style="{StaticResource TileDeleteButtonStyle}" VerticalAlignment="Center" Margin="15,0,0,0" Command="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Parent.RemoveItemCommand}" CommandParameter="{TemplateBinding Content}"/>
+                                                                        </StackPanel>
+                                                                        <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                                    </StackPanel>
+                                                                </Border>
+                                                            </StackPanel>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </CustomControls:EditableItemsControl.ItemContainerStyle>
+                                        <CustomControls:EditableItemsControl.AddingItem>
+                                            <Common:StaffAddressDto/>
+                                        </CustomControls:EditableItemsControl.AddingItem>
+                                        <CustomControls:EditableItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Vertical">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                            <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[StaffAddressType]}" EmptyText="Address Type" SelectedItem="{Binding StaffAddressType,Mode=TwoWay}" DisplayMemberPath="Name"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                            <telerik:RadMaskedTextBox EmptyContent="Address Line 1" MaskedText="{Binding FirstStreetAddress,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                            <telerik:RadMaskedTextBox  EmptyContent="Address Line 2" MaskedText="{Binding SecondStreetAddress,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}" />
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                            <telerik:RadMaskedTextBox EmptyContent="City" MaskedText="{Binding CityName,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                            <telerik:RadComboBox   ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[StateProvince]}" EmptyText="State" SelectedItem="{Binding StateProvince,Mode=TwoWay}" DisplayMemberPath="Name"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                            <telerik:RadMaskedTextBox EmptyContent="Postal Code" MaskedText="{Binding PostalCode,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </StackPanel>
+
+                                            </DataTemplate>
+                                        </CustomControls:EditableItemsControl.ItemTemplate>
+                                    </CustomControls:EditableItemsControl>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+                <CustomControls:EditableExpander x:Name="PhoneNumbers" Header="Phone Numbers" Content="{Binding EditingDto.PhoneNumbers}">
+                    <CustomControls:EditableExpander.Resources>
+                        <CollectionViewSource x:Key="PhoneNumberSource" Source="{Binding EditingDto.PhoneNumbers.PhoneNumbers}">
+                            <CollectionViewSource.SortDescriptions>
+                                <ComponentModel:SortDescription PropertyName="StaffPhoneType.SortOrderNumber" Direction="Ascending"/>
+                                <ComponentModel:SortDescription PropertyName="StaffPhoneType.Name" Direction="Ascending"/>
+                            </CollectionViewSource.SortDescriptions>
+                        </CollectionViewSource>
+                    </CustomControls:EditableExpander.Resources>
+
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Phone Type" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Phone Number" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}">
+                                            <TextBlock Text="Ext" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <ItemsControl x:Name="PhoneNumberList" ItemsSource="{Binding Source={StaticResource PhoneNumberSource}}" >
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding StaffPhoneType.Name, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding PhoneNumber, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListXS}">
+                                                            <TextBlock Text="{Binding PhoneExtensionNumber, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Phone Type" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Phone Number" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}">
+                                            <TextBlock Text="Ext" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <CustomControls:EditableItemsControl ItemsSource="{Binding Source={StaticResource PhoneNumberSource}}">
+                                            <CustomControls:EditableItemsControl.AddingItem>
+                                                <Common:StaffPhoneNumberDto/>
+                                            </CustomControls:EditableItemsControl.AddingItem>
+                                            <CustomControls:EditableItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[StaffPhoneType]}" SelectedItem="{Binding StaffPhoneType, Mode=TwoWay}" DisplayMemberPath="Name" EmptyText="Phone Type"/>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadMaskedTextBox x:Name="PhoneNumber" EmptyContent="Phone Number" MaskedText="{Binding PhoneNumber,Mode=TwoWay}"  MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}">
+                                                                <telerik:RadMaskedTextBox x:Name="PhoneExtensionNumber" EmptyContent="Ext" MaskedText="{Binding PhoneExtensionNumber,Mode=TwoWay}"  MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </CustomControls:EditableItemsControl.ItemTemplate>
+                                        </CustomControls:EditableItemsControl>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+                <CustomControls:EditableExpander x:Name="Identifiers" Header="Identifiers" Content="{Binding EditingDto.Identifiers}">
+                    <CustomControls:EditableExpander.Resources>
+                        <CollectionViewSource x:Key="IdentifiersSource" Source="{Binding EditingDto.Identifiers.Identifiers}">
+                            <CollectionViewSource.SortDescriptions>
+                                <ComponentModel:SortDescription PropertyName="StaffIdentifierType.SortOrderNumber" Direction="Ascending"/>
+                                <ComponentModel:SortDescription PropertyName="StaffIdentifierType.Name" Direction="Ascending"/>
+                            </CollectionViewSource.SortDescriptions>
+                        </CollectionViewSource>
+                    </CustomControls:EditableExpander.Resources>
+
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                            <TextBlock Text="Identifier Type" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                            <TextBlock Text="Identifier" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Effective Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <ItemsControl ItemsSource="{Binding Source={StaticResource IdentifiersSource}}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListM}">
+                                                            <TextBlock Text="{Binding StaffIdentifierType.Name}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListM}">
+                                                            <TextBlock Text="{Binding IdentifierNumber}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding StartDate, StringFormat=\{0:MM/dd/yyyy\}}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding EndDate, StringFormat=\{0:MM/dd/yyyy\}}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+
+
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                            <TextBlock Text="Identifier Type:" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                            <TextBlock Text="Identifier" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Effective Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <CustomControls:EditableItemsControl ItemsSource="{Binding Source={StaticResource IdentifiersSource}}">
+                                            <CustomControls:EditableItemsControl.AddingItem>
+                                                <Common:StaffIdentifierDto/>
+                                            </CustomControls:EditableItemsControl.AddingItem>
+                                            <CustomControls:EditableItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                                <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[StaffIdentifierType]}" EmptyText="Identifier Type" SelectedItem="{Binding StaffIdentifierType,Mode=TwoWay}" DisplayMemberPath="Name"/>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                                <telerik:RadMaskedTextBox MaskType="None" MaskedText="{Binding IdentifierNumber,Mode=TwoWay}" EmptyContent="Identifier ID" EmptyContentTemplate="{StaticResource WatermarkTemplate}" />
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadDatePicker DateTimeWatermarkContent="mm/dd/yyyy" SelectedValue="{Binding StartDate,Mode=TwoWay}"/>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadDatePicker DateTimeWatermarkContent="mm/dd/yyyy" SelectedValue="{Binding EndDate,Mode=TwoWay}"/>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </CustomControls:EditableItemsControl.ItemTemplate>
+                                        </CustomControls:EditableItemsControl>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+                <CustomControls:EditableExpander x:Name="Photo" Header="Photo" Content="{Binding EditingDto.StaffPhoto}">
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleA}">
+                                            <TextBlock Text="Staff Photo" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <Image Width="175" Height="175" Source="{Binding Picture, Converter={StaticResource ByteToImageConverterInstance}, ConverterParameter=DefaultStaffImage}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleA}">
+                                            <TextBlock Text="Staff Photo" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <Image Width="175" Height="175"  Source="{Binding Picture, Converter={StaticResource ByteToImageConverterInstance}, ConverterParameter=DefaultStaffImage}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Controls:RadButton Content="Upload Photo" ToolTipService.ToolTip="Upload Photo" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.AddPhotoCommand}" Style="{StaticResource TileRoundedCornerSmallButtonStyle}" Width="100" />
+                                        <Controls:RadButton Content="Delete Photo" ToolTipService.ToolTip="Delete Photo" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.DeletePhotoCommand}" Style="{StaticResource TileRoundedCornerSmallButtonStyle}" Width="100" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+                <CustomControls:EditableExpander x:Name="LocationAssignment" Header="Location Assignment" Content="{Binding EditingDto.LocationAssignment}">
+                    <CustomControls:EditableExpander.Resources>
+                        <CollectionViewSource x:Key="LocationsSource" Source="{Binding EditingDto.LocationAssignment.Locations}">
+                        </CollectionViewSource>
+                    </CustomControls:EditableExpander.Resources>
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <ItemsControl ItemsSource="{Binding Locations}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleListL}">
+                                                        <TextBlock HorizontalAlignment="Left" Text="{Binding Location.Name}" TextWrapping="Wrap" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+
+                                    <CustomControls:EditableItemsControl BorderThickness="0" ItemsSource="{Binding Source={StaticResource LocationsSource}}">
+                                        <CustomControls:EditableItemsControl.AddingItem>
+                                            <Common:StaffApprovedLocationDto/>
+                                        </CustomControls:EditableItemsControl.AddingItem>
+                                        <CustomControls:EditableItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Vertical">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                        <ContentControl Regions:RegionManager.RegionName="LocationQuickPicker" HorizontalContentAlignment="Stretch">
+                                                            <Regions:RegionManager.RegionContext>
+                                                                <ViewModel:QuickPickerCommunicator CanAdd="false" SelectedItem="{Binding Location, Mode=TwoWay}"/>
+                                                            </Regions:RegionManager.RegionContext>
+                                                        </ContentControl>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </CustomControls:EditableItemsControl.ItemTemplate>
+                                    </CustomControls:EditableItemsControl>
+
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+                <CustomControls:EditableExpander x:Name="SystemAccess" Header="System Access" Content="">
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Visibility="{Binding Source={StaticResource RootDataContextProxy}, Path=DataSource.EditingDto.IsLinkedToSystemAccount, Converter={StaticResource booleanToVisibilityConverter}}">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleA}">
+                                            <TextBlock Text="[X] Linked to System Account"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top">
+                                                <TextBlock Text="Display Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock Text="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.EditingDto.SystemAccount.DisplayName}"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top">
+                                                <TextBlock Text="Email Address" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock Text="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.EditingDto.SystemAccount.EmailAddress}"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top">
+                                                <TextBlock Text="Identity Provider Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock Text="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.EditingDto.SystemAccount.IdentityProviderName}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleA}" Visibility="{Binding Source={StaticResource RootDataContextProxy}, Path=DataSource.EditingDto.IsNotLinkedToSystemAccount, Converter={StaticResource booleanToVisibilityConverter}}">
+                                        <TextBlock Text="[ ] Not Linked System Account"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Vertical"  
+                                            Visibility="{Binding Source={StaticResource RootDataContextProxy}, Path=DataSource.EditingDto.IsLinkedToSystemAccount, Converter={StaticResource invertedNullableBooleanToVisibilityConverter}}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <RadioButton Content="Create New Account" GroupName="AddLinkAccount" IsChecked="{Binding Source={StaticResource RootDataContextProxy}, Path=DataSource.EditingDto.IsNewSystemAccountMode, Mode=TwoWay}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <RadioButton Content="Link To Account" GroupName="AddLinkAccount" IsChecked="{Binding Source={StaticResource RootDataContextProxy}, Path=DataSource.EditingDto.IsLinkedSystemAccountMode, Mode=TwoWay}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <TextBlock Text="Username" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <telerik:RadMaskedTextBox x:Name="Username" EmptyContent="Username" MaskedText="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.EditingDto.SystemAccount.Username,  Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                <TextBlock Text="Email Address" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <telerik:RadMaskedTextBox x:Name="EmailAddress" EmptyContent="Email Address" MaskedText="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.EditingDto.SystemAccount.EmailAddress,  Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+
+                                        <Grid HorizontalAlignment="Right">
+                                            <Controls:RadButton Content="Add" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.AddSystemAccountCommand}" 
+										Visibility="{Binding Source={StaticResource RootDataContextProxy}, Path=DataSource.EditingDto.IsNewSystemAccountMode, Converter={StaticResource nullableBooleanToVisibilityConverter}}"
+										Style="{StaticResource TileRoundedCornerButtonStyle}" Height="24" Width="60" />
+
+                                            <Controls:RadButton Content="Link" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LinkSystemAccountCommand}" 
+										Visibility="{Binding Source={StaticResource RootDataContextProxy}, Path=DataSource.EditingDto.IsLinkedSystemAccountMode, Converter={StaticResource nullableBooleanToVisibilityConverter}}"
+										Style="{StaticResource TileRoundedCornerButtonStyle}" Height="24" Width="60"/>
+
+                                            <!-- "{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[Prefix]}"-->
+                                        </Grid>
+                                    </StackPanel>
+                                    <StackPanel  Visibility="{Binding Source={StaticResource RootDataContextProxy}, Path=DataSource.EditingDto.IsLinkedToSystemAccount, Converter={StaticResource booleanToVisibilityConverter}}">
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyleA}">
+                                            <TextBlock Text="Your account is already linked to a System Account"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top">
+                                                <TextBlock Text="Display Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock Text="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.EditingDto.SystemAccount.DisplayName}"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top">
+                                                <TextBlock Text="Email Address" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock Text="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.EditingDto.SystemAccount.EmailAddress}"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                                <TextBlock Text="Identity Provider Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock Text="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.EditingDto.SystemAccount.IdentityProviderName}"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+                <CustomControls:EditableExpander x:Name="HR" Header="HR" Content="{Binding EditingDto.HumanResource}">
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                            <TextBlock Text="Employment Type" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="EmploymentType"  Text="{Binding EmploymentType.Name, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                            <TextBlock  Text="Job Title" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="JobTitle" Text="{Binding TitleName, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                            <TextBlock Text="Manager" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="Manager" Text="{Binding SupervisorStaff.CompleteName, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+
+                                    <ItemsControl ItemsSource="{Binding StaffEvents}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                        <TextBlock Text="{Binding StaffEventType.Name}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                    </StackPanel>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                        <TextBlock Text="{Binding EventDate, StringFormat='{}{0:MM/dd/yyyy}'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <ItemsControl ItemsSource="{Binding StaffChecklist}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                        <CheckBox IsChecked="{Binding CheckedIndicator}" IsEnabled="False"/>
+                                                    </StackPanel>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                        <TextBlock Text="{Binding StaffChecklistItemType.Name}" TextWrapping="Wrap" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <Border Style="{StaticResource EditFormCommentsBorderStyle}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXL}">
+                                                <TextBlock Text="Confidential Note" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBlock x:Name="ConfidentialNote" Text="{Binding ConfidentialNote, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+
+
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                            <TextBlock Text="Employment Type" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[EmploymentType]}" SelectedItem="{Binding EmploymentType, Mode=TwoWay}" DisplayMemberPath="Name" EmptyText="Employment Type"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                            <TextBlock Text="Job Title" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadMaskedTextBox EmptyContent="Title" MaskedText="{Binding TitleName,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" Width="auto">
+                                            <TextBlock Text="Manager" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <ContentControl Regions:RegionManager.RegionName="StaffQuickPicker">
+                                                <Regions:RegionManager.RegionContext>
+                                                    <ViewModel:QuickPickerCommunicator CanAdd="false" SelectedItem="{Binding SupervisorStaff, Mode=TwoWay}" />
+                                                </Regions:RegionManager.RegionContext>
+                                            </ContentControl>
+                                            <!--<ContentControl  Regions:RegionManager.RegionName="StaffSearch" " d:LayoutOverrides="Width" >
+                                        <Regions:RegionManager.RegionContext>
+                                            <ViewModel:SearchCommunicater SelectedItem="{Binding SupervisorStaff, Mode=TwoWay}" AdvancedSearchVisibility="Collapsed"/>
+                                        </Regions:RegionManager.RegionContext>
+                                    </ContentControl>-->
+                                        </StackPanel>
+                                    </StackPanel>
+
+
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <ItemsControl Name="StaffEventDate" ItemsSource="{Binding StaffEvents}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                            <TextBlock Text="{Binding StaffEventType.Name}" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                            <telerik:RadDatePicker DateTimeWatermarkContent="mm/dd/yyyy" SelectedValue="{Binding EventDate,Mode=TwoWay}" />
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <ItemsControl Name="StaffChecklist" ItemsSource="{Binding StaffChecklist}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                            <CheckBox IsChecked="{Binding CheckedIndicator, Mode=TwoWay}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                            <TextBlock Text="{Binding StaffChecklistItemType.Name}" TextWrapping="Wrap"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <Border Style="{StaticResource EditFormCommentsBorderStyle}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXL}">
+                                                <TextBlock Text="Confidential Note" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <TextBox  AcceptsReturn="True"  Style="{StaticResource EditFormCommentsTextBoxStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:TextBoxTextChangedBehavior Text="{Binding ConfidentialNote,Mode=TwoWay}"/>
+                                                    </i:Interaction.Behaviors>
+                                                </TextBox>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+                <CustomControls:EditableExpander x:Name="Credentials" Header="Credentials" Content="{Binding EditingDto.Credentials}">
+                    <CustomControls:EditableExpander.Resources>
+                        <CollectionViewSource x:Key="CollegeDegreeSource" Source="{Binding EditingDto.Credentials.CollegeDegrees}">
+                            <CollectionViewSource.SortDescriptions>
+                                <ComponentModel:SortDescription PropertyName="EarnedDate" Direction="Ascending"/>
+                            </CollectionViewSource.SortDescriptions>
+                        </CollectionViewSource>
+                        <CollectionViewSource x:Key="CertificationSource" Source="{Binding EditingDto.Credentials.Certifications}">
+                        </CollectionViewSource>
+                        <CollectionViewSource x:Key="TrainingCourseSource" Source="{Binding EditingDto.Credentials.TrainingCourses}">
+                        </CollectionViewSource>
+                        <CollectionViewSource x:Key="LicenseSource" Source="{Binding EditingDto.Credentials.Licenses}">
+                        </CollectionViewSource>
+                    </CustomControls:EditableExpander.Resources>
+
+
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Degrees" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Degree Earned" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Vertical">
+                                        <ItemsControl ItemsSource="{Binding Source={StaticResource CollegeDegreeSource}}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding CollegeDegree.Name}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding EarnedDate, StringFormat='{}{0:MM/dd/yyyy}'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+
+
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                            <TextBlock Text="Credentials/Licenses" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Start Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <ItemsControl ItemsSource="{Binding Source={StaticResource LicenseSource}}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListL}">
+                                                            <TextBlock Text="{Binding License.Name}"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding EndDate, StringFormat='{}{0:MM/dd/yyyy}'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+
+                                    </StackPanel>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Certifications" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Start Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="End Date"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <ItemsControl ItemsSource="{Binding Source={StaticResource CertificationSource}}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding Certification.Name}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding EndDate, StringFormat='{}{0:MM/dd/yyyy}'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                            <TextBlock Text="Training Course"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Training Completed" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <ItemsControl ItemsSource="{Binding Source={StaticResource TrainingCourseSource}}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListL}">
+                                                            <TextBlock Text="{Binding TrainingCourse.Name}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding CompletedDate, StringFormat='{}{0:MM/dd/yyyy}'}"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+
+
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Degrees" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Degree Earned" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <CustomControls:EditableItemsControl ItemsSource="{Binding Source={StaticResource CollegeDegreeSource}}">
+                                            <CustomControls:EditableItemsControl.AddingItem>
+                                                <Common:StaffCollegeDegreeDto/>
+                                            </CustomControls:EditableItemsControl.AddingItem>
+                                            <CustomControls:EditableItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[CollegeDegree]}" SelectedItem="{Binding CollegeDegree,Mode=TwoWay}" DisplayMemberPath="Name"/>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadDatePicker SelectedValue="{Binding EarnedDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </CustomControls:EditableItemsControl.ItemTemplate>
+                                        </CustomControls:EditableItemsControl>
+                                    </StackPanel>
+
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                            <TextBlock Text="Credentials/Licenses" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Start Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock  Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Vertical">
+                                        <CustomControls:EditableItemsControl ItemsSource="{Binding Source={StaticResource LicenseSource}}" >
+                                            <CustomControls:EditableItemsControl.AddingItem>
+                                                <Common:StaffLicenseDto/>
+                                            </CustomControls:EditableItemsControl.AddingItem>
+                                            <CustomControls:EditableItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                                <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[License]}" SelectedItem="{Binding License,Mode=TwoWay}" DisplayMemberPath="Name" />
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadDatePicker SelectedValue="{Binding StartDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy" />
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadDatePicker SelectedValue="{Binding EndDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </CustomControls:EditableItemsControl.ItemTemplate>
+                                        </CustomControls:EditableItemsControl>
+                                    </StackPanel>
+
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock  Text="Certifications"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock  Text="Start Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <CustomControls:EditableItemsControl ItemsSource="{Binding Source={StaticResource CertificationSource}}" >
+                                            <CustomControls:EditableItemsControl.AddingItem>
+                                                <Common:StaffCertificationDto/>
+                                            </CustomControls:EditableItemsControl.AddingItem>
+                                            <CustomControls:EditableItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadComboBox  ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[Certification]}" SelectedItem="{Binding Certification,Mode=TwoWay}" DisplayMemberPath="Name"/>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadDatePicker SelectedValue="{Binding StartDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy" />
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadDatePicker  SelectedValue="{Binding EndDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </CustomControls:EditableItemsControl.ItemTemplate>
+                                        </CustomControls:EditableItemsControl>
+                                    </StackPanel>
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                            <TextBlock Text="Training Course" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Training Completed" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <CustomControls:EditableItemsControl ItemsSource="{Binding Source={StaticResource TrainingCourseSource}}" >
+                                            <CustomControls:EditableItemsControl.AddingItem>
+                                                <Common:StaffTrainingCourseDto/>
+                                            </CustomControls:EditableItemsControl.AddingItem>
+                                            <CustomControls:EditableItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                                <telerik:RadComboBox  ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.LookupValueLists[TrainingCourse]}" SelectedItem="{Binding TrainingCourse,Mode=TwoWay}" DisplayMemberPath="Name"  />
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                                <telerik:RadDatePicker  SelectedValue="{Binding CompletedDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </CustomControls:EditableItemsControl.ItemTemplate>
+                                        </CustomControls:EditableItemsControl>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+                <CustomControls:EditableExpander x:Name="StaffAccountAccess" Header="Staff Account Access" Content="{Binding EditingDto.SystemRoles}" ShowNextAndSaveButton="False">
+                    <i:Interaction.Behaviors>
+                        <Behavior:EditableExpanderLoadingBehavior IsLoading="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.IsStaffAccountAccessLoading}" />
+                    </i:Interaction.Behaviors>
+
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+
+                                <StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                            <TextBlock Text="Job Function" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding JobFunctionRole.SystemRole.Name}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                    </StackPanel>
+
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <Border  Grid.Row="0" BorderBrush="DarkGray" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch" Margin="0 10">
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <TextBlock Text="Assigned Tasks and Task Groups" Margin="10 0 0 0" FontSize="14"/>
+                                            <StackPanel>
+                                                <i:Interaction.Behaviors>
+                                                    <Behavior:StopMouseLeftButtonDownEventBubblingBehavior />
+                                                    <Behavior:StopMouseLeftButtonUpEventBubblingBehavior />
+                                                </i:Interaction.Behaviors>
+                                                <CustomControls:DetailsSelector x:Name="DetailsSelector" Margin="0,2,6,2" HorizontalAlignment="Right" 
+                                                                    DetailsLevel1="{StaticResource StaffAccountAccessDetailsLevel1}"
+                                                                    DetailsLevel2="{StaticResource StaffAccountAccessDetailsLevel2}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+
+                                    <ItemsControl ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.TotalSelectedStaffSystemRoleList}" ItemTemplate="{Binding ElementName=DetailsSelector,Path=SelectedDetails}"/>
+
+
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <Border  Grid.Row="0" BorderBrush="DarkGray" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch" Margin="0 30 0 10">
+                                        <TextBlock Text="Tasks/Task Groups Summary" Margin="10 0 0 0" FontSize="14"/>
+                                    </Border>
+
+                                    <StackPanel Orientation="Vertical" Margin="0 0 0 20">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top">
+                                                <TextBlock Text="Task Groups" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                <ItemsControl  Style="{StaticResource ICStyle}" ItemsSource="{Binding TaskGroupRoles}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding SystemRole.Name}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                    <ItemsControl.Template>
+                                                        <ControlTemplate>
+                                                            <ItemsPresenter/>
+                                                        </ControlTemplate>
+                                                    </ItemsControl.Template>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top">
+                                                    <TextBlock Text="Tasks" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                    <ItemsControl  Style="{StaticResource ICStyle}" ItemsSource="{Binding TaskRoles}">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding SystemRole.Name}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                        <ItemsControl.Template>
+                                                            <ControlTemplate>
+                                                                <ItemsPresenter/>
+                                                            </ControlTemplate>
+                                                        </ItemsControl.Template>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+
+
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+
+                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                        <TextBlock Text="Job Function" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                        <telerik:RadComboBox x:Name="cbJobFunctions" ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.JobFunctionSystemRoleLookupList}" SelectedItem="{Binding JobFunctionRole.SystemRole, Mode=OneWay}" DisplayMemberPath="Name">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectionChanged">
+                                                    <i:InvokeCommandAction Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.SelectedJobFunctionChangedCommand}" CommandParameter="{Binding ElementName=cbJobFunctions,Path=SelectedItem}"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </telerik:RadComboBox>
+                                    </StackPanel>
+
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <Border  Grid.Row="0" BorderBrush="DarkGray" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch" Margin="0 10">
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <TextBlock Text="Assigned Tasks and Task Groups" Margin="10 0 0 0" FontSize="14"/>
+                                            <CustomControls:DetailsSelector x:Name="DetailsSelector" Margin="0,2,6,2" HorizontalAlignment="Right" 
+                                                                    DetailsLevel1="{StaticResource StaffAccountAccessDetailsLevel1}"
+                                                                    DetailsLevel2="{StaticResource StaffAccountAccessDetailsLevel2}"/>
+                                        </Grid>
+                                    </Border>
+                                    <StackPanel Margin="20 0">
+                                        <ItemsControl ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.TotalSelectedStaffSystemRoleList}" ItemTemplate="{Binding ElementName=DetailsSelector,Path=SelectedDetails}"/>
+                                    </StackPanel>
+
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+
+
+                                    <Border  Grid.Row="0" BorderBrush="DarkGray" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch" Margin="0 30 0 10">
+                                        <TextBlock Text="Add New Tasks and Task Groups" Margin="10 0 0 0" FontSize="14"/>
+                                    </Border>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <StackPanel.Resources>
+                                            <Style x:Key="TasksAndTaskGroupsGridViewStyle" TargetType="telerikGridView:RadGridView">
+                                                <Setter Property="IsReadOnly" Value="True"/>
+                                                <Setter Property="AutoGenerateColumns" Value="False"/>
+                                                <Setter Property="ShowGroupPanel" Value="False"/>
+                                                <Setter Property="RowIndicatorVisibility" Value="Collapsed"/>
+                                                <Setter Property="AutoExpandGroups" Value="True"/>
+                                            </Style>
+                                        </StackPanel.Resources>
+
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top">
+                                            <TextBlock Text="Task Groups" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+
+                                            <telerikGridView:RadGridView x:Name="TaskGroupsGridView" ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.TaskGroupSystemRoleLookupList}"
+                                                                         Style="{StaticResource TasksAndTaskGroupsGridViewStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <telerikGridView:RadGridView.Columns>
+                                                    <telerikGridView:GridViewDataColumn Width="25">
+                                                        <telerikGridView:GridViewDataColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" IsEnabled="{Binding IsSelectable}"/>
+                                                            </DataTemplate>
+                                                        </telerikGridView:GridViewDataColumn.CellTemplate>
+                                                    </telerikGridView:GridViewDataColumn>
+                                                    <telerikGridView:GridViewDataColumn Width="*" Header="Role Name" HeaderTextAlignment="Center" DataMemberBinding="{Binding Name}">
+                                                        <telerikGridView:GridViewDataColumn.ToolTipTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding Description}"/>
+                                                            </DataTemplate>
+                                                        </telerikGridView:GridViewDataColumn.ToolTipTemplate>
+                                                    </telerikGridView:GridViewDataColumn>
+                                                </telerikGridView:RadGridView.Columns>
+                                            </telerikGridView:RadGridView>
+                                        </StackPanel>
+
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top" Orientation="Vertical">
+                                            <TextBlock Text="Tasks" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+
+                                            <telerikGridView:RadGridView x:Name="TasksGridView" ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.TaskSystemRoleLookupList}"
+                                                                         Style="{StaticResource TasksAndTaskGroupsGridViewStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <telerikGridView:RadGridView.Columns>
+                                                    <telerikGridView:GridViewDataColumn Width="25">
+                                                        <telerikGridView:GridViewDataColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" IsEnabled="{Binding IsSelectable}"/>
+                                                            </DataTemplate>
+                                                        </telerikGridView:GridViewDataColumn.CellTemplate>
+                                                    </telerikGridView:GridViewDataColumn>
+                                                    <telerikGridView:GridViewDataColumn Width="*" Header="Role Name" HeaderTextAlignment="Center" DataMemberBinding="{Binding Name}">
+                                                        <telerikGridView:GridViewDataColumn.ToolTipTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding Description}"/>
+                                                            </DataTemplate>
+                                                        </telerikGridView:GridViewDataColumn.ToolTipTemplate>
+                                                    </telerikGridView:GridViewDataColumn>
+                                                </telerikGridView:RadGridView.Columns>
+                                            </telerikGridView:RadGridView>
+
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <Controls:RadButton Content="Add to Account" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.AddToAccountCommand}" ToolTipService.ToolTip="Add checked Task Groups and Tasks to account" Style="{StaticResource TileRoundedCornerSmallButtonStyle}" Width="100" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+            </CustomControls:Editor.Expanders>
+        </CustomControls:Editor>
+        <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" Grid.Row="1" Background="{StaticResource EditFormWorkSpaceBackground}" Foreground="DarkGray" />
+    </Grid>
+</UserControl>

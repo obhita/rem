@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Billing.EncounterModule.Encounter">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gAAYAAAAQAARAAAQAAAAAAEAAAIAAAAAAgAIACIAAAQ=</HashCode>
+      <FileName>EncounterModule\Encounter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Billing.EncounterModule.EncounterFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EncounterModule\EncounterFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Billing.EncounterModule.Service">
+    <Position X="4.75" Y="1" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAMAQAAAABABEAACAAEAAQAEAAgAAIAIgAAAgAA=</HashCode>
+      <FileName>EncounterModule\Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Encounter" />
+      <Property Name="MedicalProcedure" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Billing.EncounterModule.ServiceFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>EncounterModule\ServiceFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Billing.EncounterModule.MedicalProcedure" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="1" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAQAgAAAAAAAAABAAIAQAAAAAAAAAyA=</HashCode>
+      <FileName>EncounterModule\MedicalProcedure.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

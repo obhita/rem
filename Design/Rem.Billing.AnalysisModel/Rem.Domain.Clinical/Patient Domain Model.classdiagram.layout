@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Patient Domain Model">
+  <logicalClassDesignerModelMoniker Id="f848d969-37b8-446f-a6ac-6ed2186208b4" />
+  <nestedChildShapes>
+    <classShape Id="4b43cac0-ed0f-4a9f-a4b9-e13e26bc1a80" absoluteBounds="1.625, 2.125, 1.5, 0.90234373509883881" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+      <classMoniker Id="434dea51-61b7-4d4d-b1fa-9748b79a1935" LastKnownName="Patient" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="662e42b0-e815-4b19-8d59-f4e90615ef5c" absoluteBounds="1.64, 2.515, 1.4700000000000002, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="6f25329d-3320-4398-bc2b-6d6e976d536a" absoluteBounds="1.64, 2.7261718675494193, 1.4700000000000002, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</logicalClassDesignerDiagram>

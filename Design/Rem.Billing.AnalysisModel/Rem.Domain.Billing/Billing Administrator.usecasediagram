@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="846d24e1-1ba7-40cf-bc79-bdff3ae064e8" name="Billing Administrator" linkedPackageId="9ba90d40-b838-499a-af66-cde1c50b543e" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="bc9f0992-609d-4746-b47e-b056fe678c74">
+      <elementDefinition Id="248a474c-661e-48df-b832-35eec9ebf022" />
+      <body>Need to scope out the types of contracts that we will support (e.g. managed care, authorized, pre-authorized, etc.)</body>
+      <annotatedElements>
+        <useCaseMoniker Id="bf8db72a-2e11-4f7d-b3c0-de4741778ef0" LastKnownName="Set up contracts" />
+      </annotatedElements>
+    </comment>
+    <comment Id="8595205f-cdc8-4931-a578-fecd0383b781">
+      <elementDefinition Id="e5f1d30c-d0f5-4219-907f-580bb2c60950" />
+      <body>Rates are potentially managed differently if you are doing a sliding fee-scale, if locations are in different states, possibly based on contract though not sure</body>
+      <annotatedElements>
+        <useCaseMoniker Id="7e093d51-2e90-400f-a73b-1c0d3a300478" LastKnownName="Set up billing office rates" />
+      </annotatedElements>
+    </comment>
+    <comment Id="eac7867e-3459-432c-b20d-7924b083bbb9">
+      <elementDefinition Id="c38a9e17-14ef-4720-bf6b-792929c4aef0" />
+      <body>This includes credentialing as well as capturing Payor Provider ID (e.g. NPI, State License Number, DEA Code)</body>
+      <annotatedElements>
+        <useCaseMoniker Id="afa8ebd1-8e77-40b6-a5a1-f6231bc662ad" LastKnownName="Set up billing office service providers' (doctor)" />
+      </annotatedElements>
+    </comment>
+    <comment Id="395e6ec4-666a-439c-b7e4-44f4be78d3d1">
+      <elementDefinition Id="74eb3f1b-ab9a-4db5-94c0-6d4dd24af0d6" />
+      <body>A message is sent from clinical to billing whenever a visit is reviewed as long as a billing office has been set up.  If a billing office is not set up then the message will not be sent.  This will leave encounters in an unsent state.  The billing administrator will need the ability to send these encounters once the billing office is set up.</body>
+      <annotatedElements>
+        <useCaseMoniker Id="8d39950b-7aed-416b-955b-40796a997a63" LastKnownName="Batch Pending Encounters From Clinical to Billing" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="6026cc87-a05b-4a36-ac86-29b30b297dbb" name="Billing Administrator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a666c8cd-8b98-438f-a659-e1a0ffa6df76" />
+        <targetEnds>
+          <association Id="481c1e9e-4e57-41e0-a06a-18ae05d46e08" isDerived="false" sourceEndRoleName="Billing Administrator" targetEndRoleName="Set up payor information" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="c059c312-bc23-42ba-8cf3-e3eb1bd64b87" LastKnownName="Set up payors" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0762e373-f7e3-4170-a71e-03c861cec4b4" name="Billing Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6476d686-0fea-4869-8f9f-054e459f8b40" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c7385436-7b29-43f1-987d-f305722efaae" name="Set up payor information" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="132e618a-c5f3-4b76-bb1b-076de1d36e4b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="a99cdce5-7f70-4b03-b9cc-725db30b9609" />
+          </association>
+          <association Id="7cfa8132-6ebf-49e6-a70f-9049690add09" isDerived="false" sourceEndRoleName="Billing Administrator" targetEndRoleName="Set up contracts" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="bf8db72a-2e11-4f7d-b3c0-de4741778ef0" LastKnownName="Set up contracts" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2b35dd76-0271-4bfc-b04d-e70ed4f38e53" name="Billing Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a39695e7-2746-4eb9-9d97-5a8124261db5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1c88ad21-566f-4ca8-b395-5ad2ff4f78bd" name="Set up contracts" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8b6bd5ee-3990-4046-a149-f4b14ee58c5b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d9f7edaa-ba2d-406d-9365-f3dcdca7d883" />
+          </association>
+          <association Id="ab745f97-4912-409d-a057-6a75eca1ef90" isDerived="false" sourceEndRoleName="Billing Administrator" targetEndRoleName="Set up billing office rates" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="7e093d51-2e90-400f-a73b-1c0d3a300478" LastKnownName="Set up billing office rates" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="18359c78-662c-4bd3-8f57-cf68996e8734" name="Billing Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a263f907-9012-4063-b81b-eb127afed10c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c649c807-484a-47a6-909b-2251350dab40" name="Set up billing office rates" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ee9bffbe-c7fe-479d-9615-a72a9859e4ed" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4677b920-5c59-4cee-a461-313e09387926" />
+          </association>
+          <association Id="e0232787-35ff-45c8-b033-119b47fee295" isDerived="false" sourceEndRoleName="Billing Administrator" targetEndRoleName="Set up billing office service providers' (doctor) billing profile data (i.e. NPI)" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="afa8ebd1-8e77-40b6-a5a1-f6231bc662ad" LastKnownName="Set up billing office service providers' (doctor)" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1c91dc05-47a6-479d-84f0-fb874b08f0d2" name="Billing Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ff72d395-9474-4954-bc0b-b46b93477454" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9a06f34f-1c40-4f45-b551-02b5bb4848f7" name="Set up billing office service providers' (doctor) billing profile data (i.e. NPI)" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="facf8f46-c2a8-4d1b-ac45-da369c87b083" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f6da0a36-225a-4135-9721-9dc16d34cd1f" />
+          </association>
+          <association Id="9bf074fd-27da-426c-8b2a-93749c2e6dea" isDerived="false" sourceEndRoleName="Billing Administrator" targetEndRoleName="Set up billing office 'place of service' billing profile data (i.e. NPI)" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3bd56b2e-6d1d-4f83-bd80-f3f0984c00c8" LastKnownName="Set up billing office 'places of service' " />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="077d6d8d-5eea-43a0-9b99-280fc9328d31" name="Billing Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="65a6a30a-690a-455c-801e-9c62b24cc1a4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f1703960-f17c-402a-861e-84a9e4bf324d" name="Set up billing office 'place of service' billing profile data (i.e. NPI)" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="88e87125-e618-4784-94d3-67b53a9ad66a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="eec4b728-ae06-46c4-b5d1-5257de603b19" />
+          </association>
+          <association Id="99d47461-32d1-49ed-a5e1-8629ecc1c0c3" isDerived="false" sourceEndRoleName="Billing Administrator" targetEndRoleName="Set up fee schedules" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9b701679-99cb-43fe-9c43-cdb12cecc7e0" LastKnownName="Set up fee schedules" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8ba00afa-fa39-4530-a469-a4e9fd13ae9e" name="Billing Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="284cced8-cab6-4ce4-b9f4-02646fa2af95" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ab5ad868-9482-41c4-9862-95771612636c" name="Set up fee schedules" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="08dc200a-ac58-4e1b-b3cc-465fc5c48400" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e9bd9c38-7c97-4d79-9e00-3828ee1226dc" />
+          </association>
+          <association Id="8a7bf9dc-43ed-4a31-b4b9-3e96327e8897" isDerived="false" sourceEndRoleName="Billing Administrator" targetEndRoleName="Set up billing offices" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b0835895-a8a4-4895-9d19-c034e413cdca" LastKnownName="Set up billing offices" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7fc40bff-ac86-435f-a55f-9cb60529be5f" name="Billing Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4f625b4e-f614-4d22-b166-c7f8bdf4273f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0ac5a24e-06b4-492d-8cae-97d7e4dd45b1" name="Set up billing offices" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="965f1a8c-2363-4675-be2a-8b425310ea3a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b18141c7-0f39-47fb-a867-c8e942330dbc" />
+          </association>
+          <association Id="de71efe5-1838-42ab-ad3b-e53caa766bd7" isDerived="false" sourceEndRoleName="Billing Administrator" targetEndRoleName="UseCase1" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8d39950b-7aed-416b-955b-40796a997a63" LastKnownName="Batch Pending Encounters From Clinical to Billing" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d4800b02-0f7b-4d77-a45c-717e5729f07d" name="Billing Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="976259ce-5900-4a08-8d12-629c0461b9b8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d509f58c-77ee-438d-8109-ddd5c7b5258d" name="UseCase1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="55f3a696-428d-454f-b984-9a6803871fe5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="a1cadf14-d2c3-4d0c-845a-8f0d9c71062a" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c059c312-bc23-42ba-8cf3-e3eb1bd64b87" name="Set up payors" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c587fcd7-f1de-4a16-8ddd-c2d57fd1587e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bf8db72a-2e11-4f7d-b3c0-de4741778ef0" name="Set up contracts" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c54f1658-eb23-4554-975a-5bd538109e30" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7e093d51-2e90-400f-a73b-1c0d3a300478" name="Set up billing office rates" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6f8779d2-b7ce-4873-8abb-b7c609e4356f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="afa8ebd1-8e77-40b6-a5a1-f6231bc662ad" name="Set up billing office service providers' (doctor)" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="908d61a1-2af8-4ce9-bd9a-a04d795b1db0" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3bd56b2e-6d1d-4f83-bd80-f3f0984c00c8" name="Set up billing office 'places of service' " isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4a68237e-5372-4c0a-acb8-06bb1051c914" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9b701679-99cb-43fe-9c43-cdb12cecc7e0" name="Set up fee schedules" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fa41ec1e-34c7-440c-b9ff-f882cc14e4c4" />
+        <additions>
+          <include Id="d9fff49f-e3f7-4335-ab9d-b358b7e16515">
+            <useCaseMoniker Id="782d3fcd-4c00-4846-9c4c-aed6040ab7e0" LastKnownName="Set up sliding scale fee schedule" />
+            <elementDefinition Id="6ae2041a-0678-471f-8d57-75d695db994a" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="782d3fcd-4c00-4846-9c4c-aed6040ab7e0" name="Set up sliding scale fee schedule" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a88ce756-bb42-4678-8f16-c9731f8c8c78" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b0835895-a8a4-4895-9d19-c034e413cdca" name="Set up billing offices" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b8be1060-3033-4829-ae73-2ef429d0e80d" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8d39950b-7aed-416b-955b-40796a997a63" name="Batch Pending Encounters From Clinical to Billing" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5626736e-7fe8-4ff1-9b22-46d78ee42b0e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="9ba90d40-b838-499a-af66-cde1c50b543e" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="47895361-d0bf-44e7-84d9-70fb1dbd3488">
+        <profileInstance Id="8cbc7e1a-5dd0-47bf-9b4a-15cf5d832766" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="e3865226-7992-4cad-913a-62d45c21de3b">
+        <profileInstance Id="bade0384-c741-4f77-a28d-819c51ca6355" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

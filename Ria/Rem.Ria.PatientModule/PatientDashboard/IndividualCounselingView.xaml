@@ -1,0 +1,110 @@
+﻿<telerik:RadTileViewItem x:Class="Rem.Ria.PatientModule.PatientDashboard.IndividualCounselingView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"               
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure" xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+                         xmlns:InfrastructureView="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+                         mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400" Header="Individual Counseling" TileState="{Binding ElementName=frcContent,Path=State,Converter={StaticResource FluideStateToTileConverterInstance},Mode=TwoWay}"  Style="{StaticResource DashboardTileViewStyle}" HeaderStyle="{StaticResource DashboardTileHeaderStyle}">
+
+    <telerik:RadTileViewItem.Resources>
+      <InfrastructureView:DataContextProxyElement x:Key="RootDataContext"/>
+      <Converter:StringToNullableConverter x:Key="StringToNullableConverter" />
+    </telerik:RadTileViewItem.Resources> 
+  
+  <telerik:RadTileViewItem.HeaderTemplate>
+    <DataTemplate>
+            <Grid Margin="0 0 10 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="0,0,2,0" Grid.Column="0" >
+                    <telerik:RadButton Style="{StaticResource TileDeleteButtonStyle}" Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.CloseViewCommand}" ToolTipService.ToolTip="Delete activity"></telerik:RadButton>
+                </StackPanel>
+                <Viewbox x:Name="Header"  Grid.Column="1" StretchDirection="DownOnly" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="0"/>
+                    </StackPanel>
+                </Viewbox>
+            </Grid>
+        </DataTemplate>
+  </telerik:RadTileViewItem.HeaderTemplate>
+  
+    <i:Interaction.Behaviors>
+        <Behavior:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <telerik:RadFluidContentControl x:Name="frcContent" Margin="0,0,0,0" State="{Binding IsCurrentActivity,Mode=OneWay, Converter={StaticResource BooleanToFluidContentControlStateLargeConverterInstance}}" ContentChangeMode="Manual" Style="{StaticResource RfccRemStyle}">
+        <telerik:RadFluidContentControl.SmallContent>
+            <Grid/>
+        </telerik:RadFluidContentControl.SmallContent>
+        <telerik:RadFluidContentControl.Content>
+            <Grid/>
+        </telerik:RadFluidContentControl.Content>
+        <telerik:RadFluidContentControl.LargeContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Margin="0" Padding="0" BorderThickness="0">
+                <Grid>
+                    <CustomControls:Editor MaximizeHeader="Individual Counseling" Style="{StaticResource TileEditorHeaderStyle}" StartOpen="True" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}" CanMaximize="True">
+                        <CustomControls:Editor.Expanders>
+                            <CustomControls:EditableExpander x:Name="IndividualCounseling" CanMaximize="False"
+                                         Content="{Binding EditingDto}" 
+                                         SaveCommand="{Binding SaveCommand}" 
+                                         CancelCommand="{Binding CancelCommand}" 
+                                         AccessControlManager="{Binding AccessControlManager}" IsExpanded="True" MaxWidth="800" MinWidth="700" Width="Auto" Height="Auto" ShowNext="False">
+                                <i:Interaction.Triggers>
+                                    <ei:DataTrigger Binding="{Binding IsCreate}" Comparison="Equal" Value="True">
+                                        <ei:ChangePropertyAction TargetName="IndividualCounseling" PropertyName="IsExpanded" Value="True"/>
+                                        <i:InvokeCommandAction Command="{Binding ElementName=IndividualCounseling,Path=SetAsNextCommand}"/>
+                                    </ei:DataTrigger>
+                                </i:Interaction.Triggers>
+                                <CustomControls:EditableExpander.HeaderTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <TextBlock Text="{Binding}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.HeaderTemplate>
+                                <CustomControls:EditableExpander.ContentTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{StaticResource ScreenerSectionBorderStyle}">
+                                            <Border Style="{StaticResource EditFormCommentsBorderStyle}">
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleXL}"  HorizontalAlignment="Stretch" Width="Auto">
+                                                    <TextBlock Text="Comments" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                    <TextBlock Text="{Binding Note}" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </Border>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentTemplate>
+
+
+                                <CustomControls:EditableExpander.ContentEditTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{StaticResource ScreenerSectionBorderStyle}">
+                                            <Border Style="{StaticResource EditFormCommentsBorderStyle}">
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleXL}" HorizontalAlignment="Stretch" Width="Auto">
+                                                    <TextBlock Text="Comments" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                    <TextBox AcceptsReturn="True" Style="{StaticResource EditFormCommentsTextBoxStyle}">
+                                                        <i:Interaction.Behaviors>
+                                                            <Behavior:TextBoxTextChangedBehavior Text="{Binding Note, Converter={StaticResource StringToNullableConverter}, Mode=TwoWay}"/>
+                                                        </i:Interaction.Behaviors>
+                                                    </TextBox>
+                                                </StackPanel>
+                                            </Border>
+                                        </Border>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentEditTemplate>
+                            </CustomControls:EditableExpander>
+                        </CustomControls:Editor.Expanders>
+                    </CustomControls:Editor>
+                    <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+                </Grid>
+            </ScrollViewer>
+        </telerik:RadFluidContentControl.LargeContent>
+    </telerik:RadFluidContentControl>
+</telerik:RadTileViewItem>

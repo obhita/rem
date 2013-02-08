@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{67AB5871-ED0C-41D4-A2E6-7D227B4E3AF1}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Ria.BillingModule</RootNamespace>
+    <AssemblyName>Rem.Ria.BillingModule</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Rem.Ria.BillingModule.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Rem.Ria.BillingModule.App</SilverlightAppEntry>
+    <TestPageFileName>Rem.Ria.BillingModuleTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.1.10819.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Silverlight\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\Silverlight\debug\Rem.Ria.BillingModule.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Agatha.Common.Silverlight">
+      <HintPath>..\..\packages\Agatha-Common-Unity.1.3\lib\sl40\Agatha.Common.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.Unity.Silverlight">
+      <HintPath>..\..\packages\Agatha-Common-Unity.1.3\lib\sl40\Agatha.Unity.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\..\packages\Prism.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\..\packages\Prism.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
+      <HintPath>..\..\packages\Prism.UnityExtensions.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Silverlight">
+      <HintPath>..\..\packages\Unity.2.1.505.0\lib\SL30\Microsoft.Practices.Unity.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Navigation, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Interactivity, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="Telerik.Windows.Controls">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ScheduleView">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.ScheduleView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common.Silverlight\Pillar.Common.Silverlight.csproj">
+      <Project>{49D7FB03-A129-4E44-9327-51EC4E1E0FB4}</Project>
+      <Name>Pillar.Common.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.FluentRuleEngine.Silverlight\Pillar.FluentRuleEngine.Silverlight.csproj">
+      <Project>{E5664DBD-9741-4025-AE6E-56F289B10AF1}</Project>
+      <Name>Pillar.FluentRuleEngine.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Security.Silverlight\Pillar.Security.Silverlight.csproj">
+      <Project>{D0C24324-EBBE-450A-88D7-F71DA081B063}</Project>
+      <Name>Pillar.Security.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Rem.WellKnownNames\Rem.WellKnownNames.csproj">
+      <Project>{0CA1E92B-B1E0-4E22-8FA5-747753AA8E72}</Project>
+      <Name>Rem.WellKnownNames</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.Infrastructure\Rem.Ria.Infrastructure.csproj">
+      <Project>{CF42EAE9-0AFA-4BA0-BEDC-395BD079761E}</Project>
+      <Name>Rem.Ria.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingAdministrationDashboard\ClaimBatchListSummaryDto.cs">
+      <Link>BillingAdministrationDashboard\ClaimBatchListSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingAdministrationDashboard\ClaimSummaryDto.cs">
+      <Link>BillingAdministrationDashboard\ClaimSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingAdministrationDashboard\GetClaimBatchListSummaryRequest.cs">
+      <Link>BillingAdministrationDashboard\GetClaimBatchListSummaryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingAdministrationDashboard\GetOpenClaimSummaryListByBillingOfficeKeyRequest.cs">
+      <Link>BillingAdministrationDashboard\GetOpenClaimSummaryListByBillingOfficeKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingAdministrationDashboard\PagedClaimSummaryListDto.cs">
+      <Link>BillingAdministrationDashboard\PagedClaimSummaryListDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingOfficeEditor\BillingOfficeAddressDto.cs">
+      <Link>BillingOfficeEditor\BillingOfficeAddressDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingOfficeEditor\BillingOfficeAddressesDto.cs">
+      <Link>BillingOfficeEditor\BillingOfficeAddressesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingOfficeEditor\BillingOfficeDto.cs">
+      <Link>BillingOfficeEditor\BillingOfficeDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingOfficeEditor\BillingOfficePhoneDto.cs">
+      <Link>BillingOfficeEditor\BillingOfficePhoneDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingOfficeEditor\BillingOfficePhonesDto.cs">
+      <Link>BillingOfficeEditor\BillingOfficePhonesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingOfficeEditor\BillingOfficeProfileDto.cs">
+      <Link>BillingOfficeEditor\BillingOfficeProfileDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingOfficeEditor\CheckBillingOfficeExistsByAgencyKeyRequest.cs">
+      <Link>DataTransferObject\CheckBillingOfficeExistsByAgencyKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingOfficeEditor\CheckBillingOfficeExistsByAgencyKeyResponse.cs">
+      <Link>DataTransferObject\CheckBillingOfficeExistsByAgencyKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\BillingOfficeEditor\CreateBillingOfficeRequest.cs">
+      <Link>BillingOfficeEditor\CreateBillingOfficeRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Claim\ClaimBatchDisplayNameDto.cs">
+      <Link>DataTransferObject\ClaimBatchDisplayNameDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Claim\VisitForBillingDto.cs">
+      <Link>DataTransferObject\VisitForBillingDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Common\BillingOfficeSummaryDto.cs">
+      <Link>DataTransferObject\BillingOfficeSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Common\GetBillingOfficeSummaryByAgencyKeyRequest.cs">
+      <Link>DataTransferObject\GetBillingOfficeSummaryByAgencyKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Common\GetPayorsByBillingOfficeKeyRequest.cs">
+      <Link>BillingAdministrationDashboard\GetPayorsByBillingOfficeKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Common\GetPayorsByBillingOfficeKeyResponse.cs">
+      <Link>BillingAdministrationDashboard\GetPayorsByBillingOfficeKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Common\GetPayorTypesByBillingOfficeKeyRequest.cs">
+      <Link>BillingAdministrationDashboard\GetPayorTypesByBillingOfficeKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Common\GetPayorTypesByBillingOfficeKeyResponse.cs">
+      <Link>BillingAdministrationDashboard\GetPayorTypesByBillingOfficeKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\PayorEditor\PayorAddressDto.cs">
+      <Link>PayorEditor\PayorAddressDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\PayorEditor\PayorAddressesDto.cs">
+      <Link>PayorEditor\PayorAddressesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\PayorEditor\PayorDto.cs">
+      <Link>PayorEditor\PayorDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\PayorEditor\PayorPhoneDto.cs">
+      <Link>PayorEditor\PayorPhoneDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\PayorEditor\PayorPhoneNumbersDto.cs">
+      <Link>PayorEditor\PayorPhoneNumbersDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\PayorEditor\PayorProfileDto.cs">
+      <Link>PayorEditor\PayorProfileDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\PayorEditor\PayorTypeDto.cs">
+      <Link>PayorEditor\PayorTypeDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Service\GenerateHcc837ProfessionalRequest.cs">
+      <Link>Service\GenerateHcc837ProfessionalRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Service\GenerateHcc837ProfessionalResponse.cs">
+      <Link>Service\GenerateHcc837ProfessionalResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Service\GetClaimBatchDisplayNamesByClaimBatchStatusRequest.cs">
+      <Link>Service\GetClaimBatchDisplayNamesByClaimBatchStatusRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Service\GetClaimBatchDisplayNamesByClaimBatchStatusResponse.cs">
+      <Link>Service\GetClaimBatchDisplayNamesByClaimBatchStatusResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Service\ResetTestDataRequest.cs">
+      <Link>Service\ResetTestDataRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Service\ResetTestDataResponse.cs">
+      <Link>Service\ResetTestDataResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Service\SendToBillingRequest.cs">
+      <Link>Service\SendToBillingRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.BillingModule.Web\Service\SendToBillingResponse.cs">
+      <Link>Service\SendToBillingResponse.cs</Link>
+    </Compile>
+    <Compile Include="BillingAdministrationDashboard\BillingAdministrationDashboardView.xaml.cs">
+      <DependentUpon>BillingAdministrationDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingAdministrationDashboard\BillingAdministrationDashboardViewModel.cs" />
+    <Compile Include="BillingAdministrationDashboard\ClaimBatchDashboardListView.xaml.cs">
+      <DependentUpon>ClaimBatchDashboardListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingAdministrationDashboard\ClaimBatchDashboardListViewModel.cs" />
+    <Compile Include="BillingAdministrationDashboard\ClaimErrorsListView.xaml.cs">
+      <DependentUpon>ClaimErrorsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingAdministrationDashboard\ClaimErrorsListViewModel.cs" />
+    <Compile Include="BillingAdministrationDashboard\ClaimOnHoldListView.xaml.cs">
+      <DependentUpon>ClaimOnHoldListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingAdministrationDashboard\ClaimOnHoldListViewModel.cs" />
+    <Compile Include="BillingAdministrationDashboard\ClaimsDashboardView.xaml.cs">
+      <DependentUpon>ClaimsDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingAdministrationDashboard\ClaimsDashboardViewModel.cs" />
+    <Compile Include="BillingAdministrationDashboard\ClaimSummaryDto.Client.cs" />
+    <Compile Include="BillingAdministrationDashboard\PayorDashboardView.xaml.cs">
+      <DependentUpon>PayorDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingAdministrationDashboard\PayorDashboardViewModel.cs" />
+    <Compile Include="BillingAdministrationDashboard\PayorTypeListView.xaml.cs">
+      <DependentUpon>PayorTypeListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingAdministrationDashboard\PayorTypeListViewModel.cs" />
+    <Compile Include="BillingAdministrationDashboard\PayorListView.xaml.cs">
+      <DependentUpon>PayorListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingAdministrationDashboard\PayorListViewModel.cs" />
+    <Compile Include="BillingAdministrationDashboard\TempClaimModel.cs" />
+    <Compile Include="BillingAdministrationWorkspace\BillingAdministrationWorkspaceRibbon.xaml.cs">
+      <DependentUpon>BillingAdministrationWorkspaceRibbon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingAdministrationWorkspace\BillingAdministrationWorkspaceView.xaml.cs">
+      <DependentUpon>BillingAdministrationWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingAdministrationWorkspace\BillingAdministrationWorkspaceViewModel.cs" />
+    <Compile Include="BillingAdministrationWorkspace\CreateBillingOfficeButtonView.xaml.cs">
+      <DependentUpon>CreateBillingOfficeButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingAdministrationWorkspace\CreateBillingOfficeButtonViewModel.cs" />
+    <Compile Include="BillingModule.cs" />
+    <Compile Include="BillingOfficeChangedEvent.cs" />
+    <Compile Include="BillingOfficeChangedEventArgs.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficeEditorViewModel.cs" />
+    <Compile Include="BillingOfficeEditor\BillingOfficeEditorView.xaml.cs">
+      <DependentUpon>BillingOfficeEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingOfficeEditor\CreateBillingOfficeView.xaml.cs">
+      <DependentUpon>CreateBillingOfficeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingOfficeEditor\CreateBillingOfficeViewModel.cs" />
+    <Compile Include="BillingWorkspaceView.xaml.cs">
+      <DependentUpon>BillingWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillingWorkspaceViewModel.cs" />
+    <Compile Include="ClaimBatchListView.xaml.cs">
+      <DependentUpon>ClaimBatchListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimBatchListViewModel.cs" />
+    <Compile Include="ClientPermissionDescriptor.cs" />
+    <Compile Include="PayorEditor\PayorEditorViewModelRuleCollection.cs" />
+    <Compile Include="PayorEditor\PayorTypeEditorViewModelRuleCollection.cs" />
+    <Compile Include="PayorEditor\PayorTypeEditorView.xaml.cs">
+      <DependentUpon>PayorTypeEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PayorEditor\PayorTypeEditorViewModel.cs" />
+    <Compile Include="PayorEditor\PayorEditorView.xaml.cs">
+      <DependentUpon>PayorEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PayorEditor\PayorEditorViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisitForBillingListView.xaml.cs">
+      <DependentUpon>VisitForBillingListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VisitForBillingListViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="BillingAdministrationDashboard\BillingAdministrationDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingAdministrationDashboard\ClaimBatchDashboardListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingAdministrationDashboard\ClaimErrorsListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingAdministrationDashboard\ClaimOnHoldListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingAdministrationDashboard\ClaimsDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingAdministrationDashboard\PayorDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingAdministrationDashboard\PayorTypeListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BillingAdministrationDashboard\PayorListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingAdministrationWorkspace\BillingAdministrationWorkspaceRibbon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingAdministrationWorkspace\BillingAdministrationWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingAdministrationWorkspace\CreateBillingOfficeButtonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingOfficeEditor\BillingOfficeEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingOfficeEditor\CreateBillingOfficeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillingWorkspaceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimBatchListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PayorEditor\PayorTypeEditorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PayorEditor\PayorEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VisitForBillingListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

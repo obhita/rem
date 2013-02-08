@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="Rem.Ria.AgencyModule.LocationDashboard.ProgramOfferingListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" 
+    xmlns:InfrastructureView="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:Controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls" 
+    xmlns:Controls1="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input" 
+    xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism" 
+	xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"  
+    xmlns:DragDrop="clr-namespace:Telerik.Windows.Controls.DragDrop;assembly=Telerik.Windows.Controls" 
+    xmlns:behaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" xmlns:Data="clr-namespace:Telerik.Windows.Data;assembly=Telerik.Windows.Data" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <InfrastructureView:DataContextProxyElement x:Key="RootDataContextProxy" />
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource TileBorderStyle}" Padding="0" BorderThickness="0" CornerRadius="4" Background="{StaticResource PatientDashboardTileBackground}">
+        <Grid>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <behaviors:SetFocusTriggerBehavior TargetName="ShowActiveOnlyButton"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Grid x:Name="PrintGrid">
+                <Grid.RowDefinitions>
+        		<RowDefinition Height="auto"/>
+				<RowDefinition/>     	
+			</Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <Border Style="{StaticResource TileHeaderBorderStyle}">
+                    <Grid x:Name="Header">
+                        <TextBlock Text="Program Offerings" Style="{StaticResource TileHeaderTextBlockStyle}" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalMargin"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <CustomControls:PrintControl VerticalAlignment="Center" ControlToPrint="{Binding ElementName=PrintGrid}" Title="Programs List"/>
+                            <Border BorderBrush="DarkGray" BorderThickness="1,0,0,0" Margin="0,4"/>
+                            <Border BorderBrush="White" BorderThickness="1,0,0,0" Margin="0,4"/>
+                            <telerik:RadButton x:Name="radButton" Width="20" Margin="5" Height="20" Padding="0" Style="{StaticResource BorderlessButtonStyle}" ToolTipService.ToolTip="Add a new Program Offering." Command="{Binding ShowProgramOfferingAddCommand}" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                               
+                                <ContentPresenter>
+                                    <Border>
+                                        <Path Stretch="Fill" Fill="{Binding Foreground, ElementName=radButton}" Data="F1 M 103.25,96.5L 105.25,96.5L 105.25,102.5L 111.25,102.5L 111.25,104.5L 105.25,104.5L 105.25,110.5L 103.25,110.5L 103.25,104.5L 97.25,104.5L 97.25,102.5L 103.25,102.5L 103.25,96.5 Z " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ContentPresenter>
+                            </telerik:RadButton>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" Style="{StaticResource TileHeaderColorCodeBorderStyle}" Background="#FFFF7F00"/>
+                <Border Grid.Row="2" VerticalAlignment="Top" Style="{StaticResource TileToolBarBorderStyle}">
+                	<Grid x:Name="CommandHeaderGrid">
+            			<Grid.ColumnDefinitions>
+            				<ColumnDefinition Width="Auto"/>
+            				<ColumnDefinition Width="Auto" />
+            				<ColumnDefinition Width="Auto" />
+            				<ColumnDefinition Width="*" />
+            			</Grid.ColumnDefinitions>
+
+            			<StackPanel Grid.Column="0" Orientation="Horizontal" Margin="4,0,0,0">
+            				<telerik:RadRadioButton x:Name="ShowActiveOnlyButton" Content="Active" Style="{StaticResource TileToggleButtonRemStyle}" ToolTipService.ToolTip="Filter list by active problems only." CornerRadius="3 0 0 3" Command="{Binding ShowActiveOnlyCommand}" IsChecked="True" Height="22" Margin="2,0,0,0" />
+            				<telerik:RadRadioButton x:Name="ShowAllButton" Content="All" Style="{StaticResource TileToggleButtonRemStyle}" ToolTipService.ToolTip="Show all problems." CornerRadius="0 3 3 0" Command="{Binding ShowAllCommand}" Height="22" Margin="0" />
+            				<Border BorderBrush="#FFD4D4D4" BorderThickness="0,0,1,0" Height="24" Margin="10,0"/>
+            			</StackPanel>
+
+            			<StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" >
+            				<telerik:RadComboBox x:Name="GroupByComboBox" EmptyText="Group By" ToolTipService.ToolTip="Sort list in groups by condition." EmptySelectionBoxTemplate="{StaticResource TileWatermarkTemplate}" ItemsSource="{Binding PagedCollectionViewWrapper.GroupingDescriptions}" DisplayMemberPath="Description"  
+            					SelectedItem="{Binding PagedCollectionViewWrapper.SelectedGroupingDescription, Mode=TwoWay}" Style="{StaticResource RadComboBoxRemStyle}" Margin="0" Height="22" ClearSelectionButtonVisibility="Visible"  ClearSelectionButtonContent="None"/>
+            				<Border BorderBrush="#FFD4D4D4" BorderThickness="0,0,1,0" Height="24" Margin="10,0" d:LayoutOverrides="Height"/>
+            			</StackPanel>
+            			<StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+            				<CustomControls:DetailsSelector x:Name="DetailsSelector" Margin="0,0,8,0" HorizontalAlignment="Right" ToolTipService.ToolTip="Toggle level of details displayed." DetailsLevel2="{StaticResource ProgramOfferingListDetailLevel2RowDetailsTemplate}" Height="25">
+            					<i:Interaction.Triggers>
+            						<i:EventTrigger EventName="SelectionChanged">
+            							<i:InvokeCommandAction Command="{Binding PagedCollectionViewWrapper.DetailLevelChangedCommand}" CommandParameter="{Binding SelectedItem, ElementName=GroupByComboBox}" />
+            						</i:EventTrigger>
+            					</i:Interaction.Triggers>
+            				</CustomControls:DetailsSelector>
+            			</StackPanel>
+            		</Grid>
+
+                </Border>
+				</StackPanel>
+                <telerik:RadGridView Grid.Row="1" x:Name="ProgramListdataGrid" ItemsSource="{Binding PagedCollectionViewWrapper.PagedCollectionView}"
+				    IsReadOnly="True" RowDetailsVisibilityMode="Visible" ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" FontSize="10"
+					CanUserFreezeColumns="False"
+				    AutoGenerateColumns="False" IsFilteringAllowed="False" DragDrop:RadDragAndDropManager.AllowDrag="False" ShowColumnHeaders="True"
+				    Background="Transparent" BorderThickness="0" RowDetailsTemplate="{Binding ElementName=DetailsSelector,Path=SelectedDetails}" 
+                    RowStyle="{StaticResource ProblemGridViewRowStyle}" GridLinesVisibility="None" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" RowHeight="20" CanUserSortColumns="False" Margin="0,0,0,4">
+
+                    <telerik:RadGridView.SortDescriptors>
+                        <Data:SortDescriptor Member="Profile.Program.DisplayName" SortDirection="Ascending" />
+                    </telerik:RadGridView.SortDescriptors>
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn SortMemberPath="DisplayName" Header="Program Offerings" TextWrapping="Wrap" DataMemberBinding="{Binding Profile.Program.DisplayName}" Width="auto"/>
+                        <telerik:GridViewDataColumn Header="Start Date" DataMemberBinding="{Binding Profile.StartDate, StringFormat='MM/dd/yy '}" Width="60"/>
+                        <telerik:GridViewDataColumn Header="Category" TextWrapping="Wrap" DataMemberBinding="{Binding Profile.Program.ProgramCategory}" Width="*"/>
+                        <telerik:GridViewDataColumn Header="Availability" TextWrapping="Wrap" DataMemberBinding="{Binding Availabilty}" Width="*"/>
+                        <telerik:GridViewDataColumn Header=" ">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="DeleteButton" Style="{StaticResource TileDeleteButtonStyle}" Margin="0,0,5,0" Command="{Binding Source={StaticResource RootDataContextProxy}, Path=DataSource.DeleteProgramOfferingCommand}" CommandParameter="{Binding}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                        </telerik:GridViewDataColumn>
+                    </telerik:RadGridView.Columns>
+                    <i:Interaction.Behaviors>
+                        <behaviors:DoubleClickGridViewRowBehavior Command="{Binding ShowProgramOfferingEditCommand}" />
+                        <behaviors:GridViewHideFocusVisualBehavior/>
+                    </i:Interaction.Behaviors>
+                </telerik:RadGridView>
+                <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" Grid.RowSpan="2" />
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

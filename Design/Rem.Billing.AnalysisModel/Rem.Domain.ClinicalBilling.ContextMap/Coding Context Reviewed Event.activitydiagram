@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="52d1d647-8016-4574-b845-095f5870c6d1" name="Visit Coded Event" linkedPackageId="bca2c1a6-41ff-4267-9e77-30a117e7d365" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <ownedCommentsInternal>
+    <comment Id="42b57572-9d3b-4180-ae9a-3e275d804982">
+      <elementDefinition Id="62ef9f40-5292-4bcf-9a13-b4057ea8d4f2" />
+      <body>This event is an asynchronous event (bus event)</body>
+      <annotatedElements>
+        <sendSignalActionMoniker Id="5ec36d1f-0eb9-46a9-9bd6-39b3d7ad037e" LastKnownName="Coding Context Reviewed Event" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="9236e714-bb3f-434a-b663-d0cd5985ad5c">
+      <profileInstance Id="fbe68ef6-a81c-46b8-8985-5bb8c21246b3" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="d5bc9ca9-8040-46ef-abc3-4a178375325a">
+      <profileInstance Id="bba21a25-5789-44a6-b934-cf56392866fe" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="9fe68481-e7d6-40fe-9578-bf37cdcc0780" name="Visit Coded Event" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="e4100e19-e0d3-45f9-ab2a-40020485e022" />
+        <nodes>
+          <initialNode Id="eb7cf677-fd04-4da4-b2e5-e5651b652feb" name="Initial1" isLeaf="false">
+            <elementDefinition Id="3eb7f382-bc1f-43bf-b44b-28c566c33769" />
+            <objectFlowTargets>
+              <objectFlow Id="362a8364-6559-4b17-ad3c-feca99059e56" guard="Mark as Reviewed" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <objectNodeMoniker Id="d080346c-9c94-4a7d-be92-f3d367d070f1" LastKnownName="Coding Context" />
+                <elementDefinition Id="2595cb90-250c-4312-8272-225b5d27f7be" />
+              </objectFlow>
+            </objectFlowTargets>
+          </initialNode>
+          <objectNode Id="d080346c-9c94-4a7d-be92-f3d367d070f1" name="Coding Context" isLeaf="false" ordering="Unordered" isControlType="false">
+            <elementDefinition Id="229d9c3a-19bc-444c-b367-7a5a8b2ac30c" />
+            <objectFlowTargets>
+              <objectFlow Id="7fcde87d-6ec4-4d47-9120-a15c240580a3" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <sendSignalActionMoniker Id="5ec36d1f-0eb9-46a9-9bd6-39b3d7ad037e" LastKnownName="Coding Context Reviewed Event" />
+                <elementDefinition Id="037b11d1-74c7-44d6-9b9c-196771ea6803" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger Id="a5a8eb55-daeb-443c-93c3-628658c98696" name="2147483647" value="2147483647">
+                <elementDefinition Id="7c95428d-47b3-40d2-b578-3ea4e9b4e8d2" />
+              </literalInteger>
+            </upperBound>
+          </objectNode>
+          <sendSignalAction Id="5ec36d1f-0eb9-46a9-9bd6-39b3d7ad037e" name="Coding Context Reviewed Event" isLeaf="false">
+            <elementDefinition Id="b6e26aa8-515b-4b85-9327-b3b2eab8393c" />
+            <flowNodeTargets>
+              <controlFlow Id="43d5d580-5615-403d-9e3c-44238aef7527" isLeaf="false">
+                <acceptEventActionMoniker Id="1fda8b6d-ffbd-4865-b581-6f5da49b434b" LastKnownName="Coding Context Reviewed Event Handler" />
+                <elementDefinition Id="0d9f3c43-6ab5-432e-806a-72f91e159f9b" />
+              </controlFlow>
+            </flowNodeTargets>
+          </sendSignalAction>
+          <acceptEventAction Id="1fda8b6d-ffbd-4865-b581-6f5da49b434b" name="Coding Context Reviewed Event Handler" isLeaf="false" isUnmarshall="false">
+            <elementDefinition Id="7493b0b5-4932-46dc-b556-8a44507f8ff8" />
+          </acceptEventAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="bca2c1a6-41ff-4267-9e77-30a117e7d365" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+  </package>
+</activityRootModel>

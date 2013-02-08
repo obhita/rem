@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.PatientDashboard.SocialHistorySmokingCessationAdvisoryView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+    d:DesignHeight="800" d:DesignWidth="800">
+    <i:Interaction.Behaviors>
+        <Behavior:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <StackPanel x:Name="SmokingCessationAdvisory" Background="White">
+        <StackPanel Margin="20" Width="400">
+            <StackPanel>
+                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Vertical">
+                    <TextBlock Text="Assist the smoker to:" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    <TextBlock Margin="8" Text="•	Set a quit date, ideally within 2 weeks." Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    <TextBlock Margin="8" Text="•	Remove tobacco products from their environment." Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    <TextBlock Margin="8" Text="•	Get support from family, friends, and coworkers." Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    <TextBlock Margin="8" Text="•	Review past quit attempts—what helped, what led to relapse." Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    <TextBlock Margin="8" Text="•	Anticipate challenges, particularly during the critical first few weeks, including nicotine withdrawal." Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    <TextBlock Margin="8" Text="•	Identify reasons for quitting and benefits of quitting." Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    
+                    <TextBlock Text="Give advice on successful quitting:" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    <TextBlock Margin="8" Text="•	Total abstinence is essential—not even a single puff." Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    <TextBlock Margin="8" Text="•	Drinking alcohol is strongly associated with relapse." Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    <TextBlock Margin="8" Text="•	Allowing others to smoke in the household hinders successful quitting." Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    
+                    <TextBlock Text="Encourage use of medication:" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    <TextBlock Margin="8" Text="•	Recommend use of over-the-counter nicotine patch, gum, or lozenge; or give prescription for varenicline, bupropion SR, nicotine inhaler, or nasal spray, unless contraindicated." Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                </StackPanel>
+                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

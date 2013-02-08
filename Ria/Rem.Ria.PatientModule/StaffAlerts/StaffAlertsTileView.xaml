@@ -1,0 +1,62 @@
+﻿<telerik:RadTileViewItem
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Rem_Ria_Infrastructure_View_Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" x:Class="Rem.Ria.PatientModule.StaffAlerts.StaffAlertsTileView" 
+    mc:Ignorable="d"
+    d:DesignHeight="150" d:DesignWidth="350" Padding="2">
+    <telerik:RadTileViewItem.Header>
+        <TextBlock Text="Alerts" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="0" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalMargin"/>
+    </telerik:RadTileViewItem.Header>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <StackPanel>
+            <Border Grid.Row="0" VerticalAlignment="Top" Style="{StaticResource TileToolBarBorderStyle}">
+            	<i:Interaction.Behaviors>
+            		<Rem_Ria_Infrastructure_View_Behavior:BindToActualWidthBehavior/>
+            	</i:Interaction.Behaviors>
+                <Grid x:Name="CommandHeaderGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                        <telerik:RadRadioButton x:Name="ShowActiveOnlyButton" FontSize="9" Height="20" Content="Active" Style="{StaticResource TileRoundedCornerSmallRadioButtonStyle}" Command="{Binding ShowActiveOnlyCommand}"  Width="40" />
+                        <telerik:RadRadioButton x:Name="ShowAllButton" Content="All" FontSize="9"  Height="20" Style="{StaticResource TileRoundedCornerSmallRadioButtonStyle}" Command="{Binding ShowAllCommand}" Width="40" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,6,0">
+                        <TextBlock TextWrapping="Wrap" Text="Group By:" VerticalAlignment="Center" FontSize="9" Foreground="White"/>
+                        <telerik:RadComboBox x:Name="GroupByComboBox" FontSize="9" ItemsSource="{Binding PagedCollectionViewWrapper.GroupingDescriptions}" DisplayMemberPath="Description"  
+                				SelectedItem="{Binding PagedCollectionViewWrapper.SelectedGroupingDescription, Mode=TwoWay}" Height="20" Style="{StaticResource RadComboBoxRemStyle}"/>
+                    </StackPanel>
+                </Grid>
+
+            </Border>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Style="{StaticResource EditFormStackPanelStyleS}" Width="80">
+                    <TextBlock Text="Smith, Albert" Style="{StaticResource CaseSummaryLabelTextBlockStyle}"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource EditFormStackPanelStyleS}" Width="130">
+                    <TextBlock Text="Review Treatment Plan" Style="{StaticResource CaseSummaryLabelTextBlockStyle}"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource EditFormStackPanelStyleA}">
+                    <TextBlock Text="09/19/2011" Style="{StaticResource CaseSummaryDataElementTextBlockStyle}"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Style="{StaticResource EditFormStackPanelStyleS}" Width="80">
+                    <TextBlock Text="Doe, Jane" Style="{StaticResource CaseSummaryLabelTextBlockStyle}"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource EditFormStackPanelStyleS}" Width="130">
+                    <TextBlock Text="Review Medication List" Style="{StaticResource CaseSummaryLabelTextBlockStyle}"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource EditFormStackPanelStyleA}">
+                    <TextBlock Text="10/25/2011" Style="{StaticResource CaseSummaryDataElementTextBlockStyle}"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</telerik:RadTileViewItem>

@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="4fd3b2c4-bc6e-4c95-835f-c4a445aa8d2d" name="Payor Coverage Domain Model" linkedPackageId="e837825c-c761-4718-be97-bda99455501f" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="eb72fe81-3fc6-42b9-9011-cd74250aa983" name="Payor Coverage" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="7ffa56f5-cc3e-4a86-8635-84a7e24659e2" />
+        <targetEnds>
+          <association Id="be60f9b1-5a3e-4249-8f7a-e17a6100073e" isDerived="false" sourceEndRoleName="Payor Coverage" targetEndRoleName="Payor Cache" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a2cde2da-fb80-43b0-9963-d2db507933d8" LastKnownName="Payor Cache" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3fdd6c61-7c29-4ff7-8354-7320ba2eaf84" name="Payor Coverage" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="90509d41-c12f-44e9-b7ae-288352825a66" name="Lower" value="*">
+                      <elementDefinition Id="8cf9057b-a47d-47f8-80e3-48c13229ef86" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="15a13c4b-ed25-4600-a2fa-f67c5b2ea93a" name="Upper" value="*">
+                      <elementDefinition Id="e4d88cf7-2ffa-41a7-b4df-a7c3b3c9da80" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="6729e515-1934-4379-b445-4b44b7409c6e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b35b8c6a-1f0f-4a45-9e10-c51f7d5280c5" name="Payor Cache" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f2f2b7ff-9684-4829-acc5-1619babcb716" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7d4ba67e-1bbe-4071-b75f-cef38b8f99c1" />
+          </association>
+          <association Id="b9ddbbdc-44b4-45b0-829c-641025c989a1" isDerived="false" sourceEndRoleName="Payor Coverage" targetEndRoleName="Payor Subscriber" isLeaf="false" isAbstract="false">
+            <classMoniker Id="3f3b5217-f599-46ae-9a70-8e28a87c435d" LastKnownName="Payor Subscriber" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="85a83a1c-e9cd-452d-bf0e-f65f2d00cd04" name="Payor Coverage" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5cc016ec-a1e8-42d0-ad01-b6863d5b9247" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4193d89a-37a9-4527-80e2-0a6f65564185" name="Payor Subscriber" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4193c158-21bd-4bcc-9d3a-6cec19aae02a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d57a74c4-6d04-4c0a-8554-30b55a8a4d13" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="97576703-eea8-4072-bd7b-c38ab61bc69e" name="Payor" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="56d79d7a-84fe-44d5-9dc2-842b0886339b" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="52d4a7ca-7904-4f50-931a-b697271b528e" LastKnownName="Payor Cache" />
+            </type_NamedElement>
+          </property>
+          <property Id="d0d269ac-3544-45cd-a4ce-7facdb412208" name="Subscriber" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0f1cf905-2e7f-4ea4-8674-033c477d1f67" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="f86e32f3-e804-4b7e-bb77-b21df419d5dd" LastKnownName="Payor Subscriber" />
+            </type_NamedElement>
+          </property>
+          <property Id="e192aa32-4849-47c5-b4f3-1452f27fa6ec" name="Effective Coverage Date Range" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a429dc68-ae94-42f2-9985-6cb586bff2aa" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="952e8133-6bb5-4173-8642-0b7cc085eb50" LastKnownName="Date Range" />
+            </type_NamedElement>
+          </property>
+          <property Id="48f94161-133f-41d8-9c62-f0e1a447e387" name="Member Number" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="09769cc9-3331-4130-a89f-7b96f205daec" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="af2f694a-e973-4fea-8387-adcd691f98be" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="47802aa7-2a40-406d-bbf0-5f1af00c0e66" name="Patient" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="df338e3d-59f6-4209-864f-2cd78e5acd5c" />
+        <targetEnds>
+          <association Id="840b34a4-7dbc-4b17-a945-8645479e2df5" isDerived="false" sourceEndRoleName="Patients" targetEndRoleName="Agency" isLeaf="false" isAbstract="false">
+            <classMoniker Id="ecfbdad6-05ba-421f-96b0-2c085b3e40a4" LastKnownName="Agency" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5711602d-f22f-4fdb-81bf-0dbb05c8cea7" name="Patients" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="82524bc6-5fa7-48d6-a68b-f8d44f8d52ee" name="Lower" value="*">
+                      <elementDefinition Id="f049c461-2d30-4efe-a80b-1e6470b603e7" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="b724038e-97dc-4965-bfce-2ed3006e2e88" name="Upper" value="*">
+                      <elementDefinition Id="102573aa-952c-44b1-b380-ad1997cda0c6" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="d54bcaf5-fe5c-4578-81ec-937d768adf44" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b6b74263-2394-4073-93b8-41cf0337a9e6" name="Agency" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="42e89df1-f421-4871-9124-6e9fe92dd160" name="Lower" value="1">
+                      <elementDefinition Id="0a12010a-41e4-4cdb-abf5-0e1f6e3bc1a4" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="37091a67-d016-44d2-8bcf-8a1d0ab04028" name="Upper" value="1">
+                      <elementDefinition Id="264371f0-436b-434c-b3ab-cc4b8816a455" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="9baa618f-3b5f-4f11-bac2-c0528179c3bd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9a5c3948-b33b-4688-9aa7-45f0e602e137" />
+          </association>
+          <association Id="2ffd3bc0-3b3f-4eb5-83f8-d3858bd374c7" isDerived="false" sourceEndRoleName="Patient" targetEndRoleName="Payor Coverage" isLeaf="false" isAbstract="false">
+            <classMoniker Id="eb72fe81-3fc6-42b9-9011-cd74250aa983" LastKnownName="Payor Coverage" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3ec29cb9-5495-409f-a76a-8b8447e6e790" name="Patient" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d4739a08-37f9-44c3-885f-6a976c2f21ca" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="67bc61dd-4c99-4c64-a5ec-2b0719465a25" name="Payor Coverage" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="d70caec1-1e8e-42b4-83a4-dad0cc8136ae" name="Lower" value="*">
+                      <elementDefinition Id="808cec8a-88ce-4101-925c-551844c9314b" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="167c5499-b290-4b20-8571-272d15c63759" name="Upper" value="*">
+                      <elementDefinition Id="c9cd9467-1dc3-495d-9eb4-5facd8fe272e" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="50d5198f-39de-4e75-b321-8757cf48e234" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="96bf601f-0b62-4a4d-a9cc-7e1320aa0d3e" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ecfbdad6-05ba-421f-96b0-2c085b3e40a4" name="Agency" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="44f6509a-ea4b-4973-833c-140d71aaa20f" />
+        <targetEnds>
+          <association Id="f02ab412-797d-4f52-92bd-5560fcc91db7" isDerived="false" sourceEndRoleName="Agency" targetEndRoleName="Billing Office" isLeaf="false" isAbstract="false">
+            <classMoniker Id="9c965eca-8459-48f6-a9d5-82239ebf7f99" LastKnownName="Billing Office Cache" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d4653d88-1a25-4fe9-86be-04f213e0c63d" name="Agency" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="43731075-d7a0-4546-a605-20f7b1e8e5ee" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1f083627-7b49-40fc-b8b7-ff859a9c4bbd" name="Billing Office" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="d6697096-f437-4e51-b044-715bc80e6b93" name="Lower" value="*">
+                      <elementDefinition Id="2870e117-e3c2-4563-a417-846b20193270" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="9081aad0-2b1c-460f-bc0a-f042963740bc" name="Upper" value="*">
+                      <elementDefinition Id="fcfadb8c-6b4c-46f9-b5d1-f6cf5c2d2ee9" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="8609c3fa-f0cd-452e-aaaf-6f1f5c39606d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2569a117-18ec-4cc1-832b-d2dbae950235" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9c965eca-8459-48f6-a9d5-82239ebf7f99" name="Billing Office Cache" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="2520e078-1ff4-4c2d-8be7-d1d1706749e9" />
+        <targetEnds>
+          <association Id="1dc41863-eb4b-4ddd-a686-2e2d7b4a4868" isDerived="false" sourceEndRoleName="Billing Office" targetEndRoleName="Payor" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a2cde2da-fb80-43b0-9963-d2db507933d8" LastKnownName="Payor Cache" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7ce66747-f8bb-44b7-a586-026a2e687fba" name="Billing Office" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b7db0676-16d0-443e-8d41-8f4f499b7e48" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dba74472-27e6-4420-b43d-634014608cc6" name="Payor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="4c622a48-a416-4251-80f1-6aa7d9115a54" name="Lower" value="*">
+                      <elementDefinition Id="0e5974dc-754b-45ab-bac9-73576482def6" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="a78edb14-5a82-4dc7-a98f-0c5f1822c032" name="Upper" value="*">
+                      <elementDefinition Id="397da12a-ec7b-4f4a-943e-9e17514c9c76" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="5ae8459f-c39c-41a4-a353-a4ddfe401541" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="18294ddf-33bc-4acb-9da1-b405621331f5" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a2cde2da-fb80-43b0-9963-d2db507933d8" name="Payor Cache" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="83ac72b7-b273-4ac5-ae6f-1ed40ea23dee" />
+        <ownedAttributesInternal>
+          <property Id="f8ac6678-3f8b-4e8c-bb8c-72d0f76c229f" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="60b69cd1-a7e9-4204-90b3-ddf064829ae3" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="af2f694a-e973-4fea-8387-adcd691f98be" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+          <property Id="b3bcb3d9-f577-467e-8fb9-3fec84da7d5a" name="Primary Address" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="dec2ec22-64d5-4289-ba83-a0dc24a39aef" />
+          </property>
+          <property Id="576d3755-737e-4d1a-a38b-1db248e85e47" name="Record Number" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b5d32183-62ba-4053-aed5-9519d37997aa" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="52a106e4-3104-487e-999a-5c1457ad7724" LastKnownName="long" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="af2f694a-e973-4fea-8387-adcd691f98be" name="string" isAbstract="false" isLeaf="false" cachedFullName="string">
+        <elementDefinition Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="52d4a7ca-7904-4f50-931a-b697271b528e" name="Payor Cache" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Clinical::Payor Cache">
+        <elementDefinition Id="83ac72b7-b273-4ac5-ae6f-1ed40ea23dee" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3f3b5217-f599-46ae-9a70-8e28a87c435d" name="Payor Subscriber" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="cb8893a9-6f19-45ce-9842-7cf1756c025d" />
+        <targetEnds>
+          <association Id="5a477549-c1b1-49c7-b41b-ae4824eeb867" isDerived="false" sourceEndRoleName="Payor Subscriber" targetEndRoleName="Subscriber Name" isLeaf="false" isAbstract="false">
+            <classMoniker Id="38deedb7-c2b8-4324-a58c-8a7399f07938" LastKnownName="Subscriber Name" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a4b0673c-13d5-4917-a349-7129291829fa" name="Payor Subscriber" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0b3b9dc5-5792-4177-b803-cd346dc45921" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="06dded9d-7b3f-4dff-9423-05c0870eaeba" name="Subscriber Name" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ad44be1c-2ceb-4ac0-9b53-a527beb60de2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="cc407861-529b-4b95-bac8-51ddff8b4cd7" />
+          </association>
+          <association Id="1f059570-7003-46e8-8605-b961d0232c1a" isDerived="false" sourceEndRoleName="Payor Subscriber" targetEndRoleName="Subscriber Address" isLeaf="false" isAbstract="false">
+            <classMoniker Id="b070b879-2743-4fc6-a25a-b10f18b6743a" LastKnownName="Subscriber Address" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="57fa7e21-e6c1-49c6-b8fc-ee2647ef05ef" name="Payor Subscriber" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c6249bd8-e1ef-4473-bc01-32f8d8e838c4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="815fd5b5-7e56-4e3e-a021-90213f29558a" name="Subscriber Address" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="7bd88102-fa82-4d76-95b6-35253e5774ca" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f6d17624-1a6a-4026-8936-7de9b6c662c4" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="c6a1c189-89fa-4a2c-a5f8-c8edbb76bf62" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="55c291e3-cdec-409b-a82d-022743797c79" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="0ce645e7-a18b-43fa-b556-8828dc6f2c86" LastKnownName="Subscriber Name" />
+            </type_NamedElement>
+          </property>
+          <property Id="7b044478-e6b5-4dd4-9c23-9de7ac3f9c55" name="Birth Date" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ccc43529-a37a-48bc-957b-d9ece44bc882" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="e41a53d1-ce78-45ed-b749-017f0a6794cb" LastKnownName="Datetime" />
+            </type_NamedElement>
+          </property>
+          <property Id="f9a8e5ac-0957-44f9-86a7-19b130e6cb14" name="Gender" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="cde93ab8-d641-48bf-80c7-392e27b99461" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="73831843-f477-42b7-a473-8927e774a941" LastKnownName="Gender" />
+            </type_NamedElement>
+          </property>
+          <property Id="2e4e3c2c-13d6-42d5-8a57-e6884ba83fa5" name="Address" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b45b9fda-ebef-4dee-b31b-527fa71d2dc8" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="da6383eb-79e7-4a29-85ba-cbf7109d1574" LastKnownName="Subscriber Address" />
+            </type_NamedElement>
+          </property>
+          <property Id="3b0fa708-c0b9-4fca-81ef-0cdef8bebfda" name="Relationship Type" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d4bc5e06-4b82-4f4c-83d7-ceb2d82f953d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="ec4f0e10-b3df-4183-8401-c226fecf42c7" LastKnownName="Payor Relationship Type" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="0ce645e7-a18b-43fa-b556-8828dc6f2c86" name="Subscriber Name" isAbstract="false" isLeaf="false" cachedFullName="Subscriber Name">
+        <elementDefinition Id="4005d059-3afc-42be-9acf-166a3d32113b" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="38deedb7-c2b8-4324-a58c-8a7399f07938" name="Subscriber Name" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3169529b-9a4a-4acf-a5e5-443a11776ab4" />
+        <ownedAttributesInternal>
+          <property Id="9628de0e-9d3f-4706-a3cd-4cdefbc7230e" name="First" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="26eaa473-66b8-4953-8a29-22b55ec7510d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="af2f694a-e973-4fea-8387-adcd691f98be" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+          <property Id="52f4c434-b4ca-476a-b1b9-f6aebd6441ba" name="Middle" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ad8fb472-24f2-44e3-865d-360d970d6caf" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="af2f694a-e973-4fea-8387-adcd691f98be" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+          <property Id="8716a535-1e6b-4c29-a63d-8cd56f00a607" name="Last" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f45c94e3-74aa-4f0a-a692-915c6a00add9" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="af2f694a-e973-4fea-8387-adcd691f98be" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="e41a53d1-ce78-45ed-b749-017f0a6794cb" name="Datetime" isAbstract="false" isLeaf="false" cachedFullName="Datetime">
+        <elementDefinition Id="9a459a83-5fac-4d82-b737-039e17b6943e" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="73831843-f477-42b7-a473-8927e774a941" name="Gender" isAbstract="false" isLeaf="false" cachedFullName="Gender">
+        <elementDefinition Id="874ef537-66a2-429d-905c-2f5b715524aa" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b070b879-2743-4fc6-a25a-b10f18b6743a" name="Subscriber Address" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0cc85cad-d8b5-4c87-bed5-fc4b9e4eb2f4" />
+        <ownedAttributesInternal>
+          <property Id="94ddb5d8-aed5-458b-9cd9-86aec14aa294" name="First Street Address" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e3c231aa-a7ad-40d4-af12-bd18679b60f1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="af2f694a-e973-4fea-8387-adcd691f98be" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+          <property Id="9056ed3a-7300-4554-956e-304568695bf3" name="Second Street Address" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b5264af6-04f1-459e-b588-1a25d3e50d66" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="af2f694a-e973-4fea-8387-adcd691f98be" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+          <property Id="7ca9f76b-5232-4e03-ac2b-8706cdf4e043" name="City" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="673e55a7-71ef-482a-adff-9386dc5d56b9" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="af2f694a-e973-4fea-8387-adcd691f98be" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+          <property Id="d4f268fb-9918-4727-b135-a1e4985caaf2" name="State" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2a772d57-ed2e-4b00-8431-59c2969e3271" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="af2f694a-e973-4fea-8387-adcd691f98be" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+          <property Id="4defdc78-e1f5-47eb-bcdc-1ac6fd276f60" name="Postal Code" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f50d9a42-213a-42d5-8e0f-c35f1b3b6c7c" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8724873e-9a1e-4e6b-b44d-af5eb039c31f" LastKnownName="Postal Code" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="8724873e-9a1e-4e6b-b44d-af5eb039c31f" name="Postal Code" isAbstract="false" isLeaf="false" cachedFullName="Postal Code">
+        <elementDefinition Id="d474c79a-7693-4b1e-9320-32a0c2c51c90" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="da6383eb-79e7-4a29-85ba-cbf7109d1574" name="Subscriber Address" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Clinical::Subscriber Address">
+        <elementDefinition Id="0cc85cad-d8b5-4c87-bed5-fc4b9e4eb2f4" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="f86e32f3-e804-4b7e-bb77-b21df419d5dd" name="Payor Subscriber" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Clinical::Payor Subscriber">
+        <elementDefinition Id="cb8893a9-6f19-45ce-9842-7cf1756c025d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="ec4f0e10-b3df-4183-8401-c226fecf42c7" name="Payor Relationship Type" isAbstract="false" isLeaf="false" cachedFullName="Payor Relationship Type">
+        <elementDefinition Id="c75a2493-5574-4949-a030-24ad2d002e55" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="952e8133-6bb5-4173-8642-0b7cc085eb50" name="Date Range" isAbstract="false" isLeaf="false" cachedFullName="Date Range">
+        <elementDefinition Id="d8a337c6-e701-4b54-8f13-4241b4fea5d0" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="52a106e4-3104-487e-999a-5c1457ad7724" name="long" isAbstract="false" isLeaf="false" cachedFullName="long">
+        <elementDefinition Id="cffcb105-b138-4fc3-9d64-9b829ecd1d9b" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="d451b382-6fe8-4430-aa9d-44071b775e25" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="6f7bbce3-6453-40e5-b827-c8da4724053f">
+        <profileInstance Id="261f8d97-fd1e-4687-8b05-49215fea397e" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="4fcfad7f-c0a4-4745-8e37-72fd1985c1bd">
+        <profileInstance Id="7357ddd9-7713-495d-8326-7205a232b961" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="25f78234-fd88-4a5b-af81-eed3a949628d">
+        <profileInstance Id="7a451878-7640-4bc7-bb3c-8ac746b80a53" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="76dee311-76c9-4013-b9fa-a566ad217cd2">
+        <profileInstance Id="abc4b17c-c715-41e4-9845-f80683cf55d6" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+  <package Id="e837825c-c761-4718-be97-bda99455501f" name="Rem.Domain.Clinical">
+    <elementDefinition Id="bb60960b-2f23-4024-9963-a7558f5d326f" />
+  </package>
+</logicalClassDesignerModel>

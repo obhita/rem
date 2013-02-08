@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="74029ba4-789b-4310-ae0d-6c81b0b48585" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="d782187f-739b-4d75-8881-e9fc0041156d" name="Domain">
+      <childLayers>
+        <layer Id="022ac10b-7e96-4652-a933-72d06044e1e2" name="Rem.Domain.Clinical">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="18bb6aa1-5ec1-4ee1-a433-79c115304637" direction="Forward">
+              <layerMoniker Id="2e78f8e1-a9b4-4a6b-983f-cdd5893cb7b4" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="c7b97c18-be2f-440c-adf1-2370211742c7" name="Clinical Case Module">
+              <childLayers>
+                <layer Id="411ec587-1bb7-4784-b400-5a6af6ea35ed" name="Clinical Case" />
+                <layer Id="0a618869-b75b-44ff-984c-ffec3ea8c448" name="Problem" />
+              </childLayers>
+            </layer>
+            <layer Id="68b2293e-d86f-406a-811d-c855ad03ae47" name="Dens Asi Module">
+              <childLayers>
+                <layer Id="a932f63a-ab1a-4707-ab1c-e90e1672cd72" name="Dens Asi" />
+              </childLayers>
+            </layer>
+            <layer Id="c25fe5a4-d868-4db2-ac06-f86957283994" name="Gain Short Screener Module">
+              <childLayers>
+                <layer Id="dd54bb6d-47c6-4e12-802b-e0648d5d5ac2" name="Gain Short Screener" />
+              </childLayers>
+            </layer>
+            <layer Id="b601bf26-d4e0-437e-97f1-0fc01d6dd364" name="Gpra Module">
+              <childLayers>
+                <layer Id="7564a583-f1b3-4cd8-846a-9aee1f327bb2" name="Gpra" />
+              </childLayers>
+            </layer>
+            <layer Id="dd4cba49-9adb-4803-8e7a-c121586e48f6" name="Immunization Module">
+              <childLayers>
+                <layer Id="3db44005-fe48-4195-8947-495815caa1e0" name="Immunization" />
+              </childLayers>
+            </layer>
+            <layer Id="59f27328-2e8c-430b-9a1b-bbe2b75ffbd0" name="Patient Module">
+              <childLayers>
+                <layer Id="e65e3729-47ae-4580-922e-36832933c21f" name="Allergy" />
+                <layer Id="fd248243-560e-4874-90d9-0c4dd153d62c" name="Medication" />
+                <layer Id="98a69016-177a-4d7e-b497-f7427b76feb3" name="Patient" />
+                <layer Id="8db38954-ef7a-4de5-afa8-977d894722e3" name="Patient Alert" />
+                <layer Id="d637caad-8f8e-4276-a22e-059c7ecb6534" name="Patient Contact" />
+              </childLayers>
+            </layer>
+            <layer Id="71ea8d57-ef5c-4050-b7ec-e1097d4eec50" name="Program Module">
+              <childLayers>
+                <layer Id="0224d846-91c4-45b1-982c-8c171f978670" name="Program" />
+                <layer Id="d2f13eee-15ba-41f1-a993-afa2fbb2effa" name="Program Enrollment" />
+                <layer Id="9d853cd3-1022-458d-9491-8b5638b4e0d7" name="Program Offering" />
+              </childLayers>
+            </layer>
+            <layer Id="8a7ac657-9865-4ea4-b14c-820dc38e3094" name="Radiology Module">
+              <childLayers>
+                <layer Id="69ac42e2-a982-4a36-beba-17b35eef7a41" name="Radiology Order" />
+              </childLayers>
+            </layer>
+            <layer Id="5a16b164-e1fd-435b-87ee-f7202491fc3f" name="Reports Module">
+              <childLayers>
+                <layer Id="0c1a7bff-b5b7-4d5d-87b0-811726ad464c" name="Report" />
+              </childLayers>
+            </layer>
+            <layer Id="5202b170-5313-495b-a51d-771d41889402" name="Sbirt Module">
+              <childLayers>
+                <layer Id="dd16a2ac-1b30-4727-be26-f3f73b8c2988" name="Audit" />
+                <layer Id="c12f3865-422d-45c7-871c-a0b7b410ec86" name="Dast 10" />
+                <layer Id="33620445-85ad-411b-b78e-ca591aa02816" name="Individual Counceling" />
+                <layer Id="5364cdbc-2362-4e20-9e06-e6c3f4afbcf2" name="Nida Drug Questionaire" />
+                <layer Id="86c5c0dd-3757-4ff9-af6b-08cef59c9ffd" name="Phq 9" />
+              </childLayers>
+            </layer>
+            <layer Id="e8882c14-09c0-4fd0-8439-d8fcd0997fe8" name="Visit Module">
+              <childLayers>
+                <layer Id="7015a44f-e236-4420-92da-7e4005a2228d" name="Activity" />
+                <layer Id="78406fe2-e7d0-4395-bb70-64cf7d3e071a" name="Social History" />
+                <layer Id="4fe186a9-7fb5-41b5-89ef-7ec6022f4a58" name="Visit" />
+                <layer Id="28ed9a43-ab69-4fe2-940d-fca2f37cebbb" name="Vital Sign" />
+              </childLayers>
+            </layer>
+          </childLayers>
+        </layer>
+        <layer Id="fc1e20a4-4d53-478d-a650-8b0e74132223" name="Rem.Domain.Billing">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="8f26409a-a590-48a7-b646-617c82dc02ca" direction="Forward">
+              <layerMoniker Id="2e78f8e1-a9b4-4a6b-983f-cdd5893cb7b4" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="a51f2f37-8aa8-459a-96a3-eae2f6734fe8" name="Billing Office Module" />
+            <layer Id="458b0a9e-bcb2-4726-9780-1f85f81c2ce1" name="Claim Module" />
+            <layer Id="fa7ca3c7-be0d-46f4-89e4-b73fece205b7" name="Contract Module" />
+            <layer Id="df54309b-50f7-4709-ae4b-258b6f87b4bb" name="Encounter Module" />
+            <layer Id="468d52c6-bfc6-46c5-956f-60725c580825" name="Patient Account Module" />
+            <layer Id="2ba3d9da-2048-42c8-adaf-0e0511b7b2ac" name="Payor Module" />
+            <layer Id="5c6505c8-1990-4288-8abf-bad72cb805f4" name="Rate Module" />
+          </childLayers>
+        </layer>
+        <layer Id="2e78f8e1-a9b4-4a6b-983f-cdd5893cb7b4" name="Rem.Domain.Core">
+          <childLayers>
+            <layer Id="3476d33c-0463-4727-80af-0c010a6b1fee" name="Security Module">
+              <childLayers>
+                <layer Id="6ccd178e-4880-4518-a8fd-a176bfb526ec" name="System Account" />
+                <layer Id="79a9de90-129d-4b70-949d-b014eb33b8a3" name="System Role" />
+                <layer Id="3c434c8a-9433-4124-bd86-e46f34de0051" name="System Permission" />
+              </childLayers>
+            </layer>
+            <layer Id="7e787c57-f242-4576-82b8-e048aa4517a9" name="Agency Module">
+              <childLayers>
+                <layer Id="b2916f3d-c266-496c-a66d-ba35103c7fc6" name="Agency" />
+                <layer Id="262ad7d6-2fa5-4a35-ac6a-a3de2c997be7" name="Location" />
+                <layer Id="ff84649b-c6c7-4377-b716-cb3c5143f865" name="Staff" />
+              </childLayers>
+            </layer>
+            <layer Id="fc378ac1-9c03-4a84-9023-b31000847568" name="Common Module">
+              <childLayers>
+                <layer Id="062c7b1b-d9e7-4cfa-aa38-906dbefcd1f9" name="Domain Base Classes" />
+              </childLayers>
+            </layer>
+          </childLayers>
+        </layer>
+        <layer Id="d885a64c-0bd3-40d7-b627-ed6edc964ecd" name="Rem.Domain.ClinicalBilling.ContextMap" />
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

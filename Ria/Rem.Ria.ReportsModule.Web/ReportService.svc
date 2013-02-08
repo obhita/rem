@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Rem.Ria.ReportsModule.Web.ReportService" CodeBehind="ReportService.svc.cs" %>

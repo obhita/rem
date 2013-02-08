@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.PatientModule.Allergy">
+    <Position X="4.75" Y="0.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEQAIgAAAAAAAEAAAABAgAQCAAIAEQAAQBAAABSgA=</HashCode>
+      <FileName>PatientModule\Allergy.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Patient" />
+      <Property Name="AllergyStatus" />
+      <Property Name="AllergyType" />
+      <Property Name="AllergySeverityType" />
+      <Property Name="AllergenCodedConcept" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.AllergyReaction" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="2.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAEAACAoAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>PatientModule\AllergyReaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.Patient" Collapsed="true">
+    <Position X="1.25" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>jANyYRtoTADFECL0TjG1xCUIYoyoHaphADE4AIMcgYI=</HashCode>
+      <FileName>PatientModule\Patient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.AllergyType" Collapsed="true">
+    <Position X="9" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAQAAAAAAAABAAAgAAABAAAAAAAA=</HashCode>
+      <FileName>PatientModule\AllergyType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.AllergyStatus" Collapsed="true">
+    <Position X="9" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAQAAAAAAAABAAAgAAABAAAAAAAA=</HashCode>
+      <FileName>PatientModule\AllergyStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Core.CommonModule.CodedConcept" Collapsed="true">
+    <Position X="8.75" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEAAEoAkQEAAAAQGAEAABgQAACACAAgAAABAAgAAAAA=</HashCode>
+      <FileName>CommonModule\CodedConcept.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.AllergySeverityType" Collapsed="true">
+    <Position X="9" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAQAAAAAAAABAAAgAAABAAAAAAAA=</HashCode>
+      <FileName>PatientModule\AllergySeverityType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Rem.Domain.Clinical.PatientModule.IAllergyRepository" Collapsed="true">
+    <Position X="11.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\IAllergyRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

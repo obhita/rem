@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Ria.PatientModule.Web.DirectMessageCenter.DirectMailDto">
+    <Position X="5.75" Y="7.25" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AggKAAAABAAAAAAAAoBAUAQAAiAIAAAAkAAAICAAAAA=</HashCode>
+      <FileName>DirectMessageCenter\DirectMailDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.DirectMessageCenter.SendDirectMessageRequestHandler">
+    <Position X="0.75" Y="0.5" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAEAAAAAAAAA=</HashCode>
+      <FileName>DirectMessageCenter\SendDirectMessageRequestHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.DirectMessageCenter.GetImapFolderItemsRequestHandler">
+    <Position X="5.75" Y="0.5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAIA=</HashCode>
+      <FileName>DirectMessageCenter\GetImapFolderItemsRequestHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.DirectMessageCenter.GetImapFolderItemsRequest">
+    <Position X="5.75" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DirectMessageCenter\GetImapFolderItemsRequest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.DirectMessageCenter.GetImapFolderItemsResponse">
+    <Position X="5.75" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DirectMessageCenter\GetImapFolderItemsResponse.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Messsages" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.DirectMessageCenter.SendDirectMessageRequest">
+    <Position X="0.75" Y="2.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAIABAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>DirectMessageCenter\SendDirectMessageRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.DirectMessageCenter.SendDirectMessageResponse">
+    <Position X="0.75" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DirectMessageCenter\SendDirectMessageResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

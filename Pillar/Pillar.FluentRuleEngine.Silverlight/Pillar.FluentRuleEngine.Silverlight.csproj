@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E5664DBD-9741-4025-AE6E-56F289B10AF1}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pillar.FluentRuleEngine</RootNamespace>
+    <AssemblyName>Pillar.FluentRuleEngine.Silverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\Silverlight\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>0</WarningLevel>
+    <DocumentationFile>..\..\Bin\Silverlight\Debug\Pillar.FluentRuleEngine.Silverlight.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Silverlight\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Pillar.FluentRuleEngine\AbstractRuleCollection.cs">
+      <Link>AbstractRuleCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\ConstraintExtensions.cs">
+      <Link>ConstraintExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Constraints\ConstraintBase.cs">
+      <Link>Constraints\ConstraintBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Constraints\ContextObjectInlineConstraint.cs">
+      <Link>Constraints\ContextObjectInlineConstraint.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Constraints\IConstraint.cs">
+      <Link>Constraints\IConstraint.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Constraints\IHandleAddingRuleViolations.cs">
+      <Link>Constraints\IHandleAddingRuleViolations.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Constraints\InlineConstraint.cs">
+      <Link>Constraints\InlineConstraint.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Constraints\NotEmptyConstraint.cs">
+      <Link>Constraints\NotEmptyConstraint.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Constraints\NotNullConstraint.cs">
+      <Link>Constraints\NotNullConstraint.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Constraints\NotNullOrWhiteSpaceConstraint.cs">
+      <Link>Constraints\NotNullOrWhiteSpaceConstraint.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Constraints\NullConstraint.cs">
+      <Link>Constraints\NullConstraint.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Constraints\RelationshipConstrain.cs">
+      <Link>Constraints\RelationshipConstrain.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Constraints\RuleCollectionConstraint.cs">
+      <Link>Constraints\RuleCollectionConstraint.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\ContextEntry.cs">
+      <Link>ContextEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\DefaultWorkingMemoryGetStrategy.cs">
+      <Link>DefaultWorkingMemoryGetStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IAttributeCollection.cs">
+      <Link>IAttributeCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\ICollectionPropertyRule.cs">
+      <Link>ICollectionPropertyRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\InvalidPropertyRuleException.cs">
+      <Link>InvalidPropertyRuleException.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\InvalidRuleException.cs">
+      <Link>InvalidRuleException.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IPropertyRule.cs">
+      <Link>IPropertyRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IRule.cs">
+      <Link>IRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IRuleCollection.cs">
+      <Link>IRuleCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IRuleCollectionCustomizer.cs">
+      <Link>IRuleCollectionCustomizer.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IRuleCollectionFactory.cs">
+      <Link>IRuleCollectionFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IRuleEngine.cs">
+      <Link>IRuleEngine.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IRuleEngineContext.cs">
+      <Link>IRuleEngineContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IRuleEngineFactory.cs">
+      <Link>IRuleEngineFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IRuleProcessor.cs">
+      <Link>IRuleProcessor.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IRuleSet.cs">
+      <Link>IRuleSet.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IRuleViolationReporter.cs">
+      <Link>IRuleViolationReporter.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\ISpecificationRule.cs">
+      <Link>ISpecificationRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\IWorkingMemoryGetStrategy.cs">
+      <Link>IWorkingMemoryGetStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\NameProviders\INameProvider.cs">
+      <Link>NameProviders\INameProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\NameProviders\TypePropertyNameNameProvider.cs">
+      <Link>NameProviders\TypePropertyNameNameProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\NamespaceDoc.cs">
+      <Link>NamespaceDoc.cs</Link>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\NotifyPropertyChangedRuleExecutor.cs">
+      <Link>NotifyPropertyChangedRuleExecutor.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\PropertyChain.cs">
+      <Link>PropertyChain.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Registry.cs">
+      <Link>Registry.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Resources\Messages.Designer.cs">
+      <Link>Resources\Messages.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Resources\StringExtensions.cs">
+      <Link>Resources\StringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleCollectionFactory.cs">
+      <Link>RuleCollectionFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleEngine.cs">
+      <Link>RuleEngine.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleEngineContext.cs">
+      <Link>RuleEngineContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleEngineFactory.cs">
+      <Link>RuleEngineFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleExecutionResult.cs">
+      <Link>RuleExecutionResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleExtensions.cs">
+      <Link>RuleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleProcessor.cs">
+      <Link>RuleProcessor.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleSelectors\IMemberNameRuleSelector.cs">
+      <Link>RuleSelectors\IMemberNameRuleSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleSelectors\IRuleSelector.cs">
+      <Link>RuleSelectors\IRuleSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleSelectors\ITakeParameter.cs">
+      <Link>RuleSelectors\ITakeParameter.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleSelectors\PropertyChainContainsMemberRuleSelector.cs">
+      <Link>RuleSelectors\PropertyChainContainsMemberRuleSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleSelectors\SelectAllRuleSelector.cs">
+      <Link>RuleSelectors\SelectAllRuleSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleSelectors\SelectAllRulesInRuleSetSelector.cs">
+      <Link>RuleSelectors\SelectAllRulesInRuleSetSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleSet.cs">
+      <Link>RuleSet.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\AttributeCollection.cs">
+      <Link>Rules\AttributeCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\CollectionPropertyRule.cs">
+      <Link>Rules\CollectionPropertyRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\CollectionPropertyRuleBuilder.cs">
+      <Link>Rules\CollectionPropertyRuleBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\CollectionPropertyRuleBuilderInitializer.cs">
+      <Link>Rules\CollectionPropertyRuleBuilderInitializer.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\ContextObjectProviderRuleBuilder.cs">
+      <Link>Rules\ContextObjectProviderRuleBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\ICollectionPropertyRuleBuilder.cs">
+      <Link>Rules\ICollectionPropertyRuleBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\ICollectionPropertyRuleBuilderInitializer.cs">
+      <Link>Rules\ICollectionPropertyRuleBuilderInitializer.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\IContextObjectProviderRuleBuilder.cs">
+      <Link>Rules\IContextObjectProviderRuleBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\IPropertyRuleBuilder.cs">
+      <Link>Rules\IPropertyRuleBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\IPropertyRuleBuilderInitializer.cs">
+      <Link>Rules\IPropertyRuleBuilderInitializer.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\IRuleBuilder.cs">
+      <Link>Rules\IRuleBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\IRuleBuilderInitializer.cs">
+      <Link>Rules\IRuleBuilderInitializer.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\ISpecificationRuleBuilderInitializer.cs">
+      <Link>Rules\ISpecificationRuleBuilderInitializer.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\PropertyRule.cs">
+      <Link>Rules\PropertyRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\PropertyRuleBase.cs">
+      <Link>Rules\PropertyRuleBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\PropertyRuleBuilder.cs">
+      <Link>Rules\PropertyRuleBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\PropertyRuleBuilderInitializer.cs">
+      <Link>Rules\PropertyRuleBuilderInitializer.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\Rule.cs">
+      <Link>Rules\Rule.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\RuleBuilder.cs">
+      <Link>Rules\RuleBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\SpecificationRule.cs">
+      <Link>Rules\SpecificationRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\Rules\SpecificationRuleBuilderInitializer.cs">
+      <Link>Rules\SpecificationRuleBuilderInitializer.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleViolation.cs">
+      <Link>RuleViolation.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\RuleViolationCollection.cs">
+      <Link>RuleViolationCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.FluentRuleEngine\WorkingMemory.cs">
+      <Link>WorkingMemory.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pillar.Common.Silverlight\Pillar.Common.Silverlight.csproj">
+      <Project>{49D7FB03-A129-4E44-9327-51EC4E1E0FB4}</Project>
+      <Name>Pillar.Common.Silverlight</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Pillar.FluentRuleEngine\Resources\Messages.resx">
+      <Link>Resources\Messages.resx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <Import Project="$(SolutionDir)\lib\Shared\Stylecop\StyleCop.Targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

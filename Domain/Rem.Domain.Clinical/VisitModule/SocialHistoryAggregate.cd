@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.VisitModule.SocialHistory">
+    <Position X="3" Y="2.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AACAAiAACAAACEAAAAAAAAAAAAAABACAABAAAEAgAAA=</HashCode>
+      <FileName>VisitModule\SocialHistory.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SocialHistoryAuditC" />
+      <Property Name="SocialHistoryDast10" />
+      <Property Name="SocialHistorySmoking" />
+      <Property Name="SocialHistoryPhq2" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.SocialHistorySmoking" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="6.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAwEAAAAAAAAAAAIAAAAAAEAAAAiA=</HashCode>
+      <FileName>VisitModule\SocialHistorySmoking.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.SocialHistoryAuditC" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="3.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAgAAAAAAAAAAAAIACAAAAAAAAAiA=</HashCode>
+      <FileName>VisitModule\SocialHistoryAuditC.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.SocialHistoryDast10" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.75" Width="6" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQgAAAAAIAAAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>VisitModule\SocialHistoryDast10.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.SocialHistoryFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAACAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VisitModule\SocialHistoryFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.SocialHistoryPhq2" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="9.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAgAAAAAgIAAAAAIAAAAAAGAAAAiA=</HashCode>
+      <FileName>VisitModule\SocialHistoryPhq2.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

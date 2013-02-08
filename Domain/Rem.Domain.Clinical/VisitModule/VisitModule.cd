@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.VisitModule.Visit">
+    <Position X="3" Y="3.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="ClinicalCase" Type="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCase" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="3.875" />
+        <Point X="5.625" Y="3.875" />
+        <Point X="5.625" Y="1.096" />
+        <Point X="6.75" Y="1.096" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EABAIAIAQICAAg0EAAYAAASKAAEAAEgAABAAQIAAgAQ=</HashCode>
+      <FileName>VisitModule\Visit.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ClinicalCase" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Activities" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.VitalSign">
+    <Position X="11" Y="4.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EQIIAAAABgCAIACCABRAAEAADAAEAABQAAAoEAAABAI=</HashCode>
+      <FileName>VisitModule\VitalSign.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="BloodPressures" />
+      <Property Name="HeartRates" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.BloodPressure">
+    <Position X="14.25" Y="4.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gCAAAIAAAQAAAAAEAAAAAAAAAAAAAAAAAgAAAAQAAAA=</HashCode>
+      <FileName>VisitModule\BloodPressure.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.HeartRate">
+    <Position X="11" Y="7.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAFAAAAAAAAAAAAAAAAAoAAAAAAAAA=</HashCode>
+      <FileName>VisitModule\HeartRate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.Activity">
+    <Position X="6.5" Y="3.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ACAAIAIAQAAAAAQEAAAIAAQCAAAAAAAAAAgEAAgQAgg=</HashCode>
+      <FileName>VisitModule\Activity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ClinicalCase" />
+      <Property Name="Provenance" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCase" Collapsed="true">
+    <Position X="6.75" Y="0.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QIAAAEoECgDCAAWEACAICAACABAIQQAQAABQRUiDjAA=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Core.AgencyModule.Location" Collapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.VisitProblem">
+    <Position X="0.5" Y="5.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VisitModule\VisitProblem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Core.AgencyModule.Appointment">
+    <Position X="3" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Staff" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Core.AgencyModule.Staff" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.VitalSignAggregateNodeBase">
+    <Position X="14.25" Y="7.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VisitModule\VitalSignAggregateNodeBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.SocialHistory">
+    <Position X="11" Y="1.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AACAAiAACAAACEAAAAAAAACAIAAABACAABAAAEAgAQA=</HashCode>
+      <FileName>VisitModule\SocialHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.VisitTemplate">
+    <Position X="0.5" Y="8.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAEIAABAAAAACAEAAQBAAQAAAAAAAIAAAAAQAACgAA=</HashCode>
+      <FileName>VisitModule\VisitTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ImmunizationModule.Immunization">
+    <Position X="3" Y="7" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAEAEACAAACAAAAAAEIAEAAAAIAAAAAA=</HashCode>
+      <FileName>ImmunizationModule\Immunization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.BriefIntervention" Collapsed="true">
+    <Position X="5.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAACACAgQAAAAAAAAAAAIAAAAIAQAAAAABA=</HashCode>
+      <FileName>VisitModule\BriefIntervention.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.SbirtModule.Dast10" Collapsed="true">
+    <Position X="5.25" Y="9.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ACIWBCqAIABACAAAAACgACCAAAAVoCBEABBAAAAAgUE=</HashCode>
+      <FileName>SbirtModule\Dast10.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.SbirtModule.NidaDrugQuestionnaire" Collapsed="true">
+    <Position X="7" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEACAAEAAAAAAEAAoAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>SbirtModule\NidaDrugQuestionnaire.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.SbirtModule.Phq9" Collapsed="true">
+    <Position X="9" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAgIALABIAAKAQCJAKgAAAABAAAEAAAAQAAE=</HashCode>
+      <FileName>SbirtModule\Phq9.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.Provenance">
+    <Position X="8.25" Y="7" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAgAECQAAAAAAAAAACAAAASAAAA=</HashCode>
+      <FileName>PatientModule\Provenance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

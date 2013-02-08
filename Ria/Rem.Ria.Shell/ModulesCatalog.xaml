@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Modularity:ModuleCatalog xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:Modularity="clr-namespace:Microsoft.Practices.Prism.Modularity;assembly=Microsoft.Practices.Prism" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Modularity:ModuleInfo InitializationMode="WhenAvailable" ModuleName="AgencyModule" ModuleType="Rem.Ria.AgencyModule.AgencyModule, Rem.Ria.AgencyModule, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null" Ref="Rem.Ria.AgencyModule.xap" />
+  <Modularity:ModuleInfo InitializationMode="WhenAvailable" ModuleName="NewCropModule" ModuleType="Rem.Ria.NewCropModule.NewCropModule, Rem.Ria.NewCropModule, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null" Ref="Rem.Ria.NewCropModule.xap" />
+  <Modularity:ModuleInfo InitializationMode="WhenAvailable" ModuleName="PatientModule" ModuleType="Rem.Ria.PatientModule.PatientModule, Rem.Ria.PatientModule, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null" Ref="Rem.Ria.PatientModule.xap">
+    <Modularity:ModuleInfo.DependsOn>
+      <sys:String>AgencyModule</sys:String>
+      <sys:String>NewCropModule</sys:String>
+    </Modularity:ModuleInfo.DependsOn>
+  </Modularity:ModuleInfo>
+  <Modularity:ModuleInfo InitializationMode="WhenAvailable" ModuleName="ReportsModule" ModuleType="Rem.Ria.ReportsModule.ReportsModule, Rem.Ria.ReportsModule, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null" Ref="Rem.Ria.ReportsModule.xap" />
+  <Modularity:ModuleInfo InitializationMode="WhenAvailable" ModuleName="BillingModule" ModuleType="Rem.Ria.BillingModule.BillingModule, Rem.Ria.BillingModule, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null" Ref="Rem.Ria.BillingModule.xap" />
+</Modularity:ModuleCatalog>

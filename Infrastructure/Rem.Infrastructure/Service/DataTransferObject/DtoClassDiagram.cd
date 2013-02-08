@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Infrastructure.DataTransferObject.Notification">
+    <Position X="12" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAACAA=</HashCode>
+      <FileName>DataTransferObject\Notification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Infrastructure.DataTransferObject.DtoHelper">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTransferObject\DtoHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Infrastructure.DataTransferObject.KeyedDataTransferObject">
+    <Position X="3.75" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAgACAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTransferObject\KeyedDataTransferObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Infrastructure.DataTransferObject.LookupValueDto">
+    <Position X="7.5" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAQAAAAgAAAAAQAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>DataTransferObject\LookupValueDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Infrastructure.DataTransferObject.AbstractDataTransferObject">
+    <Position X="3.75" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTransferObject\AbstractDataTransferObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Rem.Infrastructure.DataTransferObject.IDataTransferObject">
+    <Position X="7.25" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTransferObject\IDataTransferObject.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Notifications" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="Rem.Infrastructure.DataTransferObject.IDtoMapping&lt;TDto, TDomain&gt;">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>DataTransferObject\IDtoMapping.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

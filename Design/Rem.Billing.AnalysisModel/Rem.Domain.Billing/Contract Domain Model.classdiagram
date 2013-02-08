@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="8c62299b-0fc1-4d56-88ee-ae57ea30fe36" name="Contract Domain Model" linkedPackageId="e32bb387-791e-403e-be28-05d4a571dc91" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="f1dd2e2a-56d1-4cc6-b321-69820f0dbb30">
+      <elementDefinition Id="d87fb7d3-4e9d-4e92-bd2d-481a34035f17" />
+      <body>When modeling the contract domain make sure to look at WITS Payor Plan and Payor Groups for fields that should have been in contract</body>
+      <annotatedElements>
+        <classMoniker Id="c8826c2c-a7e3-44b6-93f6-d079562b4ae0" LastKnownName="Contract" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="7cefaaba-94e2-4243-b0b1-317c29ae4b21">
+      <profileInstance Id="ed6460ce-6f28-4535-bae9-825e80de2de5" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="e871c0cf-cff1-4294-ba1e-450527099462">
+      <profileInstance Id="d37c9cf7-e29b-40ee-be86-b6b4e43d96af" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="c8826c2c-a7e3-44b6-93f6-d079562b4ae0" name="Contract" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="aeb1c02f-7b89-481a-9a38-663c73b12597" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="a270c5e5-3ae8-4628-97de-1f03334a7c16" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+  </package>
+  <package Id="e32bb387-791e-403e-be28-05d4a571dc91" name="Rem.Domain.Billing">
+    <elementDefinition Id="e10ccdeb-bd61-4f8f-8b9e-5c3f762b18c3" />
+  </package>
+</logicalClassDesignerModel>

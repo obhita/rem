@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Infrastructure.Service.WcfFaultServiceBehavior" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAACAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\WcfFaultServiceBehavior.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Infrastructure.Service.WcfMessageInspector" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Service\WcfMessageInspector.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Infrastructure.Service.ServiceBase">
+    <Position X="1.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAQACAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Service\ServiceBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Infrastructure.Service.WcfFaultServiceBehaviorElement">
+    <Position X="5.75" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\WcfFaultServiceBehaviorElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

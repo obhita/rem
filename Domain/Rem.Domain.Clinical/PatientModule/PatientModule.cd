@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.PatientModule.Patient">
+    <Position X="12.25" Y="2.25" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>jANyYRtITADFECL8TjG14CUIYoyoHaphADkwEIMcgYI=</HashCode>
+      <FileName>PatientModule\Patient.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Agency" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Disabilities" />
+      <Property Name="SpecialNeeds" />
+      <Property Name="Races" />
+      <Property Name="Contacts" />
+      <Property Name="ClinicalCases" />
+      <Property Name="Allergies" />
+      <Property Name="Medications" />
+      <Property Name="Aliases" />
+      <Property Name="PhoneNumbers" />
+      <Property Name="Addresses" />
+      <Property Name="Photos" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PatientAlias" Collapsed="true">
+    <Position X="8.25" Y="7.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAEAAUAAAAIAAAQEAAEQAAAAAAACAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>PatientModule\PatientAlias.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PatientSpecialNeed">
+    <Position X="8.25" Y="13.75" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQEAAAAAAAAAAIAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>PatientModule\PatientSpecialNeed.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PatientContact">
+    <Position X="1" Y="16.75" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>GMFQU0sQIBoOwYTUIsk4wkQTQBqgAECYMIQgIgHBiEg=</HashCode>
+      <FileName>PatientModule\PatientContact.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ContactTypes" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PatientDisability" Collapsed="true">
+    <Position X="8.25" Y="5.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAQEAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>PatientModule\PatientDisability.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PatientContactContactType">
+    <Position X="11.25" Y="18.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAEAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\PatientContactContactType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PatientAggregateNodeBase">
+    <Position X="1.75" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>PatientModule\PatientAggregateNodeBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PatientAddress" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAACoBgAAIQEIEAMAAAAwAoAAAAYIAAAAAAAgEA=</HashCode>
+      <FileName>PatientModule\PatientAddress.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PatientPhone" Collapsed="true">
+    <Position X="8.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAACAAAAEAQEAAAgQAAAAAAAAAABAABAAAAAAEA=</HashCode>
+      <FileName>PatientModule\PatientPhone.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PatientPhoto" Collapsed="true">
+    <Position X="8.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAEAAAAAAAAAAAEAAAIAAAAgAAAAAA=</HashCode>
+      <FileName>PatientModule\PatientPhoto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PatientRace" Collapsed="true">
+    <Position X="8.25" Y="6.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAQEAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\PatientRace.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCase" Collapsed="true">
+    <Position X="17.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QIAAAEoECgBCAASEACAICAAAABAIQAAQAABQRUiDjAA=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.Allergy" Collapsed="true">
+    <Position X="17.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAFwAIAACAAAAAEAAAABAgAQCAAIAEQAAQBAAABSgA=</HashCode>
+      <FileName>PatientModule\Allergy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.Medication">
+    <Position X="19.5" Y="3" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABADUAJEACIhAAAEMgABQQgBIIBIOXAQAIBAiSEBCAQ=</HashCode>
+      <FileName>PatientModule\Medication.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Core.AgencyModule.Agency" Collapsed="true">
+    <Position X="17.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IC8CAAAADAAhAiAAEIMAQEJAYBEUAAkLEAAAQBAAEAA=</HashCode>
+      <FileName>AgencyModule\Agency.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PatientVeteranInformation">
+    <Position X="5.75" Y="17" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAggAAgAACAIgAIIAACAAIAAAAgiA=</HashCode>
+      <FileName>PatientModule\PatientVeteranInformation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.VeteranDischargeStatus" Collapsed="true">
+    <Position X="8.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\VeteranDischargeStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.VeteranServiceBranch" Collapsed="true">
+    <Position X="8.75" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\VeteranServiceBranch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.VeteranStatus" Collapsed="true">
+    <Position X="8.75" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\VeteranStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.BillingOfficeCache">
+    <Position X="16.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAEAAAAAAAAALAAAAAAAAAEAA=</HashCode>
+      <FileName>PatientModule\BillingOfficeCache.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="PayorCaches" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PayorCache">
+    <Position X="16.25" Y="16" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAAAIAAAAAGAkAAAABAAAAQAIAAAIAACAAAAAFAAAAA=</HashCode>
+      <FileName>PatientModule\PayorCache.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="PayorCoverages" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PayorCoverageCache">
+    <Position X="16.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACYAAACAAAAAACAAAAAJAAAAAAAAAAAAAAAAAQGEA=</HashCode>
+      <FileName>PatientModule\PayorCoverage.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PayorSubscriber" />
+      <Property Name="PayorCoverageType" />
+      <Property Name="Patient" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PayorCoverageCacheType" Collapsed="true">
+    <Position X="19.25" Y="22" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\PayorCoverageCacheType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PayorSubscriberCache" BaseTypeListCollapsed="true">
+    <Position X="19" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAgAAAAEAgACAgAAAAAQQAAAAAIACAAAAAIAAAiA=</HashCode>
+      <FileName>PatientModule\PayorSubscriberCache.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PayorSubscriberRelationshipCacheType" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.PayorSubscriberRelationshipCacheType" Collapsed="true">
+    <Position X="21.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\PayorSubscriberRelationshipCacheType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.SelfPayment">
+    <Position X="17.25" Y="7.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAARAAIAQAAAAiAAAIgAAAEAAIAABAAAAAAIAAABCAE=</HashCode>
+      <FileName>PatientModule\SelfPayment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Patient" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

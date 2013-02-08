@@ -1,0 +1,298 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    xmlns:Telerik_Windows_Controls_Chromes="clr-namespace:Telerik.Windows.Controls.Chromes;assembly=Telerik.Windows.Controls" 
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    mc:Ignorable="d">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/Brushes.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style TargetType="local:EditableExpander">
+        <Setter Property="Background" Value="{StaticResource EditableExpanderBackgroundBrush}"/>
+        <Setter Property="BorderThickness" Value="0.5,0.5,0.5,1"/>
+        <Setter Property="BorderBrush" Value="#FF787878"/>
+        <Setter Property="Margin" Value="0,0,0,5"/>
+        <Setter Property="Width" Value="900"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:EditableExpander">
+                    <Grid x:Name="PART_RootGrid">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="UpdateStateGroup">
+                                <VisualState x:Name="ReadyState"/>
+                                <VisualState x:Name="SuccessState">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Duration="0:0:1.75" Storyboard.TargetName="bSuccess" Storyboard.TargetProperty="Opacity">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseIn"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1.25" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseIn"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1.75" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ErrorState">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Duration="0:0:1.75" Storyboard.TargetName="bError" Storyboard.TargetProperty="Opacity">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseIn"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1.25" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseIn"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1.75" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ExpanderStateGroup">
+                                <VisualState x:Name="CommonState"/>
+                                <VisualState x:Name="HideState">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.3" To="-90" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="ToggleButtonPath" d:IsOptimized="True"/>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="rdExpander" Storyboard.TargetProperty="Height">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <GridLength>0</GridLength>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="RevealState">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.3" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="ToggleButtonPath" d:IsOptimized="True"/>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="rdExpander" Storyboard.TargetProperty="Height">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <GridLength>Auto</GridLength>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="EditingStateGroup">
+                                <VisualState x:Name="NonEditState">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="BorderRoot" Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource EditorBackground}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="PART_Header" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource EditorHeaderForeground}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="HeaderBorder" Storyboard.TargetProperty="BorderBrush">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource EditorHeaderForeground}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="ToggleButtonPath" Storyboard.TargetProperty="Fill">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource EditorHeaderForeground}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="EditState">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="PART_Header" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource EditorHeaderEditingForeground}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="BorderRoot" Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource EditorEditingBackground}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="HeaderBorder" Storyboard.TargetProperty="BorderBrush">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource EditorHeaderEditingForeground}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="ToggleButtonPath" Storyboard.TargetProperty="Fill">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource EditorHeaderEditingForeground}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ValidationStates">
+                                <VisualState x:Name="Valid"/>
+                                <VisualState x:Name="InvalidUnfocused">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationTooltip" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="InvalidFocused">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationTooltip" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationTooltip" Storyboard.TargetProperty="IsOpen">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <sys:Boolean>True</sys:Boolean>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="PART_MaximizeGrid">
+                            <Grid Margin="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Border x:Name="BorderRoot" CornerRadius="{TemplateBinding CornerRadius}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                    <StackPanel Margin="0" Orientation="Vertical" d:LayoutOverrides="Height">
+                                        <Grid VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition x:Name="rdExpander" Height="0"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <telerik:RadToggleButton x:Name="PART_ToggleButton" Margin="5" Grid.ColumnSpan="3" Grid.Row="0" Visibility="{Binding Header,Converter={StaticResource NullToVisibilityConverterInstance}}"
+                                            IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                                <telerik:RadToggleButton.Template>
+                                                    <ControlTemplate>
+                                                        <Border Background="Transparent"/>
+                                                    </ControlTemplate>
+                                                </telerik:RadToggleButton.Template>
+                                            </telerik:RadToggleButton>
+                                            <Grid Margin="10,5,10,10" Grid.Column="0" Grid.Row="0" IsHitTestVisible="False" Visibility="{Binding Header,Converter={StaticResource NullToVisibilityConverterInstance}}">
+                                                <Path x:Name="ToggleButtonPath" Margin="2,2,0,0"
+                                                Data="M1.6666666,3.3333333 L17.833,3.3333333 L9.833168,15.167 z" Fill="{StaticResource EditorHeaderForeground}" Height="10" 
+                                                Stretch="Fill" Width="14" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <Path.RenderTransform>
+                                                        <CompositeTransform Rotation="-90" TranslateX="-1" ScaleX="0.8" ScaleY="0.8"/>
+                                                    </Path.RenderTransform>
+                                                </Path>
+                                            </Grid>
+                                            <Border x:Name="HeaderBorder" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" BorderBrush="{StaticResource EditorHeaderForeground}" BorderThickness="0,0,0,3" Margin="0,0,20,0"
+                                            Visibility="{Binding IsExpanded, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                            <ContentControl x:Name="PART_Header" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="{StaticResource EditorHeaderForeground}"
+                                            VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" FontWeight="Bold" FontSize="14"
+                                            Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}"/>
+                                            <StackPanel Grid.Column="2" Grid.Row="0" Margin="5,5,20,5" Orientation="Horizontal">
+                                                <StackPanel Orientation="Horizontal" Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}">
+                                                    <telerik:RadButton x:Name="Part_CancelButton"  Style="{StaticResource BorderlessButtonStyle}" Visibility="{Binding EditableWrapper.IsDirty, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}"  Content="Cancel"/>
+                                                </StackPanel>
+                                                <telerik:RadButton Style="{StaticResource MaximizeButtonStyle}" Visibility="{Binding CanMaximize, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}" Command="{Binding MaximizeCommand, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                            </StackPanel>
+                                            <Grid x:Name="Part_Focus" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Background="Transparent" Margin="0,0,20,0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <ContentPresenter x:Name="PART_ContentPresenter" Grid.Row="0" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                            </Grid>
+                                            <local:LoadingControl Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Background="#AAF9F7F2" Foreground="DarkGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                            IsLoading="{Binding EditableWrapper.IsLoading, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        </Grid>
+                                        <Border Background="{StaticResource FormEditorBaseBorderBackground}" Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="0,1,0,0" BorderBrush="#FF767676" Height="35" d:LayoutOverrides="VerticalAlignment">
+                                            <StackPanel x:Name="ButtonsStackPanel" Visibility="{Binding ShowNextAndSaveButton, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}" Margin="30,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                <telerik:RadButton x:Name="Part_NextButton" Width="80" Style="{StaticResource StaticBorderlessButtonStyle}"    
+                                        		Visibility="{Binding ShowNext, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}" Foreground="{StaticResource BaseButtonForeground}" Command="{TemplateBinding NextCommand}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Background="{StaticResource EditorForm_NextButton_Background}">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="40"/>
+                                                            <ColumnDefinition Width="10"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock TextWrapping="Wrap" Text="Next" TextAlignment="Center" Margin="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                        <Grid Grid.Column="1" Margin="4 0 0 0">
+                                                            <Path Data="M14.048205,4.1768637 L20.333666,8.5 L14.000341,12.666667 z" Height="10" Stretch="Fill" UseLayoutRounding="False" Width="7" StrokeThickness="2" Fill="{Binding Foreground, ElementName=Part_NextButton}"/>
+                                                        </Grid>
+                                                    </Grid>
+                                                </telerik:RadButton>
+
+                                                <telerik:RadButton x:Name="Part_SaveButton" Visibility="{Binding EditableWrapper.IsDirty, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}" 
+                                                 Width="80" Content="Save" Style="{StaticResource StaticBorderlessButtonStyle}"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </Border>
+                                <Border x:Name="bSuccess" CornerRadius="{TemplateBinding CornerRadius}"
+                                BorderBrush="#FF1EF11E"
+                                BorderThickness="5" Opacity="0"/>
+                                <Border x:Name="bError" CornerRadius="{TemplateBinding CornerRadius}"
+                                BorderBrush="Red"
+                                BorderThickness="5" Opacity="0"/>
+                                <Telerik_Windows_Controls_Chromes:ValidationTooltip x:Name="ValidationTooltip" 
+                                Visibility="Collapsed"
+                                telerik:StyleManager.Theme="{StaticResource Theme}"
+                                TooltipPlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" TooltipContent="{Binding (Validation.Errors), RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource EditableExpanderValidationTooltipStyle}" d:LayoutOverrides="GridBox"/>
+                                <Border x:Name="FormShadow" Background="Transparent" Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}" Margin="0,0,0,5" Grid.Row="1">
+                                    <Grid Margin="10,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="115" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="115" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#CB000000"/>
+                                                <GradientStop Offset="0.3"/>
+                                            </LinearGradientBrush>
+                                        </Grid.Background>
+                                        <Canvas Margin="0">
+                                            <Path Data="M98.75,0.75 L7.5,0.75 L7.5,16 z" Height="10" Stretch="Fill" StrokeThickness="22" UseLayoutRounding="False" Fill="Black" Width="99.25" Opacity="0.595" VerticalAlignment="Top">
+                                                <Path.Effect>
+                                                    <BlurEffect Radius="6"/>
+                                                </Path.Effect>
+                                            </Path>
+                                        </Canvas>
+                                        <Canvas Width="100" Margin="0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Grid.Column="2">
+                                            <Canvas.RenderTransform>
+                                                <CompositeTransform ScaleX="-1"/>
+                                            </Canvas.RenderTransform>
+                                            <Path Data="M98.75,0.75 L7.5,0.75 L7.5,16 z" Height="10" Stretch="Fill" StrokeThickness="22" UseLayoutRounding="False" Fill="Black" Width="99.25" Opacity="0.595" VerticalAlignment="Top">
+                                                <Path.Effect>
+                                                    <BlurEffect Radius="6"/>
+                                                </Path.Effect>
+                                            </Path>
+                                        </Canvas>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

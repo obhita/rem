@@ -1,0 +1,499 @@
+﻿<telerik:RadTileViewItem x:Class="Rem.Ria.PatientModule.PatientDashboard.NidaDrugQuestionnaireView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	  xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" 
+	  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+	  xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit" 
+	  xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+    xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure" 
+	  xmlns:System="clr-namespace:System;assembly=mscorlib"
+	  xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+    d:DesignHeight="1000" d:DesignWidth="1000" Header="NIDA Drug Questionnaire" Style="{StaticResource DashboardTileViewStyle}" HeaderStyle="{StaticResource DashboardTileHeaderStyle}" TileState="{Binding ElementName=frcContent,Path=State,Converter={StaticResource FluideStateToTileConverterInstance},Mode=TwoWay}">
+    
+    <i:Interaction.Behaviors>
+        <Behavior:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <telerik:RadTileViewItem.Resources>
+        <View:DataContextProxyElement x:Key="RootDataContext"/>
+        <Converter:NullableBooleanToVisibilityConverter x:Key="NullableBooleanToVisibilityConverter" />
+        <Converter:InvertedNullableIntToNullableBooleanConverter x:Key="InvertedNullableIntToNullableBooleanConverter"/>
+        <Converter:InvertedBooleanIndexToCustomTextConverter x:Key="InvertedBooleanIndexToCustomTextConverter"/>
+        <Converter:IndexToCustomTextConverter x:Key="IndexToCustomTextConverter"/>
+        <toolkit:ObservableObjectCollection x:Key="YesNoList">
+            <System:String>Yes</System:String>
+            <System:String>No</System:String>
+        </toolkit:ObservableObjectCollection>
+        <toolkit:ObservableObjectCollection x:Key="LastdrugInjectionTimeChoices">
+            <System:String>In the past 90 days</System:String>
+            <System:String>In the past year</System:String>
+            <System:String>Over a year ago</System:String>
+        </toolkit:ObservableObjectCollection>
+    </telerik:RadTileViewItem.Resources>
+
+  <telerik:RadTileViewItem.HeaderTemplate>
+    <DataTemplate>
+      <Grid Margin="0 0 10 0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,0,2,0" Grid.Column="0" >
+          <telerik:RadButton Style="{StaticResource TileDeleteButtonStyle}" Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.CloseViewCommand}" ToolTipService.ToolTip="Delete activity"></telerik:RadButton>
+        </StackPanel>
+        <Viewbox x:Name="Header"  Grid.Column="1" StretchDirection="DownOnly" HorizontalAlignment="Left" VerticalAlignment="Center">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding}" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="0"/>
+          </StackPanel>
+        </Viewbox>
+      </Grid>
+    </DataTemplate>
+  </telerik:RadTileViewItem.HeaderTemplate>
+    
+    <telerik:RadFluidContentControl x:Name="frcContent"  Margin="0,0,0,0" State="{Binding IsCurrentActivity,Mode=OneWay, Converter={StaticResource BooleanToFluidContentControlStateLargeConverterInstance}}" ContentChangeMode="Manual" Style="{StaticResource RfccRemStyle}">
+        <telerik:RadFluidContentControl.SmallContent>
+            <Grid/>
+        </telerik:RadFluidContentControl.SmallContent>
+        <telerik:RadFluidContentControl.Content>
+            <Grid/>
+        </telerik:RadFluidContentControl.Content>
+        <telerik:RadFluidContentControl.LargeContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Margin="0" Padding="0" BorderThickness="0">
+                <Grid>
+                  <CustomControls:Editor MaximizeHeader="NIDA Drug Questionnaire" Style="{StaticResource TileEditorHeaderStyle}" StartOpen="True" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}" CanMaximize="True">
+                    <CustomControls:Editor.Expanders>
+                        <CustomControls:EditableExpander x:Name="NidaDrugQuestionnaire" 
+                                         Content="{Binding EditingDto}" IsExpanded="True" Width="Auto" MaxWidth="800"
+                                         SaveCommand="{Binding SaveCommand}" 
+                                         CancelCommand="{Binding CancelCommand}" 
+                                         AccessControlManager="{Binding AccessControlManager}" IsEditing="False" ShowNext="False">
+                            <CustomControls:EditableExpander.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Text="{Binding}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </CustomControls:EditableExpander.HeaderTemplate>
+                            <CustomControls:EditableExpander.ContentTemplate>
+                                <DataTemplate>
+                                    <ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="0" d:LayoutOverrides="Width" BorderThickness="0">
+                                        <Border Style="{StaticResource ScreenerSectionBorderStyle}">
+                                            <StackPanel>
+                                                <TextBlock TextAlignment="Left">
+                                    <Run TextDecorations="Underline">A. Ask Drug Type and Frequency of Use Questions:</Run>
+                                                </TextBlock>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Margin="0,0,5,0">
+                                                    <Border  Margin="0,0,0,10">
+                                                        <TextBlock Text="In the past three months, how often have you used any of the following drugs?" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" />
+                                                    </Border>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Border  Margin="0" Grid.Column="0" VerticalAlignment="Stretch" Background="#FFE9E9D8">
+                                                            <TextBlock Text="Drug Type" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" />
+                                                        </Border>
+                                                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Never" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Once or Twice" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Monthly" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" />
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Weekly" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Daily or Almost Daily" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                    <StackPanel>
+                                                        <CustomControls:QuestionItem Value="{Binding CannabisUseAnswerNumber, Mode=TwoWay}" IsEnabled="False">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}">
+                                                        <Run FontWeight="Bold">Cannabis</Run> (marijuana, pot, grass, hash, synthetic cannabinoids, etc.)
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Value="{Binding CocaineUseAnswerNumber, Mode=TwoWay}" IsEnabled="False">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}">
+                                                        <Run FontWeight="Bold">Cocaine</Run> (coke, crack, etc.)
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Value="{Binding OpioidsUseAnswerNumber, Mode=TwoWay}" IsEnabled="False">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}">
+                                                        <Run FontWeight="Bold">Opioids</Run> (heroin, opium, prescription pain meds such as OxyContin, Percocet, hydrocodone [Vicodin], methadone, buprenorphine, etc.)
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Value="{Binding MethamphetamineUseAnswerNumber, Mode=TwoWay}" IsEnabled="False">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}">
+                                                        <Run FontWeight="Bold">Methamphetamine</Run> (speed, crystal meth, ice, etc.)
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Value="{Binding SedativesUseAnswerNumber, Mode=TwoWay}" IsEnabled="False">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}">
+                                                        <Run FontWeight="Bold">Sedatives</Run> or sleeping pills (Valium, Serepax, Ativan, Librium, Xanax, Rohypnol, GHB, etc.)
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Question="{Binding OtherDrug1TypeName, FallbackValue='-', TargetNullValue='-'}" Value="{Binding OtherDrug1AnswerNumber, Mode=TwoWay}" IsEnabled="False">
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Question="{Binding OtherDrug2TypeName, FallbackValue='-', TargetNullValue='-'}" Value="{Binding OtherDrug2AnswerNumber, Mode=TwoWay}" IsEnabled="False">
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Question="{Binding OtherDrug3TypeName, FallbackValue='-', TargetNullValue='-'}" Value="{Binding OtherDrug3AnswerNumber, Mode=TwoWay}" IsEnabled="False">
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                <TextBlock TextAlignment="Left">
+                                    <LineBreak/><Run TextDecorations="Underline">B. Ask about Injection Drug Use:</Run>
+                                                </TextBlock>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}">
+
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0" >
+                                                                <TextBlock Text="Have you ever used any drug by injection (non-medical use only)?" Style="{StaticResource ScreenerLabelTextBlockStyle}" />
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding DrugUseByInjectionIndicator, ConverterParameter={StaticResource YesNoList}, Converter={StaticResource InvertedBooleanIndexToCustomTextConverter}}" Grid.Column="1"  Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                </StackPanel>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Visibility="{Binding DrugUseByInjectionIndicator, Converter={StaticResource NullableBooleanToVisibilityConverter}}">
+
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0" >
+                                                                <TextBlock Text="If yes, when was the last time you injected?" Style="{StaticResource ScreenerLabelTextBlockStyle}" />
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding LastDrugUseByInjectionAnswerNumber, ConverterParameter={StaticResource LastdrugInjectionTimeChoices}, Converter={StaticResource IndexToCustomTextConverter}}" Grid.Column="1"  Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </ScrollViewer>
+                                </DataTemplate>
+                            </CustomControls:EditableExpander.ContentTemplate>
+                            <CustomControls:EditableExpander.ContentEditTemplate>
+                                <DataTemplate>
+                                    <ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="0" d:LayoutOverrides="Width" BorderThickness="0">
+                                        <Border Style="{StaticResource ScreenerSectionBorderStyle}">
+                                            <StackPanel>
+                                                <TextBlock TextAlignment="Left">
+                                    <Run TextDecorations="Underline">A. Ask Drug Type and Frequency of Use Questions:</Run>
+                                                </TextBlock>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Margin="0,0,5,0">
+                                                    <Border  Margin="0,0,0,10">
+                                                        <TextBlock Text="In the past three months, how often have you used any of the following drugs?" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" />
+                                                    </Border>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Border Background="#FFE9E9D8" Grid.Column="0">
+                                                            <TextBlock Text="Drug Type" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" />
+                                                        </Border>
+                                                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Never" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Once or Twice" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Monthly" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" />
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Weekly" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Daily or Almost Daily" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                    <StackPanel>
+                                                        <CustomControls:QuestionItem Value="{Binding CannabisUseAnswerNumber, Mode=TwoWay}">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}">
+                                                        <Run FontWeight="Bold">Cannabis</Run> (marijuana, pot, grass, hash, synthetic cannabinoids, etc.)
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Value="{Binding CocaineUseAnswerNumber, Mode=TwoWay}">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}">
+                                                        <Run FontWeight="Bold">Cocaine</Run> (coke, crack, etc.)
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Value="{Binding OpioidsUseAnswerNumber, Mode=TwoWay}">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}">
+                                                        <Run FontWeight="Bold">Opioids</Run> (heroin, opium, prescription pain meds such as OxyContin, Percocet, hydrocodone [Vicodin], methadone, buprenorphine, etc.)
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Value="{Binding MethamphetamineUseAnswerNumber, Mode=TwoWay}">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}">
+                                                        <Run FontWeight="Bold">Methamphetamine</Run> (speed, crystal meth, ice, etc.)
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Value="{Binding SedativesUseAnswerNumber, Mode=TwoWay}">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Style="{StaticResource ScreenerLabelTextBlockStyle}">
+                                                        <Run FontWeight="Bold">Sedatives</Run> or sleeping pills (Valium, Serepax, Ativan, Librium, Xanax, Rohypnol, GHB, etc.)
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Value="{Binding OtherDrug1AnswerNumber, Mode=TwoWay}">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <telerik:RadMaskedTextBox EmptyContent="Other drug" MaskedText="{Binding Source={StaticResource RootDataContext}, Path=DataSource.EditingDto.OtherDrug1TypeName, Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}" />
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Value="{Binding OtherDrug2AnswerNumber, Mode=TwoWay}">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <telerik:RadMaskedTextBox EmptyContent="Other drug" MaskedText="{Binding Source={StaticResource RootDataContext}, Path=DataSource.EditingDto.OtherDrug2TypeName, Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}" />
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Value="{Binding OtherDrug3AnswerNumber, Mode=TwoWay}">
+                                                            <CustomControls:QuestionItem.QuestionTemplate>
+                                                                <DataTemplate>
+                                                                    <telerik:RadMaskedTextBox EmptyContent="Other drug" MaskedText="{Binding Source={StaticResource RootDataContext}, Path=DataSource.EditingDto.OtherDrug3TypeName, Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}" />
+                                                                </DataTemplate>
+                                                            </CustomControls:QuestionItem.QuestionTemplate>
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <TextBlock TextAlignment="Left">
+                                    <Run TextDecorations="Underline">B. Ask about Injection Drug Use:</Run>
+                                                </TextBlock>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}">
+                                                    <CustomControls:QuestionItem Question="Have you ever used any drug by injection (non-medical use only)?" Value="{Binding DrugUseByInjectionIndicator,Converter={StaticResource InvertedNullableIntToNullableBooleanConverter},Mode=TwoWay}"
+                                                     ItemsSource="{Binding Source={StaticResource YesNoList}}"/>
+                                                </StackPanel>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Visibility="{Binding DrugUseByInjectionIndicator, Converter={StaticResource NullableBooleanToVisibilityConverter}}">
+
+                                                    <CustomControls:QuestionItem Question="If yes, when was the last time you injected?" Value="{Binding LastDrugUseByInjectionAnswerNumber,Mode=TwoWay}">
+                                                        <CustomControls:QuestionItem.ItemsSource>
+                                                            <toolkit:ObservableObjectCollection>
+                                                                <TextBlock Text="In the past 90 days" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                                                <TextBlock Text="In the past year" TextWrapping="Wrap" VerticalAlignment="Center" />
+                                                                <TextBlock Text="Over a year ago" TextWrapping="Wrap" VerticalAlignment="Center" />
+                                                            </toolkit:ObservableObjectCollection>
+                                                        </CustomControls:QuestionItem.ItemsSource>
+                                                    </CustomControls:QuestionItem>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </ScrollViewer>
+                                </DataTemplate>
+                            </CustomControls:EditableExpander.ContentEditTemplate>
+                        </CustomControls:EditableExpander>
+                    </CustomControls:Editor.Expanders>
+                      </CustomControls:Editor>
+                    <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+                </Grid>
+            </ScrollViewer>
+        </telerik:RadFluidContentControl.LargeContent>
+    </telerik:RadFluidContentControl>
+</telerik:RadTileViewItem>

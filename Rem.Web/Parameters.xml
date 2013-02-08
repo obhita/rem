@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<parameters >
+
+  <parameter name="WIF Configuration" description="Provides WIF configuration for the difference deployments" defaultValue="Configuration\Wif\dev.wif.config" tags="">
+    <parameterEntry kind="XmlFile" scope="\\web.config$" match="//configuration/microsoft.identityModel/@configSource" />
+  </parameter>
+
+  <parameter name="Client Configuration" description="Provides client endpoints" defaultValue="Configuration\Client\dev.client.config" tags="">
+    <parameterEntry kind="XmlFile" scope="\\web.config$" match="//configuration/system.serviceModel/client/@configSource" />
+  </parameter>
+
+  <parameter name="App settings Configuration" description="Provides app settings for the difference deployments" defaultValue="Configuration/dev.settings.config" tags="">
+    <parameterEntry kind="XmlFile" scope="\\web.config$" match="//configuration/appSettings/@file" />
+  </parameter>
+
+</parameters>

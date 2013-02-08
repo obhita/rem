@@ -1,0 +1,358 @@
+﻿<telerik:RadTileViewItem x:Class="Rem.Ria.PatientModule.PatientDashboard.AuditCView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" 
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+	xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+	xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" 
+	xmlns:Controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls" 
+	xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" 
+	xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+	xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+  d:DesignHeight="1000" d:DesignWidth="1000" Header="AUDIT-C" VerticalContentAlignment="Stretch" TileState="{Binding ElementName=frcContent,Path=State,Converter={StaticResource FluideStateToTileConverterInstance},Mode=TwoWay}" Style="{StaticResource DashboardTileViewStyle}" HeaderStyle="{StaticResource DashboardTileHeaderStyle}">
+ 
+    <telerik:RadTileViewItem.Resources>
+        <View:DataContextProxyElement x:Key="RootDataContext"/>
+        <Controls:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
+        <Converter:DictionaryKeyValueConverter x:Key="DictionaryKeyValueConverter"/>
+        <Converter:IntegerToNullableConverter x:Key="IntegerToNullableConverter"/>
+        <Converter:RangeToVisibilityConverter x:Key="RangeToVisibilityConverter" />
+        <Converter:QuestionAnswerToVisibilityConverter x:Key="QuestionAnswerToVisibilityConverter"/>
+    </telerik:RadTileViewItem.Resources>
+
+  <telerik:RadTileViewItem.HeaderTemplate>
+    <DataTemplate>
+            <Grid Margin="0 0 10 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="0,0,2,0" Grid.Column="0" >
+                    <telerik:RadButton Style="{StaticResource TileDeleteButtonStyle}" Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.CloseViewCommand}" ToolTipService.ToolTip="Delete activity"></telerik:RadButton>
+                </StackPanel>
+                <Viewbox x:Name="Header"  Grid.Column="1" StretchDirection="DownOnly" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="0"/>
+                    </StackPanel>
+                </Viewbox>
+            </Grid>
+        </DataTemplate>
+  </telerik:RadTileViewItem.HeaderTemplate>
+  
+    <i:Interaction.Behaviors>
+        <Behavior:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <telerik:RadFluidContentControl x:Name="frcContent"  Margin="0,0,0,0" State="{Binding IsCurrentActivity,Mode=OneWay, Converter={StaticResource BooleanToFluidContentControlStateLargeConverterInstance}}" ContentChangeMode="Manual" Style="{StaticResource RfccRemStyle}">
+        <telerik:RadFluidContentControl.SmallContent>
+            <Grid/>
+        </telerik:RadFluidContentControl.SmallContent>
+        <telerik:RadFluidContentControl.Content>
+            <Grid/>
+        </telerik:RadFluidContentControl.Content>
+        <telerik:RadFluidContentControl.LargeContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Margin="0" Padding="0" BorderThickness="0">
+                <CustomControls:Editor MaximizeHeader="Audit-C" Style="{StaticResource TileEditorHeaderStyle}" StartOpen="True" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}" CanMaximize="True">
+                    <CustomControls:Editor.Expanders>
+                        <CustomControls:EditableExpander x:Name="AuditC" CanMaximize="False"
+                                         Content="{Binding EditingDto}" 
+                                         SaveCommand="{Binding SaveCommand}" 
+                                         CancelCommand="{Binding CancelCommand}" 
+                                         AccessControlManager="{Binding AccessControlManager}" IsExpanded="True" MaxWidth="800" MinWidth="700"  Width="Auto" IsEditing="True" ShowNext="False">
+                            <CustomControls:EditableExpander.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Text="{Binding}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </CustomControls:EditableExpander.HeaderTemplate>
+                            <CustomControls:EditableExpander.ContentTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource ScreenerSectionBorderStyle}">
+                                        <StackPanel>
+                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                <TextBlock Text="1. How often do you have a drink containing alcohol?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                    <TextBlock Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                    <i:Interaction.Behaviors>
+                                		<Behavior:MultiBindingsBehavior>
+                                			<Behavior:MultiBindingsBehavior.MultiBindings>
+                                				<Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource DictionaryKeyValueConverter}">
+                                					<Behavior:MultiBinding.Bindings>
+                                						<Behavior:BindingCollection>
+                                							<Binding Path="HowOftenYouDrinkNumber"/>
+                                                            <Binding Source="{StaticResource RootDataContext}" Path="DataSource.HowOftenYouDrinkChoices"/>
+                                						</Behavior:BindingCollection>
+                                					</Behavior:MultiBinding.Bindings>
+                                				</Behavior:MultiBinding>
+                                			</Behavior:MultiBindingsBehavior.MultiBindings>
+                                		</Behavior:MultiBindingsBehavior>
+                                	</i:Interaction.Behaviors>
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                <TextBlock Text="2. How many standard drinks containing alcohol do you have on a typical day?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,1,0,2">
+                                                    <TextBlock  Style="{StaticResource ScreenerDataElementTextBlockStyle}" >
+                                    <i:Interaction.Behaviors>
+                                		<Behavior:MultiBindingsBehavior>
+                                			<Behavior:MultiBindingsBehavior.MultiBindings>
+                                				<Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource DictionaryKeyValueConverter}">
+                                					<Behavior:MultiBinding.Bindings>
+                                						<Behavior:BindingCollection>
+                                							<Binding Path="AlcoholicDrinksPerDayNumber"/>
+                                                            <Binding Source="{StaticResource RootDataContext}" Path="DataSource.AlcoholicDrinksPerDayChoices"/>
+                                						</Behavior:BindingCollection>
+                                					</Behavior:MultiBinding.Bindings>
+                                				</Behavior:MultiBinding>
+                                			</Behavior:MultiBindingsBehavior.MultiBindings>
+                                		</Behavior:MultiBindingsBehavior>
+                                	</i:Interaction.Behaviors>
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                            <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                <TextBlock Text="3. How often do you have six or more drinks on one occasion?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                    <TextBlock  Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                    <i:Interaction.Behaviors>
+                                		<Behavior:MultiBindingsBehavior>
+                                			<Behavior:MultiBindingsBehavior.MultiBindings>
+                                				<Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource DictionaryKeyValueConverter}">
+                                					<Behavior:MultiBinding.Bindings>
+                                						<Behavior:BindingCollection>
+                                							<Binding Path="HowOftenYouHaveSixOrMoreDrinksNumber"/>
+                                                            <Binding Source="{StaticResource RootDataContext}" Path="DataSource.HowOftenYouHaveSixOrMoreDrinksChoices"/>
+                                						</Behavior:BindingCollection>
+                                					</Behavior:MultiBinding.Bindings>
+                                				</Behavior:MultiBinding>
+                                			</Behavior:MultiBindingsBehavior.MultiBindings>
+                                		</Behavior:MultiBindingsBehavior>
+                                	</i:Interaction.Behaviors>
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel  Visibility="{Binding IsDirty, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" Margin="0,10">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="0.2*"/>
+                                                        <ColumnDefinition Width="0.8*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border Style="{StaticResource ScreenerCommentsBorderStyle}" Grid.ColumnSpan="2" VerticalAlignment="Stretch"/>
+                                                    <Border Style="{StaticResource ScreenerScoreBorderStyle}" Grid.Column="0">
+                                                        <StackPanel  Orientation="Horizontal"  VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" >
+                                                            <TextBlock Text="Score: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                            <TextBlock Text ="{Binding AuditCScore, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource ScreenerLabelTextBlockStyleL}" Margin="0" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ScreenerScoreBorderStyle}" Grid.Column="2" >
+                                                        <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" d:LayoutOverrides="Height">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="0.535*"/>
+                                                                    <ColumnDefinition Width="0.465*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <TextBlock Text="Guidance Summary: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}" Grid.Column="0" />
+                                                                <telerik:RadButton Content="Guidance" HorizontalAlignment="Right" Style="{StaticResource RemRadLinkButtonStyle}" Grid.Column="1">
+                                                                    <i:Interaction.Triggers>
+                                                                        <i:EventTrigger EventName="Click">
+                                                                            <i:InvokeCommandAction Command="{Binding DataSource.ShowGuidanceCommand, Source={StaticResource RootDataContext}}" CommandParameter="{Binding}"/>
+                                                                        </i:EventTrigger>
+                                                                    </i:Interaction.Triggers>
+                                                                </telerik:RadButton>
+                                                            </Grid>
+                                                            <StackPanel Visibility="{Binding PatientGender.WellKnownName, ConverterParameter=M, Converter={StaticResource QuestionAnswerToVisibilityConverter}}">
+                                                                <TextBlock Text="-" Visibility ="{Binding AuditCScore, ConverterParameter=null, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                                <TextBlock Visibility ="{Binding AuditCScore, ConverterParameter=min\, 3, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Advise staying within the recommended drinking limits."/></TextBlock>
+                                                                <TextBlock Visibility ="{Binding AuditCScore, ConverterParameter=4\, max, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Gauge readiness to change drinking habits."/></TextBlock>
+                                                            </StackPanel>
+                                                            <StackPanel Visibility="{Binding PatientGender.WellKnownName, ConverterParameter=F\,UND, Converter={StaticResource QuestionAnswerToVisibilityConverter}}">
+                                                                <TextBlock Text="-" Visibility ="{Binding AuditCScore, ConverterParameter=null, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                                <TextBlock Visibility ="{Binding AuditCScore, ConverterParameter=min\, 2, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Advise staying within the recommended drinking limits."/></TextBlock>
+                                                                <TextBlock Visibility ="{Binding AuditCScore, ConverterParameter=3\, max, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Gauge readiness to change drinking habits."/></TextBlock>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </Grid>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </CustomControls:EditableExpander.ContentTemplate>
+                            <CustomControls:EditableExpander.ContentEditTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource ScreenerSectionBorderStyle}">
+                                        <StackPanel>
+                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                <TextBlock Text="1. How often do you have a drink containing alcohol?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                                    <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource RootDataContext}, Path=DataSource.HowOftenYouDrinkChoices}" SelectedIndex="{Binding HowOftenYouDrinkNumber,Mode=TwoWay, Converter={StaticResource IntegerToNullableConverter}}" >
+                                                        <i:Interaction.Behaviors>
+                                                            <Behavior:ListBoxSelectionBehavior />
+                                                        </i:Interaction.Behaviors>
+                                                        <ListBox.ItemContainerStyle>
+                                                            <Style TargetType="ListBoxItem">
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="ListBoxItem">
+                                                                            <Border Background="Transparent">
+                                                                                <RadioButton Content="{Binding Value}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}"  HorizontalAlignment="Center" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                    <RadioButton.ContentTemplate>
+                                                                                        <DataTemplate>
+                                                                                            <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                        </DataTemplate>
+                                                                                    </RadioButton.ContentTemplate>
+                                                                                </RadioButton>
+                                                                            </Border>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+                                                        </ListBox.ItemContainerStyle>
+                                                        <ListBox.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <StackPanel Orientation="Horizontal"/>
+                                                            </ItemsPanelTemplate>
+                                                        </ListBox.ItemsPanel>
+                                                    </ListBox>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                <TextBlock Text="2. How many standard drinks containing alcohol do you have on a typical day?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Stretch">
+                                                    <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding DataSource.AlcoholicDrinksPerDayChoices, Source={StaticResource RootDataContext}}" SelectedIndex="{Binding AlcoholicDrinksPerDayNumber, Converter={StaticResource IntegerToNullableConverter}, Mode=TwoWay}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Left" >
+                                                        <i:Interaction.Behaviors>
+                                                            <Behavior:ListBoxSelectionBehavior />
+                                                        </i:Interaction.Behaviors>
+                                                        <ListBox.ItemContainerStyle>
+                                                            <Style TargetType="ListBoxItem">
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="ListBoxItem">
+                                                                            <Border Background="Transparent">
+                                                                                <RadioButton Content="{Binding Value}" IsHitTestVisible="False" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                    <RadioButton.ContentTemplate>
+                                                                                        <DataTemplate>
+                                                                                            <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                        </DataTemplate>
+                                                                                    </RadioButton.ContentTemplate>
+                                                                                </RadioButton>
+                                                                            </Border>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+                                                        </ListBox.ItemContainerStyle>
+                                                        <ListBox.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <StackPanel Orientation="Horizontal"/>
+                                                            </ItemsPanelTemplate>
+                                                        </ListBox.ItemsPanel>
+                                                    </ListBox>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                <TextBlock Text="3. How often do you have six or more drinks on one occasion?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyle}"  VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Stretch">
+                                                    <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource RootDataContext}, Path=DataSource.HowOftenYouHaveSixOrMoreDrinksChoices}" SelectedIndex="{Binding HowOftenYouHaveSixOrMoreDrinksNumber,Mode=TwoWay, Converter={StaticResource IntegerToNullableConverter}}" >
+                                                        <i:Interaction.Behaviors>
+                                                            <Behavior:ListBoxSelectionBehavior />
+                                                        </i:Interaction.Behaviors>
+                                                        <ListBox.ItemContainerStyle>
+                                                            <Style TargetType="ListBoxItem">
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="ListBoxItem">
+                                                                            <Border Background="Transparent">
+                                                                                <RadioButton Content="{Binding Value}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                    <RadioButton.ContentTemplate>
+                                                                                        <DataTemplate>
+                                                                                            <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                        </DataTemplate>
+                                                                                    </RadioButton.ContentTemplate>
+                                                                                </RadioButton>
+                                                                            </Border>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+                                                        </ListBox.ItemContainerStyle>
+                                                        <ListBox.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <StackPanel Orientation="Horizontal"/>
+                                                            </ItemsPanelTemplate>
+                                                        </ListBox.ItemsPanel>
+                                                    </ListBox>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel  Visibility="{Binding IsDirty, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" Margin="0,10">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="0.2*"/>
+                                                        <ColumnDefinition Width="0.8*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border Style="{StaticResource ScreenerCommentsBorderStyle}" d:LayoutOverrides="Width" VerticalAlignment="Stretch" Grid.ColumnSpan="2"/>
+                                                    <Border Style="{StaticResource ScreenerScoreBorderStyle}" >
+                                                        <StackPanel Orientation="Vertical">
+
+                                                            <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal" Margin="0" VerticalAlignment="Stretch">
+                                                                <TextBlock Text="Score: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                                <TextBlock Text ="{Binding AuditCScore, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource ScreenerLabelTextBlockStyleL}" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </Border>
+                                                    <Border Grid.Column="1"  Style="{StaticResource ScreenerResultsBorderStyle}">
+                                                        <StackPanel Orientation="Vertical">
+                                                            <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" d:LayoutOverrides="Width">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="0.535*"/>
+                                                                        <ColumnDefinition Width="0.465*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <telerik:RadButton Content="Guidance" Style="{StaticResource RemRadLinkButtonStyle}" d:LayoutOverrides="Height" Grid.Column="1">
+                                                                        <i:Interaction.Triggers>
+                                                                            <i:EventTrigger EventName="Click">
+                                                                                <i:InvokeCommandAction Command="{Binding DataSource.ShowGuidanceCommand, Source={StaticResource RootDataContext}}" CommandParameter="{Binding}"/>
+                                                                            </i:EventTrigger>
+                                                                        </i:Interaction.Triggers>
+                                                                    </telerik:RadButton>
+                                                                    <TextBlock Text="Guidance Summary "  Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                                </Grid>
+                                                                <StackPanel Visibility="{Binding PatientGender.WellKnownName, ConverterParameter=M, Converter={StaticResource QuestionAnswerToVisibilityConverter}}">
+                                                                    <TextBlock Text="-" Visibility ="{Binding AuditCScore, ConverterParameter=null, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                                                                    <TextBlock Visibility ="{Binding AuditCScore, ConverterParameter=min\, 3, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Advise staying within the recommended drinking limits."/></TextBlock>
+                                                                    <TextBlock Visibility ="{Binding AuditCScore, ConverterParameter=4\, max, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Gauge readiness to change drinking habits."/></TextBlock>
+                                                                </StackPanel>
+                                                                <StackPanel Visibility="{Binding PatientGender.WellKnownName, ConverterParameter=F\,UND, Converter={StaticResource QuestionAnswerToVisibilityConverter}}">
+                                                                    <TextBlock Text="-" Visibility ="{Binding AuditCScore, ConverterParameter=null, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                                                                    <TextBlock Visibility ="{Binding AuditCScore, ConverterParameter=min\, 2, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Advise staying within the recommended drinking limits."/></TextBlock>
+                                                                    <TextBlock Visibility ="{Binding AuditCScore, ConverterParameter=3\, max, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Gauge readiness to change drinking habits."/></TextBlock>
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </Border>
+                                                    <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+                                                </Grid>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </CustomControls:EditableExpander.ContentEditTemplate>
+                        </CustomControls:EditableExpander>
+                    </CustomControls:Editor.Expanders>
+                </CustomControls:Editor>
+
+            </ScrollViewer>
+        </telerik:RadFluidContentControl.LargeContent>
+    </telerik:RadFluidContentControl>
+</telerik:RadTileViewItem>

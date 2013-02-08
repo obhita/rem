@@ -1,0 +1,489 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:sdk="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+    xmlns:Primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=System.Windows.Controls.Data" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+    <!-- Resource dictionary entries should be defined here. -->
+
+    <Style x:Key="EmptyDataGridColumnHeaderStyle" TargetType="Primitives:DataGridColumnHeader">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Primitives:DataGridColumnHeader">
+                    <StackPanel Width="0" Height="0"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <DataTemplate x:Key="ProgramListDetailLevel2RowDetailsTemplate">
+        <StackPanel Margin="0 4 0 8" Cursor="Arrow" Background="Transparent" HorizontalAlignment="Stretch">
+            <StackPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </StackPanel.Resources>
+            <toolkit:WrapPanel HorizontalAlignment="Stretch">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Text="Approach:"  Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding TreatmentApproach, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource TileGridRowDataElementTextBlockStyle}" VerticalAlignment="Center" Margin="2,0,10,0"/>
+				</Grid>
+				<Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Text="Gender Specification:"  Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding GenderSpecification, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource TileGridRowDataElementTextBlockStyle}" VerticalAlignment="Center" Margin="2,0,10,0"/>
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Text="Age Group:"  Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding AgeGroup, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource TileGridRowDataElementTextBlockStyle}" VerticalAlignment="Center" Margin="2,0,10,0"/>
+            </Grid>
+			</toolkit:WrapPanel>
+			</StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ProgramOfferingListDetailLevel2RowDetailsTemplate">
+        <StackPanel Margin="0 4 0 8" Cursor="Arrow" Background="Transparent" HorizontalAlignment="Stretch">
+            <StackPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </StackPanel.Resources>
+            <toolkit:WrapPanel HorizontalAlignment="Stretch">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Text="Approach:"  Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding Profile.Program.TreatmentApproach, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource TileGridRowDataElementTextBlockStyle}" VerticalAlignment="Center" Margin="2,0,10,0"/>
+				</Grid>
+				<Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Text="Gender Specification:"  Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding Profile.Program.GenderSpecification, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource TileGridRowDataElementTextBlockStyle}" VerticalAlignment="Center" Margin="2,0,10,0"/>
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Text="Age Group:"  Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding Profile.Program.AgeGroup, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource TileGridRowDataElementTextBlockStyle}" VerticalAlignment="Center" Margin="2,0,10,0"/>
+            </Grid>
+			</toolkit:WrapPanel>
+			</StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MedicationListDetailLevel1RowDetailsTemplate">
+        <StackPanel Orientation="Horizontal" Height="0"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MedicationListDetailLevel2RowDetailsTemplate">
+        <StackPanel Margin="0 4 0 8" Cursor="Arrow" Background="Transparent" HorizontalAlignment="Stretch">
+            <StackPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </StackPanel.Resources>
+            <toolkit:WrapPanel HorizontalAlignment="Stretch">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Text="Prescribed by:"  Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="{Binding PrescribingPhysicianName, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource TileGridRowDataElementTextBlockStyle}" VerticalAlignment="Center" Margin="2,0,10,0"/>
+                    <Border Grid.ColumnSpan="2" Grid.Row="1" />
+                </Grid>
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Text="Discontinued by:" Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="{Binding DiscontinuedByPhysicianName, FallbackValue=-, TargetNullValue=-}"  Style="{StaticResource TileGridRowDataElementTextBlockStyle}"  VerticalAlignment="Center" Margin="2,0,10,0"/>
+                    <Border Grid.ColumnSpan="2" Grid.Row="1"/>
+                </Grid>
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Text="Over the Counter:" Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                    <TextBlock  Grid.Column="1" Text="{Binding OverTheCounterIndicator, FallbackValue=-, TargetNullValue=-}"  Style="{StaticResource TileGridRowDataElementTextBlockStyle}" VerticalAlignment="Center" Margin="2,0,10,0"/>
+                    <Border Grid.ColumnSpan="2" Grid.Row="1"/>
+                </Grid>
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Text="Assigning Authority Name:" Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                    <TextBlock  Grid.Column="1" Text="{Binding ProvenanceAssigningAuthorityName, FallbackValue=-, TargetNullValue=-}"  Style="{StaticResource TileGridRowDataElementTextBlockStyle}" VerticalAlignment="Center" Margin="2,0,10,0"/>
+                    <Border Grid.ColumnSpan="2" Grid.Row="1"/>
+                </Grid>
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Text="Imported Date:" Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                    <TextBlock  Grid.Column="1" Text="{Binding ProvenanceDate,StringFormat='MM/dd/yyyy', FallbackValue=-, TargetNullValue=-}"  Style="{StaticResource TileGridRowDataElementTextBlockStyle}" VerticalAlignment="Center" Margin="2,0,10,0"/>
+                    <Border Grid.ColumnSpan="2" Grid.Row="1"/>
+                </Grid>
+           
+                <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Text="Instructions:" Style="{StaticResource TileGridRowLabelTextBlockStyle}" Margin="10 0 0 0" VerticalAlignment="top"/>
+                <TextBlock Grid.Column="1" Text="{Binding InstructionsNote, FallbackValue=-, TargetNullValue=-}"  Style="{StaticResource TileGridRowDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="top" Margin="2,0,10,0"/>
+                
+                </Grid>
+            </toolkit:WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <Style x:Key="MedicationListDataGridRowStyle" TargetType="sdk:DataGridRow">
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="sdk:DataGridRow">
+                    <Primitives:DataGridFrozenGrid x:Name="Root">
+                        <Primitives:DataGridFrozenGrid.Resources>
+                            <Storyboard x:Key="DetailsVisibleTransition">
+                                <DoubleAnimation Duration="00:00:0.1" Storyboard.TargetProperty="ContentHeight" Storyboard.TargetName="DetailsPresenter"/>
+                            </Storyboard>
+                        </Primitives:DataGridFrozenGrid.Resources>
+                        <Primitives:DataGridFrozenGrid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Primitives:DataGridFrozenGrid.ColumnDefinitions>
+                        <Primitives:DataGridFrozenGrid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Primitives:DataGridFrozenGrid.RowDefinitions>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="NormalAlternatingRow">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To=".5" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="NormalSelected">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOverSelected">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="UnfocusedSelected">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                        <ColorAnimation Duration="0" To="#FFE1E7EC" Storyboard.TargetProperty="(Fill).Color" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ValidationStates">
+                                <VisualState x:Name="Valid"/>
+                                <VisualState x:Name="Invalid">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="BackgroundRectangle">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="InvalidVisualElement"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Rectangle x:Name="BackgroundRectangle" Grid.ColumnSpan="2" Fill="#FFBADDE9" Opacity="0" Grid.RowSpan="2"/>
+                        <Rectangle x:Name="InvalidVisualElement" Grid.ColumnSpan="2" Fill="#FFF7D8DB" Opacity="0" Grid.RowSpan="2"/>
+                        <Primitives:DataGridRowHeader x:Name="RowHeader" Primitives:DataGridFrozenGrid.IsFrozen="True" Grid.RowSpan="3"/>
+                        <Primitives:DataGridCellsPresenter x:Name="CellsPresenter" Grid.Column="1" Primitives:DataGridFrozenGrid.IsFrozen="True"/>
+                        <Primitives:DataGridDetailsPresenter x:Name="DetailsPresenter" Grid.Column="1" Grid.Row="1"/>
+                        <Rectangle x:Name="BottomGridLine" Grid.Column="1" HorizontalAlignment="Stretch" Height="1" Grid.Row="2"/>
+                    </Primitives:DataGridFrozenGrid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- End of Scheduled Visit View Data Templates  -->
+
+    <Style x:Key="VisitDataGridRowStyle" TargetType="sdk:DataGridRow">
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="sdk:DataGridRow">
+                    <Primitives:DataGridFrozenGrid x:Name="Root">
+                        <Primitives:DataGridFrozenGrid.Resources>
+                            <Storyboard x:Key="DetailsVisibleTransition">
+                                <DoubleAnimation Duration="00:00:0.1" Storyboard.TargetProperty="ContentHeight" Storyboard.TargetName="DetailsPresenter"/>
+                            </Storyboard>
+                        </Primitives:DataGridFrozenGrid.Resources>
+                        <Primitives:DataGridFrozenGrid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Primitives:DataGridFrozenGrid.ColumnDefinitions>
+                        <Primitives:DataGridFrozenGrid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Primitives:DataGridFrozenGrid.RowDefinitions>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="NormalAlternatingRow">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To=".5" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="NormalSelected">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOverSelected">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="UnfocusedSelected">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                        <ColorAnimation Duration="0" To="#FFE1E7EC" Storyboard.TargetProperty="(Fill).Color" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ValidationStates">
+                                <VisualState x:Name="Valid"/>
+                                <VisualState x:Name="Invalid">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="BackgroundRectangle">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="InvalidVisualElement"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Rectangle x:Name="BackgroundRectangle" Grid.ColumnSpan="2" Fill="#FFBADDE9" Opacity="0" Grid.RowSpan="2"/>
+                        <Rectangle x:Name="InvalidVisualElement" Grid.ColumnSpan="2" Fill="#FFF7D8DB" Opacity="0" Grid.RowSpan="2"/>
+                        <Primitives:DataGridRowHeader x:Name="RowHeader" Primitives:DataGridFrozenGrid.IsFrozen="True" Grid.RowSpan="3"/>
+                        <Primitives:DataGridCellsPresenter x:Name="CellsPresenter" Grid.Column="1" Primitives:DataGridFrozenGrid.IsFrozen="True"/>
+                        <Primitives:DataGridDetailsPresenter x:Name="DetailsPresenter" Grid.Column="1" Grid.Row="1"/>
+                        <Rectangle x:Name="BottomGridLine" Grid.Column="1" HorizontalAlignment="Stretch" Height="1" Grid.Row="2"/>
+                    </Primitives:DataGridFrozenGrid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <DataTemplate x:Key="CaseActivitiesDetailLevel1RowDetailsTemplate">
+        <StackPanel Orientation="Horizontal" Height="0"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="CaseActivitiesDetailLevel2RowDetailsTemplate">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Results}" TextWrapping="Wrap" Width="Auto" Height="Auto" />
+        </StackPanel>
+    </DataTemplate>
+    <Style x:Key="CaseActivitiesDataGridRowStyle" TargetType="sdk:DataGridRow">
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="sdk:DataGridRow">
+                    <Primitives:DataGridFrozenGrid x:Name="Root">
+                        <Primitives:DataGridFrozenGrid.Resources>
+                            <Storyboard x:Key="DetailsVisibleTransition">
+                                <DoubleAnimation Duration="00:00:0.1" Storyboard.TargetProperty="ContentHeight" Storyboard.TargetName="DetailsPresenter"/>
+                            </Storyboard>
+                        </Primitives:DataGridFrozenGrid.Resources>
+                        <Primitives:DataGridFrozenGrid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Primitives:DataGridFrozenGrid.ColumnDefinitions>
+                        <Primitives:DataGridFrozenGrid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Primitives:DataGridFrozenGrid.RowDefinitions>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="NormalAlternatingRow">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To=".5" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="NormalSelected">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOverSelected">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="UnfocusedSelected">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BackgroundRectangle"/>
+                                        <ColorAnimation Duration="0" To="#FFE1E7EC" Storyboard.TargetProperty="(Fill).Color" Storyboard.TargetName="BackgroundRectangle"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ValidationStates">
+                                <VisualState x:Name="Valid"/>
+                                <VisualState x:Name="Invalid">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="BackgroundRectangle">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="InvalidVisualElement"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Rectangle x:Name="BackgroundRectangle" Grid.ColumnSpan="2" Fill="#FFBADDE9" Opacity="0" Grid.RowSpan="2"/>
+                        <Rectangle x:Name="InvalidVisualElement" Grid.ColumnSpan="2" Fill="#FFF7D8DB" Opacity="0" Grid.RowSpan="2"/>
+                        <Primitives:DataGridRowHeader x:Name="RowHeader" Primitives:DataGridFrozenGrid.IsFrozen="True" Grid.RowSpan="3"/>
+                        <Primitives:DataGridCellsPresenter x:Name="CellsPresenter" Grid.Column="1" Primitives:DataGridFrozenGrid.IsFrozen="True"/>
+                        <Primitives:DataGridDetailsPresenter x:Name="DetailsPresenter" Grid.Column="1" Grid.Row="1"/>
+                        <Rectangle x:Name="BottomGridLine" Grid.Column="1" HorizontalAlignment="Stretch" Height="1" Grid.Row="2"/>
+                    </Primitives:DataGridFrozenGrid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <DataTemplate x:Key="TerminologyConceptLevel1RowDetailsTemplate">
+        <StackPanel Orientation="Horizontal" Height="0"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TerminologyConceptLevel2RowDetailsTemplate">
+        <StackPanel Orientation="Vertical" Margin="1,4,1,4">
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Code:" Width="Auto" Height="Auto" Padding="0,0,0,0" Margin="5,0,5,0" />
+                <TextBlock Text="{Binding Code}" Width="Auto" Height="Auto" Padding="0,0,0,0" Margin="0,0,10,0" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Business Code:" Width="Auto" Height="Auto" Padding="0,0,0,0" Margin="5,0,5,0" />
+                <TextBlock Text="{Binding BusinessCode}" Width="Auto" Height="Auto" Padding="0,0,0,0" Margin="0,0,10,0" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Properties" Width="Auto" Height="Auto" Padding="0,0,0,0" Margin="5,0,5,0" />
+                <ItemsControl ItemsSource="{Binding Properties}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding DisplayName}" Width="Auto" Height="Auto" Padding="0,0,0,0" Margin="0,0,10,0" />
+                                <TextBlock Text="{Binding Value}" Width="Auto" Height="Auto" Padding="0,0,0,0" Margin="0,0,10,0" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </StackPanel>
+
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="TileWatermarkTemplate">
+        <Grid Margin="1" VerticalAlignment="Center">
+            <TextBlock FontStyle="Italic" Opacity="0.8" Text="{Binding}" Foreground="White"/>
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

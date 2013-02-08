@@ -1,0 +1,60 @@
+﻿<telerik:RadTileViewItem x:Class="Rem.Ria.PatientModule.ClinicianDashboard.ClinicianMedicationOrdersTileView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    mc:Ignorable="d"
+    d:DesignHeight="150" d:DesignWidth="350" Padding="2">
+    <telerik:RadTileViewItem.Header>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Medication Orders" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="0" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalMargin"/>
+            <CustomControls:DetailsSelector x:Name="DetailsSelector" Margin="40,2,6,2" HorizontalAlignment="Right" DetailsLevel2="{StaticResource MedicationListDetailLevel2RowDetailsTemplate}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding PagedCollectionViewWrapper.DetailLevelChangedCommand}" CommandParameter="{Binding SelectedItem, ElementName=GroupByComboBox}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </CustomControls:DetailsSelector>
+        </StackPanel>
+    </telerik:RadTileViewItem.Header>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" VerticalAlignment="Top" Style="{StaticResource TileToolBarBorderStyle}">
+            <Grid x:Name="CommandHeaderGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <telerik:RadRadioButton x:Name="ShowActiveOnlyButton" FontSize="9" Height="20" Content="Active" Style="{StaticResource TileRoundedCornerSmallRadioButtonStyle}" Command="{Binding ShowActiveOnlyCommand}"  Width="40" />
+                    <telerik:RadRadioButton x:Name="ShowAllButton" Content="All" FontSize="9"  Height="20" Style="{StaticResource TileRoundedCornerSmallRadioButtonStyle}" Command="{Binding ShowAllCommand}" Width="40" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,6,0">
+                    <TextBlock TextWrapping="Wrap" Text="Group By:" VerticalAlignment="Center" FontSize="9" Foreground="White"/>
+                    <telerik:RadComboBox x:Name="GroupByComboBox" FontSize="9" ItemsSource="{Binding PagedCollectionViewWrapper.GroupingDescriptions}" DisplayMemberPath="Description"  
+                				SelectedItem="{Binding PagedCollectionViewWrapper.SelectedGroupingDescription, Mode=TwoWay}" Height="20" Style="{StaticResource RadComboBoxRemStyle}">
+                    </telerik:RadComboBox>
+                </StackPanel>
+            </Grid>
+
+        </Border>
+        <telerik:RadGridView Grid.Row="1" ShowColumnHeaders="False" FontSize="9" x:Name="MedicationListdataGrid" CanUserFreezeColumns="False" ItemsSource="{Binding PagedCollectionViewWrapper.PagedCollectionView}" 
+				    IsReadOnly="True" RowDetailsVisibilityMode="Visible" ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" IsFilteringAllowed="False"
+				    AutoGenerateColumns="False" RowDetailsTemplate="{Binding ElementName=DetailsSelector,Path=SelectedDetails}" RowHeight="20" VerticalAlignment="Top" AlternateRowBackground="{StaticResource AlternateGridViewRowBackground}" AlternationCount="2" BorderThickness="0" GridLinesVisibility="None">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="Patient Name" DataMemberBinding="{Binding PatientName}" Width="auto"/>
+                <telerik:GridViewDataColumn Header="Start Date" DataMemberBinding="{Binding StartDate, StringFormat='MM/dd/yy '}" MinWidth="65"/>
+                <telerik:GridViewDataColumn Header="Drug Name" DataMemberBinding="{Binding MedicationCodeCodedConcept.DisplayName}" Width="*"/>
+                <telerik:GridViewDataColumn Header="Status" Width="50" TextAlignment="Center" DataMemberBinding="{Binding MedicationStatus.Name}"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+    </telerik:RadTileViewItem>

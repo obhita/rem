@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="Rem.Ria.AgencyModule.ProgramOfferingEditor.ProgramOfferingEditorView"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" 
+    xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" 
+	d:DesignHeight="800" d:DesignWidth="920" mc:Ignorable="d">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <View:DataContextProxyElement x:Key="RootDataContext"/>
+        </Grid.Resources>
+        <CustomControls:Editor MaximizeHeader="Program Offering" Style="{StaticResource TileEditorHeaderStyle}" StartOpen="{Binding IsCreateMode}" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}">
+			<CustomControls:Editor.Expanders>
+                <CustomControls:EditableExpander x:Name="Profile" Header="Profile" Content="{Binding EditingDto.Profile}" IsExpanded="True" ShowNext="False">
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Program Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="ProgramName" Text="{Binding Program.DisplayName, FallbackValue='-', TargetNullValue='-'}"  Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Capacity" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="CapacityValue" Text="{Binding CapacityCount, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Type" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="ProgramOfferingType" Text="{Binding Program.CapacityType.Name, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="StartDate" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="StartDate" Text="{Binding StartDate,StringFormat='{}{0:MM/dd/yyyy}', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="EndDate" Text="{Binding EndDate,StringFormat='{}{0:MM/dd/yyyy}', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Program Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadComboBox x:Name="ProgramName" SelectedItem="{Binding Program,Mode=TwoWay}" DisplayMemberPath="DisplayName" ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.Programs}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Capacity" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadMaskedTextBox x:Name="CapacityCount" MaskedText="{Binding CapacityCount,Mode=TwoWay}" MaskType="Numeric" Mask="d" Width="80" HorizontalAlignment="Left"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="Type" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <TextBlock x:Name="ProgramOfferingType" Text="{Binding Program.CapacityType}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="StartDate" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadDatePicker x:Name="StartDate" SelectedValue="{Binding StartDate,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                            <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                            <telerik:RadDatePicker x:Name="EndDate" SelectedValue="{Binding EndDate,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+            </CustomControls:Editor.Expanders>
+        </CustomControls:Editor>
+        <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+    </Grid>
+</UserControl>

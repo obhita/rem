@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4F931C9B-A090-4C7C-AD99-F530BB5FD8DE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pillar.Domain.Tests</RootNamespace>
+    <AssemblyName>Pillar.Domain.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="StructureMap">
+      <HintPath>..\..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Pillar.Common.Tests\MSTestInitialize.cs">
+      <Link>MSTestInitialize.cs</Link>
+    </Compile>
+    <Compile Include="AggregateChangedTypeTests.cs" />
+    <Compile Include="AggregateNodeTests.cs" />
+    <Compile Include="AggregateRootTests.cs" />
+    <Compile Include="DomainTestBase.cs" />
+    <Compile Include="Fixture\AllPrimitiveTypes.cs" />
+    <Compile Include="Fixture\EntityCollectionFixture.cs" />
+    <Compile Include="Fixture\IEventActionDummyInterface1.cs" />
+    <Compile Include="Fixture\IEventActionDummyInterface2.cs" />
+    <Compile Include="Fixture\PersonFixture\PersonEntity.cs" />
+    <Compile Include="Fixture\PersonFixture\PersonWithPhonesEntity.cs" />
+    <Compile Include="Fixture\PersonFixture\PhoneEntity.cs" />
+    <Compile Include="Fixture\SimpleAggregateRoot.cs" />
+    <Compile Include="Primitives\DateRangeTests.cs" />
+    <Compile Include="Primitives\EmailAddressTests.cs" />
+    <Compile Include="Primitives\PostalCodeTests.cs" />
+    <Compile Include="Primitives\TimeRangeTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pillar.Common.Tests\Pillar.Common.Tests.csproj">
+      <Project>{55E77316-2E6B-4D00-AAD6-C755C70FE812}</Project>
+      <Name>Pillar.Common.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pillar.Common\Pillar.Common.csproj">
+      <Project>{6761BABC-8D45-4D08-B112-088FA47AB625}</Project>
+      <Name>Pillar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pillar.Domain\Pillar.Domain.csproj">
+      <Project>{88257D62-7FE9-4128-A39B-1FF4511C8B3A}</Project>
+      <Name>Pillar.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pillar.IoC.StructureMap\Pillar.IoC.StructureMap.csproj">
+      <Project>{1728DBDD-7471-4C03-809B-C2E83A4C8C7C}</Project>
+      <Name>Pillar.IoC.StructureMap</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.DirectMessageCenter.HealthProvidersDirectoryView"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+                 xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+                 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                 xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                                 xmlns:DirectMessageCenter="clr-namespace:Rem.Ria.PatientModule.DirectMessageCenter" mc:Ignorable="d" d:DesignHeight="300"
+                 d:DesignWidth="300">
+    <Grid>
+
+        <Grid.Resources>
+            <DirectMessageCenter:RowStyleSelector x:Key="rowStyleSelector" />
+            <telerik:BinaryImageConverter x:Key="converter" />
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <telerik:RadComboBox x:Name="GroupBox" Grid.Column="1" ClearSelectionButtonVisibility="Collapsed"
+                           ItemsSource="{Binding Directories}" 
+                           SelectedItem="{Binding SelectedDirectory}" Width="auto"/>
+
+            <TextBlock Text="{Binding SelectedProvider.DisplayName}" MinWidth="300"/>
+            <!--<telerik:RadWatermarkTextBox x:Name="PopUpToTextBox" WatermarkContent="To" Width="100" Text="{Binding SelectedProvider.DisplayName}">
+      </telerik:RadWatermarkTextBox>-->
+
+            <telerik:RadButton Command="{Binding DoneCommand}" Content="Done" Margin="10"/>
+        </StackPanel>
+
+        <telerik:RadGridView x:Name="RadGridView1" ItemsSource="{Binding Providers}" Grid.Row="1"
+                         RowStyle="{StaticResource ProblemGridViewRowStyle}" Margin="0" RowIndicatorVisibility="Collapsed" IsReadOnly="True"
+                         RowHeight="45" Width="748" MinHeight="386" MaxHeight="500" AutoGenerateColumns="False" CanUserFreezeColumns="False"
+                         CanUserResizeColumns="False" GridLinesVisibility="None" SelectedItem="{Binding SelectedProvider, Mode=TwoWay}">
+
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewToggleRowDetailsColumn />
+                <telerik:GridViewImageColumn Header="Photo" DataMemberBinding="{Binding Picture}" ImageHeight="35"
+                                     ImageWidth="35" Width="45" />
+                <telerik:GridViewDataColumn Header="Name" DataMemberBinding="{Binding DisplayName}" />
+                <telerik:GridViewDataColumn Header="Mail" DataMemberBinding="{Binding Mail}" />
+                <telerik:GridViewDataColumn Header="Phone Number" DataMemberBinding="{Binding TelephoneNumber}" />
+                <telerik:GridViewDataColumn Header="Specialization" DataMemberBinding="{Binding Specialization}" />
+                <telerik:GridViewDataColumn Header="Organization" DataMemberBinding="{Binding OrganizationName}" />
+            </telerik:RadGridView.Columns>
+            <telerik:RadGridView.RowDetailsTemplate>
+                <DataTemplate>
+
+                    <telerik:RadTabControl x:Name="RadTabControl1" Width="702" HorizontalAlignment="Center" Margin="8"
+                                 VerticalAlignment="Center">
+                        <telerik:RadTabItem Header="Details" DataContext="{Binding}" Margin="10,0,0,0" Height="24">
+
+                            <Grid Width="Auto" HorizontalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition Height="15" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" Grid.RowSpan="6" Grid.Row="0" VerticalAlignment="Top"
+                        HorizontalAlignment="Stretch" Height="115" Width="115" Margin="15" BorderThickness="1">
+                                    <Image Source="{Binding Picture, Converter={StaticResource converter}}"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" Height="96" Width="96">
+                                    </Image>
+                                </Border>
+
+                                <TextBlock Text="Display Name: " Margin="5,10,0,0" Foreground="Black" FontWeight="Bold"
+                           Grid.Row="0" Grid.Column="1" />
+                                <TextBlock Text="{Binding DisplayName}" Margin="5,10,0,0" Foreground="Black"
+                           Grid.Row="0" Grid.Column="2" />
+                                <TextBlock Text="Mail: " Margin="5,0,0,0" Foreground="Black" FontWeight="Bold"
+                           Grid.Row="1" Grid.Column="1" />
+                                <TextBlock Text="{Binding Mail}" Foreground="Black" Margin="5,0,0,0" Grid.Row="1"
+                           Grid.Column="2" />
+                                <TextBlock Text="Specialization: " Margin="5,0,0,0" Foreground="Black"
+                           FontWeight="Bold" Grid.Row="2" Grid.Column="1" />
+                                <TextBlock Text="{Binding Specialization}" Foreground="Black" Margin="5,0,0,0"
+                           Grid.Row="2" Grid.Column="2" />
+                                <TextBlock Text="Organization: " Foreground="Black" Margin="5,0,0,0" FontWeight="Bold"
+                           Grid.Row="3" Grid.Column="1" />
+                                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2">
+                                    <TextBlock Text="{Binding OrganizationName}" Foreground="Black" Margin="5,0,0,0" />
+                                    <!--<TextBlock Text=", " Foreground="Black" />
+                  <TextBlock Text="{Binding PostalCode}" Foreground="Black" />-->
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="2">
+                                    <TextBlock Text="{Binding City}" Foreground="Black" Margin="5,0,0,0" />
+                                    <TextBlock Text=", " Foreground="Black" />
+                                    <TextBlock Text="{Binding State}" Foreground="Black" />
+                                </StackPanel>
+                                <TextBlock Text="Phone: " Margin="5,0,0,0" Foreground="Black" FontWeight="Bold"
+                           Grid.Row="5" Grid.Column="1" />
+                                <TextBlock Text="{Binding TelephoneNumber}" Foreground="Black" Margin="5,0,0,0" Grid.Row="5"
+                           Grid.Column="2" />
+                            </Grid>
+
+                        </telerik:RadTabItem>
+                        <telerik:RadTabItem Header="Location" DataContext="{Binding}">
+                            <!--<m:Map CredentialsProvider="AiurhqLRwSEsw5vtlgYLNxmMVaLmneVDX97oq9YLTMFnsafHkkQwlABQC6cRXW9L" Mode="Road"  ZoomLevel="5">
+                              
+                                <m:Pushpin>
+                                    <Polygon Fill="DarkOrange" Stroke="Yellow" StrokeThickness="5" Opacity="0.7">
+                                        
+                                    </Polygon>
+                                </m:Pushpin>
+                            </m:Map>-->
+                        </telerik:RadTabItem>
+                    </telerik:RadTabControl>
+                </DataTemplate>
+            </telerik:RadGridView.RowDetailsTemplate>
+        </telerik:RadGridView>
+    </Grid>
+</UserControl>

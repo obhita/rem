@@ -1,0 +1,534 @@
+﻿<telerik:RadTileViewItem x:Class="Rem.Ria.PatientModule.ClinicianDashboard.ClinicianDashboardScheduleTileView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"     
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"      
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+    xmlns:Rem_Ria_Infrastructure_View_Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" 
+    xmlns:schedule="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.ScheduleView"
+    xmlns:InfrastructureView="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"    
+    xmlns:patientmodule="clr-namespace:Rem.Ria.PatientModule"
+    xmlns:Configuration="clr-namespace:Rem.Ria.Infrastructure.View.Configuration;assembly=Rem.Ria.Infrastructure"
+                         mc:Ignorable="d"
+    d:DesignHeight="510" d:DesignWidth="510" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch" Padding="2" TileState="Maximized" Configuration:Configuration.IHandleConfiguration="true">
+    <telerik:RadTileViewItem.Resources>
+        <!--TODO: Move this to a common file, it is copied from ClinicianScheduleTileView-->
+        <ResourceDictionary>
+            <InfrastructureView:DataContextProxyElement x:Key="RootDataContextProxy" />
+
+            <DataTemplate x:Key="RemAppointmentLargeTemplate">
+                <Grid Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" IsHitTestVisible="False" Margin="0 0 5 0" Text="{Binding Subject}"/>
+                    <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0">
+                        <TextBlock IsHitTestVisible="False" Text="{Binding Appointment.VisitTypeName}" TextWrapping="NoWrap" TextTrimming="WordEllipsis"/>
+                    </Grid>
+                    <ComboBox x:Name="cbVisitStatus" Grid.Column="0" SelectedItem="{Binding Appointment.VisitStatus, Mode=TwoWay}" HorizontalAlignment="Right" Margin="0,0,15,0">
+                        <ComboBox.Resources>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <Grid>
+                                                <i:Interaction.Behaviors>
+                                                    <Rem_Ria_Infrastructure_View_Behavior:DataContextCompareNotEqualMouseDownBehavior CompareValue="{Binding DataContext.Appointment.VisitStatus, ElementName=cbVisitStatus, Mode=TwoWay}"
+    													CommandParameter="{Binding DataContext.Appointment, ElementName=cbVisitStatus}"
+    													Command="{Binding DataSource.StatusUpdatedCommand, Source={StaticResource RootDataContextProxy}}"
+    													SetCompareValue ="True"/>
+                                                </i:Interaction.Behaviors>
+                                                <ContentPresenter/>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ComboBox.Resources>
+                        <ComboBox.Style>
+                            <StaticResource ResourceKey="VisitStatusComboBoxStyle"/>
+                        </ComboBox.Style>
+                        <ComboBox.Background>
+                            <Binding Converter="{StaticResource VisitStatusToBrushConvert}" Path="Appointment.VisitStatus"/>
+                        </ComboBox.Background>
+                        <ComboBox.ItemsSource>
+                            <Binding Path="DataSource.StatusList" Source="{StaticResource RootDataContextProxy}"/>
+                        </ComboBox.ItemsSource>
+                    </ComboBox>
+                    <telerik:RadButton Grid.Column="3" Style="{StaticResource TileGoButtonStyle}" ToolTipService.ToolTip="Appointment Details" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.ShowAppointmentDetailsCommand}" CommandParameter="{Binding Appointment}"/>
+                    <telerik:RadMenu Grid.Column="4" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" ClickToOpen="True" Visibility="{Binding Appointment.HasAlert,Converter={StaticResource BooleanToVisibilityConverterInstance}}" Margin="0,0,10,0">
+                        <telerik:RadMenuItem Background="Transparent" BorderThickness="0" ItemsSource="{Binding Appointment.PatientAlerts}">
+                            <telerik:RadMenuItem.Header>
+                                <Grid>
+                                    <Rectangle Width="10" Height="10" HorizontalAlignment="Center" Margin="0,-0.25,-7,3.25" UseLayoutRounding="False" d:LayoutRounding="Auto" d:LayoutOverrides="Width" >
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFFFB062" Offset="1" />
+                                                <GradientStop Color="#FF804B00" Offset="0.034" />
+                                                <GradientStop Color="#FFFFD74E" Offset="0.3" />
+                                                <GradientStop Color="#FFF1D36A" Offset="0.036"/>
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                        <Rectangle.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform Angle="45"/>
+                                            </TransformGroup>
+                                        </Rectangle.RenderTransform>
+                                    </Rectangle>
+                                    <TextBlock Text="A" FontSize="8.5" Margin="-3,0,0,0" Foreground="#FF373634" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </Grid>
+                            </telerik:RadMenuItem.Header>
+                            <telerik:RadMenuItem.ItemTemplate>
+                                <DataTemplate>
+                                    <telerik:RadMenuItem Header="{Binding Name}" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.ShowAlertDetailsCommand}" CommandParameter="{Binding}"/>
+                                </DataTemplate>
+                            </telerik:RadMenuItem.ItemTemplate>
+                        </telerik:RadMenuItem>
+                    </telerik:RadMenu>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="RemAppointmentTemplate">
+                <Grid Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" IsHitTestVisible="False" Margin="0 0 18 0" Text="{Binding Subject}"/>
+                    <ComboBox x:Name="cbVisitStatus" Grid.Column="0" SelectedItem="{Binding Appointment.VisitStatus, Mode=TwoWay}" HorizontalAlignment="Right" Margin="0,0,15,0">
+                        <ComboBox.Resources>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <Grid>
+                                                <i:Interaction.Behaviors>
+                                                    <Rem_Ria_Infrastructure_View_Behavior:DataContextCompareNotEqualMouseDownBehavior CompareValue="{Binding DataContext.Appointment.VisitStatus, ElementName=cbVisitStatus, Mode=TwoWay}"
+    													CommandParameter="{Binding DataContext.Appointment, ElementName=cbVisitStatus}"
+    													Command="{Binding DataSource.StatusUpdatedCommand, Source={StaticResource RootDataContextProxy}}"
+    													SetCompareValue ="True"/>
+                                                </i:Interaction.Behaviors>
+                                                <ContentPresenter/>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ComboBox.Resources>
+                        <ComboBox.Style>
+                            <StaticResource ResourceKey="VisitStatusComboBoxStyle"/>
+                        </ComboBox.Style>
+                        <ComboBox.Background>
+                            <Binding Converter="{StaticResource VisitStatusToBrushConvert}" Path="Appointment.VisitStatus"/>
+                        </ComboBox.Background>
+                        <ComboBox.ItemsSource>
+                            <Binding Path="DataSource.StatusList" Source="{StaticResource RootDataContextProxy}"/>
+                        </ComboBox.ItemsSource>
+                    </ComboBox>
+                    <telerik:RadButton Grid.Column="2" Style="{StaticResource TileGoButtonStyle}" ToolTipService.ToolTip="Appointment Details" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.ShowAppointmentDetailsCommand}" CommandParameter="{Binding Appointment}"/>
+                    <telerik:RadMenu Grid.Column="3" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" ClickToOpen="True" Visibility="{Binding Appointment.HasAlert,Converter={StaticResource BooleanToVisibilityConverterInstance}}" Margin="0,0,10,0">
+                        <telerik:RadMenuItem Background="Transparent" BorderThickness="0" ItemsSource="{Binding Appointment.PatientAlerts}">
+                            <telerik:RadMenuItem.Header>
+                                <Grid>
+                                    <Rectangle Width="10" Height="10" HorizontalAlignment="Center" Margin="0,-0.25,-7,3.25" UseLayoutRounding="False" d:LayoutRounding="Auto" d:LayoutOverrides="Width" >
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFFFB062" Offset="1" />
+                                                <GradientStop Color="#FF804B00" Offset="0.034" />
+                                                <GradientStop Color="#FFFFD74E" Offset="0.3" />
+                                                <GradientStop Color="#FFF1D36A" Offset="0.036"/>
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                        <Rectangle.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform Angle="45"/>
+                                            </TransformGroup>
+                                        </Rectangle.RenderTransform>
+                                    </Rectangle>
+                                    <TextBlock Text="A" FontSize="8.5" Foreground="#FF373634" Margin="-3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </Grid>
+                            </telerik:RadMenuItem.Header>
+                            <telerik:RadMenuItem.ItemTemplate>
+                                <DataTemplate>
+                                    <telerik:RadMenuItem Header="{Binding Name}" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.ShowAlertDetailsCommand}" CommandParameter="{Binding}"/>
+                                </DataTemplate>
+                            </telerik:RadMenuItem.ItemTemplate>
+                        </telerik:RadMenuItem>
+                    </telerik:RadMenu>
+                </Grid>
+            </DataTemplate>
+
+            <schedule:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+
+            <schedule:RecurrenceStateIsExeptionToVisibilityConverter x:Key="RecurrenceStateIsExeptionToVisibilityConverter" />
+            <schedule:RecurrenceStateIsOccurenceToVisibilityConverter x:Key="RecurrenceStateIsOccurenceToVisibilityConverter" />
+
+            <!--Custom Appointment Item-->
+            <SolidColorBrush x:Key="RadScheduleForeground" Color="Black"/>
+            <DataTemplate x:Key="AppointmentItemTemplate">
+                <TextBlock TextWrapping="Wrap" Text="{Binding Subject}" TextTrimming="WordEllipsis"/>
+            </DataTemplate>
+            <SolidColorBrush x:Key="AppointmentItemOuterBorder_MouseOver" Color="#FFFFC92B"/>
+            <LinearGradientBrush x:Key="AppointmentItemBackground_MouseOver" EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFFFFBA3" Offset="1"/>
+                <GradientStop Color="#FFFFFBDA" Offset="0"/>
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="AppointmentItemInnerBorder_MouseOver" Color="#FFFFFFFF"/>
+            <SolidColorBrush x:Key="AppoinmtentItemBackground_ReadOnly" Color="#B2BABFC6"/>
+            <ImageSource x:Key="AppointmentItem_Recurrence">/Telerik.Windows.Controls.ScheduleView;component/Themes/Images/AppointmentException.png</ImageSource>
+            <ImageSource x:Key="AppointmentItem_Exception">/Telerik.Windows.Controls.ScheduleView;component/Themes/Images/AppointmentRecurrence.png</ImageSource>
+            <SolidColorBrush x:Key="AppointmentItemDeleteIconStroke" Color="#FF444444"/>
+            <ControlTemplate x:Key="AppointmentItemControlTemplate" TargetType="schedule:AppointmentItem">
+                <Grid x:Name="Root">
+                    <telerik:CommandManager.InputBindings>
+                        <telerik:InputBindingCollection>
+                            <telerik:MouseBinding Command="telerik:RadScheduleViewCommands.EditAppointment" Gesture="LeftDoubleClick"/>
+                        </telerik:InputBindingCollection>
+                    </telerik:CommandManager.InputBindings>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0.200" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="MouseOverOverlay">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0.200">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <Visibility>Collapsed</Visibility>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <DoubleAnimation BeginTime="0:0:0.0" Duration="0:0:0.200" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="MouseOverOverlay"/>
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="MouseOver">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0.400" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="MouseOverOverlay">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0.0">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <Visibility>Visible</Visibility>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <DoubleAnimation BeginTime="0:0:0.200" Duration="0:0:0.200" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="MouseOverOverlay"/>
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="ReadOnly">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0.0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ReadOnlyVisual">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0.0">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <Visibility>Visible</Visibility>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                        <VisualStateGroup x:Name="SelectionStates">
+                            <VisualState x:Name="Unselected"/>
+                            <VisualState x:Name="Selected">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="CommonStatesVisual">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <Visibility>Visible</Visibility>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetProperty="Background" Storyboard.TargetName="CommonStatesVisual">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource AppointmentItemBackground_Selected}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="CommonStatesVisual">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource AppointmentItemOuterBorder_Selected}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="CommonStatesVisualInnerBorder">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource AppointmentItemInnerBorder_Selected}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="2">
+                        <Border BorderBrush="{StaticResource AppointmentItemInnerBorder}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="1"/>
+                    </Border>
+                    <Border x:Name="CommonStatesVisual" BorderBrush="{StaticResource AppointmentItemOuterBorder_MouseOver}" BorderThickness="{TemplateBinding BorderThickness}" Background="{StaticResource AppointmentItemBackground_MouseOver}" CornerRadius="2" Visibility="Collapsed">
+                        <Border x:Name="CommonStatesVisualInnerBorder" BorderBrush="{StaticResource AppointmentItemInnerBorder_MouseOver}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="1"/>
+                    </Border>
+                    <Border x:Name="PART_Category" Background="{Binding Category.CategoryBrush}" Margin="2"/>
+                    <Rectangle x:Name="ReadOnlyVisual" Fill="{StaticResource AppoinmtentItemBackground_ReadOnly}" Margin="2" Visibility="Collapsed"/>
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="PART_TimeMarker" Background="{Binding TimeMarker.TimeMarkerBrush}" Grid.Column="0" HorizontalAlignment="Left" Visibility="{Binding TimeMarker, Converter={StaticResource NullToVisibilityConverter}}" Width="5"/>
+                        <StackPanel Grid.Column="1" Margin="0 3 0 0" VerticalAlignment="Top">
+                            <Image x:Name="RecurrenceMark" Grid.Column="0" HorizontalAlignment="Left" Height="10" Margin="2 1 1 0" Source="{StaticResource AppointmentItem_Recurrence}" Visibility="{Binding RecurrenceState, Converter={StaticResource RecurrenceStateIsExeptionToVisibilityConverter}}" Width="10"/>
+                            <Image x:Name="ExceptionMark" Grid.Column="0" HorizontalAlignment="Left" Height="10" Margin="2 1 1 0" Source="{StaticResource AppointmentItem_Exception}" Visibility="{Binding RecurrenceState, Converter={StaticResource RecurrenceStateIsOccurenceToVisibilityConverter}}" Width="10"/>
+                        </StackPanel>
+                        <ContentPresenter Grid.Column="2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <Grid x:Name="MouseOverOverlay" Opacity="0" Visibility="Collapsed">
+                        <!--<Border x:Name="PART_StartResizeGrip" telerik:RadDragAndDropManager.AllowDrag="true" Background="Transparent" Cursor="SizeWE" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+    						<StackPanel x:Name="StartResizeGrip" HorizontalAlignment="Center" Margin="1" VerticalAlignment="Center">
+    							<Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+    							<Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+    							<Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+    						</StackPanel>
+    					</Border>
+    					<Border x:Name="PART_EndResizeGrip" telerik:RadDragAndDropManager.AllowDrag="true" Background="Transparent" Cursor="SizeWE" HorizontalAlignment="Right" VerticalAlignment="Stretch">
+    						<StackPanel x:Name="EndResizeGrip" HorizontalAlignment="Center" Margin="1" VerticalAlignment="Center">
+    							<Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+    							<Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+    							<Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+    						</StackPanel>
+    					</Border>-->
+                        <telerik:RadButton x:Name="DeleteButton" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Command="telerik:RadScheduleViewCommands.DeleteAppointment" HorizontalAlignment="Right" Height="11" IsTabStop="False" Margin="5" Padding="0" telerik:StyleManager.Theme="{StaticResource Theme}" VerticalAlignment="Top" Width="11">
+                            <Path Data="M0,0 L5,5 M5,0 L0,5" Stroke="{StaticResource AppointmentItemDeleteIconStroke}"/>
+                        </telerik:RadButton>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+            <ControlTemplate x:Key="FixedAppointmentItemControlTemplate" TargetType="schedule:AppointmentItem">
+                <Grid x:Name="Root">
+                    <telerik:CommandManager.InputBindings>
+                        <telerik:InputBindingCollection>
+                            <telerik:MouseBinding Command="telerik:RadScheduleViewCommands.EditAppointment" Gesture="LeftDoubleClick"/>
+                        </telerik:InputBindingCollection>
+                    </telerik:CommandManager.InputBindings>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0.200" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="MouseOverOverlay">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0.200">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <Visibility>Collapsed</Visibility>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <DoubleAnimation BeginTime="0:0:0.0" Duration="0:0:0.200" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="MouseOverOverlay"/>
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="MouseOver">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0.400" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="MouseOverOverlay">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0.0">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <Visibility>Visible</Visibility>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <DoubleAnimation BeginTime="0:0:0.200" Duration="0:0:0.200" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="MouseOverOverlay"/>
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="ReadOnly">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0.0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ReadOnlyVisual">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0.0">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <Visibility>Visible</Visibility>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                        <VisualStateGroup x:Name="SelectionStates">
+                            <VisualState x:Name="Unselected"/>
+                            <VisualState x:Name="Selected">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="CommonStatesVisual">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <Visibility>Visible</Visibility>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetProperty="Background" Storyboard.TargetName="CommonStatesVisual">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource AppointmentItemBackground_Selected}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="CommonStatesVisual">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource AppointmentItemOuterBorder_Selected}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="CommonStatesVisualInnerBorder">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource AppointmentItemInnerBorder_Selected}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="2">
+                        <Border BorderBrush="{StaticResource AppointmentItemInnerBorder}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="1"/>
+                    </Border>
+                    <Border x:Name="CommonStatesVisual" BorderBrush="{StaticResource AppointmentItemOuterBorder_MouseOver}" BorderThickness="{TemplateBinding BorderThickness}" Background="{StaticResource AppointmentItemBackground_MouseOver}" CornerRadius="2" Visibility="Collapsed">
+                        <Border x:Name="CommonStatesVisualInnerBorder" BorderBrush="{StaticResource AppointmentItemInnerBorder_MouseOver}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="1"/>
+                    </Border>
+                    <Border x:Name="PART_Category" Background="{Binding Category.CategoryBrush}" Margin="2"/>
+                    <Rectangle x:Name="ReadOnlyVisual" Fill="{StaticResource AppoinmtentItemBackground_ReadOnly}" Margin="2" Visibility="Collapsed"/>
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="PART_TimeMarker" Background="{Binding TimeMarker.TimeMarkerBrush}" Grid.Column="0" HorizontalAlignment="Left" Visibility="{Binding TimeMarker, Converter={StaticResource NullToVisibilityConverter}}" Width="5"/>
+                        <StackPanel Grid.Column="1" Margin="0 3 0 0" VerticalAlignment="Top">
+                            <Image x:Name="RecurrenceMark" Grid.Column="0" HorizontalAlignment="Left" Height="10" Margin="2 1 1 0" Source="{StaticResource AppointmentItem_Recurrence}" Visibility="{Binding RecurrenceState, Converter={StaticResource RecurrenceStateIsExeptionToVisibilityConverter}}" Width="10"/>
+                            <Image x:Name="ExceptionMark" Grid.Column="0" HorizontalAlignment="Left" Height="10" Margin="2 1 1 0" Source="{StaticResource AppointmentItem_Exception}" Visibility="{Binding RecurrenceState, Converter={StaticResource RecurrenceStateIsOccurenceToVisibilityConverter}}" Width="10"/>
+                        </StackPanel>
+                        <ContentPresenter Grid.Column="2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <Grid x:Name="MouseOverOverlay" Opacity="0" Visibility="Collapsed">
+                        <!--<Border x:Name="PART_StartResizeGrip" telerik:RadDragAndDropManager.AllowDrag="true" Background="Transparent" Cursor="SizeWE" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                            <StackPanel x:Name="StartResizeGrip" HorizontalAlignment="Center" Margin="1" VerticalAlignment="Center">
+                                <Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+                                <Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+                                <Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+                            </StackPanel>
+                        </Border>
+                        <Border x:Name="PART_EndResizeGrip" telerik:RadDragAndDropManager.AllowDrag="true" Background="Transparent" Cursor="SizeWE" HorizontalAlignment="Right" VerticalAlignment="Stretch">
+                            <StackPanel x:Name="EndResizeGrip" HorizontalAlignment="Center" Margin="1" VerticalAlignment="Center">
+                                <Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+                                <Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+                                <Border BorderBrush="{StaticResource AppointmentItemResizeGripStroke}" BorderThickness="0,0,1,1" Background="{StaticResource AppointmentItemResizeGripBackground}" Height="3" Margin="1" Width="3"/>
+                            </StackPanel>
+                        </Border>-->
+                        <telerik:RadButton x:Name="DeleteButton" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Command="telerik:RadScheduleViewCommands.DeleteAppointment" HorizontalAlignment="Right" Height="11" IsTabStop="False" Margin="5" Padding="0" telerik:StyleManager.Theme="{StaticResource Theme}" VerticalAlignment="Top" Width="11" Visibility="Collapsed">
+                            <Path Data="M0,0 L5,5 M5,0 L0,5" Stroke="{StaticResource AppointmentItemDeleteIconStroke}"/>
+                        </telerik:RadButton>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+            <Style x:Key="AppointmentItemBaseStyle" TargetType="schedule:AppointmentItem">
+                <Setter Property="Background" Value="{StaticResource AppointmentItemBackground}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource AppointmentItemOuterBorder}"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                <Setter Property="Foreground" Value="{StaticResource RadScheduleForeground}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="2 0 0 0"/>
+                <Setter Property="ContentTemplate" Value="{StaticResource AppointmentItemTemplate}"/>
+                <Setter Property="Template" Value="{StaticResource AppointmentItemControlTemplate}"/>
+                <Setter Property="Canvas.ZIndex" Value="1"/>
+            </Style>
+            <Style x:Key="FixedAppointmentItemBaseStyle" TargetType="schedule:AppointmentItem" BasedOn="{StaticResource AppointmentItemBaseStyle}">
+                <Setter Property="Template" Value="{StaticResource FixedAppointmentItemControlTemplate}"/>
+            </Style>
+            <patientmodule:AppointmentStyleSelector x:Key="AppointmentItemStyleSelector" 
+                                                    HorizontalAppointmentBaseStyle="{StaticResource AppointmentItemBaseStyle}"
+                                                    FixedHorizontalAppointmentBaseStyle="{StaticResource FixedAppointmentItemBaseStyle}"
+                                                    VerticalAppointmentBaseStyle="{StaticResource AppointmentItemBaseStyle}"
+                                                    FixedVerticalAppointmentBaseStyle="{StaticResource FixedAppointmentItemBaseStyle}"/>
+
+        </ResourceDictionary>
+
+
+    </telerik:RadTileViewItem.Resources>
+    <telerik:RadTileViewItem.Header>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Margin="5,5,5,5" Orientation="Horizontal" Grid.Row="0">
+                <Rectangle Fill="#FFF4F4F5" Margin="5" Stroke="Black" Width="50" Height="50"/>
+                <Grid Margin="2,3" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.516*"/>
+                        <ColumnDefinition Width="0.484*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock TextWrapping="Wrap" Text="Appointments:"  VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                    <TextBlock TextWrapping="Wrap" Text="Available:"  VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+
+                    <TextBlock TextWrapping="Wrap" Text="{Binding ClinicianSchedule.ClinicianFullName}"   VerticalAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding ClinicianSchedule.TotalAppointments}"  VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding ClinicianSchedule.AvailableAppointments}"  VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+                </Grid>
+            </StackPanel>
+            <ContentPresenter Grid.Row="1" Margin="0,0,87,0"/>
+        </Grid>
+    </telerik:RadTileViewItem.Header>
+    <Grid x:Name="LayoutRoot" Margin="0" >
+        <telerik:RadFluidContentControl Margin="0,0,0,0" ContentChangeMode="Automatic" State="Normal" NormalToSmallThreshold="400 400" NormalToLargeThreshold="600 600">
+            <!--Normal Content-->
+            <telerik:RadFluidContentControl.SmallContent>
+                <Grid Margin="0" DataContext="{Binding}" Height="0">
+                    <Border Background="LightGreen" Height="0" >
+                        <telerik:RadScheduleView>
+                            <i:Interaction.Behaviors>
+                                <Rem_Ria_Infrastructure_View_Behavior:RemRadSchedulerBehavior FirstVisibleDate="{Binding Path=FrontDeskDashboardContext.SelectedDate}"
+                                                                                                  AddedAppointmentCommand="{Binding AppointmentAddedCommand}"/>
+                            </i:Interaction.Behaviors>
+                        </telerik:RadScheduleView>
+                    </Border>
+                </Grid>
+            </telerik:RadFluidContentControl.SmallContent>
+
+            <telerik:RadFluidContentControl.Content>
+                <Grid Margin="0" DataContext="{Binding}">
+                    <Border Background="LightGreen">
+                        <telerik:RadScheduleView
+                                ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                                ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                AppointmentItemContentTemplate="{StaticResource RemAppointmentTemplate}"
+                                AppointmentsSource="{Binding ClinicianSchedule.ClinicianAppointments}"
+                                SnapAppointments="True">
+                            <telerik:RadScheduleView.ViewDefinitions>
+                                <telerik:DayViewDefinition DayStartTime="08:00:00" DayEndTime="20:00:00" MinTimeRulerExtent="20" MajorTickLength="1h" MinorTickLength="30min" GroupHeaderDateStringFormat="{}{0:dd dddd}"/>
+                            </telerik:RadScheduleView.ViewDefinitions>
+                            <i:Interaction.Behaviors>
+                                <Rem_Ria_Infrastructure_View_Behavior:RemRadSchedulerBehavior FirstVisibleDate="{Binding Path=FrontDeskDashboardContext.SelectedDate}" 
+                                                                                                  EditedAppointmentCommand="{Binding AppointmentUpdatedCommand}" 
+                                                                                                  DoubleClickAppointmentCommand="{Binding GoToPatientDashboardCommand}"
+                                                                                                  DateRangeUpdatedCommand="{Binding RangeUpdatedCommand}"
+                                                                                                  AddedAppointmentCommand="{Binding AppointmentAddedCommand}"
+                                                                                                  DeletedAppointmentCommand="{Binding AppointmentDeletedCommand}" />
+                            </i:Interaction.Behaviors>
+                        </telerik:RadScheduleView>
+                    </Border>
+                </Grid>
+            </telerik:RadFluidContentControl.Content>
+
+            <telerik:RadFluidContentControl.LargeContent>
+                <Grid Margin="0" DataContext="{Binding}">
+                    <telerik:RadScheduleView x:Name="LargeRadScheduler"
+                                ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                AppointmentItemContentTemplate="{StaticResource RemAppointmentLargeTemplate}"
+                                AppointmentsSource="{Binding ClinicianSchedule.ClinicianAppointments}"
+                                SnapAppointments="True">
+                        <telerik:RadScheduleView.ViewDefinitions>
+                            <telerik:DayViewDefinition DayStartTime="08:00:00" DayEndTime="20:00:00" MinTimeRulerExtent="20" MajorTickLength="1h" MinorTickLength="30min" GroupHeaderDateStringFormat="{}{0:dd dddd}"/>
+                            <telerik:WeekViewDefinition DayStartTime="08:00:00" DayEndTime="20:00:00" MinTimeRulerExtent="20" MajorTickLength="1h" MinorTickLength="30min"/>
+                            <telerik:MonthViewDefinition />
+                        </telerik:RadScheduleView.ViewDefinitions>
+                        <i:Interaction.Behaviors>
+                            <Rem_Ria_Infrastructure_View_Behavior:RemRadSchedulerBehavior FirstVisibleDate="{Binding Path=FrontDeskDashboardContext.SelectedDate}"
+                                                                                                  EditedAppointmentCommand="{Binding AppointmentUpdatedCommand}" 
+                                                                                                  DoubleClickAppointmentCommand="{Binding GoToPatientDashboardCommand}"
+                                                                                                  DateRangeUpdatedCommand="{Binding RangeUpdatedCommand}"
+                                                                                                  AddedAppointmentCommand="{Binding AppointmentAddedCommand}"
+                                                                                                  DeletedAppointmentCommand="{Binding AppointmentDeletedCommand}"/>
+                        </i:Interaction.Behaviors>
+                    </telerik:RadScheduleView>
+                </Grid>
+            </telerik:RadFluidContentControl.LargeContent>
+        </telerik:RadFluidContentControl>
+    </Grid>
+
+    </telerik:RadTileViewItem>

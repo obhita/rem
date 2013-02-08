@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="64752170-45f2-460e-a0fd-983e143cadf2" name="Agency Administrator" linkedPackageId="a51b410a-dd88-4b8c-a3c9-8e96cc79f6b9" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="3a34e8fa-dc99-46da-9290-211a7155e610">
+      <elementDefinition Id="0bb80e9c-0a92-4285-a63b-88dfa9d9fb05" />
+      <body>Per Rodney: On hold until a customer actually requests this feature</body>
+    </comment>
+    <comment Id="d12e2ef1-3a12-4fe9-a948-880fac9115f7">
+      <elementDefinition Id="e245ed3c-e437-440d-b5d2-65d03d2d448b" />
+      <body>Currently a visit template can only associate with activity types but not specific details about the activity (ex: schedule for a flu shot, mamogram, etc.)</body>
+      <annotatedElements>
+        <useCaseMoniker Id="fad0be31-124d-4424-85b1-9beca578483c" LastKnownName="Manage Activity Templates" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="57451a01-3426-46e9-934f-0fbcd1240185" name="Agency Administrator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4e072232-95f6-4cd5-a3d5-d9b68d7034f9" />
+        <targetEnds>
+          <association Id="4255172d-832c-468d-a96e-d73cecf3c57e" isDerived="false" sourceEndRoleName="Agency Administrator" targetEndRoleName="UseCase8" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="7005805f-2a31-43cd-8497-4a4c9bb58dc3" LastKnownName="Review number of beds/slots available in a program" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="261baf05-2be5-44cd-8999-4346089c5359" name="Agency Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9188f011-db26-492f-ba1f-c9a1f4aea04e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="18e8f0eb-73fc-4602-a0c4-9b5b85e71e19" name="UseCase8" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="87ba6259-3d66-4492-a731-38407224e5df" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b79086ae-c5a9-419c-a0e0-13638f5e0514" />
+          </association>
+          <association Id="07e58e96-4d51-45a9-8f3b-51e336fcb08d" isDerived="false" sourceEndRoleName="Agency Administrator" targetEndRoleName="Manage Visit Templates and Activity Types" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b07501e3-c1b0-42d6-8cc7-b501f4cce390" LastKnownName="Manage Visit Templates and Activity Types" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="562e2756-167c-4f90-b6da-6439b936e68c" name="Agency Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="37531cbb-efb4-4b07-98f9-07025e9e5b3f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b177432e-4528-4d83-a97c-0e80c473e564" name="Manage Visit Templates and Activity Types" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e40566ff-c1e8-4dde-9bd7-6bc259e26ff1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d313f817-8465-4935-9431-0476ac428023" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7005805f-2a31-43cd-8497-4a4c9bb58dc3" name="Review number of beds/slots available in a program" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a0afaf11-a8b0-4a67-a210-57b42db50f5b" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b07501e3-c1b0-42d6-8cc7-b501f4cce390" name="Manage Visit Templates and Activity Types" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a51a24eb-72ba-475b-a4ba-b3b7676bf9b7" />
+        <additions>
+          <include Id="bcb6d4e7-6f5f-4c60-9926-22d7915a8625">
+            <useCaseMoniker Id="9a413694-befa-4a23-8c65-f759d1bc195a" LastKnownName="Manage Agency Visit Templates and Activity Types" />
+            <elementDefinition Id="51b27671-97b9-48c0-9f1b-bfe6f23b1393" />
+          </include>
+          <include Id="c26fc601-67b2-48c3-ae3a-0b3fd49362eb">
+            <useCaseMoniker Id="2785bdc5-4c2c-4790-ba0f-fbbb84277b35" LastKnownName="Manage Location Visit Templates and Activity Types" />
+            <elementDefinition Id="1eb6f961-33a4-4a52-9a73-bc77f00dbc26" />
+          </include>
+          <include Id="5379231c-fefa-4090-abc7-5529237513f8">
+            <useCaseMoniker Id="12a60503-44f2-473e-9b0c-373655bd5924" LastKnownName="Manage Program Visit Templates and Activity Types" />
+            <elementDefinition Id="26135621-04c8-4674-b45f-4d89877d7c83" />
+          </include>
+          <include Id="cd89e9e7-ad42-4300-a198-6b35054d743a">
+            <useCaseMoniker Id="fad0be31-124d-4424-85b1-9beca578483c" LastKnownName="Manage Activity Templates" />
+            <elementDefinition Id="3ebeff50-be8e-4585-80d3-5df038f0d71b" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9a413694-befa-4a23-8c65-f759d1bc195a" name="Manage Agency Visit Templates and Activity Types" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5333f1ca-d207-4be3-a204-61654cd6506b" />
+        <additions>
+          <include Id="8195fd6c-1f7b-44e6-81ec-9cf82d87fa4a">
+            <useCaseMoniker Id="3f6587dd-e46e-4fa8-b68e-7368962cf85b" LastKnownName="Manage Agency Visit Templates" />
+            <elementDefinition Id="a0cfde52-3c60-4add-aadd-6c4afeb3dfac" />
+          </include>
+          <include Id="fd166364-2884-4984-933f-aeb2274353ab">
+            <useCaseMoniker Id="c00d94d3-5493-434c-9501-2930e2b8abc3" LastKnownName="Mange Agency Activity Types" />
+            <elementDefinition Id="3e835864-6f43-439e-bad7-5d1c73eff58e" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3f6587dd-e46e-4fa8-b68e-7368962cf85b" name="Manage Agency Visit Templates" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8556d946-fdd9-4eb1-a441-9f373bc943e8" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c00d94d3-5493-434c-9501-2930e2b8abc3" name="Mange Agency Activity Types" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e08dcc09-7615-40e6-abf2-629fc64bcc92" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2785bdc5-4c2c-4790-ba0f-fbbb84277b35" name="Manage Location Visit Templates and Activity Types" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1d6908a3-eb80-4ffd-8c38-79dc5fa1b35b" />
+        <additions>
+          <include Id="c7f096da-3c7e-4d94-9c99-c37488a30212">
+            <useCaseMoniker Id="ef057c20-3e15-4116-b700-b8bd747c96bb" LastKnownName="Manage Location Visit Templates" />
+            <elementDefinition Id="1e20be49-700c-43b3-bcd8-1dc54e84ef8f" />
+          </include>
+          <include Id="0ca80677-2175-4ebb-855a-f01710450ddd">
+            <useCaseMoniker Id="16758dee-923f-48e2-97bb-3ef7ea59fb6f" LastKnownName="Manage Location Activity Types" />
+            <elementDefinition Id="4d3bcd53-68a4-4d69-9042-6fb9a0933a9e" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ef057c20-3e15-4116-b700-b8bd747c96bb" name="Manage Location Visit Templates" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3ae76a0f-4102-4afa-a270-afa9785034d2" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="16758dee-923f-48e2-97bb-3ef7ea59fb6f" name="Manage Location Activity Types" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0cb505a8-0b4d-4fa6-8d35-ccfc3dfc7bad" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="12a60503-44f2-473e-9b0c-373655bd5924" name="Manage Program Visit Templates and Activity Types" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f9d22eaa-06fb-46b8-b451-27300fe82a7e" />
+        <additions>
+          <include Id="d722c017-b1c6-48ee-8d17-35a6d1b864eb">
+            <useCaseMoniker Id="323bddc2-8865-4e75-8f99-3d36222dcde6" LastKnownName="Manage Program Visit Templates" />
+            <elementDefinition Id="27ac724e-7f42-425b-94e7-9aba8eac43e4" />
+          </include>
+          <include Id="6d20b31d-0bd8-4169-b80c-deca02b1feb6">
+            <useCaseMoniker Id="abc3d89f-0ce1-455c-8d2c-6a5c36627106" LastKnownName="Manage Program Activity Types" />
+            <elementDefinition Id="42b90e75-5473-46a4-a327-80164c88592f" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="323bddc2-8865-4e75-8f99-3d36222dcde6" name="Manage Program Visit Templates" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="91cfc506-c510-4b35-b181-939c69c2fdf9" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="abc3d89f-0ce1-455c-8d2c-6a5c36627106" name="Manage Program Activity Types" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ce48e7ea-8302-4c35-9273-d0442f919d34" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fad0be31-124d-4424-85b1-9beca578483c" name="Manage Activity Templates" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e83b0d93-8dae-4928-8dea-a22fab011beb" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="a51b410a-dd88-4b8c-a3c9-8e96cc79f6b9" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="ecccde1a-8e03-40fc-babb-7946dfe86665">
+        <profileInstance Id="a3fad41b-2c1f-4073-963d-c2ecb151d4bd" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="d70c99a8-5f4c-4e69-8573-0dbf8eff3c31">
+        <profileInstance Id="822e8260-0a42-4217-85d9-99e82074597d" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

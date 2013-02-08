@@ -1,0 +1,316 @@
+﻿<UserControl x:Class="Rem.Ria.BillingModule.BillingOfficeEditor.BillingOfficeEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+             xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=System.Windows"
+             xmlns:BillingOfficeEditor="clr-namespace:Rem.Ria.BillingModule.Web.BillingOfficeEditor" mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="400">
+
+  <UserControl.Resources>
+    <View:DataContextProxyElement x:Key="RootDataContext" />
+  </UserControl.Resources>
+
+  <Grid x:Name="LayoutRoot">
+    <CustomControls:Editor Header="Billing Office Profile" StartOpen="{Binding IsCreateMode}"
+                           SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}"
+                           AccessControlManager="{Binding AccessControlManager}">
+      <CustomControls:Editor.HeaderTemplate>
+        <DataTemplate>
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="auto" />
+              <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+              <Canvas Width="26" Height="26">
+                <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round"
+                      Stroke="#FF999999"
+                      Data="F1 M 38.4503,44.8047L 16.033,44.8047C 11.909,44.8047 8.55163,41.4487 8.55163,37.3207L 8.55163,14.9061C 8.55163,10.7781 11.909,7.42206 16.033,7.42206L 38.4503,7.42206C 42.5783,7.42206 45.9343,10.7781 45.9343,14.9061L 45.9343,37.3207C 45.9343,41.4487 42.5783,44.8047 38.4503,44.8047 Z "
+                      UseLayoutRounding="False" Height="25.278" Canvas.Left="0.441" Canvas.Top="0.723" Width="25.279" />
+                <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round"
+                      Stroke="#FF999999" Data="F1 M 43.7907,42.3145L 11.04,9.5638" UseLayoutRounding="False" Height="22.253"
+                      Canvas.Left="2.066" Canvas.Top="2.122" Width="22.254" />
+                <Path Stretch="Fill"
+                      Data="F1 M 15.6787,5.648C 11.0187,5.648 7.20933,9.45867 7.20933,14.116L 7.20933,37.0133C 7.20933,41.668 11.0187,45.48 15.6787,45.48L 38.5707,45.48C 43.2307,45.48 47.04,41.668 47.04,37.0133L 47.04,14.116C 47.04,9.45867 43.2307,5.648 38.5707,5.648L 15.6787,5.648 Z "
+                      UseLayoutRounding="False" Height="26.007" Width="26.006">
+                  <Path.Fill>
+                    <LinearGradientBrush StartPoint="0.499985,-5.26733e-006"
+                                         EndPoint="0.499985,1.00003">
+                      <GradientStop Color="#FF3F3F40" Offset="0" />
+                      <GradientStop Color="#FF7D7D7F" Offset="0.257324" />
+                      <GradientStop Color="#FFBBBCBF" Offset="1" />
+                    </LinearGradientBrush>
+                  </Path.Fill>
+                </Path>
+                <Path Stretch="Fill"
+                      Data="F1 M 15.9147,6.87333C 11.792,6.87333 8.43333,10.228 8.43333,14.356L 8.43333,36.772C 8.43333,40.9013 11.792,44.2547 15.9147,44.2547L 38.332,44.2547C 42.4613,44.2547 45.816,40.9013 45.816,36.772L 45.816,14.356C 45.816,10.228 42.4613,6.87333 38.332,6.87333L 15.9147,6.87333 Z "
+                      UseLayoutRounding="False" Height="24.408" Canvas.Left="0.799" Canvas.Top="0.8" Width="24.409">
+                  <Path.Fill>
+                    <LinearGradientBrush StartPoint="0.499985,-7.44952e-006"
+                                         EndPoint="0.499985,1.00003">
+                      <GradientStop Color="#FF141E26" Offset="0" />
+                      <GradientStop Color="#FF343B43" Offset="0.200809" />
+                      <GradientStop Color="#FF555960" Offset="0.503067" />
+                      <GradientStop Color="#FF343B43" Offset="0.52366" />
+                      <GradientStop Color="#FF141E26" Offset="0.533737" />
+                      <GradientStop Color="#FF272E37" Offset="1" />
+                    </LinearGradientBrush>
+                  </Path.Fill>
+                </Path>
+                <Path Stretch="Fill"
+                      Data="F1 M 15.9147,7.33733C 11.792,7.33733 8.43333,10.6933 8.43333,14.82L 8.43333,15.98C 8.43333,11.852 11.792,8.496 15.9147,8.496L 38.332,8.496C 42.4613,8.496 45.816,11.852 45.816,15.98L 45.816,14.82C 45.816,10.6933 42.4613,7.33733 38.332,7.33733L 15.9147,7.33733 Z "
+                      UseLayoutRounding="False" Height="5.644" Canvas.Left="0.799" Canvas.Top="1.102" Width="24.409">
+                  <Path.Fill>
+                    <LinearGradientBrush StartPoint="0.499985,6.53242e-005"
+                                         EndPoint="0.499985,0.999979">
+                      <GradientStop Color="#FF808184" Offset="0" />
+                      <GradientStop Color="#FF5F6062" Offset="0.13" />
+                      <GradientStop Color="#FF3F3F40" Offset="1" />
+                    </LinearGradientBrush>
+                  </Path.Fill>
+                </Path>
+                <Path Stretch="Fill" Fill="white"
+                      Data="F1 M 46.6081,0.422741L 14.5248,11.7701C 12.1551,12.892 11.556,14.4361 11.556,16.6876L 11.556,60.5983C 11.556,62.2552 12.8992,63.5983 14.556,63.5983L 48.556,63.5983C 50.2129,63.5983 51.556,62.2552 51.556,60.5983L 51.4415,3.00607C 51.4415,0.00456619 48.2019,-0.535576 46.6081,0.422741 Z M 19.4212,56.8846L 19.4212,46.8846L 29.4212,46.8846L 29.4212,56.8846L 19.4212,56.8846 Z M 33.6909,56.8846L 33.6909,46.8846L 43.6909,46.8846L 43.6909,56.8846L 33.6909,56.8846 Z M 19.4212,42.6767L 19.4212,32.6767L 29.4212,32.6767L 29.4212,42.6767L 19.4212,42.6767 Z M 33.6909,42.6767L 33.6909,32.6767L 43.6909,32.6767L 43.6909,42.6767L 33.6909,42.6767 Z M 19.4212,28.4688L 19.4212,18.4688L 29.4212,18.4688L 29.4212,28.4688L 19.4212,28.4688 Z M 33.6909,28.4688L 33.6909,18.4688L 43.6909,18.4688L 43.6909,28.4688L 33.6909,28.4688 Z "
+                      Height="17.866" Canvas.Left="7.253" Canvas.Top="4.466" UseLayoutRounding="False" Width="11.235" />
+              </Canvas>
+            </Border>
+            <TextBlock Style="{StaticResource MainHeaderTextBlockStyle}" Grid.Column="1"
+                       VerticalAlignment="Center" Text="{Binding}" />
+          </Grid>
+        </DataTemplate>
+      </CustomControls:Editor.HeaderTemplate>
+      <CustomControls:Editor.Expanders>
+        <CustomControls:EditableExpander x:Name="Profile" Header="Profile"
+                                         Content="{Binding EditingDto.Profile}">
+          <CustomControls:EditableExpander.EditableContentTemplate>
+            <DataTemplate>
+              <CustomControls:EditableStackPanel Margin="10">
+                <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleXL}">
+                  <TextBlock Text="Name" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  <telerik:RadWatermarkTextBox IsReadOnly="True"
+                                               Text="{Binding Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                               Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                </CustomControls:EditableStackPanel>
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleS}">
+                    <TextBlock Text="Effective Date"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <CustomControls:EditableDatePicker
+SelectedValue="{Binding EffectiveDate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleS}">
+                    <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <CustomControls:EditableDatePicker
+SelectedValue="{Binding EndDate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+                <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleL}">
+                  <TextBlock Text="Email Address"
+                             Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  <telerik:RadWatermarkTextBox
+Text="{Binding EmailAddress,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                </CustomControls:EditableStackPanel>
+              </CustomControls:EditableStackPanel>
+            </DataTemplate>
+          </CustomControls:EditableExpander.EditableContentTemplate>
+        </CustomControls:EditableExpander>
+        <CustomControls:EditableExpander x:Name="PhoneNumbers" Header="Phone Numbers"
+                                         Content="{Binding EditingDto.PhoneNumbers}">
+          <CustomControls:EditableExpander.Resources>
+            <CollectionViewSource x:Key="PhoneNumberSource"
+                                  Source="{Binding EditingDto.PhoneNumbers.PhoneNumbers}">
+              <CollectionViewSource.SortDescriptions>
+                <ComponentModel:SortDescription PropertyName="BillingOfficePhoneType.SortOrderNumber"
+                                                Direction="Ascending" />
+                <ComponentModel:SortDescription PropertyName="BillingOfficePhoneType.Name"
+                                                Direction="Ascending" />
+              </CollectionViewSource.SortDescriptions>
+            </CollectionViewSource>
+          </CustomControls:EditableExpander.Resources>
+          <CustomControls:EditableExpander.EditableContentTemplate>
+            <DataTemplate>
+              <CustomControls:EditableStackPanel Margin="10" Orientation="Vertical">
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListS}">
+                    <TextBlock Text="Phone Type"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListS}">
+                    <TextBlock Text="Phone Number"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListS}">
+                    <TextBlock Text="Ext." Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+                <CustomControls:EditableItemsControl
+ItemsSource="{Binding Source={StaticResource PhoneNumberSource}}">
+                  <CustomControls:EditableItemsControl.AddingItem>
+                    <BillingOfficeEditor:BillingOfficePhoneDto />
+                  </CustomControls:EditableItemsControl.AddingItem>
+                  <CustomControls:EditableItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <CustomControls:EditableStackPanel Orientation="Vertical">
+                        <CustomControls:EditableStackPanel Orientation="Horizontal">
+                          <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListS}">
+                            <CustomControls:EditableGrid x:Name="gType">
+                              <telerik:RadComboBox
+Visibility="{Binding ElementName=gType,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[BillingOfficePhoneType]}"
+SelectedItem="{Binding BillingOfficePhoneType, Mode=TwoWay}" DisplayMemberPath="Name" EmptyText="Phone Type" />
+                              <TextBlock
+Visibility="{Binding ElementName=gType,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding BillingOfficePhoneType.Name, FallbackValue='Phone Type', TargetNullValue='Phone Type'}"
+Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                            </CustomControls:EditableGrid>
+                          </CustomControls:EditableStackPanel>
+                          <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListS}">
+                            <telerik:RadWatermarkTextBox x:Name="PhoneNumber"
+                                                         WatermarkContent="Phone Number" Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                          </CustomControls:EditableStackPanel>
+                          <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListS}">
+                            <telerik:RadWatermarkTextBox x:Name="PhoneExtensionNumber"
+                                                         WatermarkContent="Ext" Text="{Binding Extension, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                          </CustomControls:EditableStackPanel>
+                        </CustomControls:EditableStackPanel>
+                      </CustomControls:EditableStackPanel>
+                    </DataTemplate>
+                  </CustomControls:EditableItemsControl.ItemTemplate>
+                </CustomControls:EditableItemsControl>
+              </CustomControls:EditableStackPanel>
+            </DataTemplate>
+          </CustomControls:EditableExpander.EditableContentTemplate>
+        </CustomControls:EditableExpander>
+        <CustomControls:EditableExpander x:Name="Addresses" Header="Addresses"
+                                         Content="{Binding EditingDto.Addresses}">
+          <CustomControls:EditableExpander.Resources>
+            <CollectionViewSource x:Key="AddressesSource" Source="{Binding EditingDto.Addresses.Addresses}">
+              <CollectionViewSource.SortDescriptions>
+                <ComponentModel:SortDescription PropertyName="BillingOfficeAddressType.SortOrderNumber"
+                                                Direction="Ascending" />
+                <ComponentModel:SortDescription PropertyName="BillingOfficeAddressType.Name"
+                                                Direction="Ascending" />
+              </CollectionViewSource.SortDescriptions>
+            </CollectionViewSource>
+          </CustomControls:EditableExpander.Resources>
+          <CustomControls:EditableExpander.EditableContentTemplate>
+            <DataTemplate>
+              <CustomControls:EditableItemsControl Margin="10"
+                                                   ItemsSource="{Binding Source={StaticResource AddressesSource}}">
+                <CustomControls:EditableItemsControl.ItemContainerStyle>
+                  <Style TargetType="CustomControls:EditableItemsControlItem">
+                    <Setter Property="Template">
+                      <Setter.Value>
+                        <ControlTemplate TargetType="CustomControls:EditableItemsControlItem">
+                          <CustomControls:EditableStackPanel Orientation="Vertical">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                              <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                  <CustomControls:EditableContentPresenter
+IsReadOnly="{TemplateBinding IsReadOnly}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+VerticalAlignment="Center" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                  <Button
+Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+Style="{StaticResource TileDeleteButtonStyle}" VerticalAlignment="Center" Margin="15,0,0,0"
+Command="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Parent.RemoveItemCommand}"
+CommandParameter="{TemplateBinding Content}" />
+                                </StackPanel>
+                                <Border
+Style="{StaticResource HorizontalLineFormDivider}" />
+                              </StackPanel>
+                            </Border>
+                          </CustomControls:EditableStackPanel>
+                        </ControlTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </CustomControls:EditableItemsControl.ItemContainerStyle>
+                <CustomControls:EditableItemsControl.AddingItem>
+                  <BillingOfficeEditor:BillingOfficeAddressDto />
+                </CustomControls:EditableItemsControl.AddingItem>
+                <CustomControls:EditableItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <CustomControls:EditableStackPanel Orientation="Vertical">
+                      <CustomControls:EditableStackPanel Orientation="Horizontal"
+                                                         Margin="0 0 0 5">
+                        <CustomControls:EditableGrid x:Name="gType">
+                          <telerik:RadComboBox
+Visibility="{Binding ElementName=gType,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[BillingOfficeAddressType]}"
+EmptyText="Address Type" SelectedItem="{Binding BillingOfficeAddressType,Mode=TwoWay}" DisplayMemberPath="Name" />
+                          <TextBlock
+Visibility="{Binding ElementName=gType,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding BillingOfficeAddressType.Name, FallbackValue='Address Type', TargetNullValue='Address Type'}"
+Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                        </CustomControls:EditableGrid>
+                      </CustomControls:EditableStackPanel>
+                      <CustomControls:EditableStackPanel Orientation="Horizontal">
+                        <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}">
+                          <telerik:RadWatermarkTextBox WatermarkContent="Address Line 1"
+                                                       Text="{Binding FirstStreetAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                        </CustomControls:EditableStackPanel>
+                        <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}">
+                          <telerik:RadWatermarkTextBox WatermarkContent="Address Line 2"
+                                                       Text="{Binding SecondStreetAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                        </CustomControls:EditableStackPanel>
+                      </CustomControls:EditableStackPanel>
+                      <CustomControls:EditableStackPanel Orientation="Horizontal">
+                        <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}">
+                          <telerik:RadWatermarkTextBox WatermarkContent="City"
+                                                       Text="{Binding CityName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                        </CustomControls:EditableStackPanel>
+                        <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}">
+                          <CustomControls:EditableGrid x:Name="gStateType">
+                            <telerik:RadComboBox
+Visibility="{Binding ElementName=gStateType,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[StateProvince]}"
+EmptyText="State" SelectedItem="{Binding StateProvince,Mode=TwoWay}" DisplayMemberPath="Name" />
+                            <TextBlock
+Visibility="{Binding ElementName=gStateType,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding StateProvince.Name}" Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                          </CustomControls:EditableGrid>
+                        </CustomControls:EditableStackPanel>
+                        <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleS}">
+                          <telerik:RadWatermarkTextBox WatermarkContent="Postal Code"
+                                                       Text="{Binding PostalCode,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                        </CustomControls:EditableStackPanel>
+                      </CustomControls:EditableStackPanel>
+                    </CustomControls:EditableStackPanel>
+                  </DataTemplate>
+                </CustomControls:EditableItemsControl.ItemTemplate>
+              </CustomControls:EditableItemsControl>
+            </DataTemplate>
+          </CustomControls:EditableExpander.EditableContentTemplate>
+        </CustomControls:EditableExpander>
+      </CustomControls:Editor.Expanders>
+    </CustomControls:Editor>
+
+  </Grid>
+</UserControl>

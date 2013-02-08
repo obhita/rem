@@ -1,0 +1,218 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.CdsRuleEditor.CdsRuleEditorView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" 
+    xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" 
+    xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism" 
+    xmlns:ViewModel="clr-namespace:Rem.Ria.Infrastructure.ViewModel;assembly=Rem.Ria.Infrastructure" 
+    xmlns:CdsRuleService="clr-namespace:Rem.Ria.PatientModule.Web.CdsRuleService" 
+    xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+    d:DesignHeight="800" d:DesignWidth="400" mc:Ignorable="d">
+    <i:Interaction.Behaviors>
+        <behavior:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+    
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <View:DataContextProxyElement x:Key="RootDataContext"/>
+            <Converter:StringToNullableConverter x:Key="StringToNullableConvert"/>
+        </Grid.Resources>
+        <CustomControls:Editor Header="Cds Rule Editor" StartOpen="{Binding IsCreateMode}" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}">
+            <CustomControls:Editor.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Canvas Width="26" Height="26">
+                                <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 38.4503,44.8047L 16.033,44.8047C 11.909,44.8047 8.55163,41.4487 8.55163,37.3207L 8.55163,14.9061C 8.55163,10.7781 11.909,7.42206 16.033,7.42206L 38.4503,7.42206C 42.5783,7.42206 45.9343,10.7781 45.9343,14.9061L 45.9343,37.3207C 45.9343,41.4487 42.5783,44.8047 38.4503,44.8047 Z " UseLayoutRounding="False" Height="25.278" Canvas.Left="0.441" Canvas.Top="0.723" Width="25.279"/>
+                                <Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 43.7907,42.3145L 11.04,9.5638" UseLayoutRounding="False" Height="22.253" Canvas.Left="2.066" Canvas.Top="2.122" Width="22.254"/>
+                                <Path Stretch="Fill" Data="F1 M 15.6787,5.648C 11.0187,5.648 7.20933,9.45867 7.20933,14.116L 7.20933,37.0133C 7.20933,41.668 11.0187,45.48 15.6787,45.48L 38.5707,45.48C 43.2307,45.48 47.04,41.668 47.04,37.0133L 47.04,14.116C 47.04,9.45867 43.2307,5.648 38.5707,5.648L 15.6787,5.648 Z " UseLayoutRounding="False" Height="26.007" Width="26.006">
+                                    <Path.Fill>
+                                        <LinearGradientBrush StartPoint="0.499985,-5.26733e-006" EndPoint="0.499985,1.00003">
+                                            <GradientStop Color="#FF3F3F40" Offset="0"/>
+                                            <GradientStop Color="#FF7D7D7F" Offset="0.257324"/>
+                                            <GradientStop Color="#FFBBBCBF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Path.Fill>
+                                </Path>
+                                <Path Stretch="Fill" Data="F1 M 15.9147,6.87333C 11.792,6.87333 8.43333,10.228 8.43333,14.356L 8.43333,36.772C 8.43333,40.9013 11.792,44.2547 15.9147,44.2547L 38.332,44.2547C 42.4613,44.2547 45.816,40.9013 45.816,36.772L 45.816,14.356C 45.816,10.228 42.4613,6.87333 38.332,6.87333L 15.9147,6.87333 Z " UseLayoutRounding="False" Height="24.408" Canvas.Left="0.799" Canvas.Top="0.8" Width="24.409">
+                                    <Path.Fill>
+                                        <LinearGradientBrush StartPoint="0.499985,-7.44952e-006" EndPoint="0.499985,1.00003">
+                                            <GradientStop Color="#FF141E26" Offset="0"/>
+                                            <GradientStop Color="#FF343B43" Offset="0.200809"/>
+                                            <GradientStop Color="#FF555960" Offset="0.503067"/>
+                                            <GradientStop Color="#FF343B43" Offset="0.52366"/>
+                                            <GradientStop Color="#FF141E26" Offset="0.533737"/>
+                                            <GradientStop Color="#FF272E37" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Path.Fill>
+                                </Path>
+                                <Path Stretch="Fill" Data="F1 M 15.9147,7.33733C 11.792,7.33733 8.43333,10.6933 8.43333,14.82L 8.43333,15.98C 8.43333,11.852 11.792,8.496 15.9147,8.496L 38.332,8.496C 42.4613,8.496 45.816,11.852 45.816,15.98L 45.816,14.82C 45.816,10.6933 42.4613,7.33733 38.332,7.33733L 15.9147,7.33733 Z " UseLayoutRounding="False" Height="5.644" Canvas.Left="0.799" Canvas.Top="1.102" Width="24.409">
+                                    <Path.Fill>
+                                        <LinearGradientBrush StartPoint="0.499985,6.53242e-005" EndPoint="0.499985,0.999979">
+                                            <GradientStop Color="#FF808184" Offset="0"/>
+                                            <GradientStop Color="#FF5F6062" Offset="0.13"/>
+                                            <GradientStop Color="#FF3F3F40" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Path.Fill>
+                                </Path>
+                                <Path Stretch="Fill" Fill="White" Data="F1 M 47.2546,30.9218L 37.3852,44.9192C 35.7919,47.1778 31.4146,50.4872 26.2479,46.8432C 21.0812,43.2005 22.7292,37.9658 24.3212,35.7072L 33.5332,22.6445C 33.6159,22.5272 34.3839,21.4725 35.7092,20.7592C 37.5599,19.7645 39.6132,19.9472 41.4879,21.2685C 43.3652,22.5925 44.2266,24.4658 43.9092,26.5418C 43.6839,28.0272 42.9479,29.1045 42.8639,29.2245L 34.3106,41.3538C 33.5159,42.4792 31.5919,43.6272 29.5372,42.1778C 27.4839,40.7312 27.9186,38.5325 28.7119,37.4058L 34.6332,29.0072C 34.9959,28.4925 35.7106,28.3698 36.2239,28.7325C 36.7399,29.0965 36.8626,29.8085 36.4986,30.3232L 30.5772,38.7218C 30.2932,39.1485 30.1012,39.7832 30.8532,40.3125C 31.6052,40.8418 32.1372,40.4498 32.4506,40.0272L 40.9986,27.9072C 41.3186,27.4418 42.8079,24.9925 40.1732,23.1352C 38.9906,22.3018 37.8852,22.1832 36.7879,22.7725C 35.9386,23.2272 35.4039,23.9538 35.3999,23.9605L 26.1879,37.0232C 25.8572,37.4992 23.0639,41.8045 27.5639,44.9778C 32.1772,48.2312 35.3852,43.7925 35.5186,43.6032L 45.3892,29.6058C 45.7519,29.0912 46.4652,28.9685 46.9786,29.3312C 47.4946,29.6965 47.6172,30.4085 47.2546,30.9218 Z " HorizontalAlignment="Left" Height="17" Canvas.Top="4" Canvas.Left="6.5" UseLayoutRounding="False" VerticalAlignment="Top" Width="14"/>
+                            </Canvas>
+                        </Border>
+                        <TextBlock Style="{StaticResource MainHeaderTextBlockStyle}" Grid.Column="1" VerticalAlignment="Center" Text="{Binding}"/>
+                    </Grid>
+                </DataTemplate>
+            </CustomControls:Editor.HeaderTemplate>
+            <CustomControls:Editor.Expanders>
+                <CustomControls:EditableExpander x:Name="CdsRule" Header="Cds Rules" Content="{Binding EditingDto}" IsExpanded="True" IsEditing="True" ShowNext="False">
+                    <CustomControls:EditableExpander.Resources>
+                    </CustomControls:EditableExpander.Resources>
+                    <CustomControls:EditableExpander.ContentTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel>
+                                    <ItemsControl ItemsSource="{Binding CdsRules}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border>
+                                                    <StackPanel>
+                                                        
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}" VerticalAlignment="Top">
+                                                                <TextBlock Text="Age" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <TextBlock Text="{Binding Age}" TextWrapping="Wrap" Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                                                <TextBlock Text="Name" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top">
+                                                                <TextBlock Text="Recommendation" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <TextBlock Text="{Binding RecommendationNote}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                                                <TextBlock Text="Medication" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <TextBlock Text="{Binding MedicationCodedConcept.DisplayName}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                                                <TextBlock Text="Problem" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <TextBlock Text="{Binding ProblemCodedConcept.ProblemCodeCodedConcept.DisplayName}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                            </StackPanel>
+                                                        </StackPanel> 
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                                                <TextBlock Text="Lab Test Name" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <TextBlock Text="{Binding LabTestName.Name}" TextWrapping="Wrap" Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                                                <TextBlock Text="Months Since Last Lab" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <TextBlock Text="{Binding ValidLabOrderMonthCount}" Style="{StaticResource EditFormDataElementTextBlockStyle}" Width="40"/>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                        <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentTemplate>
+                    <CustomControls:EditableExpander.ContentEditTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                <StackPanel>
+                                    <CustomControls:EditableItemsControl ItemsSource="{Binding CdsRules}">
+                                        <CustomControls:EditableItemsControl.AddingItem>
+                                            <CdsRuleService:CdsRuleDto />
+                                        </CustomControls:EditableItemsControl.AddingItem>
+                                        <CustomControls:EditableItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border>
+                                                    <StackPanel>
+                                                        <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}" VerticalAlignment="Top">
+                                                                <TextBlock Text="Age" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <telerik:RadMaskedTextBox MaskedText="{Binding Age,Converter={StaticResource StringToNullableConvert},Mode=TwoWay}" MaskType="None" EmptyContent="Age" EmptyContentTemplate="{StaticResource WatermarkTemplate}" />
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                                                <TextBlock Text="Name" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <telerik:RadMaskedTextBox MaskedText="{Binding Name,Mode=TwoWay}" MaskType="None" EmptyContent="Name" EmptyContentTemplate="{StaticResource WatermarkTemplate}" />
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                                <TextBlock Text="Recommendation" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <telerik:RadMaskedTextBox MaskedText="{Binding RecommendationNote,Mode=TwoWay}" MaskType="None" EmptyContent="Recommendation" EmptyContentTemplate="{StaticResource WatermarkTemplate}" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Margin="10 2 0 2">
+                                                                <TextBlock Text="Medication" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <ContentPresenter Content="{Binding}">
+                                                                    <ContentPresenter.ContentTemplate>
+                                                                        <DataTemplate>
+                                                                            <ContentControl Regions:RegionManager.RegionName="MedicationDtsSearch" Height="30" VerticalAlignment="Top">
+                                                                                <Regions:RegionManager.RegionContext>
+                                                                                    <ViewModel:SearchCommunicater SelectedItem="{Binding MedicationCodedConcept,Mode=TwoWay}" AdvancedSearchVisibility="Collapsed" ClearSelectionWhenAborted="True"/>
+                                                                                </Regions:RegionManager.RegionContext>
+                                                                            </ContentControl>
+                                                                        </DataTemplate>
+                                                                    </ContentPresenter.ContentTemplate>
+                                                                </ContentPresenter>
+                                                            </StackPanel>
+                                                            <StackPanel  Margin="10 2 0 2">
+                                                                <TextBlock Text="Problem" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <ContentPresenter Content="{Binding}">
+                                                                    <ContentPresenter.ContentTemplate>
+                                                                        <DataTemplate>
+                                                                            <ContentControl Regions:RegionManager.RegionName="ProblemDtsSearch" Height="30" VerticalAlignment="Top">
+                                                                                <Regions:RegionManager.RegionContext>
+                                                                                    <ViewModel:SearchCommunicater SelectedItem="{Binding ProblemCodedConcept,Mode=TwoWay}" AdvancedSearchVisibility="Collapsed" ClearSelectionWhenAborted="True"/>
+                                                                                </Regions:RegionManager.RegionContext>
+                                                                            </ContentControl>
+                                                                        </DataTemplate>
+                                                                    </ContentPresenter.ContentTemplate>
+                                                                </ContentPresenter>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                                                <TextBlock Text="Lab Test Name" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <telerik:RadComboBox 
+                                                                    ItemsSource="{Binding Source={StaticResource RootDataContext}, Path=DataSource.LookupValueLists[LabTestName]}" 
+                                                                    EmptyText="Lab Test Name" 
+                                                                    SelectedItem="{Binding LabTestName,Mode=TwoWay}" 
+                                                                    DisplayMemberPath="Name"/>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                                                <TextBlock Text="Months Since Last Lab" TextWrapping="Wrap" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <telerik:RadMaskedTextBox MaskedText="{Binding ValidLabOrderMonthCount,Converter={StaticResource StringToNullableConvert},Mode=TwoWay}" MaskType="None" EmptyContent="Months Since last Lab" EmptyContentTemplate="{StaticResource WatermarkTemplate}" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                        <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </CustomControls:EditableItemsControl.ItemTemplate>
+                                    </CustomControls:EditableItemsControl>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </CustomControls:EditableExpander.ContentEditTemplate>
+                </CustomControls:EditableExpander>
+            </CustomControls:Editor.Expanders>
+        </CustomControls:Editor>
+        <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+    </Grid>
+</UserControl>

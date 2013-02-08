@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Ria.PatientModule.Web.DirectMessageCenter.GetHealthcareProviderDirectoryEntriesRequestHandler">
+    <Position X="0.5" Y="0.5" Width="5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAQAAAIAAAAABAAAAAA=</HashCode>
+      <FileName>DirectMessageCenter\GetHealthcareProviderDirectoryEntriesRequestHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.DirectMessageCenter.HealthProviderEntry">
+    <Position X="0.5" Y="2.75" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABABEAAQAgABABAiABAAAgAABAAAAACAAiAgUQAgIEE=</HashCode>
+      <FileName>DirectMessageCenter\HealthProviderEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.DirectMessageCenter.HealthProviderEntryDto">
+    <Position X="4.75" Y="2.75" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAIAAAAAoAAAECAAAAAAAAAAAAgAABUACAEg=</HashCode>
+      <FileName>DirectMessageCenter\HealthProviderEntryDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Rem.Reports", "Rem.Reports.rptproj", "{08535F53-08FA-48D9-A484-276EB9D00F15}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://feiteam03:8080/tfs
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Rem.Reports.rptproj
+		SccLocalPath1 = .
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08535F53-08FA-48D9-A484-276EB9D00F15}.Debug|Default.ActiveCfg = Debug
+		{08535F53-08FA-48D9-A484-276EB9D00F15}.Debug|Default.Build.0 = DebugLocal
+		{08535F53-08FA-48D9-A484-276EB9D00F15}.Debug|Default.Deploy.0 = DebugLocal
+		{08535F53-08FA-48D9-A484-276EB9D00F15}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{08535F53-08FA-48D9-A484-276EB9D00F15}.DebugLocal|Default.Build.0 = DebugLocal
+		{08535F53-08FA-48D9-A484-276EB9D00F15}.Release|Default.ActiveCfg = Release
+		{08535F53-08FA-48D9-A484-276EB9D00F15}.Release|Default.Build.0 = Release
+		{08535F53-08FA-48D9-A484-276EB9D00F15}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

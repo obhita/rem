@@ -1,0 +1,116 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:InfrastructureView="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" 
+	xmlns:sdk="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+	 xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+	 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+	 xmlns:Rem_Ria_Infrastructure_View_Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" 
+	 xmlns:sdk1="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+	  xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+	 x:Class="Rem.Ria.PatientModule.InteroperabilityWorkspace.SingleConceptView"
+    mc:Ignorable="d"
+    d:DesignHeight="300">
+        <UserControl.Resources>
+            <InfrastructureView:DataContextProxyElement x:Key="RootDataContextProxy" />
+        </UserControl.Resources>
+
+        <Border Style="{StaticResource TileBorderStyle}" CornerRadius="3,3,0,0" BorderThickness="0" Padding="0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="0" BorderThickness="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            	<Grid>
+            		<Grid.RowDefinitions>
+            			<RowDefinition Height="34"/>
+            			<RowDefinition Height="30"/>
+            			<RowDefinition Height="0.066*"/>
+            			<RowDefinition Height="0.281*"/>
+            			<RowDefinition Height="0.279*"/>
+            			
+            		</Grid.RowDefinitions>
+				<StackPanel Margin="0" Orientation="Vertical" Grid.Row="0">
+        			<Border Grid.Row="0" Style="{StaticResource TileHeaderBorderStyle}">
+        				<Grid x:Name="Header">
+        					<TextBlock Text="Search By Code" Style="{StaticResource TileHeaderTextBlockStyle}" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalMargin"/>
+
+        				</Grid>
+        			</Border>
+        			<Border Style="{StaticResource TileHeaderColorCodeBorderStyle}" Background="#FFFF7F00" d:LayoutOverrides="Width"/>
+
+        		</StackPanel>
+            		<Border VerticalAlignment="Top" Style="{StaticResource TileToolBarBorderStyle}" d:LayoutOverrides="Width" Grid.Row="1" Margin="0">
+            			<Grid x:Name="CommandHeaderGrid">
+            				<Grid.ColumnDefinitions>
+            					<ColumnDefinition Width="Auto" MinWidth="85"/>
+            					<ColumnDefinition/>
+            				</Grid.ColumnDefinitions>
+            				<!--
+                            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                <telerik:RadButton x:Name="ShowActiveOnlyButton" Content="Active" Style="{StaticResource SmallEditButtonStyle}" Command="{Binding ShowActiveOnlyCommand}"/>
+                                <telerik:RadButton x:Name="ShowAllButton" Content="All" Style="{StaticResource SmallEditButtonStyle}" Command="{Binding ShowAllCommand}"/>
+                            </StackPanel>
+-->
+            				<StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,4,0" HorizontalAlignment="Right" Width="195" VerticalAlignment="Center">
+            					<TextBlock TextWrapping="Wrap" Text="Namespace:" VerticalAlignment="Center" Foreground="White" Margin="4,0,2,0"/>
+            					<telerik:RadComboBox x:Name="radComboBox" DisplayMemberPath="DisplayName" Style="{StaticResource RadComboBoxRemStyle}"
+            						SelectedItem="{Binding SelectedNamespace, Mode=TwoWay}" 
+            						ItemsSource="{Binding Namespaces}" SelectedIndex="0" MinWidth="100" Width="120" Height="22" VerticalAlignment="Center">
+            						<i:Interaction.Triggers>
+            							<i:EventTrigger EventName="SelectionChanged">
+            								<i:InvokeCommandAction 
+            									Command="{Binding NamespaceChangedCommand}" 
+            									CommandParameter="{Binding SelectedItem, ElementName=radComboBox}"/>
+            							</i:EventTrigger>
+            						</i:Interaction.Triggers>
+            					</telerik:RadComboBox>
+            				</StackPanel>
+            			</Grid>
+            		</Border>
+            		<Grid  Margin="0"  Grid.Row="2" RenderTransformOrigin="0.734,0.547" VerticalAlignment="Center">
+            			<Grid.RowDefinitions>
+            				<RowDefinition Height="30"/>
+            				<RowDefinition/>
+            			</Grid.RowDefinitions>
+            			<Grid.ColumnDefinitions>
+            				<ColumnDefinition Width="*"/>	
+							<ColumnDefinition Width="66"/>	
+            			</Grid.ColumnDefinitions>
+            			<telerik:RadWatermarkTextBox Grid.Column="0" x:Name="SearchCriteria" TextWrapping="Wrap" Text="59621000" Margin="10,0,2,0" VerticalAlignment="Center" Height="26" Padding="4"/>
+            			<telerik:RadButton Grid.Column="1" Content="Search" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource TileRoundedCornerButtonStyle}"
+            				Command="{Binding PerformSearchCommand}" 
+            				CommandParameter="{Binding Text, ElementName=SearchCriteria}" Margin="2,4,4,4" Width="60" Height="22" d:LayoutOverrides="HorizontalAlignment"/>
+            		</Grid>
+            		<Grid Margin="8,4,8,8" Grid.Row="3">
+            			<Grid.ColumnDefinitions>
+            				<ColumnDefinition Width="auto"/>
+            				<ColumnDefinition Width="auto"/>
+            			</Grid.ColumnDefinitions>
+            			<Grid.RowDefinitions>
+            				<RowDefinition Height="auto"/>
+            				<RowDefinition Height="auto"/>
+            				<RowDefinition Height="auto"/>
+            				<RowDefinition Height="auto"/>
+            				<RowDefinition Height="auto"/>
+            				<RowDefinition Height="auto"/>
+            			</Grid.RowDefinitions>
+            			<sdk1:Label HorizontalAlignment="Left" Margin="2,2,0,2" Width="100" Content="Name:" />
+            			<sdk1:Label HorizontalAlignment="Left" Margin="2,2,0,-3" Width="100" Content="Code:"  Grid.Row="1"/>
+            			<TextBlock Grid.Column="1" Margin="2" TextWrapping="Wrap" Text="{Binding SearchResults.DisplayName}" />
+            			<TextBlock Grid.Column="1" Margin="2" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SearchResults.Code}"/>
+						 
+						 <ItemsControl ItemsSource="{Binding SearchResults.Properties}" Grid.Row="5" Grid.ColumnSpan="2" Width="auto" Height="auto">
+                	      	<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<StackPanel Orientation="Horizontal">
+                				         			<TextBlock Text="{Binding DisplayName}" Width="Auto" Height="Auto" Padding="0,0,0,0" Margin="0,0,10,0" />
+													<TextBlock Text="{Binding Value}" Width="Auto" Height="Auto" Padding="0,0,0,0" Margin="0,0,10,0" />
+									</StackPanel>     	
+								</DataTemplate>            
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+            		</Grid>
+
+            	</Grid>
+            </ScrollViewer>
+        </Border>
+    </UserControl>

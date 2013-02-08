@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Ria.PatientModule.Web.Tests.PatientDashboard.CreateNewPatientHandlerTests" Collapsed="true">
+    <Position X="3.75" Y="15.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>PatientDashboard\CreateNewPatientHandlerTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.Tests.PatientModuleTestFixture">
+    <Position X="7.25" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModuleTestFixture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Infrastructure.Tests.Domain.SafeHarborAgencyFixtureBase" Collapsed="true">
+    <Position X="10.5" Y="12.25" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Infrastructure.Tests.Domain.LoadedLookupsFixtureBase" Collapsed="true">
+    <Position X="10.5" Y="11" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Infrastructure.Tests.Domain.NHibernateFixtureBase">
+    <Position X="15" Y="7" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Common.Tests.Domain.DomainTestBase">
+    <Position X="36.5" Y="3" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Common.Tests.TestFixtureBase">
+    <Position X="36.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Common.Tests.Domain.AggregateNodeTests" Collapsed="true">
+    <Position X="34" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Common.Tests.Domain.AggregateRootTests" Collapsed="true">
+    <Position X="31.75" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.AgencyModule.AgencyFactoryTests" Collapsed="true">
+    <Position X="29.5" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.AgencyModule.StaffFactoryTests" Collapsed="true">
+    <Position X="38.5" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.AgencyModule.AgencyTests" Collapsed="true">
+    <Position X="47.5" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.AgencyModule.AppointmentFactoryTests" Collapsed="true">
+    <Position X="36.25" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.AgencyModule.LocationFactoryTests" Collapsed="true">
+    <Position X="40.75" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.AgencyModule.LookupValueRepositoryFixture" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="76" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Tests.ClinicalCaseModule.ClinicalCaseFactoryTests" Collapsed="true">
+    <Position X="49.75" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.LabModule.LabFacilityTests" Collapsed="true">
+    <Position X="74.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.LabModule.LabSpecimenFactoryTests" Collapsed="true">
+    <Position X="43" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.PatientModule.AllergyFactoryTests" Collapsed="true">
+    <Position X="45.25" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.PatientModule.PatientTests" Collapsed="true">
+    <Position X="56.5" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.PatientModule.MedicationDoseTimingTests" Collapsed="true">
+    <Position X="72.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.PatientModule.MedicationFactoryTests" Collapsed="true">
+    <Position X="52" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.PatientModule.PatientAccessEventFactoryTests" Collapsed="true">
+    <Position X="58.75" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.PatientModule.PatientContactFactoryTests" Collapsed="true">
+    <Position X="65.5" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.PatientModule.PatientDocumentFactoryTests" Collapsed="true">
+    <Position X="54.25" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.PatientModule.PatientFactoryTests" Collapsed="true">
+    <Position X="63.25" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.PatientModule.PatientNameTests" Collapsed="true">
+    <Position X="76" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.VisitModule.ActivityFactoryTests" Collapsed="true">
+    <Position X="72.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.VisitModule.SocialHistoryFactoryTests" Collapsed="true">
+    <Position X="67.75" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.VisitModule.VisitFactoryTests" Collapsed="true">
+    <Position X="61" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Tests.VisitModule.VitalSignFactoryTests" Collapsed="true">
+    <Position X="70" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Infrastructure.Tests.Domain.Repository.PatientRepositoryTests" Collapsed="true">
+    <Position X="20.5" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Infrastructure.Tests.Domain.Repository.SystemAccountRepositoryTest" Collapsed="true">
+    <Position X="25" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Infrastructure.Tests.Domain.Repository.RepositoryRegistryTest" Collapsed="true">
+    <Position X="72.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Infrastructure.Tests.Domain.Repository.StaffRepositoryTests" Collapsed="true">
+    <Position X="27.25" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Infrastructure.Tests.Domain.TestConnectionProvider" Collapsed="true">
+    <Position X="76" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Infrastructure.Tests.Domain.NHibernateConfigurator" Collapsed="true">
+    <Position X="74.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Infrastructure.Tests.Domain.PersistenceTests" Collapsed="true">
+    <Position X="22.75" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Infrastructure.Tests.Domain.SqlitePersistenceConfigurerProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="74.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.Tests.PatientDashboard.C32DtoFactoryTests" Collapsed="true">
+    <Position X="13.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAABAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientDashboard\C32DtoFactoryTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.Tests.PatientDashboard.SyndromicSurveillanceTests" Collapsed="true">
+    <Position X="16" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientDashboard\SyndromicSurveillanceTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.Tests.PatientDashboard.GetGrowthRateInformationRequestHandlerTests" Collapsed="true">
+    <Position X="9.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientDashboard\GetGrowthRateInformationRequestHandlerTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.Tests.PatientDashboard.GetVitalSignsByPatientRequestHandlerTests" Collapsed="true">
+    <Position X="7" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientDashboard\GetVitalSignsByPatientRequestHandlerTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.Tests.PatientDashboard.Hl7ImmunizationFactoryTests" Collapsed="true">
+    <Position X="18.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>PatientDashboard\HL7ImmunizationFactoryTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.PatientModule.Web.Tests.PatientDashboard.PatientReminderSearchRequestHandlerTests" Collapsed="true">
+    <Position X="11.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientDashboard\PatientReminderSearchRequestHandlerTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

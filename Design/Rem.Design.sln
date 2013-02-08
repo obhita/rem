@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Rem.Billing.AnalysisModel", "Rem.Billing.AnalysisModel\Rem.Billing.AnalysisModel.modelproj", "{F90618DE-1B52-4AEF-9ACF-64E165B70509}"
+EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Rem.Teds.AnalysisModel", "Rem.Teds.AnalysisModel\Rem.Teds.AnalysisModel.modelproj", "{F3E974CC-2AD4-478B-9472-EE6024D349B2}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://feiteam03:8080/tfs/feicollection02
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Rem.Billing.AnalysisModel\\Rem.Billing.AnalysisModel.modelproj
+		SccProjectName1 = Rem.Billing.AnalysisModel
+		SccLocalPath1 = Rem.Billing.AnalysisModel
+		SccProjectUniqueName2 = Rem.Teds.AnalysisModel\\Rem.Teds.AnalysisModel.modelproj
+		SccProjectName2 = Rem.Teds.AnalysisModel
+		SccLocalPath2 = Rem.Teds.AnalysisModel
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F90618DE-1B52-4AEF-9ACF-64E165B70509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90618DE-1B52-4AEF-9ACF-64E165B70509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90618DE-1B52-4AEF-9ACF-64E165B70509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90618DE-1B52-4AEF-9ACF-64E165B70509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3E974CC-2AD4-478B-9472-EE6024D349B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3E974CC-2AD4-478B-9472-EE6024D349B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3E974CC-2AD4-478B-9472-EE6024D349B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3E974CC-2AD4-478B-9472-EE6024D349B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

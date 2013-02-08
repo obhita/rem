@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.PatientDashboard.ProgramEnrollmentTile.CreateProgramEnrollmentView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" 
+    xmlns:infrastructureBehaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+    xmlns:InfrastructureView="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+    mc:Ignorable="d"
+    d:DesignHeight="700" d:DesignWidth="600">
+    <i:Interaction.Behaviors>
+        <infrastructureBehaviors:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <UserControl.Resources>
+        <InfrastructureView:DataContextProxyElement x:Key="RootDataContextProxy" />
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource PopUpFormPanelStyle}" CornerRadius="0">
+
+        <Grid Margin="10">
+            <StackPanel>
+                <Border>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                <TextBlock Text="Program" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                <telerik:RadComboBox Name="ProgramSelectionComboBox" ItemsSource="{Binding AvailablePrograms}" DisplayMemberPath="DisplayName" EmptyText="Select a Program" SelectedItem="{Binding SelectedProgram, Mode=TwoWay}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding ProgramSelectionChangedCommand}" CommandParameter="{Binding SelectedItem, ElementName=ProgramSelectionComboBox}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </telerik:RadComboBox>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                <TextBlock Text="Location" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                <telerik:RadComboBox Name="ProgramOfferingLocationSelectionComboBox" ItemsSource="{Binding AvailableProgramOfferingLocations}" EmptyText="Select Location" DisplayMemberPath="LocationDisplayName" SelectedItem="{Binding SelectedProgramOfferingLocation, Mode=TwoWay}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding ProgramOfferingLocationSelectionChangedCommand}" CommandParameter="{Binding SelectedItem, ElementName=ProgramOfferingLocationSelectionComboBox}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </telerik:RadComboBox>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                <TextBlock Text="Enrollment Staff" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                <telerik:RadComboBox ItemsSource="{Binding AvailableEnrollingStaffs}" DisplayMemberPath="CompleteName" EmptyText="Select Enrollment Staff" SelectedItem="{Binding SelectedEnrollingStaff, Mode=TwoWay}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                <TextBlock Text="Enroll Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                <telerik:RadDateTimePicker InputMode="DatePicker" x:Name="ProgramEnrollmentDateTextBlock" SelectedValue="{Binding ProgramEnrollment.EnrollmentDate, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}" >
+                                <TextBlock Text="On Waitlist Days" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                <telerik:RadMaskedTextBox MaskType="None" MaskedText="{Binding ProgramEnrollment.DaysOnWaitingListCount,Mode=TwoWay}" EmptyContent="# of Days" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                        <Border Style="{StaticResource EditFormCommentsBorderStyle}">
+                            <StackPanel>
+                                <StackPanel Style="{StaticResource EditFormStackPanelStyleXL}">
+                                    <TextBlock Text="Comments"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadMaskedTextBox MaskType="None" MaskedText="{Binding ProgramEnrollment.CommentsNote,Mode=TwoWay}" EmptyContent="Comments" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <StackPanel Orientation="Vertical" Visibility="{Binding Wrapper.IsDirty, Converter={StaticResource BooleanToVisibilityConverterInstance}}">
+                            <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0" >
+                                <telerik:RadButton Style="{StaticResource StaticBorderlessButtonStyle}" Command="{Binding CreateProgramEnrollmentCommand}" Content="Complete" Width="120" Height="22" />
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <CustomControls:LoadingControl IsLoading="{Binding IsLoading}"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#CCFFFFFF" Foreground="#FF666666"/>
+        </Grid>
+    </Border>
+</UserControl>

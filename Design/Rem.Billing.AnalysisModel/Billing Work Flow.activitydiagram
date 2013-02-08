@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="4a8596ef-a0e6-456e-b22f-fd86e1050aed" name="Billing Work Flow" linkedPackageId="217859dc-bdfc-479a-b8d0-bcd4dd388222" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <ownedCommentsInternal>
+    <comment Id="84d3aa18-561f-4a2c-a421-0c50384df0ab">
+      <elementDefinition Id="6a48cf9b-59e2-43b2-9faa-bce83a247393" />
+      <body>We do not have an adjudication system or a partner that is capable of building an 835.  Do we build a mock adjudication system.</body>
+      <annotatedElements>
+        <opaqueActionMoniker Id="e6a149e0-eeb4-49a6-854d-c0d4922535b0" LastKnownName="Import an 835" />
+      </annotatedElements>
+    </comment>
+    <comment Id="9c255941-6b82-403f-a811-36dee62d374a">
+      <elementDefinition Id="ebe85616-280d-4ff4-9ff8-1187f21b4a22" />
+      <body>We can investigate using the WITS system as a payor system.</body>
+      <annotatedElements>
+        <opaqueActionMoniker Id="e6a149e0-eeb4-49a6-854d-c0d4922535b0" LastKnownName="Import an 835" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="cc173b7c-205d-4cf3-9f4e-5663770b4f29" name="Billing Work Flow" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="a6a007a8-9c51-4417-b3a2-bc7f972a64a0" />
+        <nodes>
+          <initialNode Id="74acb890-7bdf-4afd-a638-c0cef6e24270" name="Initial1" isLeaf="false">
+            <elementDefinition Id="c1e68a4e-e011-44c2-afd4-3f0e78d24e17" />
+            <flowNodeTargets>
+              <controlFlow Id="4caba96d-961f-4f3f-9253-46440ec25785" isLeaf="false">
+                <opaqueActionMoniker Id="99468d13-6bdc-48a9-8f88-f50296f9331f" LastKnownName="Set Up Visit Templates &amp; Activities" />
+                <elementDefinition Id="3220fdf2-9506-4576-b779-b9a9822b3da4" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction Id="d7218ce9-fdf6-4f2d-8e40-2302047c5c75" name="Enter Visits/Activities" isLeaf="false">
+            <elementDefinition Id="21513bc0-001b-4891-8759-aa32a5e18dd7" />
+            <flowNodeTargets>
+              <controlFlow Id="fc4bc2d7-dca7-4877-9e59-777970c98d5d" isLeaf="false">
+                <opaqueActionMoniker Id="2ac17589-a171-4d66-9a8a-a77db09a2e74" LastKnownName="Review Procedure Codes" />
+                <elementDefinition Id="5aa71517-33b9-4f4b-a399-b3c513340f3a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="99468d13-6bdc-48a9-8f88-f50296f9331f" name="Set Up Visit Templates &amp; Activities" isLeaf="false">
+            <elementDefinition Id="df949ad8-c30f-4da8-937e-fbba3bf5284c" />
+            <flowNodeTargets>
+              <controlFlow Id="3ca32b4f-ba63-4082-8d8d-8cac304e13f5" isLeaf="false">
+                <opaqueActionMoniker Id="eb6896a8-4f30-4aa3-b991-76b89d7ffbe9" LastKnownName="Schedule Visit" />
+                <elementDefinition Id="50aac6cc-680d-414c-b18b-60095f114956" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="2ac17589-a171-4d66-9a8a-a77db09a2e74" name="Review Procedure Codes" isLeaf="false">
+            <elementDefinition Id="9ad548d3-713e-46f4-a947-6a13a5d60bd2" />
+            <flowNodeTargets>
+              <controlFlow Id="2047d8c0-457e-4d64-abfe-198f5dad85a6" isLeaf="false">
+                <opaqueActionMoniker Id="35655f75-2dc2-4a58-a0c6-c0e56c99c7ce" LastKnownName="Nightly Encounter Extract" />
+                <elementDefinition Id="9018240e-672e-4692-be39-dc943e34c9c4" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="35655f75-2dc2-4a58-a0c6-c0e56c99c7ce" name="Nightly Encounter Extract" isLeaf="false">
+            <elementDefinition Id="5149e523-18e1-41f5-83a0-d1c45c53fff5" />
+            <flowNodeTargets>
+              <controlFlow Id="405872c5-50fb-4bf4-81b3-07b940b5aaa9" isLeaf="false">
+                <opaqueActionMoniker Id="bb05cde5-f07a-4600-ba43-a34a3e63381c" LastKnownName="Nightly Encounter Billing Import" />
+                <elementDefinition Id="9e077587-b9cb-4e36-be82-01daea76f4c0" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="bb05cde5-f07a-4600-ba43-a34a3e63381c" name="Nightly Encounter Billing Import" isLeaf="false">
+            <elementDefinition Id="0ce882c6-43dd-4471-90f3-78be65143d79" />
+            <flowNodeTargets>
+              <controlFlow Id="7952f16e-7a01-401f-82b7-a8b271052365" isLeaf="false">
+                <opaqueActionMoniker Id="b2449f92-cdc8-4f0d-bd75-f3bbe2dd0baa" LastKnownName="Work Claim Errors" />
+                <elementDefinition Id="dacd5ee1-671d-4909-ac08-e6d78d456027" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="b2449f92-cdc8-4f0d-bd75-f3bbe2dd0baa" name="Work Claim Errors" isLeaf="false">
+            <elementDefinition Id="fbd8d9b0-7a5b-49db-a055-ab8ee79c7407" />
+            <flowNodeTargets>
+              <controlFlow Id="de87c9e8-e83b-4c56-80cf-a2c5074e0b3f" isLeaf="false">
+                <opaqueActionMoniker Id="f28b5b3b-5fbd-4efb-895e-f1720c62ae63" LastKnownName="Review and Edit Claims" />
+                <elementDefinition Id="6704bcbe-f189-4072-92bf-e0923040f3a6" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="f28b5b3b-5fbd-4efb-895e-f1720c62ae63" name="Review and Edit Claims" isLeaf="false">
+            <elementDefinition Id="cc16d73c-cede-4db9-a042-da750971dd98" />
+            <flowNodeTargets>
+              <controlFlow Id="b1eca1a1-3c4c-4497-9a87-7d4daa2b3b5c" isLeaf="false">
+                <opaqueActionMoniker Id="07f43bc6-4bb8-433d-acb2-6c9b21e62ab7" LastKnownName="Request Generation of 837 Professional" />
+                <elementDefinition Id="dc1d7716-7ca6-4131-bac8-8260843d5cce" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="07f43bc6-4bb8-433d-acb2-6c9b21e62ab7" name="Request Generation of 837 Professional" isLeaf="false">
+            <elementDefinition Id="5b123e43-460e-4dfa-a28b-d5b1df7e2ed0" />
+            <flowNodeTargets>
+              <controlFlow Id="4065d161-cbab-40a6-b0b3-0ece630d7403" isLeaf="false">
+                <opaqueActionMoniker Id="e2aa5d5d-1954-4c1b-8713-7e58c92a89cb" LastKnownName="Generate 837 Professional" />
+                <elementDefinition Id="e72655c6-27c5-46af-b17a-410e8e1cff2a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="e2aa5d5d-1954-4c1b-8713-7e58c92a89cb" name="Generate 837 Professional" isLeaf="false">
+            <elementDefinition Id="78c0c1a9-54bf-41e6-9778-f8abceaca6aa" />
+            <flowNodeTargets>
+              <controlFlow Id="dd09e5fc-6f5f-4ce5-aed0-e07c86235d8f" isLeaf="false">
+                <opaqueActionMoniker Id="2b236fa1-b75f-48ce-a22a-41580e2deabc" LastKnownName="Download 837 Professional" />
+                <elementDefinition Id="fec369b1-beb6-4d70-9640-68727e890993" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="2b236fa1-b75f-48ce-a22a-41580e2deabc" name="Download 837 Professional" isLeaf="false">
+            <elementDefinition Id="ca4164e5-ea31-4066-8d75-86aa572dac6c" />
+            <flowNodeTargets>
+              <controlFlow Id="18b6b2f7-0ab7-4aff-b65f-6c2fe9a64cd1" isLeaf="false">
+                <decisionNodeMoniker Id="6ccc22b8-0718-4e3e-a4aa-a2307e4f6312" LastKnownName="Decision1" />
+                <elementDefinition Id="e1339cc9-0254-449e-b19a-35faeba2cc3f" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="e6a149e0-eeb4-49a6-854d-c0d4922535b0" name="Import an 835" isLeaf="false">
+            <elementDefinition Id="cc1b5c3f-d36e-40e0-92e2-b8c7122a7b7a" />
+            <flowNodeTargets>
+              <controlFlow Id="65c0455b-bff0-4a20-be6a-df42b265e11d" isLeaf="false">
+                <opaqueActionMoniker Id="4a40d625-ea82-407f-98a9-5848fb990a63" LastKnownName="Parse and Process 835" />
+                <elementDefinition Id="846a9fa1-2bf8-4b21-b534-346f502f8954" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="6ccc22b8-0718-4e3e-a4aa-a2307e4f6312" name="Decision1" isLeaf="false">
+            <elementDefinition Id="3f0cda28-8e7c-4045-963e-1c61a557c160" />
+            <flowNodeTargets>
+              <controlFlow Id="d9eaa5f1-ba9c-4a0a-9d02-5c49de398aba" guard="If we have access to an 835" isLeaf="false">
+                <opaqueActionMoniker Id="e6a149e0-eeb4-49a6-854d-c0d4922535b0" LastKnownName="Import an 835" />
+                <elementDefinition Id="efe9534f-2a3e-4cab-92e2-efe3217627c3" />
+              </controlFlow>
+              <controlFlow Id="0ccca249-7c2e-472d-a12c-0600e2f59063" guard="If we do not have access to an 835" isLeaf="false">
+                <opaqueActionMoniker Id="d3650df7-ea8a-468f-9b1a-5a5f7c24c885" LastKnownName="Manually enter a payment" />
+                <elementDefinition Id="0a535636-33fb-4bfe-b451-b1b15c4758d7" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="d3650df7-ea8a-468f-9b1a-5a5f7c24c885" name="Manually enter a payment" isLeaf="false">
+            <elementDefinition Id="808f6610-f26b-4e5a-b75b-ff318c52587b" />
+            <flowNodeTargets>
+              <controlFlow Id="bbd1ad83-2f31-4c55-8b0d-aa61bf0f544c" isLeaf="false">
+                <opaqueActionMoniker Id="c4a371e8-c95f-4b9b-9551-a23e03ade93b" LastKnownName="Work Denials" />
+                <elementDefinition Id="16c47122-1142-4a96-bd2b-e435d1826c9a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="4a40d625-ea82-407f-98a9-5848fb990a63" name="Parse and Process 835" isLeaf="false">
+            <elementDefinition Id="282683d3-9ac8-4e18-9348-cc6d734f7730" />
+            <flowNodeTargets>
+              <controlFlow Id="c529d8d5-a7df-4216-9f5e-1fe9bbaf8993" isLeaf="false">
+                <opaqueActionMoniker Id="c4a371e8-c95f-4b9b-9551-a23e03ade93b" LastKnownName="Work Denials" />
+                <elementDefinition Id="f7889128-d0ae-4a58-adc7-b6ea0a7b5c01" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="c4a371e8-c95f-4b9b-9551-a23e03ade93b" name="Work Denials" isLeaf="false">
+            <elementDefinition Id="5b7fa956-db53-47d2-8220-0ea24a837dfc" />
+            <flowNodeTargets>
+              <controlFlow Id="1162affc-e596-4204-9392-cdd0adcd7136" isLeaf="false">
+                <decisionNodeMoniker Id="8a970441-f062-43f5-993c-5994346544c6" LastKnownName="Decision2" />
+                <elementDefinition Id="2a57395a-b0a0-46e0-812b-b9a35197af95" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="8a970441-f062-43f5-993c-5994346544c6" name="Decision2" isLeaf="false">
+            <elementDefinition Id="a1f84bac-4204-4f00-9694-eb296264c8d3" />
+            <flowNodeTargets>
+              <controlFlow Id="b2cba099-56da-44c9-8ca0-44d1b6b22eb5" guard="If a claim requires a resubmission to the payor" isLeaf="false">
+                <opaqueActionMoniker Id="44ecd2b6-a1cb-4d7b-a84a-83177e0c98dd" LastKnownName="Rebill" />
+                <elementDefinition Id="4f1a48b9-a99d-4692-ad0e-844c811afd5c" />
+              </controlFlow>
+              <controlFlow Id="570909b4-859b-4416-8992-883845a1a70f" isLeaf="false">
+                <activityFinalNodeMoniker Id="831d5ef6-19a2-4fc9-996d-d7f367f393cf" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="97777769-71c1-4afe-a370-7723f65d4207" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="44ecd2b6-a1cb-4d7b-a84a-83177e0c98dd" name="Rebill" isLeaf="false">
+            <elementDefinition Id="71d4612a-4e60-4773-a4e8-eb51905a2e51" />
+            <flowNodeTargets>
+              <controlFlow Id="de803234-8c4c-42f8-aab5-ea67173d2cb2" isLeaf="false">
+                <opaqueActionMoniker Id="f28b5b3b-5fbd-4efb-895e-f1720c62ae63" LastKnownName="Review and Edit Claims" />
+                <elementDefinition Id="5ffccc72-74ab-4130-b290-11a02bca4eae" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode Id="831d5ef6-19a2-4fc9-996d-d7f367f393cf" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="150ef120-874e-4ecb-8a51-38352225d4d5" />
+          </activityFinalNode>
+          <opaqueAction Id="eb6896a8-4f30-4aa3-b991-76b89d7ffbe9" name="Schedule Visit" isLeaf="false">
+            <elementDefinition Id="df70481f-2da0-48d0-96f3-a34eea7670d1" />
+            <flowNodeTargets>
+              <controlFlow Id="49b08469-4082-4059-a237-7cfd09b3dc1b" isLeaf="false">
+                <opaqueActionMoniker Id="d7218ce9-fdf6-4f2d-8e40-2302047c5c75" LastKnownName="Enter Visits/Activities" />
+                <elementDefinition Id="ecae0178-41cc-4463-bb87-f09f07125023" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="217859dc-bdfc-479a-b8d0-bcd4dd388222" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="3705e8ae-795e-4d87-9c6f-a0b7a0ca07f8">
+        <profileInstance Id="abfbbb93-55ff-4bef-8985-79e2ca289307" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="b63309a3-53ce-479b-82ce-7b84c748f8aa">
+        <profileInstance Id="c7c2efb7-2cdc-43d3-bd34-77129b2f2042" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</activityRootModel>

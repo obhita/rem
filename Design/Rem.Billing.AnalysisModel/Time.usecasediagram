@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="e8f59ae3-d888-4567-8dc3-9d49bd2dbfaa" name="Time" linkedPackageId="53e6e755-9f14-4385-9e6e-b57814846dc7" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="c9516eb0-1eeb-431b-a798-7f7e98004e9e" name="Time" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ac4f8b5e-7ceb-4b0a-bcad-076c27ab556b" />
+        <targetEnds>
+          <association Id="0e891ed1-de9e-4ffe-bda0-f3dd42cbe322" isDerived="false" sourceEndRoleName="Time" targetEndRoleName="- Post a request for the nightly export of visit data from the ehr to the pms" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="1904ed07-550e-41df-900d-db806c6830d1" LastKnownName="Post a request for the nightly export of visit data from the ehr to the pms" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8cae47e3-37a9-45ea-84d6-79ef5d71d1f7" name="Time" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5f28c11d-503c-4bbe-9753-542de1277e8a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e81f6b6e-d8f3-488c-b14d-0efcf3d5c7fb" name="- Post a request for the nightly export of visit data from the ehr to the pms" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3e1b7f27-da22-4157-acf5-81113ff81011" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="18d1210c-a664-4b3b-8433-4f0b9c32c971" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1904ed07-550e-41df-900d-db806c6830d1" name="Post a request for the nightly export of visit data from the ehr to the pms" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0a3baabd-93a7-406f-b943-f12ecca36685" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="53e6e755-9f14-4385-9e6e-b57814846dc7" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="218ee63d-f4e9-4fd8-a1a6-540c84dd7db2">
+        <profileInstance Id="bec4c36c-536a-4f98-b610-07d009953fa9" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="763e08df-5c46-475f-8410-e484fc7f5c65">
+        <profileInstance Id="25d24d41-66d6-4c4a-8901-ae3f438381c1" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

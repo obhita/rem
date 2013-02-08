@@ -1,0 +1,3675 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="bb60960b-2f23-4024-9963-a7558f5d326f"
+  name="Rem.Domain.Clinical" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="13561887-5a4c-454a-8310-a7028a6664b6">
+      <body>Could have an "encounter" record between visit/activity and procedure</body>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="820c5f08-722b-4122-9d05-b571ac245e3b"
+        name="Visit Template"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="22cfb0af-f9ea-4b96-bfff-ad67fce0b914"
+            isDerived="false"
+            sourceEndRoleName="VisitTemplates"
+            targetEndRoleName="Agency"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="44f6509a-ea4b-4973-833c-140d71aaa20f"
+              LastKnownName="Agency"
+              LastKnownLocation="Package_0930.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d97e63a0-7269-4b83-aed6-f9e7d5634298"
+                  name="VisitTemplates"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="08e76e37-d85e-4515-90ad-72b93fd531fd"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="e40a8074-d3c5-4686-ab1b-bf0e1c32bcec"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3dbeab7c-bcf6-4e9b-bf16-1d641b51c367"
+                  name="Agency"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="2bce5113-42f2-4da2-afa1-6ef1a8a7ec2f"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="7b128467-139a-48dd-a85a-64dc2ba6310a"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e14a5b75-ad55-4b6f-bea0-2f958776dbe1"
+            isDerived="false"
+            sourceEndRoleName="VisitTemplate"
+            targetEndRoleName="ActivityTypes"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="91cb7752-db05-4c3e-911e-0794467b44ae"
+              LastKnownName="Activity Type"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f84dca51-8f09-42ca-bbf5-a3bb97aed86e"
+                  name="VisitTemplate"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9a73dcd4-8b7c-4880-a9b9-b9f3bea40ac5"
+                  name="ActivityTypes"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="a49fd6d0-fe11-43ac-b41f-832af98f7b7b"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="5c1deab1-a49d-4b71-b23c-4255544fd1ca"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="63974296-2036-46e3-907b-d1b7c1302231"
+            name="Agency"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="3984aa91-cfe3-407e-9903-edf63ea69b80"
+                LastKnownName="Agency"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="7a9ac97f-6253-4eb9-b61c-66a80b4beea3"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b211900e-c801-496f-aea0-c3bdba65e931"
+            name="Activity Types"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="c4a780c4-c897-4f6e-9874-0956f0be91d1"
+                LastKnownName="IList&lt;Activity Type&gt;"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e8f340ee-aed9-4113-9de3-eec446a8da49"
+            name="DefaultProcedureCode"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="f1ea0cab-876f-4e6a-b78c-30ceba135681"
+                LastKnownName="CodedConcept"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="cb75a7b9-be85-46bd-8669-79a680ae1e40"
+        name="Visit"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="6cf7ab10-b72d-4bbc-a327-11d92a08e7b0"
+            isDerived="false"
+            sourceEndRoleName="Visit"
+            targetEndRoleName="Activity"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="2150e79b-8ff1-4be1-8b12-7248c8da13f0"
+              LastKnownName="Activity"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b529ffbc-b5b1-4de4-9638-dba4c3d7cf36"
+                  name="Visit"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d75bd52f-7c90-4dd3-8b48-d6171f5e6c31"
+                  name="Activity"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="1f804442-9ad3-4b5b-a474-a7181ede9032"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="3df9b1db-4ce3-46d1-91f9-ffc744c50e3b"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c1be4f27-e806-48aa-827c-1f5f55f964e4"
+            isDerived="false"
+            sourceEndRoleName="Visit"
+            targetEndRoleName="Coding Context"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="8a8a7edb-4b45-4ad3-969a-5aa7a53bb682"
+              LastKnownName="Coding Context"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b89cfad1-2ef9-41aa-b0a9-8712f9714297"
+                  name="Visit"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9bdfdb57-1728-4a02-9124-99e1c7721ff2"
+                  name="Coding Context"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="51428c78-4ad8-443c-8339-a90c18f6d252"
+            name="Coding Context"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="8a8a7edb-4b45-4ad3-969a-5aa7a53bb682"
+                LastKnownName="Coding Context"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8130d207-5c75-499b-9c06-7bc81a412711"
+        name="Referral Response"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="4cbef005-dae2-4b07-ab83-42c7610196bb"
+            isDerived="false"
+            sourceEndRoleName="Referral Response"
+            targetEndRoleName="Referral Request"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3dd47601-3d61-4317-b069-2a8813d6e4a0"
+              LastKnownName="Referral Request"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="33a504e0-5b46-495c-9ca2-ba49e1af7c06"
+                  name="Referral Response"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="73548905-bbf8-403e-9452-ff048cfeacaa"
+                  name="Referral Request"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="6caf6439-0909-4bd6-99bc-92e2c92738f9"
+                      name="Lower"
+                      value="0" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="139221f4-f2d2-4e20-b47f-45704756a83a"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="eafba78d-0829-41ac-8940-0df0f85930dc"
+        name="Self Payment"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="b61d28e0-17c7-4847-9380-191db99a8fb7"
+            isDerived="false"
+            sourceEndRoleName="Self Payment"
+            targetEndRoleName="Payment Type"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="26de40c0-1cfc-43c4-a7a2-79b2c8ae1e95"
+              LastKnownName="Payment Method"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3ead2baf-8c71-4c46-aec0-b918b4050a32"
+                  name="Self Payment"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="856c8314-15da-4f50-8dfd-6835fde29833"
+                  name="Payment Type"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="7ac2de7d-c42c-4c6a-ba65-80e7aea5ac7c"
+            isDerived="false"
+            sourceEndRoleName="Self Payment"
+            targetEndRoleName="Staff"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="64687368-9c2a-42dd-9e9f-0d9a4067e1b0"
+              LastKnownName="Staff"
+              LastKnownLocation="Package_0930.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fd3a8f77-96cb-4109-a93b-f055b7fe1bdd"
+                  name="Self Payment"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="ba3472ec-61d8-4371-87ea-0db72199e28e"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="3adc4f15-53ba-45f9-bb88-d672a75e33dd"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f24240c4-bbf2-423b-a4d6-8fc44fed9087"
+                  name="Staff"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="f7160111-18d2-40de-b584-b224afc09d41"
+            name="Payment Method"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="1cf06b5d-66fa-4343-8f20-71fba9498528"
+                LastKnownName="Payment Method"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="8bc19a4f-fe80-4d9e-aca1-e27f8f5cd955"
+            name="Payment Amount"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="ac6540ad-ec3a-40b2-a043-ef18d91cc015"
+                LastKnownName="Currency"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b0c68129-9025-44fa-98ed-3b35775adf3a"
+            name="Collected Date"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="9a459a83-5fac-4d82-b737-039e17b6943e"
+                LastKnownName="Datetime"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="003fafe1-c004-40d9-bdb8-2eab6b67f0d0"
+            name="Collect By Staff"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="c0a1832b-7ef9-443d-a8fb-33658a652247"
+                LastKnownName="Staff"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="3dd47601-3d61-4317-b069-2a8813d6e4a0"
+        name="Referral Request"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="7d852d60-ae90-46f2-a454-71bda3fe2bbd"
+            isDerived="false"
+            sourceEndRoleName="Referral Request"
+            targetEndRoleName="Patient"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="df338e3d-59f6-4209-864f-2cd78e5acd5c"
+              LastKnownName="Patient"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="47cad6df-2c0c-406c-b34e-77f9d4fe7753"
+                  name="Referral Request"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="987380c2-9e77-42c7-b947-83a9fcaa98ae"
+                  name="Patient"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="e3c1243e-e32d-46d6-91e1-df2935932384"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="b9f3d538-f558-4ee0-b368-001e8c22dcc2"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c3bebef5-c720-427b-a577-c7f53bff1d2e"
+        name="Program Offering"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7bdcf565-8a53-4821-b370-67fe296905ae"
+        name="Program Enrollment"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="73de44ab-0a16-4994-a648-0b9c887e729d"
+            isDerived="false"
+            sourceEndRoleName="Program Enrollment"
+            targetEndRoleName="Program Offering"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c3bebef5-c720-427b-a577-c7f53bff1d2e"
+              LastKnownName="Program Offering"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e6447460-91c4-4049-a2d9-a2015ab479be"
+                  name="Program Enrollment"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e095957b-c73a-430d-b61a-299efea10253"
+                  name="Program Offering"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="e85a6568-f2b8-4da6-b590-9b0f85241367"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="2c90adc8-ced0-402d-a3e5-b9b2d996497a"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="52caeafb-a7c9-4581-b5a0-9681611cf6fa"
+        name="Program"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="df72d4cc-9977-4c20-a18d-97a1d6bba1e1"
+            isDerived="false"
+            sourceEndRoleName="Program"
+            targetEndRoleName="ProgramOfferings"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c3bebef5-c720-427b-a577-c7f53bff1d2e"
+              LastKnownName="Program Offering"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0cdbcf66-32c5-4101-92e0-6a99bdccceae"
+                  name="Program"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="22ed5faa-684c-44ca-83d4-c868bf0556d3"
+                  name="ProgramOfferings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="9ebf113d-cf98-447e-812c-8adcdc8ec9b6"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="490630de-c630-4682-94e5-c24f582145b9"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="df338e3d-59f6-4209-864f-2cd78e5acd5c"
+        name="Patient"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="9a5c3948-b33b-4688-9aa7-45f0e602e137"
+            isDerived="false"
+            sourceEndRoleName="Patients"
+            targetEndRoleName="Agency"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="44f6509a-ea4b-4973-833c-140d71aaa20f"
+              LastKnownName="Agency"
+              LastKnownLocation="Package_0930.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d54bcaf5-fe5c-4578-81ec-937d768adf44"
+                  name="Patients"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="f049c461-2d30-4efe-a80b-1e6470b603e7"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="102573aa-952c-44b1-b380-ad1997cda0c6"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9baa618f-3b5f-4f11-bac2-c0528179c3bd"
+                  name="Agency"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0a12010a-41e4-4cdb-abf5-0e1f6e3bc1a4"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="264371f0-436b-434c-b3ab-cc4b8816a455"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="00063f9a-d0a6-4f7e-9847-8845c29567c8"
+            isDerived="false"
+            sourceEndRoleName="Patient"
+            targetEndRoleName="Clinical Case"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="ee1e7139-dda7-4054-850b-28bebcf0bbdb"
+              LastKnownName="Clinical Case"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0beef61b-a8c1-4f08-81c8-9b7aca3b47e8"
+                  name="Patient"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0d7bd87e-a044-456d-a681-3f6eecbef78c"
+                  name="Clinical Case"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="ed6b5296-85d1-4606-a9d6-2d152ef5da4c"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="4250b78f-e9fc-4062-b96e-bc70d01fe557"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="2bb5fffe-9e5b-4f3a-af70-5aba0cbbcbb7"
+            isDerived="false"
+            sourceEndRoleName="Patient"
+            targetEndRoleName="Program Enrollment"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="7bdcf565-8a53-4821-b370-67fe296905ae"
+              LastKnownName="Program Enrollment"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4e5f8bfa-3716-4595-8a59-5fcf10a9626d"
+                  name="Patient"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ef0e0126-84b1-4d7b-b688-9fc579f52bc9"
+                  name="Program Enrollment"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="7a8faae6-ed47-4c28-a3f2-344f26475a75"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d1d55844-a6e3-4979-b0ba-77936f501473"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="96bf601f-0b62-4a4d-a9cc-7e1320aa0d3e"
+            isDerived="false"
+            sourceEndRoleName="Patient"
+            targetEndRoleName="Payor Coverage"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="7ffa56f5-cc3e-4a86-8635-84a7e24659e2"
+              LastKnownName="Payor Coverage"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d4739a08-37f9-44c3-885f-6a976c2f21ca"
+                  name="Patient"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="50d5198f-39de-4e75-b321-8757cf48e234"
+                  name="Payor Coverage"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="808cec8a-88ce-4101-925c-551844c9314b"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="c9cd9467-1dc3-495d-9eb4-5facd8fe272e"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="5f21eb75-4505-485c-b4be-49df806fa572"
+            isDerived="false"
+            sourceEndRoleName="Patient"
+            targetEndRoleName="Self Payment"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="eafba78d-0829-41ac-8940-0df0f85930dc"
+              LastKnownName="Self Payment"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f14dde77-3ffc-4e14-ab0f-cdfcf249e52d"
+                  name="Patient"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="280d8d48-c670-4bc4-a3aa-f50ee3df7394"
+                  name="Self Payment"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="fa35ad55-7ddb-4779-b623-5d951ee424cb"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d47b43d0-a4a5-4389-bb74-7a2307d38497"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="013a5e46-5251-4b4c-bdef-ace2340c3d76"
+            isDerived="false"
+            sourceEndRoleName="Patient"
+            targetEndRoleName="Activity Authorization"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="b58b878d-6b17-4a8c-b6e0-b3e20e948a1b"
+              LastKnownName="Activity Authorization"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="973627bf-6d4c-4548-95ce-d6e0d14e9e70"
+                  name="Patient"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8534f688-8581-42be-aff7-faa23d8aa24c"
+                  name="Activity Authorization"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="49a6a2dc-3e8a-4a2e-bb1c-2842166a2558"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="71674129-890b-4b67-8c6a-d524af00bd57"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="77c10472-661b-449f-a1c0-5b1be13aca45"
+        name="Coded Concept"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="699fbf5e-24bd-4724-a35d-0a1c72409c80"
+            name="CodedConceptCode"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="21d57707-fd81-4e9c-a603-ae8b9c603adc"
+            name="DisplayName"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c4deb1e7-10ba-4592-94c3-cbe7fa8c3fc9"
+            name="CodeSystemIdentifier"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3e9590c6-838b-4f58-b0c7-d9f39d9bc530"
+            name="CodeSystemVersionNumber"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3805a2c0-30f5-4c95-b1ef-20772b9c6142"
+            name="CodeSystemName"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c0801273-519a-4480-b58e-1622293618b9"
+            name="OriginalDescription"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ee1e7139-dda7-4054-850b-28bebcf0bbdb"
+        name="Clinical Case"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="7b603be1-019b-4b2f-9598-bb5b5d1ddcd9"
+            isDerived="false"
+            sourceEndRoleName="Clinical Case"
+            targetEndRoleName="Visit"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="cb75a7b9-be85-46bd-8669-79a680ae1e40"
+              LastKnownName="Visit"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="55a70983-5f21-4907-9be6-f417987e3d9c"
+                  name="Clinical Case"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0ef1e09d-273b-416b-8477-d09736b85676"
+                  name="Visit"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0e85a95b-58b2-4ca3-b303-689fdf5426f0"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="35377597-ecd8-4850-bf0f-43c7a8cd4117"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="91cb7752-db05-4c3e-911e-0794467b44ae"
+        name="Activity Type"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="d7076e55-ad43-40ca-8a13-0b5d50ca53fe"
+            name="DefaultProcedureCode"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="f1ea0cab-876f-4e6a-b78c-30ceba135681"
+                LastKnownName="CodedConcept"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="2150e79b-8ff1-4be1-8b12-7248c8da13f0"
+        name="Activity"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="089b6467-64a2-4da0-a03e-2c0212d0472d"
+            isDerived="false"
+            sourceEndRoleName="Activity"
+            targetEndRoleName="Activity Type"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="91cb7752-db05-4c3e-911e-0794467b44ae"
+              LastKnownName="Activity Type"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f0630f2c-29bd-493a-83d3-03a8df434128"
+                  name="Activity"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="645ec2d3-06c1-43af-ba3b-11774be5121d"
+                  name="Activity Type"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="41fdda2c-e600-46b6-9869-16a0a3cf8b44"
+            isDerived="false"
+            sourceEndRoleName="Activity"
+            targetEndRoleName="Procedure"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="41daf4f5-6cee-40c3-8d05-c887077422db"
+              LastKnownName="Procedure"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f2d8192a-0f00-4c1c-b567-aad67cb57894"
+                  name="Activity"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9fd06164-368c-43ca-8d41-fcc1359cac19"
+                  name="Procedure"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="1464d005-283d-4084-8295-baa3aa32cd06"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="4fb112a0-f97d-427c-8315-2029add7d743"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="1e22305f-06ce-475e-b518-03d2b04642e4"
+            name="Activity Type"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="91cb7752-db05-4c3e-911e-0794467b44ae"
+                LastKnownName="Activity Type"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b58b878d-6b17-4a8c-b6e0-b3e20e948a1b"
+        name="Activity Authorization"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7ffa56f5-cc3e-4a86-8635-84a7e24659e2"
+        name="Payor Coverage"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="7d4ba67e-1bbe-4071-b75f-cef38b8f99c1"
+            isDerived="false"
+            sourceEndRoleName="Payor Coverage"
+            targetEndRoleName="Payor Cache"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="83ac72b7-b273-4ac5-ae6f-1ed40ea23dee"
+              LastKnownName="Payor Cache"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6729e515-1934-4379-b445-4b44b7409c6e"
+                  name="Payor Coverage"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="8cf9057b-a47d-47f8-80e3-48c13229ef86"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="e4d88cf7-2ffa-41a7-b4df-a7c3b3c9da80"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f2f2b7ff-9684-4829-acc5-1619babcb716"
+                  name="Payor Cache"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="d57a74c4-6d04-4c0a-8554-30b55a8a4d13"
+            isDerived="false"
+            sourceEndRoleName="Payor Coverage"
+            targetEndRoleName="Payor Subscriber"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="cb8893a9-6f19-45ce-9842-7cf1756c025d"
+              LastKnownName="Payor Subscriber"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5cc016ec-a1e8-42d0-ad01-b6863d5b9247"
+                  name="Payor Coverage"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4193c158-21bd-4bcc-9d3a-6cec19aae02a"
+                  name="Payor Subscriber"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="56d79d7a-84fe-44d5-9dc2-842b0886339b"
+            name="Payor"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="83ac72b7-b273-4ac5-ae6f-1ed40ea23dee"
+                LastKnownName="Payor Cache"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="0f1cf905-2e7f-4ea4-8674-033c477d1f67"
+            name="Subscriber"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="cb8893a9-6f19-45ce-9842-7cf1756c025d"
+                LastKnownName="Payor Subscriber"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a429dc68-ae94-42f2-9985-6cb586bff2aa"
+            name="Effective Coverage Date Range"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d8a337c6-e701-4b54-8f13-4241b4fea5d0"
+                LastKnownName="Date Range"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="09769cc9-3331-4130-a89f-7b96f205daec"
+            name="Member Number"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="4e072232-95f6-4cd5-a3d5-d9b68d7034f9"
+        name="Agency Administrator"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="548ebfd6-9ea4-4d14-83d3-18fd03ac4e07"
+            isDerived="false"
+            sourceEndRoleName="Agency Administrator"
+            targetEndRoleName="REM"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="9f7b7fe0-0a08-4fc7-a549-a7bb528ef5c4"
+              LastKnownName="REM"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="32aabb87-aebd-417d-9131-ab37dcecc43a"
+                  name="Agency Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cef93b4d-ebfb-46e4-aad0-5ea05127e49d"
+                  name="REM"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="80e92809-40f0-4ea6-91b9-b3390bfead40"
+            isDerived="false"
+            sourceEndRoleName="Agency Administrator"
+            targetEndRoleName="UseCase1"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="c587fcd7-f1de-4a16-8ddd-c2d57fd1587e"
+              LastKnownName="Set up payors"
+              LastKnownLocation="Package_0849.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="98798ebc-e1aa-4ca1-bf6c-8b5660797ba5"
+                  name="Agency Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6630a641-524d-45b4-912c-b25c8f01d9f1"
+                  name="UseCase1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3d8c9bd5-7f6b-4776-a9f6-d146a076d4ed"
+            isDerived="false"
+            sourceEndRoleName="Agency Administrator"
+            targetEndRoleName="UseCase2"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="c54f1658-eb23-4554-975a-5bd538109e30"
+              LastKnownName="Set up contracts"
+              LastKnownLocation="Package_0849.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="613cd360-53fe-4fae-94cf-4a2ede71d8c7"
+                  name="Agency Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d70b92bd-e006-4003-a97a-80b76b64bba3"
+                  name="UseCase2"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="b79086ae-c5a9-419c-a0e0-13638f5e0514"
+            isDerived="false"
+            sourceEndRoleName="Agency Administrator"
+            targetEndRoleName="UseCase8"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="a0afaf11-a8b0-4a67-a210-57b42db50f5b"
+              LastKnownName="Review number of beds/slots available in a program"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9188f011-db26-492f-ba1f-c9a1f4aea04e"
+                  name="Agency Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="87ba6259-3d66-4492-a731-38407224e5df"
+                  name="UseCase8"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="d313f817-8465-4935-9431-0476ac428023"
+            isDerived="false"
+            sourceEndRoleName="Agency Administrator"
+            targetEndRoleName="Manage Visit Templates and Activity Types"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="a51a24eb-72ba-475b-a4ba-b3b7676bf9b7"
+              LastKnownName="Manage Visit Templates and Activity Types"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="37531cbb-efb4-4b07-98f9-07025e9e5b3f"
+                  name="Agency Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e40566ff-c1e8-4dde-9bd7-6bc259e26ff1"
+                  name="Manage Visit Templates and Activity Types"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="b42858f4-7998-4c18-b905-2cd8695a06d1"
+        name="Certified Coder"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="e9300c09-0378-4672-b754-f7d3d29342aa"
+            isDerived="false"
+            sourceEndRoleName="Certified Coder"
+            targetEndRoleName="REM"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="9f7b7fe0-0a08-4fc7-a549-a7bb528ef5c4"
+              LastKnownName="REM"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cb701aec-4ba4-40cb-8282-22257b36f053"
+                  name="Certified Coder"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8c910474-7f48-41c7-95bd-ab588f139e63"
+                  name="REM"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="4594971e-1872-46b6-ba6b-4e6237fd3f9f"
+            isDerived="false"
+            sourceEndRoleName="Certified Coder"
+            targetEndRoleName="UseCase1"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="13b996ca-ae53-4594-832f-0de7f664e5a6"
+              LastKnownName="Review and validate procedures and diagnosis"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b55034de-7d34-46a8-9088-222932976355"
+                  name="Certified Coder"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1746ca10-662a-4fd4-aab5-0dcaeeca57b1"
+                  name="UseCase1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c05e5286-600d-495b-b7a6-5a15d70d8884"
+            isDerived="false"
+            sourceEndRoleName="Certified Coder"
+            targetEndRoleName="UseCase2"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="32ec373b-3cac-46f8-beb7-a84b81d1bbfe"
+              LastKnownName="Define default mapping from visits and activities to procedures"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b385dbdb-15a1-4f60-8220-27b13b57465f"
+                  name="Certified Coder"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3d8c918a-6f1b-45be-9dea-ff87338ba76a"
+                  name="UseCase2"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="51eeb1f0-093e-4bca-94f0-71f13c449f13"
+        name="Clinician"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="3ae08fd1-7064-4f36-95d3-4e80c34f4288"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="b53a2d77-36fc-4ab1-8ea5-f38338c92e83"
+              LastKnownName="Referral and Authorization Staff"
+              LastKnownLocation="Package_0850.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="befb52c1-04e2-4340-8b74-a631a7210b00"
+            isDerived="false"
+            sourceEndRoleName="Clinician"
+            targetEndRoleName="REM"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="9f7b7fe0-0a08-4fc7-a549-a7bb528ef5c4"
+              LastKnownName="REM"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4ad011e3-87ba-4c10-91fe-7b7a61ea5241"
+                  name="Clinician"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="42433b41-b330-4c69-8af6-ea058cf02a6f"
+                  name="REM"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="bd586671-1ff6-4922-98db-99de1899d78d"
+            isDerived="false"
+            sourceEndRoleName="Clinician"
+            targetEndRoleName="UseCase1"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="741bb9fd-01cb-48b2-842d-8c58866dd320"
+              LastKnownName="Record Visits and Activities"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0737f464-c38a-4eb5-92db-57498990eeed"
+                  name="Clinician"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2d4bc113-de81-4ce2-9e87-df9664835ed9"
+                  name="UseCase1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0821e3fe-8927-4c37-b0a0-23a311d18bcd"
+            isDerived="false"
+            sourceEndRoleName="Clinician"
+            targetEndRoleName="UseCase3"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="a8c5b13f-dcaf-487c-b8f0-2476e54098e6"
+              LastKnownName="Manage referrals and authorizations"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="88967c57-69fa-4d5e-ab7f-3be85dd73e8c"
+                  name="Clinician"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="809991a9-d2e2-4458-9cc3-234fed36fd96"
+                  name="UseCase3"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="29f52c0a-6e3c-4bee-9950-326749f98d44"
+            isDerived="false"
+            sourceEndRoleName="Clinician"
+            targetEndRoleName="Modify Patient Demographics"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f299b966-f576-4fe8-8ee3-51a80160647d"
+              LastKnownName="Modify Patient Demographics"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a773070e-1669-4068-b3a2-162ce55ba4a7"
+                  name="Clinician"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b7c844f6-63ad-4fc5-aee3-d78d9104b761"
+                  name="Modify Patient Demographics"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="22ad169e-51fc-4e44-9995-6f10d78564f7"
+            isDerived="false"
+            sourceEndRoleName="Clinician"
+            targetEndRoleName="Refer a patient"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="a7990117-a1d3-4100-818a-1d623412051a"
+              LastKnownName="Refer a patient"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4c90315a-9434-47d2-9cb5-65fbb163c11b"
+                  name="Clinician"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="80bb06b9-efae-43c7-893c-d3c762d092e8"
+                  name="Refer a patient"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="59e6e563-548c-4ec7-8b04-6def219a550b"
+        name="Front Desk Clerk"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="2209f3f7-6677-45f3-bfb6-a6a79514dd5b"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="b53a2d77-36fc-4ab1-8ea5-f38338c92e83"
+              LastKnownName="Referral and Authorization Staff"
+              LastKnownLocation="Package_0850.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="1db98ad5-d06b-48ba-b498-d78e120768d0"
+            isDerived="false"
+            sourceEndRoleName="Front Desk Clerk"
+            targetEndRoleName="REM"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="9f7b7fe0-0a08-4fc7-a549-a7bb528ef5c4"
+              LastKnownName="REM"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a85682f5-640b-4ac7-9b0e-f3318da3ad56"
+                  name="Front Desk Clerk"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="196e4ed3-d8a3-4fff-963b-7f52259332c1"
+                  name="REM"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0e2ed73b-d9d5-42bb-b409-28d2c241a078"
+            isDerived="false"
+            sourceEndRoleName="Front Desk Clerk"
+            targetEndRoleName="UseCase1"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b89b8a5c-c227-43f1-bb72-a085dad8266a"
+              LastKnownName="Collect and record the patients' payor information"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8f316521-ca35-4734-a567-c32fe820ddb5"
+                  name="Front Desk Clerk"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4043d206-c563-4302-9fdc-a40f14298b75"
+                  name="UseCase1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0bbcbeaf-0f22-433a-89b4-44455cb2748b"
+            isDerived="false"
+            sourceEndRoleName="Front Desk Clerk"
+            targetEndRoleName="UseCase2"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="86797363-fb21-426b-ba3a-24bf747e1cd2"
+              LastKnownName="Collect and record payment information"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3c0a302c-b279-4353-8b1c-7b64d42e9648"
+                  name="Front Desk Clerk"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9508a5fe-b337-4f91-9150-e1656c62c35c"
+                  name="UseCase2"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="ac353c41-f723-4a70-aa40-b377ea9caa5f"
+            isDerived="false"
+            sourceEndRoleName="Front Desk Clerk"
+            targetEndRoleName="UseCase3"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="5aa2cb59-2eec-438a-9170-548fb9170910"
+              LastKnownName="Send a request to the billing supervisor to provide a balance statement for the patient"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4b25e99b-79b5-4495-9c2d-99a70142636d"
+                  name="Front Desk Clerk"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="914b16d1-4df8-4a06-9fe0-36b4e8c83a0a"
+                  name="UseCase3"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="b53a2d77-36fc-4ab1-8ea5-f38338c92e83"
+        name="Referral and Authorization Staff"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="93da8252-e786-472e-b6ee-5ef130036218"
+            isDerived="false"
+            sourceEndRoleName="Referral and Authorization Staff"
+            targetEndRoleName="Manage referrals and authorizations"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="a8c5b13f-dcaf-487c-b8f0-2476e54098e6"
+              LastKnownName="Manage referrals and authorizations"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b7694f8a-eb2e-4e0c-a827-bdb853c6f718"
+                  name="Referral and Authorization Staff"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9b3a8bfb-2c7f-45a7-a1e0-d7f0eebfd5ee"
+                  name="Manage referrals and authorizations"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="779da1d8-b15d-416f-a653-4673dfdb1f23"
+            isDerived="false"
+            sourceEndRoleName="Referral and Authorization Staff"
+            targetEndRoleName="Refer a patient"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="a7990117-a1d3-4100-818a-1d623412051a"
+              LastKnownName="Refer a patient"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8caf9876-ac7a-409e-94e0-3007429ce4c3"
+                  name="Referral and Authorization Staff"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5876d2bf-8235-42ea-9542-2202b5ac6f23"
+                  name="Refer a patient"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9617f87f-1277-4ec7-b4e9-309c1e93dd97"
+        name="Accept/reject a referral"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="86797363-fb21-426b-ba3a-24bf747e1cd2"
+        name="Collect and record payment information"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b89b8a5c-c227-43f1-bb72-a085dad8266a"
+        name="Collect and record the patients' payor information"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="5577c0b0-820e-4290-a504-538de3b86244">
+            <useCaseMoniker
+              Id="33de25c7-4264-4aa9-aa4e-959353ab37b5"
+              LastKnownName="Scan and import a patients' insurance card"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f324e72c-f9e5-427a-8665-690871a91d3b"
+        name="Create a 278"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cd1e805f-49a8-4c3f-ada8-3a26b0d22581"
+        name="Create referral"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="32ec373b-3cac-46f8-beb7-a84b81d1bbfe"
+        name="Define default mapping from visits and activities to procedures"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9c20aa18-5e22-45d0-ae18-89bc4870aa24"
+        name="Import a 278"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e83b0d93-8dae-4928-8dea-a22fab011beb"
+        name="Manage Activity Templates"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8556d946-fdd9-4eb1-a441-9f373bc943e8"
+        name="Manage Agency Visit Templates"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5333f1ca-d207-4be3-a204-61654cd6506b"
+        name="Manage Agency Visit Templates and Activity Types"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="a0cfde52-3c60-4add-aadd-6c4afeb3dfac">
+            <useCaseMoniker
+              Id="8556d946-fdd9-4eb1-a441-9f373bc943e8"
+              LastKnownName="Manage Agency Visit Templates"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+          <include
+            Id="3e835864-6f43-439e-bad7-5d1c73eff58e">
+            <useCaseMoniker
+              Id="e08dcc09-7615-40e6-abf2-629fc64bcc92"
+              LastKnownName="Mange Agency Activity Types"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0cb505a8-0b4d-4fa6-8d35-ccfc3dfc7bad"
+        name="Manage Location Activity Types"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3ae76a0f-4102-4afa-a270-afa9785034d2"
+        name="Manage Location Visit Templates"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1d6908a3-eb80-4ffd-8c38-79dc5fa1b35b"
+        name="Manage Location Visit Templates and Activity Types"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="1e20be49-700c-43b3-bcd8-1dc54e84ef8f">
+            <useCaseMoniker
+              Id="3ae76a0f-4102-4afa-a270-afa9785034d2"
+              LastKnownName="Manage Location Visit Templates"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+          <include
+            Id="4d3bcd53-68a4-4d69-9042-6fb9a0933a9e">
+            <useCaseMoniker
+              Id="0cb505a8-0b4d-4fa6-8d35-ccfc3dfc7bad"
+              LastKnownName="Manage Location Activity Types"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ce48e7ea-8302-4c35-9273-d0442f919d34"
+        name="Manage Program Activity Types"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="91cfc506-c510-4b35-b181-939c69c2fdf9"
+        name="Manage Program Visit Templates"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f9d22eaa-06fb-46b8-b451-27300fe82a7e"
+        name="Manage Program Visit Templates and Activity Types"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="27ac724e-7f42-425b-94e7-9aba8eac43e4">
+            <useCaseMoniker
+              Id="91cfc506-c510-4b35-b181-939c69c2fdf9"
+              LastKnownName="Manage Program Visit Templates"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+          <include
+            Id="42b90e75-5473-46a4-a327-80164c88592f">
+            <useCaseMoniker
+              Id="ce48e7ea-8302-4c35-9273-d0442f919d34"
+              LastKnownName="Manage Program Activity Types"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a8c5b13f-dcaf-487c-b8f0-2476e54098e6"
+        name="Manage referrals and authorizations"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="ecda9b4f-6f45-4c02-8712-71c93498248a">
+            <useCaseMoniker
+              Id="53a4a34f-ecf6-4afc-a3e0-82620b98e8c9"
+              LastKnownName="Manually enter an incoming referral"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+          <include
+            Id="159cb6aa-fc9e-4bd3-b782-f8f18de25f15">
+            <useCaseMoniker
+              Id="70592e96-5352-4fad-99e4-d96bb3c98f17"
+              LastKnownName="Manually enter an incoming authorization"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+          <include
+            Id="42559f19-8823-410b-b11b-e91f648e6241">
+            <useCaseMoniker
+              Id="9c20aa18-5e22-45d0-ae18-89bc4870aa24"
+              LastKnownName="Import a 278"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+          <include
+            Id="3baffbd2-9a5f-49a0-9202-284d8242a031">
+            <useCaseMoniker
+              Id="9617f87f-1277-4ec7-b4e9-309c1e93dd97"
+              LastKnownName="Accept/reject a referral"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+          <include
+            Id="5370a19a-a5c6-4077-bbcd-acbcd0aa9a9d">
+            <useCaseMoniker
+              Id="f324e72c-f9e5-427a-8665-690871a91d3b"
+              LastKnownName="Create a 278"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a51a24eb-72ba-475b-a4ba-b3b7676bf9b7"
+        name="Manage Visit Templates and Activity Types"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="51b27671-97b9-48c0-9f1b-bfe6f23b1393">
+            <useCaseMoniker
+              Id="5333f1ca-d207-4be3-a204-61654cd6506b"
+              LastKnownName="Manage Agency Visit Templates and Activity Types"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+          <include
+            Id="1eb6f961-33a4-4a52-9a73-bc77f00dbc26">
+            <useCaseMoniker
+              Id="1d6908a3-eb80-4ffd-8c38-79dc5fa1b35b"
+              LastKnownName="Manage Location Visit Templates and Activity Types"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+          <include
+            Id="26135621-04c8-4674-b45f-4d89877d7c83">
+            <useCaseMoniker
+              Id="f9d22eaa-06fb-46b8-b451-27300fe82a7e"
+              LastKnownName="Manage Program Visit Templates and Activity Types"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+          <include
+            Id="3ebeff50-be8e-4585-80d3-5df038f0d71b">
+            <useCaseMoniker
+              Id="e83b0d93-8dae-4928-8dea-a22fab011beb"
+              LastKnownName="Manage Activity Templates"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e08dcc09-7615-40e6-abf2-629fc64bcc92"
+        name="Mange Agency Activity Types"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="70592e96-5352-4fad-99e4-d96bb3c98f17"
+        name="Manually enter an incoming authorization"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="53a4a34f-ecf6-4afc-a3e0-82620b98e8c9"
+        name="Manually enter an incoming referral"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f299b966-f576-4fe8-8ee3-51a80160647d"
+        name="Modify Patient Demographics"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5aa2cb59-2eec-438a-9170-548fb9170910"
+        name="Send a request to the billing supervisor to provide a balance statement for the patient"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="741bb9fd-01cb-48b2-842d-8c58866dd320"
+        name="Record Visits and Activities"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a7990117-a1d3-4100-818a-1d623412051a"
+        name="Refer a patient"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="312c8629-f05e-4afd-a7c0-66818817810b">
+            <useCaseMoniker
+              Id="cd1e805f-49a8-4c3f-ada8-3a26b0d22581"
+              LastKnownName="Create referral"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+          <include
+            Id="5869196c-ea0d-4338-a6f1-433c1cc3c13f">
+            <useCaseMoniker
+              Id="938a0216-8134-4ff0-99f3-422ea1f74e94"
+              LastKnownName="Request that another staff person create a referral"
+              LastKnownLocation="Package_0850.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="938a0216-8134-4ff0-99f3-422ea1f74e94"
+        name="Request that another staff person create a referral"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="13b996ca-ae53-4594-832f-0de7f664e5a6"
+        name="Review and validate procedures and diagnosis"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a0afaf11-a8b0-4a67-a210-57b42db50f5b"
+        name="Review number of beds/slots available in a program"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="33de25c7-4264-4aa9-aa4e-959353ab37b5"
+        name="Scan and import a patients' insurance card"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8a8a7edb-4b45-4ad3-969a-5aa7a53bb682"
+        name="Coding Context"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="9f4499f4-e356-40f6-83aa-e31c5eae0bd0"
+            isDerived="false"
+            sourceEndRoleName="Coding Context"
+            targetEndRoleName="Coding Status"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="201814d1-1ca1-4ec3-8abb-ada823fbd50a"
+              LastKnownName="Coding Status"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fd3c16ab-6d2c-4ede-90ed-d4a795b29598"
+                  name="Coding Context"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0443b4bb-80ff-4a61-a694-d91f092991b9"
+                  name="Coding Status"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="486161ec-56fa-4511-b788-5db9056374d8"
+            isDerived="false"
+            sourceEndRoleName="Coding Context"
+            targetEndRoleName="Reviewed By Staff"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="64687368-9c2a-42dd-9e9f-0d9a4067e1b0"
+              LastKnownName="Staff"
+              LastKnownLocation="Package_0930.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b31758e7-ba97-47dd-a122-496b48691a58"
+                  name="Coding Context"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="623e67bf-c8da-4e97-9be8-4239f515758b"
+                  name="Reviewed By Staff"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="b45bf436-82f1-44ab-a4b9-3dcba5c0f9d3"
+            name="Coding Status"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="201814d1-1ca1-4ec3-8abb-ada823fbd50a"
+                LastKnownName="Coding Status"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b57531db-510e-4331-a9f8-a3700fa906b3"
+            name="Coded By Staff"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="64687368-9c2a-42dd-9e9f-0d9a4067e1b0"
+                LastKnownName="Staff"
+                LastKnownLocation="Package_0930.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="9e91a8da-e6cc-4b70-8c72-a872c5f72d8a"
+            name="Coded Date"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="bfdba72c-3b12-417c-ba80-268df4208ca2"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="41daf4f5-6cee-40c3-8d05-c887077422db"
+        name="Procedure"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="6fdb1628-8d12-4926-906c-26650dbe70ac"
+            isDerived="false"
+            sourceEndRoleName="Procedures"
+            targetEndRoleName="Coding Context"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="8a8a7edb-4b45-4ad3-969a-5aa7a53bb682"
+              LastKnownName="Coding Context"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b6fb67c5-e4cf-444d-851c-b5d07ac25e4c"
+                  name="Procedures"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="6002ae11-8d51-41a3-9e5b-ee1db48dfd0f"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="65b62c19-2947-45a6-87f6-022b434ffd0e"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a1299fea-6b75-4a68-b62b-99988c5006a5"
+                  name="Coding Context"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="39c001bf-a975-48ad-bb0b-bed5c7345d9c"
+            isDerived="false"
+            sourceEndRoleName="Procedure"
+            targetEndRoleName="Procedure Type"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="744fd12b-b671-42d3-85dd-f85c3bcef62b"
+              LastKnownName="Procedure Type"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3a29f31c-56bd-4bea-a9dc-597f77266012"
+                  name="Procedure"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="00208981-b312-4263-8b46-6813e25043e1"
+                  name="Procedure Type"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="d37c7b65-d406-47a9-80a6-f113a575bfb3"
+            name="Procedure Type"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="744fd12b-b671-42d3-85dd-f85c3bcef62b"
+                LastKnownName="Procedure Type"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="744fd12b-b671-42d3-85dd-f85c3bcef62b"
+        name="Procedure Type"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="b325d13f-3075-4c98-aced-d154e519bf8e"
+            name="Visit" />
+          <enumerationLiteral
+            Id="8d685948-ca67-47e1-b0b1-22d0abe2e34e"
+            name="Activity" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="302f368a-381f-45f6-9ac9-76b5f310271c"
+        name="Coding Status" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="201814d1-1ca1-4ec3-8abb-ada823fbd50a"
+        name="Coding Status"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="a135b631-4653-4bf0-87bf-b9e2aadfaf1b"
+            name="Reviewed" />
+          <enumerationLiteral
+            Id="36e61ad4-8660-4c54-8aae-41e073a60f93"
+            name="Pending Review" />
+          <enumerationLiteral
+            Id="204e7d80-6e76-47f2-a05e-8c61890dab22"
+            name="Changed and Pending Review" />
+          <enumerationLiteral
+            Id="8e1bccbe-aef9-47bc-bbad-4f56ece7556f"
+            name="Sent to Billing" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="bfdba72c-3b12-417c-ba80-268df4208ca2"
+        name="DateTime" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="2520e078-1ff4-4c2d-8be7-d1d1706749e9"
+        name="Billing Office Cache"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="18294ddf-33bc-4acb-9da1-b405621331f5"
+            isDerived="false"
+            sourceEndRoleName="Billing Office"
+            targetEndRoleName="Payor"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="83ac72b7-b273-4ac5-ae6f-1ed40ea23dee"
+              LastKnownName="Payor Cache"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b7db0676-16d0-443e-8d41-8f4f499b7e48"
+                  name="Billing Office"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5ae8459f-c39c-41a4-a353-a4ddfe401541"
+                  name="Payor"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0e5974dc-754b-45ab-bac9-73576482def6"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="397da12a-ec7b-4f4a-943e-9e17514c9c76"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="83ac72b7-b273-4ac5-ae6f-1ed40ea23dee"
+        name="Payor Cache"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="60b69cd1-a7e9-4204-90b3-ddf064829ae3"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="dec2ec22-64d5-4289-ba83-a0dc24a39aef"
+            name="Primary Address"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="b5d32183-62ba-4053-aed5-9519d37997aa"
+            name="Record Number"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="cffcb105-b138-4fc3-9d64-9b829ecd1d9b"
+                LastKnownName="long"
+                LastKnownLocation="Package_0849.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="cb8893a9-6f19-45ce-9842-7cf1756c025d"
+        name="Payor Subscriber"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="cc407861-529b-4b95-bac8-51ddff8b4cd7"
+            isDerived="false"
+            sourceEndRoleName="Payor Subscriber"
+            targetEndRoleName="Subscriber Name"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3169529b-9a4a-4acf-a5e5-443a11776ab4"
+              LastKnownName="Subscriber Name"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0b3b9dc5-5792-4177-b803-cd346dc45921"
+                  name="Payor Subscriber"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ad44be1c-2ceb-4ac0-9b53-a527beb60de2"
+                  name="Subscriber Name"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="f6d17624-1a6a-4026-8936-7de9b6c662c4"
+            isDerived="false"
+            sourceEndRoleName="Payor Subscriber"
+            targetEndRoleName="Subscriber Address"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="0cc85cad-d8b5-4c87-bed5-fc4b9e4eb2f4"
+              LastKnownName="Subscriber Address"
+              LastKnownLocation="Package_0850.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c6249bd8-e1ef-4473-bc01-32f8d8e838c4"
+                  name="Payor Subscriber"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7bd88102-fa82-4d76-95b6-35253e5774ca"
+                  name="Subscriber Address"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="55c291e3-cdec-409b-a82d-022743797c79"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="4005d059-3afc-42be-9acf-166a3d32113b"
+                LastKnownName="Subscriber Name"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ccc43529-a37a-48bc-957b-d9ece44bc882"
+            name="Birth Date"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="9a459a83-5fac-4d82-b737-039e17b6943e"
+                LastKnownName="Datetime"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="cde93ab8-d641-48bf-80c7-392e27b99461"
+            name="Gender"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="874ef537-66a2-429d-905c-2f5b715524aa"
+                LastKnownName="Gender"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b45b9fda-ebef-4dee-b31b-527fa71d2dc8"
+            name="Address"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="0cc85cad-d8b5-4c87-bed5-fc4b9e4eb2f4"
+                LastKnownName="Subscriber Address"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="d4bc5e06-4b82-4f4c-83d7-ceb2d82f953d"
+            name="Relationship Type"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="c75a2493-5574-4949-a030-24ad2d002e55"
+                LastKnownName="Payor Relationship Type"
+                LastKnownLocation="Package_0850.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="4005d059-3afc-42be-9acf-166a3d32113b"
+        name="Subscriber Name" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="3169529b-9a4a-4acf-a5e5-443a11776ab4"
+        name="Subscriber Name"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="26eaa473-66b8-4953-8a29-22b55ec7510d"
+            name="First"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ad8fb472-24f2-44e3-865d-360d970d6caf"
+            name="Middle"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f45c94e3-74aa-4f0a-a692-915c6a00add9"
+            name="Last"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="9a459a83-5fac-4d82-b737-039e17b6943e"
+        name="Datetime" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="874ef537-66a2-429d-905c-2f5b715524aa"
+        name="Gender" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0cc85cad-d8b5-4c87-bed5-fc4b9e4eb2f4"
+        name="Subscriber Address"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="e3c231aa-a7ad-40d4-af12-bd18679b60f1"
+            name="First Street Address"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b5264af6-04f1-459e-b588-1a25d3e50d66"
+            name="Second Street Address"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="673e55a7-71ef-482a-adff-9386dc5d56b9"
+            name="City"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="2a772d57-ed2e-4b00-8431-59c2969e3271"
+            name="State"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ab0b2af-ce22-4033-9c5d-cf0fdb2b85d0"
+                LastKnownName="string"
+                LastKnownLocation="AnalysisModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f50d9a42-213a-42d5-8e0f-c35f1b3b6c7c"
+            name="Postal Code"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d474c79a-7693-4b1e-9320-32a0c2c51c90"
+                LastKnownName="Postal Code"
+                LastKnownLocation="Package_0849.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="c75a2493-5574-4949-a030-24ad2d002e55"
+        name="Payor Relationship Type" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d8a337c6-e701-4b54-8f13-4241b4fea5d0"
+        name="Date Range" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="68d6bf73-982b-4f1b-8e38-a91b86640aee"
+        name="Payment Type" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="26de40c0-1cfc-43c4-a7a2-79b2c8ae1e95"
+        name="Payment Method"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="c954d882-597e-48e1-88f0-e851c10b1035"
+            name="Cash" />
+          <enumerationLiteral
+            Id="7344a314-a9e6-4bab-a81e-5f99185707f5"
+            name="Credit Card" />
+          <enumerationLiteral
+            Id="3d5008a6-3104-4b54-a824-29acf721d2c7"
+            name="Check" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="1cf06b5d-66fa-4343-8f20-71fba9498528"
+        name="Payment Method" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="c0a1832b-7ef9-443d-a8fb-33658a652247"
+        name="Staff" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="3984aa91-cfe3-407e-9903-edf63ea69b80"
+        name="Agency" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="c4a780c4-c897-4f6e-9874-0956f0be91d1"
+        name="IList&lt;Activity Type&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8bf72ea6-57b3-423e-abe6-55b2de45fccc"
+        name="Staff"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

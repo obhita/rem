@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StaticCodeAnalysis version="1" xmlns="urn:Microsoft.Data.Schema.StaticCodeAnalysis">
+  <SuppressedFile FilePath="SCHEMA OBJECTS\SCHEMAS\PATIENTMODULE\TABLES\PATIENTACCESSEVENT.TABLE.SQL">
+    <SuppressedRule Category="CodeAnalysisDatabaseRules" RuleId="Rem103" />
+  </SuppressedFile>
+  <SuppressedFile FilePath="SCHEMA OBJECTS\SCHEMAS\BILLINGOFFICEMODULE\TABLES\KEYS\BILLINGOFFICE_AGENCY_FK.FKEY.SQL">
+    <SuppressedRule Category="CodeAnalysisDatabaseRules" RuleId="Rem108" />
+  </SuppressedFile>
+</StaticCodeAnalysis>

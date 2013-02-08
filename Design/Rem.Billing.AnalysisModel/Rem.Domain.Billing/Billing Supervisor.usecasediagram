@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="2ee7c937-c537-4948-a7d9-d63e5969f679" name="Billing Supervisor" linkedPackageId="4a61db4b-1577-448b-b633-642964d8eae7" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="5bc7c218-e106-4f08-87d4-e4b645a2385c">
+      <elementDefinition Id="a74caf08-c63b-46ed-b1a3-b5c5b44deab5" />
+      <body>Need a ui that provides a list of denials that haven't been "worked".  From that ui the user can select a denial and get detailed information about the claim, the patient, etc. so that they have all of the data in one place.  They need the ability to take notes against the denial and be able to mark it as "worked" (done).</body>
+      <annotatedElements>
+        <useCaseMoniker Id="5c40ae00-471d-45ca-ac6e-4b51ff57d3a0" LastKnownName="Working denials" />
+      </annotatedElements>
+    </comment>
+    <comment Id="040e5b02-7807-4a24-93e0-da52f05e695c">
+      <elementDefinition Id="71efc73c-9c9d-4b73-a2ad-f5d3f931a902" />
+      <body>Emdeon is a clearing house for making eligibility requests for commerical insurance agencies using a 270/271.  An eligibility request is simply a fee-for-service provider checking to see if the given patient has the stated insurance.  Emdeon is a service where you pay per request (around 27 cents per request).  We need to find out how this process works so that we know how to integrate with Emdeon.
+
+</body>
+      <annotatedElements>
+        <useCaseMoniker Id="6b76dfdd-730e-4137-b645-479138e54021" LastKnownName="Perform an eligibility inquiry for a patient" />
+      </annotatedElements>
+    </comment>
+    <comment Id="0c64477a-b87f-46dc-a5a2-b72d74f3d004">
+      <elementDefinition Id="3e92470c-d8e9-433a-9685-a36aecbec0d0" />
+      <body>Medicare/Medicaid is also a 270/271 but doesn't go through Emdeon.</body>
+      <annotatedElements>
+        <useCaseMoniker Id="6b76dfdd-730e-4137-b645-479138e54021" LastKnownName="Perform an eligibility inquiry for a patient" />
+      </annotatedElements>
+    </comment>
+    <comment Id="b31ee3de-ab53-4505-8853-0eb7bdebcd4c">
+      <elementDefinition Id="bba660f2-ba70-49fe-bd4a-492f349f029f" />
+      <body>For contract based insurance there isn't an official standard approach to eligibility.</body>
+      <annotatedElements>
+        <useCaseMoniker Id="6b76dfdd-730e-4137-b645-479138e54021" LastKnownName="Perform an eligibility inquiry for a patient" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="506b7b05-5a4d-410e-8a9d-ea222c35d478" name="Billing Supervisor" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="82ebbc9b-f7e0-40ed-b689-1e6073ee8e5e" />
+        <targetEnds>
+          <association Id="cd78ca45-9460-4a98-9b45-2e6c7e615ff3" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="UseCase2" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="41600e0b-82bc-48d5-8447-d9f30dbcef1a" LastKnownName="Review and edit claims" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dfd34eca-1b54-4154-850f-dfe676a7de34" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8bd34aed-7c50-41eb-90fb-67b760323001" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8e53e474-69c4-4b83-9dd9-86af1a4c8526" name="UseCase2" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6f12b945-d6d2-40c5-9521-6f4bc1459b7f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="34e93200-9f36-4bb1-8c3f-a71d6854f410" />
+          </association>
+          <association Id="e50b74bf-cae5-4357-a917-0a50751a70e4" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="UseCase3" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="ef7ee267-743e-4172-82eb-d27d8ad2a656" LastKnownName="Manually enter payment" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d00919e5-71a2-4ae7-b9ff-df8b2bd819e9" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b3164fa0-9478-404c-a929-a59d64123178" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c1a1cf45-c4e9-425a-9cc5-bfd2c9a0a8bc" name="UseCase3" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2086cf98-7187-4512-b202-7e0da9dbee71" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5ee3f895-9440-420d-aea2-ba284f2598bb" />
+          </association>
+          <association Id="2e1d20c1-e319-4d5b-b5dd-0431791e65c1" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="UseCase4" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="5c40ae00-471d-45ca-ac6e-4b51ff57d3a0" LastKnownName="Working denials" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ba920ae4-8425-4b3f-8a7d-6547c10c1f06" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="63616630-47e8-4503-b41b-e14c51e96306" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4be88fc8-845a-4248-91e5-5861c77156c4" name="UseCase4" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ccffa266-db48-44e1-8169-fcfd78a26197" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="454376bc-c917-41c6-9988-715b4babaeb3" />
+          </association>
+          <association Id="b2ab5628-cb5e-41c0-b2fb-d0c38d60e0aa" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="UseCase5" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8effe7e9-d5f7-4eb3-a03d-1deac1293776" LastKnownName="Import an 835" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8c788660-ce98-4dcc-834d-2525962bdd24" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="03b09105-9866-4316-97bf-d23b4137da4a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e16baf9f-b03c-4758-a7ba-e5b7214255f6" name="UseCase5" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3f245207-1e6b-4393-a812-2b73a055264f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8adc9bcd-b3d6-4c1d-b9b5-4465f06a5288" />
+          </association>
+          <association Id="342fb6cd-251f-4a5b-9e50-6b86766d0fe4" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="UseCase6" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="f18fbc99-25de-43f2-94db-3bab396d88c1" LastKnownName="Request the generation of an 837 Institutional" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="713e6f30-830c-4b6e-b371-d1bbeeada64f" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8822b215-65a8-42ee-9001-08f641ac487d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c77830ae-4b5d-4010-bc1e-d43b473bd5ef" name="UseCase6" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8b9ddbf4-4626-4c4a-b621-c90dce147975" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fed28648-421c-4be1-adaf-bb393a5f48c5" />
+          </association>
+          <association Id="b3f1c518-6198-41b7-aef8-cc316d6b600d" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="UseCase7" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="f9b62463-8cdd-4a79-9c01-9d888201dd08" LastKnownName="Request the generation of an 837 Professional" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fde3688c-c39e-49a5-8c43-61038c1c2b66" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ce65e9ed-aae4-4ea9-882b-de2664634cc3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c9a09d3b-12d3-463f-bee4-d38bdeeaed91" name="UseCase7" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2544e1e1-2edc-4900-920e-39fb0da189a3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="38be0c60-a7bc-4ed2-ab0d-0fc96f49098a" />
+          </association>
+          <association Id="46495db2-27ff-4387-a21f-e7af5ecb8e31" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="UseCase8" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="05452715-fd38-48c4-b30c-ea1ff3a05385" LastKnownName="Generate a CMS 1500" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0b5880fc-4483-41b5-b79e-761adf9901d4" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2dc5fa93-14a5-4f28-8696-4c591b6dfb7c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6a41016d-33df-4a68-93e6-125f73f67d13" name="UseCase8" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d44d105d-41d7-4100-9d13-94068923855f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fd0f70b2-4c1e-4efb-9ae1-d387b8f68de7" />
+          </association>
+          <association Id="6aff1b8b-3389-40ac-8cc5-0bfda0e1bf6f" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="UseCase9" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="678c0387-0c23-4506-96b2-233871973983" LastKnownName="Generate a WITS Style Invoice" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bdb434d5-0384-4872-a3b9-c540ad961f26" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a387f3e8-7f52-4fae-81e5-3cc3fe919ff8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d4578336-c16e-4518-ac9e-7745f61c9397" name="UseCase9" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="055b9a04-2e10-41a9-a5f2-34f3a28bc829" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1b0e13e3-13a5-4ef1-8a6c-12b91a8a4c42" />
+          </association>
+          <association Id="0a05badb-85ee-470e-a1df-990b54cba3d9" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="UseCase11" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="38cfc078-8cd5-47e2-aaeb-bcee1c1980f4" LastKnownName="Generate a balance statement for a patient" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8337184d-cd81-4e85-b065-267db18f9e6e" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fa729263-692e-4e83-9182-381505d56cba" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="30a772e3-b12c-4140-af81-c3aed3724ba4" name="UseCase11" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5968ca8a-a04f-4ebd-bfda-c889a5aa1f26" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d0befc41-e803-4c2b-bf2c-ca12e59037e3" />
+          </association>
+          <association Id="316bd8cb-7bec-47be-b9bd-fc71114c774d" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="Perform an eligibility inquiry for a patient" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6b76dfdd-730e-4137-b645-479138e54021" LastKnownName="Perform an eligibility inquiry for a patient" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a1939305-33a7-4b1e-999a-e1dc3a133a0c" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a90a0bb8-710b-44c1-bd1a-f84a752bfb71" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b1ecb931-ea06-439f-beb7-78c42b324a9f" name="Perform an eligibility inquiry for a patient" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b3de6982-bfb6-481d-9f78-bc5904c6a587" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b6cbcf23-7fb7-431b-860b-45bc067cabf7" />
+          </association>
+          <association Id="e814653a-0ebb-4e84-a598-7ccf162568f5" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="Download an 837 Professional/Institutional" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d4497b63-d563-467e-99b2-69cb2d76cb0b" LastKnownName="Download an 837 Professional/Institutional" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="39d1fe46-3a43-4f3b-9b50-efcb67770d2e" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="39e67c8e-d2d7-4571-97d2-e8e2eb294171" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="12db7964-95f0-4a3c-b95a-037e42bfa62b" name="Download an 837 Professional/Institutional" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6f64132b-d47e-4344-8fb9-c7b82ed2b117" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ba26eb38-1d7a-42ca-b617-cc774cad5c2e" />
+          </association>
+          <association Id="06321259-eb55-463a-8092-98a131c620c2" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="Split a service for different payors (&quot;Split Billing&quot;)" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="423e4832-bb91-4832-a63d-3c19252e829e" LastKnownName="Split a service for different payors (&quot;Split Billing&quot;)" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b9945179-966d-44b2-9c46-6b7dd6fd7756" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="74055991-b695-48d6-878a-c01dffddd76e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="05212f22-9599-4f25-b9f3-f39675a32ec3" name="Split a service for different payors (&quot;Split Billing&quot;)" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ea615af1-6e44-49c8-ae0c-08cabd74b560" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="719c6c7b-66a8-4fd1-ad79-8db126811d81" />
+          </association>
+          <association Id="e52e3676-1ce7-4c4b-a047-98a936c9a3e7" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="Working Claim Errors" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6971e195-d330-4aa4-b5f0-3cc974439cb2" LastKnownName="Working Claim Errors" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="455ad9a5-958c-4fdb-8632-437f1398fdc5" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="dbeed4f1-1d0c-46e6-b573-a7329363f861" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="74e50a14-7d54-43cb-a970-cfcd6b83607f" name="Working Claim Errors" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="96551de4-fdc0-4193-9540-c397fd30f210" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="91976c86-f77c-4e2e-8298-4b2632c0edfc" />
+          </association>
+          <association Id="f6669642-2f7f-4a4d-9db7-5b9496cff0cd" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="Reverse and Adjust a Claim" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="5e5d83b9-f8be-4a39-bba6-840171e36498" LastKnownName="Reverse and Adjust a Claim" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3b40d954-4a1f-41f1-a7d3-f40ad168c992" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="7c3c08c0-6900-4058-b6a1-92e5bf861771" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d70678fd-ca3b-4d47-a8f9-cc96a4047ba4" name="Reverse and Adjust a Claim" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b52521be-2cf5-4cab-9209-31f2e46f364f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="065bcbe0-5924-4290-8714-6e34a721d8c8" />
+          </association>
+          <association Id="fba17fbe-60ec-4127-b760-919893cbea44" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="Submit to seconday/tertiary payor" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="17dc2fa2-0cac-46e6-b9a2-3bf7e30ed2eb" LastKnownName="Submit to seconday/tertiary payor" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="73a87835-548c-4cab-bd85-7c9ab99957c1" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="447c6044-1ec5-44b0-b1c2-68a68a9c56b9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b0dce52a-c119-4d3b-9542-1a1c0125e53c" name="Submit to seconday/tertiary payor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b9c83ab7-f75e-4a3b-b020-c00eb8dde807" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fe36238f-93e4-4b60-a828-6c9eec4f2c2a" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="41600e0b-82bc-48d5-8447-d9f30dbcef1a" name="Review and edit claims" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e8917fa2-c821-42bf-a4b4-b62e20a2e1f3" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ef7ee267-743e-4172-82eb-d27d8ad2a656" name="Manually enter payment" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="233afafc-7cf6-49c9-9310-c824fdb893c8" />
+        <additions>
+          <include Id="69c4d7c8-227d-4d1b-8b27-d4c2aa99fc9e">
+            <useCaseMoniker Id="1244fd0b-4457-4f38-a6e3-1f5e1dd939ad" LastKnownName="Manually enter payment line item" />
+            <elementDefinition Id="a3b71eff-742d-47d6-a601-9d3a869ea192" />
+          </include>
+          <include Id="36b32586-c4ee-497e-b0c0-5e0bf4c2ad34">
+            <useCaseMoniker Id="e392bcfb-d2ee-4e0e-a863-08e70c62395f" LastKnownName="Manually enter an adjustment" />
+            <elementDefinition Id="9ea61180-2127-4381-bed3-8c0d18c5192e" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5c40ae00-471d-45ca-ac6e-4b51ff57d3a0" name="Working denials" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="769c9cf7-d61c-4590-a7e2-8326eccf6f0c" />
+        <additions>
+          <include Id="c4e54472-bf9f-4008-8309-529393068297">
+            <useCaseMoniker Id="6fa09ba0-7d45-4aa3-86e1-75699d2e19ee" LastKnownName="Rebilll" />
+            <elementDefinition Id="8022f5ef-9ad1-46c9-9ce6-11f052aa6cb3" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8effe7e9-d5f7-4eb3-a03d-1deac1293776" name="Import an 835" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3ac3a7af-0917-477f-8420-5260b24f38fd" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f18fbc99-25de-43f2-94db-3bab396d88c1" name="Request the generation of an 837 Institutional" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4ae865f6-0733-4e02-86b5-a29ee12864c1" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f9b62463-8cdd-4a79-9c01-9d888201dd08" name="Request the generation of an 837 Professional" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="68638079-e34b-4715-b799-9d881333a8b7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="05452715-fd38-48c4-b30c-ea1ff3a05385" name="Generate a CMS 1500" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="aae97708-8f49-4f85-a420-2014f1c68997" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="678c0387-0c23-4506-96b2-233871973983" name="Generate a WITS Style Invoice" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b704f962-7479-4d83-9cd3-a9f940c9ceb6" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="38cfc078-8cd5-47e2-aaeb-bcee1c1980f4" name="Generate a balance statement for a patient" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1f8abb65-199c-449e-a2c5-88ec0fe3dbe6" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6b76dfdd-730e-4137-b645-479138e54021" name="Perform an eligibility inquiry for a patient" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d127c080-c00d-4a83-afae-96b5f3116d87" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1244fd0b-4457-4f38-a6e3-1f5e1dd939ad" name="Manually enter payment line item" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b185754d-cbc0-4a42-84b0-0b27e9b79207" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d4497b63-d563-467e-99b2-69cb2d76cb0b" name="Download an 837 Professional/Institutional" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="826e4d9a-9bb4-4c04-a56d-3092f6755fd9" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="423e4832-bb91-4832-a63d-3c19252e829e" name="Split a service for different payors (&quot;Split Billing&quot;)" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ae1a6b3c-1333-4f19-ac23-b5e7740b5f12" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6971e195-d330-4aa4-b5f0-3cc974439cb2" name="Working Claim Errors" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3abceddd-4498-4f11-9f66-e8b1908e6a2a" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e392bcfb-d2ee-4e0e-a863-08e70c62395f" name="Manually enter an adjustment" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="57a6a358-4240-4f77-8c31-b4131a7894ab" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6fa09ba0-7d45-4aa3-86e1-75699d2e19ee" name="Rebilll" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="328571f0-25c2-47e3-89eb-94feaed1d09a" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5e5d83b9-f8be-4a39-bba6-840171e36498" name="Reverse and Adjust a Claim" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="58544a24-02a4-4250-857f-57152d3f4a42" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="17dc2fa2-0cac-46e6-b9a2-3bf7e30ed2eb" name="Submit to seconday/tertiary payor" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c7967c7e-fe6a-4320-8953-512e7debff88" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="4a61db4b-1577-448b-b633-642964d8eae7" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="290db15a-225f-4f24-bd05-3129ea5072bb">
+        <profileInstance Id="69de39f7-4a44-4618-9c4d-5551692cde11" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="6fb9d624-4187-48e5-b090-452d46982b30">
+        <profileInstance Id="0266473e-d9ab-4b5c-b5b2-e27d3f9ecd05" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

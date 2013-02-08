@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{49D7FB03-A129-4E44-9327-51EC4E1E0FB4}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pillar.Common</RootNamespace>
+    <AssemblyName>Pillar.Common.Silverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\Silverlight\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Bin\Silverlight\Debug\Pillar.Common.Silverlight.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\Silverlight\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Pillar.Common\Collections\ISoftDelete.cs">
+      <Link>Collections\ISoftDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Collections\ISoftDeleted.cs">
+      <Link>Collections\ISoftDeleted.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Collections\SoftDeletedEventArgs.cs">
+      <Link>Collections\SoftDeletedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Collections\SoftDeletedEventHandler.cs">
+      <Link>Collections\SoftDeletedEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Collections\SoftDeleteObservableCollection.cs">
+      <Link>Collections\SoftDeleteObservableCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Commands\FrameworkCommandInfo.cs">
+      <Link>Commands\FrameworkCommandInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Commands\ICommandFactory.cs">
+      <Link>Commands\ICommandFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Commands\IFrameworkCommandInfo.cs">
+      <Link>Commands\IFrameworkCommandInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Extension\EnumerableExtensions.cs">
+      <Link>Extension\EnumerableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Extension\PropertyInfoExtensions.cs">
+      <Link>Extension\PropertyInfoExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Extension\StringExtensions.cs">
+      <Link>Extension\StringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Extension\TypeExtensions.cs">
+      <Link>Extension\TypeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Interceptors\IIntercept.cs">
+      <Link>Interceptors\IIntercept.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\InversionOfControl\ContainerExtensions.cs">
+      <Link>InversionOfControl\ContainerExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\InversionOfControl\ContainerProvider.cs">
+      <Link>InversionOfControl\ContainerProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\InversionOfControl\IContainer.cs">
+      <Link>InversionOfControl\IContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\InversionOfControl\IoC.cs">
+      <Link>InversionOfControl\IoC.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\InversionOfControl\IRegistry.cs">
+      <Link>InversionOfControl\IRegistry.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\InversionOfControl\Lifestyle.cs">
+      <Link>InversionOfControl\Lifestyle.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Metadata\Dtos\DisabledMetadataItem.cs">
+      <Link>Metadata\DisabledMetadataItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Metadata\Dtos\DisplayNameMetadataItemDto.cs">
+      <Link>Metadata\DisplayNameMetadataItemDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Metadata\Dtos\FilterLookupMetadataItemDto.cs">
+      <Link>Metadata\FilterLookupMetadataItemDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Metadata\Dtos\HiddenMetadataItemDto.cs">
+      <Link>Metadata\HiddenMetadataItemDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Metadata\Dtos\IMetadataItemDto.cs">
+      <Link>Metadata\IMetadataItemDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Metadata\Dtos\MetadataDto.cs">
+      <Link>Metadata\MetadataDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Metadata\Dtos\ReadonlyMetadataItemDto.cs">
+      <Link>Metadata\ReadonlyMetadataItemDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Metadata\Dtos\RequiredMetadataItemDto.cs">
+      <Link>Metadata\RequiredMetadataItemDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Metadata\IMetadataProvider.cs">
+      <Link>Metadata\IMetadataProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Metadata\MetadataExtensions.cs">
+      <Link>Metadata\MetadataExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\NamespaceDoc.cs">
+      <Link>NamespaceDoc.cs</Link>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Registry.cs">
+      <Link>Registry.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Specification\AndSpecification.cs">
+      <Link>Specification\AndSpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Specification\ExtensionMethods.cs">
+      <Link>Specification\ExtensionMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Specification\ISpecification.cs">
+      <Link>Specification\ISpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Specification\NotSpecification.cs">
+      <Link>Specification\NotSpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Specification\OrSpecification.cs">
+      <Link>Specification\OrSpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Utility\Check.cs">
+      <Link>Utility\Check.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Utility\DelegateReference.cs">
+      <Link>Utility\DelegateReference.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Utility\ExpressionUtil.cs">
+      <Link>Utility\ExpressionUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Utility\IDelegateReference.cs">
+      <Link>Utility\IDelegateReference.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Utility\LogicalTreeWalker.cs">
+      <Link>Utility\LogicalTreeWalker.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Utility\MethodUtil.cs">
+      <Link>Utility\MethodUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Utility\PropertyUtil.cs">
+      <Link>Utility\PropertyUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\Pillar.Common\Utility\WeakDelegatesManager.cs">
+      <Link>Utility\WeakDelegatesManager.cs</Link>
+    </Compile>
+    <Compile Include="Extension\ListExtensions.Silverlight.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <Import Project="$(SolutionDir)\lib\Shared\Stylecop\StyleCop.Targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

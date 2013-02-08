@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Ria.NewCropModule.Web.NCScript.AccountType">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAkABgoACAAgAAAAAAAAAAACACAAQBAAAAAAA=</HashCode>
+      <FileName>NCScript\AccountType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.NewCropModule.Web.NCScript.PatientType">
+    <Position X="0.75" Y="3" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAgIAAISAAgA4IAEQIACAQHQQBAAQCSKMAAwAAABIAA=</HashCode>
+      <FileName>NCScript\PatientType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

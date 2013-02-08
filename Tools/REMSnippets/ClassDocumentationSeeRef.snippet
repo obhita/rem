@@ -1,0 +1,31 @@
+
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Class XML comment see tag</Title> 
+            <Shortcut>cdsr</Shortcut> 
+            <Description>Code Snippet for a XML comment see tag</Description>
+            <Author>Bill Bassler</Author> 
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal Editable="true">
+                    <ID>classname</ID> 
+                    <ToolTip>Class name</ToolTip> 
+                    <Function>ClassName()</Function> 
+                    <Default>ClassNamePlaceholder</Default> 
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[ 
+				/// <summary>
+        /// <see cref="$classname$">$classname$</see>
+				/// </summary>]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
+

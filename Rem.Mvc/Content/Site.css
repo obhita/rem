@@ -1,0 +1,187 @@
+﻿/*SMACS 
+----------------------------------------------------------
+This file is using the Scalable and Modular Architecture for 
+CSS (SMACS), which facilitates implemention of best practices 
+for organizing and developing CSS rules. 
+
+Developed by Jonathan Snook 2012
+----------------------------------------------------------*/
+
+
+
+/* BASE RULES
+----------------------------------------------------------
+Base Rules are all default elements that use element 
+selectors, a descendent selector, or child selector, along 
+with pseudo-classes. Base Rules define the default styling 
+for how a base element should look in all occurrences on 
+the page. Do not use class or ID selectors with Base Rules.  
+----------------------------------------------------------*/
+
+body { background-color: #5c87b2; font-size: .85em; font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif; margin: 0; padding: 0; color: #696969;}
+
+a:link { color: #034af3; text-decoration: underline; }
+
+a:visited { color: #505abc;}
+
+a:hover { color: #1d60ff; text-decoration: none; }
+
+a:active {color: #12eb87;}
+
+p, ul { margin-bottom: 20px; line-height: 1.6em;} header, footer, nav, section {display: block; }
+
+h1, h2, h3, h4, h5, h6 {font-size: 1.5em; color: #000; }
+
+h1 { font-size: 2em; }
+
+h2 { padding: 0; margin: 0; color: White; }
+
+h3 { font-size: 1.2em; }
+
+h4 { font-size: 1.1em; }
+
+h5, h6 { font-size: 1em; }
+
+
+/* LAYOUT RULES   
+----------------------------------------------------------
+Layout Rules are elements within a page that define the
+sections. Usually, Layout elements are like containers that 
+hold other page components. Layout Rules are major components
+of a page which use ID Selectors when the component is only
+used once per page or a Class Name, when the component is 
+used more than once per page.
+----------------------------------------------------------*/
+.page { width: 90%; margin-left: auto; margin-right: auto; }
+
+header, #header { position: relative; margin-bottom: 0px; color: #000; padding: 0; }
+
+header h1, #header h1 { font-weight: bold; padding: 5px 0; margin: 0; color: #fff; border: none; line-height: 2em; font-size: 32px !important; text-shadow: 1px 1px 2px #111; }
+
+#main { padding: 30px 30px 15px 30px; background-color: #fff; border-radius: 4px 0 0 0; -webkit-border-radius: 4px 0 0 0; -moz-border-radius: 4px 0 0 0; }
+
+footer, #footer { background-color: #fff; color: #999; padding: 10px 0; text-align: center; line-height: normal; margin: 0 0 30px 0; font-size: .9em; border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; -moz-border-radius: 0 0 4px 4px; }
+
+
+/* MODULE RULES   
+----------------------------------------------------------
+Module are more descrete components that make up the page 
+such as navigation bars, carousels, and widgets etc. Usually 
+these modules live within major layout components of the page
+such as headers or footers. Modules should use class selectors
+since they may be used more than once.
+----------------------------------------------------------*/
+
+/* Menu */
+ul#menu { border-bottom: 1px #5C87B2 solid; padding: 0px; position: relative; margin: 0; text-align: right; }
+
+ul#menu li { display: inline; list-style-image: none; }
+
+ul#menu li#greeting { padding: 10px 20px; font-weight: bold; text-decoration: none; line-height: 2.8em; color: #fff; }
+
+ul#menu li a { padding: 10px 20px; font-weight: bold; text-decoration: none; line-height: 2.8em; background-color: #e8eef4; color: #034af3; border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; -moz-border-radius: 4px 4px 0 0; }
+
+ul#menu li a:hover { background-color: #fff; text-decoration: none; }
+
+ul#menu li a:active { background-color: #a6e2a6; text-decoration: none; }
+
+ul#menu li.selected a { background-color: #fff; color: #000 }
+
+
+/* Global Nav Bar*/
+nav, #menucontainer { margin-top: 40px; } 
+
+div#title { border-color: #CCCCCC; border-width: thin; display: block; text-align: left; background-image: url('../Images/globalnav-tile-gradient.png'); color: #FFFFFF; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; }
+
+div#logo  { display: block; float: left; text-indent: 14px; padding: 0px 10px 0px 0px; margin: 0px; line-height: 45px; color: #FFFFFF; }
+
+#logindisplay { font-style: 1.1em; display: block; text-align: right; margin: 10px; color: White; }
+
+#logindisplay a:link { counter-increment: white; text-decoration: underline; }
+
+#logindisplay a:visited { color: white; text-decoration: underline; }
+
+#logindisplay a:hover { color: white; text-decoration: none; }
+
+
+/* Text Field */
+fieldset { border: 1px solid #ddd; padding: 0 1.4em 1.4em 1.4em; margin: 0 0 1.5em 0; }
+
+legend { font-size: 1.2em; font-weight: bold; }
+
+textarea { min-height: 75px; }
+
+input[type=text], input[type=password] { border: 1px solid #ccc; padding: 2px; font-size: 1.2em; color: #444; width: 200px; }
+
+select { border: 1px solid #ccc; padding: 2px; font-size: 1.2em; color: #444; }
+
+input[type=submit] {font-size: 1.2em; padding: 5px; }
+
+
+/* Table */
+table { border: solid 1px #e8eef4; border-collapse: collapse; }
+
+table td { padding: 5px; border: solid 1px #e8eef4; }
+
+table th { padding-bottom: 6px 5px; text-align: left; background-color: #e8eef4; border: solid 1px #e8eef4; }
+
+.div-table { display: table; border: 1px #C0C0C0 solid; }
+
+.div-table-noborder { display: table; border: 0px; text-transform: 14px; }
+
+.div-table-caption { padding: 0px 0px 0px 10px; border-style: solid solid none solid; bottom: thin; border-color: #C0C0C0; display: table-caption; background-color: #FFFFFF; color: #000; line-height: 30px; font-weight: bold; font-family: "Gill Sans" , "Gill Sans MT" , Calibri, "Trebuchet MS" , sans-serif; text-shadow: 0px 1px 1px #FFF; border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; -moz-border-radius: 4px 4px 0 0; background-image: url('../Images/dashboard-tile-gradient.png'); background-repeat: repeat-x; }
+
+.div-table-header { display: table-row; margin: 5px; background-color: #336699; color: #FFFFFF; }
+
+.div-table-row { display: table-row; margin: 2px; }
+
+.div-table-col { display: table-cell; padding: 5px; border: 1px #808080 solid; }
+
+.div-table-col-noborder { display: table-cell; padding: 2px 5px 2px 5px; border: 0px; }
+
+
+/* STATE RULES 
+----------------------------------------------------------
+State rules describe how a module or layout will look when 
+in a particular state (for example, selected, focus, hidden
+ etc.) or in a particular part of the screen or system. States
+should be made to stand alone and are usually built of a single
+class selector. 
+----------------------------------------------------------*/
+
+.clear { clear: both; }
+
+.error { color: Red; }
+
+
+/*Validation Errors*/
+.field-validation-error { color: #ff0000; }
+
+.field-validation-valid { display: none; }
+
+.input-validation-error { border: 1px solid #ff0000; background-color: #ffeeee; }
+
+.validation-summary-errors { font-weight: bold; color: #ff0000; }
+
+.validation-summary-valid { display: none; 
+
+
+/* Display Helpers*/
+.display-label, .editor-label { margin: 1em 0 0 0; }
+
+.display-field, .editor-field { margin: 0.5em 0 0 0; }
+
+.text-box { width: 30em; }
+
+.text-box.multi-line { height: 6.5em; }
+
+.tri-state { width: 6em; }
+
+
+/* CHANGING STATE RULES 
+----------------------------------------------------------
+State Changes can be implmented in three different ways:
+Class Name - when a class changes with JavaScript
+Pseudo-Class - a change is applied using a number of Pseudo-Classes
+Media Query - defines how things should be styles under defined criteria
+----------------------------------------------------------*/

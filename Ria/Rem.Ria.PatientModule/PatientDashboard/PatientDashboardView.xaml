@@ -1,0 +1,277 @@
+﻿<View:ViewUserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+    xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism"
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+	 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+	 xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:Controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls" xmlns:Controls1="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input" xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation" x:Class="Rem.Ria.PatientModule.PatientDashboard.PatientDashboardView"
+    mc:Ignorable="d"
+    Height="Auto" Width="Auto" d:DesignHeight="600" d:DesignWidth="600">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="cdDashboard" Width="2.25*"/>
+            <ColumnDefinition x:Name="cdMedDiag" Width="*" />
+            <ColumnDefinition x:Name="cdVisit" Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Border CornerRadius="0,0,9,9" Background="{StaticResource MainBackgroundBorder}" Grid.ColumnSpan="4" Grid.RowSpan="2" Grid.Row="1" BorderThickness="0" />
+        <CustomControls:SlideoutContentControl x:Name="Expander" Grid.Column="0" Grid.Row="1" ExpandDirection="Left" IsExpanded="True" HorizontalContentAlignment="Stretch" StartExpanded="True">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Collapsing" >
+                    <ei:ChangePropertyAction TargetName="VisitExpanderButton" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="ExpanderButton" PropertyName="Visibility" Value="Visible"/>
+                    <ei:ChangePropertyAction TargetName="cdDashboard" PropertyName="Width" Value="auto"/>
+                    <ei:ChangePropertyAction TargetName="MedProbButton" PropertyName="Width" Value="auto"/>
+                    <ei:ChangePropertyAction TargetName="VisitExpander" PropertyName="IsExpanded" Value="True"/>
+                    <ei:ChangePropertyAction TargetName="VisitExpanderGrid" PropertyName="Visibility" Value="Visible"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="Hidden" >
+                    <ei:ChangePropertyAction TargetName="cdVisit" PropertyName="Width" Value="*"/>
+                    <ei:ChangePropertyAction TargetName="cdMedDiag" PropertyName="Width" Value=".5*"/>
+                    <ei:ChangePropertyAction TargetName="MedicationsAndProblemContainerGrid" PropertyName="Visibility" Value="Visible"/>
+                    <ei:ChangePropertyAction TargetName="MedProbExpandButton" PropertyName="Visibility" Value="Visible"/>
+                    <ei:ChangePropertyAction TargetName="VisitExpander" PropertyName="Width" Value="NaN"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="Expanding" >
+                    <ei:ChangePropertyAction TargetName="ExpanderButton" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="VisitExpanderButton" PropertyName="Visibility" Value="Visible"/>
+                    <ei:ChangePropertyAction TargetName="MedicationsAndProblemContainerGrid" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="MedProbExpandButton" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="MedProbExpandButton" PropertyName="IsChecked" Value="False"/>
+                    <ei:ChangePropertyAction TargetName="cdMedDiag" PropertyName="Width" Value="*"/>
+                    <ei:ChangePropertyAction TargetName="cdVisit" PropertyName="Width" Value="auto"/>
+                    <ei:ChangePropertyAction TargetName="MedProbButton" PropertyName="Width" Value="0"/>
+                    <ei:ChangePropertyAction TargetName="MedProb" PropertyName="Width" Value="*"/>
+                    <ei:ChangePropertyAction TargetName="VisitExpander" PropertyName="IsExpanded" Value="False"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="Expanded" >
+                    <ei:ChangePropertyAction TargetName="cdDashboard" PropertyName="Width" Value="2.25*"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.25*" MaxWidth="370"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+				 <Grid Grid.Column="0" Margin="0" Grid.Row="1" Grid.RowSpan="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".45*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ContentControl Regions:RegionManager.RegionName="CaseSnapshotRegion" Regions:RegionManager.RegionContext="{Binding PatientWorkspaceContext, Mode=OneWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <ContentControl Regions:RegionManager.RegionName="CaseAlertsRegion" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                        <ContentControl Grid.Row="1" Regions:RegionManager.RegionName="VisitListRegion"  Regions:RegionManager.RegionContext="{Binding PatientWorkspaceContext, Mode=OneWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
+                    </Grid>                        
+                </Grid>
+                <Grid Grid.Column="1" Margin="0" Grid.Row="1" Grid.RowSpan="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".45*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ContentControl Regions:RegionManager.RegionName="ProgramEnrollmentRegion" Regions:RegionManager.RegionContext="{Binding PatientWorkspaceContext, Mode=OneWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                    <ContentControl Grid.Row="1" Regions:RegionManager.RegionName="ActivitiesRegion"  Regions:RegionManager.RegionContext="{Binding PatientWorkspaceContext, Mode=OneWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
+                </Grid>
+            </Grid>
+        </CustomControls:SlideoutContentControl>
+        
+		
+		<Controls:RadButton x:Name="ExpanderButton" Width="30" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" BorderBrush="Transparent" Style="{StaticResource BorderlessGrayTabButtonStyle}" Padding="0" Background="#FF606060"  CornerRadius="0"  Foreground="White" Margin="0,6,4,6" BorderThickness="0" Visibility="Collapsed">
+			<Controls:RadButton.Effect>
+				<DropShadowEffect Opacity="0.5" ShadowDepth="3" BlurRadius="6"/>
+			</Controls:RadButton.Effect>
+        	
+			<i:Interaction.Triggers>
+        		<i:EventTrigger EventName="Click" >
+                    <ei:ChangePropertyAction TargetName="Expander" PropertyName="IsExpanded" Value="True"/>
+                </i:EventTrigger>
+        	</i:Interaction.Triggers>
+        		<StackPanel Height="100" Width="30" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-6,0">
+        			<Path   Data="M-1.6666666,-34.666668 L-1.6666666,-55.166668 L-12.479173,-44.916668 z" Fill="{Binding Foreground, ElementName=ExpanderButton}" Stretch="Fill" UseLayoutRounding="False" Width="7.847" RenderTransformOrigin="-0.177,0.484" HorizontalAlignment="Center" Margin="4,0,0,0" Height="14.125" VerticalAlignment="Center"/>
+        			<TextBlock Text="Dashboard" FontSize="12" RenderTransformOrigin="0.5,0.5" Margin="0,20.833" UseLayoutRounding="False" d:LayoutRounding="Auto" >
+        				<TextBlock.RenderTransform>
+        					<CompositeTransform Rotation="-90"/>
+        				</TextBlock.RenderTransform>
+        			</TextBlock>
+				</StackPanel>
+        </Controls:RadButton>
+
+        <Grid Grid.Column="1" Margin="0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="MedProb" Width="*"/>
+                <ColumnDefinition x:Name="MedProbButton" Width="0"/>  
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid  x:Name="MedicationsAndProblemContainerGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF606060" Margin="-4 6 -4 6" Visibility="Collapsed">
+                <Grid.Effect>
+                    <DropShadowEffect Opacity="0.5" ShadowDepth="3" BlurRadius="6" Direction="300"/>
+                </Grid.Effect>
+                <Border VerticalAlignment="Stretch" Width="8" HorizontalAlignment="Left">
+                	<Border.Background>
+                		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                			<LinearGradientBrush.RelativeTransform>
+                				<CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="90"/>
+                			</LinearGradientBrush.RelativeTransform>
+                			<GradientStop Color="#FF606060" Offset="0.497"/>
+                			<GradientStop Color="#FF1D1D1D" Offset="1"/>
+                		</LinearGradientBrush>
+                	</Border.Background>
+                </Border>
+            </Grid>
+            <ItemsControl x:Name="MedicationsAndProblemContainer" Margin="0"  Regions:RegionManager.RegionName="MedicationsAndProblemRegion" 
+                          Regions:RegionManager.RegionContext="{Binding PatientWorkspaceContext, Mode=OneWay}"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <CustomControls:UniformGrid Columns="1"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            <Controls:RadToggleButton x:Name="MedProbExpandButton" Visibility="Collapsed" Grid.Column="1" Width="30" BorderThickness="0" Style="{StaticResource BorderlessGrayToggleButtonStyle}" Padding="0" Background="#FF606060"  CornerRadius="0 4 4 0"  Foreground="White" Margin="-4,6,4,6">
+                <Controls:RadToggleButton.Effect>
+				<DropShadowEffect Opacity="0.5" ShadowDepth="3" BlurRadius="6"/>
+			</Controls:RadToggleButton.Effect>
+				<i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <ei:ChangePropertyAction TargetName="MedProb" PropertyName="Width" Value="0"/>
+                        <ei:ChangePropertyAction TargetName="cdMedDiag" PropertyName="Width" Value="auto"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="Unchecked">
+                        <ei:ChangePropertyAction TargetName="cdMedDiag" PropertyName="Width" Value=".5*"/>
+                        <ei:ChangePropertyAction TargetName="MedicationsAndProblemContainerGrid" PropertyName="Background" Value="#FF606060"/>
+                        <ei:ChangePropertyAction TargetName="MedProb" PropertyName="Width" Value="*"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Controls:RadToggleButton>
+            <Grid x:Name="VisitExpanderGrid" Grid.Column="2" HorizontalAlignment="Right" Visibility="Collapsed" >
+                <Controls:RadButton x:Name="VisitExpanderButton" Width="30" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Transparent" Style="{StaticResource BorderlessGrayTabButtonStyle}" Padding="0" Background="#FF606060"  CornerRadius="4 0 0 4"  Foreground="White" Margin="4,8,0,8">
+                    <Controls:RadButton.Effect>
+                        <DropShadowEffect Opacity="0.5" ShadowDepth="3" BlurRadius="6" Direction="212"/>
+                    </Controls:RadButton.Effect>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click" >
+                            <ei:ChangePropertyAction TargetName="Expander" PropertyName="IsExpanded" Value="False"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <StackPanel Height="100" Width="30" Orientation="Horizontal" Margin="-17,0,-9,0">
+                        <TextBlock Text="Visit" FontSize="12" RenderTransformOrigin="0.5,0.5" Margin="0,42.417,8,42.417" UseLayoutRounding="False" d:LayoutRounding="Auto" HorizontalAlignment="Left" >
+        				<TextBlock.RenderTransform>
+        					<CompositeTransform Rotation="90"/>
+        				</TextBlock.RenderTransform>
+                        </TextBlock>
+                        <Path   Data="M-1.6666666,-34.666668 L-1.6666666,-55.166668 L-12.479173,-44.916668 z" Fill="{Binding Foreground, ElementName=VisitExpanderButton}" Stretch="Fill" UseLayoutRounding="False" Width="7.847" RenderTransformOrigin="-0.177,0.484" HorizontalAlignment="Center" Margin="0,0,4,0" Height="14.125" VerticalAlignment="Center">
+                            <Path.RenderTransform>
+                                <CompositeTransform Rotation="-180"/>
+                            </Path.RenderTransform>
+                        </Path>
+                    </StackPanel>
+                </Controls:RadButton>
+            </Grid>
+        </Grid>		
+        <CustomControls:SlideoutContentControl x:Name="VisitExpander" Width="0" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ExpandDirection="Right" IsExpanded="False" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" StartExpanded="True">
+            <telerik:RadTileView x:Name="rtvVisitRegion" 
+                Regions:RegionManager.RegionName="VisitRegion" MinimizedColumnWidth="300" MinimizedRowHeight="auto" MaximizeMode="One" IsItemDraggingEnabled="False" PreservePositionWhenMaximized="True" 
+                                 Regions:RegionManager.RegionContext="{Binding PatientWorkspaceContext, Mode=OneWay}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0,8,4,4" >
+                <i:Interaction.Triggers>
+                    <ei:DataTrigger Binding="{Binding ElementName=rtvVisitRegion,Path=MaximizedItem}" Comparison="NotEqual" Value="{x:Null}">
+                        <ei:ChangePropertyAction TargetName="Expander" PropertyName="IsExpanded" Value="False"/>
+                    </ei:DataTrigger>
+                    <ei:DataTrigger Binding="{Binding ElementName=rtvVisitRegion,Path=MaximizedItem.DataContext.Visit}" Comparison="Equal" Value="{x:Null}">
+                        <ei:ChangePropertyAction TargetName="Expander" PropertyName="IsExpanded" Value="False"/>
+                    </ei:DataTrigger>
+                    <ei:DataTrigger Binding="{Binding ElementName=rtvVisitRegion,Path=MaximizedItem}" Comparison="Equal" Value="{x:Null}">
+                        <ei:ChangePropertyAction TargetName="VisitExpanderGrid" PropertyName="Visibility" Value="Collapsed"/>
+                        <ei:ChangePropertyAction TargetName="Expander" PropertyName="IsExpanded" Value="True"/>
+                    </ei:DataTrigger>
+                </i:Interaction.Triggers>
+            </telerik:RadTileView>
+        </CustomControls:SlideoutContentControl>
+        <Border Style="{StaticResource MainHeaderBorder}" Grid.Row="0" Grid.ColumnSpan="3" Height="Auto" d:LayoutOverrides="GridBox" CornerRadius="8,8,0,0" Padding="0,0,0,1">
+            <Grid VerticalAlignment="Center" Margin="0,0,10,0">
+            	<Grid.RowDefinitions>
+            		<RowDefinition Height="*"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+            	<Grid.ColumnDefinitions>
+            		<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="auto"/>
+				</Grid.ColumnDefinitions>
+            	<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" d:LayoutOverrides="Height" Grid.Column="0" Grid.Row="1">
+            		<Canvas Width="25" Height="25" Margin="4,0,0,0">
+            			<Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 38.4503,44.8047L 16.033,44.8047C 11.909,44.8047 8.55163,41.4487 8.55163,37.3207L 8.55163,14.9061C 8.55163,10.7781 11.909,7.42206 16.033,7.42206L 38.4503,7.42206C 42.5783,7.42206 45.9343,10.7781 45.9343,14.9061L 45.9343,37.3207C 45.9343,41.4487 42.5783,44.8047 38.4503,44.8047 Z " UseLayoutRounding="False" Height="25.278" Canvas.Left="0.441" Canvas.Top="0.723" Width="25.279"/>
+            			<Path Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Stroke="#FF999999" Data="F1 M 43.7907,42.3145L 11.04,9.5638" UseLayoutRounding="False" Height="22.253" Canvas.Left="2.066" Canvas.Top="2.122" Width="22.254"/>
+            			<Path Stretch="Fill" Data="F1 M 15.6787,5.648C 11.0187,5.648 7.20933,9.45867 7.20933,14.116L 7.20933,37.0133C 7.20933,41.668 11.0187,45.48 15.6787,45.48L 38.5707,45.48C 43.2307,45.48 47.04,41.668 47.04,37.0133L 47.04,14.116C 47.04,9.45867 43.2307,5.648 38.5707,5.648L 15.6787,5.648 Z " UseLayoutRounding="False" Height="26.007" Width="26.006">
+            				<Path.Fill>
+            					<LinearGradientBrush StartPoint="0.499985,-5.26733e-006" EndPoint="0.499985,1.00003">
+            						<GradientStop Color="#FF3F3F40" Offset="0"/>
+            						<GradientStop Color="#FF7D7D7F" Offset="0.257324"/>
+            						<GradientStop Color="#FFBBBCBF" Offset="1"/>
+            					</LinearGradientBrush>
+            				</Path.Fill>
+            			</Path>
+            			<Path Stretch="Fill" Data="F1 M 15.9147,6.87333C 11.792,6.87333 8.43333,10.228 8.43333,14.356L 8.43333,36.772C 8.43333,40.9013 11.792,44.2547 15.9147,44.2547L 38.332,44.2547C 42.4613,44.2547 45.816,40.9013 45.816,36.772L 45.816,14.356C 45.816,10.228 42.4613,6.87333 38.332,6.87333L 15.9147,6.87333 Z " UseLayoutRounding="False" Height="24.408" Canvas.Left="0.799" Canvas.Top="0.8" Width="24.409">
+            				<Path.Fill>
+            					<LinearGradientBrush StartPoint="0.499985,-7.44952e-006" EndPoint="0.499985,1.00003">
+            						<GradientStop Color="#FF141E26" Offset="0"/>
+            						<GradientStop Color="#FF343B43" Offset="0.200809"/>
+            						<GradientStop Color="#FF555960" Offset="0.503067"/>
+            						<GradientStop Color="#FF343B43" Offset="0.52366"/>
+            						<GradientStop Color="#FF141E26" Offset="0.533737"/>
+            						<GradientStop Color="#FF272E37" Offset="1"/>
+            					</LinearGradientBrush>
+            				</Path.Fill>
+            			</Path>
+            			<Path Stretch="Fill" Data="F1 M 15.9147,7.33733C 11.792,7.33733 8.43333,10.6933 8.43333,14.82L 8.43333,15.98C 8.43333,11.852 11.792,8.496 15.9147,8.496L 38.332,8.496C 42.4613,8.496 45.816,11.852 45.816,15.98L 45.816,14.82C 45.816,10.6933 42.4613,7.33733 38.332,7.33733L 15.9147,7.33733 Z " UseLayoutRounding="False" Height="5.644" Canvas.Left="0.799" Canvas.Top="1.102" Width="24.409">
+            				<Path.Fill>
+            					<LinearGradientBrush StartPoint="0.499985,6.53242e-005" EndPoint="0.499985,0.999979">
+            						<GradientStop Color="#FF808184" Offset="0"/>
+            						<GradientStop Color="#FF5F6062" Offset="0.13"/>
+            						<GradientStop Color="#FF3F3F40" Offset="1"/>
+            					</LinearGradientBrush>
+            				</Path.Fill>
+            			</Path>
+            			<Grid Height="14" Canvas.Left="6" Canvas.Top="6" Width="14">
+            				<Rectangle Height="6" Stroke="White" StrokeThickness="1.33333" StrokeLineJoin="Round" Width="6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            				<Rectangle Height="6" Stroke="White" StrokeThickness="1.33333" StrokeLineJoin="Round" Width="6" Fill="White" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            				<Rectangle Height="6" Stroke="White" StrokeThickness="1.33333" StrokeLineJoin="Round" Width="6" Fill="White" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            				<Rectangle Height="6" Stroke="White" StrokeThickness="1.33333" StrokeLineJoin="Round" Width="6" Fill="White" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            			</Grid>
+            		</Canvas>
+            		<TextBlock Style="{StaticResource MainHeaderTextBlockStyle}" TextWrapping="Wrap" Text="Patient Dashboard" HorizontalAlignment="Left" />
+            	</StackPanel>
+            	<Path Stretch="Fill"  Grid.Column="1" StrokeLineJoin="Round" Stroke="{StaticResource BorderlessButtonForeground}" Data="F1 M 98.125,49.9183L 109.728,61.5217L 98.125,73.125" HorizontalAlignment="Center" Height="18.109" UseLayoutRounding="False" VerticalAlignment="Center" Width="10.386" RenderTransformOrigin="0.5,0.5" Margin="20,0,0,0" StrokeThickness="2" Grid.Row="1">
+            		<Path.Effect>
+            			<DropShadowEffect Color="White" ShadowDepth="2" BlurRadius="0" Direction="349"/>
+            		</Path.Effect>
+            		<Path.RenderTransform>
+            			<CompositeTransform ScaleX="0.85"/>
+            		</Path.RenderTransform>
+            	</Path>
+            	<Controls1:RadComboBox x:Name="rcbSelectCase"  Grid.Column="2" ClearSelectionButtonVisibility="Collapsed" Style="{StaticResource BorderlessRadComboBoxRemStyle}"  ToolTipService.ToolTip="Select a patient's case" EmptyText="Select Case" Width="auto" ItemsSource="{Binding AllClinicalCases, Mode=OneWay}" 
+            		DisplayMemberPath="CaseDisplayInformation" SelectedItem="{Binding SelectedClinicalCase, Mode=TwoWay}" FontSize="14.667" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" Padding="0" VerticalAlignment="Top" Height="24" Margin="10,1,10,0" Grid.Row="1">
+            		<i:Interaction.Triggers>
+            			<i:EventTrigger EventName="SelectionChanged">
+            				<i:InvokeCommandAction Command="{Binding SelectCaseCommand}"/>
+            			</i:EventTrigger>
+            		</i:Interaction.Triggers>
+            	</Controls1:RadComboBox>
+            	<Controls:RadButton Content="+ Add Case"  Grid.Column="3" Command="{Binding CreateCaseCommand}" ToolTipService.ToolTip="Add a new patient case record." Height="22"  Style="{StaticResource BorderlessButtonStyle}" FontSize="12" Foreground="{StaticResource BorderlessButtonForeground}" HorizontalAlignment="Right" Grid.Row="1"/>
+            	<CustomControls:LoadingControl IsLoading="{Binding IsLoading}" Foreground="DarkGray" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="2" Background="{StaticResource TileHeaderGradientBackground}"/>
+        	</Grid>
+        </Border>
+    </Grid>
+</View:ViewUserControl>

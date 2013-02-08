@@ -1,0 +1,680 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D47EDC6B-0BE3-4BC8-A43A-B0DA90CCF465}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Ria.PatientModule.Web</RootNamespace>
+    <AssemblyName>Rem.Ria.PatientModule.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\debug\Rem.Ria.PatientModule.Web.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Agatha.Common">
+      <HintPath>..\..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.ServiceLayer">
+      <HintPath>..\..\packages\Agatha-ServiceLayer-StructureMap.1.3\lib\net40\Agatha.ServiceLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.StructureMap">
+      <HintPath>..\..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=2.1.266.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\AutoMapper.2.1.266\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="C32Gen">
+      <HintPath>..\..\lib\Server\C32Gen\C32Gen.dll</HintPath>
+    </Reference>
+    <Reference Include="Health.Direct.Xdm">
+      <HintPath>..\..\lib\Server\XdmParser\Health.Direct.Xdm.dll</HintPath>
+    </Reference>
+    <Reference Include="HL7Generator.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\HL7Gen\HL7Generator.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Iesi.Collections.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Reduced">
+      <HintPath>..\..\lib\Server\XdmParser\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="NHapi.Base, Version=2.3.0.0, Culture=neutral, PublicKeyToken=d0d8ea960a3440eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\nHapi\NHapi.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="NHapi.Model.V251, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\nHapi\NHapi.Model.V251.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NIEMAdapter.Client">
+      <HintPath>..\..\lib\Server\NIEMAdapter\NIEMAdapter.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Novell.Directory.Ldap">
+      <HintPath>..\..\lib\Server\Novell\Novell.Directory.Ldap.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\NServiceBus.2.6.0.1506\lib\net40\NServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus.Core, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\NServiceBus.2.6.0.1506\lib\net40\NServiceBus.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TerminologyService.WebService">
+      <HintPath>..\..\lib\Server\TerminologyService\TerminologyService.WebService.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="AutoMapperConfig.cs" />
+    <Compile Include="CdsRuleService\CdsRuleDto.cs" />
+    <Compile Include="CdsRuleService\CdsRulesDtoFactory.cs" />
+    <Compile Include="CdsRuleService\CdsRulesDto.cs" />
+    <Compile Include="CdsRuleService\CheckCdsRulesRequest.cs" />
+    <Compile Include="CdsRuleService\CheckCdsRulesRequestHandler.cs" />
+    <Compile Include="CdsRuleService\CheckCdsRulesResponse.cs" />
+    <Compile Include="CdsRuleService\SaveCdsRulesRequestHandler.cs" />
+    <Compile Include="Common\ActivityAutoMapperSetup.cs" />
+    <Compile Include="Common\ActivityTypeDto.cs" />
+    <Compile Include="Common\DeleteActivityRequest.cs" />
+    <Compile Include="Common\DeleteActivityRequestHandler.cs" />
+    <Compile Include="Common\DeleteActivityResponse.cs" />
+    <Compile Include="Common\GetPayorCacheByKeywordRequest.cs" />
+    <Compile Include="Common\GetPayorCacheByKeywordRequestHandler.cs" />
+    <Compile Include="Common\GetPayorCacheByKeywordResponse.cs" />
+    <Compile Include="Common\PagedPayorCacheDto.cs" />
+    <Compile Include="Common\PatientSummaryDto.cs" />
+    <Compile Include="Common\PatientSummaryDtoFactory.cs" />
+    <Compile Include="Common\ProgramEnrollmentDto.cs" />
+    <Compile Include="Common\ProgramEnrollmentDtoFactory.cs" />
+    <Compile Include="Common\ScheduleActivityRequest.cs" />
+    <Compile Include="Common\ScheduleActivityRequestHandler.cs" />
+    <Compile Include="Common\ScheduleActivityResponse.cs" />
+    <Compile Include="DirectMessageCenter\CreatePatientImportDocumentRequest.cs" />
+    <Compile Include="DirectMessageCenter\CreatePatientImportDocumentRequestHandler.cs" />
+    <Compile Include="DirectMessageCenter\CreatePatientImportDocumentResponse.cs" />
+    <Compile Include="DirectMessageCenter\GetImapMailRequest.cs" />
+    <Compile Include="DirectMessageCenter\GetImapMailRequestHandler.cs" />
+    <Compile Include="DirectMessageCenter\GetImapMailResponse.cs" />
+    <Compile Include="DirectMessageCenter\GetHealthcareProviderDirectoryEntriesRequest.cs" />
+    <Compile Include="DirectMessageCenter\GetHealthcareProviderDirectoryEntriesRequestHandler.cs" />
+    <Compile Include="DirectMessageCenter\GetHealthcareProviderDirectoryEntriesResponse.cs" />
+    <Compile Include="DirectMessageCenter\GetImapFolderItemsRequest.cs" />
+    <Compile Include="DirectMessageCenter\GetImapFolderItemsRequestHandler.cs" />
+    <Compile Include="DirectMessageCenter\GetImapFolderItemsResponse.cs" />
+    <Compile Include="DirectMessageCenter\HealthProviderEntry.cs" />
+    <Compile Include="DirectMessageCenter\HealthProviderEntryDto.cs" />
+    <Compile Include="DirectMessageCenter\DirectMailDto.cs" />
+    <Compile Include="DirectMessageCenter\MailAttachmentPatientDocumentDto.cs" />
+    <Compile Include="DirectMessageCenter\PatientDocumentDtoFactory.cs" />
+    <Compile Include="DirectMessageCenter\QueryPatientByDocumentRequest.cs" />
+    <Compile Include="DirectMessageCenter\QueryPatientByDocumentRequestHandler.cs" />
+    <Compile Include="DirectMessageCenter\QueryPatientByDocumentResponse.cs" />
+    <Compile Include="DirectMessageCenter\SaveMainAttachmentPatientDocumentRequestHandler.cs" />
+    <Compile Include="DirectMessageCenter\SendC32Request.cs" />
+    <Compile Include="DirectMessageCenter\SendC32RequestHandler.cs" />
+    <Compile Include="DirectMessageCenter\SendC32Response.cs" />
+    <Compile Include="DirectMessageCenter\SendDirectMessageRequest.cs" />
+    <Compile Include="DirectMessageCenter\SendDirectMessageRequestHandler.cs" />
+    <Compile Include="DirectMessageCenter\SendDirectMessageResponse.cs" />
+    <Compile Include="DroolsTest\DroolsTestResponse.cs" />
+    <Compile Include="DroolsTest\SendDroolsTestRequest.cs" />
+    <Compile Include="DroolsTest\SendDroolsTestRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\SendVisitToBillingRequest.cs" />
+    <Compile Include="FrontDeskDashboard\SendVisitToBillingRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\SendVisitToBillingResponse.cs" />
+    <Compile Include="FrontDeskDashboard\GetPayorCoverageCachesByPatientKeyRequest.cs" />
+    <Compile Include="FrontDeskDashboard\GetPayorCoverageCachesByPatientKeyRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\GetPayorCoverageCachesByPatientKeyResponse.cs" />
+    <Compile Include="FrontDeskDashboard\GetSelfPaymentsByPatientKeyRequest.cs" />
+    <Compile Include="FrontDeskDashboard\GetSelfPaymentsByPatientKeyRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\GetSelfPaymentsByPatientKeyResponse.cs" />
+    <Compile Include="FrontDeskDashboard\PagedPayorCoverageCaches.cs" />
+    <Compile Include="FrontDeskDashboard\PagedSelfPaymentsDto.cs" />
+    <Compile Include="FrontDeskDashboard\PayorCacheSummaryDto.cs" />
+    <Compile Include="FrontDeskDashboard\PayorCoverageCacheDto.cs" />
+    <Compile Include="FrontDeskDashboard\PayorCoverageCacheDtoFactory.cs" />
+    <Compile Include="FrontDeskDashboard\PayorSubscriberCacheDto.cs" />
+    <Compile Include="FrontDeskDashboard\SavePayorCoverageCacheRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\SaveSelfPaymentRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\SelfPaymentDto.cs" />
+    <Compile Include="FrontDeskDashboard\SelfPaymentDtoFactory.cs" />
+    <Compile Include="GpraInterview\GpraDischargeDtoFactory.cs" />
+    <Compile Include="GpraInterview\GpraFollowUpDtoFactory.cs" />
+    <Compile Include="ImportC32\ImportC32Request.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImportC32\ImportC32RequestHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImportC32\ImportC32Response.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImportC32\GetDataFromC32Response.cs" />
+    <Compile Include="ImportC32\GetDataFromC32RequestHandler.cs" />
+    <Compile Include="ImportC32\GetDataFromC32Request.cs" />
+    <Compile Include="ImportC32\ProvenanceDtoFactory.cs" />
+    <Compile Include="ImportC32\ProvenanceDto.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\CreateProgramEnrollmentRequest.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\CreateProgramEnrollmentRequestHandler.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\CreateProgramEnrollmentResponse.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\DeleteProgramEnrollmentRequest.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\DeleteProgramEnrollmentRequestHandler.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\DeleteProgramEnrollmentResponse.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\DisenrollProgramEnrollmentRequest.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\DisenrollProgramEnrollmentRequestHandler.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\DisenrollProgramEnrollmentResponse.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAllProgramEnrollmentsByClinicalCaseRequest.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAllProgramEnrollmentsByClinicalCaseRequestHandler.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAllProgramEnrollmentsByClinicalCaseResponse.cs" />
+    <Compile Include="PatientDashboard\GetAllSchedulableActivityTypesRequest.cs" />
+    <Compile Include="PatientDashboard\GetAllSchedulableActivityTypesRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetAllSchedulableActivityTypesResponse.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAvailableEnrollingStaffsRequest.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAvailableEnrollingStaffsRequestHandler.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAvailableEnrollingStaffsResponse.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramOfferingLocationsRequestHandler.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramOfferingLocationsResponse.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramOfferingLocationsRequest.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramsRequest.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramsRequestHandler.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramsResponse.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetProgramEnrollmentByKeyRequest.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetProgramEnrollmentByKeyRequestHandler.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\GetProgramEnrollmentByKeyResponse.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\ProgramOfferingLocationDto.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\ReviseProgramEnrollmentRequest.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\ReviseProgramEnrollmentRequestHandler.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\ReviseProgramEnrollmentResponse.cs" />
+    <Compile Include="PatientDashboard\VisitActivityDto.cs" />
+    <Compile Include="PatientEditor\PatientImportedAllergiesDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PatientEditor\SavePatientVeteranInformationRequestHandler.cs" />
+    <Compile Include="PatientEditor\PatientVeteranInformationDto.cs" />
+    <Compile Include="PatientEditor\PatientVeteranInformationDtoFactory.cs" />
+    <Compile Include="PermissionDescriptor.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseAdmissionDto.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseAdmissionDtoFactory.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseDischargeDto.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseDischargeDtoFactory.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseDtoFactory.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseProfileDto.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseProfileDtoFactory.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseStatusDto.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseStatusDtoFactory.cs" />
+    <Compile Include="ClinicalCaseEditor\CreateNewClinicalCaseRequestHandler.cs" />
+    <Compile Include="ClinicalCaseEditor\CreateNewClinicalCaseRequest.cs" />
+    <Compile Include="ClinicalCaseEditor\CreateNewClinicalCaseResponse.cs" />
+    <Compile Include="ClinicalCaseEditor\SaveClinicalCaseAdmissionRequestHandler.cs" />
+    <Compile Include="ClinicalCaseEditor\SaveClinicalCaseDischargeRequestHandler.cs" />
+    <Compile Include="ClinicalCaseEditor\SaveClinicalCaseProfileRequestHandler.cs" />
+    <Compile Include="ClinicalCaseEditor\SaveClinicalCaseStatusRequestHandler.cs" />
+    <Compile Include="ClinicianDashboard\ClinicianPatientDto.cs" />
+    <Compile Include="ClinicianDashboard\GetClinicianPatientsRequest.cs" />
+    <Compile Include="ClinicianDashboard\GetClinicianPatientsRequestHandler.cs" />
+    <Compile Include="ClinicianDashboard\GetClinicianPatientsResponse.cs" />
+    <Compile Include="Common\C32ToPopHealthPoster.cs" />
+    <Compile Include="Common\ClinicalCaseSummaryDtoFactory.cs" />
+    <Compile Include="Common\Hl7TypeConverter.cs" />
+    <Compile Include="Common\IC32ToPopHealthPoster.cs" />
+    <Compile Include="Common\PatientAlertDto.cs" />
+    <Compile Include="Common\PatientAlertDtoFactory.cs" />
+    <Compile Include="Common\PatientContactContactInformationDto.cs" />
+    <Compile Include="Common\PatientContactContactInformationDtoFactory.cs" />
+    <Compile Include="Common\PatientContactDto.cs" />
+    <Compile Include="Common\PatientContactDtoFactory.cs" />
+    <Compile Include="Common\PatientContactPhoneDto.cs" />
+    <Compile Include="Common\PatientContactProfileDto.cs" />
+    <Compile Include="Common\PatientContactProfileDtoFactory.cs" />
+    <Compile Include="Common\PatientDto.cs" />
+    <Compile Include="Common\ProblemDtoFactory.cs" />
+    <Compile Include="Common\VisitDtoFactory.cs" />
+    <Compile Include="DensAsiInterview\DensAsiClosureDto.cs" />
+    <Compile Include="DensAsiInterview\DensAsiClosureDtoFactory.cs" />
+    <Compile Include="DensAsiInterview\DensAsiDrugAlcoholUseDto.cs" />
+    <Compile Include="DensAsiInterview\DensAsiDrugAlcoholUseDtoFactory.cs" />
+    <Compile Include="DensAsiInterview\DensAsiDsmIvDto.cs" />
+    <Compile Include="DensAsiInterview\DensAsiDsmIvDtoFactory.cs" />
+    <Compile Include="DensAsiInterview\DensAsiDtoBase.cs" />
+    <Compile Include="DensAsiInterview\DensAsiEmploymentStatusDto.cs" />
+    <Compile Include="DensAsiInterview\DensAsiEmploymentStatusDtoFactory.cs" />
+    <Compile Include="DensAsiInterview\DensAsiFamilySocialRelationshipsDto.cs" />
+    <Compile Include="DensAsiInterview\DensAsiFamilySocialRelationshipsDtoFactory.cs" />
+    <Compile Include="DensAsiInterview\DensAsiInterviewDto.cs" />
+    <Compile Include="DensAsiInterview\DensAsiInterviewDtoFactory.cs" />
+    <Compile Include="DensAsiInterview\DensAsiLegalStatusDto.cs" />
+    <Compile Include="DensAsiInterview\DensAsiLegalStatusDtoFactory.cs" />
+    <Compile Include="DensAsiInterview\DensAsiMedicalStatusDto.cs" />
+    <Compile Include="DensAsiInterview\DensAsiMedicalStatusDtoFactory.cs" />
+    <Compile Include="DensAsiInterview\DensAsiSectionAutoMapperSetup.cs" />
+    <Compile Include="DensAsiInterview\DensAsiNonResponseTypeDto.cs" />
+    <Compile Include="DensAsiInterview\DensAsiNonResponseTypeMapper.cs" />
+    <Compile Include="DensAsiInterview\DensAsiPatientProfileDto.cs" />
+    <Compile Include="DensAsiInterview\DensAsiPatientProfileDtoFactory.cs" />
+    <Compile Include="DensAsiInterview\DensAsiPsychiatricStatusDto.cs" />
+    <Compile Include="DensAsiInterview\DensAsiPsychiatricStatusDtoFactory.cs" />
+    <Compile Include="DensAsiInterview\SaveDensAsiClosureRequestHandler.cs" />
+    <Compile Include="DensAsiInterview\SaveDensAsiDrugAlcoholUseRequestHandler.cs" />
+    <Compile Include="DensAsiInterview\SaveDensAsiDsmIvRequestHandler.cs" />
+    <Compile Include="DensAsiInterview\SaveDensAsiEmploymentStatusRequestHandler.cs" />
+    <Compile Include="DensAsiInterview\SaveDensAsiFamilySocialRelationshipsRequestHandler.cs" />
+    <Compile Include="DensAsiInterview\SaveDensAsiLegalStatusRequestHandler.cs" />
+    <Compile Include="DensAsiInterview\SaveDensAsiMedicalStatusRequestHandler.cs" />
+    <Compile Include="DensAsiInterview\SaveDensAsiPatientProfileRequestHandler.cs" />
+    <Compile Include="DensAsiInterview\SaveDensAsiPsychiatricStatusRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\AppointmentDetailsDtoFactory.cs" />
+    <Compile Include="FrontDeskDashboard\DeleteClinicianAppointmentRequest.cs" />
+    <Compile Include="FrontDeskDashboard\DeleteClinicianAppointmentRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\DeleteClinicianAppointmentResponse.cs" />
+    <Compile Include="FrontDeskDashboard\GetAvailableTimeSlotsRequest.cs" />
+    <Compile Include="FrontDeskDashboard\GetAvailableTimeSlotsRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\GetAvailableTimeSlotsResponse.cs" />
+    <Compile Include="FrontDeskDashboard\GetCliniciansByLocationKeyRequest.cs" />
+    <Compile Include="FrontDeskDashboard\GetCliniciansByLocationKeyRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\GetCliniciansByLocationKeyResponse.cs" />
+    <Compile Include="FrontDeskDashboard\GetClinicianScheduleByClinicianKeyAndDateRangeRequest.cs" />
+    <Compile Include="FrontDeskDashboard\GetClinicianScheduleByClinicianKeyAndDateRangeRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\GetClinicianScheduleByClinicianKeyAndDateRangeResponse.cs" />
+    <Compile Include="FrontDeskDashboard\GetVisitTemplatesByAgencyKeyRequest.cs" />
+    <Compile Include="FrontDeskDashboard\GetVisitTemplatesByAgencyKeyRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\GetVisitTemplatesByAgencyKeyResponse.cs" />
+    <Compile Include="FrontDeskDashboard\SaveAppointmentDetailsRequestHandler.cs" />
+    <Compile Include="Common\PostC32ToPopHealtheRequest.cs" />
+    <Compile Include="Common\PostC32ToPopHealthRequestHandler.cs" />
+    <Compile Include="Common\PostC32ToPopHealthResponse.cs" />
+    <Compile Include="FrontDeskDashboard\UpdateClinicianAppointmentRequest.cs" />
+    <Compile Include="FrontDeskDashboard\UpdateClinicianAppointmentRequestHandler.cs" />
+    <Compile Include="FrontDeskDashboard\UpdateClinicianAppointmentResponse.cs" />
+    <Compile Include="GainShortScreener\GainShortScreenerDto.cs" />
+    <Compile Include="GainShortScreener\GainShortScreenerDtoFactory.cs" />
+    <Compile Include="GainShortScreener\SaveGainShortScreenerRequestHandler.cs" />
+    <Compile Include="GpraInterview\GpraCrimeCriminalJusticeDtoFactory.cs" />
+    <Compile Include="GpraInterview\GpraDemographicsDto.cs" />
+    <Compile Include="GpraInterview\GpraDemographicsDtoFactory.cs" />
+    <Compile Include="GpraInterview\GpraDischargeDto.cs" />
+    <Compile Include="GpraInterview\GpraDrugAlcoholUseDto.cs" />
+    <Compile Include="GpraInterview\GpraDrugAlcoholUseDtoFactory.cs" />
+    <Compile Include="GpraInterview\GpraFamilyLivingConditionsDto.cs" />
+    <Compile Include="GpraInterview\GpraFamilyLivingConditionsDtoFactory.cs" />
+    <Compile Include="GpraInterview\GpraFollowUpDto.cs" />
+    <Compile Include="GpraInterview\GpraInterviewDto.cs" />
+    <Compile Include="GpraInterview\GpraInterviewDtoFactory.cs" />
+    <Compile Include="GpraInterview\GpraInterviewInformationDto.cs" />
+    <Compile Include="GpraInterview\GpraInterviewInformationDtoFactory.cs" />
+    <Compile Include="GpraInterview\GpraNodeAutoMapperSetup.cs" />
+    <Compile Include="GpraInterview\GpraCrimeCriminalJusticeDto.cs" />
+    <Compile Include="GpraInterview\GpraDtoBase.cs" />
+    <Compile Include="GpraInterview\GpraNonResponseTypeDto.cs" />
+    <Compile Include="GpraInterview\GpraNonResponseTypeMapper.cs" />
+    <Compile Include="GpraInterview\GpraPlannedServicesDto.cs" />
+    <Compile Include="GpraInterview\GpraPlannedServicesDtoFactory.cs" />
+    <Compile Include="GpraInterview\GpraProblemsTreatmentRecoveryDto.cs" />
+    <Compile Include="GpraInterview\GpraProblemsTreatmentRecoveryDtoFactory.cs" />
+    <Compile Include="GpraInterview\GpraProfessionalInformationDto.cs" />
+    <Compile Include="GpraInterview\GpraProfessionalInformationDtoFactory.cs" />
+    <Compile Include="GpraInterview\GpraSocialConnectednessDto.cs" />
+    <Compile Include="GpraInterview\GpraSocialConnectednessDtoFactory.cs" />
+    <Compile Include="GpraInterview\SaveGpraCrimeCriminalJusticeRequestHandler.cs" />
+    <Compile Include="GpraInterview\SaveGpraDemographicsRequestHandler.cs" />
+    <Compile Include="GpraInterview\SaveGpraDrugAlcoholUseRequestHandler.cs" />
+    <Compile Include="GpraInterview\SaveGpraFamilyLivingConditionsRequestHandler.cs" />
+    <Compile Include="GpraInterview\SaveGpraFollowUpRequestHandler.cs" />
+    <Compile Include="GpraInterview\SaveGpraInterviewInformationRequestHandler.cs" />
+    <Compile Include="GpraInterview\SaveGpraPlannedServicesRequestHandler.cs" />
+    <Compile Include="GpraInterview\SaveGpraProblemsTreatmentRecoveryRequestHandler.cs" />
+    <Compile Include="GpraInterview\SaveGpraProfessionalInformationRequestHandler.cs" />
+    <Compile Include="GpraInterview\SaveGpraSocialConnectednessRequestHandler.cs" />
+    <Compile Include="GpraInterview\SaveGrpaDischargeRequestHandler.cs" />
+    <Compile Include="HttpHandler.cs" />
+    <Compile Include="PatientAccessHistory\GetPatientAccessHistoryBySearchCriteriaRequest.cs" />
+    <Compile Include="PatientAccessHistory\GetPatientAccessHistoryBySearchCriteriaRequestHandler.cs" />
+    <Compile Include="PatientAccessHistory\GetPatientAccessHistoryBySearchCriteriaResponse.cs" />
+    <Compile Include="PatientDashboard\AssociateProblemsWithVisitRequest.cs" />
+    <Compile Include="PatientDashboard\AssociateProblemsWithVisitRequestHandler.cs" />
+    <Compile Include="PatientDashboard\AssociateProblemsWithVisitResponse.cs" />
+    <Compile Include="PatientDashboard\AuditCDto.cs" />
+    <Compile Include="PatientDashboard\AuditCDtoFactory.cs" />
+    <Compile Include="PatientDashboard\AuditDto.cs" />
+    <Compile Include="PatientDashboard\AuditDtoFactory.cs" />
+    <Compile Include="PatientDashboard\BloodPressureDto.cs" />
+    <Compile Include="PatientDashboard\BriefInterventionDto.cs" />
+    <Compile Include="PatientDashboard\BriefInterventionDtoFactory.cs" />
+    <Compile Include="PatientDashboard\C32DtoFactory.cs" />
+    <Compile Include="PatientDashboard\CancelRadiologyOrderRequest.cs" />
+    <Compile Include="PatientDashboard\CancelRadiologyOrderRequestHandler.cs" />
+    <Compile Include="PatientDashboard\CancelRadiologyOrderResponse.cs" />
+    <Compile Include="PatientDashboard\CaseSummaryDto.cs" />
+    <Compile Include="PatientDashboard\CaseSummaryDtoFactory.cs" />
+    <Compile Include="PatientDashboard\Dast10Dto.cs" />
+    <Compile Include="PatientDashboard\Dast10DtoFactory.cs" />
+    <Compile Include="PatientDashboard\DeletePatientDocumentRequest.cs" />
+    <Compile Include="PatientDashboard\DeletePatientDocumentRequestHandler.cs" />
+    <Compile Include="PatientDashboard\DeletePatientDocumentResponse.cs" />
+    <Compile Include="PatientDashboard\DeleteProblemRequest.cs" />
+    <Compile Include="PatientDashboard\DeleteProblemRequestHandler.cs" />
+    <Compile Include="PatientDashboard\DeleteProblemResponse.cs" />
+    <Compile Include="PatientDashboard\DetachProblemFromVisitRequest.cs" />
+    <Compile Include="PatientDashboard\DetachProblemFromVisitRequestHandler.cs" />
+    <Compile Include="PatientDashboard\DetachProblemFromVisitResponse.cs" />
+    <Compile Include="PatientDashboard\GetAllActivitiesByClinicalCaseRequest.cs" />
+    <Compile Include="PatientDashboard\GetAllActivitiesByClinicalCaseRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetAllActivitiesByClinicalCaseResponse.cs" />
+    <Compile Include="PatientDashboard\GetAllMedicationsByPatientRequest.cs" />
+    <Compile Include="PatientDashboard\GetAllMedicationsByPatientRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetAllMedicationsByPatientResponse.cs" />
+    <Compile Include="PatientDashboard\GetPatientDocumentsByPatientRequest.cs" />
+    <Compile Include="PatientDashboard\GetPatientDocumentsByPatientRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetPatientDocumentsByPatientResponse.cs" />
+    <Compile Include="PatientDashboard\GetProblemByKeyRequest.cs" />
+    <Compile Include="PatientDashboard\GetProblemByKeyRequestHanlder.cs" />
+    <Compile Include="PatientDashboard\GetProblemByKeyResponse.cs" />
+    <Compile Include="PatientDashboard\GetRecentVisitActivitiesByClinicalCaseRequest.cs" />
+    <Compile Include="PatientDashboard\GetRecentVisitActivitiesByClinicalCaseRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetRecentVisitActivitiesByClinicalCaseResponse.cs" />
+    <Compile Include="PatientDashboard\GetScheduledVisitActivitiesByClinicalCaseRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetScheduledVisitActivitiesByClinicalCaseRequest.cs" />
+    <Compile Include="PatientDashboard\GetScheduledVisitActivitiesByClinicalCaseResponse.cs" />
+    <Compile Include="PatientDashboard\MedicationDtoFactory.cs" />
+    <Compile Include="PatientDashboard\NidaDrugQuestionnaireDto.cs" />
+    <Compile Include="PatientDashboard\NidaDrugQuestionnaireDtoFactory.cs" />
+    <Compile Include="PatientDashboard\GetAllClinicalCasesByPatientRequest.cs" />
+    <Compile Include="PatientDashboard\GetAllClinicalCasesByPatientRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetAllClinicalCasesByPatientResponse.cs" />
+    <Compile Include="PatientDashboard\GetAllProblemsByClinicalCaseRequest.cs" />
+    <Compile Include="PatientDashboard\GetAllProblemsByClinicalCaseRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetAllProblemsByClinicalCaseResponse.cs" />
+    <Compile Include="PatientDashboard\GetDefaultClinicalCaseByPatientRequest.cs" />
+    <Compile Include="PatientDashboard\GetDefaultClinicalCaseByPatientRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetDefaultClinicalCaseByPatientResponse.cs" />
+    <Compile Include="PatientDashboard\GetGrowthInformationByPatientKeyRequest.cs" />
+    <Compile Include="PatientDashboard\GetGrowthInformationByPatientKeyRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetGrowthInformationByPatientKeyResponse.cs" />
+    <Compile Include="PatientDashboard\GetLabResultsRequest.cs" />
+    <Compile Include="PatientDashboard\GetLabResultsRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetLabResultsResponse.cs" />
+    <Compile Include="PatientDashboard\GetMedicationByKeyRequest.cs" />
+    <Compile Include="PatientDashboard\GetMedicationByKeyRequestHandler.cs" />
+    <Compile Include="PatientDashboard\GetMedicationByKeyResponse.cs" />
+    <Compile Include="PatientDashboard\HeartRateDto.cs" />
+    <Compile Include="PatientDashboard\Hl7ImmunizationFactory.cs" />
+    <Compile Include="PatientDashboard\ImmunizationDto.cs" />
+    <Compile Include="PatientDashboard\ImmunizationDtoFactory.cs" />
+    <Compile Include="PatientDashboard\IndividualCounselingDto.cs" />
+    <Compile Include="PatientDashboard\IndividualCounselingDtoFactory.cs" />
+    <Compile Include="PatientDashboard\LabFacilityDto.cs" />
+    <Compile Include="PatientDashboard\LabResultDto.cs" />
+    <Compile Include="PatientDashboard\LabSpecimenDto.cs" />
+    <Compile Include="PatientDashboard\LabSpecimenDtoFactory.cs" />
+    <Compile Include="PatientDashboard\MedicationDto.cs" />
+    <Compile Include="PatientDashboard\MedicationDtsInfoDto.cs" />
+    <Compile Include="PatientDashboard\MedicationFormStrengthRequest.cs" />
+    <Compile Include="PatientDashboard\MedicationFormStrengthRequestHandler.cs" />
+    <Compile Include="PatientDashboard\MedicationFormStrengthResponse.cs" />
+    <Compile Include="PatientDashboard\PatientDocumentDtoFactory.cs" />
+    <Compile Include="PatientDashboard\Phq9Dto.cs" />
+    <Compile Include="PatientDashboard\Phq9DtoFactory.cs" />
+    <Compile Include="PatientDashboard\SaveAuditRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SaveNidaDrugQuestionnaireRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SaveIndividualCounselingRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SaveDast10RequestHandler.cs" />
+    <Compile Include="PatientDashboard\SavePatientDocumentRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SaveProblemDtoRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SaveVisitDtoRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SocialHistoryDto.cs" />
+    <Compile Include="PatientDashboard\SocialHistoryDtoFactory.cs" />
+    <Compile Include="PatientDashboard\RadiologyOrderDtoFactory.cs" />
+    <Compile Include="PatientDashboard\RadiologyOrderDto.cs" />
+    <Compile Include="PatientDashboard\SaveAuditCRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SaveBriefInterventionRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SaveImmunizationRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SaveLabRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SaveMedicationRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SavePhq9RequestHandler.cs" />
+    <Compile Include="PatientDashboard\SaveSocialHistoryDtoRequestHandler.cs" />
+    <Compile Include="PatientDashboard\SaveRadiologyOrderRequestHandler.cs" />
+    <Compile Include="PatientDashboard\HL7SyndromicSurveillanceFactory.cs" />
+    <Compile Include="PatientDashboard\SaveVitalSignRequestHandler.cs" />
+    <Compile Include="PatientDashboard\VitalSignDto.cs" />
+    <Compile Include="PatientDashboard\VitalSignDtoFactory.cs" />
+    <Compile Include="PatientEditor\AllergyDto.cs" />
+    <Compile Include="PatientEditor\PatientContactKeyDto.cs" />
+    <Compile Include="PatientEditor\RemovePatientContactRequest.cs" />
+    <Compile Include="PatientEditor\RemovePatientContactRequestHandler.cs" />
+    <Compile Include="PatientEditor\PatientAddressDto.cs" />
+    <Compile Include="PatientEditor\PatientAddressesDto.cs" />
+    <Compile Include="PatientEditor\PatientAddressesDtoFactory.cs" />
+    <Compile Include="PatientEditor\PatientAliasDto.cs" />
+    <Compile Include="PatientEditor\PatientAliasesDto.cs" />
+    <Compile Include="PatientEditor\PatientAliasesDtoFactory.cs" />
+    <Compile Include="PatientEditor\PatientAllergiesDto.cs" />
+    <Compile Include="PatientEditor\PatientAllergiesDtoFactory.cs" />
+    <Compile Include="PatientEditor\PatientConfidentialInformationDto.cs" />
+    <Compile Include="PatientEditor\PatientConfidentialInformationDtoFactory.cs" />
+    <Compile Include="PatientEditor\PatientContactsDto.cs" />
+    <Compile Include="PatientEditor\PatientContactsDtoFactory.cs" />
+    <Compile Include="PatientEditor\PatientDemographicDetailsDtoFactory.cs" />
+    <Compile Include="PatientEditor\PatientIdentifiersDtoFactory.cs" />
+    <Compile Include="PatientEditor\PatientLegalStatusDtoFactory.cs" />
+    <Compile Include="PatientEditor\PatientOtherConsiderationsDtoFactory.cs" />
+    <Compile Include="PatientEditor\PatientPhoneNumbersDtoFactory.cs" />
+    <Compile Include="PatientEditor\PatientProfileDtoFactory.cs" />
+    <Compile Include="PatientEditor\PatientRaceAndEthnicityDtoFactory.cs" />
+    <Compile Include="PatientEditor\SavePatientAddressesRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientAllergiesRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientAliasesRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientConfidentialInformationRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientContactContactInformationRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientContactProfileRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientDemographicDetailsRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientIdentifiersRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientLegalStatusRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientOtherConsiderationsRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientPhoneNumbersRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientProfileRequestHandler.cs" />
+    <Compile Include="PatientEditor\SavePatientRaceAndEthnicityRequestHandler.cs" />
+    <Compile Include="PatientList\PatientLabTestSummaryDto.cs" />
+    <Compile Include="PatientList\PatientListCriteriaDto.cs" />
+    <Compile Include="PatientList\PatientListResultDto.cs" />
+    <Compile Include="PatientList\PatientListResultsDto.cs" />
+    <Compile Include="PatientList\PatientListSearchRequest.cs" />
+    <Compile Include="PatientList\PatientListSearchRequestHandler.cs" />
+    <Compile Include="PatientList\PatientListSearchResponse.cs" />
+    <Compile Include="PatientReminder\PatientReminderCriteriaDto.cs" />
+    <Compile Include="PatientReminder\PatientReminderResultDto.cs" />
+    <Compile Include="PatientReminder\PatientReminderResultsDto.cs" />
+    <Compile Include="PatientReminder\PatientReminderSearchRequest.cs" />
+    <Compile Include="PatientReminder\PatientReminderSearchRequestHandler.cs" />
+    <Compile Include="PatientReminder\PatientReminderSearchResponse.cs" />
+    <Compile Include="PatientDashboard\GrowthInfoDto.cs" />
+    <Compile Include="PatientDashboard\GrowthRateHeightDto.cs" />
+    <Compile Include="PatientDashboard\GrowthRateWeightDto.cs" />
+    <Compile Include="Common\PatientDemographicDetailsDto.cs" />
+    <Compile Include="Common\PatientLegalStatusDto.cs" />
+    <Compile Include="Common\PatientOtherConsiderationsDto.cs" />
+    <Compile Include="Common\PatientIdentifiersDto.cs" />
+    <Compile Include="Common\PatientPhoneNumbersDto.cs" />
+    <Compile Include="Common\PatientProfileDto.cs" />
+    <Compile Include="Common\PatientRaceAndEthnicityDto.cs" />
+    <Compile Include="Common\ProblemDto.cs" />
+    <Compile Include="Friends.cs" />
+    <Compile Include="PatientSearch\CreateNewPatientRequest.cs" />
+    <Compile Include="PatientSearch\CreateNewPatientRequestHandler.cs" />
+    <Compile Include="PatientSearch\CreateNewPatientResponse.cs" />
+    <Compile Include="PatientSearch\GetPatientByKeyRequest.cs" />
+    <Compile Include="PatientSearch\GetPatientByKeyRequestHandler.cs" />
+    <Compile Include="PatientSearch\GetPatientByKeyResponse.cs" />
+    <Compile Include="PatientSearch\GetPatientsByAdvancedSearchRequest.cs" />
+    <Compile Include="PatientSearch\GetPatientsByAdvancedSearchRequestHandler.cs" />
+    <Compile Include="PatientSearch\GetPatientsByAdvancedSearchResponse.cs" />
+    <Compile Include="PatientSearch\GetPatientsByKeywordsRequest.cs" />
+    <Compile Include="PatientSearch\GetPatientsByKeywordsRequestHandler.cs" />
+    <Compile Include="PatientSearch\GetPatientsByKeywordsResponse.cs" />
+    <Compile Include="Service\LogPatientEventAccessRequest.cs" />
+    <Compile Include="Service\LogPatientEventAccessRequestHandler.cs" />
+    <Compile Include="Service\LogPatientEventAccessResponse.cs" />
+    <Compile Include="Service\UpdateVisitStatusRequest.cs" />
+    <Compile Include="Service\UpdateVisitStatusRequestHandler.cs" />
+    <Compile Include="Service\UpdateVisitStatusResponse.cs" />
+    <Compile Include="SystemAccountSearch\GetSystemAccountsByAdvancedSearchRequest.cs" />
+    <Compile Include="SystemAccountSearch\GetSystemAccountsByAdvancedSearchRequestHandler.cs" />
+    <Compile Include="SystemAccountSearch\GetSystemAccountsByAdvancedSearchResponse.cs" />
+    <Compile Include="SystemAccountSearch\GetSystemAccountsByKeywordRequest.cs" />
+    <Compile Include="SystemAccountSearch\GetSystemAccountsByKeywordRequestHandler.cs" />
+    <Compile Include="SystemAccountSearch\GetSystemAccountsByKeywordResponse.cs" />
+    <Compile Include="Common\ActivityDto.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseDto.cs" />
+    <Compile Include="FrontDeskDashboard\AppointmentDetailsDto.cs" />
+    <Compile Include="FrontDeskDashboard\ClinicianAppointmentDto.cs" />
+    <Compile Include="FrontDeskDashboard\TimeSlotDto.cs" />
+    <Compile Include="FrontDeskDashboard\ClinicianScheduleDto.cs" />
+    <Compile Include="Common\PatientIdentifierDto.cs" />
+    <Compile Include="Common\PatientPhoneDto.cs" />
+    <Compile Include="Common\ClinicalCaseSummaryDto.cs" />
+    <Compile Include="Mapping\VitalSignToActivityResolver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\PagedPatientAccessEventSearchResultDto.cs" />
+    <Compile Include="Common\PagedPatientSearchResultDto.cs" />
+    <Compile Include="Common\PatientAccessEventDto.cs" />
+    <Compile Include="Common\PatientAccessEventLogEntryDto.cs" />
+    <Compile Include="Common\PatientDocumentDto.cs" />
+    <Compile Include="Common\PatientSearchResultDto.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseSignedCommentDto.cs" />
+    <Compile Include="Common\VisitDto.cs" />
+    <Compile Include="Common\VisitStatusUpdateDto.cs" />
+    <Compile Include="Common\VisitTemplateDto.cs" />
+    <Compile Include="TedsInterview\DetailedDrugCodeDto.cs" />
+    <Compile Include="TedsInterview\GetDetailedDrugCodeListRequest.cs" />
+    <Compile Include="TedsInterview\GetDetailedDrugCodeListResponse.cs" />
+    <Compile Include="TedsInterview\GetDetailedDrugCodeListRequestHandler.cs" />
+    <Compile Include="TedsInterview\SaveTedsDischargeInterviewRequestHandler.cs" />
+    <Compile Include="TedsInterview\SubstanceProblemTypeDto.cs" />
+    <Compile Include="TedsInterview\TedsAnswerDto.cs" />
+    <Compile Include="TedsInterview\TedsAnswerPopulator.cs" />
+    <Compile Include="TedsInterview\TedsDischargeInterviewDto.cs" />
+    <Compile Include="TedsInterview\TedsDischargeInterviewDtoFactory.cs" />
+    <Compile Include="TedsInterview\TedsLookupBaseDto.cs" />
+    <Compile Include="TedsInterview\DsmDiagnosisResponseToStringTypeConverter.cs" />
+    <Compile Include="TedsInterview\TedsAnswerMapper.cs" />
+    <Compile Include="TedsInterview\TedsAdmissionInterviewDtoFactory.cs" />
+    <Compile Include="TedsInterview\TedsAdmissionInterviewDto.cs" />
+    <Compile Include="TedsInterview\SaveTedsAdmissionInterviewRequestHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.ClinicalBilling.ContextMap\Rem.Domain.ClinicalBilling.ContextMap.csproj">
+      <Project>{9A647497-1729-4D74-9E4C-58E6BEC25BEB}</Project>
+      <Name>Rem.Domain.ClinicalBilling.ContextMap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Clinical\Rem.Domain.Clinical.csproj">
+      <Project>{C7837BA2-B4EC-40B6-96B6-00F9BE462A60}</Project>
+      <Name>Rem.Domain.Clinical</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Core\Rem.Domain.Core.csproj">
+      <Project>{AB046CD6-556B-4023-BAC1-3F0F3183B630}</Project>
+      <Name>Rem.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\Rem.Infrastructure\Rem.Infrastructure.csproj">
+      <Project>{ADDD4155-DFBE-4450-96E4-0E730CE38861}</Project>
+      <Name>Rem.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common\Pillar.Common.csproj">
+      <Project>{6761BABC-8D45-4D08-B112-088FA47AB625}</Project>
+      <Name>Pillar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain.NHibernate\Pillar.Domain.NHibernate.csproj">
+      <Project>{E1332A3F-04D1-4D02-B0F0-A20046EAF437}</Project>
+      <Name>Pillar.Domain.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain\Pillar.Domain.csproj">
+      <Project>{88257D62-7FE9-4128-A39B-1FF4511C8B3A}</Project>
+      <Name>Pillar.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.FluentRuleEngine\Pillar.FluentRuleEngine.csproj">
+      <Project>{26BEFDB1-9762-4132-9F45-06CABE14D43C}</Project>
+      <Name>Pillar.FluentRuleEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Security\Pillar.Security.csproj">
+      <Project>{450A9049-224E-47D2-ADF8-D57A168DC266}</Project>
+      <Name>Pillar.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Rem.WellKnownNames\Rem.WellKnownNames.csproj">
+      <Project>{0CA1E92B-B1E0-4E22-8FA5-747753AA8E72}</Project>
+      <Name>Rem.WellKnownNames</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.AgencyModule.Web\Rem.Ria.AgencyModule.Web.csproj">
+      <Project>{328DE49F-A6FE-4922-BBE5-71BB375389EF}</Project>
+      <Name>Rem.Ria.AgencyModule.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.Infrastructure.Web\Rem.Ria.Infrastructure.Web.csproj">
+      <Project>{D0DD4451-BAFD-41E2-B6B8-566E3BAFD20A}</Project>
+      <Name>Rem.Ria.Infrastructure.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DirectMessageCenter\HealthProviderDirectory.cd" />
+    <None Include="DirectMessageCenter\DirectMessageSender.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PatientDashboard\GetRecentVisitActivitiesByClinicalCaseRequestHandler.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PatientDashboard\GetScheduledVisitActivitiesByClinicalCaseRequestHandler.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PatientWorkspace\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\lib\Shared\Stylecop\StyleCop.Targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

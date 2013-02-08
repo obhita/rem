@@ -1,0 +1,295 @@
+<UserControl x:Class="Rem.Ria.AgencyModule.LocationWorkspace.LocationWorkspaceRibbon"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=System.Windows" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="800">
+    <Grid x:Name="LayoutRoot" Width="Auto" Margin="0,0,20,0">
+        <ContentControl Grid.Row="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
+            <Grid VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Rectangle Height="25" Grid.Column="0" Margin="10 0" Fill="DarkGray" Width="25" HorizontalAlignment="Left"/>
+                <CustomControls:PopupExpander Grid.Column="1" CornerRadius="0 5 5 5" Background="{StaticResource WorkspaceSlideOutSummaryBackground}" PopupTarget="{Binding ElementName=LayoutRoot}" BorderThickness="0" HorizontalAlignment="Left" Height="30" >
+                    <CustomControls:PopupExpander.Effect>
+                        <DropShadowEffect Direction="300" ShadowDepth="1" Color="#FF686868" BlurRadius="3"/>
+                    </CustomControls:PopupExpander.Effect>
+                    <CustomControls:PopupExpander.Header>
+                        <Grid MinWidth="580" Width="Auto">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition MinWidth="250" Width="*"/>
+                                <ColumnDefinition MinWidth="200" Width="*"/>
+                                <ColumnDefinition MinWidth="150" Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border BorderBrush="{StaticResource WorkPadHeaderControl_OuterBorder_Normal}" CornerRadius="2,0,0,2" BorderThickness="1,1,0,1" Grid.Column="0" >
+                                <Border BorderThickness="1,1,1,1" BorderBrush="{StaticResource REMControl_InnerBorder_Normal}" CornerRadius="2,0,0,2" Grid.Column="0" Background="{StaticResource RibbonProfileSummaryControl_Background_Normal}" Margin="0">
+                                    <StackPanel  Orientation="Horizontal" >
+                                        <Canvas Width="18" Height="18" Margin="2,0,2,0">
+                                            <Path Stretch="Fill" Fill="White" Data="F1 M 70.7938,125.265L 68.4844,125.265L 68.4844,122.959L 70.7938,122.959M 67.4191,126.864L 65.4671,126.864L 65.4671,122.957L 67.4191,122.957M 71.3351,120.14L 71.3351,116.991L 69.1844,116.991L 69.1844,118.575L 67.8284,117.591L 62.2378,121.879L 63.3191,123.351L 63.5018,123.216L 63.5018,127.169L 72.2831,127.169L 72.2831,123.093L 72.6351,123.351L 73.7204,121.872L 71.3351,120.14 Z " Height="10.929" Canvas.Left="3.467" Canvas.Top="4.036" UseLayoutRounding="False" Width="12.327" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            <Path Stretch="Fill" Fill="#FFA0A0A0" Data="F1 M 70.7938,125.265L 68.4844,125.265L 68.4844,122.959L 70.7938,122.959M 67.4191,126.864L 65.4671,126.864L 65.4671,122.957L 67.4191,122.957M 71.3351,120.14L 71.3351,116.991L 69.1844,116.991L 69.1844,118.575L 67.8284,117.591L 62.2378,121.879L 63.3191,123.351L 63.5018,123.216L 63.5018,127.169L 72.2831,127.169L 72.2831,123.093L 72.6351,123.351L 73.7204,121.872L 71.3351,120.14 Z " Height="10.929" Canvas.Left="2.856" Canvas.Top="3.57" UseLayoutRounding="False" Width="12.327" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Canvas>
+                                        <StackPanel  Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource WorkSpaceHeader_RibbonText_Style}" Text="{Binding LocationPrimaryAddress.FirstStreetAddress, StringFormat='\{0\} '}"/>
+                                            <TextBlock Style="{StaticResource WorkSpaceHeader_RibbonText_Style}" Text="{Binding LocationPrimaryAddress.CityName, StringFormat='\{0\}\, '}"/>
+                                            <TextBlock Style="{StaticResource WorkSpaceHeader_RibbonText_Style}" Text="{Binding LocationPrimaryAddress.StateProvince.ShortName, StringFormat='\{0\} '}"/>
+                                            <TextBlock Style="{StaticResource WorkSpaceHeader_RibbonText_Style}" Text="{Binding LocationPrimaryAddress.PostalCode, StringFormat='\{0\} '}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </Border>
+                            <Border BorderBrush="{StaticResource WorkPadHeaderControl_OuterBorder_Normal}" BorderThickness="1,1,0,1" Grid.Column="1" >
+                                <Border BorderThickness="0,1,1,1" BorderBrush="{StaticResource REMControl_InnerBorder_Normal}" MinWidth="100" Grid.Column="1" Background="{StaticResource RibbonProfileSummaryControl_Background_Normal}" Margin="0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Canvas Width="16" Height="16" Margin="2,0,2,0">
+                                            <Path Stretch="Fill" Fill="White" Data="F1 M 117.024,100.78C 116.79,100.624 116.654,100.451 116.616,100.261C 116.579,100.07 116.636,99.7671 116.789,99.3507L 117.011,98.7461C 117.145,98.3791 117.323,98.1092 117.541,97.9364C 117.76,97.7644 118,97.7046 118.257,97.7581C 118.087,98.0142 117.929,98.2895 117.783,98.5829C 117.637,98.8758 117.5,99.1963 117.373,99.5445C 117.276,99.8077 117.201,100.037 117.147,100.231C 117.093,100.425 117.051,100.61 117.024,100.78 Z M 120.503,91.6341C 120.273,91.5069 120.129,91.3073 120.073,91.0336C 120.018,90.7612 120.057,90.4402 120.191,90.0741L 120.41,89.4774C 120.567,89.0493 120.723,88.7756 120.878,88.6559C 121.033,88.5358 121.245,88.4969 121.513,88.5405C 121.426,88.6819 121.341,88.8447 121.256,89.0288C 121.171,89.2121 121.079,89.4385 120.981,89.7075C 120.855,90.0502 120.753,90.3812 120.674,90.703C 120.594,91.0235 120.537,91.334 120.503,91.6341 Z M 121.205,92.9832C 121.266,92.7421 121.263,92.5216 121.197,92.3245C 121.13,92.127 121.004,91.9525 120.817,91.8006C 120.86,91.4558 120.929,91.1001 121.026,90.7331C 121.122,90.3666 121.247,89.9749 121.399,89.5598C 121.469,89.3702 121.539,89.1999 121.608,89.0484C 121.677,88.897 121.749,88.7585 121.823,88.6329C 122.292,88.8262 122.655,89.0468 122.91,89.2974C 123.165,89.5468 123.326,89.836 123.393,90.1657C 123.497,90.6758 123.452,91.4378 123.26,92.453C 123.069,93.4673 122.753,94.5737 122.313,95.7721C 121.865,96.994 121.388,98.0548 120.882,98.954C 120.375,99.8533 119.923,100.456 119.527,100.761C 119.263,100.97 118.95,101.085 118.588,101.109C 118.226,101.133 117.804,101.062 117.323,100.9C 117.351,100.75 117.386,100.596 117.431,100.435C 117.476,100.274 117.531,100.106 117.596,99.929C 117.749,99.5135 117.906,99.1336 118.07,98.7917C 118.234,98.4494 118.411,98.1335 118.601,97.8422C 118.842,97.8477 119.052,97.7941 119.232,97.6836C 119.41,97.5723 119.554,97.407 119.661,97.1911" Height="13.808" Canvas.Left="4.284" Canvas.Top="1.428" UseLayoutRounding="False" Width="7.505" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            <Path Stretch="Fill" Fill="#FFA0A0A0" Data="F1 M 117.024,100.78C 116.79,100.624 116.654,100.451 116.616,100.261C 116.579,100.07 116.636,99.7671 116.789,99.3507L 117.011,98.7461C 117.145,98.3791 117.323,98.1092 117.541,97.9364C 117.76,97.7644 118,97.7046 118.257,97.7581C 118.087,98.0142 117.929,98.2895 117.783,98.5829C 117.637,98.8758 117.5,99.1963 117.373,99.5445C 117.276,99.8077 117.201,100.037 117.147,100.231C 117.093,100.425 117.051,100.61 117.024,100.78 Z M 120.503,91.6341C 120.273,91.5069 120.129,91.3073 120.073,91.0336C 120.018,90.7612 120.057,90.4402 120.191,90.0741L 120.41,89.4774C 120.567,89.0493 120.723,88.7756 120.878,88.6559C 121.033,88.5358 121.245,88.4969 121.513,88.5405C 121.426,88.6819 121.341,88.8447 121.256,89.0288C 121.171,89.2121 121.079,89.4385 120.981,89.7075C 120.855,90.0502 120.753,90.3812 120.674,90.703C 120.594,91.0235 120.537,91.334 120.503,91.6341 Z M 121.205,92.9832C 121.266,92.7421 121.263,92.5216 121.197,92.3245C 121.13,92.127 121.004,91.9525 120.817,91.8006C 120.86,91.4558 120.929,91.1001 121.026,90.7331C 121.122,90.3666 121.247,89.9749 121.399,89.5598C 121.469,89.3702 121.539,89.1999 121.608,89.0484C 121.677,88.897 121.749,88.7585 121.823,88.6329C 122.292,88.8262 122.655,89.0468 122.91,89.2974C 123.165,89.5468 123.326,89.836 123.393,90.1657C 123.497,90.6758 123.452,91.4378 123.26,92.453C 123.069,93.4673 122.753,94.5737 122.313,95.7721C 121.865,96.994 121.388,98.0548 120.882,98.954C 120.375,99.8533 119.923,100.456 119.527,100.761C 119.263,100.97 118.95,101.085 118.588,101.109C 118.226,101.133 117.804,101.062 117.323,100.9C 117.351,100.75 117.386,100.596 117.431,100.435C 117.476,100.274 117.531,100.106 117.596,99.929C 117.749,99.5135 117.906,99.1336 118.07,98.7917C 118.234,98.4494 118.411,98.1335 118.601,97.8422C 118.842,97.8477 119.052,97.7941 119.232,97.6836C 119.41,97.5723 119.554,97.407 119.661,97.1911" Height="13.808" Canvas.Left="3.57" Canvas.Top="0.714" UseLayoutRounding="False" Width="7.505" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Canvas>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource WorkSpaceHeader_RibbonText_Style}" Text="{Binding LocationPrimaryPhone.PhoneNumber, StringFormat='\{0\} '}" />
+                                            <TextBlock Style="{StaticResource WorkSpaceHeader_RibbonText_Style}" Text="{Binding LocationPrimaryPhone.PhoneExtensionNumber, StringFormat=Ext:  \{0\}}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </Border>
+                            <Border BorderBrush="{StaticResource WorkPadHeaderControl_OuterBorder_Normal}" BorderThickness="1,1,1,1" Grid.Column="2" >
+                                <Border BorderThickness="0,1,1,1" BorderBrush="{StaticResource REMControl_InnerBorder_Normal}" MinWidth="100" Grid.Column="1" Background="{StaticResource RibbonProfileSummaryControl_Background_Normal}" Margin="0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Canvas Width="16" Height="16" Margin="2,0,2,0">
+                                            <Path Stretch="Fill" Fill="White" Data="F1 M 153.149,93.6574C 154.172,93.1331 154.873,92.0702 154.873,90.8432C 154.873,89.0958 153.456,87.6793 151.709,87.6793C 149.962,87.6793 148.545,89.0958 148.545,90.8432C 148.545,92.0702 149.246,93.1331 150.269,93.6574C 148.174,94.2331 146.568,96.0298 146.209,98.2626L 157.209,98.2626C 156.85,96.0298 155.243,94.2327 153.149,93.6574 Z " Height="10.679" Canvas.Left="2.391" Canvas.Top="2.88" UseLayoutRounding="False" Width="11.139"/>
+                                            <Path Stretch="Fill" Fill="#FFA0A0A0" Data="F1 M 153.149,93.6574C 154.172,93.1331 154.873,92.0702 154.873,90.8432C 154.873,89.0958 153.456,87.6793 151.709,87.6793C 149.962,87.6793 148.545,89.0958 148.545,90.8432C 148.545,92.0702 149.246,93.1331 150.269,93.6574C 148.174,94.2331 146.568,96.0298 146.209,98.2626L 157.209,98.2626C 156.85,96.0298 155.243,94.2327 153.149,93.6574 Z " Height="10.679" Canvas.Left="1.516" Canvas.Top="2.13" UseLayoutRounding="False" Width="11.139"/>
+                                        </Canvas>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource WorkSpaceHeader_RibbonText_Style}" Text="{Binding LocationPrimaryContact.ContactStaff.FirstName, StringFormat='\{0\} '}" />
+                                            <TextBlock Style="{StaticResource WorkSpaceHeader_RibbonText_Style}" Text="{Binding LocationPrimaryContact.ContactStaff.LastName, StringFormat='\{0\} '}" />
+                                            <TextBlock Style="{StaticResource WorkSpaceHeader_RibbonText_Style}" Text="{Binding LocationPrimaryContact.LocationContactType.Name, StringFormat=(\{0\})}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </Border>
+                        </Grid>
+                    </CustomControls:PopupExpander.Header>
+                    <Grid Margin="10,10,10,0" VerticalAlignment="Top">
+                        <Grid.Resources>
+                            <CollectionViewSource x:Key="AddressesSource" Source="{Binding LocationSummary.LocationAddressesAndPhones}">
+                                <CollectionViewSource.SortDescriptions>
+                                    <ComponentModel:SortDescription PropertyName="LocationAddressType.SortOrderNumber" Direction="Ascending"/>
+                                    <ComponentModel:SortDescription PropertyName="LocationAddressType.Name" Direction="Ascending"/>
+                                </CollectionViewSource.SortDescriptions>
+                            </CollectionViewSource>
+                            <CollectionViewSource x:Key="PhonesSource" Source="{Binding PhoneNumbers}">
+                                <CollectionViewSource.SortDescriptions>
+                                    <ComponentModel:SortDescription PropertyName="LocationPhoneType.SortOrderNumber" Direction="Ascending"/>
+                                    <ComponentModel:SortDescription PropertyName="LocationPhoneType.Name" Direction="Ascending"/>
+                                </CollectionViewSource.SortDescriptions>
+                            </CollectionViewSource>
+                            <CollectionViewSource x:Key="ContactsSource" Source="{Binding LocationSummary.LocationContacts}">
+                                <CollectionViewSource.SortDescriptions>
+                                    <ComponentModel:SortDescription PropertyName="LocationContactType.SortOrderNumber" Direction="Ascending"/>
+                                    <ComponentModel:SortDescription PropertyName="LocationContactType.Name" Direction="Ascending"/>
+                                </CollectionViewSource.SortDescriptions>
+                            </CollectionViewSource>
+                            <CollectionViewSource x:Key="IdentifiersSource" Source="{Binding LocationSummary.LocationIdentifiers}">
+                                <CollectionViewSource.SortDescriptions>
+                                    <ComponentModel:SortDescription PropertyName="LocationIdentifierType.SortOrderNumber" Direction="Ascending"/>
+                                    <ComponentModel:SortDescription PropertyName="LocationIdentifierType.Name" Direction="Ascending"/>
+                                </CollectionViewSource.SortDescriptions>
+                            </CollectionViewSource>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="250" Width="auto"/>
+                            <ColumnDefinition MinWidth="200" Width="auto"/>
+                            <ColumnDefinition MinWidth="200" Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ItemsControl x:Name="AddressList" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource DetailsItemsControlStyle}" ItemsSource="{Binding Source={StaticResource AddressesSource}}" Margin="0 0 10 0">
+                            <ItemsControl.Template>
+                                <ControlTemplate TargetType="ItemsControl">
+                                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                        <Grid Margin="{TemplateBinding Padding}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Grid.Row="0"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,1"/>
+                                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,5">
+                                                <Canvas Margin="0,0,0,1" Width="15">
+                                                    <Rectangle Stretch="Fill" Height="3" Canvas.Left="8" Canvas.Top="8" Width="3" Fill="Black"/>
+                                                    <Path Stretch="Fill" Data="F1 M 6.38677,14.539L 7.97075,14.539L 7.97075,10.0689L 10.4774,10.0689L 10.4774,14.539L 15.7852,14.539L 15.7852,8.38141L 16.9771,9.25881L 17.2563,8.87851L 14.5688,6.9261L 14.5688,4.15338L 13.6844,4.15338L 13.6844,6.2832L 11.0188,4.34572L 5.12381,8.86797L 5.41013,9.25881L 6.38677,8.53862L 6.38677,14.539 Z M 16.725,15.4788L 5.44701,15.4788L 5.44701,10.3988L 5.20988,10.5736L 3.82132,8.68266L 11.0039,3.17322L 12.7438,4.43794L 12.7438,3.21274L 15.5094,3.21274L 15.5094,6.44744L 18.572,8.673L 17.1773,10.5736L 16.725,10.2407L 16.725,15.4788 Z " Height="12.639" Canvas.Left="-0.179" Canvas.Top="1.173" UseLayoutRounding="False" Width="15.15" Fill="Black"/>
+                                                </Canvas>
+                                                <TextBlock FontWeight="Bold" Text="Addresses/Phone Numbers" Margin="5,0,0,0"/>
+                                            </StackPanel>
+                                            <ItemsPresenter Grid.Row="1" Margin="10"/>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </ItemsControl.Template>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel.Resources>
+                                            <CollectionViewSource x:Key="PhonesSource" Source="{Binding Path=PhoneNumbers}">
+                                                <CollectionViewSource.SortDescriptions>
+                                                    <ComponentModel:SortDescription PropertyName="LocationPhoneType.SortOrderNumber" Direction="Ascending"/>
+                                                    <ComponentModel:SortDescription PropertyName="LocationPhoneType.Name" Direction="Ascending"/>
+                                                </CollectionViewSource.SortDescriptions>
+                                            </CollectionViewSource>
+                                        </StackPanel.Resources>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListA}">
+                                            <TextBlock Text="{Binding LocationAddressType.Name, StringFormat='\{0\}:  ', FallbackValue='Address Type', TargetNullValue='Address Type'}" Style="{StaticResource SlideOutSummaryLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel  Style="{StaticResource EditFormStackPanelStyleListA}">
+                                                <TextBlock Text="{Binding FirstStreetAddress, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource SlideOutSummaryDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel  Style="{StaticResource EditFormStackPanelStyleListA}" Visibility="{Binding SecondStreetAddress, Converter={StaticResource InvertedNullToVisibilityConverterInstance}}">
+                                                <TextBlock Text="{Binding SecondStreetAddress}" Style="{StaticResource SlideOutSummaryDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                            <StackPanel  Style="{StaticResource EditFormStackPanelStyleListA}">
+                                                <TextBlock Text="{Binding CityName, Mode=OneWay, StringFormat='\{0\}\, '}"  Style="{StaticResource SlideOutSummaryDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel  Style="{StaticResource EditFormStackPanelStyleListA}">
+                                                <TextBlock Text="{Binding StateProvince, StringFormat='\{0\} '}" Style="{StaticResource SlideOutSummaryDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel  Style="{StaticResource EditFormStackPanelStyleListA}">
+                                                <TextBlock Text="{Binding PostalCode}" Style="{StaticResource SlideOutSummaryDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                <TextBlock Text="Phone Type" Style="{StaticResource SlideOutSummaryLabelTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                <TextBlock Text="Number" Style="{StaticResource SlideOutSummaryLabelTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}">
+                                                <TextBlock Text="Ext." Style="{StaticResource SlideOutSummaryLabelTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <ItemsControl x:Name="PhoneList" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" Grid.Column="1" ItemsSource="{Binding PhoneNumbers}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding LocationPhoneType.Name}" Style="{StaticResource SlideOutSummaryDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListS}">
+                                                            <TextBlock Text="{Binding PhoneNumber, StringFormat='{}{0} '}" Style="{StaticResource SlideOutSummaryDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListXS}">
+                                                            <TextBlock Text="{Binding PhoneExtensionNumber, FallbackValue='-', TargetNullValue='-'}"  Style="{StaticResource SlideOutSummaryDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                        <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <ItemsControl x:Name="ContactList" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="0,0,10,0" 
+    						Style="{StaticResource DetailsItemsControlStyle}" ItemsSource="{Binding Source={StaticResource ContactsSource}}">
+                            <ItemsControl.Template>
+                                <ControlTemplate TargetType="ItemsControl">
+                                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                        <Grid Margin="{TemplateBinding Padding}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Grid.Row="0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,1"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,5">
+                                                <Canvas Margin="0,1,0,0" Width="18">
+                                                    <Path Stretch="Fill" Fill="Black" Data="F1 M 139.568,62.355C 140.343,62.5677 141.039,62.9764 141.603,63.5264C 142.02,63.124 142.532,62.8248 143.101,62.6686C 142.455,62.3377 142.013,61.6665 142.013,60.8911C 142.013,59.7878 142.907,58.8935 144.01,58.8935C 145.114,58.8935 146.008,59.7878 146.008,60.8911C 146.008,61.6665 145.566,62.3373 144.92,62.6686C 146.243,63.0318 147.257,64.1674 147.484,65.5767L 142.861,65.5767C 142.932,65.8037 142.988,66.038 143.026,66.2781L 133.657,66.2781C 133.695,66.038 133.751,65.8037 133.822,65.5767L 129.2,65.5767C 129.426,64.1674 130.441,63.0318 131.764,62.6686C 131.118,62.3377 130.675,61.6665 130.675,60.8911C 130.675,59.7878 131.57,58.8935 132.673,58.8935C 133.777,58.8935 134.671,59.7878 134.671,60.8911C 134.671,61.6665 134.229,62.3373 133.583,62.6686C 134.152,62.8248 134.663,63.124 135.08,63.5263C 135.645,62.9765 136.341,62.5678 137.114,62.355C 136.244,61.9085 135.647,61.0038 135.647,59.9577C 135.647,58.4692 136.853,57.2627 138.341,57.2627C 139.83,57.2627 141.036,58.4692 141.036,59.9577C 141.036,61.0038 140.44,61.9081 139.568,62.355 Z " Height="9.876" UseLayoutRounding="False" Width="18" Canvas.Top="2.167"/>
+                                                </Canvas>
+                                                <TextBlock FontWeight="Bold" Text="Contacts" Margin="5,0,0,0"/>
+                                            </StackPanel>
+                                            <ItemsPresenter Grid.Row="1" Margin="10"/>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </ItemsControl.Template>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="0 0 0 5">
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyleListA}">
+                                            <TextBlock Text="{Binding LocationContactType.Name, StringFormat=(\{0\}), FallbackValue='Contact Type', TargetNullValue='Contact Type'}"  Style="{StaticResource SlideOutSummaryLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleListA}">
+                                                <TextBlock Text="{Binding ContactStaff.FirstName, StringFormat='\{0\} ', FallbackValue='-', TargetNullValue='-'}"  Style="{StaticResource SlideOutSummaryDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel  Style="{StaticResource EditFormStackPanelStyleListA}">
+                                                <TextBlock Text="{Binding ContactStaff.LastName, StringFormat='\{0\} '}"  Style="{StaticResource SlideOutSummaryDataElementTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <ItemsControl x:Name="IdentifierList" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="0" 
+    						Style="{StaticResource DetailsItemsControlStyle}" ItemsSource="{Binding Source={StaticResource IdentifiersSource}}">
+                            <ItemsControl.Template>
+                                <ControlTemplate TargetType="ItemsControl">
+                                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                        <Grid Margin="{TemplateBinding Padding}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Grid.Row="0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,1"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,5">
+                                                <Canvas Margin="0,1,0,0" Width="15">
+                                                    <Path Stretch="Fill" Fill="Black" Data="F1 M 86.0677,76.3448C 87.4224,75.6501 88.3517,74.2416 88.3517,72.6158C 88.3517,70.3003 86.4747,68.4233 84.1592,68.4233C 81.8438,68.4233 79.9672,70.3003 79.9672,72.6158C 79.9672,74.2416 80.896,75.6501 82.2507,76.3448C 79.4755,77.1076 77.3468,79.4884 76.8713,82.4472L 91.4467,82.4472C 90.9716,79.4884 88.8425,77.1072 86.0677,76.3448 Z " Height="10.899" Canvas.Left="3.99" Canvas.Top="1.418" UseLayoutRounding="False" Width="11.328"/>
+                                                    <Path Stretch="Fill" Fill="Black" Data="F1 M 75.7851,74.1786L 76.0071,72.5097L 74.6631,72.5097L 74.4267,74.1786M 72.5071,78.1806L 72.8908,75.5379L 71.6803,75.5379L 71.6803,74.1786L 73.1124,74.1786L 73.3487,72.5097L 72.1085,72.5097L 72.1085,71.1518L 73.5554,71.1518L 73.9392,68.5819L 75.2387,68.5819L 74.8693,71.1518L 76.2282,71.1518L 76.5976,68.5819L 77.9115,68.5819L 77.5426,71.1518L 78.7239,71.1518L 78.7239,72.5097L 77.321,72.5097L 77.0995,74.1786L 78.3105,74.1786L 78.3105,75.5379L 76.8632,75.5379L 76.4938,78.1806L 75.165,78.1806L 75.5488,75.5379L 74.2052,75.5379L 73.8358,78.1806L 72.5071,78.1806 Z " Height="7.46" Canvas.Left="-0.044" UseLayoutRounding="False" Width="5.474" Canvas.Top="1.542"/>
+                                                </Canvas>
+                                                <TextBlock FontWeight="Bold" Text="Identifiers" Margin="5,0,0,0"/>
+                                            </StackPanel>
+                                            <ItemsPresenter Grid.Row="1" Margin="10"/>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </ItemsControl.Template>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="0 0 0 5">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleListA}">
+                                            <TextBlock Text="{Binding LocationIdentifierType.Name, StringFormat='\{0\} ', FallbackValue='Identifier Type', TargetNullValue='Identifier Type'}"  Style="{StaticResource SlideOutSummaryLabelTextBlockStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel  Style="{StaticResource EditFormStackPanelStyleListA}">
+                                            <TextBlock Text="{Binding IdentifierNumber, StringFormat='\{0\} ', FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource SlideOutSummaryDataElementTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </CustomControls:PopupExpander>
+				<CustomControls:LoadingControl IsLoading="{Binding IsLoading}" Grid.Column="1" Margin="2" BorderThickness="1" BorderBrush="White" Foreground="DarkGray" Background="{StaticResource RibbonProfileSummaryControl_Background_Normal}" HorizontalContentAlignment="Stretch" Height="28"  />
+            </Grid>
+        </ContentControl>
+        <CustomControls:CollapsingPanel  HorizontalAlignment="Right" Grid.Column="1">
+            <CustomControls:ToolSetGroup ToolTip="Location Views" Text="Views" Margin="10,-6,0,0" HorizontalAlignment="Stretch">
+                <CustomControls:ToolSetGroup.RootIcon>
+                    <Rectangle Width="40" Height="40" Fill="Azure"/>
+                </CustomControls:ToolSetGroup.RootIcon>
+                <CustomControls:ToolSetGroup.Items>
+                    <CustomControls:ToolSetButton Text="Dashboard" Command="{Binding GoToDashboardCommand}" ToolTip="View the locaton's dashboard.">
+                    </CustomControls:ToolSetButton>
+                    <CustomControls:ToolSetButton Text="Profile" Command="{Binding GoToProfileCommand}" ToolTip="Edit the location's profile information."/>
+                </CustomControls:ToolSetGroup.Items>
+            </CustomControls:ToolSetGroup>
+        </CustomControls:CollapsingPanel>
+    </Grid>
+</UserControl>

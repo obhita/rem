@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{89F23EEC-0FA2-4B79-9C46-C84ADF256BA4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Infrastructure.Mvc</RootNamespace>
+    <AssemblyName>Rem.Infrastructure.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Agatha.Common, Version=1.3.0.0, Culture=neutral, PublicKeyToken=6f21cf452a4ffa13, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.StructureMap, Version=1.3.0.0, Culture=neutral, PublicKeyToken=6f21cf452a4ffa13, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\WIF\v3.5\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.WindowsTokenService, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\WIF\v3.5\Microsoft.IdentityModel.WindowsTokenService.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\Mvc\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Ria\Rem.Ria.Infrastructure\Context\AccountContext.cs">
+      <Link>UserContext\AccountContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ria\Rem.Ria.Infrastructure\Context\AgencyContext.cs">
+      <Link>UserContext\AgencyContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ria\Rem.Ria.Infrastructure\Context\CurrentUserContext.cs">
+      <Link>UserContext\CurrentUserContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ria\Rem.Ria.Infrastructure\Context\ICurrentUserContextService.cs">
+      <Link>UserContext\ICurrentUserContextService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ria\Rem.Ria.Infrastructure\Context\LocationContext.cs">
+      <Link>UserContext\LocationContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ria\Rem.Ria.Infrastructure\Context\StaffContext.cs">
+      <Link>UserContext\StaffContext.cs</Link>
+    </Compile>
+    <Compile Include="Bootstrapper\Bootstrapper.cs" />
+    <Compile Include="Bootstrapper\CustomDependencyResolver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserContext\CurrentUserService.cs" />
+    <Compile Include="Security\IdentityStrapperBehavior.cs" />
+    <Compile Include="Security\IdentityStrapperBehaviorExtensionElement.cs" />
+    <Compile Include="Security\MessageInspector.cs" />
+    <Compile Include="Security\MvcClaimsAuthenticationManager.cs" />
+    <Compile Include="Service\CustomSyncRequestProcessorProxy.cs" />
+    <Compile Include="UserContext\UserContextControllerBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common\Pillar.Common.csproj">
+      <Project>{6761BABC-8D45-4D08-B112-088FA47AB625}</Project>
+      <Name>Pillar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.IoC.StructureMap\Pillar.IoC.StructureMap.csproj">
+      <Project>{1728DBDD-7471-4C03-809B-C2E83A4C8C7C}</Project>
+      <Name>Pillar.IoC.StructureMap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Security\Pillar.Security.csproj">
+      <Project>{450A9049-224E-47D2-ADF8-D57A168DC266}</Project>
+      <Name>Pillar.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ria\Rem.Ria.Infrastructure.Web\Rem.Ria.Infrastructure.Web.csproj">
+      <Project>{D0DD4451-BAFD-41E2-B6B8-566E3BAFD20A}</Project>
+      <Name>Rem.Ria.Infrastructure.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Infrastructure\Rem.Infrastructure.csproj">
+      <Project>{ADDD4155-DFBE-4450-96E4-0E730CE38861}</Project>
+      <Name>Rem.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

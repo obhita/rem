@@ -1,0 +1,88 @@
+﻿<telerik:RadTileViewItem x:Class="Rem.Ria.PatientModule.FrontDeskDashboard.SelfPaymentView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:behaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+    xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400" Padding="2" RestoredWidth="33" RestoredHeight="67" Background="White" Style="{StaticResource DashboardTileViewStyle}" HeaderStyle="{StaticResource DashboardTileDividedHeaderStyle}">
+    
+    <telerik:RadTileViewItem.Resources>
+        <View:DataContextProxyElement x:Key="RootDataContextProxy"/>
+    </telerik:RadTileViewItem.Resources>
+    
+    <telerik:RadTileViewItem.Header>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Self Payment" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="10,0,0,0" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalMargin"/>
+                
+            <StackPanel Orientation="Horizontal" Grid.Column="1"  Grid.Row="0" HorizontalAlignment="Right" Margin="4,0,0,0">
+                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                    <Grid>
+                        <telerik:RadButton x:Name="AddButton" Width="20" Margin="5" Height="20" Padding="0" ToolTipService.ToolTip="Add a payment." Style="{StaticResource BorderlessButtonStyle}" Command="{Binding AddSelfPaymentCommand}" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                            <Path Stretch="Fill" Fill="{Binding Foreground, ElementName=AddButton}" Data="F1 M 103.25,96.5L 105.25,96.5L 105.25,102.5L 111.25,102.5L 111.25,104.5L 105.25,104.5L 105.25,110.5L 103.25,110.5L 103.25,104.5L 97.25,104.5L 97.25,102.5L 103.25,102.5L 103.25,96.5 Z " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </telerik:RadButton>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </telerik:RadTileViewItem.Header>
+
+    <Border x:Name="Border">
+        <!-- Print Grid must live inside of another grid!-->
+        <Grid>
+        	<Grid.RowDefinitions>
+        		<RowDefinition Height="Auto"/>
+        		<RowDefinition/>
+        	</Grid.RowDefinitions>
+			<Border Style="{StaticResource TileHeaderColorCodeBorderStyle}" Background="#FF4EFF00"/>
+            <Grid x:Name="PrintGrid" Margin="0,0,0,4" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <telerik:RadGridView ItemsSource="{Binding SelfPaymentDtos}"
+        			IsReadOnly="True" RowDetailsVisibilityMode="Visible" ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" FontSize="10"
+        			CanUserFreezeColumns="False" AlternateRowBackground="{StaticResource AlternateGridViewRowBackground}" Cursor="Hand"
+        			AutoGenerateColumns="False" IsFilteringAllowed="False" telerik:RadDragAndDropManager.AllowDrag="False" ShowColumnHeaders="False"
+        			Background="Transparent" BorderThickness="0" 
+        			RowStyle="{StaticResource ProblemGridViewRowStyle}" GridLinesVisibility="None" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+        			ScrollViewer.VerticalScrollBarVisibility="Auto" RowHeight="20" VerticalAlignment="Top">
+                        <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Amount,StringFormat=c}" Width="*"/>
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding PaymentMethod}" Width="1.5*"/>
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding CollectedDate}" Width=".75*"/>
+                        <telerik:GridViewDataColumn Header=" " Width="auto">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="DeleteButton" Style="{StaticResource TileDeleteButtonStyle}" Margin="0,0,5,0" Command="{Binding DataSource.DeleteSelfPaymentCommand, Source={StaticResource RootDataContextProxy}}" CommandParameter="{Binding}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                        </telerik:GridViewDataColumn>
+                    </telerik:RadGridView.Columns>
+                        <i:Interaction.Behaviors>
+                            <behaviors:GridViewHideFocusVisualBehavior/>
+                        </i:Interaction.Behaviors>
+                    </telerik:RadGridView>
+                <telerik:RadDataPager x:Name="dataPager" Grid.Row="1" PageSize="{Binding PageSize, Mode=TwoWay}" ItemCount="{Binding TotalCount, Mode=TwoWay}" PageIndex="{Binding PageIndex, Mode=TwoWay}" 
+                                      VerticalAlignment="Center">
+                    <i:Interaction.Behaviors>
+                        <behaviors:DataPagerVisibilityBehavior NumberOfPages="{Binding PageCount, ElementName=dataPager}"/>
+                    </i:Interaction.Behaviors>
+                </telerik:RadDataPager>
+                <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" Grid.RowSpan="2" />
+            </Grid>
+        </Grid>
+    </Border>
+</telerik:RadTileViewItem>
+

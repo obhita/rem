@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="09d14460-5dca-4fdd-8c54-6825e4accbc8" name="Clinician" linkedPackageId="55268c12-5edc-4bc3-9717-b5851c112f90" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="4fad921c-3c0d-4425-a067-25d96ff1a8b3">
+      <elementDefinition Id="235c8097-1bbc-470f-bd8e-d795938aa885" />
+      <body>Procedures need to be automatically recorded based on the default visit/activity procedures defined by the certified coder.
+</body>
+      <annotatedElements>
+        <useCaseMoniker Id="f2b2bb27-898a-416e-abec-2325a8719ae7" LastKnownName="Record Visits and Activities" />
+      </annotatedElements>
+    </comment>
+    <comment Id="230c94c0-d116-4922-9426-5fa1ba45b4ef">
+      <elementDefinition Id="5c8b6c13-d881-4ba6-ae49-4678823caa41" />
+      <body>The act of accepting a referral will automatically associate the referral and authorizations with the patient</body>
+    </comment>
+    <comment Id="661aa389-09f2-4467-8c1d-ce7a48d85230">
+      <elementDefinition Id="51179c9a-77b5-45c2-bd8f-95329fc2df61" />
+      <body>Per Rodney, this feature is put on hold until a customer specifically requests it.</body>
+    </comment>
+    <comment Id="e2abb3b3-29a3-4cf5-982f-bf212730b8f4">
+      <elementDefinition Id="31bd029d-7c65-4268-a03d-c811a6a25169" />
+      <body>Certain changes (e.g. gender) might require recent visits to be resent to the PMS and therefore to payor.  The UI should prompt the user on whether they want these recent visits sent.</body>
+      <annotatedElements>
+        <useCaseMoniker Id="bd5a9cfc-4673-4f01-ad2d-862d19a99e38" LastKnownName="Modify Patient Demographics" />
+      </annotatedElements>
+    </comment>
+    <comment Id="6456ddd0-e5d4-4195-8c7f-fbd0ccd21443">
+      <elementDefinition Id="d81a0d04-5f44-457d-9f96-ed55c5e8be24" />
+      <body>Refer to the front desk dashboard for use cases</body>
+      <annotatedElements>
+        <actorMoniker Id="b0960dd8-7ab2-4689-813c-f0e57195f6e5" LastKnownName="Referral and Authorization Staff" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="4298666b-3056-437c-88ee-8d99026c2585" name="Clinician" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="51eeb1f0-093e-4bca-94f0-71f13c449f13" />
+        <generalsInternal>
+          <generalization Id="02d0a200-2387-4265-aac0-1dd4c9549783" isSubstitutable="false">
+            <actorMoniker Id="b0960dd8-7ab2-4689-813c-f0e57195f6e5" LastKnownName="Referral and Authorization Staff" />
+            <elementDefinition Id="3ae08fd1-7064-4f36-95d3-4e80c34f4288" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="034cbe5f-50f9-41ac-9558-1bba94ce7760" isDerived="false" sourceEndRoleName="Clinician" targetEndRoleName="UseCase1" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="f2b2bb27-898a-416e-abec-2325a8719ae7" LastKnownName="Record Visits and Activities" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3ee994cf-a563-4fdf-a2cc-387cbec68206" name="Clinician" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0737f464-c38a-4eb5-92db-57498990eeed" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1e481349-64f2-4b7b-ab27-a5341d95ee08" name="UseCase1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2d4bc113-de81-4ce2-9e87-df9664835ed9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="bd586671-1ff6-4922-98db-99de1899d78d" />
+          </association>
+          <association Id="d10b54c2-73c3-44a3-b413-e8bc329553c3" isDerived="false" sourceEndRoleName="Clinician" targetEndRoleName="Modify Patient Demographics" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="bd5a9cfc-4673-4f01-ad2d-862d19a99e38" LastKnownName="Modify Patient Demographics" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="85ab6bd0-64c7-464f-9587-4049e66bf03c" name="Clinician" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a773070e-1669-4068-b3a2-162ce55ba4a7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4183df34-723a-4ec7-a67c-4fef39ef3a42" name="Modify Patient Demographics" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b7c844f6-63ad-4fc5-aee3-d78d9104b761" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="29f52c0a-6e3c-4bee-9950-326749f98d44" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f2b2bb27-898a-416e-abec-2325a8719ae7" name="Record Visits and Activities" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="741bb9fd-01cb-48b2-842d-8c58866dd320" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bd5a9cfc-4673-4f01-ad2d-862d19a99e38" name="Modify Patient Demographics" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f299b966-f576-4fe8-8ee3-51a80160647d" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="b0960dd8-7ab2-4689-813c-f0e57195f6e5" name="Referral and Authorization Staff" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b53a2d77-36fc-4ab1-8ea5-f38338c92e83" />
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="55268c12-5edc-4bc3-9717-b5851c112f90" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="44e05a26-3fa9-4881-86b1-4ad30e55dd33">
+        <profileInstance Id="ce0c0c91-3551-44e5-9bb7-ee2fb34dca9b" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="998ac58f-f01e-485b-9836-d33d41fe933d">
+        <profileInstance Id="065121fa-b7cb-474a-a09a-c1c90dbfdfd5" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

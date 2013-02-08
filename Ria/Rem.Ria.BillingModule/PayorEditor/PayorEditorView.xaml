@@ -1,0 +1,446 @@
+﻿<UserControl x:Class="Rem.Ria.BillingModule.PayorEditor.PayorEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:PayorEditor="clr-namespace:Rem.Ria.BillingModule.Web.PayorEditor"
+             xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+             xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=System.Windows"
+             xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="400">
+
+  <UserControl.Resources>
+    <View:DataContextProxyElement x:Key="RootDataContext" />
+  </UserControl.Resources>
+
+  <Grid x:Name="LayoutRoot">
+    <CustomControls:Editor Style="{StaticResource TileEditorHeaderStyle}" StartOpen="{Binding IsCreateMode}"
+                           SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}"
+                           AccessControlManager="{Binding AccessControlManager}">
+      <CustomControls:Editor.Expanders>
+
+        <CustomControls:EditableExpander x:Name="Profile" Header="Profile"
+                                         Content="{Binding EditingDto.Profile}" IsExpanded="True">
+          <CustomControls:EditableExpander.ContentTemplate>
+            <DataTemplate>
+              <CustomControls:EditableStackPanel Margin="10" x:Name="ProfileStackPanel">
+                <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleXL}" x:Name="NameStackPanel">
+                  <TextBlock Text="Name" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+
+                  <TextBlock Text="{Binding Name, FallbackValue='-', TargetNullValue='-'}"
+                             Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                </CustomControls:EditableStackPanel>
+
+                <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleS}" x:Name="EffectiveDateStackPanel">
+                    <TextBlock Text="Effective Date"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+
+                    <TextBlock
+Text="{Binding EffectiveDate, StringFormat='MM/dd/yyyy', FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleS}" x:Name="EndDateStackPanel">
+                    <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+
+                    <TextBlock
+Text="{Binding EndDate, StringFormat='MM/dd/yyyy', FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleL}" x:Name="EmailAddressStackPanel">
+                    <TextBlock Text="Email Address"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+
+                    <TextBlock
+Text="{Binding EmailAddress, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}" x:Name="PayorIdentifierStackPanel">
+                    <TextBlock Text="Payor Identifier"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+
+                    <TextBlock
+Text="{Binding PayorIdentifier, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+
+                <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top">
+                    <TextBlock Text="Payor Types"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <ItemsControl ItemsSource="{Binding PayorTypes}"
+                                  Style="{StaticResource ICStyle}">
+                      <ItemsControl.Template>
+                        <ControlTemplate>
+                          <ItemsPresenter />
+                        </ControlTemplate>
+                      </ItemsControl.Template>
+                    </ItemsControl>
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel Orientation="Vertical">
+                    <CustomControls:EditableStackPanel
+Style="{StaticResource EditFormStackPanelStyleM}">
+                      <TextBlock Text="Primary Payor Type"
+                                 Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                      <TextBlock
+Text="{Binding PrimaryPayorType.Name, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                    </CustomControls:EditableStackPanel>
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+
+              </CustomControls:EditableStackPanel>
+            </DataTemplate>
+          </CustomControls:EditableExpander.ContentTemplate>
+          <CustomControls:EditableExpander.ContentEditTemplate>
+            <DataTemplate>
+              <CustomControls:EditableStackPanel Margin="10" x:Name="ProfileStackPanel"
+                                                 IsReadOnly="False">
+                <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleXL}" x:Name="NameStackPanel">
+                  <TextBlock Text="Name" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+
+                  <telerik:RadWatermarkTextBox
+Text="{Binding Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                </CustomControls:EditableStackPanel>
+
+                <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleS}" x:Name="EffectiveDateStackPanel">
+                    <TextBlock Text="Effective Date"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+
+                    <CustomControls:EditableDatePicker
+Visibility="{Binding ElementName=EffectiveDateStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+SelectedValue="{Binding EffectiveDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock
+Visibility="{Binding ElementName=EffectiveDateStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding EffectiveDate, StringFormat='MM/dd/yyyy', FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleS}" x:Name="EndDateStackPanel">
+                    <TextBlock Text="End Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+
+                    <CustomControls:EditableDatePicker
+Visibility="{Binding ElementName=EndDateStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+SelectedValue="{Binding EndDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock
+Visibility="{Binding ElementName=EndDateStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding EndDate, StringFormat='MM/dd/yyyy', FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleL}" x:Name="EmailAddressStackPanel">
+                    <TextBlock Text="Email Address"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+
+                    <telerik:RadWatermarkTextBox
+Visibility="{Binding ElementName=EmailAddressStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+Text="{Binding EmailAddress,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                    <TextBlock
+Visibility="{Binding ElementName=EmailAddressStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding EmailAddress, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}" x:Name="PayorIdentifierStackPanel">
+                    <TextBlock Text="Payor Identifier"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+
+                    <telerik:RadWatermarkTextBox
+Visibility="{Binding ElementName=PayorIdentifierStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+Text="{Binding PayorIdentifier,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                    <TextBlock
+Visibility="{Binding ElementName=PayorIdentifierStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding PayorIdentifier, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+
+                </CustomControls:EditableStackPanel>
+                <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditFormStackPanelStyleL}">
+                    <TextBlock Text="Payor Types (select all that apply)"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <ListBox SelectionMode="Multiple"
+                             ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.PayorTypeList}"
+                             Style="{StaticResource CheckBoxListStyle}">
+                      <i:Interaction.Behaviors>
+                        <Behavior:SelectedItemsBindingBehavior
+SelectedItems="{Binding PayorTypes,Mode=TwoWay}" />
+                      </i:Interaction.Behaviors>
+
+                      <ListBox.Template>
+                        <ControlTemplate>
+                          <Border BorderBrush="Black" BorderThickness="1">
+                            <ItemsPresenter />
+                          </Border>
+                        </ControlTemplate>
+                      </ListBox.Template>
+                    </ListBox>
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel Orientation="Vertical">
+                    <CustomControls:EditableStackPanel
+Style="{StaticResource EditFormStackPanelStyleM}">
+                      <TextBlock Text="Primary Payor Type"
+                                 Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                      <telerik:RadComboBox ItemsSource="{Binding PayorTypes}"
+                                           DisplayMemberPath="Name" SelectedItem="{Binding PrimaryPayorType,Mode=TwoWay}" />
+                    </CustomControls:EditableStackPanel>
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+
+              </CustomControls:EditableStackPanel>
+            </DataTemplate>
+          </CustomControls:EditableExpander.ContentEditTemplate>
+        </CustomControls:EditableExpander>
+
+        <CustomControls:EditableExpander x:Name="PhoneNumbers" Header="Phone Numbers"
+                                         Content="{Binding EditingDto.PhoneNumbers}">
+          <CustomControls:EditableExpander.Resources>
+            <CollectionViewSource x:Key="PhoneNumberSource"
+                                  Source="{Binding EditingDto.PhoneNumbers.PhoneNumbers}">
+              <CollectionViewSource.SortDescriptions>
+                <ComponentModel:SortDescription PropertyName="PayorPhoneType.SortOrderNumber"
+                                                Direction="Ascending" />
+                <ComponentModel:SortDescription PropertyName="PayorPhoneType.Name"
+                                                Direction="Ascending" />
+              </CollectionViewSource.SortDescriptions>
+            </CollectionViewSource>
+          </CustomControls:EditableExpander.Resources>
+          <CustomControls:EditableExpander.EditableContentTemplate>
+            <DataTemplate>
+              <CustomControls:EditableStackPanel Margin="10" Orientation="Vertical">
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListXS}">
+                    <TextBlock Text="Type" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListS}">
+                    <TextBlock Text="Phone Number"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListS}">
+                    <TextBlock Text="Ext." Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+                <CustomControls:EditableItemsControl
+ItemsSource="{Binding Source={StaticResource PhoneNumberSource}}">
+                  <CustomControls:EditableItemsControl.AddingItem>
+                    <PayorEditor:PayorPhoneDto />
+                  </CustomControls:EditableItemsControl.AddingItem>
+                  <CustomControls:EditableItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <CustomControls:EditableStackPanel Orientation="Vertical">
+                        <CustomControls:EditableStackPanel Orientation="Horizontal">
+                          <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListXS}">
+                            <CustomControls:EditableGrid x:Name="gType">
+                              <telerik:RadComboBox
+Visibility="{Binding ElementName=gType,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[PayorPhoneType]}"
+SelectedItem="{Binding PayorPhoneType, Mode=TwoWay}" DisplayMemberPath="Name" />
+                              <TextBlock
+Visibility="{Binding ElementName=gType,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding PayorPhoneType.Name, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                            </CustomControls:EditableGrid>
+                          </CustomControls:EditableStackPanel>
+                          <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListS}" x:Name="PhoneNumberStackPanel">
+                            <telerik:RadWatermarkTextBox
+Visibility="{Binding ElementName=PhoneNumberStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+x:Name="PhoneNumber" WatermarkContent="Phone Number"
+Text="{Binding PhoneNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                            <TextBlock
+Visibility="{Binding ElementName=PhoneNumberStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding PhoneNumber, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                          </CustomControls:EditableStackPanel>
+                          <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleListS}" x:Name="PhoneExtensionNumberStackPanel">
+                            <telerik:RadWatermarkTextBox
+Visibility="{Binding ElementName=PhoneExtensionNumberStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+x:Name="PhoneExtensionNumber" WatermarkContent="Ext"
+Text="{Binding PhoneExtensionNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                            <TextBlock
+Visibility="{Binding ElementName=PhoneExtensionNumberStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding PhoneExtensionNumber, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                          </CustomControls:EditableStackPanel>
+                        </CustomControls:EditableStackPanel>
+                      </CustomControls:EditableStackPanel>
+                    </DataTemplate>
+                  </CustomControls:EditableItemsControl.ItemTemplate>
+                </CustomControls:EditableItemsControl>
+              </CustomControls:EditableStackPanel>
+            </DataTemplate>
+          </CustomControls:EditableExpander.EditableContentTemplate>
+        </CustomControls:EditableExpander>
+
+        <CustomControls:EditableExpander x:Name="Addresses" Header="Addresses"
+                                         Content="{Binding EditingDto.Addresses}">
+          <CustomControls:EditableExpander.Resources>
+            <CollectionViewSource x:Key="AddressesSource" Source="{Binding EditingDto.Addresses.Addresses}">
+              <CollectionViewSource.SortDescriptions>
+                <ComponentModel:SortDescription PropertyName="PayorAddressType.SortOrderNumber"
+                                                Direction="Ascending" />
+                <ComponentModel:SortDescription PropertyName="PayorAddressType.Name"
+                                                Direction="Ascending" />
+              </CollectionViewSource.SortDescriptions>
+            </CollectionViewSource>
+          </CustomControls:EditableExpander.Resources>
+          <CustomControls:EditableExpander.EditableContentTemplate>
+            <DataTemplate>
+              <CustomControls:EditableItemsControl Margin="10"
+                                                   ItemsSource="{Binding Source={StaticResource AddressesSource}}">
+                <CustomControls:EditableItemsControl.ItemContainerStyle>
+                  <Style TargetType="CustomControls:EditableItemsControlItem">
+                    <Setter Property="Template">
+                      <Setter.Value>
+                        <ControlTemplate TargetType="CustomControls:EditableItemsControlItem">
+                          <CustomControls:EditableStackPanel Orientation="Vertical">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                              <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                  <CustomControls:EditableContentPresenter
+IsReadOnly="{TemplateBinding IsReadOnly}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+VerticalAlignment="Center" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                  <Button
+Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+Style="{StaticResource TileDeleteButtonStyle}" VerticalAlignment="Center" Margin="15,0,0,0"
+Command="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Parent.RemoveItemCommand}"
+CommandParameter="{TemplateBinding Content}" />
+                                </StackPanel>
+                                <Border
+Style="{StaticResource HorizontalLineFormDivider}" />
+                              </StackPanel>
+                            </Border>
+                          </CustomControls:EditableStackPanel>
+                        </ControlTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </CustomControls:EditableItemsControl.ItemContainerStyle>
+                <CustomControls:EditableItemsControl.AddingItem>
+                  <PayorEditor:PayorAddressDto />
+                </CustomControls:EditableItemsControl.AddingItem>
+                <CustomControls:EditableItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <CustomControls:EditableStackPanel Orientation="Vertical">
+                      <CustomControls:EditableStackPanel Orientation="Horizontal"
+                                                         Style="{StaticResource EditableFormStackPanelStyleS}">
+                        <CustomControls:EditableGrid x:Name="gType">
+                          <telerik:RadComboBox
+Visibility="{Binding ElementName=gType,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[PayorAddressType]}"
+EmptyText="Address Type" SelectedItem="{Binding PayorAddressType,Mode=TwoWay}" DisplayMemberPath="Name" />
+                          <TextBlock
+Visibility="{Binding ElementName=gType,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding PayorAddressType.Name, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                        </CustomControls:EditableGrid>
+                      </CustomControls:EditableStackPanel>
+                      <CustomControls:EditableStackPanel>
+                        <CustomControls:EditableStackPanel Orientation="Horizontal"
+                                                           x:Name="FirstAddressStackPanel">
+                          <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}">
+                            <telerik:RadWatermarkTextBox
+Visibility="{Binding ElementName=FirstAddressStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+WatermarkContent="Address Line 1" Text="{Binding FirstStreetAddress,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                            <TextBlock
+Visibility="{Binding ElementName=FirstAddressStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding FirstStreetAddress, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                          </CustomControls:EditableStackPanel>
+                          <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}" x:Name="SecondAddressStackPanel">
+                            <telerik:RadWatermarkTextBox
+Visibility="{Binding ElementName=SecondAddressStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+WatermarkContent="Address Line 2" Text="{Binding SecondStreetAddress,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                            <TextBlock
+Visibility="{Binding ElementName=SecondAddressStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding SecondStreetAddress, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                          </CustomControls:EditableStackPanel>
+                        </CustomControls:EditableStackPanel>
+                        <CustomControls:EditableStackPanel Orientation="Horizontal">
+                          <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}" x:Name="CityStackPanel">
+                            <telerik:RadWatermarkTextBox
+Visibility="{Binding ElementName=CityStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+WatermarkContent="City" Text="{Binding CityName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                            <TextBlock
+Visibility="{Binding ElementName=CityStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding CityName, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                          </CustomControls:EditableStackPanel>
+                          <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}">
+                            <CustomControls:EditableGrid x:Name="gStateType">
+                              <telerik:RadComboBox
+Visibility="{Binding ElementName=gStateType,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[StateProvince]}"
+EmptyText="State" SelectedItem="{Binding StateProvince,Mode=TwoWay}" DisplayMemberPath="Name" />
+                              <TextBlock
+Visibility="{Binding ElementName=gStateType,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding StateProvince.Name}" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                            </CustomControls:EditableGrid>
+                          </CustomControls:EditableStackPanel>
+                          <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleS}" x:Name="PostalCodeStackPanel">
+                            <telerik:RadWatermarkTextBox
+Visibility="{Binding ElementName=PostalCodeStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+WatermarkContent="Postal Code" Text="{Binding PostalCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                            <TextBlock
+Visibility="{Binding ElementName=PostalCodeStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding PostalCode, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                          </CustomControls:EditableStackPanel>
+                        </CustomControls:EditableStackPanel>
+                      </CustomControls:EditableStackPanel>
+                    </CustomControls:EditableStackPanel>
+                  </DataTemplate>
+                </CustomControls:EditableItemsControl.ItemTemplate>
+              </CustomControls:EditableItemsControl>
+            </DataTemplate>
+          </CustomControls:EditableExpander.EditableContentTemplate>
+        </CustomControls:EditableExpander>
+      </CustomControls:Editor.Expanders>
+    </CustomControls:Editor>
+
+  </Grid>
+</UserControl>

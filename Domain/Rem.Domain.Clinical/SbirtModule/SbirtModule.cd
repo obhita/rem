@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.SbirtModule.AuditC">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEABAAAAAAAAAQAwAAwAAQAAAAAAAAAEBAAYAAAAA=</HashCode>
+      <FileName>SbirtModule\AuditC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.SbirtModule.Dast10">
+    <Position X="5.5" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>ACIWBCICIABACAAAAAGgACAQQAAVoCBMABBAAAAAgEE=</HashCode>
+      <FileName>SbirtModule\Dast10.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.SbirtModule.IndividualCounseling">
+    <Position X="16.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>SbirtModule\IndividualCounseling.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.SbirtModule.Phq9">
+    <Position X="13" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAEgIALABIAAKAQCJAKgAAAABAAAEAAAAQAAE=</HashCode>
+      <FileName>SbirtModule\Phq9.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.SbirtModule.NidaDrugQuestionnaire">
+    <Position X="9.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>QAAKAABAMECQAACAAABMCBgQBBBKOBAACgAgAREEAAA=</HashCode>
+      <FileName>SbirtModule\NidaDrugQuestionnaire.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.SbirtModule.Audit">
+    <Position X="0.5" Y="4.75" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAIAAAYABAIBIAAgAAACEAAAAAAACECAAAAARhQ=</HashCode>
+      <FileName>SbirtModule\Audit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

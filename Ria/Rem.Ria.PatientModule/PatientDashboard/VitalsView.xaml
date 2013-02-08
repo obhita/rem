@@ -1,0 +1,279 @@
+﻿<telerik:RadTileViewItem x:Class="Rem.Ria.PatientModule.PatientDashboard.VitalsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"  
+             xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+             xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" 
+             xmlns:PatientDashboard="clr-namespace:Rem.Ria.PatientModule.Web.PatientDashboard" 
+             xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:InfrastructureView="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+             d:DesignHeight="300" d:DesignWidth="400" mc:Ignorable="d"
+             Header="Vitals" TileState="{Binding ElementName=frcContent,Path=State,Converter={StaticResource FluideStateToTileConverterInstance},Mode=TwoWay}" Style="{StaticResource DashboardTileViewStyle}" HeaderStyle="{StaticResource DashboardTileHeaderStyle}">
+
+      <telerik:RadTileViewItem.Resources>
+      <InfrastructureView:DataContextProxyElement x:Key="RootDataContext"/>
+        <Converter:StringToNullableConverter x:Key="StringToNullableConverter"/>
+        <Converter:ArithmeticConverter x:Key="ArithmeticConvert"/>
+    </telerik:RadTileViewItem.Resources>
+  
+  <telerik:RadTileViewItem.HeaderTemplate>
+    <DataTemplate>
+            <Grid Margin="0 0 10 0">
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+                <StackPanel Margin="0,0,2,0" Grid.Column="0" >
+                    <telerik:RadButton Style="{StaticResource TileDeleteButtonStyle}" Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.CloseViewCommand}" ToolTipService.ToolTip="Delete activity"></telerik:RadButton>
+                </StackPanel>
+                <Viewbox x:Name="Header"  Grid.Column="1" StretchDirection="DownOnly" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="0"/>
+                    </StackPanel>
+            </Viewbox>
+            </Grid>
+    </DataTemplate>
+  </telerik:RadTileViewItem.HeaderTemplate>
+
+    <i:Interaction.Behaviors>
+        <Behavior:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Margin="0" Padding="0" BorderThickness="0">
+        <telerik:RadFluidContentControl x:Name="frcContent" State="{Binding IsCurrentActivity,Mode=OneWay, Converter={StaticResource BooleanToFluidContentControlStateLargeConverterInstance}}" ContentChangeMode="Manual" Style="{StaticResource RfccRemStyle}">
+            <telerik:RadFluidContentControl.SmallContent>
+                <Grid/>
+            </telerik:RadFluidContentControl.SmallContent>
+            <telerik:RadFluidContentControl.Content>
+                <Grid/>
+            </telerik:RadFluidContentControl.Content>
+            <telerik:RadFluidContentControl.LargeContent>
+                <Grid>
+                    <CustomControls:Editor MaximizeHeader="Vitals" Style="{StaticResource TileEditorHeaderStyle}" StartOpen="True" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}" CanMaximize="True">
+                        <CustomControls:Editor.Expanders>
+                            <CustomControls:EditableExpander x:Name="Vitals" Content="{Binding EditingDto}" IsExpanded="True" MaxWidth="800"  Width="Auto" MinWidth="700" CanMaximize="False"
+                                                 SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}" ShowNext="False">
+                                <i:Interaction.Triggers>
+                                    <ei:DataTrigger Binding="{Binding IsCreate}" Comparison="Equal" Value="True">
+                                        <ei:ChangePropertyAction TargetName="Vitals" PropertyName="IsExpanded" Value="True"/>
+                                        <i:InvokeCommandAction Command="{Binding ElementName=Vitals,Path=SetAsNextCommand}"/>
+                                    </ei:DataTrigger>
+                                </i:Interaction.Triggers>
+                                <CustomControls:EditableExpander.ContentTemplate>
+                                    <DataTemplate>
+                                        <ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="0" d:LayoutOverrides="Width" BorderThickness="0">
+                                            <StackPanel Margin="0,6" >
+                                                <StackPanel x:Name="spBmiScope">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                            <TextBlock Text="Height" Style="{StaticResource EditFormLabelTextBlockStyle}" VerticalAlignment="Center" />
+                                                            <StackPanel Orientation="Horizontal" >
+                                                                <StackPanel Orientation="Horizontal" Style="{StaticResource EditFormStackPanelStyleXS}">
+                                                                    <TextBlock x:Name="HeightFeetMeasureTextBox" Text="{Binding HeightFeetMeasure}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                                    <TextBlock Text="Ft." Style="{StaticResource TileItemTextBlockStyle}" VerticalAlignment="Center" Margin="6,0,0,0" FontStyle="Italic" Foreground="Black"/>
+                                                                </StackPanel>
+                                                                <StackPanel Orientation="Horizontal" Style="{StaticResource EditFormStackPanelStyleXS}" Width="Auto">
+                                                                    <TextBlock x:Name="HeightInchesMeasureTextBox" Text="{Binding HeightInchesMeasure}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                                    <TextBlock Text="In." Style="{StaticResource TileItemTextBlockStyle}" VerticalAlignment="Center" Margin="6,0,0,0" Foreground="Black" FontStyle="Italic"/>
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}" Margin="60,2,0,2">
+                                                            <TextBlock Text="Weight" Style="{StaticResource EditFormLabelTextBlockStyle}" VerticalAlignment="Center" />
+                                                            <StackPanel Orientation="Horizontal" >
+                                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}" Orientation="Horizontal">
+                                                                    <TextBlock x:Name="WeightLbsMeasureTextBox" Text="{Binding WeightLbsMeasure}" Style="{StaticResource EditFormDataElementTextBlockStyle}" d:LayoutOverrides="Height, VerticalMargin"/>
+                                                                    <TextBlock Text="Lb" Style="{StaticResource TileItemTextBlockStyle}" VerticalAlignment="Center" Margin="6,0,0,0" FontStyle="Italic"/>
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                        <StackPanel >
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}">
+                                                                <TextBlock Text="BMI" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                                <TextBlock Style="{StaticResource EditFormDataElementTextBlockStyle}" >
+                                				<i:Interaction.Behaviors>
+                                					<Behavior:MultiBindingsBehavior NameScopeRoot="{Binding ElementName=spBmiScope}">
+                                						<Behavior:MultiBindingsBehavior.MultiBindings>
+                                							<Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ArithmeticConvert}" 
+                                								ConverterParameter="703 * {2} / ((12.0 * {0}) + {1})^2" StringFormat='{}{0:F1}'>
+                                								<Behavior:MultiBinding.Bindings>
+                                									<Behavior:BindingCollection>
+                                										<Binding ElementName="HeightFeetMeasureTextBox" Path="Text"/>
+                                										<Binding ElementName="HeightInchesMeasureTextBox" Path="Text"/>
+                                										<Binding ElementName="WeightLbsMeasureTextBox" Path="Text"/>
+                                									</Behavior:BindingCollection>
+                                								</Behavior:MultiBinding.Bindings>
+                                							</Behavior:MultiBinding>
+                                						</Behavior:MultiBindingsBehavior.MultiBindings>
+                                					</Behavior:MultiBindingsBehavior>
+                                				</i:Interaction.Behaviors>
+                                                                </TextBlock>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <Border Margin="0,0,0,6" Style="{StaticResource HorizontalLineReadFormDivider}"/>
+                                                    <StackPanel Orientation="Horizontal" Style="{StaticResource EditFormStackPanelStyleL}" >
+                                                        <StackPanel>
+                                                            <TextBlock Text="Blood Pressure" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                            <ItemsControl x:Name="itemsControl" ItemsSource="{Binding BloodPressures}">
+                                                                <ItemsControl.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock Name="SystollicMeasureTextBox"  Text="{Binding SystollicMeasure}" Style="{StaticResource EditFormDataElementTextBlockStyle}" MinWidth="30"/>
+                                                                            <Canvas Margin="6,0" Width="2" RenderTransformOrigin="0.5,0.5" Background="#FF9B9B9B">
+                                                                                <Canvas.RenderTransform>
+                                                                                    <CompositeTransform SkewX="-16"/>
+                                                                                </Canvas.RenderTransform>
+                                                                            </Canvas>
+                                                                            <TextBlock Name="DiastollicMeasureTextBox" Text="{Binding DiastollicMeasure}" Style="{StaticResource EditFormDataElementTextBlockStyle}" MinWidth="30"/>
+                                                                        </StackPanel>
+                                                                    </DataTemplate>
+                                                                </ItemsControl.ItemTemplate>
+                                                            </ItemsControl>
+
+                                                        </StackPanel>
+                                                        <Canvas Width="1" Background="#FF9B9B9B" Margin="20,0"/>
+                                                        <StackPanel>
+                                                            <TextBlock Text="Heart Rate" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                                            <ItemsControl x:Name="itemsControl1" ItemsSource="{Binding HeartRates}" VerticalAlignment="Center" >
+                                                                <ItemsControl.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock x:Name="BeatsPerMinuteMeasureTextBox" Text="{Binding BeatsPerMinuteMeasure}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                                            <TextBlock Text="BPM" Style="{StaticResource TileItemTextBlockStyle}" FontStyle="Italic" VerticalAlignment="Center" Margin="6,0,0,0"/>
+                                                                        </StackPanel>
+                                                                    </DataTemplate>
+                                                                </ItemsControl.ItemTemplate>
+                                                            </ItemsControl>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <Border Margin="0,6" Style="{StaticResource HorizontalLineReadFormDivider}"/>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                                                            <CheckBox IsChecked="{Binding DietaryConsultationOrderIndicator, Mode=TwoWay}" Content="Dietary Consultation Order" IsEnabled="False" d:LayoutOverrides="Width"/>
+                                                            <CheckBox IsChecked="{Binding BmiFollowUpPlanIndicator, Mode=TwoWay}" Content="Follow-up Plan for BMI Management" IsEnabled="False" d:LayoutOverrides="Width"/>
+                                                        </StackPanel>
+                                                        <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                                                            <TextBlock Text="Physical Exam Not Done Reason" Style="{StaticResource EditFormLabelTextBlockStyle}" d:LayoutOverrides="Width"/>
+                                                            <TextBlock Text="{Binding VitalSignPhysicalExamNotDoneReason}" d:LayoutOverrides="Width"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentTemplate>
+                                <CustomControls:EditableExpander.ContentEditTemplate>
+                                    <DataTemplate>
+                                        <ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="0" d:LayoutOverrides="Width" BorderThickness="0">
+                                            <Border Style="{StaticResource EditFormSectionBorderStyle}">
+                                                <StackPanel>
+                                                    <StackPanel x:Name="spBmiScope">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                                <TextBlock Text="Height" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                                                    <telerik:RadMaskedTextBox x:Name="HeightFeetMeasureTextBox" MaskType="None" MaskedText="{Binding HeightFeetMeasure, Converter={StaticResource StringToNullableConverter}, Mode=TwoWay}" EmptyContent="Ft." EmptyContentTemplate="{StaticResource WatermarkTemplate}" Width="45" Margin="0,0,5,0" />
+                                                                    <telerik:RadMaskedTextBox x:Name="HeightInchesMeasureTextBox" MaskType="None" MaskedText="{Binding HeightInchesMeasure, Converter={StaticResource StringToNullableConverter}, Mode=TwoWay}" EmptyContent="In." EmptyContentTemplate="{StaticResource WatermarkTemplate}" Width="45" Margin="5,0,0,0" />
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}">
+                                                                <TextBlock Text="Weight" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <telerik:RadMaskedTextBox x:Name="WeightLbsMeasureTextBox"  MaskType="None" MaskedText="{Binding WeightLbsMeasure, Converter={StaticResource StringToNullableConverter}, Mode=TwoWay}" EmptyContent="Lbs." EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}" Margin="40,2,0,2">
+                                                                <TextBlock Text="BMI" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <TextBlock Style="{StaticResource TileItemTextBlockStyle}">
+                                        		<i:Interaction.Behaviors>
+                                        			<Behavior:MultiBindingsBehavior NameScopeRoot="{Binding ElementName=spBmiScope}">
+                                        				<Behavior:MultiBindingsBehavior.MultiBindings>
+                                        					<Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ArithmeticConvert}" 
+                                        						ConverterParameter="703 * {2} / ((12.0 * {0}) + {1})^2" StringFormat='{}{0:F1}'>
+                                        						<Behavior:MultiBinding.Bindings>
+                                        							<Behavior:BindingCollection>
+                                        								<Binding ElementName="HeightFeetMeasureTextBox" Path="MaskedText"/>
+                                        								<Binding ElementName="HeightInchesMeasureTextBox" Path="MaskedText"/>
+                                        								<Binding ElementName="WeightLbsMeasureTextBox" Path="MaskedText"/>
+                                        							</Behavior:BindingCollection>
+                                        						</Behavior:MultiBinding.Bindings>
+                                        					</Behavior:MultiBinding>
+                                        				</Behavior:MultiBindingsBehavior.MultiBindings>
+                                        			</Behavior:MultiBindingsBehavior>
+                                        		</i:Interaction.Behaviors>
+                                                                </TextBlock>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <Border BorderThickness="1" Margin="0,6" Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                                <TextBlock Text="Blood Pressure" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                                <CustomControls:EditableItemsControl ItemsSource="{Binding BloodPressures}">
+                                                                    <CustomControls:EditableItemsControl.AddingItem>
+                                                                        <PatientDashboard:BloodPressureDto/>
+                                                                    </CustomControls:EditableItemsControl.AddingItem>
+                                                                    <CustomControls:EditableItemsControl.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <telerik:RadMaskedTextBox x:Name="SystolicMeasureTextBox" MaskType="None" MaskedText="{Binding SystollicMeasure, Converter={StaticResource StringToNullableConverter}, Mode=TwoWay}" EmptyContent="Systolic" EmptyContentTemplate="{StaticResource WatermarkTemplate}" MinWidth="55"/>
+                                                                                <Canvas Margin="6,0" Width="2" RenderTransformOrigin="0.5,0.5" Background="#FF9B9B9B">
+                                                                                    <Canvas.RenderTransform>
+                                                                                        <CompositeTransform SkewX="-16"/>
+                                                                                    </Canvas.RenderTransform>
+                                                                                </Canvas>
+                                                                                <telerik:RadMaskedTextBox x:Name="DiastollicMeasureTextBox" MaskType="None" MaskedText="{Binding DiastollicMeasure, Converter={StaticResource StringToNullableConverter}, Mode=TwoWay}" EmptyContent="Diastolic" EmptyContentTemplate="{StaticResource WatermarkTemplate}" MinWidth="55"/>
+                                                                            </StackPanel>
+                                                                        </DataTemplate>
+                                                                    </CustomControls:EditableItemsControl.ItemTemplate>
+                                                                </CustomControls:EditableItemsControl>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                        <Canvas Width="1" Background="#FF9B9B9B" Margin="20,0"/>
+                                                        <StackPanel>
+                                                            <TextBlock Text="Heart Rate:" Style="{StaticResource EditFormLabelTextBlockStyle}" Margin="0" HorizontalAlignment="Stretch"/>
+                                                            <CustomControls:EditableItemsControl ItemsSource="{Binding HeartRates}" VerticalAlignment="Center">
+                                                                <CustomControls:EditableItemsControl.AddingItem>
+                                                                    <PatientDashboard:HeartRateDto/>
+                                                                </CustomControls:EditableItemsControl.AddingItem>
+                                                                <CustomControls:EditableItemsControl.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <telerik:RadMaskedTextBox x:Name="BeatsPerMinuteMeasureTextBox" MaskType="None" MaskedText="{Binding BeatsPerMinuteMeasure, Converter={StaticResource StringToNullableConverter}, Mode=TwoWay}" EmptyContent="PBM" EmptyContentTemplate="{StaticResource WatermarkTemplate}" MinWidth="32"/>
+                                                                        </StackPanel>
+                                                                    </DataTemplate>
+                                                                </CustomControls:EditableItemsControl.ItemTemplate>
+                                                            </CustomControls:EditableItemsControl>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <Border BorderThickness="1" Margin="0,6" Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                    <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                                                        <StackPanel Margin="0,0,20,0">
+                                                            <CheckBox IsChecked="{Binding BmiFollowUpPlanIndicator, Mode=TwoWay}" Content="Follow-up Plan for BMI Management" Margin="0,0,0,6"/>
+                                                            <CheckBox IsChecked="{Binding DietaryConsultationOrderIndicator, Mode=TwoWay}" Content="Dietary Consultation Order" Margin="0" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                        <StackPanel Margin="20,0,0,0">
+                                                            <TextBlock Text="Physical Exam Not Done Reason" Style="{StaticResource EditFormLabelTextBlockStyle}" d:LayoutOverrides="Height"/>
+                                                            <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[VitalSignPhysicalExamNotDoneReason]}" DisplayMemberPath="Name" SelectedItem="{Binding VitalSignPhysicalExamNotDoneReason, Mode=TwoWay}" ToolTipService.ToolTip="{Binding SelectedItem.Description, RelativeSource={RelativeSource Self}}" MinWidth="180" HorizontalAlignment="Left" Margin="0,5" d:LayoutOverrides="Height, VerticalMargin"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </ScrollViewer>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentEditTemplate>
+                            </CustomControls:EditableExpander>
+                        </CustomControls:Editor.Expanders>
+                    </CustomControls:Editor>
+                    <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+                </Grid>
+            </telerik:RadFluidContentControl.LargeContent>
+          
+        </telerik:RadFluidContentControl>
+    </ScrollViewer>
+</telerik:RadTileViewItem>

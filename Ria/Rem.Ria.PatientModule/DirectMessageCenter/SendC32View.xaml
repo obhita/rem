@@ -1,0 +1,146 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.DirectMessageCenter.SendC32View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:Configuration="clr-namespace:Rem.Ria.Infrastructure.View.Configuration;assembly=Rem.Ria.Infrastructure"
+             xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+             mc:Ignorable="d" Width="800" Height="600" Configuration:Configuration.IHandleConfiguration="True">
+    <UserControl.Resources>
+        <Style TargetType="Controls:Label">
+            <Setter Property="Foreground" Value="#767676" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Margin" Value="0 0 15 5" />
+            <Setter Property="FontWeight" Value="Light" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <telerik:RadButton Grid.Column="0" Grid.RowSpan="2" Margin="7" FontSize="14" Command="{Binding SendC32Command}">
+                <StackPanel Margin="5">
+                    <Image Height="20" Margin="0,0,0,5" Source="/Rem.Ria.PatientModule;component/DirectMessageCenter/Images/letter.png"/>
+                    <TextBlock Text="Send"/>
+                </StackPanel>
+            </telerik:RadButton>
+
+            <telerik:RadButton Grid.Row="0" Grid.Column="1"  Margin="10,10,50,10" FontSize="10" Command="{Binding OpenAddressBookCommand}">
+                <StackPanel Margin="5">
+                    <!--<Image Height="20" Margin="0,0,0,5" Source="/Rem.Ria.PatientModule;component/MessageCenter/Images/letter.png"/>-->
+                    <TextBlock Text="Address Book"/>
+                </StackPanel>
+            </telerik:RadButton>
+
+            <telerik:RadToggleButton x:Name="ToPopupButton" Grid.Row="0" Grid.Column="1" Content="To: " Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="5"/>
+
+            <telerik:RadComboBox x:Name="ToTextBox" Grid.Row="0" Grid.Column="2" IsEditable="True" ClearSelectionButtonVisibility="Collapsed" OpenDropDownOnFocus="True" 
+                                 Margin="0,0,10,0" VerticalAlignment="Center" 
+                                 Text="{Binding Mail.To,Mode=TwoWay}">
+                <telerik:RadComboBoxItem>
+                    Bear.Polk@direct.healthvault-stage.com
+                </telerik:RadComboBoxItem>
+                <telerik:RadComboBoxItem>
+                    Chris.White@direct.healthvault-stage.com
+                </telerik:RadComboBoxItem>
+                <telerik:RadComboBoxItem>
+                    Kate.Wetherby@direct.healthvault-stage.com
+                </telerik:RadComboBoxItem>
+                <telerik:RadComboBoxItem>
+                    Rodney.Conrad@direct.healthvault-stage.com
+                </telerik:RadComboBoxItem>
+                <telerik:RadComboBoxItem>
+                    Ron.Denis@direct.healthvault-stage.com
+                </telerik:RadComboBoxItem>
+            </telerik:RadComboBox>
+
+            <telerik:Popup x:Name="ToPopup" Owner="{Binding ElementName=ToPopupButton}" PlacementTarget="{Binding ElementName=ToPopupButton}" Placement="Right"
+                           IsOpen="{Binding ElementName=ToPopupButton,Path=IsChecked,Mode=TwoWay}" CloseOnOutsideClick="True">
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Padding="5" Width="400" Height="300">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <telerik:RadWatermarkTextBox x:Name="PopUpToTextBox" WatermarkContent="To">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <ei:ChangePropertyAction TargetName="ToTextBox" PropertyName="Text" Value="{Binding ElementName=PopUpToTextBox,Path=Text}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </telerik:RadWatermarkTextBox>
+                        <telerik:RadComboBox x:Name="GroupBox" Grid.Column="1" ClearSelectionButtonVisibility="Collapsed">
+                            <telerik:RadComboBoxItem Content="HealthVault" IsSelected="True">
+                                <telerik:RadComboBoxItem.Tag>
+                                    <toolkit:ObjectCollection>
+                                        <System:String>claudio.sanchez@direct.healthvault-stage.com</System:String>
+                                        <System:String>Bear.Polk@direct.healthvault-stage.com</System:String>
+                                        <System:String>Chris.White@direct.healthvault-stage.com</System:String>
+                                        <System:String>Kate.Wetherby@direct.healthvault-stage.com</System:String>
+                                        <System:String>Rodney.Conrad@direct.healthvault-stage.com</System:String>
+                                        <System:String>Ron.Denis@direct.healthvault-stage.com</System:String>
+                                    </toolkit:ObjectCollection>
+                                </telerik:RadComboBoxItem.Tag>
+                            </telerik:RadComboBoxItem>
+                            <telerik:RadComboBoxItem Content="OBHITA">
+                                <telerik:RadComboBoxItem.Tag>
+                                    <toolkit:ObjectCollection>
+                                        <System:String>leo.smith@direct.ohbita-stage.org</System:String>
+                                    </toolkit:ObjectCollection>
+                                </telerik:RadComboBoxItem.Tag>
+                            </telerik:RadComboBoxItem>
+                            <telerik:RadComboBoxItem Content="EHRDoctors">
+                                <telerik:RadComboBoxItem.Tag>
+                                    <toolkit:ObjectCollection>
+                                        <System:String>direct@medibridge.net</System:String>
+
+                                    </toolkit:ObjectCollection>
+                                </telerik:RadComboBoxItem.Tag>
+                            </telerik:RadComboBoxItem>
+                        </telerik:RadComboBox>
+                        <ListBox x:Name="AddressesList" Grid.ColumnSpan="2" Grid.Row="1" ItemsSource="{Binding ElementName=GroupBox,Path=SelectedItem.Tag}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <ei:ChangePropertyAction TargetName="PopUpToTextBox" PropertyName="Text" Value="{Binding ElementName=AddressesList,Path=SelectedItem}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListBox>
+                    </Grid>
+                </Border>
+            </telerik:Popup>
+            <Controls:Label Grid.Row="1" Grid.Column="1" Content="Subject: " Target="{Binding ElementName='SubjectTextBox'}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="1" Grid.Column="2" Name="SubjectTextBox" Text="{Binding Mail.Subject, Mode=TwoWay}" Margin="0,0,10,0" VerticalAlignment="Center"/>
+            <Controls:Label Grid.Row="2" Grid.Column="1" Content="Attached: " Target="{Binding ElementName='AttachedTextBlock'}" HorizontalAlignment="Right" VerticalAlignment="Center"
+                             Visibility="{Binding Mail.AttachmentName,Converter={StaticResource NullToVisibilityConverterInstance}}"/>
+            <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" Visibility="{Binding Mail.AttachmentName,Converter={StaticResource NullToVisibilityConverterInstance}}">
+                <Image Margin="0,0,5,0" Height="15" Source="/Rem.Ria.PatientModule;component/DirectMessageCenter/Images/paperclip.png"/>
+                <TextBlock x:Name="AttachedTextBlock" Text="{Binding Mail.AttachmentName}"/>
+            </StackPanel>
+        </Grid>
+        <TextBox Grid.Row="1" Margin="4" Text="{Binding Mail.Message,Mode=TwoWay}" Padding="5" FontSize="12" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+        <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" Grid.RowSpan="2"/>
+    </Grid>
+</UserControl>

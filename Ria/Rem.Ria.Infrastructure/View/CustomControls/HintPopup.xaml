@@ -1,0 +1,12 @@
+﻿<CustomControls:FloatableWindow x:Class="Rem.Ria.Infrastructure.View.CustomControls.HintPopup"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls" MaxHeight="300" Height="auto" ResizeMode="NoResize"
+           x:Name="MainWindow"
+           Title="Hint">
+    <Grid x:Name="LayoutRoot" Margin="0" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <ScrollViewer Margin="0" Width="400" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsTabStop="False" BorderThickness="0" Padding="0">
+            <TextBlock TextWrapping="Wrap" Text="{Binding ElementName=MainWindow,Path=Text}" Margin="2"/>
+        </ScrollViewer>
+    </Grid>
+</CustomControls:FloatableWindow>

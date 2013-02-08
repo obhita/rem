@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ADDD4155-DFBE-4450-96E4-0E730CE38861}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Infrastructure</RootNamespace>
+    <AssemblyName>Rem.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\debug\Rem.Infrastructure.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveUp.Net.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6cceae6a4844c51b, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Server\MailSystem.NET\ActiveUp.Net.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveUp.Net.Imap4, Version=5.0.3454.364, Culture=neutral, PublicKeyToken=9d424b1770e92b68, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Server\MailSystem.NET\ActiveUp.Net.Imap4.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.Common">
+      <HintPath>..\..\packages\Agatha-Common-Unity.1.3\lib\net40\Agatha.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.ServiceLayer, Version=1.3.0.0, Culture=neutral, PublicKeyToken=6f21cf452a4ffa13, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Agatha-ServiceLayer-StructureMap.1.3\lib\net40\Agatha.ServiceLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.StructureMap, Version=1.3.0.0, Culture=neutral, PublicKeyToken=6f21cf452a4ffa13, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="AsyncCtpLibrary">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\AsyncCtpLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=2.1.266.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\AutoMapper.2.1.266\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="C32Gen">
+      <HintPath>..\..\lib\Server\C32Gen\C32Gen.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\packages\Castle.Core.3.0.0.2001\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Esent.Interop">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\Esent.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=1.2.0.712, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentNHibernate.1.2.0.712\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender">
+      <HintPath>..\..\lib\Server\NHibernate\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Iesi.Collections.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Server\WIF\v3.5\Microsoft.IdentityModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.0.2.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NHibernate.Castle.3.1.0.4000\lib\Net35\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.SysCache">
+      <HintPath>..\..\lib\Server\NHibernate\NHibernate.Caches.SysCache.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Raven.Abstractions">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\Raven.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Debug">
+      <HintPath>..\..\packages\RavenDB.1.0.0.482\lib\net40\Raven.Client.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Embedded">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\Raven.Client.Embedded.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.MvcIntegration">
+      <HintPath>..\..\packages\RavenDB.1.0.0.482\lib\net40\Raven.Client.MvcIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Database">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\Raven.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Munin">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\Raven.Munin.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Storage.Esent">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\Raven.Storage.Esent.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Storage.Managed">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\Raven.Storage.Managed.dll</HintPath>
+    </Reference>
+    <Reference Include="Spatial.Net">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\Spatial.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="SpellChecker.Net">
+      <HintPath>..\..\packages\RavenDB-Embedded.1.0.0.482\lib\net40\SpellChecker.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Windows.Zip">
+      <HintPath>..\..\lib\Client-Silverlight\Telerik\Telerik.Windows.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="TerminologyService.WebService">
+      <HintPath>..\..\lib\Server\TerminologyService\TerminologyService.WebService.dll</HintPath>
+    </Reference>
+    <Reference Include="uNhAddIns">
+      <HintPath>..\..\lib\Server\NHibernate\uNhAddIns.dll</HintPath>
+    </Reference>
+    <Reference Include="uNhAddIns.Web">
+      <HintPath>..\..\lib\Server\NHibernate\uNhAddIns.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Bootstrapper\AssemblyLocator.cs" />
+    <Compile Include="Bootstrapper\AutoRegistrationAssemblyHelper.cs" />
+    <Compile Include="Bootstrapper\KnownTypeHelper.cs" />
+    <Compile Include="Configuration\SettingKeyNames.cs" />
+    <Compile Include="Domain\EventListener\AutoFlushFixEventListener.cs" />
+    <Compile Include="Domain\EventListener\DefaultComponentAuditStrategy.cs" />
+    <Compile Include="Domain\EventListener\DefaultEntityAuditStrategy.cs" />
+    <Compile Include="Domain\EventListener\EntityAuditStrategyBase.cs" />
+    <Compile Include="Domain\EventListener\IComponentAuditStrategy.cs" />
+    <Compile Include="Domain\EventListener\IEntityAuditStrategy.cs" />
+    <Compile Include="Domain\EventListener\PatientAccessAuditableListenerBase.cs" />
+    <Compile Include="Domain\EventListener\PatientAccessAuditableListenerHelper.cs" />
+    <Compile Include="Domain\EventListener\PatientAccessAuditablePostDeleteListener.cs" />
+    <Compile Include="Domain\EventListener\PatientAccessAuditablePostInsertListener.cs" />
+    <Compile Include="Domain\EventListener\PatientAccessAuditablePostUpdateListener.cs" />
+    <Compile Include="Domain\EventListener\PatientAccessEventTypeHelper.cs" />
+    <Compile Include="Domain\EventListener\PostFlushFixEventListener.cs" />
+    <Compile Include="Domain\EventListener\UpdateComponentAuditStrategy.cs" />
+    <Compile Include="Domain\EventListener\UpdateEntityAuditStrategy.cs" />
+    <Compile Include="Domain\FluentConfigurationProvider.cs" />
+    <Compile Include="Domain\FluentConfigurationSerializer.cs" />
+    <Compile Include="Domain\IKeywordsSearchService.cs" />
+    <Compile Include="Domain\ILookupTypeService.cs" />
+    <Compile Include="Domain\Interceptor\AuditableInterceptor.cs" />
+    <Compile Include="Domain\IPagedEntityListQueryService.cs" />
+    <Compile Include="Domain\IPersistenceConfigurerProvider.cs" />
+    <Compile Include="Domain\IServiceRegistry.cs" />
+    <Compile Include="Domain\ISessionProvider.cs" />
+    <Compile Include="Domain\IStatelessSessionProvider.cs" />
+    <Compile Include="Domain\KeywordsSearchService.cs" />
+    <Compile Include="Domain\LookupTypeService.cs" />
+    <Compile Include="Domain\MappingOverride\DensAsiClosureMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\DensAsiDrugAlcoholUseMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\DensAsiDsmIvMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\DensAsiEmploymentStatusMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\DensAsiFamilySocialRelationshipsMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\DensAsiInterviewMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\DensAsiInterviewSectionMappingOverrideHelper.cs" />
+    <Compile Include="Domain\MappingOverride\DensAsiLegalStatusMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\DensAsiMedicalStatusMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\DensAsiPatientProfileMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\DensAsiPsychiatricStatusMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\GpraCrimeCriminalJusticeMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\GpraDemographicsMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\GpraDischargeMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\GpraDrugAlcoholUseMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\GpraFamilyLivingConditionsMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\GpraFollowUpMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\GpraInterviewMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\GpraInterviewSectionMappingOverrideHelper.cs" />
+    <Compile Include="Domain\MappingOverride\GpraPlannedServicesMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\GpraProblemsTreatmentRecoveryMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\GpraProfessionalInformationMappingOverride.cs" />
+    <Compile Include="Domain\MappingOverride\GpraSocialConnectednessMappingOverride.cs" />
+    <Compile Include="Domain\MsSql2008PersistenceConfigurerProvider.cs" />
+    <Compile Include="Domain\PagedEntityListQueryService.cs" />
+    <Compile Include="Domain\Repository\AuditCRepository.cs" />
+    <Compile Include="Domain\Repository\AuditRepository.cs" />
+    <Compile Include="Domain\Repository\BillingOfficeRepository.cs" />
+    <Compile Include="Domain\Repository\BriefInterventionRepository.cs" />
+    <Compile Include="Domain\Repository\CdsRuleRepository.cs" />
+    <Compile Include="Domain\Repository\BillingOfficeCacheRepository.cs" />
+    <Compile Include="Domain\Repository\ClaimBatchRepository.cs" />
+    <Compile Include="Domain\Repository\ClaimRepository.cs" />
+    <Compile Include="Domain\Repository\CodedConceptLookupBaseRepository.cs" />
+    <Compile Include="Domain\Repository\CodingContextRepository.cs" />
+    <Compile Include="Domain\Repository\ProvenanceRepository.cs" />
+    <Compile Include="Domain\Repository\TedsAdmissionInterviewRepository.cs" />
+    <Compile Include="Domain\Repository\PayorTypeRepository.cs" />
+    <Compile Include="Domain\Repository\EncounterRepository.cs" />
+    <Compile Include="Domain\Repository\HealthCareClaim837ProfessionalRepository.cs" />
+    <Compile Include="Domain\Repository\PatientAccountRepository.cs" />
+    <Compile Include="Domain\Repository\PayorCacheRepository.cs" />
+    <Compile Include="Domain\Repository\PayorCoverageCacheRepository.cs" />
+    <Compile Include="Domain\Repository\GainShortScreenerRepository.cs" />
+    <Compile Include="Domain\Repository\Dast10Repository.cs" />
+    <Compile Include="Domain\Repository\DensAsiInterviewRepository.cs" />
+    <Compile Include="Domain\Repository\GpraInterviewRepository.cs" />
+    <Compile Include="Domain\Repository\NidaDrugQuestionnaireRepository.cs" />
+    <Compile Include="Domain\Repository\ImmunizationRepository.cs" />
+    <Compile Include="Domain\Repository\IndividualCounselingRepository.cs" />
+    <Compile Include="Domain\Repository\LabSpecimenRepository.cs" />
+    <Compile Include="Domain\Repository\LabSpecimenTypeRepository.cs" />
+    <Compile Include="Domain\Repository\LabTestNameRepository.cs" />
+    <Compile Include="Domain\Repository\PatientAccessEventRepository.cs" />
+    <Compile Include="Domain\Repository\PatientAccessEventTypeRepository.cs" />
+    <Compile Include="Domain\Repository\PatientAlertRepository.cs" />
+    <Compile Include="Domain\Repository\PatientContactRepository.cs" />
+    <Compile Include="Domain\Repository\PayorRepository.cs" />
+    <Compile Include="Domain\Repository\Phq9Repository.cs" />
+    <Compile Include="Domain\Repository\ProgramEnrollmentRepository.cs" />
+    <Compile Include="Domain\Repository\ProgramOfferingRepository.cs" />
+    <Compile Include="Domain\Repository\ProgramRepository.cs" />
+    <Compile Include="Domain\Repository\RadiologyOrderRepository.cs" />
+    <Compile Include="Domain\Repository\ReportRepository.cs" />
+    <Compile Include="Domain\Repository\SelfPaymentRepository.cs" />
+    <Compile Include="Domain\Repository\ServiceRepository.cs" />
+    <Compile Include="Domain\Repository\SocialHistoryRepository.cs" />
+    <Compile Include="Domain\Repository\SystemAccountRepository.cs" />
+    <Compile Include="Domain\Repository\SystemPermissionRepository.cs" />
+    <Compile Include="Domain\Repository\SystemRoleRepository.cs" />
+    <Compile Include="Domain\Repository\TedsDischargeInterviewRepository.cs" />
+    <Compile Include="Domain\ServiceRegistry.cs" />
+    <Compile Include="Domain\StatelessSessionProvider.cs" />
+    <Compile Include="Extension\DtoExtensions.cs" />
+    <Compile Include="Extension\EnumerableExtensions.cs" />
+    <Compile Include="Domain\Repository\ActivityRepository.cs" />
+    <Compile Include="Domain\Repository\AppointmentRepository.cs" />
+    <Compile Include="Domain\Repository\LocationRepository.cs" />
+    <Compile Include="Domain\Repository\MedicationRepository.cs" />
+    <Compile Include="Domain\Repository\ProblemRepository.cs" />
+    <Compile Include="Domain\Repository\PatientDocumentRepository.cs" />
+    <Compile Include="Domain\Repository\VisitRepository.cs" />
+    <Compile Include="Domain\Repository\VisitStatusRepository.cs" />
+    <Compile Include="Domain\Repository\VisitTemplateRepository.cs" />
+    <Compile Include="Domain\Repository\VitalSignRepository.cs" />
+    <Compile Include="Extension\GenericSorter.cs" />
+    <Compile Include="Extension\RepositoryExtensions.cs" />
+    <Compile Include="Mail\IImapClientProvider.cs" />
+    <Compile Include="Mail\IImapMailMessageAppender.cs" />
+    <Compile Include="Mail\IMailMessageSender.cs" />
+    <Compile Include="Mail\ImapClientProvider.cs" />
+    <Compile Include="Mail\ImapMailMessageAppender.cs" />
+    <Compile Include="Mail\ImapMailMessageHeader.cs" />
+    <Compile Include="Mail\ISmtpMailMessageSender.cs" />
+    <Compile Include="Mail\MailAttachment.cs" />
+    <Compile Include="Mail\MailMessageBuilder.cs" />
+    <Compile Include="Mail\IImapMailMessageFetcher.cs" />
+    <Compile Include="Mail\ImapMailMessageFetcher.cs" />
+    <Compile Include="Mail\MailMessage.cs" />
+    <Compile Include="Mail\MailMessageHeader.cs" />
+    <Compile Include="Mail\MailMessageSender.cs" />
+    <Compile Include="Mail\SmtpMailMessageSender.cs" />
+    <Compile Include="Metadata\DocumentSessionProvider.cs" />
+    <Compile Include="Metadata\IDocumentSessionProvider.cs" />
+    <Compile Include="Metadata\MetadataKnownTypeProvider.cs" />
+    <Compile Include="Metadata\MetadataLayerRepository.cs" />
+    <Compile Include="Metadata\MetadataRepository.cs" />
+    <Compile Include="Metadata\RavenDbRepositoryBase.cs" />
+    <Compile Include="NamespaceDoc.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="PermissionsDescriptor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Extension\MappingExpressionExtensions.cs" />
+    <Compile Include="Security\ClaimsPrincipalExtensions.cs" />
+    <Compile Include="Security\ClaimTypes.cs" />
+    <Compile Include="Security\CurrentClaimsPrincipalService.cs" />
+    <Compile Include="Security\CurrentUserPermissionService.cs" />
+    <Compile Include="Security\FederatedAuthenticationProvider.cs" />
+    <Compile Include="Security\ICurrentClaimsPrincipalService.cs" />
+    <Compile Include="Security\IFederatedAuthenticationProvider.cs" />
+    <Compile Include="Security\ISessionAuthenticationModuleProvider.cs" />
+    <Compile Include="Security\ISignOffService.cs" />
+    <Compile Include="Security\ISignOnService.cs" />
+    <Compile Include="Security\PermissionClaimsManager.cs" />
+    <Compile Include="Security\IPermissionClaimsManager.cs" />
+    <Compile Include="Security\ServiceAuthorizationManager.cs" />
+    <Compile Include="Security\SessionAuthenticationModuleProvider.cs" />
+    <Compile Include="Security\SignOffService.cs" />
+    <Compile Include="Security\SignOnService.cs" />
+    <Compile Include="Service\AggregateNodeLookupCollectionMapper.cs" />
+    <Compile Include="Service\AggregateRootCollectionMapper.cs" />
+    <Compile Include="Service\C32Service.cs" />
+    <Compile Include="Service\CommandRequestHandler.cs" />
+    <Compile Include="Service\DataTransferObject\AddressDto.cs" />
+    <Compile Include="Service\DataTransferObject\DataErrorInfo.cs" />
+    <Compile Include="Service\DataTransferObject\DataErrorInfoType.cs" />
+    <Compile Include="Service\DataTransferObject\DbInfoDto.cs" />
+    <Compile Include="Service\DataTransferObject\EditableDataTransferObject.cs" />
+    <Compile Include="Service\DataTransferObject\ErrorLevel.cs" />
+    <Compile Include="Service\DataTransferObject\IValidatedObject.cs" />
+    <Compile Include="Service\DataTransferObject\KeyedDataTransferObject.cs" />
+    <Compile Include="Service\DataTransferObject\LookupValueDto.cs" />
+    <Compile Include="Service\DataTransferObject\Mapping\AutoMapperSetup.cs" />
+    <Compile Include="Service\DataTransferObject\Mapping\MappingHelper.cs" />
+    <Compile Include="Bootstrapper\Bootstrapper.cs" />
+    <Compile Include="Service\DataTransferObject\AbstractDataTransferObject.cs" />
+    <Compile Include="Service\DataTransferObject\IDataTransferObject.cs" />
+    <Compile Include="Domain\Repository\NHibernateRepositoryBase.cs" />
+    <Compile Include="Domain\Repository\ClinicalCaseRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Repository\DetailedEthnicityByRaceFetcher.cs" />
+    <Compile Include="Domain\Repository\ILookupValueByRelatedKeysFetcher.cs" />
+    <Compile Include="Domain\Repository\AllergyRepository.cs" />
+    <Compile Include="Domain\Repository\LookupValueByRelatedKeysFetcherFactory.cs" />
+    <Compile Include="Domain\Repository\LookupValueRepository.cs" />
+    <Compile Include="Domain\Repository\AgencyRepository.cs" />
+    <Compile Include="Domain\Repository\NHibernateRepositoryHelper.cs" />
+    <Compile Include="Domain\Repository\PatientRepository.cs" />
+    <Compile Include="Domain\Repository\RepositoryRegistry.cs" />
+    <Compile Include="Domain\Repository\StaffRepository.cs" />
+    <Compile Include="Friends.cs" />
+    <Compile Include="Domain\Repository\ILookupValueByRelatedKeysFetcherFactory.cs" />
+    <Compile Include="Service\DataTransferObject\ValidationFailureDto.cs" />
+    <Compile Include="Service\DtoResponse.cs" />
+    <Compile Include="Service\DapperQueryRequestHandlerBase.cs" />
+    <Compile Include="Service\DummyEnlistmentNotification.cs" />
+    <Compile Include="Service\GetDtoByKeyRequestHandler.cs" />
+    <Compile Include="Service\GetDtoRequest.cs" />
+    <Compile Include="Service\IC32Service.cs" />
+    <Compile Include="Service\IDtoResponse.cs" />
+    <Compile Include="Service\IKeyedDtoFactory.cs" />
+    <Compile Include="Service\IMetadataMapper.cs" />
+    <Compile Include="Service\INHibernateInformationService.cs" />
+    <Compile Include="Service\InstantiationServiceBehavior.cs" />
+    <Compile Include="Service\Interceptor\RuleViolationEventInterceptor.cs" />
+    <Compile Include="Service\Interceptor\SecurityInterceptor.cs" />
+    <Compile Include="Service\IQueryRequest.cs" />
+    <Compile Include="Service\IUserInformationDtoFactory.cs" />
+    <Compile Include="Service\KeyedDtoFactoryBase.cs" />
+    <Compile Include="Service\MetadataMapper.cs" />
+    <Compile Include="Service\NHibernateInformationService.cs" />
+    <Compile Include="Service\NHibernateSessionRequestHandler.cs" />
+    <Compile Include="Service\NHibernateTransactionRequestProcessor.cs" />
+    <Compile Include="Service\NHibernateSessionPerCallServiceBehavior.cs" />
+    <Compile Include="Service\NHibernateSessionPerCallBehaviorExtensionElement.cs" />
+    <Compile Include="Service\NHibernateSessionCallContextInitializer.cs" />
+    <Compile Include="Service\PerformanceLoggingRequestProcessor.cs" />
+    <Compile Include="Service\PropertyMapper.cs" />
+    <Compile Include="Service\PropertyNameMapper.cs" />
+    <Compile Include="Service\QueryRequestHandler.cs" />
+    <Compile Include="Service\RequestProcessorBase.cs" />
+    <Compile Include="Service\SaveAggregateDtoRequestHandlerBase.cs" />
+    <Compile Include="Service\SaveAggregateNodeDtoRequestHandlerBase.cs" />
+    <Compile Include="Service\SaveDtoRequest.cs" />
+    <Compile Include="Service\SaveDtoRequestHandlerBase.cs" />
+    <Compile Include="Service\ServiceBase.cs" />
+    <Compile Include="Service\InstantiationBehaviorExtensionElement.cs" />
+    <Compile Include="Service\ServiceLocatorInstanceProvider.cs" />
+    <Compile Include="Service\AggregateNodeCollectionMapper.cs" />
+    <Compile Include="Service\DtcTransactionRequestProcessor.cs" />
+    <Compile Include="Service\UserInformationDto.cs" />
+    <Compile Include="Service\UserInformationDtoFactory.cs" />
+    <Compile Include="Service\WcfFaultServiceBehaviorElement.cs" />
+    <Compile Include="Service\WcfMessageInspector.cs" />
+    <Compile Include="Service\WcfFaultServiceBehavior.cs" />
+    <Compile Include="Utility\Compressor.cs" />
+    <Compile Include="Utility\SqlMapper.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Web\AddSlashToHomeRealmModule.cs" />
+    <Compile Include="Web\EncryptedFileOpenHandler.cs" />
+    <Compile Include="Security\ClaimsAuthenticationManager.cs" />
+    <Compile Include="Web\FederationMetadataXmlHandler.cs" />
+    <Compile Include="Web\WifPassiveRequestValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Domain\Domain.cd" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service\ServiceClassDiagram.cd" />
+    <None Include="Service\DataTransferObject\DtoClassDiagram.cd" />
+    <None Include="Service\WCFClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Billing\Rem.Domain.Billing.csproj">
+      <Project>{1BF4EBC9-3BA5-4979-9F91-19AFFB3E5FAF}</Project>
+      <Name>Rem.Domain.Billing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Clinical\Rem.Domain.Clinical.csproj">
+      <Project>{C7837BA2-B4EC-40B6-96B6-00F9BE462A60}</Project>
+      <Name>Rem.Domain.Clinical</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Rem.Domain.Core\Rem.Domain.Core.csproj">
+      <Project>{AB046CD6-556B-4023-BAC1-3F0F3183B630}</Project>
+      <Name>Rem.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common\Pillar.Common.csproj">
+      <Project>{6761BABC-8D45-4D08-B112-088FA47AB625}</Project>
+      <Name>Pillar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain.NHibernate\Pillar.Domain.NHibernate.csproj">
+      <Project>{E1332A3F-04D1-4D02-B0F0-A20046EAF437}</Project>
+      <Name>Pillar.Domain.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.IoC.StructureMap\Pillar.IoC.StructureMap.csproj">
+      <Project>{1728DBDD-7471-4C03-809B-C2E83A4C8C7C}</Project>
+      <Name>Pillar.IoC.StructureMap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Security\Pillar.Security.csproj">
+      <Project>{450A9049-224E-47D2-ADF8-D57A168DC266}</Project>
+      <Name>Pillar.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain\Pillar.Domain.csproj">
+      <Project>{88257D62-7FE9-4128-A39B-1FF4511C8B3A}</Project>
+      <Name>Pillar.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.FluentRuleEngine\Pillar.FluentRuleEngine.csproj">
+      <Project>{26BEFDB1-9762-4132-9F45-06CABE14D43C}</Project>
+      <Name>Pillar.FluentRuleEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Rem.WellKnownNames\Rem.WellKnownNames.csproj">
+      <Project>{0CA1E92B-B1E0-4E22-8FA5-747753AA8E72}</Project>
+      <Name>Rem.WellKnownNames</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\lib\Shared\Stylecop\StyleCop.Targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,3166 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Health.Direct.Xdm</name>
+    </assembly>
+    <members>
+        <member name="T:Health.Direct.Xdm.Metadata.Extensions">
+            <summary>
+            Extension methods for working with metadata elements
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Extensions.ToHL7Date(System.Nullable{System.DateTime})">
+            <summary>
+            Converts the supplied date to an HL7 formatted UTC datetime string
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Extensions.AsString(System.Nullable{Health.Direct.Xdm.Metadata.Sex})">
+            <summary>
+            Formats the provided value as a string suitable for inclusion in HL7
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Extensions.ReadAllBytes(System.IO.Stream)">
+            <summary>
+            Reads all bytes of the supplied stream.
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.C80Confidentialty">
+            <summary>
+            Enumeration of HITSP C80 Confidentialty values
+            </summary>
+            <remarks>
+            Some values (e.g., HIV, etc.) omitted on purpose because they provide confidential information (!)
+            </remarks>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80Confidentialty.Clinician">
+            <summary>
+            Only clinicians may see this item, billing and administration persons can not access
+            this item without special permission
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80Confidentialty.Individual">
+            <summary>
+            Access only to individual persons who are mentioned explicitly as actors of this
+            service and whose actor type warrants that access
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80Confidentialty.Low">
+            <summary>
+            Low confidentialty
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80Confidentialty.Normal">
+            <summary>
+            Normal confidentiality
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80Confidentialty.Restricted">
+            <summary>
+            Restricted access, e.g. only to providers having a current
+            care relationship to the patient
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80Confidentialty.VeryRestricted">
+            <summary>
+            Very restricted access as declared by the Privacy Officer of
+            the record holder
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80Confidentialty.Sensitive">
+            <summary>
+            Information for which the patient seeks heightened
+            confidentiality.
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80Confidentialty.Taboo">
+            <summary>
+            Information not to be disclosed or discussed with patient except through physician
+            assigned to patient in this case.
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.C80ConfidentialityUtils">
+            <summary>
+            Represents the confidentiality level of an item.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.C80ConfidentialityUtils.ToCodedValue(Health.Direct.Xdm.Metadata.C80Confidentialty)">
+            <summary>
+            Returns a <see cref="T:Health.Direct.Xdm.Metadata.CodedValue"/> for the code
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.C80ConfidentialityUtils.Decode(Health.Direct.Xdm.Metadata.C80Confidentialty)">
+            <summary>
+            Returns the code/label pair for the provided enumeration code
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.C80ConfidentialityUtils.CodeDictionary">
+            <summary>
+            The dictionary mapping coded values to code/label pairs.
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.ExternalIdentifier">
+            <summary>
+            Element represeting a patient identifier in IHE XD* ebXML
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.ExternalIdentifier.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes an instance with the supplied patient ID
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.Pair`2">
+            <summary>
+            A pair of objects (poor man's Tuple)
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Pair`2.#ctor(`0,`1)">
+            <summary>
+            Initializes a pair
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Pair`2.Make(`0,`1)">
+            <summary>
+            Makes a pair
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Xd.Pair`2.First">
+            <summary>
+            The first item in the pair
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Xd.Pair`2.Second">
+            <summary>
+            The second item in the pair
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XDMetadataGenerator">
+            <summary>
+            Extension and other Methods for generating XElements for IHE XD* ebXML from metadata objects.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataGenerator.Generate(Health.Direct.Xdm.Metadata.DocumentPackage)">
+            <summary>
+            Returns an <see cref="T:System.Xml.Linq.XElement"/> for this package in IHE XD* ebXML
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataGenerator.GeneratePackage(Health.Direct.Xdm.Metadata.DocumentPackage)">
+            <summary>
+            Generates an <see cref="T:System.Xml.Linq.XElement"/> for a RegistryPackage
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataGenerator.Generate(Health.Direct.Xdm.Metadata.DocumentMetadata)">
+            <summary>
+            Returns an <see cref="T:System.Xml.Linq.XElement"/> for this document metadata in IHE XD* ebXML
+            </summary>
+            <param name="dm">This document metadata</param>
+            <returns>An <see cref="T:System.Xml.Linq.XElement"/> for this document metadata in IHE XD* ebXML</returns>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataGenerator.EventCodeClassifications(System.Collections.Generic.IEnumerable{Health.Direct.Xdm.Metadata.CodedValue},System.String)">
+            <summary>
+            Generates Event Code coded value classifications for each event code
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataGenerator.AuthorSlots(Health.Direct.Xdm.Metadata.Author)">
+            <summary>
+            Slots for the Author classification
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataGenerator.UriValues(System.String)">
+            <summary>
+            Implements the URI break algorithm for the IHE XD* URI document attribute
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataGenerator.MakeUUID">
+            <summary>
+            Makes a UUID in the urn:uuid:* format
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XdMetadataException">
+            <summary>
+            Represents an exception in generating or consuming XD* Metadata
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XdException`1">
+            <summary>
+            Represents Direct specific exceptions specialized to a specific type of error
+            </summary>
+            <remarks>
+            The generic version of this class is used to create specialized exceptions with an enumeration error type
+            that provides the subtype of error.
+            </remarks>
+            <typeparam name="T">The type of error this exception type is specialized to, generally an enumeration</typeparam>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XdException">
+            <summary>
+            Represents Direct specific errors that occur during application execution.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdException.#ctor">
+            <summary>
+            Initializes a new instance of an <see cref="T:Health.Direct.Xdm.Xd.XdException"/>.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of an <see cref="T:Health.Direct.Xdm.Xd.XdException"/> with a specified error message
+            </summary>
+            <param name="message">The message that describes the error. </param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of an <see cref="T:Health.Direct.Xdm.Xd.XdException"/> with a reference 
+            to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The message that describes the error. </param>
+            <param name="innerException">The inner exception reference.</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdException`1.#ctor(`0)">
+            <summary>
+            Initializes a new specialized instance of an <see cref="T:Health.Direct.Xdm.Xd.XdException"/>
+            </summary>
+            <param name="error">The error type for this instance.</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdException`1.#ctor(`0,System.String)">
+            <summary>
+            Initializes a new specialized instance of an <see cref="T:Health.Direct.Xdm.Xd.XdException"/>
+            </summary>
+            <param name="error">The error type for this instance.</param>
+            <param name="message">The message that describes the error. </param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdException`1.#ctor(`0,System.Exception)">
+            <summary>
+            Initializes a new specialized instance of an <see cref="T:Health.Direct.Xdm.Xd.XdException"/>
+            </summary>
+            <param name="error">The error type for this instance.</param>
+            <param name="innerException">The inner exception reference.</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdException`1.#ctor(`0,System.String,System.Exception)">
+            <summary>
+            Initializes a new specialized instance of an <see cref="T:Health.Direct.Xdm.Xd.XdException"/>
+            </summary>
+            <param name="error">The error type for this instance.</param>
+            <param name="message">The message that describes the error. </param>
+            <param name="innerException">The inner exception reference.</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdException`1.FormatMessage(`0,System.String)">
+            <summary>
+            Private helper method to format the message passed to the base exception ctor.
+            </summary>
+            <param name="error">The error object</param>
+            <param name="message">The message</param>
+            <returns>Returns a formatted error message</returns>
+        </member>
+        <member name="P:Health.Direct.Xdm.Xd.XdException`1.Error">
+            <summary>
+            The specific error type for this instance.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdMetadataException.#ctor(Health.Direct.Xdm.Xd.XdError)">
+            <summary>
+            Creates an exception with the specified error
+            </summary>
+            <param name="error">The <see cref="T:Health.Direct.Xdm.Xd.XdError"/> that triggered this exception.</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdMetadataException.#ctor(Health.Direct.Xdm.Xd.XdError,System.String)">
+            <summary>
+            Creates an exception with the specified error and a custom message
+            </summary>
+            <param name="error">The <see cref="T:Health.Direct.Xdm.Xd.XdError"/> that triggered this exception.</param>
+            <param name="message">The custom error message</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdMetadataException.#ctor(Health.Direct.Xdm.Xd.XdError,System.Exception)">
+            <summary>
+            Creates an exception with the specified error, and a lower level exception
+            </summary>
+            <param name="error">The <see cref="T:Health.Direct.Xdm.Xd.XdError"/> that triggered this exception.</param>
+            <param name="innerException">The lower level exception that triggered this exception</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XdMetadataException.#ctor(Health.Direct.Xdm.Xd.XdError,System.String,System.Exception)">
+            <summary>
+            Creates an exception with the specified error, a lower level exception, and a custom message
+            </summary>
+            <param name="error">The <see cref="T:Health.Direct.Xdm.Xd.XdError"/> that triggered this exception.</param>
+            <param name="innerException">The lower level exception that triggered this exception</param>
+            <param name="message">The custom error message</param>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.Slot">
+            <summary>
+            Represents an ebXML Slot.
+            </summary>
+            <remarks>
+            A slot has a name and a list of values. Slots may be single or multiple valued; use the appropriate constructor.
+            
+            The resulting XML will be:
+            <code>
+            &lt;Slot name="slotname"&gt;
+              &lt;ValueList&gt;
+                  &lt;Value&gt;value1&lt;/Value&gt;
+                  &lt;Value&gt;value2&lt;/Value&gt;
+                  &lt;Value&gt;...&lt;/Value&gt;
+              &lt;/ValueList&gt;
+            &lt;/Slot&gt;      
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Slot.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a Slot with the specified name and a single value in the value list.
+            </summary>
+            <param name="name">The slot name</param>
+            <param name="value">The single value in the value list</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Slot.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Intializes a multivalued slot with the specified values.
+            </summary>
+            <param name="name">The slot name</param>
+            <param name="values">The slot values</param>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.AxisMethods">
+            <summary>
+            Contains XML to Linq custom Axis methods for IHE XD* ebXML
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.ElementsAnyNs(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns child elements ignoring namespace
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.ElementAnyNs(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns the first named child element, ignoring namespace
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.DescendantsAnyNs(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns descendent elements ignoring namespace
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.AttributeValue(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns the value of a named attribute, or <c>null</c> if no such attribute exists.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.AttributeValue``1(System.Xml.Linq.XElement,System.String,System.Func{System.String,``0})">
+            <summary>
+            Returns the value of a named attribute, transformed by a mapping function to a specialized return type.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.Classifications(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns classfication elements of the specified <paramref name="scheme"/>
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.Classification(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns the first classification element of the specified scheme.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.Slots(System.Xml.Linq.XElement)">
+            <summary>
+            Returns all slots that are a child of the supplied element
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.Slots(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns slots that are a child of the supplied with the appropriate name
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.Slot(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns the first slot with the appropriate name
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.SlotValue(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns the slot value for a single valued slot, or the first value for a multivalued slot.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.SlotValues(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns the slot values for a multivalued slot.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.SlotValue``1(System.Xml.Linq.XElement,System.String,System.Func{System.String,``0})">
+            <summary>
+            Returns the slot value for a single valued slot (or the first value in a multivalued slot) using a map function
+            to convert to type T
+            </summary>
+            <returns>The mapped value of the slot, or <c>null</c> if the slot does not exist or has no values.</returns>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.SlotValues``1(System.Xml.Linq.XElement,System.String,System.Func{System.String,``0})">
+            <summary>
+            Returns the slot values for a multivalued slot using a map function to convert to type T
+            </summary>
+            <returns>The mapped values of the slot, or null if the slot does not exist or has no values</returns>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.ExternalIdentifiers(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns ExternalIdentifier elements encoding patient identifiers.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.ExternalIdentifierValue(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns the value for a specified external identifier or null if no identifier exists
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.ExternalIdentifierValue``1(System.Xml.Linq.XElement,System.String,System.Func{System.String,``0})">
+            <summary>
+            Returns the mapped value for a specified external identifier using the supplied mapping function. Returns <c>null</c> if no identifier exists.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.DocumentEntries(System.Xml.Linq.XElement)">
+            <summary>
+            Returns <see cref="T:System.Xml.Linq.XElement"/> instances for each document entry node for this element
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.SubmissionSet(System.Xml.Linq.XElement)">
+            <summary>
+            Returns the <see cref="T:System.Xml.Linq.XElement"/> corresponding to the Submission Set
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.Name(System.Xml.Linq.XElement)">
+            <summary>
+            Returns the child Name element
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.NameValue(System.Xml.Linq.XElement)">
+            <summary>
+            Returns the value of the child Name element
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.Description(System.Xml.Linq.XElement)">
+            <summary>
+            Returns the child Description element
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.AxisMethods.DescriptionValue(System.Xml.Linq.XElement)">
+            <summary>
+            Returns the value of the child Name element
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.Recipient">
+            <summary>
+            Represents a document package recipient
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Recipient.ToString">
+            <summary>
+            String representation of the Recipient
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Recipient.ToXONXCNXTN">
+            <summary>
+            Formats the recipient as a combination XON/XCN/XTN data type
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Recipient.FromXONXCNXTN(System.String)">
+            <summary>
+            Initializes a new Recipient from a string of combination XON/XCN data type
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Recipient.Equals(Health.Direct.Xdm.Metadata.Recipient)">
+            <summary>
+            Tests equality between this instance and another
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Recipient.Person">
+            <summary>
+            The person to which the package is intended, <c>null</c> if not a person sender
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Recipient.Institution">
+            <summary>
+            The institution to which the package is intended
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Recipient.TelecomAddress">
+            <summary>
+            The Health Internet Address of the recipient
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XdmError">
+            <summary>
+            Errors in XDM processing
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XdmError.NoRootDirectory">
+            <summary>
+            The main IHE_XDM directory was no found
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XdmError.NoMetadataFile">
+            <summary>
+            An XDM metadata file could not be found
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XdmError.FileNotFound">
+            <summary>
+            The file pointed to by the metadata URI attribute was not found in the XDM Zip archive
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.CodedValue">
+            <summary>
+            Represents a coded value (code with a label)
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.CodedValue.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes an instance with the supplied code and label.
+            </summary>
+            <param name="code">The code for this instance</param>
+            <param name="label">The label for this instance</param>
+            <param name="scheme">The coding scheme for this code</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.CodedValue.ToString">
+            <summary>
+            Returns a string representation of the object
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.CodedValue.Equals(Health.Direct.Xdm.Metadata.CodedValue)">
+            <summary>
+            Tests equality between this instance and another one
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.CodedValue.Equals(System.Object)">
+            <summary>
+            Tests equality between this instance and another one
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.CodedValue.GetHashCode">
+            <summary>
+            Hash code for CodedValues
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.CodedValue.Code">
+            <summary>
+            The class code for this instance.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.CodedValue.Label">
+            <summary>
+            The label for this instance.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.CodedValue.Scheme">
+            <summary>
+            The coding scheme for this instance
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XdError">
+            <summary>
+            Error codes for generating or consuming XD* Metadata
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XdError.MissingId">
+            <summary>
+            An entity (Association, DocumentEntry, SubmissionSet) is missing the id attribute
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XdError.MissingDocumentBytes">
+            <summary>
+            A document does not have a binary representation
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.IPackager`1">
+            <summary>
+             An interaface to define the packaging and unpackaging of XDM encoded documents.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Health.Direct.Xdm.IPackager`1.Unpackage(`0)">
+            <summary>
+            Unpackages an XDM-encoded of type <typeparamref name="T"/>
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.IPackager`1.Package(Health.Direct.Xdm.Metadata.DocumentPackage)">
+            <summary>
+            Packages a <see cref="T:Health.Direct.Xdm.Metadata.DocumentPackage"/> as an XDM of type <typeparamref name="T"/>
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.Telecom">
+            <summary>
+            Represents a telecom address
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Telecom.#ctor(System.Net.Mail.MailAddress)">
+            <summary>
+            Initializes an instition without an assigning authority
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Telecom.#ctor(System.Net.Mail.MailAddress,System.String)">
+            <summary>
+            Initializes an institution with an assinging authority
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Telecom.ToXTN">
+            <summary>
+            Formats the telecom as an XTN datatype
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Telecom.FromXTN(System.String)">
+            <summary>
+            Parses the XTN datatype and returns the corresponding <see cref="T:Health.Direct.Xdm.Metadata.Telecom"/>
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Telecom.ToString">
+            <summary>
+            String representation of this institution.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Telecom.Equals(Health.Direct.Xdm.Metadata.Telecom)">
+            <summary>
+            Tests equality between this instance and another
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Telecom.Equals(System.Object)">
+            <summary>
+            Tests equality between this instance and another
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Telecom.GetHashCode">
+            <summary>
+            Returns the hashcode for the specified object
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Telecom.Email">
+            <summary>
+            The email address component of the telecom address
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Telecom.Phone">
+            <summary>
+            The unformatted phone component of the telecom address
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.Institution">
+            <summary>
+            Represents an institution
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Institution.#ctor(System.String)">
+            <summary>
+            Initializes an instition without an assigning authority
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Institution.#ctor(System.String,System.String)">
+            <summary>
+            Initializes an institution with an assinging authority
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Institution.ToXON">
+            <summary>
+            Formats the institution as an XON datatype
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Institution.FromXON(System.String)">
+            <summary>
+            Parses the XON datatype and returns the corresponding <see cref="T:Health.Direct.Xdm.Metadata.Institution"/>
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Institution.ToString">
+            <summary>
+            String representation of this institution.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Institution.Equals(Health.Direct.Xdm.Metadata.Institution)">
+            <summary>
+            Tests equality between this instance and another
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Institution.Equals(System.Object)">
+            <summary>
+            Tests equality between this instance and another
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Institution.GetHashCode">
+            <summary>
+            Returns the hashcode for the specified object
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Institution.Name">
+            <summary>
+            The instition name
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Institution.AssigningAuthority">
+            <summary>
+            The assigning authority responsible for the name (should be an OID)
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.C80FacilityCodes">
+            <summary>
+            This is the code representing the type of organizational setting where the clinical encounter, service,
+            interaction, or treatment occurred
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalShip">
+            <summary>
+            C80 code for Hospital ship (2081004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.WalkInClinic">
+            <summary>
+            C80 code for Walk-in clinic (81234003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.FreeStandingMentalHealthCenter">
+            <summary>
+            C80 code for Free-standing mental health center (51563005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalChildrens">
+            <summary>
+            C80 code for Hospital-children's (82242000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientOrthopedicsClinic">
+            <summary>
+            C80 code for Hospital outpatient orthopedics clinic (78001009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.FreeStandingAmbulatorySurgeryFacility">
+            <summary>
+            C80 code for Free-standing ambulatory surgery facility (10531005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientEndocrinologyClinic">
+            <summary>
+            C80 code for Hospital outpatient endocrinology clinic (73644007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientGeneralSurgeryClinic">
+            <summary>
+            C80 code for Hospital outpatient general surgery clinic (90484001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalBirthingCenter">
+            <summary>
+            C80 code for Hospital birthing center (52668009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.OtherHospitalBasedOutpatientClinicOrDepartment">
+            <summary>
+            C80 code for Other Hospital-based outpatient clinic or department (33022008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientAllergyClinic">
+            <summary>
+            C80 code for Hospital outpatient allergy clinic (360957003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalPrison">
+            <summary>
+            C80 code for Hospital-prison (224687002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientMentalHealthCenter">
+            <summary>
+            C80 code for Hospital outpatient mental health center (14866005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.SexuallyTransmittedDiseaseHealthCenter">
+            <summary>
+            C80 code for Sexually transmitted disease health center (25681007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.PrivateResidentialHome">
+            <summary>
+            C80 code for Private residential home (310205006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientHematologyClinic">
+            <summary>
+            C80 code for Hospital outpatient hematology clinic (56293002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.ResidentialSchoolInfirmary">
+            <summary>
+            C80 code for Residential school infirmary (39913001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.RuralHealthCenter">
+            <summary>
+            C80 code for Rural health center (77931003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.LocalCommunityHealthCenter">
+            <summary>
+            C80 code for Local community health center (6827000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.OtherIndependentAmbulatoryCareProviderSite">
+            <summary>
+            C80 code for Other Independent ambulatory care provider site (394759007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalGovernment">
+            <summary>
+            C80 code for Hospital-government (79993009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.VaccinationClinic">
+            <summary>
+            C80 code for Vaccination clinic (46224007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.SkilledNursingFacility">
+            <summary>
+            C80 code for Skilled nursing facility (45618002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientImmunologyClinic">
+            <summary>
+            C80 code for Hospital outpatient immunology clinic (360966004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.ResidentialInstitution">
+            <summary>
+            C80 code for Residential institution (419955002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.ChildDayCareCenter">
+            <summary>
+            C80 code for Child day care center (413817003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientInfectiousDiseaseClinic">
+            <summary>
+            C80 code for Hospital outpatient infectious disease clinic (2849009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientNeurologyClinic">
+            <summary>
+            C80 code for Hospital outpatient neurology clinic (38238005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.AmbulatorySurgeryCenter">
+            <summary>
+            C80 code for Ambulatory surgery center (405607001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientFamilyMedicineClinic">
+            <summary>
+            C80 code for Hospital outpatient family medicine clinic (31628002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.OtherAmbulatoryCareSite">
+            <summary>
+            C80 code for Other Ambulatory care site (35971002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospiceFacility">
+            <summary>
+            C80 code for Hospice facility (284546000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientPainClinic">
+            <summary>
+            C80 code for Hospital outpatient pain clinic (36293008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientRehabilitationClinic">
+            <summary>
+            C80 code for Hospital outpatient rehabilitation clinic (37546005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.EmergencyDepartment_hospital">
+            <summary>
+            C80 code for Emergency department--hospital (73770003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientOphthalmologyClinic">
+            <summary>
+            C80 code for Hospital outpatient ophthalmology clinic (78088001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientGastroenterologyClinic">
+            <summary>
+            C80 code for Hospital outpatient gastroenterology clinic (58482006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.FreeStandingBirthingCenter">
+            <summary>
+            C80 code for Free-standing birthing center (91154008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.ContainedCasualtySetting">
+            <summary>
+            C80 code for Contained casualty setting (409519008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.DialysisUnit_hospital">
+            <summary>
+            C80 code for Dialysis unit--hospital (418518002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientDentalClinic">
+            <summary>
+            C80 code for Hospital outpatient dental clinic (10206005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.FreeStandingGeriatricHealthCenter">
+            <summary>
+            C80 code for Free-standing geriatric health center (41844007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientPeripheralVascularClinic">
+            <summary>
+            C80 code for Hospital outpatient peripheral vascular clinic (5584006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalCommunity">
+            <summary>
+            C80 code for Hospital-community (225732001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientUrologyClinic">
+            <summary>
+            C80 code for Hospital outpatient urology clinic (50569004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientRespiratoryDiseaseClinic">
+            <summary>
+            C80 code for Hospital outpatient respiratory disease clinic (57159002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.FreeStandingRadiologyFacility">
+            <summary>
+            C80 code for Free-standing radiology facility (1773006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientObstetricalClinic">
+            <summary>
+            C80 code for Hospital outpatient obstetrical clinic (56189001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.CareOfTheElderlyDayHospital">
+            <summary>
+            C80 code for Care of the elderly day hospital (309900005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientGynecologyClinic">
+            <summary>
+            C80 code for Hospital outpatient gynecology clinic (22549003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HealthMaintenanceOrganization">
+            <summary>
+            C80 code for Health maintenance organization (72311000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.SubstanceAbuseTreatmentCenter">
+            <summary>
+            C80 code for Substance abuse treatment center (20078004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalVeteransAdministration">
+            <summary>
+            C80 code for Hospital-Veterans' Administration (48311003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalLongTermCare">
+            <summary>
+            C80 code for Hospital-long term care (32074000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalTraumaCenter">
+            <summary>
+            C80 code for Hospital-trauma center (36125001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.SoloPracticePrivateOffice">
+            <summary>
+            C80 code for Solo practice private office (83891005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HelicopterBasedCare">
+            <summary>
+            C80 code for Helicopter-based care (901005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalMilitaryField">
+            <summary>
+            C80 code for Hospital-military field (4322002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientGeriatricHealthCenter">
+            <summary>
+            C80 code for Hospital outpatient geriatric health center (1814000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientPediatricClinic">
+            <summary>
+            C80 code for Hospital outpatient pediatric clinic (3729002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.PrivatePhysiciansGroupOffice">
+            <summary>
+            C80 code for Private physicians' group office (39350007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.SportsFacility">
+            <summary>
+            C80 code for Sports facility (272501009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.AdultDayCareCenter">
+            <summary>
+            C80 code for Adult day care center (413456002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.TravelersAidClinic">
+            <summary>
+            C80 code for Traveler's aid clinic (59374000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.FeeForServicePrivatePhysiciansGroupOffice">
+            <summary>
+            C80 code for Fee-for-service private physicians' group office (19602009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientDermatologyClinic">
+            <summary>
+            C80 code for Hospital outpatient dermatology clinic (37550003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.ElderlyAssessmentClinic">
+            <summary>
+            C80 code for Elderly assessment clinic (275576008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientRheumatologyClinic">
+            <summary>
+            C80 code for Hospital outpatient rheumatology clinic (331006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalRadiologyFacility">
+            <summary>
+            C80 code for Hospital radiology facility (79491001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.FreeStandingLaboratoryFacility">
+            <summary>
+            C80 code for Free-standing laboratory facility (45899008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.OtherHealthEncounterSite">
+            <summary>
+            C80 code for Other Health encounter site (394777002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.AmbulanceBasedCare">
+            <summary>
+            C80 code for Ambulance-based care (11424001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientOncologyClinic">
+            <summary>
+            C80 code for Hospital outpatient oncology clinic (89972002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalPsychiatric">
+            <summary>
+            C80 code for Hospital-psychiatric (62480006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalAmbulatorySurgeryFacility">
+            <summary>
+            C80 code for Hospital ambulatory surgery facility (69362002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalRehabilitation">
+            <summary>
+            C80 code for Hospital-rehabilitation (80522000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.HospitalOutpatientOtorhinolaryngologyClinic">
+            <summary>
+            C80 code for Hospital outpatient otorhinolaryngology clinic (23392004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.PsychogeriatricDayHospital">
+            <summary>
+            C80 code for Psychogeriatric day hospital (309898008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FacilityCodes.NursingHome">
+            <summary>
+            C80 code for Nursing home (42665001)
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.C80FacilityCodeUtils">
+            <summary>
+            Represents a facility code
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.C80FacilityCodeUtils.ToCodedValue(Health.Direct.Xdm.Metadata.C80FacilityCodes)">
+            <summary>
+            Returns a <see cref="T:Health.Direct.Xdm.Metadata.CodedValue"/> for the code
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.C80FacilityCodeUtils.Decode(Health.Direct.Xdm.Metadata.C80FacilityCodes)">
+            <summary>
+            Returns the code/label pair for the provided enumeration code
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.C80ClassCode">
+            <summary>
+            HITSP C80 class codes (table 2-144)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.PrivacyPolicy">
+            <summary>
+            C80 code for Privacy Policy (57017-6)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.OphthalmologyStudies">
+            <summary>
+            C80 code for Ophthalmology Studies (28619-5)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.NurseryRecords">
+            <summary>
+            C80 code for Nursery Records (11543-6)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.AnesthesiaRecords">
+            <summary>
+            C80 code for Anesthesia Records (11485-0)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.HistoryOfImmunization">
+            <summary>
+            C80 code for History of Immunization (11369-6)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.PersonalHealthMonitoringReport">
+            <summary>
+            C80 code for Personal health monitoring report (53576-5)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.PrivacyPolicyAcknowledgment">
+            <summary>
+            C80 code for Privacy Policy Acknowledgment (57016-8)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.CounselingNote">
+            <summary>
+            C80 code for Counseling note (47042-7)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.PreOperativeEvaluationAndManagementNote">
+            <summary>
+            C80 code for Pre-operative evaluation and management note (34775-7)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.PathologyProcedureNote">
+            <summary>
+            C80 code for Pathology procedure note (34122-2)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.PulmonaryStudies">
+            <summary>
+            C80 code for Pulmonary Studies (27896-0)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.TransferSummarizationNote">
+            <summary>
+            C80 code for Transfer summarization note (18761-7)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.SubsequentEvaluationNote">
+            <summary>
+            C80 code for Subsequent evaluation note (11506-3)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.InterventionalProcedureNote">
+            <summary>
+            C80 code for Interventional procedure note (34121-4)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.GastroenterologyEndoscopyStudies">
+            <summary>
+            C80 code for Gastroenterology Endoscopy Studies (27895-2)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.MedicationSummary">
+            <summary>
+            C80 code for Medication Summary (56445-0)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.NonPatientCommunication">
+            <summary>
+            C80 code for Non-patient Communication (47049-2)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.TelephoneEncounterNote">
+            <summary>
+            C80 code for Telephone encounter note (34748-4)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.ObstetricalStudies">
+            <summary>
+            C80 code for Obstetrical Studies (26442-4)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.DischargeSummarizationNote">
+            <summary>
+            C80 code for Discharge summarization note (18842-5)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.RadiologyStudies">
+            <summary>
+            C80 code for Radiology Studies (18726-0)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.LaborAndDeliveryRecords">
+            <summary>
+            C80 code for Labor And Delivery Records (15508-5)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.MiscellaneousStudies">
+            <summary>
+            C80 code for Miscellaneous Studies (28634-4)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.ProcedureNote">
+            <summary>
+            C80 code for Procedure note (28570-0)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.CardiologyStudies">
+            <summary>
+            C80 code for Cardiology Studies (26441-6)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.AdmissionHistoryAndPhysicalNote">
+            <summary>
+            C80 code for Admission history and physical note (47039-3)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.HistoryAndPhysicalNote">
+            <summary>
+            C80 code for History and physical note (34117-2)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.EvaluationAndManagementNote">
+            <summary>
+            C80 code for Evaluation and management note (34109-9)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.DialysisRecords">
+            <summary>
+            C80 code for Dialysis Records (29749-9)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.SummaryOfDeath">
+            <summary>
+            C80 code for Summary of death (47046-8)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.ConsultationNote">
+            <summary>
+            C80 code for Consultation note (11488-4)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.StudyReport">
+            <summary>
+            C80 code for Study report (47045-0)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.SummarizationOfEpisodeNote">
+            <summary>
+            C80 code for Summarization of episode note (34133-9)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.PerioperativeRecords">
+            <summary>
+            C80 code for Perioperative Records (29752-3)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.LaboratoryStudies">
+            <summary>
+            C80 code for Laboratory Studies (26436-6)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.CriticalCareRecords">
+            <summary>
+            C80 code for Critical Care Records (29751-5)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.PathologyStudies">
+            <summary>
+            C80 code for Pathology Studies (27898-6)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.ChemotherapyRecords">
+            <summary>
+            C80 code for Chemotherapy Records (11486-8)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.TransferOfCareReferralNote">
+            <summary>
+            C80 code for Transfer of care referral note (34140-4)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.NeonatalIntensiveCareRecords">
+            <summary>
+            C80 code for Neonatal Intensive Care Records (29750-7)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClassCode.NeuromuscularElectrophysiologyStudies">
+            <summary>
+            C80 code for Neuromuscular Electrophysiology Studies (27897-8)
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.C80ClassCodeUtils">
+            <summary>
+            Represents the class code of a document.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.C80ClassCodeUtils.ToCodedValue(Health.Direct.Xdm.Metadata.C80ClassCode)">
+            <summary>
+            Returns a <see cref="T:Health.Direct.Xdm.Metadata.CodedValue"/> for the code
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.C80ClassCodeUtils.Decode(Health.Direct.Xdm.Metadata.C80ClassCode)">
+            <summary>
+            Returns the code/label pair for the provided enumeration code
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.C80ClassCodeUtils.CodeDictionary">
+            <summary>
+            A dictionary that maps from the enumeration to the associated code/value pair
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.Classification">
+            <summary>
+            Provides an <see cref="T:System.Xml.Linq.XElement"/> for an IHE compliant ebXML classification
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Classification.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a node classification with the specified classificationNode attribute
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Classification.#ctor(System.String,System.String,System.String,System.Object[])">
+            <summary>
+            Initializes a classification with the supplied content, interpreted as an <see cref="T:System.Xml.Linq.XElement"/>
+            </summary>
+            <param name="scheme">The classification scheme UUID</param>
+            <param name="nodeRepresentation">The node representation </param>
+            <param name="classifiedObject">The classified content</param>
+            <param name="content">The content (interpreted like the equivalent parameter of <see cref="T:System.Xml.Linq.XElement"/></param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Classification.#ctor(Health.Direct.Xdm.Xd.XDAttribute,System.String,System.String,System.Object[])">
+            <summary>
+            Initalizes a classification with the supplied content, looking up scheme and node representation for
+            the XD attribute type provided
+            </summary>
+            <param name="attr">The XD attribute</param>
+            <param name="nodeRep">The node representation for this classification</param>
+            <param name="classifiedObject">The object being classified</param>
+            <param name="content">Included nodes in this classification</param>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XDAttribute">
+            <summary>
+            The valid types of XD* Metadata attributes
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XDMetadataStandard">
+            <summary>
+            Constants and utility functions relating to XD* Metadata
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.ExternalIdentifierObjectType">
+            <summary>
+            Object type for an external identifier
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataStandard.IsClassification(Health.Direct.Xdm.Xd.XDAttribute)">
+            <summary>
+            Tests if the XD metadata attribute is represented by an ebXML classification
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Xd.XDMetadataStandard.ClassificationUUIDs">
+            <summary>
+            A dictionary mapping attributes UUID
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs">
+            <summary>
+            XD* Metadata standard UUIDs.
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.SubmissionSetClassification">
+            <summary>
+            UUID for a Submission Set classification
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.DocumentEntry">
+            <summary>
+            UUID for a document entry RegistryPackageType
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.DocumentAuthor">
+            <summary>
+            UUID for an author classification at the document level
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.SubmissionSetAuthor">
+            <summary>
+            UUID for an author classification at the submission set level
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.DocumentClass">
+            <summary>
+            UUID for a document class code classification
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.DocumentConfidentiality">
+            <summary>
+            UUID for a document confidentiality code
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.EventCode">
+            <summary>
+            UUID for an event code
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.FormatCode">
+            <summary>
+            UUID for a format code
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.FacilityCode">
+            <summary>
+            UUID for a facility code
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.DocumentEntryPatientIdentityScheme">
+            <summary>
+            UUID for a patient identifier extenral identity scheme.
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.DocumentUniqueIdIdentityScheme">
+            <summary>
+            UUID for a unique ID identity scheme for a document
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.SubmissionSetPatientId">
+            <summary>
+            UUID for a unique ID identity scheme for a submission set
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.SubmissionSetSourceId">
+            <summary>
+            UUID for a source ID for a submission set
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.SubmissionSetUniqueId">
+            <summary>
+            UUID for a submission set unique ID external identifier
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.PracticeSetting">
+            <summary>
+            UUID for a practice setting classification scheme
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.DocumentType">
+            <summary>
+            UUID for a document typeCode
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.UUIDs.ContentTypeCode">
+            <summary>
+            UUID for a submission set content type code
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XDMetadataStandard.Ns">
+            <summary>
+            XD*/ebXML standard XML namespaces
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Ns.Rim">
+            <summary>
+            Registry Information Model namespace
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Ns.Lcm">
+            <summary>
+            LCM namespace
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XDMetadataStandard.Elts">
+            <summary>
+            XD* Metadata standard Element names
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Elts.SubmitObjectsRequest">
+            <summary>
+            Element name for a SubmitObjectsRequest root element
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Elts.RegistryObjectsList">
+            <summary>
+            Element name for RegistryObjectsList
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Elts.DocumentEntry">
+            <summary>
+            Element name for a DocumentEntry object (ExtrinsicObject)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Elts.SubmissionSet">
+            <summary>
+            Element name for a submission set (RegistryPackage)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Elts.Classification">
+            <summary>
+            The element name for a classification
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Elts.Slot">
+            <summary>
+            The element name for a slot.
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Elts.Name">
+            <summary>
+            Element name for a Name element
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Elts.Description">
+            <summary>
+            Element name for a Description element
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Elts.LocalizedString">
+            <summary>
+            Element name for a LocalizedString element
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Elts.Association">
+            <summary>
+            Element name for an association
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs">
+            <summary>
+            XD* Metadata standard attribute names
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs.Id">
+            <summary>
+            The attribute name for XML id
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs.MimeType">
+            <summary>
+            The attribute name for document media type
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs.SlotName">
+            <summary>
+            The attribute name for a slot name.
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs.ClassificationScheme">
+            <summary>
+            The attribute name for a classification scheme
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs.ClassificationNode">
+            <summary>
+            The attribute name for a classification node
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs.NodeRepresentation">
+            <summary>
+            The attribute name for a node representation
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs.ClassifiedObject">
+            <summary>
+            The attribute name for a classified object
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs.ObjectType">
+            <summary>
+            The attribute name for object type
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs.AssociationType">
+            <summary>
+            Association type attribute
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs.SourceObject">
+            <summary>
+            Association source object attribute
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Attrs.TargetObject">
+            <summary>
+            Association target object attribute
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots">
+            <summary>
+            XD* Metadata standard slot names
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.AuthorPerson">
+            <summary>
+            The slot name for an authorPerson
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.AuthorInstitutions">
+            <summary>
+            The slot name for an authorInstition
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.AuthorRoles">
+            <summary>
+            The slot name for an authorRole
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.AuthorSpecialities">
+            <summary>
+            The slot name for authorSpecialty
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.Hash">
+            <summary>
+            The slot name for hash
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.LegalAuthenticator">
+            <summary>
+            The slot name for a legal authenticator
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.LanguageCode">
+            <summary>
+            The language code slot name
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.ServiceStart">
+            <summary>
+            The service start slot name
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.ServiceStop">
+            <summary>
+            The service end slot name
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.Size">
+            <summary>
+            The size slot name
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.SourcePatientID">
+            <summary>
+            The source patient ID slot name.
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.SourcePatientInfo">
+            <summary>
+            The source patient Info slot name
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.CreationTime">
+            <summary>
+            The creation time slot name
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.CodingScheme">
+            <summary>
+            The coding scheme slot name
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.Uri">
+            <summary>
+            The slot name for a URI
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.SubmissionTime">
+            <summary>
+            The slot name for a submission time
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.IntendedRecipient">
+            <summary>
+            The slot name for intended recipient
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Xd.XDMetadataStandard.Slots.SubmissionSetStatus">
+            <summary>
+            The slot name for submission set status
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.Name">
+            <summary>
+            Represents an ebXML Name element with a LocalizedString element providing the name
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Name.#ctor(System.String)">
+            <summary>
+            Initializes an instance with the supplied name
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.Sex">
+            <summary>
+            Enumeration for biological sex (male, female, other (XYY, etc.))
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.Sex.Male">
+            <summary>
+            XY chromosomes
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.Sex.Female">
+            <summary>
+            XX chromosomes
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.Sex.Other">
+            <summary>
+            Other than XX or XY or other case of unclear biological sex
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.Person">
+            <summary>
+            Represents a human person
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Person.Equals(Health.Direct.Xdm.Metadata.Person)">
+            <summary>
+            Tests if this instance equals another
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Person.Equals(System.Object)">
+            <summary>
+            Tests if this instance equals another
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Person.GetHashCode">
+            <summary>
+            Returns a hash of this object
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Person.ToString">
+            <summary>
+            Provides a string representation of the Person
+            </summary>
+            <returns>A string representation of the person</returns>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Person.ToXCN">
+            <summary>
+            Formats the person as an XCN HL7 datatype
+            </summary>
+            <returns>A string HL7 representation of the person</returns>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Person.FromXCN(System.String)">
+            <summary>
+            Parses an XCN and returns a Person
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Person.ToSourcePatientInfoValues(Health.Direct.Xdm.Metadata.PatientID)">
+            <summary>
+            Generates string values suitable for inclusion in a Slot for source patient information
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Person.FromSourcePatientInfoValues(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Intializes a new <see cref="T:Health.Direct.Xdm.Metadata.Person"/> from data found in a sourcePatientInfo field
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Person.First">
+            <summary>
+            First name
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Person.Last">
+            <summary>
+            Last name
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Person.MI">
+            <summary>
+            Middle name or initial
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Person.Suffix">
+            <summary>
+            Suffix (e.g, III, Jr.)
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Person.Prefix">
+            <summary>
+            Prefix (e.g., Dr., Mr., etc.)
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Person.Degree">
+            <summary>
+            Degree (e.g., M.D., M.D, PhD)
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Person.Sex">
+            <summary>
+            Biological sex of the person
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Person.Dob">
+            <summary>
+            Date of birth
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Person.Address">
+            <summary>
+            Home or primary address for this person.
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.MultiSlotClassification">
+            <summary>
+            Represents a classification that contains a set of slots
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.MultiSlotClassification.#ctor(System.String,System.String,System.String,Health.Direct.Xdm.Xd.Slot[])">
+            <summary>
+            Initializes the classification
+            </summary>
+            <param name="scheme">The classification scheme UUID</param>
+            <param name="nodeRepresentation">The node representation </param>
+            <param name="classifiedObject">The classified content</param>
+            <param name="slots">The slots for the classification</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.MultiSlotClassification.#ctor(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{Health.Direct.Xdm.Xd.Slot})">
+            <summary>
+            Initializes the classification
+            </summary>
+            <param name="scheme">The classification scheme UUID</param>
+            <param name="nodeRepresentation">The node representation </param>
+            <param name="classifiedObject">The classified content</param>
+            <param name="slots">The slots for the classification</param>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties">
+            <summary>
+            This is the code representing the clinical specialty of the clinician or provider who interacted with, treated, or
+            provided a service to/for the patient
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Nephrology">
+            <summary>
+            C80 code for Nephrology (394589003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryDentalSurgicalProsthodontics">
+            <summary>
+            C80 code for Surgery-Dental-surgical-Prosthodontics (394606000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Histopathology">
+            <summary>
+            C80 code for Histopathology (394597005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Gynecology">
+            <summary>
+            C80 code for Gynecology (394586005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.InfectiousDiseases">
+            <summary>
+            C80 code for Infectious diseases (394807007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.BurnsCare">
+            <summary>
+            C80 code for Burns care (408462000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricGastroenterology">
+            <summary>
+            C80 code for Pediatric gastroenterology (418058008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.LearningDisability">
+            <summary>
+            C80 code for Learning disability (408468001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.ClinicalGenetics">
+            <summary>
+            C80 code for Clinical genetics (394580004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.OccupationalMedicine">
+            <summary>
+            C80 code for Occupational medicine (394821009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Neurology">
+            <summary>
+            C80 code for Neurology (394591006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.AudiologicalMedicine">
+            <summary>
+            C80 code for Audiological medicine (394578005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryVascular">
+            <summary>
+            C80 code for Surgery-Vascular (394611003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryTraumaAndOrthopedics">
+            <summary>
+            C80 code for Surgery-Trauma and orthopedics (408463005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.ObstetricsAndGynecology">
+            <summary>
+            C80 code for Obstetrics and gynecology (394585009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryGeneral">
+            <summary>
+            C80 code for Surgery-general (408474001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.MedicalSpecialtyOther">
+            <summary>
+            C80 code for Medical specialty-Other (394733009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryDermatologicSurgery">
+            <summary>
+            C80 code for Surgery-Dermatologic surgery (394604002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricRheumatology">
+            <summary>
+            C80 code for Pediatric rheumatology (419472004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.MedicalOphthalmology">
+            <summary>
+            C80 code for Medical ophthalmology (394813003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Urology">
+            <summary>
+            C80 code for Urology (394612005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Obstetrics">
+            <summary>
+            C80 code for Obstetrics (408470005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.ClinicalPharmacology">
+            <summary>
+            C80 code for Clinical pharmacology (394600006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Gastroenterology">
+            <summary>
+            C80 code for Gastroenterology (394584008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricOncology">
+            <summary>
+            C80 code for Pediatric oncology (418002000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricSurgeryBoneMarrowTransplantation">
+            <summary>
+            C80 code for Pediatric surgery-bone marrow transplantation (420112009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PalliativeMedicine">
+            <summary>
+            C80 code for Palliative medicine (394806003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryDentistryRestorativeDentistry">
+            <summary>
+            C80 code for Surgery-Dentistry-Restorative dentistry (408449004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.BloodBankingAndTransfusionMedicine">
+            <summary>
+            C80 code for Blood banking and transfusion medicine (421661004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgicalSpecialtyOther">
+            <summary>
+            C80 code for Surgical specialty-Other (394732004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Anesthetics">
+            <summary>
+            C80 code for Anesthetics (394577000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.RadiationOncology">
+            <summary>
+            C80 code for Radiation oncology (419815003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.OsteopathicManipulativeMedicine">
+            <summary>
+            C80 code for Osteopathic manipulative medicine (416304004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgicalOncology">
+            <summary>
+            C80 code for Surgical oncology (419321007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PreventiveMedicine">
+            <summary>
+            C80 code for Preventive medicine (409968004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryHepatobiliaryAndPancreaticSurgery">
+            <summary>
+            C80 code for Surgery-Hepatobiliary and pancreatic surgery (394610002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryDentalOralAndMaxillofacialSurgery">
+            <summary>
+            C80 code for Surgery-Dental-Oral and maxillofacial surgery (408466002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Endocrinology">
+            <summary>
+            C80 code for Endocrinology (394583002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.ThoracicMedicine">
+            <summary>
+            C80 code for Thoracic medicine (394590007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Hematopathology">
+            <summary>
+            C80 code for Hematopathology (394916005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SleepStudies">
+            <summary>
+            C80 code for Sleep studies (408450004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Hepatology">
+            <summary>
+            C80 code for Hepatology (408472002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricNephrology">
+            <summary>
+            C80 code for Pediatric nephrology (419365004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.CriticalCareMedicine">
+            <summary>
+            C80 code for Critical care medicine (408478003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricChildAndAdolescentPsychiatry">
+            <summary>
+            C80 code for Pediatric (Child and adolescent) psychiatry (394588006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.DentalMedicineSpecialties">
+            <summary>
+            C80 code for Dental medicine specialties (394812008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.GeneralMedicalPractice">
+            <summary>
+            C80 code for General medical practice (408443003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.RadiologyInterventionalRadiology">
+            <summary>
+            C80 code for Radiology-Interventional radiology (408455009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryTransplantationSurgery">
+            <summary>
+            C80 code for Surgery-Transplantation surgery (394801008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.GeneralPathology">
+            <summary>
+            C80 code for General pathology (394915009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.TropicalMedicine">
+            <summary>
+            C80 code for Tropical medicine (408448007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.NuclearMedicine">
+            <summary>
+            C80 code for Nuclear medicine (394649004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricInfectiousDiseases">
+            <summary>
+            C80 code for Pediatric infectious diseases (418862001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.UrologicalOncology">
+            <summary>
+            C80 code for Urological oncology (419043006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryDentistrySurgical">
+            <summary>
+            C80 code for Surgery-Dentistry-surgical (394608004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricCardiology">
+            <summary>
+            C80 code for Pediatric cardiology (408459003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.DentalGeneralDentalPractice">
+            <summary>
+            C80 code for Dental-General dental practice (408444009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Rheumatology">
+            <summary>
+            C80 code for Rheumatology (394810000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricOphthalmology">
+            <summary>
+            C80 code for Pediatric ophthalmology (419983000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryDentalEndodontics">
+            <summary>
+            C80 code for Surgery-Dental-Endodontics (408465003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Immunopathology">
+            <summary>
+            C80 code for Immunopathology (394598000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PulmonaryMedicine">
+            <summary>
+            C80 code for Pulmonary medicine (418112009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.AdultMentalIllness">
+            <summary>
+            C80 code for Adult mental illness (408467006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Ophthalmology">
+            <summary>
+            C80 code for Ophthalmology (394594003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.ClinicalImmunology">
+            <summary>
+            C80 code for Clinical immunology (408480009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricPulmonology">
+            <summary>
+            C80 code for Pediatric pulmonology (419170002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryNeurosurgery">
+            <summary>
+            C80 code for Surgery-Neurosurgery (394609007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.CommunityMedicine">
+            <summary>
+            C80 code for Community medicine (394581000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Toxicology">
+            <summary>
+            C80 code for Toxicology (409967009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.GeriatricMedicine">
+            <summary>
+            C80 code for Geriatric medicine (394811001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Psychiatry">
+            <summary>
+            C80 code for Psychiatry (394587001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Neuropathology">
+            <summary>
+            C80 code for Neuropathology (394599008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryDentalOrthodontics">
+            <summary>
+            C80 code for Surgery-Dental-Orthodontics (408461007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryDentistrySurgicalOrthodontics">
+            <summary>
+            C80 code for Surgery-Dentistry-surgical-Orthodontics (418018006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Dermatology">
+            <summary>
+            C80 code for Dermatology (394582007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.ClinicalCytogeneticsAndMolecularGenetics">
+            <summary>
+            C80 code for Clinical cytogenetics and molecular genetics (394804000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricGenetics">
+            <summary>
+            C80 code for Pediatric genetics (420208008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.RespiteCare">
+            <summary>
+            C80 code for Respite care (408447002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgicalAccidentEmergency">
+            <summary>
+            C80 code for Surgical-Accident and emergency (394576009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.ClinicalOncology">
+            <summary>
+            C80 code for Clinical oncology (394592004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryColorectalSurgery">
+            <summary>
+            C80 code for Surgery-Colorectal surgery (408441001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.OphthalmicSurgery">
+            <summary>
+            C80 code for Ophthalmic surgery (422191005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.ClinicalNeuroPhysiology">
+            <summary>
+            C80 code for Clinical neuro-physiology (394809005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryPlasticSurgery">
+            <summary>
+            C80 code for Surgery-Plastic surgery (408477008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryBoneAndMarrowTransplantation">
+            <summary>
+            C80 code for Surgery-Bone and marrow transplantation (408476004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.ClinicalMicrobiology">
+            <summary>
+            C80 code for Clinical microbiology (408454008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.InternalMedicine">
+            <summary>
+            C80 code for Internal medicine (419192003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.DiveMedicine">
+            <summary>
+            C80 code for Dive medicine (410005002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Radiology">
+            <summary>
+            C80 code for Radiology (394914008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Otolaryngology">
+            <summary>
+            C80 code for Otolaryngology (418960008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PainManagement">
+            <summary>
+            C80 code for Pain management (394882004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.ClinicalHematology">
+            <summary>
+            C80 code for Clinical hematology (394803006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryDentalProstheticDentistryProsthodontics">
+            <summary>
+            C80 code for Surgery-Dental-Prosthetic dentistry (Prosthodontics) (408460008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.MilitaryMedicine">
+            <summary>
+            C80 code for Military medicine (410001006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Rehabilitation">
+            <summary>
+            C80 code for Rehabilitation (394602003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.ClinicalPhysiology">
+            <summary>
+            C80 code for Clinical physiology (394601005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricSurgery">
+            <summary>
+            C80 code for Pediatric surgery (394539006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.MedicalOncology">
+            <summary>
+            C80 code for Medical oncology (394593009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricImmunology">
+            <summary>
+            C80 code for Pediatric immunology (418535003)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Cardiology">
+            <summary>
+            C80 code for Cardiology (394579002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricEndocrinology">
+            <summary>
+            C80 code for Pediatric endocrinology (419610006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricDentistry">
+            <summary>
+            C80 code for Pediatric dentistry (394607009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.Psychotherapy">
+            <summary>
+            C80 code for Psychotherapy (394913002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PediatricHematology">
+            <summary>
+            C80 code for Pediatric hematology (418652005)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryCardiothoracicTransplantation">
+            <summary>
+            C80 code for Surgery-Cardiothoracic transplantation (408464004)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.GynecologicalOncology">
+            <summary>
+            C80 code for Gynecological oncology (408446006)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.DiabeticMedicine">
+            <summary>
+            C80 code for Diabetic medicine (408475000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryCardiacSurgery">
+            <summary>
+            C80 code for Surgery-Cardiac surgery (408471009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.PublicHealthMedicine">
+            <summary>
+            C80 code for Public health medicine (408440000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.GenitoUrinaryMedicine">
+            <summary>
+            C80 code for Genito-urinary medicine (394808002)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryBreastSurgery">
+            <summary>
+            C80 code for Surgery-Breast surgery (408469009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.FamilyPractice">
+            <summary>
+            C80 code for Family practice (419772000)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.GeneralPractice">
+            <summary>
+            C80 code for General practice (394814009)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.GeneralMedicine">
+            <summary>
+            C80 code for General medicine (394802001)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80ClinicalSpecialties.SurgeryEar">
+            <summary>
+            C80 code for Surgery-Ear (394605001)
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.C80SpecialtyCodeUtils">
+            <summary>
+            Represents a coded clinical specialty.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.C80SpecialtyCodeUtils.ToCodedValue(Health.Direct.Xdm.Metadata.C80ClinicalSpecialties)">
+            <summary>
+            Returns a <see cref="T:Health.Direct.Xdm.Metadata.CodedValue"/> for the code
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.C80SpecialtyCodeUtils.Decode(Health.Direct.Xdm.Metadata.C80ClinicalSpecialties)">
+            <summary>
+            Decodes a code enumeration to the associated code/label pairl
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.XDMZipPackager.Unpackage(Ionic.Zip.ZipFile)">
+            <summary>
+            Unpackages an XDM-encoded zip file
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.XDMZipPackager.Package(Health.Direct.Xdm.Metadata.DocumentPackage)">
+            <summary>
+            Packages a <see cref="T:Health.Direct.Xdm.Metadata.DocumentPackage"/> as an XDM zip file
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.XDMZipPackager.Default">
+            <summary>
+            The default instance
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.PostalAddress">
+            <summary>
+            Represents a US Postal address
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PostalAddress.ToHL7Ad">
+            <summary>
+            Formats the address as an HL7 AD type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PostalAddress.FromHL7Ad(System.String)">
+            <summary>
+            Parses an HL7 AD type field and returns a new instance
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PostalAddress.Equals(Health.Direct.Xdm.Metadata.PostalAddress)">
+            <summary>
+            Tests equality between this instance and another
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PostalAddress.Equals(System.Object)">
+            <summary>
+            Tests equality between this instance and another
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PostalAddress.ToString">
+            <summary>
+            Returns a string representation of the address
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PostalAddress.GetHashCode">
+            <summary>
+            Returns a hash of this instance.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.PostalAddress.Street">
+            <summary>
+            PostalAddress street name
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.PostalAddress.City">
+            <summary>
+            PostalAddress city name
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.PostalAddress.State">
+            <summary>
+            PostalAddress state code
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.PostalAddress.Zip">
+            <summary>
+            PostalAddress postal (ZIP) code
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.DocumentPackage">
+            <summary>
+            Represents a package of documents
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentPackage.Documents">
+            <summary>
+            The list of package documents
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentPackage.Author">
+            <summary>
+            Represents the humans and/or machines that authored the package (may be different from the document authors
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentPackage.Comments">
+            <summary>
+            Comments associated with the Submission Set.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentPackage.ContentTypeCode">
+            <summary>
+            The code specifying the type of clinical activity that resulted in placing these
+            Documents in this Package.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentPackage.IntendedRecipients">
+            <summary>
+            The list of recipients to which this package is being sent.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentPackage.PatientId">
+            <summary>
+            The patient ID for whom this package pertains.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentPackage.SourceId">
+            <summary>
+            OID identifying the instance of the Document Source that contributed the Submission Set.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentPackage.SubmissionTime">
+            <summary>
+            Point in Time at the Document Source when the Submission Set was created and sent
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentPackage.Title">
+            <summary>
+            The title of the package
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentPackage.UniqueId">
+            <summary>
+            Globally unique identifier for the submission-set instance assigned by the Document Source in OID format
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.XDMetadataConsumer">
+            <summary>
+            Consumes XElements to create document and document package metadata
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataConsumer.Consume(System.Xml.Linq.XElement)">
+            <summary>
+            Creates a document package from an XML XElement representation
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataConsumer.ConsumePackage(System.Xml.Linq.XElement)">
+            <summary>
+            
+            </summary>
+            <param name="packageXEl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataConsumer.ConsumeDocument(System.Xml.Linq.XElement)">
+            <summary>
+            Creates a document from an XML XElement representation
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.XDMetadataConsumer.ConsumeUriValues(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Takes an IHE formatted multivalue Uri string and returns the joined URI
+            </summary>
+            <remarks>
+            The values are:
+            (1) A single value of "uri"
+            (2) A set of values, each one is of the form "n|uripart", where n must range from 0->n but where the set
+            is not guaranteed to be ordered. In this form, n may equal 1 :-)
+            </remarks>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.Author">
+            <summary>
+            Represents the author of a document
+            </summary>
+            <example>
+            <code>
+            Author a = new Author() {First = "Tom", Last = "Jones"};
+            </code>
+            </example>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Author.Equals(Health.Direct.Xdm.Metadata.Author)">
+            <summary>
+            Tests equality between this instance and another
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.Author.ToString">
+            <summary>
+            String representation of this author
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Author.Person">
+            <summary>
+            The author (if the author is a person)
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Author.Institutions">
+            <summary>
+            Institutions author is affiliated with.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Author.Roles">
+            <summary>
+            Roles for this author
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Author.Specialities">
+            <summary>
+            Uncoded specialities for this author
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.Author.TelecomAddress">
+            <summary>
+            The Health Internet Address of the author
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.XdmException">
+            <summary>
+            Represents an exception in generating or consuming XDM packages
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.XdmException.#ctor(Health.Direct.Xdm.Xd.XdmError)">
+            <summary>
+            Creates an exception with the specified error
+            </summary>
+            <param name="error">The <see cref="T:Health.Direct.Xdm.Xd.XdmError"/> that triggered this exception.</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.XdmException.#ctor(Health.Direct.Xdm.Xd.XdmError,System.String)">
+            <summary>
+            Creates an exception with the specified error and a custom message
+            </summary>
+            <param name="error">The <see cref="T:Health.Direct.Xdm.Xd.XdmError"/> that triggered this exception.</param>
+            <param name="message">The custom error message</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.XdmException.#ctor(Health.Direct.Xdm.Xd.XdmError,System.Exception)">
+            <summary>
+            Creates an exception with the specified error, and a lower level exception
+            </summary>
+            <param name="error">The <see cref="T:Health.Direct.Xdm.Xd.XdmError"/> that triggered this exception.</param>
+            <param name="innerException">The lower level exception that triggered this exception</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.XdmException.#ctor(Health.Direct.Xdm.Xd.XdmError,System.String,System.Exception)">
+            <summary>
+            Creates an exception with the specified error, a lower level exception, and a custom message
+            </summary>
+            <param name="error">The <see cref="T:Health.Direct.Xdm.Xd.XdmError"/> that triggered this exception.</param>
+            <param name="innerException">The lower level exception that triggered this exception</param>
+            <param name="message">The custom error message</param>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.Extensions">
+            <summary>
+            General extension methods for use with XD* processing.
+            Extension specific to generating XElements for XD* are in XDMetadataGenerator
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Extensions.AddAll``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds an enumeration of elements to this list
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Extensions.Break(System.String,System.Int32)">
+            <summary>
+            Breaks this string into substrings, each of which is length <paramref name="n"/>, except for the last,
+            which will have the remainder strings.
+            </summary>
+            <param name="source">This string, from which we are creating substrings</param>
+            <param name="n">Number of characters to break on.</param>
+            <returns>An enumeration of strings that, when joined, recreate the original string, and each of 
+            which is <paramref name="n"/> characters or shorter</returns>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Extensions.Join(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Concatenates all the elements of a string enumeration, using the specified separator between each element.
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.HL7Util">
+            <summary>
+            Utility functions for HL7 V2 data types
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.HL7Util.DateTimeFormat">
+            <summary>
+            The standard HL7 DateTime Format at full precision
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.HL7Util.ShortDateTimeFormat">
+            <summary>
+            The standard HL7 DateTime format at the precision of days
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.HL7Util.MediumDateTimeFormat">
+            <summary>
+            The standard HL7 DateTime format at the precision of hours and minutes
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.HL7Util.DateTimeFromHL7Value(System.String)">
+            <summary>
+            Parses a UTC HL7 formatted datetime string and returns the UTC <see cref="T:System.DateTime"/>
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.HL7Util.ToHL7Value(System.Nullable{Health.Direct.Xdm.Metadata.Sex})">
+            <summary>
+            Formats the provided value as a string suitable for inclusion in HL7
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.HL7Util.FromHL7Value(System.String)">
+            <summary>
+            Parses the provided value (which should represent an HL7 value) as a <see cref="T:Health.Direct.Xdm.Metadata.Sex"/> value
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.HL7Util.SplitField(System.String,System.Int32,System.Int32)">
+            <summary>
+            Splits the supplied field by the '^' character, returning at least <paramref name="returnedFields"/> fields
+            and erroring if at least <paramref name="minFields"/> are not found
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.DocumentMetadata">
+            <summary>
+            Represents metadata for a document
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.DocumentMetadata.SetDocument(System.String)">
+            <summary>
+            Initializes the document metadata with the UTF8 encoded bytes for the supplied string
+            </summary>
+            <param name="document"></param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.DocumentMetadata.SetDocument(System.IO.Stream)">
+            <summary>
+            Initializes the document metadata with bytes fed from the supplied stream
+            </summary>
+            <param name="document"></param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.DocumentMetadata.SetDocument(System.Byte[])">
+            <summary>
+            Initializes the document metadata with a document supplied as a byte array
+            </summary>
+            <param name="documentBytes"></param>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.DocumentBytes">
+            <summary>
+            Returns this document as an array of bytes
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.DocumentString">
+            <summary>
+            Returns the document as a string, assuming the DocumentBytes are UTF8-encoded bytes
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Author">
+            <summary>
+            Represents the humans and/or machines that authored the document
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Class">
+            <summary>
+            The code specifying the particular class of document. May be the same or different from <see cref="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Type"/>
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Comments">
+            <summary>
+            Comments associated with the Document.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Confidentiality">
+            <summary>
+            Confidentialty codes applied to this document
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.CreatedOn">
+            <summary>
+            Document creation datetime. Must either be defined as UTC or Local time.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.EventCodes">
+            <summary>
+            This list of codes represents the main clinical acts,
+            such as a colonoscopy or an appendectomy, being documented. 
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.FormatCode">
+            <summary>
+            Format code for the document
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Hash">
+            <summary>
+            Hash key of the Document itself.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.FacilityCode">
+            <summary>
+            The facility code for this document.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.LanguageCode">
+            <summary>
+            ISO language code (e.g., en-us)
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.LegalAuthenticator">
+            <summary>
+            Represents a participant who has legally authenticated or attested the document within
+            the authorInstitution.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.MediaType">
+            <summary>
+            The MIME media type (e.g., "text/plain") of this document
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.PatientID">
+            <summary>
+            Patient ID of the receiving system.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.PracticeSetting">
+            <summary>
+            The code specifying the clinical specialty where the act that resulted in the document was performed
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.ServiceStart">
+            <summary>
+            Represents the start time the service being documented took place (clinically significant,
+            but not necessarily when the document was produced or approved).
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.ServiceStop">
+            <summary>
+            Represents the stop time the service being documented took place (clinically significant,
+            but not necessarily when the document was produced or approved).
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Size">
+            <summary>
+            Represents the size of the document in bytes.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.SourcePtId">
+            <summary>
+            The sourcePatientId represents the subject of care medical record Identifier (e.g., Patient Id)
+            in the local patient Identifier Domain of the Document Source.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Patient">
+            <summary>
+            Represents person information about the patient this document refers to (if any)
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Title">
+            <summary>
+            Represents the title of the document.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Type">
+            <summary>
+            The code specifying the particular type of document. May be the same or different from <see cref="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Class"/>
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.UniqueId">
+            <summary>
+            The globally unique identifier assigned by the document creator to this document.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.DocumentMetadata.Uri">
+            <summary>
+            URI for this document
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.CodedValueClassification">
+            <summary>
+            Represents an IHE-compliant ebXML classification node for coded values.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.CodedValueClassification.#ctor(Health.Direct.Xdm.Xd.XDAttribute,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes an instance with the supplied classification scheme, node representation, classified object and
+            a name element for the label and a slot for the code.
+            </summary>
+            <param name="attr">The XD metadata attribute type</param>
+            <param name="classifiedObject">The document that is being classified</param>
+            <param name="code">The code</param>
+            <param name="label">The code label</param>
+            <param name="codingScheme">The coding scheme for this code</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.CodedValueClassification.#ctor(Health.Direct.Xdm.Xd.XDAttribute,System.String,Health.Direct.Xdm.Metadata.CodedValue)">
+            <summary>
+            Initializes an instance with the supplied classification scheme, node representation, classified object and
+            a name element for the label and a slot for the code.
+            </summary>
+            <param name="attr">The XD metadata attribute type</param>
+            <param name="classifiedObject">The document that is being classified</param>
+            <param name="value">The <see cref="T:Health.Direct.Xdm.Metadata.CodedValue"/> for this classification</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.CodedValueClassification.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes an instance with the supplied classification scheme, node representation, classified object and
+            a name element for the label and a slot for the code.
+            </summary>
+            <param name="scheme">The classification scheme UUID</param>
+            <param name="codingScheme">The node representation</param>
+            <param name="classifiedObject">The document that is being classified</param>
+            <param name="code">The code</param>
+            <param name="label">The code label</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.CodedValueClassification.#ctor(System.String,System.String,System.String,Health.Direct.Xdm.Metadata.CodedValue)">
+            <summary>
+            Initializes an instance with the supplied classification scheme, node representation, classified object and
+            a name element for the label and a slot for the code.
+            </summary>
+            <param name="scheme">The classification scheme UUID</param>
+            <param name="nodeRepresentation">The node representation</param>
+            <param name="classifiedObject">The document that is being classified</param>
+            <param name="value">The coded value</param>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.Association">
+            <summary>
+            Represents an association between two objects.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Association.#ctor(System.String,System.String,System.String,System.Object[])">
+            <summary>
+            Initializes an instance of the specified type, with target and source.
+            </summary>
+            <param name="type">Association type</param>
+            <param name="source">The source object for the association</param>
+            <param name="target">The target object for the association</param>
+            <param name="content">Parameters representing association content, handled like the <see cref="T:System.Xml.Linq.XElement"/> parameter</param>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Association.OriginalDocumentAssociation(System.String,System.String)">
+            <summary>
+            Initializes an original object association between a SubmissionSet and a DocumentEntry
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.C80FormatCode">
+            <summary>
+            C80 format codes
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.EmergencyDepartmentEncounterSummary">
+            <summary>
+            C80 code for Emergency Department Encounter Summary (EDES) (urn:ihe:pcc:edes:2007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.TextEmbeddedInCDA">
+            <summary>
+            C80 code for Text embedded in CDA per XDS-SD profile (urn:ihe:iti:xds-sd:text:2008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.XDSMedicalSummaries">
+            <summary>
+            C80 code for XDS Medical Summaries (urn:ihe:pcc:xds-ms:2007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.ImmunizationRegistryContent">
+            <summary>
+            C80 code for Immunization Registry Content (IRC) (urn:ihe:pcc: irc:2008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.PDFEmbeddedInCDA">
+            <summary>
+            C80 code for PDF embedded in CDA per XDS-SD profile (urn:ihe:iti:xds-sd:pdf:2008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.PersonalHealthRecords">
+            <summary>
+            C80 code for Personal Health Records (urn:ihe:pcc:xphr:2007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.CareManagement">
+            <summary>
+            C80 code for Care Management (CM) (urn:ihe:pcc:cm:2008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.IHEAntepartumSummary">
+            <summary>
+            C80 code for IHE Antepartum Summary (urn:ihe:pcc:aps:2007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.BasicPatientPrivacyConsentsWithScannedDocument">
+            <summary>
+            C80 code for Basic Patient Privacy Consents with Scanned Document (urn:ihe:iti:bppc-sd:2007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.AntepartumRecordEducation">
+            <summary>
+            C80 code for Antepartum Record (APR) - Education (urn:ihe:pcc:apr:edu:2008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.AntepartumRecordLaboratory">
+            <summary>
+            C80 code for Antepartum Record (APR) - Laboratory (urn:ihe:pcc:apr:lab:2008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.EmergencyDepartmentReferral">
+            <summary>
+            C80 code for Emergency Department Referral (EDR) (urn:ihe:pcc:edr:2007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.AccessConsentPolicyDocumentXACML">
+            <summary>
+            C80 code for Access Consent Policy document formatted as XACML (urn:nhin:names:acp:XACML)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.BasicPatientPrivacyConsents">
+            <summary>
+            C80 code for Basic Patient Privacy Consents (urn:ihe:iti:bppc:2007)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.AntepartumRecordHistoryAndPhysical">
+            <summary>
+            C80 code for Antepartum Record (APR) - History and Physical (urn:ihe:pcc:apr:handp:2008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.CDALaboratoryReport">
+            <summary>
+            C80 code for CDA Laboratory Report (urn:ihe:lab:xd-lab:2008)
+            </summary>
+        </member>
+        <member name="F:Health.Direct.Xdm.Metadata.C80FormatCode.CancerRegistryContent">
+            <summary>
+            C80 code for Cancer Registry Content (CRC) (urn:ihe:pcc:crc:2008)
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.C80FormatCodeUtils">
+            <summary>
+            Represents a coded document format code
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.C80FormatCodeUtils.ToCodedValue(Health.Direct.Xdm.Metadata.C80FormatCode)">
+            <summary>
+            Returns a <see cref="T:Health.Direct.Xdm.Metadata.CodedValue"/> for the code
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.C80FormatCodeUtils.Decode(Health.Direct.Xdm.Metadata.C80FormatCode)">
+            <summary>
+            Returns the code/label pair for the provided enumeration code
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Metadata.PatientID">
+            <summary>
+            Represents a patient identifier
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PatientID.#ctor(System.String,System.Security.Cryptography.Oid)">
+            <summary>
+            Initializes an instance with the specified ID and an OID based assinging authority
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PatientID.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes an instance with a custom assigning authority type
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PatientID.ToCx">
+            <summary>
+            Formats this identifier as an HL7 CXN.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PatientID.ToEscapedCx">
+            <summary>
+            Formats this identifier as an HL7 CXN, with ampersands escaped as XML entities.
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PatientID.FromCx(System.String)">
+            <summary>
+            Creates an instance from a  CX string
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PatientID.FromEscapedCx(System.String)">
+            <summary>
+            Creates an instance from an escaped CX string
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PatientID.ToString">
+            <summary>
+            Provides a string representation of this object
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PatientID.Equals(Health.Direct.Xdm.Metadata.PatientID)">
+            <summary>
+            Tests equality with another PatientID instance
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PatientID.Equals(System.Object)">
+            <summary>
+            Tests equality with another object
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Metadata.PatientID.GetHashCode">
+            <summary>
+            Hash for this instance.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.PatientID.Id">
+            <summary>
+            The patient ID
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.PatientID.AssigningAuthority">
+            <summary>
+            The assigning authority for this ID.
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.PatientID.AssigningAuthorityType">
+            <summary>
+            The type of assigning authority (ISO for OIDs)
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.PatientID.Oid">
+            <summary>
+            If the assigning authority was set as an OID, this will be the <see cref="P:Health.Direct.Xdm.Metadata.PatientID.Oid"/>
+            </summary>
+        </member>
+        <member name="P:Health.Direct.Xdm.Metadata.PatientID.HasOid">
+            <summary>
+            <c>true</c> if the assigning authority was set as an Oid type.
+            </summary>
+        </member>
+        <member name="T:Health.Direct.Xdm.Xd.Description">
+            <summary>
+            Represents an ebXML Description node
+            </summary>
+        </member>
+        <member name="M:Health.Direct.Xdm.Xd.Description.#ctor(System.String)">
+            <summary>
+            Initializes a description node with the supplied text.
+            </summary>
+        </member>
+    </members>
+</doc>

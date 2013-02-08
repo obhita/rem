@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="38521c2f-fde4-480e-a593-22474d933282" name="UMLUseCaseDiagram1" linkedPackageId="c46efd39-5bb1-4426-ad8c-8699e486dcbd" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="e15ae549-2aaa-4c30-853f-3f457487e8f6">
+      <elementDefinition Id="3aa68893-1202-4ef3-b09f-85f1a549f9df" />
+      <body>The Agency Administrator is responsbile for submitting the TEDS Data to the FEDS</body>
+      <annotatedElements>
+        <actorMoniker Id="9b9260d7-9cd0-4cf8-9e80-05898674e2fd" LastKnownName="Agency Administrator" />
+      </annotatedElements>
+    </comment>
+    <comment Id="6129b65f-e790-44a8-ad13-d4e73e9372ec">
+      <elementDefinition Id="bea10711-610f-4307-b542-0130d4e80560" />
+      <body>The State Agency may check the TEDS extract on the STSS (State TEDS Submission System) to validate the data before submitting file to Synectecs.</body>
+      <annotatedElements>
+        <useCaseMoniker Id="dfbc9292-8b6e-41b1-9594-f9af57caa286" LastKnownName="Generate the TEDS Extract" />
+      </annotatedElements>
+    </comment>
+    <comment Id="ada231fd-daae-46a4-8aab-777c4d32b844">
+      <elementDefinition Id="fe73af93-366f-4040-8ced-91267701c094" />
+      <body>The State Agency will make any necessary corrections if warnings, or errors are found in the TEDS Results Summary</body>
+      <annotatedElements>
+        <useCaseMoniker Id="39a89306-9bbd-4c2e-809c-2072b34f2710" LastKnownName="Review TEDS Submission Processing Results Summary - Admission/Discharge" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="926387e1-3bf1-4e8a-8430-27960570f160">
+      <profileInstance Id="25fff91b-bfef-4c12-90c8-6e96241cc039" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="cc46d44f-3167-40db-9e58-089390bc673c">
+      <profileInstance Id="ee6fe124-92bf-45cb-a67c-df2e8cd72b19" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="9b9260d7-9cd0-4cf8-9e80-05898674e2fd" name="Agency Administrator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="74073a4e-c1e5-49e3-99a8-7a2a3c056afa" />
+        <targetEnds>
+          <association Id="2ccd9b5a-8807-4f8a-ade6-daa90230a1ee" isDerived="false" sourceEndRoleName="Agency Administrator" targetEndRoleName="Create the TEDS Extract" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="dfbc9292-8b6e-41b1-9594-f9af57caa286" LastKnownName="Generate the TEDS Extract" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0ae060ac-f9ec-461e-a4b1-4cc8a88a656e" name="Agency Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1df557d9-f05b-42ab-a121-817929f8d66d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="50b4c70d-9b23-457b-8a85-47769fcf6cb1" name="Create the TEDS Extract" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="353ae47c-abc0-46f3-a4d6-14a7651be013" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f61a7b99-bdc5-4d80-bc83-a23d2cf3bd9e" />
+          </association>
+          <association Id="a586c071-15dd-4bd0-a1b7-286ebc400eb8" isDerived="false" sourceEndRoleName="Agency Administrator" targetEndRoleName="Review TEDS Response for Errors" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="39a89306-9bbd-4c2e-809c-2072b34f2710" LastKnownName="Review TEDS Submission Processing Results Summary - Admission/Discharge" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="750a603f-0468-4d9d-be6e-5be024c0d0d1" name="Agency Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="014cac9c-fc38-47a5-ae05-45e0847a7232" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b2559645-d8c6-4244-b106-4d9da79c0026" name="Review TEDS Response for Errors" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="23a2cbdb-37b7-4b6b-a21a-39e9a86e2d17" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e63396c6-e99e-4d3b-8d28-91a0d6de78ac" />
+          </association>
+          <association Id="f68f6dd5-a472-46bf-ab7d-b63413b6b529" isDerived="false" sourceEndRoleName="Agency Administrator" targetEndRoleName="Submit TEDS Data to Synectecs" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="31ae17f3-da8f-4e55-b248-1847f66c5e4a" LastKnownName="Submit TEDS Data to Synectecs" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="28854965-50e3-408d-84c3-d1492fdd85e3" name="Agency Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2a0d18e7-b8af-48a4-bce7-e753abaaf621" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="27ff389a-bbef-499e-a824-f9e0e9ccd6e9" name="Submit TEDS Data to Synectecs" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1a2a7725-a139-4842-8426-9d36b4db4c75" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0d2eb92c-b64d-4e91-8ce2-c93d63778e37" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="dfbc9292-8b6e-41b1-9594-f9af57caa286" name="Generate the TEDS Extract" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6ea3a730-3ccd-4808-aea8-5f68926e09c7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="39a89306-9bbd-4c2e-809c-2072b34f2710" name="Review TEDS Submission Processing Results Summary - Admission/Discharge" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4840602f-3ba5-451f-a2e3-6e610e347002" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="31ae17f3-da8f-4e55-b248-1847f66c5e4a" name="Submit TEDS Data to Synectecs" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1911f2f1-bae7-43dd-ac54-ebd834eab1c6" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="c46efd39-5bb1-4426-ad8c-8699e486dcbd" name="Rem.Teds.AnalysisModel">
+    <elementDefinition Id="af32d734-bbd9-48a2-b006-f559ba075f3e" />
+  </package>
+</useCaseModelRoot>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <!-- The configuration and platform will be used to determine which
+         assemblies to include from solution and project documentation
+         sources -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{c287323f-572c-4e31-82b6-8406060b8c7c}</ProjectGuid>
+    <SHFBSchemaVersion>1.9.3.0</SHFBSchemaVersion>
+    <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
+         Studio adds them anyway -->
+    <AssemblyName>Documentation</AssemblyName>
+    <RootNamespace>Documentation</RootNamespace>
+    <Name>Documentation</Name>
+    <!-- SHFB properties -->
+    <OutputPath>.\Help\Rem.Documentation\</OutputPath>
+    <HtmlHelpName>REM Documentation</HtmlHelpName>
+    <Language>en-US</Language>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="..\Base\Rem.Domain\Rem.Domain.csproj" />
+      <DocumentationSource sourceFile="..\Base\Rem.Infrastructure\Rem.Infrastructure.csproj" />
+      <DocumentationSource sourceFile="..\Base\Rem.Web\Rem.Web.csproj" />
+    </DocumentationSources>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="Rem.Domain.AgencyModule" isDocumented="True" />
+      <NamespaceSummaryItem name="Rem.Domain.DensAsiModule" isDocumented="True" />
+    </NamespaceSummaries>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
+    <HelpFileFormat>HtmlHelp1, Website</HelpFileFormat>
+    <ProjectSummary>Through numerous initiatives at the national-level, Health Care IT is rapidly moving forward in the development of Electronic Health Records and the development of Health Information Exchanges.  Behavioral Health is a vital component of health care and the Substance Abuse and Mental Health Services Administration %28SAMHSA%29 has made it a strategic initiative to ensure that the behavioral health provider network fully participates with the general health care delivery system in the adoption of health information technology.  In support of this initiative, SAMHSA has sponsored the creation of OBHITA – Open-source Behavioral Health Information Technology Architecture.  OBHITA is aligned with the Office of the National Coordinator for Health Information Technology’s %28ONC%29 strategic plan for Federal Health IT.  OBHITA’s first project is the creation of an Electronic Behavioral Health Records system %28EBHR%29.  The EBHR project has three main objectives:
+
+• Establishing interoperability between Primary care and Behavioral Health providers
+• Establishing Behavioral Health data standards which are compatible with national treatment data standards
+• Facilitating data sharing while protecting patient privacy, established under 4CFR part 2, which are unique to the behavioral health area of treatment.    
+The first deliverable in the EBHR project is the development of a Reference Model software application called REM %28Reference EBHR Model%29.  The REM application is open-source and will be freely available to the Behavioral Health Community.   Meaningful Use certification is a central objective for REM and the REM system will focus on three primary areas:
+
+• HIT Systems Interoperability:  REM will provide Nation-wide Health Information Network %28NHIN%29 CONNECT gateway interoperability, will support Clinical Document Architecture %28CDA%29 will establish security and privacy policy and technology compliant with 42 CFR part 2 regulations.
+• National Data standards:  As a Reference system, REM will provide a model for data modeling compliant with HL7 Reference Information Model %28RIM%29, native support for Continuity of Care Documents %28CCDs%29 as well as clinical vocabulary data standards such as SNOMED-CT and LOINC.
+• Clinical and Management functionality for behavioral health providers and agencies built on state-of-the art technology. 
+
+Through OBHITA, SAMHSA is providing guidance to the Behavioral Health community in general and actively advising Behavioral Health leadership at the state-level around the issues States, Counties and providers are expected to face in the move toward integrated HIE’s.   SAMHSA goal is to provide support and guidance though OBHITA in the form of a reference implementation of the REM at a state or state agency level. 
+</ProjectSummary>
+    <ApiFilter>
+      <Filter entryType="Namespace" fullName="Dapper" isExposed="False" xmlns="" />
+    </ApiFilter>
+  </PropertyGroup>
+  <!-- There are no properties for these groups.  AnyCPU needs to appear in
+       order for Visual Studio to perform the build.  The others are optional
+       common platform types that may appear. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+  </PropertyGroup>
+  <!-- Import the SHFB build targets -->
+  <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+</Project>

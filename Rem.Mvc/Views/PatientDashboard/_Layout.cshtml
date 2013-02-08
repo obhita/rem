@@ -1,0 +1,24 @@
+﻿@model Rem.Mvc.Models.PatientDashboardModelBase
+           
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="dashboardtoolbar">
+    @RenderSection("DashboardToolbar", required: false)
+</div>
+
+<div id="patientinfo">
+    @if (IsSectionDefined("PatientInfo"))
+    {
+        RenderSection ( "PatientInfo" );
+    }
+    else if (Model != null)
+    {
+        <p>Patient: @Model.PatientName</p>
+    }
+</div>
+
+<section id="dashboardcontent">
+    @RenderBody()
+</section>

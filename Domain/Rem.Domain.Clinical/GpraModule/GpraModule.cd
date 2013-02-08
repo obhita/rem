@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraPlannedServices">
+    <Position X="4" Y="7.25" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GpraModule\GpraPlannedServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraDemographics">
+    <Position X="8.5" Y="7.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GpraModule\GpraDemographics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraDrugAlcoholUse">
+    <Position X="16.75" Y="7.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GpraModule\GpraDrugAlcoholUse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraFamilyLivingConditions">
+    <Position X="12.75" Y="7.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>GpraModule\GpraFamilyLivingConditions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraInterview">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AEgQAgEggAAEEAAABEgAMAAQGAQAAFIAMAAoICEAARg=</HashCode>
+      <FileName>GpraModule\GpraInterview.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GpraInterviewInformation" />
+      <Property Name="GpraPlannedServices" />
+      <Property Name="GpraDemographics" />
+      <Property Name="GpraDrugAlcoholUse" />
+      <Property Name="GpraFamilyLivingConditions" />
+      <Property Name="GpraProfessionalInformation" />
+      <Property Name="GpraCrimeCriminalJustice" />
+      <Property Name="GpraProblemsTreatmentRecovery" />
+      <Property Name="GpraSocialConnectedness" />
+      <Property Name="GpraFollowUp" />
+      <Property Name="GpraDischarge" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraProfessionalInformation">
+    <Position X="20.75" Y="7.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GpraModule\GpraProfessionalInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraCrimeCriminalJustice">
+    <Position X="24.5" Y="7.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GpraModule\GpraCrimeCriminalJustice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraProblemsTreatmentRecovery">
+    <Position X="28" Y="7.25" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GpraModule\GpraProblemsTreatmentRecovery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraSocialConnectedness">
+    <Position X="32.5" Y="7.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GpraModule\GpraSocialConnectedness.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraFollowUp">
+    <Position X="36" Y="7.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>GpraModule\GpraFollowUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraDischarge">
+    <Position X="39.75" Y="7.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GpraModule\GpraDischarge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraInterviewInformation" Collapsed="true">
+    <Position X="0.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAAAACAgAQQgEgBAIAAAAAAIAEIAAAgBgACAAEiA=</HashCode>
+      <FileName>GpraModule\GpraInterviewInformation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraInterviewSectionAggregateNodeBase" Collapsed="true">
+    <Position X="20.75" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAiYEQAAAIAAIAIAAAAAAAAAAAIAAAAE=</HashCode>
+      <FileName>GpraModule\GpraInterviewSectionAggregateNodeBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraCrimeCriminalJusticeSection" Collapsed="true">
+    <Position X="24.5" Y="10.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>ABMAAAAEAAAAgAAgAgAAAAgBAAAAYAAAAAAQAAAAAAg=</HashCode>
+      <FileName>GpraModule\GpraCrimeCriminalJusticeSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraDemographicsSection" Collapsed="true">
+    <Position X="8.5" Y="10.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>RDCCEIAoCKAIQAwBgAEAhAYwACAAAAUgEAKAAAAgAAA=</HashCode>
+      <FileName>GpraModule\GpraDemographicsSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraDischargeSection" Collapsed="true">
+    <Position X="40" Y="10.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAIAAABAAAQBAIAAAAAAAAAAgAABAAAIABAAAAAgAg=</HashCode>
+      <FileName>GpraModule\GpraDischargeSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraDrugAlcoholUseSection" Collapsed="true">
+    <Position X="16.75" Y="10.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AYGZAIEVBNJjtmSigXmiYAjAUijdmikwwgCBM6QIQjg=</HashCode>
+      <FileName>GpraModule\GpraDrugAlcoholUseSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraFamilyLivingConditionsSection" Collapsed="true">
+    <Position X="12.75" Y="10.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>gBAAABEhIAAIAWAghQAAAQAEIAAIAEACCAAAAAABChA=</HashCode>
+      <FileName>GpraModule\GpraFamilyLivingConditionsSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraPlannedServicesSection" Collapsed="true">
+    <Position X="4" Y="10.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>OQQdHQqBhLxWIoCOCJiiCXkRKyGgRahpgMrRCkRIDpA=</HashCode>
+      <FileName>GpraModule\GpraPlannedServicesSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraProblemsTreatmentRecoverySection" Collapsed="true">
+    <Position X="28" Y="10.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>pBggAVYJIZAEDCAQoZkUBHABAY0NQwEQkBtAAAdiAEI=</HashCode>
+      <FileName>GpraModule\GpraProblemsTreatmentRecoverySection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraProfessionalInformationSection" Collapsed="true">
+    <Position X="20.75" Y="10.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AqAAIABIAgACAgAQAAQBAAAKAAIAkAARQAEAAAAEBUA=</HashCode>
+      <FileName>GpraModule\GpraProfessionalInformationSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraInterviewSectionBase" Collapsed="true">
+    <Position X="23.25" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GpraModule\GpraInterviewSectionBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraFollowUpSection" Collapsed="true">
+    <Position X="36" Y="10.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>IEAAAAAAAQAAAAAAAAAAACAAAAAAAAAAAAAAAABAQAA=</HashCode>
+      <FileName>GpraModule\GpraFollowUpSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GpraModule.GpraSocialConnectednessSection" Collapsed="true">
+    <Position X="32.25" Y="10.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQACCAkAGAAAEgAAgBAAIAACAIAAASAAAAAg=</HashCode>
+      <FileName>GpraModule\GpraSocialConnectednessSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

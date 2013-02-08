@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm13="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" dslVersion="1.0.0.0" Id="73d5049b-8418-478e-bbc9-8700d12a25b7" name="Self Payment Model" linkedPackageId="b992447c-2c04-492d-8eed-7ed050a37aef" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="9d06c742-977f-4d6a-bd39-254b963ad6c2">
+      <elementDefinition Id="8c579b2e-5c29-430b-b3ad-fe45b6a62225" />
+      <body>The Self Payment is collected in the EHR.  We are not yet sure of how this will interface with the PMS.  Possibly a message is automatically sent to the PMS so that the patients' balance can be updated.  We are also not sure if there is a standard for this sort of thing.</body>
+      <annotatedElements>
+        <classMoniker Id="5a1cc31e-8b63-4bed-a8fa-46686f1bb6cb" LastKnownName="Self Payment" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="5a1cc31e-8b63-4bed-a8fa-46686f1bb6cb" name="Self Payment" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="eafba78d-0829-41ac-8940-0df0f85930dc" />
+        <targetEnds>
+          <association Id="5d17a1bb-8fc0-4f79-b93e-264db0f32abb" isDerived="false" sourceEndRoleName="Self Payment" targetEndRoleName="Payment Type" isLeaf="false" isAbstract="false">
+            <enumerationMoniker Id="a7b114ed-d15a-445b-9210-b09160fde00a" LastKnownName="Payment Method" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f7f2b3d7-90b1-4179-bea0-b3ac99a7c4e4" name="Self Payment" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3ead2baf-8c71-4c46-aec0-b918b4050a32" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="85913b0c-061d-4e9e-9618-f41da599ab2f" name="Payment Type" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="856c8314-15da-4f50-8dfd-6835fde29833" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b61d28e0-17c7-4847-9380-191db99a8fb7" />
+          </association>
+          <association Id="cf2df544-b827-4564-9476-1d34581151ff" isDerived="false" sourceEndRoleName="Self Payment" targetEndRoleName="Staff" isLeaf="false" isAbstract="false">
+            <classMoniker Id="fa114f9a-fda9-430d-b5ca-be3631157c76" LastKnownName="Staff" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="355ea92f-ed37-4c2c-af76-c9413bb23fa2" name="Self Payment" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="03c4c164-3c4c-4e32-bed3-56953665992f" name="Lower" value="*">
+                      <elementDefinition Id="ba3472ec-61d8-4371-87ea-0db72199e28e" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="05429338-0103-492e-b70d-2038ebb8d7d4" name="Upper" value="*">
+                      <elementDefinition Id="3adc4f15-53ba-45f9-bb88-d672a75e33dd" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="fd3a8f77-96cb-4109-a93b-f055b7fe1bdd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9f510173-e05e-4d74-ad2e-3c4a04864fd0" name="Staff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f24240c4-bbf2-423b-a4d6-8fc44fed9087" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7ac2de7d-c42c-4c6a-ba65-80e7aea5ac7c" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="ba98ec8c-6bb5-44f7-a9fe-13b595f7e3cc" name="Payment Method" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f7160111-18d2-40de-b584-b224afc09d41" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="43f97e1b-774c-4719-bf0e-e3f33826af22" LastKnownName="Payment Method" />
+            </type_NamedElement>
+          </property>
+          <property Id="1efb93e8-3935-4e7f-be9c-8ba4a1e1dbe6" name="Payment Amount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8bc19a4f-fe80-4d9e-aca1-e27f8f5cd955" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="c9517859-387e-410c-b689-45cb3db3ae51" LastKnownName="Currency" />
+            </type_NamedElement>
+          </property>
+          <property Id="50949020-a2db-4139-8528-48e7742cddf9" name="Collected Date" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b0c68129-9025-44fa-98ed-3b35775adf3a" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="9ab03d0d-da0b-47dc-8d47-a57319779a54" LastKnownName="Datetime" />
+            </type_NamedElement>
+          </property>
+          <property Id="e34eed03-0922-4496-b450-b9c7edd40f8b" name="Collect By Staff" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="003fafe1-c004-40d9-bdb8-2eab6b67f0d0" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="45bf25fb-d158-4846-bf05-bca13470aa66" LastKnownName="Staff" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ebc6a16e-2b72-47b9-bfed-a4e6c76ff9c8" name="Patient" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="df338e3d-59f6-4209-864f-2cd78e5acd5c" />
+        <targetEnds>
+          <association Id="34da9ee3-aaf3-48c2-a12d-cfac18c1c24e" isDerived="false" sourceEndRoleName="Patient" targetEndRoleName="Self Payment" isLeaf="false" isAbstract="false">
+            <classMoniker Id="5a1cc31e-8b63-4bed-a8fa-46686f1bb6cb" LastKnownName="Self Payment" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="62b4b7b8-ee4b-4853-b0f4-1b104d2e8533" name="Patient" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f14dde77-3ffc-4e14-ab0f-cdfcf249e52d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7dd2610a-a1f8-4f57-9fa8-8000218ff0a7" name="Self Payment" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="6b0216e9-abde-411b-a105-bc832d04a998" name="Lower" value="*">
+                      <elementDefinition Id="fa35ad55-7ddb-4779-b623-5d951ee424cb" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="e70285ae-5788-4e77-9673-82084783ea91" name="Upper" value="*">
+                      <elementDefinition Id="d47b43d0-a4a5-4389-bb74-7a2307d38497" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="280d8d48-c670-4bc4-a3aa-f50ee3df7394" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5f21eb75-4505-485c-b4be-49df806fa572" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <enumeration Id="a7b114ed-d15a-445b-9210-b09160fde00a" name="Payment Method" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="26de40c0-1cfc-43c4-a7a2-79b2c8ae1e95" />
+        <ownedLiterals>
+          <enumerationLiteral Id="f28ce137-e9f1-4a89-92c1-a4813bde962c" name="Cash">
+            <elementDefinition Id="c954d882-597e-48e1-88f0-e851c10b1035" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="a2b908f8-4c97-4880-a313-4869438d1e8a" name="Credit Card">
+            <elementDefinition Id="7344a314-a9e6-4bab-a81e-5f99185707f5" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="8840f2ac-d57f-46f9-be44-85ea612998a9" name="Check">
+            <elementDefinition Id="3d5008a6-3104-4b54-a824-29acf721d2c7" />
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="43f97e1b-774c-4719-bf0e-e3f33826af22" name="Payment Method" isAbstract="false" isLeaf="false" cachedFullName="Payment Method">
+        <elementDefinition Id="1cf06b5d-66fa-4343-8f20-71fba9498528" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="c9517859-387e-410c-b689-45cb3db3ae51" name="Currency" isAbstract="false" isLeaf="false" cachedFullName="Currency">
+        <elementDefinition Id="ac6540ad-ec3a-40b2-a043-ef18d91cc015" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="9ab03d0d-da0b-47dc-8d47-a57319779a54" name="Datetime" isAbstract="false" isLeaf="false" cachedFullName="Datetime">
+        <elementDefinition Id="9a459a83-5fac-4d82-b737-039e17b6943e" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="fa114f9a-fda9-430d-b5ca-be3631157c76" name="Staff" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="64687368-9c2a-42dd-9e9f-0d9a4067e1b0" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="45bf25fb-d158-4846-bf05-bca13470aa66" name="Staff" isAbstract="false" isLeaf="false" cachedFullName="Staff">
+        <elementDefinition Id="c0a1832b-7ef9-443d-a8fb-33658a652247" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="2f39ec3b-7787-4b37-8369-44f08a2a72d5" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="d870dea7-7b44-4c8c-ac0e-894d3edefe6a">
+        <profileInstance Id="9dd088e3-2519-4b2a-b8e2-0ddfa49da330" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="92e694c1-7286-4cb3-b1b4-0f8196ebe004">
+        <profileInstance Id="85ca46a7-bb9b-43dd-a7c9-647a8c2430c5" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+  <package Id="b992447c-2c04-492d-8eed-7ed050a37aef" name="Rem.Domain.Clinical">
+    <elementDefinition Id="bb60960b-2f23-4024-9963-a7558f5d326f" />
+  </package>
+</logicalClassDesignerModel>

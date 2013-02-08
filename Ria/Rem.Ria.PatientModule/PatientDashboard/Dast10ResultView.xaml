@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.PatientDashboard.Dast10ResultView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:InfrastructureView="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <InfrastructureView:DataContextProxyElement x:Key="RootDataContext" />
+        <Converter:RangeToVisibilityConverter x:Key="RangeToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <StackPanel x:Name="Dast10Result" Background="White">
+        <StackPanel Margin="20" Width="400">
+            <StackPanel>
+                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Vertical">
+                    <TextBlock Text="Guidance: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                    <TextBlock Visibility="{Binding Source={StaticResource RootDataContext}, Path=DataSource.Dast10Result, Converter={StaticResource RangeToVisibilityConverter}, ConverterParameter='0, 0'}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center">
+                        Reassess annually.
+                    </TextBlock>
+                    <TextBlock Visibility="{Binding Source={StaticResource RootDataContext}, Path=DataSource.Dast10Result, Converter={StaticResource RangeToVisibilityConverter}, ConverterParameter='1, 1'}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center">
+                        Additional assessments may be needed (e.g. request urine drug screen and/or relevant lab tests, assessment of co-occurring medical/psychiatric conditions, review of current medications, current/past history of drug treatment, current legal problems etc.). Monitor: Reassess at next visit.
+                    </TextBlock>
+                    <TextBlock Visibility="{Binding Source={StaticResource RootDataContext}, Path=DataSource.Dast10Result, Converter={StaticResource RangeToVisibilityConverter}, ConverterParameter='2, 2'}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center">
+                       <Run> Provide on-site/integrated specialized and intensive SUD treatment at the general medical setting (if available)</Run>
+                                    <LineBreak/><Run FontWeight="Bold">  or </Run><LineBreak/>
+                                <Run>Schedule an appointment with Outside Provider of Specialty SUD care, as soon as possible
+                                Monitor: schedule a follow-up visit in 2-4 weeks
+                                Additional assessments may be needed (e.g. request urine drug screen and/or relevant lab tests, assessment of co-occurring medical/psychiatric conditions, review of current medications, current/past history of drug treatment, current legal problems etc.).
+                                Consider initiating medication assisted treatment for opioid dependence, contingent on local resources</Run>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

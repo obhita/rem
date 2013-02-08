@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="d5e1c449-abcb-4ef9-9859-d0aead8d1532" name="Billing.Brainstorming" linkedPackageId="7ac4bcad-3406-484a-b672-ba03caa3387b" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="3fdfce73-c095-499f-a75a-571cc68acc22">
+      <elementDefinition Id="7486e2fa-dda7-4064-9b1f-c90b5ee182e7" />
+      <body>- Record Visits and Activities
+   Note: 
+   1. Procedures need to be automatically recorded
+   2. Activities are filtered by program
+- Records diagnosis
+- Accept or reject referrals/authorization
+  Note: The act of accepting a referral will automatically associate the referral and authorizations with the patient
+- Create referrals/authorizations
+- Enroll a patient in a program
+   Note: Business rules should honor the program capacity.  You cannot enroll if full.</body>
+      <annotatedElements>
+        <actorMoniker Id="f98d474b-bf26-4c06-881e-f84b4f7de7a2" LastKnownName="Clinician" />
+      </annotatedElements>
+    </comment>
+    <comment Id="09dbf912-8a42-4bde-965e-9e9b305fa599">
+      <elementDefinition Id="22d914f6-9cfb-43bf-945f-0f048955fe1d" />
+      <body>- Reviews and validates procedures and diagnosis
+- Define default mapping from visits and activities to procedures</body>
+      <annotatedElements>
+        <actorMoniker Id="bf8ad508-8c82-41f9-8955-8d684a718bfe" LastKnownName="Certified Coder" />
+      </annotatedElements>
+    </comment>
+    <comment Id="fe0ab57d-c5c4-4d06-b9b2-99c2ba772118">
+      <elementDefinition Id="867837b8-0c87-4d64-9e1e-1f34b793e7ad" />
+      <body>- Collect and record the patients' payor information 
+  -  Scan and import a patients' insurance card
+- Collect and record payment information (including co-pay)
+- Provide a balance statement for the patient
+- Process referrals/authorizations
+  - Create outgoing referrals/authorizations
+  - Manually Record incoming referrals/authorizations (maybe they received a fax)
+  - Accept/reject incoming electronic referrals/authorizations (for in-system referrals)
+- Schedule patient visits
+   Note:
+   1. The list of visit types should be filtered by program if the patient is enrolled
+</body>
+      <annotatedElements>
+        <actorMoniker Id="19316b7d-6557-4760-adf9-b38630ef6f7f" LastKnownName="Front Desk Clerk" />
+      </annotatedElements>
+    </comment>
+    <comment Id="0db52319-e487-498a-8149-bb323a15b6a7">
+      <elementDefinition Id="cd2137bb-e5c1-43fb-bdad-d52e20b4415a" />
+      <body>- Set up agency and location programs
+- Review number of beds/slots available in a program
+- Set up visit templates and lists of activity types that are supported by a given program</body>
+      <annotatedElements>
+        <actorMoniker Id="202bdc03-8f72-4c40-83f1-58c67a9eed92" LastKnownName="Agency Administrator" />
+      </annotatedElements>
+    </comment>
+    <comment Id="0a148658-0356-475b-a4b0-8f944c312444">
+      <elementDefinition Id="6c6a1241-576f-4771-aa9e-d6da74df62d5" />
+      <body>- Review and edit claims
+- Manually enter payments and adjustments
+- Processing denials
+- Import an 835
+- Request the generation of an 837 Professional
+- Request the generation of an 837 Institutional
+- Download an 837 Professional/Institutional
+- Generate a HCFA 1500
+- Generate a WITS Style Invoice
+- Generate a financial summary
+- Perform an eligibility inquiry for a patient
+- Post an adjustment
+</body>
+      <annotatedElements>
+        <actorMoniker Id="4d0914e4-a949-4173-9d8f-f1feb8995bf7" LastKnownName="Billing Supervisor" />
+      </annotatedElements>
+    </comment>
+    <comment Id="6759daed-bd69-48d9-bb28-d00d35bc412f">
+      <elementDefinition Id="92ad169b-e660-4806-895d-f8e353e34f7a" />
+      <body>- Post a request for the nightly export of visit data from the ehr to the pms</body>
+      <annotatedElements>
+        <actorMoniker Id="1ae36fe4-3796-4e9f-89c5-53d5720b3718" LastKnownName="Time" />
+      </annotatedElements>
+    </comment>
+    <comment Id="a6ff8081-49c1-4221-a962-b87d5eeb93df">
+      <elementDefinition Id="e27edb09-c445-4f2e-871b-23628dcc2142" />
+      <body>- Import an 837 Professional
+- Import an 837 Institutional
+- Adjudicate an 837
+   - Reject a claim
+   - Pay a claim
+   - Partial pay a claim
+- Request the generation of an 835
+- Download an 835</body>
+      <annotatedElements>
+        <actorMoniker Id="55381031-ec29-4ef5-880a-f8ab5cf31284" LastKnownName="Claims Adjudicator" />
+      </annotatedElements>
+    </comment>
+    <comment Id="8a078ea9-1de1-4dd0-a796-1d6bee80176a">
+      <elementDefinition Id="ec8da443-e23e-49bb-8cf4-7ca2c25c17c3" />
+      <body>- Parse and process an 837 Professional
+- Parse and process an 837 Institutional
+- Pre-Adjudicate an 837 Professional
+- Pre-Adjudicate an 837 Institutional
+- Generate an 835
+- Generate an 837 Professional
+- Generate an 837 Institutional
+- Parse and process an 835
+- Pull visit/activity/procedure data from the ehr and generate claims in the pms</body>
+      <annotatedElements>
+        <actorMoniker Id="b7776f3f-fe46-4089-86ae-c6c9950d16e3" LastKnownName="Windows Service" />
+      </annotatedElements>
+    </comment>
+    <comment Id="6317c240-2a12-4f33-8633-e94f46c8a5f6">
+      <elementDefinition Id="837d889a-9416-49e5-a1d0-8d0169b29296" />
+      <body>- Set up payors
+- Set up fee schedules
+- Set up contracts
+  - Set up a managed care contract
+  - ** Set up an "Authorized" contract (need better name)
+  - ** Set up a "Pre-Authorized" contract (need better name)
+- Set up billing office rates
+- Set up billing office service providers' (doctor)
+- Set up billing office 'places of service' 
+</body>
+      <annotatedElements>
+        <actorMoniker Id="2dbeddb6-8334-4b7a-8e03-9c3babd446b9" LastKnownName="Billing Administrator" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="8487c762-d1e5-4e7a-9843-6e6d86d61984" name="REM" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <ownedCommentsInternal>
+          <comment Id="80666869-809d-4356-a879-ca6584c07f53">
+            <elementDefinition Id="f1025aca-cba8-42bd-9d3c-ea892e3f744c" />
+            <body>Vision Statement:
+
+Create a system that provides a mechanism for billing payors and receiving payment for services provided to patients.
+</body>
+          </comment>
+        </ownedCommentsInternal>
+        <elementDefinition Id="9f7b7fe0-0a08-4fc7-a549-a7bb528ef5c4" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="f98d474b-bf26-4c06-881e-f84b4f7de7a2" name="Clinician" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="51eeb1f0-093e-4bca-94f0-71f13c449f13" />
+        <targetEnds>
+          <association Id="d7e7a36c-1523-4318-b0fd-5efe86f35d51" isDerived="false" sourceEndRoleName="Clinician" targetEndRoleName="REM" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="8487c762-d1e5-4e7a-9843-6e6d86d61984" LastKnownName="REM" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="305a13ba-da11-4dd8-a362-2e8c2e3bb2c5" name="Clinician" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4ad011e3-87ba-4c10-91fe-7b7a61ea5241" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4f0e77e8-4cb9-4c84-8339-10ca9f3fe42d" name="REM" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="42433b41-b330-4c69-8af6-ea058cf02a6f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="befb52c1-04e2-4340-8b74-a631a7210b00" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="bf8ad508-8c82-41f9-8955-8d684a718bfe" name="Certified Coder" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b42858f4-7998-4c18-b905-2cd8695a06d1" />
+        <targetEnds>
+          <association Id="dd06f1b3-f495-46dc-a63d-30047d6fc2b6" isDerived="false" sourceEndRoleName="Certified Coder" targetEndRoleName="REM" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="8487c762-d1e5-4e7a-9843-6e6d86d61984" LastKnownName="REM" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="45955503-64e9-41a8-8161-2bf4be624331" name="Certified Coder" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="cb701aec-4ba4-40cb-8282-22257b36f053" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a9e37fd0-6b4b-4322-aaf9-a9b4ed6f3bad" name="REM" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8c910474-7f48-41c7-95bd-ab588f139e63" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e9300c09-0378-4672-b754-f7d3d29342aa" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="4d0914e4-a949-4173-9d8f-f1feb8995bf7" name="Billing Supervisor" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="82ebbc9b-f7e0-40ed-b689-1e6073ee8e5e" />
+        <targetEnds>
+          <association Id="0ebadfad-216c-4fcc-8a84-bd8ef31f5215" isDerived="false" sourceEndRoleName="Billing Supervisor" targetEndRoleName="REM" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="8487c762-d1e5-4e7a-9843-6e6d86d61984" LastKnownName="REM" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6d3da490-ae21-4d0f-8b9d-dc8eebd57910" name="Billing Supervisor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="45999582-54d1-48a4-aef6-00bd084c85ed" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="966249ec-06c8-46e5-8f85-d5b9ef894271" name="REM" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="85f54fb1-beea-4c9e-a27f-f0b32b01ecc0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="cdd8236f-e714-4594-a249-ee39d714e3b3" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="55381031-ec29-4ef5-880a-f8ab5cf31284" name="Claims Adjudicator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="30a7b261-3889-441e-bfd7-92ef9618cfb4" />
+        <targetEnds>
+          <association Id="5dbc0d32-2508-4acf-96db-bfca0dc5f700" isDerived="false" sourceEndRoleName="Claims Adjudicator" targetEndRoleName="REM" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="8487c762-d1e5-4e7a-9843-6e6d86d61984" LastKnownName="REM" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4315df49-3dda-42e0-8376-8d26dae95fd5" name="Claims Adjudicator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c5c15255-5a15-4ba2-969c-838e9825d53d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f719b96d-be9a-46de-878a-637d5a5ec514" name="REM" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f8fab9df-89a3-43be-bf52-90403a28e7c6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ad964036-89f5-4887-8627-ee0047eab8b3" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="1ae36fe4-3796-4e9f-89c5-53d5720b3718" name="Time" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ac4f8b5e-7ceb-4b0a-bcad-076c27ab556b" />
+        <targetEnds>
+          <association Id="c843b874-5ba3-4810-a34f-555bdc38f4b2" isDerived="false" sourceEndRoleName="Time" targetEndRoleName="REM" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="8487c762-d1e5-4e7a-9843-6e6d86d61984" LastKnownName="REM" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dcbe961e-d4ad-4f1f-b125-7392acb5c78b" name="Time" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="51c13d4d-5b8f-4f97-a6af-6937be7c62c3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c13252fb-689b-4039-a962-b437781b749e" name="REM" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2c30dba9-28d4-45ee-a21d-ba2a1b589d59" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e14b77ee-4525-4515-973d-ddb1a3524ffb" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="19316b7d-6557-4760-adf9-b38630ef6f7f" name="Front Desk Clerk" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="59e6e563-548c-4ec7-8b04-6def219a550b" />
+        <targetEnds>
+          <association Id="1699681e-1b09-4348-9cf6-d3599be22756" isDerived="false" sourceEndRoleName="Front Desk Clerk" targetEndRoleName="REM" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="8487c762-d1e5-4e7a-9843-6e6d86d61984" LastKnownName="REM" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9d2dbb09-0697-4257-babd-87a3223f22d3" name="Front Desk Clerk" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a85682f5-640b-4ac7-9b0e-f3318da3ad56" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8801e83e-74f0-4069-b52d-c1fa422ff881" name="REM" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="196e4ed3-d8a3-4fff-963b-7f52259332c1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1db98ad5-d06b-48ba-b498-d78e120768d0" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="202bdc03-8f72-4c40-83f1-58c67a9eed92" name="Agency Administrator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4e072232-95f6-4cd5-a3d5-d9b68d7034f9" />
+        <targetEnds>
+          <association Id="3d5daf29-3893-42c0-87c0-ac38c94d4546" isDerived="false" sourceEndRoleName="Agency Administrator" targetEndRoleName="REM" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="8487c762-d1e5-4e7a-9843-6e6d86d61984" LastKnownName="REM" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5001e0af-cf53-45ed-83ff-3fdb552019f7" name="Agency Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="32aabb87-aebd-417d-9131-ab37dcecc43a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1394927f-b829-4435-8d94-23622a87c9fa" name="REM" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="cef93b4d-ebfb-46e4-aad0-5ea05127e49d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="548ebfd6-9ea4-4d14-83d3-18fd03ac4e07" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="b7776f3f-fe46-4089-86ae-c6c9950d16e3" name="Windows Service" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="698a04ac-5e77-4071-9672-1088c156a58e" />
+        <targetEnds>
+          <association Id="afb592d9-5530-4247-bae6-0339a229ebde" isDerived="false" sourceEndRoleName="Adjudication Engine" targetEndRoleName="REM" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="8487c762-d1e5-4e7a-9843-6e6d86d61984" LastKnownName="REM" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1fa31059-8baf-431a-8d54-0ff07334c6fe" name="Adjudication Engine" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0a9fad71-77e6-4dc1-8f02-0b24bbd16457" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d8ed9717-d056-4ce0-8703-ec3ff94df894" name="REM" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d94c1e0e-da77-4d04-9e18-63e9bc07b034" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c7eeada6-f320-45e7-bd22-57b4bbf6821f" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="2dbeddb6-8334-4b7a-8e03-9c3babd446b9" name="Billing Administrator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a666c8cd-8b98-438f-a659-e1a0ffa6df76" />
+        <targetEnds>
+          <association Id="6bf2cfb3-2ed7-49da-9e77-245a494b9ecd" isDerived="false" sourceEndRoleName="Billing Administrator" targetEndRoleName="REM" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="8487c762-d1e5-4e7a-9843-6e6d86d61984" LastKnownName="REM" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d88a30fb-29d1-4b72-9128-536361bc5826" name="Billing Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9f6b9a8c-6582-4671-aab3-0dbd5e63cccb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="87c0e9e6-a054-4d57-99f5-a29e779e5e58" name="REM" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fd2652ac-05a2-46d9-a2fa-9d765d08c7a3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="15f1efcc-8339-4885-a9de-e34bafd1e164" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="7ac4bcad-3406-484a-b672-ba03caa3387b" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="8c51dacc-7a79-4ee6-ae45-e8d794fa6078">
+        <profileInstance Id="28a37c1e-90fe-474d-9d59-8b3cdebd1db0" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="7d1a18ff-bbe2-4148-ae55-47afb5792276">
+        <profileInstance Id="5ba7064e-1700-4560-b499-445f1ddce2bd" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

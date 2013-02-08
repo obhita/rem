@@ -1,0 +1,46 @@
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ApplyPropertyChange Property</Title>
+    <Author>Claudio A. Sanchez</Author>
+    <Shortcut>apc</Shortcut>
+    <Description>Imeplements a Domain Property with a setter which calls the ApplyPropertyChange() method to set the backing field.</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>Type</ID>
+        <Default>int</Default>
+      </Literal>
+      <Literal>
+        <ID>PropertyName</ID>
+        <Default>PropName</Default>
+      </Literal>
+      <Literal>
+        <ID>BackingFieldName</ID>
+        <Default>backingFieldName</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="CSharp">
+      <![CDATA[private  $Type$ _$BackingFieldName$;
+           
+      public virtual $Type$ $PropertyName$
+        {
+            get { return  _$BackingFieldName$; }
+            set { ApplyPropertyChange ( ref _$BackingFieldName$, () => $PropertyName$, value ); }
+        }]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>
+
+<!-- 
+private int? _howOftenYouDrinkNumber;
+
+public virtual int? HowOftenYouDrinkNumber
+        {
+            get { return _howOftenYouDrinkNumber; }
+            set { ApplyPropertyChange ( ref _howOftenYouDrinkNumber, () => HowOftenYouDrinkNumber, value ); }
+        }
+        -->

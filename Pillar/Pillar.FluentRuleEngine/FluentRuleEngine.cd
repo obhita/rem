@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Pillar.FluentRuleEngine.AbstractRuleCollection&lt;TSubject&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAABBABAAgAAAQAAAAAAAEIAQDBQAQgAQ=</HashCode>
+      <FileName>AbstractRuleCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.InvalidPropertyRuleException" Collapsed="true">
+    <Position X="6.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InvalidPropertyRuleException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.InvalidRuleException" Collapsed="true">
+    <Position X="6.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InvalidRuleException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.NotifyPropertyChangedRuleExecutor&lt;TSubject, TRecurse&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAIAAgAACBEAAAABAAAgAAEgCAAAwAACAABAAAAAAA=</HashCode>
+      <FileName>NotifyPropertyChangedRuleExecutor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.PropertyChain" Collapsed="true">
+    <Position X="14.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PropertyChain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.RuleCollectionFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RuleCollectionFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.RuleEngine&lt;TSubject&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAABgAAIIAAAAABAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RuleEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.RuleEngineContext&lt;TSubject&gt;" Collapsed="true">
+    <Position X="3.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RuleEngineContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.RuleEngineContext" Collapsed="true">
+    <Position X="3.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAIAAAAAAAgAAAgAEAAEAAAAACAA=</HashCode>
+      <FileName>RuleEngineContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.RuleEngineFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>RuleEngineFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.RuleExecutionResult" Collapsed="true">
+    <Position X="14.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAgAAAAAAAAAA=</HashCode>
+      <FileName>RuleExecutionResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.RuleProcessor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RuleProcessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.RuleSet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RuleSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.RuleViolation" Collapsed="true">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAgAAAQAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>RuleViolation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.RuleViolationCollection" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAABAA=</HashCode>
+      <FileName>RuleViolationCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pillar.FluentRuleEngine.WorkingMemory" Collapsed="true">
+    <Position X="16.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>WorkingMemory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Pillar.FluentRuleEngine.IAttributeCollection" Collapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IAttributeCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.ICollectionPropertyRule" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICollectionPropertyRule.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.IPropertyRule" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAEAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>IPropertyRule.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.IRule" Collapsed="true">
+    <Position X="6.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAJAAIAAAEAAAAAAQQAAACAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>IRule.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.IRuleCollection&lt;TSubject&gt;" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRuleCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.IRuleCollectionCustomizer&lt;TRuleCollection, TSubject&gt;" Collapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>IRuleCollectionCustomizer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.IRuleCollectionFactory" Collapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRuleCollectionFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.IRuleEngine&lt;TSubject&gt;" Collapsed="true">
+    <Position X="11" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABgAAAAAAAAABAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRuleEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.IRuleEngineContext" Collapsed="true">
+    <Position X="12.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAIAAAAAAAgAAAgAEAAEAAAAACAA=</HashCode>
+      <FileName>IRuleEngineContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.IRuleEngineFactory" Collapsed="true">
+    <Position X="14.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>IRuleEngineFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.IRuleProcessor" Collapsed="true">
+    <Position X="16.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRuleProcessor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.IRuleSet" Collapsed="true">
+    <Position X="11" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRuleSet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.IRuleViolationReporter" Collapsed="true">
+    <Position X="12.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAABAA=</HashCode>
+      <FileName>IRuleViolationReporter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Pillar.FluentRuleEngine.ISpecificationRule" Collapsed="true">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISpecificationRule.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

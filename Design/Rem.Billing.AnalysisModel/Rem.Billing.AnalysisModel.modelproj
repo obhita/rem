@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{f90618de-1b52-4aef-9acf-64e165b70509}</ProjectGuid>
+    <ArchitectureToolsVersion>1.0.0.0</ArchitectureToolsVersion>
+    <Name>Rem.Billing.AnalysisModel</Name>
+    <RootNamespace>AnalysisModel</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
+  <ItemGroup>
+    <Content Include="Billing Work Flow.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Billing Work Flow.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Billing Work Flow.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="BrainStorming\Brainstorming.Brainstorming.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>BrainStorming\Brainstorming.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="BrainStorming\Brainstorming.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Core Class Diagram.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Core Class Diagram.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Core Class Diagram.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\Package_0849.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_0850.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_0930.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_0938.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1013.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1246.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Billing Office Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Billing Office Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Billing Office Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Billing Office.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Billing Office.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Billing Office.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Claim Batch Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Claim Batch Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Claim Batch Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Claim Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Claim Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Claim Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Contract Domain Model.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Contract Domain Model.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Contract Domain Model.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Encounter Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Encounter Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Encounter Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Health Care Claim 837 Professional Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Health Care Claim 837 Professional Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Health Care Claim 837 Professional Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Patient Account Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Patient Account Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Patient Account Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Payor Domain Model.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Payor Domain Model.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Payor Domain Model.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Visit Reviewed Message Received - Patient Account Missing.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Visit Reviewed Message Received - Patient Account Missing.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Visit Reviewed Message Received - Patient Account Missing.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Vist Reviewed Sequence.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Vist Reviewed Sequence.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Vist Reviewed Sequence.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.ClinicalBilling.ContextMap\ContextMap Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.ClinicalBilling.ContextMap\ContextMap Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.ClinicalBilling.ContextMap\ContextMap Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.ClinicalBilling.ContextMap\Coding Context Reviewed Event.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.ClinicalBilling.ContextMap\Coding Context Reviewed Event.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.ClinicalBilling.ContextMap\Coding Context Reviewed Event.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Agency Administrator.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Agency Administrator.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Agency Administrator.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Certified Coder.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Certified Coder.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Certified Coder.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Clinician.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Clinician.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Clinician.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Clinical Domain Model.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Clinical Domain Model.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Clinical Domain Model.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Front Desk Clerk.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Front Desk Clerk.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Front Desk Clerk.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Patient Domain Model.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Patient Domain Model.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Patient Domain Model.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Payor Coverage Domain Model.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Payor Coverage Domain Model.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Payor Coverage Domain Model.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Procedure Coding Status State Chart.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Procedure Coding Status State Chart.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Procedure Coding Status State Chart.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Referral Workflow.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Referral Workflow.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Referral Workflow.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Referrall Model.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Referrall Model.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Referrall Model.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Self Payment Model.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Self Payment Model.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Self Payment Model.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Adjudication\Claims Adjudicator.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Adjudication\Claims Adjudicator.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Adjudication\Claims Adjudicator.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Billing Administrator.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Billing Administrator.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Billing Administrator.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Billing Supervisor.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Billing Supervisor.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Billing Supervisor.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Billing Domain Model.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Billing\Billing Domain Model.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Billing\Billing Domain Model.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Visit Domain Model.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Visit Domain Model.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Visit Domain Model.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Visit Template Model.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Rem.Domain.Clinical\Visit Template Model.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Rem.Domain.Clinical\Visit Template Model.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Windows Service.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Windows Service.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Windows Service.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Time.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Time.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Time.usecasediagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\AnalysisModel.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Folder Include="LayerDiagrams" />
+    <Folder Include="BrainStorming" />
+    <Folder Include="Rem.Domain.ClinicalBilling.ContextMap" />
+    <Folder Include="Rem.Domain.Core" />
+    <Folder Include="Rem.Domain.Adjudication" />
+    <Folder Include="Rem.Domain.Clinical" />
+    <Folder Include="Rem.Domain.Billing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Validate Include="LayerDiagrams\Client.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagrams\Client.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\Client.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\Client.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\Client.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\Database.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagrams\Database.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\Database.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\Database.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\Database.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\Domain Detailed.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagrams\Domain Detailed.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\Domain Detailed.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\Domain Detailed.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\Domain Detailed.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\Domain Summary.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagrams\Domain Summary.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\Domain Summary.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\Domain Summary.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\Domain Summary.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\High Level Layer Diagram.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagrams\High Level Layer Diagram.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\High Level Layer Diagram.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\High Level Layer Diagram.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\High Level Layer Diagram.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\Detailed Layer Diagram.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagrams\Detailed Layer Diagram.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\Detailed Layer Diagram.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\Detailed Layer Diagram.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\Detailed Layer Diagram.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\WebServer.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagrams\WebServer.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\WebServer.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\WebServer.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\WebServer.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\WindowsService.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagrams\WindowsService.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\WindowsService.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagrams\WindowsService.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagrams\WindowsService.layerdiagram</DependentUpon>
+    </Validate>
+  </ItemGroup>
+</Project>

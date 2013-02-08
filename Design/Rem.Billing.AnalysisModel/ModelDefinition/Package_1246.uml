@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="ad9c11cc-b98c-4f9a-b127-6895ce8e494a"
+  name="Rem.Domain.Adjudication" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="30a7b261-3889-441e-bfd7-92ef9618cfb4"
+        name="Claims Adjudicator"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="ad964036-89f5-4887-8627-ee0047eab8b3"
+            isDerived="false"
+            sourceEndRoleName="Claims Adjudicator"
+            targetEndRoleName="REM"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="9f7b7fe0-0a08-4fc7-a549-a7bb528ef5c4"
+              LastKnownName="REM"
+              LastKnownLocation="AnalysisModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c5c15255-5a15-4ba2-969c-838e9825d53d"
+                  name="Claims Adjudicator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f8fab9df-89a3-43be-bf52-90403a28e7c6"
+                  name="REM"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="392ad653-c465-43e7-9b4a-90865ea612b2"
+            isDerived="false"
+            sourceEndRoleName="Claims Adjudicator"
+            targetEndRoleName="UseCase1"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f9ce7953-368a-47f4-a67c-1a4308ff7bd2"
+              LastKnownName="Import an 837 Professional"
+              LastKnownLocation="Package_1246.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="45cd23d9-d4e1-4635-bc1b-ccf3d00c19ec"
+                  name="Claims Adjudicator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4c639e03-bfef-46f2-8959-671384b9fbc2"
+                  name="UseCase1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="2187cc8b-fde1-44d0-bbaf-1d102b517971"
+            isDerived="false"
+            sourceEndRoleName="Claims Adjudicator"
+            targetEndRoleName="UseCase2"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="528dbae3-0ccc-49a5-bd92-a55ab53448e3"
+              LastKnownName="Import an 837 Institutional"
+              LastKnownLocation="Package_1246.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="37ee7d96-b5d6-4e6e-9e6c-a1fa79cfa6a2"
+                  name="Claims Adjudicator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3a843eac-4a8e-4539-8160-521b389ff7f7"
+                  name="UseCase2"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="b50fd62e-5785-47cc-9b36-772a3d1b866e"
+            isDerived="false"
+            sourceEndRoleName="Claims Adjudicator"
+            targetEndRoleName="UseCase3"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="7f09610b-f2fd-43b5-b799-601edf137385"
+              LastKnownName="Adjudicate an 837"
+              LastKnownLocation="Package_1246.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3d0a5fad-7de6-419c-abab-306e70074e3f"
+                  name="Claims Adjudicator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9b47e3be-eaa8-4074-8611-8fa1f0a58061"
+                  name="UseCase3"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="051b86ac-ea82-4310-b858-7bf35d248b53"
+            isDerived="false"
+            sourceEndRoleName="Claims Adjudicator"
+            targetEndRoleName="UseCase4"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="e5192695-ed17-4e06-981a-0b8f0a09c3e7"
+              LastKnownName="Request the generation of an 835"
+              LastKnownLocation="Package_1246.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="caa6b5c3-ee85-410c-ad0b-9be6a23808a3"
+                  name="Claims Adjudicator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2a1b6bda-73c9-43d2-83bd-6897f0dbf672"
+                  name="UseCase4"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="35a2285e-09ad-44ef-8e1a-03c92de34788"
+            isDerived="false"
+            sourceEndRoleName="Claims Adjudicator"
+            targetEndRoleName="UseCase5"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="57cbcd29-c895-48a0-ab0e-8d02eefedb85"
+              LastKnownName="Download an 835"
+              LastKnownLocation="Package_1246.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="acffa179-8c4d-4fac-af31-0a56541b04c5"
+                  name="Claims Adjudicator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8f983508-69aa-4f61-8f2c-4487d004c978"
+                  name="UseCase5"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7f09610b-f2fd-43b5-b799-601edf137385"
+        name="Adjudicate an 837"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="57cbcd29-c895-48a0-ab0e-8d02eefedb85"
+        name="Download an 835"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="528dbae3-0ccc-49a5-bd92-a55ab53448e3"
+        name="Import an 837 Institutional"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f9ce7953-368a-47f4-a67c-1a4308ff7bd2"
+        name="Import an 837 Professional"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e5192695-ed17-4e06-981a-0b8f0a09c3e7"
+        name="Request the generation of an 835"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

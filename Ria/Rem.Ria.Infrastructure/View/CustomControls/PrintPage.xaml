@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Rem.Ria.Infrastructure.View.CustomControls.PrintPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400"
+    x:Name="PrintMainPage" Background="White">
+    <UserControl.Resources>
+        <DataTemplate x:Key="DefaultHeaderTemplate">
+            <Grid Margin="45,45,45,15">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Text="{Binding ElementName=MainPage,Path=Title}"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="DefaultFooterTemplate">
+            <Grid Margin="45,15,45,45">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="{Binding ElementName=PrintMainPage,Path=Page}"/>
+                    <TextBlock Text=" of "/>
+                    <TextBlock Text="{Binding ElementName=PrintMainPage,Path=TotalPageCount}"/>
+                </StackPanel>
+                <TextBlock HorizontalAlignment="Right" Text="{Binding ElementName=PrintMainPage,Path=Date,StringFormat='MM/dd/yyyy'}"/>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="PrintLayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="{Binding ElementName=PrintMainPage,Path=CoverOffset}"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="1" x:Name="PrintCanvasContent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Viewbox x:Name="PrintViewboxContent" Width="{Binding ElementName=PrintMainPage,Path=Width}"/>
+        </Canvas>
+        <Border Grid.Row="0" Background="{Binding ElementName=PrintMainPage,Path=Background}">
+            <ContentPresenter x:Name="PrintHeader" DataContext="{Binding ElementName=PrintMainPage}" ContentTemplate="{Binding HeaderTemplate,TargetNullValue={StaticResource DefaultHeaderTemplate},FallbackValue={StaticResource DefaultHeaderTemplate}}"/>
+        </Border>
+        <Border Grid.Row="2" Background="{Binding ElementName=PrintMainPage,Path=Background}"/>
+        <Border Grid.Row="3" Background="{Binding ElementName=PrintMainPage,Path=Background}">
+            <ContentPresenter Grid.Row="3" x:Name="PrintFooter" VerticalAlignment="Bottom" DataContext="{Binding ElementName=PrintMainPage}" ContentTemplate="{Binding HeaderTemplate,TargetNullValue={StaticResource DefaultFooterTemplate},FallbackValue={StaticResource DefaultFooterTemplate}}"/>
+        </Border>        
+    </Grid>
+</UserControl>

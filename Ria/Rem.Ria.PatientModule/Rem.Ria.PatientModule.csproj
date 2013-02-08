@@ -1,0 +1,1836 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8CB2F5D8-FC64-4D69-9A3C-C52E37DAA49E}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Ria.PatientModule</RootNamespace>
+    <AssemblyName>Rem.Ria.PatientModule</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <XapOutputs>true</XapOutputs>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <XapFilename>Rem.Ria.PatientModule.xap</XapFilename>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Silverlight\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
+    <DocumentationFile>..\..\bin\Silverlight\debug\Rem.Ria.PatientModule.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Silverlight\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Agatha.Common.Silverlight">
+      <HintPath>..\..\packages\Agatha-Common-Unity.1.3\lib\sl40\Agatha.Common.Silverlight.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Agatha.Unity.Silverlight">
+      <HintPath>..\..\packages\Agatha-Common-Unity.1.3\lib\sl40\Agatha.Unity.Silverlight.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Controls" />
+    <Reference Include="Microsoft.Expression.Effects">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.UnityExtensions.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Silverlight, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.2.1.505.0\lib\SL30\Microsoft.Practices.Unity.Silverlight.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="SL.IdentityModel">
+      <HintPath>..\..\lib\Client-Silverlight\Microsoft\SL.IdentityModel\SL.IdentityModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=5.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.ComponentModel.DataAnnotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rx-Main.1.0.11226\lib\SL5\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rx-Silverlight.1.0.11226\lib\SL5\System.Reactive.Windows.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data.DataForm.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data.Input, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Data.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Charting, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ScheduleView, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.ScheduleView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Documents.dll</HintPath>
+    </Reference>
+    <Reference Include="TerminologyService.Client.SL">
+      <HintPath>..\..\lib\Client-Silverlight\TerminologyService\TerminologyService.Client.SL.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TerminologyService.Infrastructure.SL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Client-Silverlight\TerminologyService\TerminologyService.Infrastructure.SL.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\CdsRuleService\CdsRuleDto.cs">
+      <Link>CdsRuleEditor\CdsRuleDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\CdsRuleService\CdsRulesDto.cs">
+      <Link>CdsRuleEditor\CdsRulesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\CdsRuleService\CheckCdsRulesRequest.cs">
+      <Link>CdsAlerts\CheckCdsRulesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\CdsRuleService\CheckCdsRulesResponse.cs">
+      <Link>CdsAlerts\CheckCdsRulesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ClinicalCaseEditor\ClinicalCaseAdmissionDto.cs">
+      <Link>ClinicalCaseEditor\ClinicalCaseAdmissionDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ClinicalCaseEditor\ClinicalCaseDischargeDto.cs">
+      <Link>ClinicalCaseEditor\ClinicalCaseDischargeDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ClinicalCaseEditor\ClinicalCaseDto.cs">
+      <Link>ClinicalCaseEditor\ClinicalCaseDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ClinicalCaseEditor\ClinicalCaseProfileDto.cs">
+      <Link>ClinicalCaseEditor\ClinicalCaseProfileDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ClinicalCaseEditor\ClinicalCaseSignedCommentDto.cs">
+      <Link>ClinicalCaseEditor\ClinicalCaseSignedCommentDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ClinicalCaseEditor\ClinicalCaseStatusDto.cs">
+      <Link>ClinicalCaseEditor\ClinicalCaseStatusDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ClinicalCaseEditor\CreateNewClinicalCaseRequest.cs">
+      <Link>ClinicalCaseEditor\CreateNewClinicalCaseRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ClinicalCaseEditor\CreateNewClinicalCaseResponse.cs">
+      <Link>ClinicalCaseEditor\CreateNewClinicalCaseResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ClinicianDashboard\ClinicianPatientDto.cs">
+      <Link>ClinicianDashboard\ClinicianPatientDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ClinicianDashboard\GetClinicianPatientsRequest.cs">
+      <Link>ClinicianDashboard\GetClinicianPatientsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ClinicianDashboard\GetClinicianPatientsResponse.cs">
+      <Link>ClinicianDashboard\GetClinicianPatientsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\ActivityDto.cs">
+      <Link>Common\ActivityDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\ActivityTypeDto.cs">
+      <Link>Common\ActivityTypeDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\ClinicalCaseSummaryDto.cs">
+      <Link>Common\ClinicalCaseSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\DeleteActivityRequest.cs">
+      <Link>Common\DeleteActivityRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\DeleteActivityResponse.cs">
+      <Link>Common\DeleteActivityResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\GetPayorCacheByKeywordRequest.cs">
+      <Link>QuickPickers\GetPayorCacheByKeywordRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\GetPayorCacheByKeywordResponse.cs">
+      <Link>QuickPickers\GetPayorCacheByKeywordResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PagedPatientAccessEventSearchResultDto.cs">
+      <Link>Common\PagedPatientAccessEventSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PagedPatientSearchResultDto.cs">
+      <Link>Common\PagedPatientSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PagedPayorCacheDto.cs">
+      <Link>Common\PagedPayorCacheDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientAccessEventDto.cs">
+      <Link>Common\PatientAccessEventDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientAccessEventLogEntryDto.cs">
+      <Link>Common\PatientAccessEventLogEntryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientAlertDto.cs">
+      <Link>Common\PatientAlertDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientContactContactInformationDto.cs">
+      <Link>Common\PatientContactContactInformationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientContactDto.cs">
+      <Link>Common\PatientContactDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientContactPhoneDto.cs">
+      <Link>Common\PatientContactPhoneDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientContactProfileDto.cs">
+      <Link>Common\PatientContactProfileDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientDemographicDetailsDto.cs">
+      <Link>Common\PatientDemographicDetailsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientDocumentDto.cs">
+      <Link>Common\PatientDocumentDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientDto.cs">
+      <Link>Common\PatientDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientIdentifierDto.cs">
+      <Link>Common\PatientIdentifierDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientIdentifiersDto.cs">
+      <Link>Common\PatientIdentifiersDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientLegalStatusDto.cs">
+      <Link>Common\PatientLegalStatusDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientOtherConsiderationsDto.cs">
+      <Link>Common\PatientOtherConsiderationsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientPhoneDto.cs">
+      <Link>Common\PatientPhoneDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientPhoneNumbersDto.cs">
+      <Link>Common\PatientPhoneNumbersDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientProfileDto.cs">
+      <Link>Common\PatientProfileDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientRaceAndEthnicityDto.cs">
+      <Link>Common\PatientRaceAndEthnicityDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientSearchResultDto.cs">
+      <Link>Common\PatientSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PatientSummaryDto.cs">
+      <Link>Common\PatientSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PostC32ToPopHealtheRequest.cs">
+      <Link>Common\PostC32ToPopHealtheRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\PostC32ToPopHealthResponse.cs">
+      <Link>Common\PostC32ToPopHealthResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\ProblemDto.cs">
+      <Link>Common\ProblemDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\ProgramEnrollmentDto.cs">
+      <Link>Common\ProgramEnrollmentDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\ScheduleActivityRequest.cs">
+      <Link>Common\ScheduleActivityRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\ScheduleActivityResponse.cs">
+      <Link>Common\ScheduleActivityResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\VisitDto.cs">
+      <Link>Common\VisitDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\VisitStatusUpdateDto.cs">
+      <Link>Common\VisitStatusUpdateDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Common\VisitTemplateDto.cs">
+      <Link>Common\VisitTemplateDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiClosureDto.cs">
+      <Link>DensAsiInterview\DensAsiClosureDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiDrugAlcoholUseDto.cs">
+      <Link>DensAsiInterview\DensAsiDrugAlcoholUseDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiDsmIvDto.cs">
+      <Link>DensAsiInterview\DensAsiDsmIvDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiDtoBase.cs">
+      <Link>DensAsiInterview\DensAsiDtoBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiEmploymentStatusDto.cs">
+      <Link>DensAsiInterview\DensAsiEmploymentStatusDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiFamilySocialRelationshipsDto.cs">
+      <Link>DensAsiInterview\DensAsiFamilySocialRelationshipsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiInterviewDto.cs">
+      <Link>DensAsiInterview\DensAsiInterviewDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiLegalStatusDto.cs">
+      <Link>DensAsiInterview\DensAsiLegalStatusDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiMedicalStatusDto.cs">
+      <Link>DensAsiInterview\DensAsiMedicalStatusDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiNonResponseTypeDto.cs">
+      <Link>DensAsiInterview\DensAsiNonResponseTypeDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiPatientProfileDto.cs">
+      <Link>DensAsiInterview\DensAsiPatientProfileDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DensAsiInterview\DensAsiPsychiatricStatusDto.cs">
+      <Link>DensAsiInterview\DensAsiPsychiatricStatusDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\CreatePatientImportDocumentRequest.cs">
+      <Link>DirectMessageCenter\CreatePatientImportDocumentRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\CreatePatientImportDocumentResponse.cs">
+      <Link>DirectMessageCenter\CreatePatientImportDocumentResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\DirectMailDto.cs">
+      <Link>DirectMessageCenter\DirectMailDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\GetHealthcareProviderDirectoryEntriesRequest.cs">
+      <Link>DirectMessageCenter\GetHealthcareProviderDirectoryEntriesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\GetHealthcareProviderDirectoryEntriesResponse.cs">
+      <Link>DirectMessageCenter\GetHealthcareProviderDirectoryEntriesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\GetImapFolderItemsRequest.cs">
+      <Link>DirectMessageCenter\GetImapFolderItemsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\GetImapFolderItemsResponse.cs">
+      <Link>DirectMessageCenter\GetImapFolderItemsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\GetImapMailRequest.cs">
+      <Link>DirectMessageCenter\GetImapMailRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\GetImapMailResponse.cs">
+      <Link>DirectMessageCenter\GetImapMailResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\HealthProviderEntryDto.cs">
+      <Link>DirectMessageCenter\HealthProviderEntryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\MailAttachmentPatientDocumentDto.cs">
+      <Link>DirectMessageCenter\MailAttachmentPatientDocumentDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\QueryPatientByDocumentRequest.cs">
+      <Link>DirectMessageCenter\QueryPatientByDocumentRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\QueryPatientByDocumentResponse.cs">
+      <Link>DirectMessageCenter\QueryPatientByDocumentResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\SendC32Request.cs">
+      <Link>DirectMessageCenter\SendC32Request.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\SendC32Response.cs">
+      <Link>DirectMessageCenter\SendC32Response.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\SendDirectMessageRequest.cs">
+      <Link>DirectMessageCenter\SendDirectMessageRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DirectMessageCenter\SendDirectMessageResponse.cs">
+      <Link>DirectMessageCenter\SendDirectMessageResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DroolsTest\DroolsTestResponse.cs">
+      <Link>InteroperabilityWorkspace\DroolsTestResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\DroolsTest\SendDroolsTestRequest.cs">
+      <Link>InteroperabilityWorkspace\SendDroolsTestRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\AppointmentDetailsDto.cs">
+      <Link>FrontDeskDashboard\AppointmentDetailsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\ClinicianAppointmentDto.cs">
+      <Link>FrontDeskDashboard\ClinicianAppointmentDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\ClinicianScheduleDto.cs">
+      <Link>FrontDeskDashboard\ClinicianScheduleDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\DeleteClinicianAppointmentRequest.cs">
+      <Link>FrontDeskDashboard\DeleteClinicianAppointmentRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\DeleteClinicianAppointmentResponse.cs">
+      <Link>FrontDeskDashboard\DeleteClinicianAppointmentResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetAvailableTimeSlotsRequest.cs">
+      <Link>FrontDeskDashboard\GetAvailableTimeSlotsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetAvailableTimeSlotsResponse.cs">
+      <Link>FrontDeskDashboard\GetAvailableTimeSlotsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetCliniciansByLocationKeyRequest.cs">
+      <Link>FrontDeskDashboard\GetCliniciansByLocationKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetCliniciansByLocationKeyResponse.cs">
+      <Link>FrontDeskDashboard\GetCliniciansByLocationKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetClinicianScheduleByClinicianKeyAndDateRangeRequest.cs">
+      <Link>FrontDeskDashboard\GetClinicianScheduleByClinicianKeyAndDateRangeRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetClinicianScheduleByClinicianKeyAndDateRangeResponse.cs">
+      <Link>FrontDeskDashboard\GetClinicianScheduleByClinicianKeyAndDateRangeResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetPayorCoverageCachesByPatientKeyRequest.cs">
+      <Link>FrontDeskDashboard\GetPayorCoverageCachesByPatientKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetPayorCoverageCachesByPatientKeyResponse.cs">
+      <Link>FrontDeskDashboard\GetPayorCoverageCachesByPatientKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetSelfPaymentsByPatientKeyRequest.cs">
+      <Link>FrontDeskDashboard\GetSelfPaymentsByPatientKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetSelfPaymentsByPatientKeyResponse.cs">
+      <Link>FrontDeskDashboard\GetSelfPaymentsByPatientKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetVisitTemplatesByAgencyKeyRequest.cs">
+      <Link>FrontDeskDashboard\GetVisitTemplatesByAgencyKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\GetVisitTemplatesByAgencyKeyResponse.cs">
+      <Link>FrontDeskDashboard\GetVisitTemplatesByAgencyKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\PagedPayorCoverageCaches.cs">
+      <Link>FrontDeskDashboard\PagedPayorCoverageCaches.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\PagedSelfPaymentsDto.cs">
+      <Link>FrontDeskDashboard\PagedSelfPaymentsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\PayorCacheSummaryDto.cs">
+      <Link>FrontDeskDashboard\PayorCacheSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\PayorCoverageCacheDto.cs">
+      <Link>FrontDeskDashboard\PayorCoverageCacheDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\PayorSubscriberCacheDto.cs">
+      <Link>FrontDeskDashboard\PayorSubscriberCacheDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\SelfPaymentDto.cs">
+      <Link>FrontDeskDashboard\SelfPaymentDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\TimeSlotDto.cs">
+      <Link>FrontDeskDashboard\TimeSlotDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\UpdateClinicianAppointmentRequest.cs">
+      <Link>FrontDeskDashboard\UpdateClinicianAppointmentRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\FrontDeskDashboard\UpdateClinicianAppointmentResponse.cs">
+      <Link>FrontDeskDashboard\UpdateClinicianAppointmentResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GainShortScreener\GainShortScreenerDto.cs">
+      <Link>GainShortScreener\GainShortScreenerDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraDischargeDto.cs">
+      <Link>GpraInterview\GpraDischargeDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraFollowUpDto.cs">
+      <Link>GpraInterview\GpraFollowUpDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ImportC32\GetDataFromC32Request.cs">
+      <Link>ImportC32\GetDataFromC32Request.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ImportC32\GetDataFromC32Response.cs">
+      <Link>ImportC32\GetDataFromC32Response.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ImportC32\ImportC32Request.cs">
+      <Link>ImportC32\ImportC32Request.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ImportC32\ImportC32Response.cs">
+      <Link>ImportC32\ImportC32Response.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\ImportC32\ProvenanceDto.cs">
+      <Link>ImportC32\ProvenanceDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientAccessHistory\GetPatientAccessHistoryBySearchCriteriaRequest.cs">
+      <Link>PatientAccessHistory\GetPatientAccessHistoryBySearchCriteriaRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientAccessHistory\GetPatientAccessHistoryBySearchCriteriaResponse.cs">
+      <Link>PatientAccessHistory\GetPatientAccessHistoryBySearchCriteriaResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\AssociateProblemsWithVisitRequest.cs">
+      <Link>PatientDashboard\AssociateProblemsWithVisitRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\AssociateProblemsWithVisitResponse.cs">
+      <Link>PatientDashboard\AssociateProblemsWithVisitResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraCrimeCriminalJusticeDto.cs">
+      <Link>GpraInterview\GpraCrimeCriminalJusticeDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraDemographicsDto.cs">
+      <Link>GpraInterview\GpraDemographicsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraDrugAlcoholUseDto.cs">
+      <Link>GpraInterview\GpraDrugAlcoholUseDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraDtoBase.cs">
+      <Link>GpraInterview\GpraDtoBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraFamilyLivingConditionsDto.cs">
+      <Link>GpraInterview\GpraFamilyLivingConditionsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraInterviewDto.cs">
+      <Link>GpraInterview\GpraInterviewDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraInterviewInformationDto.cs">
+      <Link>GpraInterview\GpraInterviewInformationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraNonResponseTypeDto.cs">
+      <Link>GpraInterview\GpraNonResponseTypeDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraPlannedServicesDto.cs">
+      <Link>GpraInterview\GpraPlannedServicesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraProblemsTreatmentRecoveryDto.cs">
+      <Link>GpraInterview\GpraProblemsTreatmentRecoveryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraProfessionalInformationDto.cs">
+      <Link>GpraInterview\GpraProfessionalInformationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\GpraInterview\GpraSocialConnectednessDto.cs">
+      <Link>GpraInterview\GpraSocialConnectednessDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\AuditCDto.cs">
+      <Link>PatientDashboard\AuditCDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\AuditDto.cs">
+      <Link>PatientDashboard\AuditDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\BloodPressureDto.cs">
+      <Link>PatientDashboard\BloodPressureDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\BriefInterventionDto.cs">
+      <Link>PatientDashboard\BriefInterventionDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\CancelRadiologyOrderRequest.cs">
+      <Link>PatientDashboard\CancelRadiologyOrderRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\CancelRadiologyOrderResponse.cs">
+      <Link>PatientDashboard\CancelRadiologyOrderResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\CaseSummaryDto.cs">
+      <Link>PatientDashboard\CaseSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\Dast10Dto.cs">
+      <Link>PatientDashboard\Dast10Dto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\DeletePatientDocumentRequest.cs">
+      <Link>PatientDashboard\DeletePatientDocumentRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\DeletePatientDocumentResponse.cs">
+      <Link>PatientDashboard\DeletePatientDocumentResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\DeleteProblemRequest.cs">
+      <Link>PatientDashboard\DeleteProblemRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\DeleteProblemResponse.cs">
+      <Link>PatientDashboard\DeleteProblemResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\DetachProblemFromVisitRequest.cs">
+      <Link>PatientDashboard\DetachProblemFromVisitRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\DetachProblemFromVisitResponse.cs">
+      <Link>PatientDashboard\DetachProblemFromVisitResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetAllActivitiesByClinicalCaseRequest.cs">
+      <Link>PatientDashboard\GetAllActivitiesByClinicalCaseRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetAllActivitiesByClinicalCaseResponse.cs">
+      <Link>PatientDashboard\GetAllActivitiesByClinicalCaseResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetAllClinicalCasesByPatientRequest.cs">
+      <Link>PatientDashboard\GetAllClinicalCasesByPatientRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetAllClinicalCasesByPatientResponse.cs">
+      <Link>PatientDashboard\GetAllClinicalCasesByPatientResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetAllMedicationsByPatientRequest.cs">
+      <Link>PatientDashboard\GetAllMedicationsByPatientRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetAllMedicationsByPatientResponse.cs">
+      <Link>PatientDashboard\GetAllMedicationsByPatientResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetAllProblemsByClinicalCaseRequest.cs">
+      <Link>PatientDashboard\GetAllProblemsByClinicalCaseRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetAllProblemsByClinicalCaseResponse.cs">
+      <Link>PatientDashboard\GetAllProblemsByClinicalCaseResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetAllSchedulableActivityTypesRequest.cs">
+      <Link>PatientDashboard\GetAllSchedulableActivityTypesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetAllSchedulableActivityTypesResponse.cs">
+      <Link>PatientDashboard\GetAllSchedulableActivityTypesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetDefaultClinicalCaseByPatientRequest.cs">
+      <Link>PatientDashboard\GetDefaultClinicalCaseByPatientRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetDefaultClinicalCaseByPatientResponse.cs">
+      <Link>PatientDashboard\GetDefaultClinicalCaseByPatientResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetGrowthInformationByPatientKeyRequest.cs">
+      <Link>PatientDashboard\GetGrowthInformationByPatientKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetGrowthInformationByPatientKeyResponse.cs">
+      <Link>PatientDashboard\GetGrowthInformationByPatientKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetLabResultsRequest.cs">
+      <Link>PatientDashboard\GetLabResultsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetLabResultsResponse.cs">
+      <Link>PatientDashboard\GetLabResultsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetMedicationByKeyRequest.cs">
+      <Link>PatientDashboard\GetMedicationByKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetMedicationByKeyResponse.cs">
+      <Link>PatientDashboard\GetMedicationByKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetPatientDocumentsByPatientRequest.cs">
+      <Link>PatientDashboard\GetPatientDocumentsByPatientRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetPatientDocumentsByPatientResponse.cs">
+      <Link>PatientDashboard\GetPatientDocumentsByPatientResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetProblemByKeyRequest.cs">
+      <Link>PatientDashboard\GetProblemByKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetProblemByKeyResponse.cs">
+      <Link>PatientDashboard\GetProblemByKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetRecentVisitActivitiesByClinicalCaseRequest.cs">
+      <Link>PatientDashboard\GetRecentVisitActivitiesByClinicalCaseRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetRecentVisitActivitiesByClinicalCaseResponse.cs">
+      <Link>PatientDashboard\GetRecentVisitActivitiesByClinicalCaseResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetScheduledVisitActivitiesByClinicalCaseRequest.cs">
+      <Link>PatientDashboard\GetScheduledVisitActivitiesByClinicalCaseRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GetScheduledVisitActivitiesByClinicalCaseResponse.cs">
+      <Link>PatientDashboard\GetScheduledVisitActivitiesByClinicalCaseResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GrowthInfoDto.cs">
+      <Link>PatientDashboard\GrowthInfoDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GrowthRateHeightDto.cs">
+      <Link>PatientDashboard\GrowthRateHeightDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\GrowthRateWeightDto.cs">
+      <Link>PatientDashboard\GrowthRateWeightDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\HeartRateDto.cs">
+      <Link>PatientDashboard\HeartRateDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ImmunizationDto.cs">
+      <Link>PatientDashboard\ImmunizationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\IndividualCounselingDto.cs">
+      <Link>PatientDashboard\IndividualCounselingDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\LabFacilityDto.cs">
+      <Link>PatientDashboard\LabFacilityDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\LabResultDto.cs">
+      <Link>PatientDashboard\LabResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\LabSpecimenDto.cs">
+      <Link>PatientDashboard\LabSpecimenDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\MedicationDto.cs">
+      <Link>PatientDashboard\MedicationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\MedicationDtsInfoDto.cs">
+      <Link>PatientDashboard\MedicationDtsInfoDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\MedicationFormStrengthRequest.cs">
+      <Link>PatientDashboard\MedicationFormStrengthRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\MedicationFormStrengthResponse.cs">
+      <Link>PatientDashboard\MedicationFormStrengthResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\NidaDrugQuestionnaireDto.cs">
+      <Link>PatientDashboard\NidaDrugQuestionnaireDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\Phq9Dto.cs">
+      <Link>PatientDashboard\Phq9Dto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\CreateProgramEnrollmentRequest.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\CreateProgramEnrollmentRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\CreateProgramEnrollmentResponse.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\CreateProgramEnrollmentResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\DeleteProgramEnrollmentRequest.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\DeleteProgramEnrollmentRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\DeleteProgramEnrollmentResponse.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\DeleteProgramEnrollmentResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\DisenrollProgramEnrollmentRequest.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\DisenrollProgramEnrollmentRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\DisenrollProgramEnrollmentResponse.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\DisenrollProgramEnrollmentResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\GetAllProgramEnrollmentsByClinicalCaseRequest.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\GetAllProgramEnrollmentsByClinicalCaseRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\GetAllProgramEnrollmentsByClinicalCaseResponse.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\GetAllProgramEnrollmentsByClinicalCaseResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\GetAvailableEnrollingStaffsRequest.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\GetAvailableEnrollingStaffsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\GetAvailableEnrollingStaffsResponse.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\GetAvailableEnrollingStaffsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramOfferingLocationsRequest.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramOfferingLocationsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramOfferingLocationsResponse.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramOfferingLocationsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramsRequest.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramsResponse.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\GetAvailableProgramsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\GetProgramEnrollmentByKeyRequest.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\GetProgramEnrollmentByKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\GetProgramEnrollmentByKeyResponse.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\GetProgramEnrollmentByKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\ProgramOfferingLocationDto.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\ProgramOfferingLocationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\ReviseProgramEnrollmentRequest.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\ReviseProgramEnrollmentRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\ProgramEnrollmentTile\ReviseProgramEnrollmentResponse.cs">
+      <Link>PatientDashboard\ProgramEnrollmentTile\ReviseProgramEnrollmentResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\RadiologyOrderDto.cs">
+      <Link>PatientDashboard\RadiologyOrderDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\SocialHistoryDto.cs">
+      <Link>PatientDashboard\SocialHistoryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\VisitActivityDto.cs">
+      <Link>PatientDashboard\VisitActivityDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientDashboard\VitalSignDto.cs">
+      <Link>PatientDashboard\VitalSignDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\AllergyDto.cs">
+      <Link>PatientEditor\AllergyDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\PatientAddressDto.cs">
+      <Link>PatientEditor\PatientAddressDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\PatientAddressesDto.cs">
+      <Link>PatientEditor\PatientAddressesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\PatientAliasDto.cs">
+      <Link>PatientEditor\PatientAliasDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\PatientAliasesDto.cs">
+      <Link>PatientEditor\PatientAliasesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\PatientAllergiesDto.cs">
+      <Link>PatientEditor\PatientAllergiesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\PatientConfidentialInformationDto.cs">
+      <Link>PatientEditor\PatientConfidentialInformationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\PatientContactKeyDto.cs">
+      <Link>PatientEditor\PatientContactKeyDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\PatientContactsDto.cs">
+      <Link>PatientEditor\PatientContactsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\PatientImportedAllergiesDto.cs">
+      <Link>PatientEditor\PatientImportedAllergiesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\PatientVeteranInformationDto.cs">
+      <Link>PatientEditor\PatientVeteranInformationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientEditor\RemovePatientContactRequest.cs">
+      <Link>PatientEditor\RemovePatientContactRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientList\PatientLabTestSummaryDto.cs">
+      <Link>PatientList\PatientLabTestSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientList\PatientListCriteriaDto.cs">
+      <Link>PatientList\PatientListCriteriaDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientList\PatientListResultDto.cs">
+      <Link>PatientList\PatientListResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientList\PatientListResultsDto.cs">
+      <Link>PatientList\PatientListResultsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientList\PatientListSearchRequest.cs">
+      <Link>PatientList\PatientListSearchRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientList\PatientListSearchResponse.cs">
+      <Link>PatientList\PatientListSearchResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientReminder\PatientReminderCriteriaDto.cs">
+      <Link>PatientReminder\PatientReminderCriteriaDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientReminder\PatientReminderResultDto.cs">
+      <Link>PatientReminder\PatientReminderResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientReminder\PatientReminderResultsDto.cs">
+      <Link>PatientReminder\PatientReminderResultsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientReminder\PatientReminderSearchRequest.cs">
+      <Link>PatientReminder\PatientReminderSearchRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientReminder\PatientReminderSearchResponse.cs">
+      <Link>PatientReminder\PatientReminderSearchResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientSearch\CreateNewPatientRequest.cs">
+      <Link>PatientSearch\CreateNewPatientRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientSearch\CreateNewPatientResponse.cs">
+      <Link>PatientSearch\CreateNewPatientResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientSearch\GetPatientByKeyRequest.cs">
+      <Link>PatientSearch\GetPatientByKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientSearch\GetPatientByKeyResponse.cs">
+      <Link>PatientSearch\GetPatientByKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientSearch\GetPatientsByAdvancedSearchRequest.cs">
+      <Link>PatientSearch\GetPatientsByAdvancedSearchRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientSearch\GetPatientsByAdvancedSearchResponse.cs">
+      <Link>PatientSearch\GetPatientsByAdvancedSearchResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientSearch\GetPatientsByKeywordsRequest.cs">
+      <Link>PatientSearch\GetPatientsByKeywordsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\PatientSearch\GetPatientsByKeywordsResponse.cs">
+      <Link>PatientSearch\GetPatientsByKeywordsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Service\LogPatientEventAccessRequest.cs">
+      <Link>Service\LogPatientEventAccessRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Service\LogPatientEventAccessResponse.cs">
+      <Link>Service\LogPatientEventAccessResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Service\UpdateVisitStatusRequest.cs">
+      <Link>Service\UpdateVisitStatusRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\Service\UpdateVisitStatusResponse.cs">
+      <Link>Service\UpdateVisitStatusResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\SystemAccountSearch\GetSystemAccountsByAdvancedSearchRequest.cs">
+      <Link>SystemAccountSearch\GetSystemAccountsByAdvancedSearchRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\SystemAccountSearch\GetSystemAccountsByAdvancedSearchResponse.cs">
+      <Link>SystemAccountSearch\GetSystemAccountsByAdvancedSearchResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\SystemAccountSearch\GetSystemAccountsByKeywordRequest.cs">
+      <Link>SystemAccountSearch\GetSystemAccountsByKeywordRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\SystemAccountSearch\GetSystemAccountsByKeywordResponse.cs">
+      <Link>SystemAccountSearch\GetSystemAccountsByKeywordResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\TedsInterview\DetailedDrugCodeDto.cs">
+      <Link>TedsInterview\DetailedDrugCodeDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\TedsInterview\GetDetailedDrugCodeListRequest.cs">
+      <Link>TedsInterview\GetDetailedDrugCodeListRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\TedsInterview\GetDetailedDrugCodeListResponse.cs">
+      <Link>TedsInterview\GetDetailedDrugCodeListResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\TedsInterview\SubstanceProblemTypeDto.cs">
+      <Link>TedsInterview\SubstanceProblemTypeDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\TedsInterview\TedsAdmissionInterviewDto.cs">
+      <Link>TedsInterview\TedsAdmissionInterviewDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\TedsInterview\TedsAnswerDto.cs">
+      <Link>TedsInterview\TedsAnswerDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\TedsInterview\TedsDischargeInterviewDto.cs">
+      <Link>TedsInterview\TedsDischargeInterviewDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.PatientModule.Web\TedsInterview\TedsLookupBaseDto.cs">
+      <Link>TedsInterview\TedsLookupBaseDto.cs</Link>
+    </Compile>
+    <Compile Include="ActivityChangedEvent.cs" />
+    <Compile Include="ActivityChangedEventArgs.cs" />
+    <Compile Include="ActivityListChangedEvent.cs" />
+    <Compile Include="ActivityListChangedEventArgs.cs" />
+    <Compile Include="AppointmentStyleSelector.cs" />
+    <Compile Include="CdsAlerts\CdsAlertService.cs" />
+    <Compile Include="CdsAlerts\CdsAlertView.xaml.cs">
+      <DependentUpon>CdsAlertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CdsAlerts\CdsAlertViewModel.cs" />
+    <Compile Include="CdsAlerts\ICdsAlertService.cs" />
+    <Compile Include="CdsRuleEditor\CdsRuleEditorView.xaml.cs">
+      <DependentUpon>CdsRuleEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CdsRuleEditor\CdsRuleEditorViewModel.cs" />
+    <Compile Include="ClientPermissionDescriptor.cs" />
+    <Compile Include="ClinicalCaseChangedEvent.cs" />
+    <Compile Include="ClinicalCaseChangedEventArgs.cs" />
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseEditorView.xaml.cs">
+      <DependentUpon>ClinicalCaseEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicalCaseEditor\ClinicalCaseEditorViewModel.cs" />
+    <Compile Include="ClinicalCaseSnapshotContext.cs" />
+    <Compile Include="ClinicianDashboard\ClinicianDashboardScheduleTileView.xaml.cs">
+      <DependentUpon>ClinicianDashboardScheduleTileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicianDashboard\ClinicianLabResultsTileView.xaml.cs">
+      <DependentUpon>ClinicianLabResultsTileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicianDashboard\ClinicianLabResultsTileViewModel.cs" />
+    <Compile Include="ClinicianDashboard\ClinicianMedicationOrdersTileView.xaml.cs">
+      <DependentUpon>ClinicianMedicationOrdersTileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicianDashboard\ClinicianMedicationOrdersTileViewModel.cs" />
+    <Compile Include="ClinicianDashboard\ClinicianPatientListView.xaml.cs">
+      <DependentUpon>ClinicianPatientListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicianDashboard\ClinicianPatientListViewModel.cs" />
+    <Compile Include="ClinicianDashboard\LabOrderDto.cs" />
+    <Compile Include="ClinicianDashboard\MedicationOrderDto.cs" />
+    <Compile Include="Common\ActivityTypeToViewMapperService.cs" />
+    <Compile Include="Common\IActivityTypeToViewMapperService.cs" />
+    <Compile Include="Common\ProgramEnrollmentDto.Client.cs" />
+    <Compile Include="DensAsiInterview\DensAsiInterviewView.xaml.cs">
+      <DependentUpon>DensAsiInterviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DensAsiInterview\DensAsiInterviewViewModel.cs" />
+    <Compile Include="DensAsiInterview\DensAsiInterviewViewModelRuleCollection.cs" />
+    <Compile Include="DensAsiInterview\DensAsiNonResponseTypeDto.Client.cs" />
+    <Compile Include="DensAsiInterview\GetLookupValuesFromDensAsiNonResponseConverter.cs" />
+    <Compile Include="DirectMessageCenter\SendNewMailViewModel.cs" />
+    <Compile Include="DirectMessageCenter\SendNewMailView.xaml.cs">
+      <DependentUpon>SendNewMailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DirectMessageCenter\MailAttachmentPatientDocumentDto.Client.cs" />
+    <Compile Include="DirectMessageCenter\SaveMailAttachmentPatientDocumentView.xaml.cs">
+      <DependentUpon>SaveMailAttachmentPatientDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DirectMessageCenter\SaveMailAttachmentPatientDocumentViewModel.cs" />
+    <Compile Include="DirectMessageCenter\DirectAddressRecipientSelectedArgs.cs" />
+    <Compile Include="DirectMessageCenter\DirectAddressRecipientSelectedEvent.cs" />
+    <Compile Include="DirectMessageCenter\HealthProviderEntryDto.Client.cs" />
+    <Compile Include="DirectMessageCenter\HealthProvidersDirectoryView.xaml.cs">
+      <DependentUpon>HealthProvidersDirectoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DirectMessageCenter\HealthProvidersDirectoryViewModel.cs" />
+    <Compile Include="DirectMessageCenter\MessageCenterWorkspaceView.xaml.cs">
+      <DependentUpon>MessageCenterWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DirectMessageCenter\MessageCenterWorkspaceViewModel.cs" />
+    <Compile Include="DirectMessageCenter\MessageSentEvent.cs" />
+    <Compile Include="DirectMessageCenter\MessageSentEventArgs.cs" />
+    <Compile Include="DirectMessageCenter\StyleRowSelector.cs" />
+    <Compile Include="DirectMessageCenter\SaveMailAttachmentPatientDocumentViewModelRuleCollection.cs" />
+    <Compile Include="FrontDeskDashboard\AddSelfPaymentView.xaml.cs">
+      <DependentUpon>AddSelfPaymentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrontDeskDashboard\AddSelfPaymentViewModel.cs" />
+    <Compile Include="FrontDeskDashboard\AddSelfPaymentViewModelRuleCollection.cs" />
+    <Compile Include="FrontDeskDashboard\BillingView.xaml.cs">
+      <DependentUpon>BillingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrontDeskDashboard\BillingViewModel.cs" />
+    <Compile Include="FrontDeskDashboard\EditPayorCoverageViewModel.cs" />
+    <Compile Include="FrontDeskDashboard\EditPayorCoverageView.xaml.cs">
+      <DependentUpon>EditPayorCoverageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrontDeskDashboard\EditPayorCoverageViewModelRuleCollection.cs" />
+    <Compile Include="FrontDeskDashboard\FrontDeskDashboardDateChangedEvent.cs" />
+    <Compile Include="FrontDeskDashboard\FrontDeskDashboardDateChangedEventArgs.cs" />
+    <Compile Include="FrontDeskDashboard\PatientSummaryView.xaml.cs">
+      <DependentUpon>PatientSummaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrontDeskDashboard\PatientSummaryViewModel.cs" />
+    <Compile Include="FrontDeskDashboard\PayorCacheSummaryDto.Client.cs" />
+    <Compile Include="FrontDeskDashboard\PayorCoverageView.xaml.cs">
+      <DependentUpon>PayorCoverageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrontDeskDashboard\PayorCoverageViewModel.cs" />
+    <Compile Include="FrontDeskDashboard\PayorSubscriberCacheDto.Client.cs" />
+    <Compile Include="FrontDeskDashboard\SelfPaymentView.xaml.cs">
+      <DependentUpon>SelfPaymentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrontDeskDashboard\SelfPaymentViewModel.cs" />
+    <Compile Include="GpraInterview\FluentRuleEngineExtensions.cs" />
+    <Compile Include="GpraInterview\GetLookupValuesFromGpraNonResponseConverter.cs" />
+    <Compile Include="GpraInterview\GpraDrugAlcoholBindingObject.cs" />
+    <Compile Include="GpraInterview\GpraInterviewView.xaml.cs">
+      <DependentUpon>GpraInterviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GpraInterview\GpraInterviewViewModel.cs" />
+    <Compile Include="GpraInterview\GpraInterviewViewModelRuleCollection.cs" />
+    <Compile Include="GpraInterview\GpraNonResponseTypeDto.Client.cs" />
+    <Compile Include="GpraInterview\GpraNonResponseTypeDtoExtensions.cs" />
+    <Compile Include="ImportC32\AllergyDto_Client.cs" />
+    <Compile Include="ImportC32\BloodPressureDto_Client.cs" />
+    <Compile Include="ImportC32\HeartRateDto_Client.cs" />
+    <Compile Include="ImportC32\LabResultDto_Client.cs" />
+    <Compile Include="ImportC32\ImmunizationDto_Client.cs" />
+    <Compile Include="ImportC32\ImportC32View.xaml.cs">
+      <DependentUpon>ImportC32View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ImportC32\ImportC32ViewModel.cs" />
+    <Compile Include="ImportC32\MedicationDto_Client.cs" />
+    <Compile Include="ImportC32\ProblemDto_Client.cs" />
+    <Compile Include="InteroperabilityWorkspace\DroolsRestTestView.xaml.cs">
+      <DependentUpon>DroolsRestTestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InteroperabilityWorkspace\DroolsRestTestViewModel.cs" />
+    <Compile Include="PatientContactEditor\PatientContactEditorView.xaml.cs">
+      <DependentUpon>PatientContactEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientContactEditor\PatientContactEditorViewModel.cs" />
+    <Compile Include="PatientDashboard\ActivityViewModelBase.cs" />
+    <Compile Include="PatientDashboard\AuditResultView.xaml.cs">
+      <DependentUpon>AuditResultView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\AuditResultViewModel.cs" />
+    <Compile Include="PatientDashboard\AuditView.xaml.cs">
+      <DependentUpon>AuditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\AuditViewModel.cs" />
+    <Compile Include="PatientDashboard\EditMedicationViewModelRuleCollection.cs" />
+    <Compile Include="PatientDashboard\NidaDrugQuestionnaireViewModelRuleCollection.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\DisenrollProgramEnrollmentView.xaml.cs">
+      <DependentUpon>DisenrollProgramEnrollmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\DisenrollProgramEnrollmentViewModel.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\DisenrollReasonToOtherReasonNoteVisibilityConverter.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\EditProgramEnrollmentView.xaml.cs">
+      <DependentUpon>EditProgramEnrollmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\EditProgramEnrollmentViewModel.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\CreateProgramEnrollmentView.xaml.cs">
+      <DependentUpon>CreateProgramEnrollmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\CreateProgramEnrollmentViewModel.cs" />
+    <Compile Include="PatientDashboard\Dast10ResultView.xaml.cs">
+      <DependentUpon>Dast10ResultView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\Dast10ResultViewModel.cs" />
+    <Compile Include="PatientDashboard\Dast10View.xaml.cs">
+      <DependentUpon>Dast10View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DtsSearch\AllergyDtsSearchViewModel.cs" />
+    <Compile Include="DtsSearch\DrugAllergyDtsSearchViewModel.cs" />
+    <Compile Include="DtsSearch\LabTestNameDtsSearchViewModel.cs" />
+    <Compile Include="DtsSearch\MedicationDtsSearchViewModel.cs" />
+    <Compile Include="DtsSearch\ProblemDtsSearchViewModel.cs" />
+    <Compile Include="DtsSearch\VaccineNameDtsSearchViewModel.cs" />
+    <Compile Include="FrontDeskDashboard\AppointmentDetailsView.xaml.cs">
+      <DependentUpon>AppointmentDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrontDeskDashboard\AppointmentDetailsViewModel.cs" />
+    <Compile Include="FrontDeskDashboard\AppointmentUpdatedEvent.cs" />
+    <Compile Include="FrontDeskDashboard\AppointmentUpdatedEventArgs.cs" />
+    <Compile Include="FrontDeskDashboard\ClinicianAppointmentDto.Client.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\ProblemDto.Client.cs" />
+    <Compile Include="FrontDeskDashboard\AppointmentCreatedEvent.cs" />
+    <Compile Include="FrontDeskDashboard\AppointmentCreatedEventArgs.cs" />
+    <Compile Include="FrontDeskDashboard\AppointmentSchedulerView.xaml.cs">
+      <DependentUpon>AppointmentSchedulerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrontDeskDashboard\AppointmentSchedulerViewModel.cs" />
+    <Compile Include="FrontDeskDashboard\ClinicianScheduleTileView.xaml.cs">
+      <DependentUpon>ClinicianScheduleTileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrontDeskDashboard\ClinicianScheduleTileViewModel.cs" />
+    <Compile Include="FrontDeskDashboard\FrontDeskDashboardViewModel.cs" />
+    <Compile Include="FrontDeskDashboard\FrontDeskDashboardView.xaml.cs">
+      <DependentUpon>FrontDeskDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IClinicalCaseSnapshotContext.cs" />
+    <Compile Include="InteroperabilityWorkspace\SingleConceptViewModel.cs" />
+    <Compile Include="InteroperabilityWorkspace\SingleConceptView.xaml.cs">
+      <DependentUpon>SingleConceptView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InteroperabilityWorkspace\InteroperabilityWorkspaceView.xaml.cs">
+      <DependentUpon>InteroperabilityWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InteroperabilityWorkspace\InteroperabilityWorkspaceViewModel.cs" />
+    <Compile Include="KeyEventArgs.cs" />
+    <Compile Include="MedicationChangedEvent.cs" />
+    <Compile Include="MedicationChangedEventArgs.cs" />
+    <Compile Include="PatientAccessHistory\PatientAccessHistoryView.xaml.cs">
+      <DependentUpon>PatientAccessHistoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientAccessHistory\PatientAccessHistoryViewModel.cs" />
+    <Compile Include="PatientChangedEvent.cs" />
+    <Compile Include="PatientChangedEventArgs.cs" />
+    <Compile Include="PatientDashboard\AuditCResultView.xaml.cs">
+      <DependentUpon>AuditCResultView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\AuditCResultViewModel.cs" />
+    <Compile Include="PatientDashboard\AuditCView.xaml.cs">
+      <DependentUpon>AuditCView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\AuditCViewModel.cs" />
+    <Compile Include="PatientDashboard\BriefInterventionView.xaml.cs">
+      <DependentUpon>BriefInterventionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\BriefInterventionViewModel.cs" />
+    <Compile Include="PatientDashboard\CaseAlertsViewModel.cs" />
+    <Compile Include="PatientDashboard\CaseSnapshotViewModel.cs" />
+    <Compile Include="InteroperabilityWorkspace\TerminologyVocabularyView.xaml.cs">
+      <DependentUpon>TerminologyVocabularyView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InteroperabilityWorkspace\TerminologyVocabularyViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PatientDashboard\Dast10ViewModel.cs" />
+    <Compile Include="GainShortScreener\GainShortScreenerView.xaml.cs">
+      <DependentUpon>GainShortScreenerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GainShortScreener\GainShortScreenerViewModel.cs" />
+    <Compile Include="PatientDashboard\EditCaseProblemView.xaml.cs">
+      <DependentUpon>EditCaseProblemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\EditCaseProblemViewModel.cs" />
+    <Compile Include="PatientDashboard\IActivityViewModel.cs" />
+    <Compile Include="PatientDashboard\NidaDrugQuestionnaireView.xaml.cs">
+      <DependentUpon>NidaDrugQuestionnaireView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\NidaDrugQuestionnaireViewModel.cs" />
+    <Compile Include="PatientDashboard\EditMedicationView.xaml.cs">
+      <DependentUpon>EditMedicationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\EditMedicationViewModel.cs" />
+    <Compile Include="PatientDashboard\ExternalPatientHistoryView.xaml.cs">
+      <DependentUpon>ExternalPatientHistoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\ExternalPatientHistoryViewModel.cs" />
+    <Compile Include="PatientDashboard\GrowthRateView.xaml.cs">
+      <DependentUpon>GrowthRateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\GrowthRateViewModel.cs" />
+    <Compile Include="PatientDashboard\ImmunizationView.xaml.cs">
+      <DependentUpon>ImmunizationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\ImmunizationViewModel.cs" />
+    <Compile Include="PatientDashboard\IndividualCounselingView.xaml.cs">
+      <DependentUpon>IndividualCounselingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\IndividualCounselingViewModel.cs" />
+    <Compile Include="PatientDashboard\LabResultsView.xaml.cs">
+      <DependentUpon>LabResultsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\LabResultsViewModel.cs" />
+    <Compile Include="PatientDashboard\MedicationDto.Client.cs" />
+    <Compile Include="PatientDashboard\MedicationListViewModel.cs" />
+    <Compile Include="PatientDashboard\CaseProblemListViewModel.cs" />
+    <Compile Include="PatientDashboard\OtherTypeRequiredConverter.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\ProgramEnrollmentChangedEvent.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\ProgramEnrollmentChangedEventArgs.cs" />
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\ProgramEnrollmentListView.xaml.cs">
+      <DependentUpon>ProgramEnrollmentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\ProgramEnrollmentTile\ProgramEnrollmentListViewModel.cs" />
+    <Compile Include="PatientDashboard\SocialHistorySmokingCessationAdvisoryView.xaml.cs">
+      <DependentUpon>SocialHistorySmokingCessationAdvisoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\SocialHistorySmokingCessationAdvisoryViewModel.cs" />
+    <Compile Include="PatientDashboard\Phq9ResultView.xaml.cs">
+      <DependentUpon>Phq9ResultView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\Phq9ResultViewModel.cs" />
+    <Compile Include="PatientDashboard\SocialHistoryView.xaml.cs">
+      <DependentUpon>SocialHistoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\SocialHistoryViewModel.cs" />
+    <Compile Include="PatientDashboard\PatientDocumentUploadedEvent.cs" />
+    <Compile Include="PatientDashboard\PatientDocumentUploadedEventArgs.cs" />
+    <Compile Include="PatientDashboard\PatientHistoryDocumentView.xaml.cs">
+      <DependentUpon>PatientHistoryDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\PatientHistoryDocumentViewModel.cs" />
+    <Compile Include="PatientDashboard\Phq9View.xaml.cs">
+      <DependentUpon>Phq9View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\Phq9ViewModel.cs" />
+    <Compile Include="PatientDashboard\RadiologyOrderView.xaml.cs">
+      <DependentUpon>RadiologyOrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\RadiologyOrderViewModel.cs" />
+    <Compile Include="PatientDashboard\CaseAlertsView.xaml.cs">
+      <DependentUpon>CaseAlertsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\CaseActivitiesView.xaml.cs">
+      <DependentUpon>CaseActivitiesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\CaseActivitiesViewModel.cs" />
+    <Compile Include="PatientDashboard\CaseSnapshotView.xaml.cs">
+      <DependentUpon>CaseSnapshotView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\CaseSummaryView.xaml.cs">
+      <DependentUpon>CaseSummaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\CaseSummaryViewModel.cs" />
+    <Compile Include="PatientDashboard\MedicationListView.xaml.cs">
+      <DependentUpon>MedicationListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\CaseProblemListView.xaml.cs">
+      <DependentUpon>CaseProblemListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\PatientDocumentListCellTemplateSelector.cs" />
+    <Compile Include="PatientDashboard\UploadDocumentView.xaml.cs">
+      <DependentUpon>UploadDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\UploadDocumentViewModel.cs" />
+    <Compile Include="PatientDashboard\VisitListView.xaml.cs">
+      <DependentUpon>VisitListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\VisitListViewModel.cs" />
+    <Compile Include="PatientDashboard\VisitView.xaml.cs">
+      <DependentUpon>VisitView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\VitalsView.xaml.cs">
+      <DependentUpon>VitalsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\VisitViewModel.cs" />
+    <Compile Include="PatientDashboard\VitalsViewModel.cs" />
+    <Compile Include="PatientEditor\AllergyDto.Client.cs" />
+    <Compile Include="PatientEditor\AllergyTypeToDtsSearchVisibilityConverter.cs" />
+    <Compile Include="PatientEditor\PatientEditorView.xaml.cs">
+      <DependentUpon>PatientEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientEditor\PatientEditorViewModel.cs" />
+    <Compile Include="PatientList\PatientListResultDto.Client.cs" />
+    <Compile Include="PatientList\PatientListView.xaml.cs">
+      <DependentUpon>PatientListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientList\PatientListViewModel.cs" />
+    <Compile Include="PatientList\PatientListViewModelRuleCollection.cs" />
+    <Compile Include="PatientModule.cs" />
+    <Compile Include="PatientReminder\PatientReminderResultDto.Client.cs" />
+    <Compile Include="PatientReminder\PatientReminderView.xaml.cs">
+      <DependentUpon>PatientReminderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientReminder\PatientReminderViewModel.cs" />
+    <Compile Include="PatientReminder\PatientReminderViewModelRuleCollection.cs" />
+    <Compile Include="PatientSearch\AddNewPatient.cs" />
+    <Compile Include="PatientSearch\MainPatientSearchView.xaml.cs">
+      <DependentUpon>MainPatientSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSearch\MainPatientSearchViewModel.cs" />
+    <Compile Include="PatientSearch\PatientSearchView.xaml.cs">
+      <DependentUpon>PatientSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSearch\PatientSearchViewModel.cs" />
+    <Compile Include="PatientWorkspace\PatientWorkspaceRibbon.xaml.cs">
+      <DependentUpon>PatientWorkspaceRibbon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientWorkspace\PatientWorkspaceView.xaml.cs">
+      <DependentUpon>PatientWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DirectMessageCenter\SendC32View.xaml.cs">
+      <DependentUpon>SendC32View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DirectMessageCenter\SendC32ViewModel.cs" />
+    <Compile Include="PatientDashboard\PatientDashboardViewModel.cs" />
+    <Compile Include="PatientWorkspace\PatientWorkspaceViewModel.cs" />
+    <Compile Include="PatientSearch\PatientAdvancedSearchCriteria.cs" />
+    <Compile Include="PatientSearch\QuickSearchButtonSpacer.xaml.cs">
+      <DependentUpon>QuickSearchButtonSpacer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDashboard\PatientDashboardView.xaml.cs">
+      <DependentUpon>PatientDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuickPickers\PayorCacheQuickPickerView.xaml.cs">
+      <DependentUpon>PayorCacheQuickPickerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuickPickers\PayorCacheQuickPickerViewModel.cs" />
+    <Compile Include="Service\IPatientAccessService.cs" />
+    <Compile Include="Service\PatientAccessService.cs" />
+    <Compile Include="StaffAlerts\StaffAlertsTileView.xaml.cs">
+      <DependentUpon>StaffAlertsTileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaffAlerts\StaffAlertsTileViewModel.cs" />
+    <Compile Include="SystemAccountSearch\SystemAccountAdvancedSearchCriteria.cs" />
+    <Compile Include="SystemAccountSearch\SystemAccountSearchView.xaml.cs">
+      <DependentUpon>SystemAccountSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAccountSearch\SystemAccountSearchViewModel.cs" />
+    <Compile Include="TedsInterview\SubstanceUsageVisibilityConverter.cs" />
+    <Compile Include="TedsInterview\TedsAdmissionInterviewViewModelRuleCollection.cs" />
+    <Compile Include="TedsInterview\GetLookupValuesFromTedsNonResponseConverter.cs" />
+    <Compile Include="TedsInterview\TedsDischargeInterviewViewModelRuleCollection.cs" />
+    <Compile Include="TedsInterview\TedsAnswerDto.Client.cs" />
+    <Compile Include="TedsInterview\TedsAdmissionInterviewDto.Client.cs" />
+    <Compile Include="TedsInterview\TedsDischargeInterviewDto.Client.cs" />
+    <Compile Include="TedsInterview\TedsAdmissionInterviewView.xaml.cs">
+      <DependentUpon>TedsAdmissionInterviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TedsInterview\TedsAdmissionInterviewViewModel.cs" />
+    <Compile Include="TedsInterview\TedsDischargeInterviewView.xaml.cs">
+      <DependentUpon>TedsDischargeInterviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TedsInterview\TedsDischargeInterviewViewModel.cs" />
+    <Compile Include="TestFriends.cs" />
+    <Compile Include="VisitChangedEvent.cs" />
+    <Compile Include="VisitChangedEventArgs.cs" />
+    <Compile Include="VisitEventArgs.cs" />
+    <Compile Include="Common\PatientSearchResultDto.Client.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common.Silverlight\Pillar.Common.Silverlight.csproj">
+      <Project>{49D7FB03-A129-4E44-9327-51EC4E1E0FB4}</Project>
+      <Name>Pillar.Common.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.FluentRuleEngine.Silverlight\Pillar.FluentRuleEngine.Silverlight.csproj">
+      <Project>{E5664DBD-9741-4025-AE6E-56F289B10AF1}</Project>
+      <Name>Pillar.FluentRuleEngine.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Security.Silverlight\Pillar.Security.Silverlight.csproj">
+      <Project>{D0C24324-EBBE-450A-88D7-F71DA081B063}</Project>
+      <Name>Pillar.Security.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Rem.WellKnownNames\Rem.WellKnownNames.csproj">
+      <Project>{0CA1E92B-B1E0-4E22-8FA5-747753AA8E72}</Project>
+      <Name>Rem.WellKnownNames</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.AgencyModule\Rem.Ria.AgencyModule.csproj">
+      <Project>{3A43018C-E0DE-42EB-9497-2734BB2B502E}</Project>
+      <Name>Rem.Ria.AgencyModule</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.Infrastructure\Rem.Ria.Infrastructure.csproj">
+      <Project>{CF42EAE9-0AFA-4BA0-BEDC-395BD079761E}</Project>
+      <Name>Rem.Ria.Infrastructure</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.NewCropModule\Rem.Ria.NewCropModule.csproj">
+      <Project>{5869DF27-DF47-4B74-81CC-6018DC77A070}</Project>
+      <Name>Rem.Ria.NewCropModule</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CdsAlerts\CdsAlertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CdsRuleEditor\CdsRuleEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClinicalCaseEditor\ClinicalCaseEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClinicianDashboard\ClinicianDashboardScheduleTileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClinicianDashboard\ClinicianLabResultsTileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClinicianDashboard\ClinicianMedicationOrdersTileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClinicianDashboard\ClinicianPatientListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DensAsiInterview\DensAsiInterviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DirectMessageCenter\SendNewMailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DirectMessageCenter\HealthProvidersDirectoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DirectMessageCenter\MessageCenterWorkspaceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DirectMessageCenter\SaveMailAttachmentPatientDocumentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FrontDeskDashboard\AddSelfPaymentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrontDeskDashboard\BillingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrontDeskDashboard\EditPayorCoverageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrontDeskDashboard\PatientSummaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrontDeskDashboard\PayorCoverageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrontDeskDashboard\SelfPaymentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GpraInterview\GpraInterviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ImportC32\ImportC32View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InteroperabilityWorkspace\DroolsRestTestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientContactEditor\PatientContactEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\AuditResultView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\AuditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\ProgramEnrollmentTile\DisenrollProgramEnrollmentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientDashboard\ProgramEnrollmentTile\EditProgramEnrollmentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientDashboard\ProgramEnrollmentTile\CreateProgramEnrollmentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientDashboard\Dast10ResultView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\Dast10View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrontDeskDashboard\AppointmentDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrontDeskDashboard\AppointmentSchedulerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrontDeskDashboard\ClinicianScheduleTileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrontDeskDashboard\FrontDeskDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InteroperabilityWorkspace\SingleConceptView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InteroperabilityWorkspace\InteroperabilityWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientAccessHistory\PatientAccessHistoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\AuditCResultView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\AuditCView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\BriefInterventionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\CaseAlertsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\CaseActivitiesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\CaseSnapshotView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\CaseSummaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InteroperabilityWorkspace\TerminologyVocabularyView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GainShortScreener\GainShortScreenerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\EditCaseProblemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\NidaDrugQuestionnaireView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\EditMedicationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\ExternalPatientHistoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientDashboard\GrowthRateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\ImmunizationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\IndividualCounselingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\LabResultsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\MedicationListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\CaseProblemListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\ProgramEnrollmentTile\ProgramEnrollmentListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientDashboard\SocialHistorySmokingCessationAdvisoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\Phq9ResultView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\SocialHistoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\PatientHistoryDocumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\Phq9View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\RadiologyOrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\UploadDocumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\VisitListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\VisitView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDashboard\VitalsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientEditor\PatientEditorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientList\PatientListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientReminder\PatientReminderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientSearch\MainPatientSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientSearch\PatientSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientWorkspace\PatientWorkspaceRibbon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientWorkspace\PatientWorkspaceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DirectMessageCenter\SendC32View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientDashboard\PatientDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientSearch\QuickSearchButtonSpacer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuickPickers\PayorCacheQuickPickerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StaffAlerts\StaffAlertsTileView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SystemAccountSearch\SystemAccountSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TedsInterview\TedsAdmissionInterviewView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TedsInterview\TedsDischargeInterviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DirectMessageCenter\Images\Inbox.png" />
+    <Resource Include="DirectMessageCenter\Images\letter.png" />
+    <Resource Include="DirectMessageCenter\Images\mailBig.png" />
+    <Resource Include="DirectMessageCenter\Images\mailSmall.png" />
+    <Resource Include="DirectMessageCenter\Images\paperclip.png" />
+    <Resource Include="DirectMessageCenter\Images\PersonalFolders.png" />
+    <Resource Include="DirectMessageCenter\Images\sent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DirectMessageCenter\Images\down.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <Import Project="$(SolutionDir)\lib\Shared\Stylecop\StyleCop.Targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

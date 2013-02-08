@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Billing Administrator">
+  <useCaseModelRootMoniker Id="846d24e1-1ba7-40cf-bc79-bdff3ae064e8" />
+  <nestedChildShapes>
+    <actorShape Id="d6e73663-ddb6-4149-8ffb-4353e436a0f4" absoluteBounds="0.625, 3.375, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="6026cc87-a05b-4a36-ac86-29b30b297dbb" LastKnownName="Billing Administrator" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseShape Id="b9d65803-a0cf-4535-863a-7e89ab29a467" absoluteBounds="2.25, 1.75, 1.875, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="c059c312-bc23-42ba-8cf3-e3eb1bd64b87" LastKnownName="Set up payors" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(1.125 : 3.44932432432432); (2.8548761578351 : 2.23373567287264)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="481c1e9e-4e57-41e0-a06a-18ae05d46e08" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="d6e73663-ddb6-4149-8ffb-4353e436a0f4" />
+        <useCaseShapeMoniker Id="b9d65803-a0cf-4535-863a-7e89ab29a467" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="8eae1922-c136-4f9e-8335-cc1d05ee7c84" absoluteBounds="3.125, 4.625, 1.875, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="bf8db72a-2e11-4f7d-b3c0-de4741778ef0" LastKnownName="Set up contracts" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(1.125 : 3.72303921568627); (3.53533435493068 : 4.66826837448262)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="7cfa8132-6ebf-49e6-a70f-9049690add09" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="d6e73663-ddb6-4149-8ffb-4353e436a0f4" />
+        <useCaseShapeMoniker Id="8eae1922-c136-4f9e-8335-cc1d05ee7c84" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <commentShape Id="ec1c6c7f-fe4c-4440-be26-52cfa8ea50c5" absoluteBounds="6.5, 5, 2.75, 0.5" customColor="251, 247, 200">
+      <commentMoniker Id="bc9f0992-609d-4746-b47e-b056fe678c74" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentConnector edgePoints="[(6.5 : 5.0625); (4.68259796353076 : 5.0625)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+      <relativeChildShapes />
+      <nodes>
+        <commentShapeMoniker Id="ec1c6c7f-fe4c-4440-be26-52cfa8ea50c5" />
+        <useCaseShapeMoniker Id="8eae1922-c136-4f9e-8335-cc1d05ee7c84" />
+      </nodes>
+    </commentConnector>
+    <useCaseShape Id="2945bfde-1799-4c39-9a2c-530eacd3b945" absoluteBounds="3.25, 3.875, 2, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="7e093d51-2e90-400f-a73b-1c0d3a300478" LastKnownName="Set up billing office rates" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(1.125 : 3.66203703703704); (3.38970846636583 : 3.99754940242457)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="ab745f97-4912-409d-a057-6a75eca1ef90" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="d6e73663-ddb6-4149-8ffb-4353e436a0f4" />
+        <useCaseShapeMoniker Id="2945bfde-1799-4c39-9a2c-530eacd3b945" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="8cfeb57d-f035-4b6a-afc4-933e4a3058f2" absoluteBounds="2.625, 2.375, 3.5, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="afa8ebd1-8e77-40b6-a5a1-f6231bc662ad" LastKnownName="Set up billing office service providers' (doctor)" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(1.125 : 3.55357142857143); (3.59237620787507 : 2.84860679774998)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="e0232787-35ff-45c8-b033-119b47fee295" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="d6e73663-ddb6-4149-8ffb-4353e436a0f4" />
+        <useCaseShapeMoniker Id="8cfeb57d-f035-4b6a-afc4-933e4a3058f2" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="14fc2cf0-1dda-418e-8d18-57e2d9b9f772" absoluteBounds="2.75, 3.125, 3, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="3bd56b2e-6d1d-4f83-bd80-f3f0984c00c8" LastKnownName="Set up billing office 'places of service' " />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(1.125 : 3.60648148148148); (2.87928267706961 : 3.47653461651336)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="9bf074fd-27da-426c-8b2a-93749c2e6dea" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="d6e73663-ddb6-4149-8ffb-4353e436a0f4" />
+        <useCaseShapeMoniker Id="14fc2cf0-1dda-418e-8d18-57e2d9b9f772" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <commentShape Id="fed01ec3-6920-436a-8c3d-5593ab88be97" absoluteBounds="7, 3.75, 2.375, 0.75" customColor="251, 247, 200">
+      <commentMoniker Id="8595205f-cdc8-4931-a578-fecd0383b781" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentConnector edgePoints="[(7 : 4.125); (5.25 : 4.125)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+      <relativeChildShapes />
+      <nodes>
+        <commentShapeMoniker Id="fed01ec3-6920-436a-8c3d-5593ab88be97" />
+        <useCaseShapeMoniker Id="2945bfde-1799-4c39-9a2c-530eacd3b945" />
+      </nodes>
+    </commentConnector>
+    <useCaseShape Id="eddbdfeb-e6a8-4a18-8e97-ef3787ecc1c9" absoluteBounds="2.75, 6.5, 1.75, 0.5" customColor="255, 128, 255" heightOffset="0">
+      <useCaseMoniker Id="9b701679-99cb-43fe-9c43-cdb12cecc7e0" LastKnownName="Set up fee schedules" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(1.095 : 3.875); (3.41164056021556 : 6.50754609115404)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="99d47461-32d1-49ed-a5e1-8629ecc1c0c3" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="d6e73663-ddb6-4149-8ffb-4353e436a0f4" />
+        <useCaseShapeMoniker Id="eddbdfeb-e6a8-4a18-8e97-ef3787ecc1c9" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="8f46f479-b79e-4378-9eda-25434e1547f9" absoluteBounds="5.5, 7, 2.5, 0.5" customColor="255, 128, 255" heightOffset="0">
+      <useCaseMoniker Id="782d3fcd-4c00-4846-9c4c-aed6040ab7e0" LastKnownName="Set up sliding scale fee schedule" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(4.38844276395601 : 6.87215084223296); (5.77391398819621 : 7.09382623811139)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
+      <includeMoniker Id="d9fff49f-e3f7-4335-ab9d-b358b7e16515" />
+      <relativeChildShapes />
+      <moveableDecoratorHostShapes>
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="4.8749999999999911, 6.75, 0.52439594268798828, 0.14800345897674561" shapeFieldName="NameDecorator" />
+      </moveableDecoratorHostShapes>
+      <nodes>
+        <useCaseShapeMoniker Id="eddbdfeb-e6a8-4a18-8e97-ef3787ecc1c9" />
+        <useCaseShapeMoniker Id="8f46f479-b79e-4378-9eda-25434e1547f9" />
+      </nodes>
+    </includeConnector>
+    <commentShape Id="ee2bcbc6-bea5-4a3f-8944-085d84116073" absoluteBounds="6.625, 1.75, 2.375, 0.5" customColor="251, 247, 200">
+      <commentMoniker Id="eac7867e-3459-432c-b20d-7924b083bbb9" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentConnector edgePoints="[(6.625 : 2.25); (5.74628005253593 : 2.46967998686602)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+      <relativeChildShapes />
+      <nodes>
+        <commentShapeMoniker Id="ee2bcbc6-bea5-4a3f-8944-085d84116073" />
+        <useCaseShapeMoniker Id="8cfeb57d-f035-4b6a-afc4-933e4a3058f2" />
+      </nodes>
+    </commentConnector>
+    <useCaseShape Id="24e40096-71c0-42d9-838e-68164ce77b86" absoluteBounds="2, 1.125, 2.125, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="b0835895-a8a4-4895-9d19-c034e413cdca" LastKnownName="Set up billing offices" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(0.999389978645021 : 3.375); (2.01604666563988 : 1.33171504636208)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="8a7bf9dc-43ed-4a31-b4b9-3e96327e8897" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="d6e73663-ddb6-4149-8ffb-4353e436a0f4" />
+        <useCaseShapeMoniker Id="24e40096-71c0-42d9-838e-68164ce77b86" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="37d226a7-87c4-4dab-b29d-4609e2481243" absoluteBounds="3.125, 5.375, 2.375, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="8d39950b-7aed-416b-955b-40796a997a63" LastKnownName="Batch Pending Encounters From Clinical to Billing" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(1.125 : 3.84534762969541); (3.12713615754541 : 5.61001145626584)]" fixedFrom="Algorithm" fixedTo="Caller" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="de71efe5-1838-42ab-ad3b-e53caa766bd7" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="d6e73663-ddb6-4149-8ffb-4353e436a0f4" />
+        <useCaseShapeMoniker Id="37d226a7-87c4-4dab-b29d-4609e2481243" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <commentShape Id="1f3c9f45-ee48-41e0-a825-a63cc8868a71" absoluteBounds="6.625, 5.75, 2.75, 1.125" customColor="251, 247, 200">
+      <commentMoniker Id="395e6ec4-666a-439c-b7e4-44f4be78d3d1" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentConnector edgePoints="[(6.625 : 6.3125); (5.5 : 5.625)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+      <relativeChildShapes />
+      <nodes>
+        <commentShapeMoniker Id="1f3c9f45-ee48-41e0-a825-a63cc8868a71" />
+        <useCaseShapeMoniker Id="37d226a7-87c4-4dab-b29d-4609e2481243" />
+      </nodes>
+    </commentConnector>
+  </nestedChildShapes>
+</useCaseDiagram>

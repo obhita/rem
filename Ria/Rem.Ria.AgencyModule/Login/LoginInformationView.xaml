@@ -1,0 +1,101 @@
+﻿<CustomControls:CollapsingContentControl x:Class="Rem.Ria.AgencyModule.Login.LoginInformationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"  
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"   
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"      
+	mc:Ignorable="d"
+    d:DesignHeight="50" d:DesignWidth="600" Content="{Binding RelativeSource={RelativeSource Self},Path=LargeContent}" NormalContent="{Binding RelativeSource={RelativeSource Self},Path=LargeContent}" HorizontalContentAlignment="Stretch" VerticalAlignment="Center">
+
+
+    <CustomControls:CollapsingContentControl.SmallContent>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" HorizontalAlignment="Center" Margin="0,1,0,0" VerticalAlignment="Top">
+                <Path Data="M2.8203123,7.8750005 L12.335564,7.8750005 C13.893755,7.8750005 15.155,9.0982265 15.155,10.603542 L15.155,16.402 L12.681964,16.402 L12.681964,13.398294 C12.681964,13.148465 12.473207,12.945585 12.214115,12.945585 C11.956847,12.945585 11.747213,13.148465 11.747213,13.398294 L11.747213,16.402 L3.4572444,16.402 L3.4572444,13.398294 C3.4572444,13.148465 3.2484882,12.945585 2.9903412,12.945585 C2.7321274,12.945585 2.523438,13.148465 2.523438,13.398294 L2.523438,16.402 L0,16.402 L0,10.603542 C0,9.0982265 1.2630682,7.8750005 2.8203123,7.8750005 z M7.4996367,0 C9.5921545,0 11.288999,1.6968015 11.288999,3.789391 C11.288999,5.8811994 9.5921545,7.5780001 7.4996367,7.5780001 C5.4077873,7.5780001 3.7109988,5.8811994 3.7109988,3.789391 C3.7109988,1.6968015 5.4077873,0 7.4996367,0 z" Fill="#FFC8C8C8" Width="15" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Column="1" Margin="5,0,0,0">
+                <StackPanel x:Name="bNormal" HorizontalAlignment="Left" Height="Auto">
+                    <TextBlock Text="{Binding UserName}" VerticalAlignment="Center" Style="{StaticResource LoginInformationTextBlockStyle}" Foreground="#FFC8C8C8" FontSize="14" FontWeight="Bold" FontFamily="Arial"/>
+                    <TextBlock Text="{Binding AgencyName}" VerticalAlignment="Center" Style="{StaticResource LoginInformationTextBlockStyle}" Foreground="#FFC8C8C8" FontSize="11" FontFamily="Arial"/>
+                    <telerik:RadComboBox x:Name="cbLocations" Margin="-4 0 0 0"  Height="18" EmptyText="Select location" Foreground="#FF444444" Style="{StaticResource GlobalNavBorderlessComboBoxStyle}" VerticalAlignment="Top" ItemsSource="{Binding StaffApprovedLocations}" SelectedValuePath="Key" SelectedValue="{Binding LocationKey}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectedLocationChangedCommand}" CommandParameter="{Binding ElementName=cbLocations,Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <telerik:RadComboBox.EmptySelectionBoxTemplate>
+                            <DataTemplate>
+                                <Grid Margin="1" VerticalAlignment="Center">
+                                    <TextBlock FontStyle="Italic" Opacity="0.75" Text="{Binding}"  Foreground="#FFC8C8C8"/>
+                                </Grid>
+                            </DataTemplate>
+                        </telerik:RadComboBox.EmptySelectionBoxTemplate>
+                        <telerik:RadComboBox.SelectionBoxTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DisplayName}" Style="{StaticResource LoginInformationTextBlockStyle}" Foreground="#FFC8C8C8"  FontSize="11" FontFamily="Arial"/>
+                            </DataTemplate>
+                        </telerik:RadComboBox.SelectionBoxTemplate>
+                        <telerik:RadComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DisplayName}" Style="{StaticResource LoginInformationTextBlockStyle}" Foreground="Black"  FontSize="11" FontFamily="Arial"/>
+                            </DataTemplate>
+                        </telerik:RadComboBox.ItemTemplate>
+                    </telerik:RadComboBox>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </CustomControls:CollapsingContentControl.SmallContent>
+    
+    
+    
+    <CustomControls:CollapsingContentControl.LargeContent>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" HorizontalAlignment="Center" Margin="0,1,0,0" VerticalAlignment="Top">
+                <Path Data="M2.8203123,7.8750005 L12.335564,7.8750005 C13.893755,7.8750005 15.155,9.0982265 15.155,10.603542 L15.155,16.402 L12.681964,16.402 L12.681964,13.398294 C12.681964,13.148465 12.473207,12.945585 12.214115,12.945585 C11.956847,12.945585 11.747213,13.148465 11.747213,13.398294 L11.747213,16.402 L3.4572444,16.402 L3.4572444,13.398294 C3.4572444,13.148465 3.2484882,12.945585 2.9903412,12.945585 C2.7321274,12.945585 2.523438,13.148465 2.523438,13.398294 L2.523438,16.402 L0,16.402 L0,10.603542 C0,9.0982265 1.2630682,7.8750005 2.8203123,7.8750005 z M7.4996367,0 C9.5921545,0 11.288999,1.6968015 11.288999,3.789391 C11.288999,5.8811994 9.5921545,7.5780001 7.4996367,7.5780001 C5.4077873,7.5780001 3.7109988,5.8811994 3.7109988,3.789391 C3.7109988,1.6968015 5.4077873,0 7.4996367,0 z" Fill="#FFC8C8C8" Width="15" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Column="1" Margin="5,0,0,0">
+                <StackPanel x:Name="bLarge" HorizontalAlignment="Left"  VerticalAlignment="Center"  Height="Auto" >
+                    <TextBlock x:Name="textBlockUserName" Text="{Binding UserName}" VerticalAlignment="Center" Style="{StaticResource LoginInformationTextBlockStyle}" Foreground="#FFC8C8C8" FontSize="14" FontWeight="Bold" FontFamily="Arial"/>
+                    <StackPanel  Orientation="Horizontal" >
+                        <TextBlock x:Name="textBlockAgencyName" Text="{Binding AgencyName}" VerticalAlignment="Center" Margin="0 0 6 0" Style="{StaticResource LoginInformationTextBlockStyle}" Foreground="#FFC8C8C8"  FontSize="11" FontFamily="Arial"/>
+                        <Border BorderThickness="1 0 0 0" BorderBrush="#FFC8C8C8" Margin="6 0 6 0"/>
+                        <telerik:RadComboBox x:Name="cbLargeLocations" Height="18" EmptyText="Select location" Foreground="#FF444444" Style="{StaticResource GlobalNavBorderlessComboBoxStyle}" VerticalAlignment="Center" ItemsSource="{Binding StaffApprovedLocations}" SelectedValuePath="Key" SelectedValue="{Binding LocationKey}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectedLocationChangedCommand}" CommandParameter="{Binding ElementName=cbLargeLocations,Path=SelectedItem}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <telerik:RadComboBox.EmptySelectionBoxTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="1" VerticalAlignment="Center">
+                                        <TextBlock FontStyle="Italic" Opacity="0.75" Text="{Binding}" Foreground="#FFC8C8C8"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </telerik:RadComboBox.EmptySelectionBoxTemplate>
+                            <telerik:RadComboBox.SelectionBoxTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DisplayName}" Style="{StaticResource LoginInformationTextBlockStyle}" Foreground="#FFC8C8C8"  FontSize="11" FontFamily="Arial"/>
+                                </DataTemplate>
+                            </telerik:RadComboBox.SelectionBoxTemplate>
+                            <telerik:RadComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DisplayName}" Style="{StaticResource LoginInformationTextBlockStyle}" Foreground="Black"  FontSize="11" FontFamily="Arial"/>
+                                </DataTemplate>
+                            </telerik:RadComboBox.ItemTemplate>
+                        </telerik:RadComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </CustomControls:CollapsingContentControl.LargeContent>
+</CustomControls:CollapsingContentControl>

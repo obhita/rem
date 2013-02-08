@@ -1,0 +1,143 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.PatientDashboard.EditMedicationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism" 
+    xmlns:ViewModel="clr-namespace:Rem.Ria.Infrastructure.ViewModel;assembly=Rem.Ria.Infrastructure" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" xmlns:infrastructureBehaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+    d:DesignHeight="700" d:DesignWidth="600">
+    <i:Interaction.Behaviors>
+        <infrastructureBehaviors:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <Border Style="{StaticResource PopUpFormPanelStyle}">
+
+        <Grid x:Name="LayoutRoot" >
+            <StackPanel>
+                <StackPanel>
+                    <telerik:RadButton Style="{StaticResource CloseButtonStyle}" Command="{Binding CloseViewCommand}" HorizontalAlignment="Right" Margin="10,6,6,10"/>
+                </StackPanel>
+                <StackPanel>
+                    <Border Style="{StaticResource EditFormHeaderBorderStyle}">
+                        <StackPanel  Style="{StaticResource EditFormStackPanelStyle}" Width="500">
+                            <TextBlock Text="Medication" Style="{StaticResource EditFormHeaderTextBlockStyle}"/>
+                            <TextBlock Text="{Binding Medication.MedicationCodeCodedConcept.DisplayName}" ToolTipService.ToolTip="{Binding Medication.MedicationCode.DisplayName}" Style="{StaticResource EditFormDataElementTextBlockStyle}" TextTrimming="WordEllipsis" Foreground="#FFF7F7F7" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel>
+                    <Border Style="{StaticResource EditFormBorderStyle}">
+                        <StackPanel>
+                            <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                            <StackPanel   Style="{StaticResource EditFormStackPanelStyleL}">
+                                <TextBlock Text="Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                <ContentControl
+							Regions:RegionManager.RegionName="MedicationDtsSearch" Height="30" VerticalAlignment="Top">
+                                    <Regions:RegionManager.RegionContext>
+                                        <ViewModel:SearchCommunicater SelectedItem="{Binding DtsMedicationCode,Mode=TwoWay}" AdvancedSearchVisibility="Collapsed" ClearSelectionWhenAborted="True"/>
+                                    </Regions:RegionManager.RegionContext>
+                                </ContentControl>
+                            </StackPanel>
+                            <Border Style="{StaticResource HorizontalLineFormDivider}" />
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                    <TextBlock Text="Strength" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadComboBox ItemsSource="{Binding DTSInfo.Strengths}" DisplayMemberPath="DisplayName" SelectedItem="{Binding DTSInfo.SelectedStrength, Mode=TwoWay}" ToolTipService.ToolTip="{Binding DTSInfo.SelectedStrength.DisplayName}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                    <TextBlock Text="Form" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadComboBox ItemsSource="{Binding DTSInfo.Forms}" DisplayMemberPath="DisplayName" SelectedItem="{Binding DTSInfo.SelectedForm, Mode=TwoWay}" ToolTipService.ToolTip="{Binding DTSInfo.SelectedForm.DisplayName}" />
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel   Style="{StaticResource EditFormStackPanelStyleM}">
+                                    <TextBlock  Text="Frequency" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadMaskedTextBox MaskedText="{Binding Medication.FrequencyDescription, Mode=TwoWay}" MaskType="None" EmptyContent="Frequency" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                </StackPanel>
+                                <StackPanel  Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Bottom" >
+                                    <CheckBox IsChecked="{Binding Medication.OverTheCounterIndicator, Mode=TwoWay}" Content="Over the Counter"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <Border Style="{StaticResource EditFormCommentsBorderStyle}">
+                                <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" HorizontalAlignment="Stretch" Width="Auto">
+                                    <TextBlock Text="Instructions Note" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <TextBox AcceptsReturn="True" Style="{StaticResource EditFormCommentsTextBoxStyle}">
+                                        <i:Interaction.Behaviors>
+                                            <infrastructureBehaviors:TextBoxTextChangedBehavior Text="{Binding Medication.InstructionsNote, Mode=TwoWay}"/>
+                                        </i:Interaction.Behaviors>
+                                    </TextBox>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel  Style="{StaticResource EditFormStackPanelStyleM}">
+                                    <TextBlock Text="Medication Status" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadComboBox ItemsSource="{Binding LookupValueLists[MedicationStatus]}" DisplayMemberPath="Name" SelectedItem="{Binding Medication.MedicationStatus, Mode=TwoWay}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel  Style="{StaticResource EditFormStackPanelStyleM}">
+                                    <TextBlock  Text="Prescribing Physician" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadMaskedTextBox MaskedText="{Binding Medication.PrescribingPhysicianName, Mode=TwoWay}" MaskType="None"/>
+                                </StackPanel>
+                                <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                    <TextBlock Text="Date Prescribed" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadDatePicker SelectedValue="{Binding Medication.StartDate, Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel  Style="{StaticResource EditFormStackPanelStyleM}">
+                                    <TextBlock Text="Discontinued by Physician" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadMaskedTextBox MaskedText="{Binding Medication.DiscontinuedByPhysicianName, Mode=TwoWay}" MaskType="None"/>
+                                </StackPanel>
+                                <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                    <TextBlock Text="Date Discontinued" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadDatePicker SelectedValue="{Binding Medication.EndDate, Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy" />
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel  Style="{StaticResource EditFormStackPanelStyle}">
+                                    <TextBlock Text="Discontinued Reason" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadComboBox ItemsSource="{Binding LookupValueLists[DiscontinuedReason]}" DisplayMemberPath="Name" SelectedItem="{Binding Medication.DiscontinuedReason, Mode=TwoWay}" ToolTipService.ToolTip="{Binding Medication.DiscontinuedReason.DisplayName}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel x:Name="spOther" Orientation="Horizontal" Visibility="Collapsed" Height="0" d:LayoutOverrides="VerticalAlignment">
+                                <i:Interaction.Triggers>
+                                    <ei:DataTrigger Binding="{Binding Medication.DiscontinuedReason.Name}" Comparison="Equal" Value="Other">
+                                        <ei:ChangePropertyAction TargetName="spOther" PropertyName="Visibility" Value="Visible"/>
+                                    </ei:DataTrigger>
+                                    <ei:DataTrigger Binding="{Binding Medication.DiscontinuedReason.Name}" Comparison="NotEqual" Value="Other">
+                                        <ei:ChangePropertyAction TargetName="spOther" PropertyName="Visibility" Value="Collapsed"/>
+                                        <ei:ChangePropertyAction TargetName="tbOther" PropertyName="MaskedText" Value=""/>
+                                    </ei:DataTrigger>
+                                </i:Interaction.Triggers>
+                                <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                    <TextBlock Text="Other" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadMaskedTextBox x:Name="tbOther" MaskedText="{Binding Medication.DiscontinuedReasonOtherDescription, Mode=TwoWay}" MaskType="None"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Visibility="{Binding Wrapper.IsDirty, Converter={StaticResource BooleanToVisibilityConverterInstance}}">
+                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0">
+                                    <telerik:RadButton Style="{StaticResource StaticBorderlessButtonStyle}" Command="{Binding SaveCommand}" Content="Save" Width="60" Height="22"/>
+                                    <telerik:RadButton Command="{Binding CloseViewCommand}" Content="Cancel" Width="60" Style="{StaticResource StaticBorderlessButtonStyle}"  Height="22" />
+                                </StackPanel>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            <CustomControls:LoadingControl IsLoading="{Binding IsLoading}"/>
+        </Grid>
+    </Border>
+</UserControl>

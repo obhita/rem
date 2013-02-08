@@ -1,0 +1,887 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3A43018C-E0DE-42EB-9497-2734BB2B502E}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Ria.AgencyModule</RootNamespace>
+    <AssemblyName>Rem.Ria.AgencyModule</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <XapOutputs>true</XapOutputs>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <XapFilename>Rem.Ria.AgencyModule.xap</XapFilename>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Silverlight\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\Silverlight\debug\Rem.Ria.AgencyModule.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Silverlight\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Agatha.Common.Silverlight">
+      <HintPath>..\..\packages\Agatha-Common-Unity.1.3\lib\sl40\Agatha.Common.Silverlight.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Agatha.Unity.Silverlight">
+      <HintPath>..\..\packages\Agatha-Common-Unity.1.3\lib\sl40\Agatha.Unity.Silverlight.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Effects, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Prism.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Prism.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Silverlight, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.2.1.505.0\lib\SL30\Microsoft.Practices.Unity.Silverlight.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Data.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Navigation, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="Telerik.Windows.Controls, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>    
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ScheduleView, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Controls.ScheduleView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2012.1.326.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for Silverlight Q1 2012 SP1\Binaries\Silverlight\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\AgencyDashboard\DeleteProgramRequest.cs">
+      <Link>AgencyDashboard\DeleteProgramRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\AgencyDashboard\DeleteProgramResponse.cs">
+      <Link>AgencyDashboard\DeleteProgramResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\AgencyDashboard\GetAllProgramsByAgencyRequest.cs">
+      <Link>AgencyDashboard\GetAllProgramsByAgencyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\AgencyDashboard\GetAllProgramsByAgencyResponse.cs">
+      <Link>AgencyDashboard\GetAllProgramsByAgencyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\AgencyDashboard\ProgramDto.cs">
+      <Link>AgencyDashboard\ProgramDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\AgencyEditor\GetAgencyByKeyRequest.cs">
+      <Link>AgencyEditor\GetAgencyByKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\AgencyEditor\GetAgencyByKeyResponse.cs">
+      <Link>AgencyEditor\GetAgencyByKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyAddressAndPhoneDto.cs">
+      <Link>DataTransferObject\AgencyAddressAndPhoneDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyAddressesAndPhonesDto.cs">
+      <Link>DataTransferObject\AgencyAddressesAndPhonesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyAliasDto.cs">
+      <Link>DataTransferObject\AgencyAliasDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyCharacteristicDto.cs">
+      <Link>DataTransferObject\AgencyCharacteristicDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyContactDto.cs">
+      <Link>DataTransferObject\AgencyContactDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyContactsDto.cs">
+      <Link>DataTransferObject\AgencyContactsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyDisplayNameDto.cs">
+      <Link>Common\AgencyDisplayNameDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyDto.cs">
+      <Link>DataTransferObject\AgencyDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyEmailAddressDto.cs">
+      <Link>DataTransferObject\AgencyEmailAddressDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyFaqDto.cs">
+      <Link>DataTransferObject\AgencyFaqDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyFaqsDto.cs">
+      <Link>DataTransferObject\AgencyFaqsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyIdentifierDto.cs">
+      <Link>DataTransferObject\AgencyIdentifierDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyIdentifiersDto.cs">
+      <Link>DataTransferObject\AgencyIdentifiersDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyPhoneDto.cs">
+      <Link>DataTransferObject\AgencyPhoneDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencyProfileDto.cs">
+      <Link>DataTransferObject\AgencyProfileDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\AgencySummaryDto.cs">
+      <Link>DataTransferObject\AgencySummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\JobFunctionSystemRolesDto.cs">
+      <Link>DataTransferObject\JobFunctionSystemRolesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\LocationDisplayNameDto.cs">
+      <Link>ProgramOfferingEditor\LocationDisplayNameDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\LocationSearchResultDto.cs">
+      <Link>DataTransferObject\LocationSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\LocationSummaryDto.cs">
+      <Link>DataTransferObject\LocationSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\PagedAgencyNameSearchResultDto.cs">
+      <Link>DataTransferObject\PagedAgencyNameSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\PagedAgencyStaffSearchResultDto.cs">
+      <Link>DataTransferObject\PagedAgencyStaffSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\PagedLocationNameSearchResultDto.cs">
+      <Link>DataTransferObject\PagedLocationNameSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\PagedLocationSearchResultDto.cs">
+      <Link>DataTransferObject\PagedLocationSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\PagedStaffNameSearchResultDto.cs">
+      <Link>DataTransferObject\PagedStaffNameSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffAddressDto.cs">
+      <Link>DataTransferObject\StaffAddressDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffAddressesDto.cs">
+      <Link>DataTransferObject\StaffAddressesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffAddressSummaryDto.cs">
+      <Link>DataTransferObject\StaffAddressSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffApprovedLocationDto.cs">
+      <Link>DataTransferObject\StaffApprovedLocationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffCertificationDto.cs">
+      <Link>DataTransferObject\StaffCertificationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffChecklistItemDto.cs">
+      <Link>DataTransferObject\StaffChecklistItemDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffCollegeDegreeDto.cs">
+      <Link>DataTransferObject\StaffCollegeDegreeDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffCredentialsDto.cs">
+      <Link>DataTransferObject\StaffCredentialsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffDto.cs">
+      <Link>DataTransferObject\StaffDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffEventDto.cs">
+      <Link>DataTransferObject\StaffEventDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffHRDto.cs">
+      <Link>DataTransferObject\StaffHRDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffIdentifierDto.cs">
+      <Link>DataTransferObject\StaffIdentifierDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffIdentifiersDto.cs">
+      <Link>DataTransferObject\StaffIdentifiersDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffIdentifierSummaryDto.cs">
+      <Link>DataTransferObject\StaffIdentifierSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffLanguageDto.cs">
+      <Link>DataTransferObject\StaffLanguageDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffLicenseDto.cs">
+      <Link>DataTransferObject\StaffLicenseDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffLocationAssignmentDto.cs">
+      <Link>DataTransferObject\StaffLocationAssignmentDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffNameDto.cs">
+      <Link>DataTransferObject\StaffNameDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffPhoneNumberDto.cs">
+      <Link>DataTransferObject\StaffPhoneNumberDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffPhoneNumbersDto.cs">
+      <Link>DataTransferObject\StaffPhoneNumbersDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffPhoneSummaryDto.cs">
+      <Link>DataTransferObject\StaffPhoneSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffPhotoDto.cs">
+      <Link>DataTransferObject\StaffPhotoDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffProfileDto.cs">
+      <Link>DataTransferObject\StaffProfileDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffSearchResultDto.cs">
+      <Link>DataTransferObject\StaffSearchResultDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffSummaryDto.cs">
+      <Link>DataTransferObject\StaffSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\SystemAccountDto.cs">
+      <Link>DataTransferObject\SystemAccountDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffSystemRoleDto.cs">
+      <Link>DataTransferObject\StaffSystemRoleDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffSystemRolesDto.cs">
+      <Link>DataTransferObject\StaffSystemRolesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\SystemPermissionDto.cs">
+      <Link>DataTransferObject\SystemPermissionDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\SystemPermissionsDto.cs">
+      <Link>DataTransferObject\SystemPermissionsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\SystemRoleDto.cs">
+      <Link>DataTransferObject\SystemRoleDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\SystemRolesDtoBase.cs">
+      <Link>DataTransferObject\SystemRolesDtoBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\TaskAndTaskGroupSystemRolesDto.cs">
+      <Link>DataTransferObject\TaskAndTaskGroupSystemRolesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\TaskGroupSystemRolesDto.cs">
+      <Link>DataTransferObject\TaskGroupSystemRolesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\TaskSystemRolesDto.cs">
+      <Link>DataTransferObject\TaskSystemRolesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationDashboard\DeleteProgramOfferingRequest.cs">
+      <Link>LocationDashboard\DeleteProgramOfferingRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationDashboard\DeleteProgramOfferingResponse.cs">
+      <Link>LocationDashboard\DeleteProgramOfferingResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationDashboard\GetProgramOfferingsByLocationRequest.cs">
+      <Link>LocationDashboard\GetProgramOfferingsByLocationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationDashboard\GetProgramOfferingsByLocationResponse.cs">
+      <Link>LocationDashboard\GetProgramOfferingsByLocationResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationAddressAndPhoneDto.cs">
+      <Link>LocationEditor\LocationAddressAndPhoneDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationAddressesAndPhonesDto.cs">
+      <Link>LocationEditor\LocationAddressesAndPhonesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationContactDto.cs">
+      <Link>LocationEditor\LocationContactDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationContactsDto.cs">
+      <Link>LocationEditor\LocationContactsDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationDto.cs">
+      <Link>LocationEditor\LocationDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationEmailAddressDto.cs">
+      <Link>LocationEditor\LocationEmailAddressDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationIdentifierDto.cs">
+      <Link>LocationEditor\LocationIdentifierDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationIdentifiersDto.cs">
+      <Link>LocationEditor\LocationIdentifiersDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationOperationScheduleDto.cs">
+      <Link>LocationEditor\LocationOperationScheduleDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationOperationSchedulesDto.cs">
+      <Link>LocationEditor\LocationOperationSchedulesDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationPhoneDto.cs">
+      <Link>LocationEditor\LocationPhoneDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationProfileDto.cs">
+      <Link>LocationEditor\LocationProfileDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\LocationEditor\LocationWorkHourDto.cs">
+      <Link>LocationEditor\LocationWorkHourDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\ProgramOfferingEditor\GetProgramsForLocationKeyRequest.cs">
+      <Link>ProgramOfferingEditor\GetProgramsForLocationKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\ProgramOfferingEditor\GetProgramsForLocationKeyResponse.cs">
+      <Link>ProgramOfferingEditor\GetProgramsForLocationKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\ProgramOfferingEditor\ProgramDisplayNameDto.cs">
+      <Link>ProgramOfferingEditor\ProgramDisplayNameDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\ProgramOfferingEditor\ProgramOfferingDto.cs">
+      <Link>ProgramOfferingEditor\ProgramOfferingDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\ProgramOfferingEditor\ProgramOfferingProfileDto.cs">
+      <Link>ProgramOfferingEditor\ProgramOfferingProfileDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\ProgramOfferingEditor\ProgramSummaryDto.cs">
+      <Link>ProgramOfferingEditor\ProgramSummaryDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\QuickPickers\CreateNewAgencyRequest.cs">
+      <Link>QuickPickers\CreateNewAgencyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\QuickPickers\CreateNewLocationRequest.cs">
+      <Link>QuickPickers\CreateNewLocationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\QuickPickers\CreateNewLocationResponse.cs">
+      <Link>QuickPickers\CreateNewLocationResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\QuickPickers\CreateNewStaffRequest.cs">
+      <Link>QuickPickers\CreateNewStaffRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\QuickPickers\CreateNewStaffResponse.cs">
+      <Link>QuickPickers\CreateNewStaffResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\QuickPickers\GetAgencyNamesByKeywordRequest.cs">
+      <Link>QuickPickers\GetAgencyNamesByKeywordRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\QuickPickers\GetAgencyNamesByKeywordResponse.cs">
+      <Link>QuickPickers\GetAgencyNamesByKeywordResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\QuickPickers\GetLocationNamesByKeywordRequest.cs">
+      <Link>QuickPickers\GetLocationNamesByKeywordRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\QuickPickers\GetLocationNamesByKeywordResponse.cs">
+      <Link>QuickPickers\GetLocationNamesByKeywordResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\QuickPickers\GetStaffNamesByKeywordRequest.cs">
+      <Link>QuickPickers\GetStaffNamesByKeywordRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\QuickPickers\GetStaffNamesByKeywordResponse.cs">
+      <Link>QuickPickers\GetStaffNamesByKeywordResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\CreateSystemRoleRequest.cs">
+      <Link>RoleManagement\CreateSystemRoleRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\DeleteJobFunctionSystemRoleRequest.cs">
+      <Link>RoleManagement\DeleteJobFunctionSystemRoleRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\DeleteJobFunctionSystemRoleResponse.cs">
+      <Link>RoleManagement\DeleteJobFunctionSystemRoleResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\CloneSystemRoleRequest.cs">
+      <Link>RoleManagement\CloneSystemRoleRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\DeleteTaskOrTaskGroupRequest.cs">
+      <Link>RoleManagement\DeleteTaskOrTaskGroupRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\DeleteTaskOrTaskGroupResponse.cs">
+      <Link>RoleManagement\DeleteTaskOrTaskGroupResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\GrantSystemPermissionRequest.cs">
+      <Link>RoleManagement\GrantSystemPermissionRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\GrantSystemRoleRequest.cs">
+      <Link>RoleManagement\GrantSystemRoleRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\RenameSystemRoleRequest.cs">
+      <Link>RoleManagement\RenameSystemRoleRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\RevokeSystemPermissionRequest.cs">
+      <Link>RoleManagement\RevokeSystemPermissionRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\RevokeSystemRoleRequest.cs">
+      <Link>RoleManagement\RevokeSystemRoleRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\SystemRoleCommandRequestBase.cs">
+      <Link>RoleManagement\SystemRoleCommandRequestBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\RoleManagement\SystemRoleCommandResponse.cs">
+      <Link>RoleManagement\SystemRoleCommandResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Service\GetAgencySummaryByKeyRequest.cs">
+      <Link>Service\GetAgencySummaryByKeyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Service\GetAgencySummaryByKeyResponse.cs">
+      <Link>Service\GetAgencySummaryByKeyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Common\StaffTrainingCourseDto.cs">
+      <Link>DataTransferObject\StaffTrainingCourseDto.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Service\GetAllAgencyDisplayNamesRequest.cs">
+      <Link>Service\GetAllAgencyDisplayNamesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Service\GetAllAgencyDisplayNamesResponse.cs">
+      <Link>Service\GetAllAgencyDisplayNamesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Service\GetLocationsByAgencyRequest.cs">
+      <Link>Service\GetLocationsByAgencyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Service\GetLocationsByAgencyResponse.cs">
+      <Link>Service\GetLocationsByAgencyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Service\GetStaffsByAgencyRequest.cs">
+      <Link>Service\GetStaffsByAgencyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Service\GetStaffsByAgencyResponse.cs">
+      <Link>Service\GetStaffsByAgencyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Service\SaveLabResultRequest.cs">
+      <Link>Service\SaveLabResultRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\Service\SaveLabResultResponse.cs">
+      <Link>Service\SaveLabResultResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\AddStaffTaskGroupRolesRequest.cs">
+      <Link>StaffEditor\AddStaffTaskGroupRolesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\AddStaffTaskGroupRolesResponse.cs">
+      <Link>StaffEditor\AddStaffTaskGroupRolesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\AddStaffTaskRolesRequest.cs">
+      <Link>StaffEditor\AddStaffTaskRolesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\AddStaffTaskRolesResponse.cs">
+      <Link>StaffEditor\AddStaffTaskRolesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\RemoveStaffJobFunctionRoleRequest.cs">
+      <Link>StaffEditor\RemoveStaffJobFunctionRoleRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\RemoveStaffJobFunctionRoleResponse.cs">
+      <Link>StaffEditor\RemoveStaffJobFunctionRoleResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\RemoveStaffTaskGroupRoleRequest.cs">
+      <Link>StaffEditor\RemoveStaffTaskGroupRoleRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\RemoveStaffTaskGroupRoleResponse.cs">
+      <Link>StaffEditor\RemoveStaffTaskGroupRoleResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\RemoveStaffTaskRoleRequest.cs">
+      <Link>StaffEditor\RemoveStaffTaskRoleRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\RemoveStaffTaskRoleResponse.cs">
+      <Link>StaffEditor\RemoveStaffTaskRoleResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\ReviseStaffJobFunctionRoleRequest.cs">
+      <Link>StaffEditor\ReviseStaffJobFunctionRoleRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\ReviseStaffJobFunctionRoleResponse.cs">
+      <Link>StaffEditor\ReviseStaffJobFunctionRoleResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\CreateSystemAccountRequest.cs">
+      <Link>StaffEditor\CreateSystemAccountRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\CreateSystemAccountResponse.cs">
+      <Link>StaffEditor\CreateSystemAccountResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\LinkSystemAccountRequest.cs">
+      <Link>StaffEditor\LinkSystemAccountRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffEditor\LinkSystemAccountResponse.cs">
+      <Link>StaffEditor\LinkSystemAccountResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffSearch\GetAgencyStaffsByKeywordRequest.cs">
+      <Link>StaffSearch\GetAgencyStaffsByKeywordRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Rem.Ria.AgencyModule.Web\StaffSearch\GetAgencyStaffsByKeywordResponse.cs">
+      <Link>StaffSearch\GetAgencyStaffsByKeywordResponse.cs</Link>
+    </Compile>
+    <Compile Include="AgencyChangedEvent.cs" />
+    <Compile Include="AgencyChangedEventArgs.cs" />
+    <Compile Include="AgencyDashboard\AgencyDashboardView.xaml.cs">
+      <DependentUpon>AgencyDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AgencyDashboard\AgencyDashboardViewModel.cs" />
+    <Compile Include="AgencyDashboard\ProgramListView.xaml.cs">
+      <DependentUpon>ProgramListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AgencyDashboard\ProgramListViewModel.cs" />
+    <Compile Include="AgencyEditor\AgencyEditorView.xaml.cs">
+      <DependentUpon>AgencyEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AgencyEditor\AgencyEditorViewModel.cs" />
+    <Compile Include="AgencyModule.cs" />
+    <Compile Include="AgencyWorkspace\AgencyWorkspaceRibbon.xaml.cs">
+      <DependentUpon>AgencyWorkspaceRibbon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AgencyWorkspace\AgencyWorkspaceView.xaml.cs">
+      <DependentUpon>AgencyWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AgencyWorkspace\AgencyWorkspaceViewModel.cs" />
+    <Compile Include="AgencyWorkspace\SaveLabResultViewModel.cs" />
+    <Compile Include="AgencyWorkspace\UploadLabResultView.xaml.cs">
+      <DependentUpon>UploadLabResultView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AgencyWorkspace\UploadLabResultViewModel.cs" />
+    <Compile Include="AgencyWorkspace\SaveLabResultView.xaml.cs">
+      <DependentUpon>SaveLabResultView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientPermissionDescriptor.cs" />
+    <Compile Include="Common\AgencyDisplayNameDto.Client.cs" />
+    <Compile Include="Common\LocationDisplayNameDto.Client.cs" />
+    <Compile Include="Common\LocationSearchResultDto.Client.cs" />
+    <Compile Include="Common\StaffNameDto.Client.cs" />
+    <Compile Include="DataTransferObject\StaffDto.Client.cs" />
+    <Compile Include="DataTransferObject\SystemAccountDto.Client.cs" />
+    <Compile Include="DataTransferObject\SystemPermission_Client.cs" />
+    <Compile Include="DataTransferObject\SystemRoleDto_Client.cs" />
+    <Compile Include="LocationDashboard\LocationDashboardView.xaml.cs">
+      <DependentUpon>LocationDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocationDashboard\LocationDashboardViewModel.cs" />
+    <Compile Include="LocationDashboard\ProgramOfferingListView.xaml.cs">
+      <DependentUpon>ProgramOfferingListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocationDashboard\ProgramOfferingListViewModel.cs" />
+    <Compile Include="LocationEditor\LocationWorkHourDto.Client.cs" />
+    <Compile Include="Common\StaffSearchResultDto.Client.cs" />
+    <Compile Include="Common\StaffSummaryDto.Client.cs" />
+    <Compile Include="LocationChangedEvent.cs" />
+    <Compile Include="LocationChangedEventArgs.cs" />
+    <Compile Include="LocationEditor\LocationEditorView.xaml.cs">
+      <DependentUpon>LocationEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocationEditor\LocationEditorViewModel.cs" />
+    <Compile Include="LocationWorkspace\LocationWorkspaceRibbon.xaml.cs">
+      <DependentUpon>LocationWorkspaceRibbon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocationWorkspace\LocationWorkspaceView.xaml.cs">
+      <DependentUpon>LocationWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocationWorkspace\LocationWorkspaceViewModel.cs" />
+    <Compile Include="Login\LoginInformationView.xaml.cs">
+      <DependentUpon>LoginInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginInformationViewModel.cs" />
+    <Compile Include="MainAgencyQuickPickersView.xaml.cs">
+      <DependentUpon>MainAgencyQuickPickersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainAgencyQuickPickersViewModel.cs" />
+    <Compile Include="MUObjectivesWorkspace\MeasureCalculationsHolder.cs" />
+    <Compile Include="MUObjectivesWorkspace\MUObjectivesView.xaml.cs">
+      <DependentUpon>MUObjectivesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MUObjectivesWorkspace\MUObjectivesViewModel.cs" />
+    <Compile Include="ProgramEditor\EditProgramViewModelRuleCollection.cs" />
+    <Compile Include="ProgramOfferingEditor\ProgramOfferingEditorView.xaml.cs">
+      <DependentUpon>ProgramOfferingEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramOfferingEditor\ProgramOfferingEditorViewModel.cs" />
+    <Compile Include="ProgramChangedEvent.cs" />
+    <Compile Include="ProgramChangedEventArgs.cs" />
+    <Compile Include="ProgramEditor\EditProgramView.xaml.cs">
+      <DependentUpon>EditProgramView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramEditor\EditProgramViewModel.cs" />
+    <Compile Include="ProgramOfferingEditor\ProgramOfferingEditorViewModelRuleCollection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuickPickers\AgencyQuickPickerView.xaml.cs">
+      <DependentUpon>AgencyQuickPickerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuickPickers\AgencyQuickPickerViewModel.cs" />
+    <Compile Include="QuickPickers\StaffQuickPickerView.xaml.cs">
+      <DependentUpon>StaffQuickPickerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuickPickers\StaffQuickPickerViewModel.cs" />
+    <Compile Include="RoleManagement\EditJobFunctionView.xaml.cs">
+      <DependentUpon>EditJobFunctionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RoleManagement\EditJobFunctionViewModel.cs" />
+    <Compile Include="RoleManagement\EditTaskAndTaskGroupView.xaml.cs">
+      <DependentUpon>EditTaskAndTaskGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RoleManagement\EditTaskAndTaskGroupViewModel.cs" />
+    <Compile Include="RoleManagement\JobFunctionListView.xaml.cs">
+      <DependentUpon>JobFunctionListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RoleManagement\JobFunctionListViewModel.cs" />
+    <Compile Include="RoleManagement\TaskGroupListEditDataTemplateSelector.cs" />
+    <Compile Include="RoleManagement\TaskListEditDataTemplateSelector.cs" />
+    <Compile Include="RoleManagement\RoleManagementWorkspaceView.xaml.cs">
+      <DependentUpon>RoleManagementWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RoleManagement\RoleManagementWorkspaceViewModel.cs" />
+    <Compile Include="RoleManagement\TaskAndTakGroupListView.xaml.cs">
+      <DependentUpon>TaskAndTakGroupListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RoleManagement\TaskAndTakGroupListViewModel.cs" />
+    <Compile Include="StaffChangedEvent.cs" />
+    <Compile Include="StaffChangedEventArgs.cs" />
+    <Compile Include="StaffEditor\StaffEditorView.xaml.cs">
+      <DependentUpon>StaffEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaffEditor\StaffEditorViewModel.cs" />
+    <Compile Include="QuickPickers\LocationQuickPickerView.xaml.cs">
+      <DependentUpon>LocationQuickPickerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuickPickers\LocationQuickPickerViewModel.cs" />
+    <Compile Include="StaffEditor\StaffPhotoUploadedEvent.cs" />
+    <Compile Include="StaffEditor\StaffPhotoUploadedEventArgs.cs" />
+    <Compile Include="StaffEditor\StaffSystemRoleToSystemRoleConverter.cs" />
+    <Compile Include="StaffEditor\UploadPhotoView.xaml.cs">
+      <DependentUpon>UploadPhotoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaffEditor\UploadPhotoViewModel.cs" />
+    <Compile Include="StaffSearch\StaffSearchView.xaml.cs">
+      <DependentUpon>StaffSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaffSearch\StaffSearchViewModel.cs" />
+    <Compile Include="StaffWorkspace\StaffWorkspaceView.xaml.cs">
+      <DependentUpon>StaffWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorkspace\StaffWorkspaceRibbon.xaml.cs">
+      <DependentUpon>StaffWorkspaceRibbon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorkspace\StaffWorkspaceViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common.Silverlight\Pillar.Common.Silverlight.csproj">
+      <Project>{49D7FB03-A129-4E44-9327-51EC4E1E0FB4}</Project>
+      <Name>Pillar.Common.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.FluentRuleEngine.Silverlight\Pillar.FluentRuleEngine.Silverlight.csproj">
+      <Project>{E5664DBD-9741-4025-AE6E-56F289B10AF1}</Project>
+      <Name>Pillar.FluentRuleEngine.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Security.Silverlight\Pillar.Security.Silverlight.csproj">
+      <Project>{D0C24324-EBBE-450A-88D7-F71DA081B063}</Project>
+      <Name>Pillar.Security.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Ria.Infrastructure\Rem.Ria.Infrastructure.csproj">
+      <Project>{CF42EAE9-0AFA-4BA0-BEDC-395BD079761E}</Project>
+      <Name>Rem.Ria.Infrastructure</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AgencyDashboard\AgencyDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AgencyDashboard\ProgramListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AgencyEditor\AgencyEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AgencyWorkspace\AgencyWorkspaceRibbon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AgencyWorkspace\AgencyWorkspaceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AgencyWorkspace\UploadLabResultView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AgencyWorkspace\SaveLabResultView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LocationDashboard\LocationDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LocationDashboard\ProgramOfferingListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LocationWorkspace\LocationWorkspaceRibbon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LocationWorkspace\LocationWorkspaceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\LoginInformationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MUObjectivesWorkspace\MUObjectivesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgramOfferingEditor\ProgramOfferingEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgramEditor\EditProgramView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QuickPickers\AgencyQuickPickerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuickPickers\StaffQuickPickerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoleManagement\EditJobFunctionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoleManagement\EditTaskAndTaskGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoleManagement\JobFunctionListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoleManagement\RoleManagementWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoleManagement\TaskAndTakGroupListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StaffEditor\StaffEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LocationEditor\LocationEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainAgencyQuickPickersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuickPickers\LocationQuickPickerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StaffEditor\UploadPhotoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StaffSearch\StaffSearchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StaffWorkspace\StaffWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StaffWorkspace\StaffWorkspaceRibbon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <Import Project="$(SolutionDir)\lib\Shared\Stylecop\StyleCop.Targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Billing.PayorModule.HealthCareClaim837Setup" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="11.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAACAAAEiA=</HashCode>
+      <FileName>PayorModule\HealthCareClaim837Setup.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="X12Delimiters" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Billing.PayorModule.Payor">
+    <Position X="9.75" Y="4" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="PayorTypeMembers" Type="Rem.Domain.Billing.PayorModule.PayorTypeMember" FixedFromPoint="true">
+      <Path>
+        <Point X="10.75" Y="7.098" />
+        <Point X="10.75" Y="9" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.565" Y="0.172" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>DAJAaAAQCCQAgAAAAwACQFQAAAAgAIBBACAAAgEACAA=</HashCode>
+      <FileName>PayorModule\Payor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="PayorTypeMembers" />
+      <Property Name="Addresses" />
+      <Property Name="PhoneNumbers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Billing.PayorModule.PayorAddress" BaseTypeListCollapsed="true">
+    <Position X="10" Y="1" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQRAAAAAIAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>PayorModule\PayorAddress.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Payor" />
+      <Property Name="PayorAddressType" />
+      <Property Name="Address" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Billing.PayorModule.PayorAddressType" Collapsed="true">
+    <Position X="12.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PayorModule\PayorAddressType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Billing.PayorModule.PayorFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAEAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PayorModule\PayorFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Billing.PayorModule.PayorPhone" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAQQAAAAAIAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>PayorModule\PayorPhone.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PayorPhoneType" />
+      <Property Name="Phone" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Billing.PayorModule.PayorPhoneType" Collapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PayorModule\PayorPhoneType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Billing.PayorModule.X12Delimiters" BaseTypeListCollapsed="true">
+    <Position X="10" Y="11.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AACAABAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAABiA=</HashCode>
+      <FileName>PayorModule\X12Delimiters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Core.CommonModule.Phone">
+    <Position X="15" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Core.CommonModule.Address">
+    <Position X="6.5" Y="1" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Billing.PayorModule.PayorTypeMember">
+    <Position X="9.75" Y="9" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQQAAAAAIAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>PayorModule\PayorTypeMember.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PayorType" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Billing.PayorModule.PayorType">
+    <Position X="6.25" Y="8" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAJgBAAABCAAgCAAAgAAQBQgAAAQAAAACAAIAAAAQgA=</HashCode>
+      <FileName>PayorModule\PayorType.cs</FileName>
+      <NewMemberFileName>PayorModule\PayorTypeMember.cs</NewMemberFileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BillingOffice" />
+      <Property Name="HealthCareClaim837Setup" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Billing.ClaimModule.ClaimBatch">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAQAAIAQQEwAAAACAAAAAAUAACAAAYgCQgAAA=</HashCode>
+      <FileName>ClaimModule\ClaimBatch.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PayorType" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Claims" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Billing.ClaimModule.Claim">
+    <Position X="6.25" Y="4.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAAQAAAAQAAaAQAEAQAAAAQAAAIEAACAAAAIgAIEAAQ=</HashCode>
+      <FileName>ClaimModule\Claim.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Payor" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Billing.ClaimModule.HealthCareClaim837Professional">
+    <Position X="0.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAEAAA=</HashCode>
+      <FileName>ClaimModule\HealthCareClaim837Professional.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ClaimBatch" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Billing.BillingOfficeModule.BillingOffice">
+    <Position X="2.5" Y="10.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>FQJACBAAQACAESACAgAAQAAIIEAAQIIAADAAAABAAAA=</HashCode>
+      <FileName>BillingOfficeModule\BillingOffice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCase">
+    <Position X="4.75" Y="1.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QIAAAEoECgBCAASEACAICAACABAIQAAQAABQRUiDjAA=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ClinicalCaseProfile" />
+      <Property Name="ClinicalCaseCloseInfo" />
+      <Property Name="ClinicalCaseAdmission" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="PriorityPopulations" />
+      <Property Name="SpecialInitiatives" />
+      <Property Name="SignedComments" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCasePriorityPopulation">
+    <Position X="9.25" Y="3.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCasePriorityPopulation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCaseSpecialInitiative">
+    <Position X="9.25" Y="0.75" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgEAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCaseSpecialInitiative.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCaseSignedComment">
+    <Position X="9.25" Y="5.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAEAAAAAAQBACAAABAAAAAAAAAAIAA=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCaseSignedComment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCaseAdmission">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAQAAAAgAAAAAAAAAAAAIAAAAAAAAACAiA=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCaseAdmission.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCaseCloseInfo">
+    <Position X="0.5" Y="7.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAACAAAAAEAAiA=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCaseCloseInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCaseProfile">
+    <Position X="0.5" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAEAgAAAAAIAABAAAIAAAAEAAAAAAiE=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCaseProfile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

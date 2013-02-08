@@ -1,0 +1,11 @@
+
+print '------------------------------------------------------------------------------------------'
+print 'PayorModule_PayorPhoneTypeLkp.sql'
+print '------------------------------------------------------------------------------------------'
+
+INSERT INTO [PayorModule].[PayorPhoneTypeLkp] ( [PayorPhoneTypeLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 3511169, current_timestamp, 1, current_timestamp, 1, 0, N'Other', NULL, N'OTH', N'OTH', 1000, '1/1/1900',        NULL, 0, 0 )
+INSERT INTO [PayorModule].[PayorPhoneTypeLkp] ( [PayorPhoneTypeLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 5983855, current_timestamp, 1, current_timestamp, 1, 0,  N'Cell', NULL,   N'C',   N'C',    2, '1/1/1900',        NULL, 0, 0 )
+INSERT INTO [PayorModule].[PayorPhoneTypeLkp] ( [PayorPhoneTypeLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 6911176, current_timestamp, 1, current_timestamp, 1, 0,   N'Fax', NULL,   N'F',   N'F',    4, '1/1/1900',        NULL, 0, 0 )
+INSERT INTO [PayorModule].[PayorPhoneTypeLkp] ( [PayorPhoneTypeLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 8480151, current_timestamp, 1, current_timestamp, 1, 0,  N'Work', NULL,   N'O',   N'O',    3, '1/1/1900',        NULL, 0, 0 )
+																																																																																					 
+GO

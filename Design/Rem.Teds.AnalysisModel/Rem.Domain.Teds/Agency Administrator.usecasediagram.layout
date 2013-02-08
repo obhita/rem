@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLUseCaseDiagram1">
+  <useCaseModelRootMoniker Id="38521c2f-fde4-480e-a593-22474d933282" />
+  <nestedChildShapes>
+    <actorShape Id="6695c819-a005-4495-a9a5-6c7a57cad850" absoluteBounds="3.625, 2.75, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="9b9260d7-9cd0-4cf8-9e80-05898674e2fd" LastKnownName="Agency Administrator" />
+      <relativeChildShapes />
+    </actorShape>
+    <commentShape Id="3d27a41c-90fd-4712-84b0-a28a2ace9806" absoluteBounds="3, 4.375, 2, 0.75" customColor="251, 247, 200">
+      <commentMoniker Id="e15ae549-2aaa-4c30-853f-3f457487e8f6" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentConnector edgePoints="[(3.875 : 4.375); (3.875 : 3.25)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+      <relativeChildShapes />
+      <nodes>
+        <commentShapeMoniker Id="3d27a41c-90fd-4712-84b0-a28a2ace9806" />
+        <actorShapeMoniker Id="6695c819-a005-4495-a9a5-6c7a57cad850" />
+      </nodes>
+    </commentConnector>
+    <useCaseShape Id="76274e4f-54e2-492a-ba89-0c454bb2df97" absoluteBounds="4.25, 1.25, 1.75, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="dfbc9292-8b6e-41b1-9594-f9af57caa286" LastKnownName="Generate the TEDS Extract" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(4.08333333333333 : 2.75); (4.92233203860722 : 1.74320155367134)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="2ccd9b5a-8807-4f8a-ade6-daa90230a1ee" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="6695c819-a005-4495-a9a5-6c7a57cad850" />
+        <useCaseShapeMoniker Id="76274e4f-54e2-492a-ba89-0c454bb2df97" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="b5dcf496-b06a-4c25-8e1f-e9f8f4e7e486" absoluteBounds="5.375, 3.125, 2.25, 0.75" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="39a89306-9bbd-4c2e-809c-2072b34f2710" LastKnownName="Review TEDS Submission Processing Results Summary - Admission/Discharge" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(4.125 : 3.04761904761905); (5.52322646510998 : 3.31394789811619)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="a586c071-15dd-4bd0-a1b7-286ebc400eb8" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="6695c819-a005-4495-a9a5-6c7a57cad850" />
+        <useCaseShapeMoniker Id="b5dcf496-b06a-4c25-8e1f-e9f8f4e7e486" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <commentShape Id="bca8cb3c-cd94-4229-9b96-3eaa0d2b9f5a" absoluteBounds="7.5, 1.25, 2.375, 0.875" customColor="251, 247, 200">
+      <commentMoniker Id="6129b65f-e790-44a8-ad13-d4e73e9372ec" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentConnector edgePoints="[(7.5 : 1.5); (6 : 1.5)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+      <relativeChildShapes />
+      <nodes>
+        <commentShapeMoniker Id="bca8cb3c-cd94-4229-9b96-3eaa0d2b9f5a" />
+        <useCaseShapeMoniker Id="76274e4f-54e2-492a-ba89-0c454bb2df97" />
+      </nodes>
+    </commentConnector>
+    <useCaseShape Id="c252d274-5565-4d99-8890-9277af4d1415" absoluteBounds="5.5, 2.125, 2, 0.625" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="31ae17f3-da8f-4e55-b248-1847f66c5e4a" LastKnownName="Submit TEDS Data to Synectecs" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(4.125 : 2.94642857142857); (5.67527114815402 : 2.61422761110985)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="f68f6dd5-a472-46bf-ab7d-b63413b6b529" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="6695c819-a005-4495-a9a5-6c7a57cad850" />
+        <useCaseShapeMoniker Id="c252d274-5565-4d99-8890-9277af4d1415" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <commentShape Id="cc68c24f-580c-443b-8bee-48c305240c43" absoluteBounds="8.125, 3.625, 2, 0.75" customColor="251, 247, 200">
+      <commentMoniker Id="ada231fd-daae-46a4-8aab-777c4d32b844" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentConnector edgePoints="[(8.125 : 3.75); (7.33852549156242 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+      <relativeChildShapes />
+      <nodes>
+        <commentShapeMoniker Id="cc68c24f-580c-443b-8bee-48c305240c43" />
+        <useCaseShapeMoniker Id="b5dcf496-b06a-4c25-8e1f-e9f8f4e7e486" />
+      </nodes>
+    </commentConnector>
+  </nestedChildShapes>
+</useCaseDiagram>

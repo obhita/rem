@@ -1,0 +1,72 @@
+﻿<telerik:RadTileViewItem x:Class="Rem.Ria.BillingModule.BillingAdministrationDashboard.ClaimBatchDashboardListView"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                         xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+                         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                         xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+                         d:DesignHeight="300" d:DesignWidth="400" Padding="2" RestoredWidth="60" RestoredHeight="100" Background="White"
+                         Style="{StaticResource DashboardTileViewStyle}" HeaderStyle="{StaticResource DashboardTileDividedHeaderStyle}">
+
+  <telerik:RadTileViewItem.Header>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="auto" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition />
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Grid.Column="0" Text="Claim Batch"
+                 Style="{StaticResource TileHeaderTextBlockStyle}" Margin="10,0,0,0" HorizontalAlignment="Left"
+                 d:LayoutOverrides="HorizontalMargin" />
+    </Grid>
+  </telerik:RadTileViewItem.Header>
+  <Border x:Name="Border">
+    <!-- Print Grid must live inside of another grid!-->
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+      <Border Style="{StaticResource TileHeaderColorCodeBorderStyle}" Background="#FF4EFF00" />
+      <Grid x:Name="PrintGrid" Margin="0,0,0,4" Grid.Row="1">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+          <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <telerik:RadGridView ItemsSource="{Binding ClaimList}" IsReadOnly="True"
+                             RowDetailsVisibilityMode="Collapsed" CanUserFreezeColumns="True"
+                             GroupRowStyle="{StaticResource DoubleClickableGroupStyle}" AutoGenerateColumns="False" CanUserReorderColumns="True"
+                             FontSize="9" Cursor="Hand" IsSynchronizedWithCurrentItem="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" IsFilteringAllowed="True" RowHeight="20" BorderThickness="0"
+                             GridLinesVisibility="None" AutoExpandGroups="True"
+                             AlternateRowBackground="{StaticResource AlternateGridViewRowBackground}" AlternationCount="2">
+          <telerik:RadGridView.GroupDescriptors>
+            <telerik:GroupDescriptor Member="PayorType" />
+          </telerik:RadGridView.GroupDescriptors>
+          <telerik:RadGridView.Columns>
+            <telerik:GridViewDataColumn Header="Date of Service" HeaderTextAlignment="Center"
+                                        DataMemberBinding="{Binding ServiceDate,StringFormat='MM/dd/yyyy'}" TextAlignment="Center" Width="auto" />
+            <telerik:GridViewDataColumn Header="Payor" HeaderTextAlignment="Center" TextWrapping="Wrap"
+                                        DataMemberBinding="{Binding PayorName}" TextAlignment="Center" Width="1.2*" />
+            <telerik:GridViewDataColumn Header="Patient Name" HeaderTextAlignment="Center"
+                                        DataMemberBinding="{Binding PatientDisplayName}" TextAlignment="Center" Width="1.2*" />
+            <telerik:GridViewDataColumn Header="Charge" HeaderTextAlignment="Center"
+                                        DataMemberBinding="{Binding ChargeAmount,StringFormat=c}" TextAlignment="Center" Width="*" />
+          </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <telerik:RadDataPager x:Name="dataPager" Grid.Row="1"
+                              PageSize="{Binding PageController.PageSize, Mode=TwoWay}" ItemCount="{Binding PageController.TotalCount, Mode=TwoWay}"
+                              PageIndex="{Binding PageController.PageIndex, Mode=TwoWay}" VerticalAlignment="Center">
+          <i:Interaction.Behaviors>
+            <Behavior:DataPagerVisibilityBehavior
+NumberOfPages="{Binding PageCount, ElementName=dataPager}" />
+          </i:Interaction.Behaviors>
+        </telerik:RadDataPager>
+        <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" Grid.RowSpan="2" />
+      </Grid>
+    </Grid>
+  </Border>
+</telerik:RadTileViewItem>

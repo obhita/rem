@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.PatientDashboard.ProgramEnrollmentTile.DisenrollProgramEnrollmentView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" 
+    xmlns:infrastructureBehaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+    xmlns:InfrastructureView="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+    xmlns:converter="clr-namespace:Rem.Ria.PatientModule.PatientDashboard.ProgramEnrollmentTile"
+    mc:Ignorable="d"
+    d:DesignHeight="700" d:DesignWidth="600">
+    <i:Interaction.Behaviors>
+        <infrastructureBehaviors:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <UserControl.Resources>
+        <InfrastructureView:DataContextProxyElement x:Key="RootDataContextProxy" />
+        <converter:DisenrollReasonToOtherReasonNoteVisibilityConverter x:Key="DisenrollReasonToOtherReasonNoteVisibilityConverter"/>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource PopUpFormPanelStyle}" CornerRadius="0">
+
+        <Grid Margin="10">
+            <StackPanel>
+                <Border>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                <TextBlock Text="Program" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                <TextBlock Text="{Binding ProgramEnrollment.ProgramName, TargetNullValue=-, FallbackValue=-}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                <TextBlock Text="Location" Style="{StaticResource EditFormLabelTextBlockStyle}"  VerticalAlignment="Top"/>
+                                <TextBlock Text="{Binding ProgramEnrollment.Location.DisplayName, TargetNullValue=-, FallbackValue=-}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                <TextBlock Text="Enrollment Staff" Style="{StaticResource EditFormLabelTextBlockStyle}"  VerticalAlignment="Top"/>
+                                <TextBlock Text="{Binding ProgramEnrollment.EnrollingStaff.FullName, TargetNullValue=-, FallbackValue=-}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                <TextBlock Text="Disenroll Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                <telerik:RadDateTimePicker InputMode="DatePicker" x:Name="ProgramEnrollmentDateTextBlock" SelectedValue="{Binding ProgramEnrollment.DisenrollmentDate, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                <TextBlock Text="Disenroll Reason" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                <telerik:RadComboBox Name="DisenrollReasonSelectionComboBox" ItemsSource="{Binding AvailableDisenrollReasons}" EmptyText="Select reason for disenrollment" DisplayMemberPath="Name" SelectedItem="{Binding ProgramEnrollment.DisenrollReason, Mode=TwoWay}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding DisenrollReasonSelectionChangedCommand}" CommandParameter="{Binding SelectedItem, ElementName=DisenrollReasonSelectionComboBox}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </telerik:RadComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding ProgramEnrollment.DisenrollReason, Converter={StaticResource DisenrollReasonToOtherReasonNoteVisibilityConverter}}">
+                            <Border Style="{StaticResource EditFormCommentsBorderStyle}">
+                                <StackPanel Style="{StaticResource EditFormStackPanelStyleXL}">
+                                    <TextBlock Text="Other Reason"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                                    <telerik:RadMaskedTextBox Name="OtherReasonNoteTextBox" MaskType="None" MaskedText="{Binding ProgramEnrollment.DisenrollOtherReasonNote,Mode=TwoWay}"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Visibility="{Binding Wrapper.IsDirty, Converter={StaticResource BooleanToVisibilityConverterInstance}}">
+                            <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0" >
+                                <telerik:RadButton Style="{StaticResource StaticBorderlessButtonStyle}" Command="{Binding DisenrollProgramEnrollmentCommand}" Content="Complete" Width="120" Height="22" />
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#CCFFFFFF" Foreground="#FF666666"/>
+        </Grid>
+    </Border>
+</UserControl>

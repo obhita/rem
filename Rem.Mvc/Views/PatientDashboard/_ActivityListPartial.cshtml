@@ -1,0 +1,24 @@
+﻿@using Rem.Mvc.Controllers
+@model IEnumerable<Rem.Ria.PatientModule.Web.Common.ActivityDto>
+      
+<div class="div-table" style="margin: auto">
+    <div class="div-table-caption">Activity List</div>
+    <div class="div-table-header">
+        <div class="div-table-col">Visit Date</div>
+        <div class="div-table-col">Activity Type</div>
+        <div class="div-table-col">Results</div>
+        <div class="div-table-col">Completeness</div>
+        <div class="div-table-col"></div>
+    </div>
+
+    @foreach (var activity in Model)
+    {
+        <div class="div-table-row">
+            <div class="div-table-col">@string.Format("{0:MM/dd/yyyy}", activity.AppointmentStartDateTime)</div>
+            <div class="div-table-col">@activity.ActivityType.Name</div>
+            <div class="div-table-col">Passed</div>
+            <div class="div-table-col">Complete</div>
+            <div class="div-table-col">@Html.ActionLink("Edit", PatientDashboardController.GetViewNameFromActivityType(activity.ActivityType.WellKnownName), "PatientDashboard", new { id = activity.Key, patientId = activity.PatientKey }, null)</div>
+        </div>
+    }
+</div>

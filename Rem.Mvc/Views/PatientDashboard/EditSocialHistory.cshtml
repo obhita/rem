@@ -1,0 +1,71 @@
+﻿@model Rem.Mvc.Models.EditSocialHistoryModel
+
+@{
+    ViewBag.Title = "Edit PHQ-2";
+    Layout = "_Layout.cshtml";
+}
+
+@section DashboardToolbar
+{
+    <div>
+        @Html.ActionLink("Home", "Index", "Home") -> @Html.ActionLink(string.Format("Dashboard for {0}", Model.PatientName), "GetAllClinicalCasesWithActivitiesForSelectedClinicalCase", "PatientDashboard", new { id = Model.PatientKey }, null)
+    </div>
+}
+
+<h2>Edit PHQ-2</h2>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div>@ViewBag.ErrorMessage</div>
+}
+
+@using (Html.BeginForm())
+{
+    <div>
+        <fieldset>
+            <legend>PHQ-2</legend>
+            
+            @Html.HiddenFor(p => p.SocialHistory.VisitKey)
+            @Html.HiddenFor(p => p.PatientKey)
+            @Html.HiddenFor(p => p.PatientName)
+            
+            <div class="div-table-noborder">
+                <div class="div-table-row">
+                    <div class="div-table-col-noborder"></div>
+                    <div class="div-table-col-noborder">Not At All</div>
+                    <div class="div-table-col-noborder">Several Days</div>
+                    <div class="div-table-col-noborder">More Than Half The Days</div>
+                    <div class="div-table-col-noborder">Nearly Every Day</div>
+                </div>
+                
+                <div class="div-table-row">
+                    <div class="div-table-col-noborder">
+                        <div class="editor-label">
+                            @Html.LabelFor(m => m.SocialHistory.Phq2LittleInterestInDoingThingsAnswerNumber, "1. Little interest or pleasure in doing things?")
+                        </div>
+                    </div>
+                    <div class="div-table-col-noborder">@Html.RadioButtonFor(m => m.SocialHistory.Phq2LittleInterestInDoingThingsAnswerNumber, 0, new { selected = Model.SocialHistory.Phq2LittleInterestInDoingThingsAnswerNumber == 0 })</div>
+                    <div class="div-table-col-noborder">@Html.RadioButtonFor(m => m.SocialHistory.Phq2LittleInterestInDoingThingsAnswerNumber, 1, new { selected = Model.SocialHistory.Phq2LittleInterestInDoingThingsAnswerNumber == 1 })</div>
+                    <div class="div-table-col-noborder">@Html.RadioButtonFor(m => m.SocialHistory.Phq2LittleInterestInDoingThingsAnswerNumber, 2, new { selected = Model.SocialHistory.Phq2LittleInterestInDoingThingsAnswerNumber == 2 })</div>
+                    <div class="div-table-col-noborder">@Html.RadioButtonFor(m => m.SocialHistory.Phq2LittleInterestInDoingThingsAnswerNumber, 3, new { selected = Model.SocialHistory.Phq2LittleInterestInDoingThingsAnswerNumber == 3 })</div>
+                </div>
+                
+                <div class="div-table-row">
+                    <div class="div-table-col-noborder">
+                        <div class="editor-label">
+                            @Html.LabelFor(m => m.SocialHistory.Phq2LittleInterestInDoingThingsAnswerNumber, "2. Feeling down, depressed or hopeless?")
+                        </div>
+                    </div>
+                    <div class="div-table-col-noborder">@Html.RadioButtonFor(m => m.SocialHistory.Phq2FeelingDownAnswerNumber, 0, new { selected = Model.SocialHistory.Phq2FeelingDownAnswerNumber == 0 })</div>
+                    <div class="div-table-col-noborder">@Html.RadioButtonFor(m => m.SocialHistory.Phq2FeelingDownAnswerNumber, 1, new { selected = Model.SocialHistory.Phq2FeelingDownAnswerNumber == 1 })</div>
+                    <div class="div-table-col-noborder">@Html.RadioButtonFor(m => m.SocialHistory.Phq2FeelingDownAnswerNumber, 2, new { selected = Model.SocialHistory.Phq2FeelingDownAnswerNumber == 2 })</div>
+                    <div class="div-table-col-noborder">@Html.RadioButtonFor(m => m.SocialHistory.Phq2FeelingDownAnswerNumber, 3, new { selected = Model.SocialHistory.Phq2FeelingDownAnswerNumber == 3 })</div>
+                </div>
+            </div>
+
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    </div>
+}

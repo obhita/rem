@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="fa7eb1b3-7d24-4cb5-9775-acbadaa0dad7" name="Certified Coder" linkedPackageId="dc3bbb6e-c988-4582-bb2f-6f68421f3a27" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="11e17955-bf57-43da-b6f2-cabdf424ad29">
+      <elementDefinition Id="291b0330-c7c7-4754-973b-43d5efb44d99" />
+      <body>We aren't sure how this should work</body>
+      <annotatedElements>
+        <useCaseMoniker Id="92fe07fe-36a5-4fde-b617-274b4d022a3a" LastKnownName="Define default mapping from visits and activities to procedures" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="5f35e64c-51b8-4130-9801-1828e730ce2b" name="Certified Coder" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b42858f4-7998-4c18-b905-2cd8695a06d1" />
+        <targetEnds>
+          <association Id="aa170d8d-5c5e-4508-a629-5fa6e07e4842" isDerived="false" sourceEndRoleName="Certified Coder" targetEndRoleName="UseCase1" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="98590980-849c-47aa-b675-d89a1ab38be2" LastKnownName="Review and validate procedures and diagnosis" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1a0449de-5b7e-4bc2-abc2-36d22f83a9db" name="Certified Coder" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b55034de-7d34-46a8-9088-222932976355" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="39c1e1cd-76f1-4bbb-aa38-c7614027e43c" name="UseCase1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1746ca10-662a-4fd4-aab5-0dcaeeca57b1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4594971e-1872-46b6-ba6b-4e6237fd3f9f" />
+          </association>
+          <association Id="90ca0e4d-074d-4189-a52f-49b57b0cd99e" isDerived="false" sourceEndRoleName="Certified Coder" targetEndRoleName="UseCase2" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="92fe07fe-36a5-4fde-b617-274b4d022a3a" LastKnownName="Define default mapping from visits and activities to procedures" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="68804942-fe28-41f9-a7da-82e990e9ea56" name="Certified Coder" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b385dbdb-15a1-4f60-8220-27b13b57465f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8670390f-6d24-40af-b2c2-240619e4d728" name="UseCase2" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3d8c918a-6f1b-45be-9dea-ff87338ba76a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c05e5286-600d-495b-b7a6-5a15d70d8884" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="98590980-849c-47aa-b675-d89a1ab38be2" name="Review and validate procedures and diagnosis" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="13b996ca-ae53-4594-832f-0de7f664e5a6" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="92fe07fe-36a5-4fde-b617-274b4d022a3a" name="Define default mapping from visits and activities to procedures" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="32ec373b-3cac-46f8-beb7-a84b81d1bbfe" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="dc3bbb6e-c988-4582-bb2f-6f68421f3a27" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="72023ff6-a028-43d0-b169-85a12f793353">
+        <profileInstance Id="e0ec5009-694a-4751-a274-17fdab69eef2" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="97d22fb6-5e99-4e12-8f83-bb308249f813">
+        <profileInstance Id="a5c69518-9db9-4f31-9077-8dac5c37c3a6" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

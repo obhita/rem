@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Rem.Ria.BillingModule.BillingAdministrationDashboard.BillingAdministrationDashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism" mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="400">
+  <UserControl.Resources>
+    <telerik:SlideAndZoomTransition x:Key="Slider" MinAlpha="1" MinZoom="1" SlideDirection="RightToLeft"
+                                    StartSlideAt="0" />
+  </UserControl.Resources>
+  <Grid x:Name="LayoutRoot" Margin="4,4,4,0">
+    <Border CornerRadius="0,0,9,9" BorderThickness="1" Grid.Row="1">
+      <telerik:RadTransitionControl HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                                    Regions:RegionManager.RegionName="BillingDashboardMainRegion" Transition="{StaticResource Slider}"
+                                    TransitionStatusChanged="RadTransitionControl_TransitionStatusChanged" />
+    </Border>
+  </Grid>
+</UserControl>

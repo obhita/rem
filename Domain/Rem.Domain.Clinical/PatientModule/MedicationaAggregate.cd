@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.PatientModule.Medication">
+    <Position X="3.5" Y="0.5" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Provenance" Type="Rem.Domain.Clinical.PatientModule.Provenance" FixedFromPoint="true">
+      <Path>
+        <Point X="3.5" Y="6.75" />
+        <Point X="2.5" Y="6.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ADADUAJEACIhAAAEMkAJQQgDIIBIOXAQAIBAiSEBCAw=</HashCode>
+      <FileName>PatientModule\Medication.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Patient" />
+      <Property Name="MedicationRoute" />
+      <Property Name="MedicationStatus" />
+      <Property Name="DiscontinuedReason" />
+      <Property Name="Provenance" />
+      <Property Name="IHasProvenance.Provenance" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.MedicationRoute">
+    <Position X="9.5" Y="7" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAQAAAAAAAABAAAgAAABAAAAAAAA=</HashCode>
+      <FileName>PatientModule\MedicationRoute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.MedicationStatus">
+    <Position X="9.25" Y="0.75" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAQAAAAAAAABAAAgAAABAAAAAAAA=</HashCode>
+      <FileName>PatientModule\MedicationStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.MedicationDoseUnit" Collapsed="true">
+    <Position X="13" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\MedicationDoseUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.DiscontinuedReason" Collapsed="true">
+    <Position X="9.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\DiscontinuedReason.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.MedicationFactory" Collapsed="true">
+    <Position X="13" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAIAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>PatientModule\MedicationFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.Patient" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>jINyYRtITADFECL8TjG14CUKYoyoHaphADkwEIMcgYI=</HashCode>
+      <FileName>PatientModule\Patient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.Provenance">
+    <Position X="0.5" Y="6" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="RepresentedOrganization" Type="Rem.Domain.Clinical.PatientModule.RepresentedOrganization" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.5" Y="7.062" />
+        <Point X="2.875" Y="7.062" />
+        <Point X="2.875" Y="8.874" />
+        <Point X="4" Y="8.874" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAgAECQAAAAAAAAAACAAAASAAAA=</HashCode>
+      <FileName>PatientModule\Provenance.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TaggedDataElement" />
+      <Property Name="AssignedAuthor" />
+      <Property Name="RepresentedOrganization" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.TaggedDataElement">
+    <Position X="0.5" Y="3.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAgAAAAIAAAAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>PatientModule\TaggedDataElement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.AssignedAuthor">
+    <Position X="0.5" Y="8.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAQAAAAAAIAAAAAAAAIAAiA=</HashCode>
+      <FileName>PatientModule\AssignedAuthor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.RepresentedOrganization">
+    <Position X="4" Y="8" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAgAAAAAAAAAAAAIAAAAgAIAAAAiA=</HashCode>
+      <FileName>PatientModule\RepresentedOrganization.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Core.CommonModule.CodedConcept">
+    <Position X="9.5" Y="4.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Rem.Domain.Clinical.PatientModule.IProvenanceFactory" Collapsed="true">
+    <Position X="13" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\IProvenanceFactory.cs</FileName>
+      <NewMemberFileName>PatientModule\IMedicationFactory.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Rem.Domain.Clinical.PatientModule.IProvenanceRepository" Collapsed="true">
+    <Position X="13" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PatientModule\IProvenanceRepository.cs</FileName>
+      <NewMemberFileName>PatientModule\IMedicationRepository.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="Rem.Ria.NewCropModule.NewCropButtonsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="140" d:DesignWidth="350" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure">
+    <StackPanel Orientation="Horizontal" x:Name="LayoutRoot" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+        <telerik:RadButton Content="e-Prescribe" Style="{StaticResource BorderlessButtonStyle}" Command="{Binding LaunchSessionCommand}"/>
+        <telerik:RadButton Content="Refresh"  Margin="5 0 5 0" Visibility="Collapsed" Style="{StaticResource TileRoundedCornerSmallButtonStyle}" Command="{Binding RefreshNewCropCommand}"/>
+    </StackPanel>
+</UserControl>

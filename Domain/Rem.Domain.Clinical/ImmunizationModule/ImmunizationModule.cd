@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.ImmunizationModule.Immunization" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAEAEACAAACAAAAAAEIAEAAAAIAAAAAA=</HashCode>
+      <FileName>ImmunizationModule\Immunization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ImmunizationModule.ImmunizationAdministration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgCAAAAAAAAAAAIAAAAAAAAAAgAA=</HashCode>
+      <FileName>ImmunizationModule\ImmunizationAdministration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ImmunizationModule.ImmunizationFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAhABAAAAAAAAAAACAAAAAAAAAAAACAAgAAAA=</HashCode>
+      <FileName>ImmunizationModule\ImmunizationFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ImmunizationModule.ImmunizationNotGivenReason" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAASABAAAAAAgAAAAAAgAAABAAAAAAAA=</HashCode>
+      <FileName>ImmunizationModule\ImmunizationNotGivenReason.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ImmunizationModule.ImmunizationUnitOfMeasure" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAASABAAAAAAgAAAAAAgAAABAAAAAAAA=</HashCode>
+      <FileName>ImmunizationModule\ImmunizationUnitOfMeasure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ImmunizationModule.ImmunizationVaccineInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAQAAAIAAAAAAIAAAAAAAAIAAAA=</HashCode>
+      <FileName>ImmunizationModule\ImmunizationVaccineInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ImmunizationModule.ImmunizationVaccineManufacturer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAgAAAACAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>ImmunizationModule\ImmunizationVaccineManufacturer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Rem.Domain.Clinical.ImmunizationModule.IImmunizationRepository" Collapsed="true">
+    <Position X="4.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ImmunizationModule\IImmunizationRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Rem.Domain.Clinical.ImmunizationModule.IImmunizationFactory" Collapsed="true">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>ImmunizationModule\IImmunizationFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

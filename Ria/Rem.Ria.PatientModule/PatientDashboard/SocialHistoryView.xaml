@@ -1,0 +1,386 @@
+﻿<telerik:RadTileViewItem
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:InfrastructureView="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" 
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+    x:Class="Rem.Ria.PatientModule.PatientDashboard.SocialHistoryView"  Style="{StaticResource DashboardTileViewStyle}" HeaderStyle="{StaticResource DashboardTileHeaderStyle}"
+    mc:Ignorable="d"
+    d:DesignHeight="900" d:DesignWidth="900" Header="Social History" TileState="{Binding ElementName=frcContent,Path=State,Converter={StaticResource FluideStateToTileConverterInstance},Mode=TwoWay}">
+
+   <telerik:RadTileViewItem.Resources>
+        <InfrastructureView:DataContextProxyElement x:Key="RootDataContext"/>
+    </telerik:RadTileViewItem.Resources> 
+  
+  <telerik:RadTileViewItem.HeaderTemplate>
+    <DataTemplate>
+            <Grid Margin="0 0 10 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="0,0,2,0" Grid.Column="0" >
+                    <telerik:RadButton Style="{StaticResource TileDeleteButtonStyle}" Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.CloseViewCommand}" ToolTipService.ToolTip="Delete activity"></telerik:RadButton>
+                </StackPanel>
+                <Viewbox x:Name="Header"  Grid.Column="1" StretchDirection="DownOnly" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="0"/>
+                    </StackPanel>
+                </Viewbox>
+            </Grid>
+        </DataTemplate>
+  </telerik:RadTileViewItem.HeaderTemplate>
+  
+    <i:Interaction.Behaviors>
+        <Behavior:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <telerik:RadFluidContentControl x:Name="frcContent"  Margin="0,0,0,0" State="{Binding IsCurrentActivity,Mode=OneWay, Converter={StaticResource BooleanToFluidContentControlStateLargeConverterInstance}}" ContentChangeMode="Manual" Style="{StaticResource RfccRemStyle}">
+        <telerik:RadFluidContentControl.SmallContent>
+            <Grid/>
+        </telerik:RadFluidContentControl.SmallContent>
+        <telerik:RadFluidContentControl.Content>
+            <Grid/>
+        </telerik:RadFluidContentControl.Content>
+        <telerik:RadFluidContentControl.LargeContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Margin="0" Padding="0" BorderThickness="0">
+                <Grid>
+                    <CustomControls:Editor MaximizeHeader="Social History" Style="{StaticResource TileEditorHeaderStyle}" StartOpen="True" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}" CanMaximize="True">
+                        <CustomControls:Editor.Expanders>
+                            <CustomControls:EditableExpander x:Name="SocialHistory" Content="{Binding EditingDto}" IsEditing="True" IsExpanded="True" FreezeFocused="{Binding IsFreezeFocused,Mode=TwoWay}" CanMaximize="False"
+                                                 SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}" Width="Auto" MinWidth="700" MaxWidth="800">
+                                <CustomControls:EditableExpander.ContentTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Border Style="{StaticResource ScreenerSectionBorderStyle}">
+                                                <StackPanel>
+                                                    <Border Style="{StaticResource ScreenerSectionHeaderBorderStyle}">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                            <TextBlock Text="NIDA/SAMHSA Single Question Screener" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                    <StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                            <TextBlock Text="How many times in the past year have you used an illegal drug or used a prescription medication for non-medical reasons?" Style="{StaticResource ScreenerLabelTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                            <TextBlock Text="{Binding Dast10TimesPastYearUsedIllegalDrugOrPrescriptionMedicationForNonMedicalReasonsNumber, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                    <Border Style="{StaticResource ScreenerSectionHeaderBorderStyle}">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                            <TextBlock Text="NIAAA/SAMHSA Single Question Screener" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                    <StackPanel>
+                                                        <StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                                <TextBlock Text="Do you sometimes drink beer, wine, or other alcoholic beverages?" Style="{StaticResource ScreenerLabelTextBlockStyle}" />
+                                                                <TextBlock  Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                        <i:Interaction.Behaviors>
+                                            <Behavior:MultiBindingsBehavior>
+                                                <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                    <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource DictionaryKeyValueConverterInstance}">
+                                                        <Behavior:MultiBinding.Bindings>
+                                                            <Behavior:BindingCollection>
+                                                                <Binding Path="AuditCDrinkBeerWineOrOtherAlcoholicBeveragesIndicator"/>
+                                                                <Binding Source="{StaticResource RootDataContext}" Path="DataSource.Choices"/>
+                                                            </Behavior:BindingCollection>
+                                                        </Behavior:MultiBinding.Bindings>
+                                                    </Behavior:MultiBinding>
+                                                </Behavior:MultiBindingsBehavior.MultiBindings>
+                                            </Behavior:MultiBindingsBehavior>
+                                        </i:Interaction.Behaviors>
+                                                                </TextBlock>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                        <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                        <Border Style="{StaticResource ScreenerSectionHeaderBorderStyle}">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                                <TextBlock Text="Smoking History" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                            </StackPanel>
+                                                        </Border>
+                                                        <StackPanel Orientation="Vertical">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                                <TextBlock Text="Smoking Status" Style="{StaticResource ScreenerLabelTextBlockStyle}"/>
+                                                                <TextBlock Text="{Binding SmokingStatus.Name, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                            </StackPanel>
+                                                            <StackPanel x:Name="SmokingWillingToQuitStackPanel" Visibility="{Binding SmokingStatus.WellKnownName, Converter={StaticResource QuestionAnswerToVisibilityConverterInstance}, ConverterParameter='EverydaySmoker,SomedaySmoker'}" Orientation="Horizontal">
+
+                                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                                    <TextBlock Text="Are you willing to quit?" Style="{StaticResource ScreenerLabelTextBlockStyle}" />
+                                                                    <TextBlock  Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                            <i:Interaction.Behaviors>
+                                                <Behavior:MultiBindingsBehavior>
+                                                    <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                        <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource DictionaryKeyValueConverterInstance}">
+                                                            <Behavior:MultiBinding.Bindings>
+                                                                <Behavior:BindingCollection>
+                                                                    <Binding Path="SmokingStatusAreYouWillingToQuitIndicator"/>
+                                                                    <Binding Source="{StaticResource RootDataContext}" Path="DataSource.Choices"/>
+                                                                </Behavior:BindingCollection>
+                                                            </Behavior:MultiBinding.Bindings>
+                                                        </Behavior:MultiBinding>
+                                                    </Behavior:MultiBindingsBehavior.MultiBindings>
+                                                </Behavior:MultiBindingsBehavior>
+                                            </i:Interaction.Behaviors>
+                                                                    </TextBlock>
+                                                                </StackPanel>
+
+                                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                                    <TextBlock Text="Date You Are Willing To Quit Smoking?" Style="{StaticResource ScreenerLabelTextBlockStyle}"/>
+                                                                    <TextBlock x:Name="SmokingWillingToQuitDate" Text="{Binding SmokingStatusAreYouWillingToQuitDate,StringFormat='{}{0:MM/dd/yyyy}', FallbackValue=-, TargetNullValue=-}" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                    <Border Style="{StaticResource ScreenerSectionHeaderBorderStyle}">
+                                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                            <TextBlock Text="PHQ-2" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Not At All" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Several Days" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="More Than Half The Days" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" />
+                                                            </Border>
+                                                            <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                                <TextBlock Text="Nearly Every Day" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                    <StackPanel>
+                                                        <CustomControls:QuestionItem Question="1. Little interest or pleasure in doing things?" Value="{Binding DataSource.EditingDto.Phq2LittleInterestInDoingThingsAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                        <CustomControls:QuestionItem Question="2. Feeling down, depressed or hopeless?" Value="{Binding DataSource.EditingDto.Phq2FeelingDownAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}" IsEnabled="False">
+                                                            <CustomControls:QuestionItem.ItemsSource>
+                                                                <toolkit:ObservableObjectCollection>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                    <TextBlock Text=""/>
+                                                                </toolkit:ObservableObjectCollection>
+                                                            </CustomControls:QuestionItem.ItemsSource>
+                                                        </CustomControls:QuestionItem>
+                                                    </StackPanel>
+                                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentTemplate>
+                                <CustomControls:EditableExpander.ContentEditTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{StaticResource ScreenerSectionBorderStyle}">
+                                            <StackPanel>
+                                                <Border Style="{StaticResource ScreenerSectionHeaderBorderStyle}">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                        <TextBlock Text="NIDA/SAMHSA Single Question Screener" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                    <TextBlock Text="How many times in the past year have you used an illegal drug or used a prescription medication for non-medical reasons?" Style="{StaticResource ScreenerLabelTextBlockStyle}"/>
+                                                    <telerik:RadMaskedTextBox x:Name="NIAAA/SAMHSA Single Question Screener" EmptyContent="Number of Times" MaskedText="{Binding Dast10TimesPastYearUsedIllegalDrugOrPrescriptionMedicationForNonMedicalReasonsNumber, Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}" Width="120" HorizontalAlignment="Left"/>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                <Border Style="{StaticResource ScreenerSectionHeaderBorderStyle}">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                        <TextBlock Text="NIAAA/SAMHSA Single Question Screener" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                    <TextBlock Text="Do you sometimes drink beer, wine, or other alcoholic beverages?" Style="{StaticResource ScreenerLabelTextBlockStyle}" />
+                                                    <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding DataSource.Choices, Source={StaticResource RootDataContext}}" SelectedValuePath="Key" SelectedValue="{Binding AuditCDrinkBeerWineOrOtherAlcoholicBeveragesIndicator, Mode=TwoWay}" HorizontalAlignment="Left">
+                                                        <i:Interaction.Behaviors>
+                                                            <Behavior:ListBoxSelectionBehavior />
+                                                        </i:Interaction.Behaviors>
+                                                        <ListBox.ItemContainerStyle>
+                                                            <Style TargetType="ListBoxItem">
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="ListBoxItem">
+                                                                            <Border Background="Transparent">
+                                                                                <RadioButton Content="{Binding Value}" IsHitTestVisible="False" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                                            </Border>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+                                                        </ListBox.ItemContainerStyle>
+                                                        <ListBox.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <StackPanel Orientation="Vertical"/>
+                                                            </ItemsPanelTemplate>
+                                                        </ListBox.ItemsPanel>
+                                                    </ListBox>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                <Border Style="{StaticResource ScreenerSectionHeaderBorderStyle}">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                        <TextBlock Text="Smoking History" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <StackPanel Orientation="Vertical">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                        <TextBlock Text="Smoking Status" Style="{StaticResource ScreenerLabelTextBlockStyle}"  />
+                                                        <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[SmokingStatus], Mode=TwoWay}" SelectedValue="{Binding SmokingStatus, Mode=TwoWay}" DisplayMemberPath="Name"/>
+                                                    </StackPanel>
+
+                                                    <StackPanel x:Name="SmokingWillingToQuitStackPanel">
+                                                        <StackPanel.Visibility>
+                                                            <Binding Path="SmokingStatus.WellKnownName" Converter="{StaticResource QuestionAnswerToVisibilityConverterInstance}" ConverterParameter="EverydaySmoker,SomedaySmoker">
+                                                                <Binding.TargetNullValue>
+                                                                    <Visibility>Collapsed</Visibility>
+                                                                </Binding.TargetNullValue>
+                                                                <Binding.FallbackValue>
+                                                                    <Visibility>Collapsed</Visibility>
+                                                                </Binding.FallbackValue>
+                                                            </Binding>
+                                                        </StackPanel.Visibility>
+                                                        <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" >
+                                                                <TextBlock Text="Are you willing to quit?" Style="{StaticResource ScreenerLabelTextBlockStyle}" />
+                                                                <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding DataSource.Choices, Source={StaticResource RootDataContext}}" SelectedValuePath="Key" SelectedValue="{Binding SmokingStatusAreYouWillingToQuitIndicator, Mode=TwoWay}" HorizontalAlignment="Left">
+                                                                    <i:Interaction.Behaviors>
+                                                                        <Behavior:ListBoxSelectionBehavior />
+                                                                    </i:Interaction.Behaviors>
+                                                                    <ListBox.ItemContainerStyle>
+                                                                        <Style TargetType="ListBoxItem">
+                                                                            <Setter Property="Template">
+                                                                                <Setter.Value>
+                                                                                    <ControlTemplate TargetType="ListBoxItem">
+                                                                                        <Border Background="Transparent">
+                                                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}">
+                                                                                                <RadioButton Content="{Binding Value}" IsHitTestVisible="False" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                                                            </StackPanel>
+                                                                                        </Border>
+                                                                                    </ControlTemplate>
+                                                                                </Setter.Value>
+                                                                            </Setter>
+                                                                        </Style>
+                                                                    </ListBox.ItemContainerStyle>
+                                                                    <ListBox.ItemsPanel>
+                                                                        <ItemsPanelTemplate>
+                                                                            <StackPanel Orientation="Horizontal"/>
+                                                                        </ItemsPanelTemplate>
+                                                                    </ListBox.ItemsPanel>
+                                                                </ListBox>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" >
+                                                                <TextBlock Text="Date You Are Willing To Quit Smoking?"  Style="{StaticResource ScreenerLabelTextBlockStyle}"/>
+                                                                <telerik:RadDatePicker x:Name="SmokingStatusAreYouWillingToQuitDate" SelectedValue="{Binding SmokingStatusAreYouWillingToQuitDate,Mode=TwoWay}" DateTimeWatermarkContent="mm/dd/yyyy" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                        <StackPanel Visibility="{Binding SmokingStatusAreYouWillingToQuitIndicator, Converter={StaticResource QuestionAnswerToVisibilityConverterInstance}, ConverterParameter='True'}" Orientation="Horizontal">
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                                <Button Content="Smoking Cessation" ToolTipService.ToolTip="Smoking Cessation" Width="120" HorizontalAlignment="Left" >
+                                                                    <i:Interaction.Triggers>
+                                                                        <i:EventTrigger EventName="Click">
+                                                                            <i:InvokeCommandAction Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.SmokingWillingToQuitCommand}" CommandParameter="{Binding SmokingStatusAreYouWillingToQuitIndicator}" />
+                                                                        </i:EventTrigger>
+                                                                    </i:Interaction.Triggers>
+                                                                </Button>
+                                                            </StackPanel>
+                                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                                <Button Content="Schedule Follow Up" ToolTipService.ToolTip="Schedule Follow Up" Width="120" HorizontalAlignment="Left"  >
+                                                                    <i:Interaction.Triggers>
+                                                                        <i:EventTrigger EventName="Click">
+                                                                            <i:InvokeCommandAction Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.ScheduleFollowupCommand}" CommandParameter="{Binding}" />
+                                                                        </i:EventTrigger>
+                                                                    </i:Interaction.Triggers>
+                                                                </Button>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                <Border Style="{StaticResource ScreenerSectionHeaderBorderStyle}">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                                                        <TextBlock Text="PHQ-2" Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                                        <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                            <TextBlock Text="Not At All" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                        </Border>
+                                                        <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                            <TextBlock Text="Several Days" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                        </Border>
+                                                        <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                            <TextBlock Text="More Than Half The Days" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" />
+                                                        </Border>
+                                                        <Border Style="{StaticResource ScreenerMatrixHeaderBorderStyle}">
+                                                            <TextBlock Text="Nearly Every Day" Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}"  TextAlignment="Center" HorizontalAlignment="Center"/>
+                                                        </Border>
+                                                    </StackPanel>
+                                                </Grid>
+                                                <StackPanel>
+                                                    <CustomControls:QuestionItem Question="1. Little interest or pleasure in doing things?" Value="{Binding DataSource.EditingDto.Phq2LittleInterestInDoingThingsAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                        <CustomControls:QuestionItem.ItemsSource>
+                                                            <toolkit:ObservableObjectCollection>
+                                                                <TextBlock Text=""/>
+                                                                <TextBlock Text=""/>
+                                                                <TextBlock Text=""/>
+                                                                <TextBlock Text=""/>
+                                                            </toolkit:ObservableObjectCollection>
+                                                        </CustomControls:QuestionItem.ItemsSource>
+                                                    </CustomControls:QuestionItem>
+                                                    <CustomControls:QuestionItem Question="2. Feeling down, depressed or hopeless?" Value="{Binding DataSource.EditingDto.Phq2FeelingDownAnswerNumber,Mode=TwoWay, Source={StaticResource RootDataContext}}">
+                                                        <CustomControls:QuestionItem.ItemsSource>
+                                                            <toolkit:ObservableObjectCollection>
+                                                                <TextBlock Text=""/>
+                                                                <TextBlock Text=""/>
+                                                                <TextBlock Text=""/>
+                                                                <TextBlock Text=""/>
+                                                            </toolkit:ObservableObjectCollection>
+                                                        </CustomControls:QuestionItem.ItemsSource>
+                                                    </CustomControls:QuestionItem>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentEditTemplate>
+                            </CustomControls:EditableExpander>
+                        </CustomControls:Editor.Expanders>
+                    </CustomControls:Editor>
+                    <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+                </Grid>
+            </ScrollViewer>
+        </telerik:RadFluidContentControl.LargeContent>
+    </telerik:RadFluidContentControl>
+</telerik:RadTileViewItem>

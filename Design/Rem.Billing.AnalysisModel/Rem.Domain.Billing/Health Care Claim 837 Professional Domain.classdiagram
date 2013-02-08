@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="9e2b8271-e19a-4935-9b42-5d0296bdec3a" name="Health Care Claim 837 Professional Domain" linkedPackageId="f6e63a2e-8622-4373-96a0-322953d5fb27" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="12c4b1be-785e-482a-9e3e-37177c4b183f">
+      <elementDefinition Id="3a881126-8663-458c-ab72-c6e4e6933587" />
+      <body>837 Key is the ISA,GS, &amp; ST-Control Numbers</body>
+      <annotatedElements>
+        <classMoniker Id="a7e2115e-fe73-42f0-8da3-8263d40555c5" LastKnownName="Health Care Claim 837 Professional" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="d1af600d-6a7e-4fe2-99d1-29ec4a1d9fe8">
+      <profileInstance Id="c34e8fe0-15e5-4b22-8af0-da1d15d56d66" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="2e5eee9f-8460-4b41-8209-2a8bbbfcfe0f">
+      <profileInstance Id="d7d1cc90-849b-4f43-881b-3bbf2d251383" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a7e2115e-fe73-42f0-8da3-8263d40555c5" name="Health Care Claim 837 Professional" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="816e1cca-82b1-4051-8e4f-53d4a4bd7476" />
+        <ownedAttributesInternal>
+          <property Id="13bd143b-3077-4d42-9e88-d8c24e34b896" name="Key" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="804aa5e1-6905-4d8c-91a7-a59141eb7cdd" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="b70dbe6b-9b3a-4ce0-808a-0e68ff2d941a" LastKnownName="long" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="b70dbe6b-9b3a-4ce0-808a-0e68ff2d941a" name="long" isAbstract="false" isLeaf="false" cachedFullName="long">
+        <elementDefinition Id="cffcb105-b138-4fc3-9d64-9b829ecd1d9b" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="31061bee-f7c8-42dd-89ec-34ef7c30a295" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+  </package>
+  <package Id="f6e63a2e-8622-4373-96a0-322953d5fb27" name="Rem.Domain.Billing">
+    <elementDefinition Id="e10ccdeb-bd61-4f8f-8b9e-5c3f762b18c3" />
+  </package>
+</logicalClassDesignerModel>

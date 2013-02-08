@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Rem.Ria.Infrastructure.EmergencyAccess.EmergencyAccessView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	mc:Ignorable="d"
+    d:DesignHeight="60" d:DesignWidth="400">
+    
+    <Grid x:Name="LayoutRoot" VerticalAlignment="Center" HorizontalAlignment="Center">
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="auto"/>
+    		<ColumnDefinition Width="auto"/>
+			<ColumnDefinition Width="auto"/>
+    	</Grid.ColumnDefinitions>
+		<StackPanel Margin="0,2" Orientation="Vertical" Visibility="{Binding ElementName=btnEmergencyAccess,Path=IsEnabled, Converter={StaticResource BooleanToVisibilityConverterInstance}}">
+    		<Button x:Name="btnEmergencyAccess" Style="{StaticResource GlobalNavigationButtonBase}"  Command="{Binding ExerciseEmergencyAccessCommand}" Margin="0" Height="56">
+    			<Grid>
+    				<Grid.RowDefinitions>
+    					<RowDefinition Height="*"/>
+    					<RowDefinition Height="auto"/>                                	
+    				</Grid.RowDefinitions>
+    				<Border HorizontalAlignment="Center" Height="32" Margin="0,2,0,0" Grid.Row="0" VerticalAlignment="Center">
+    					<Path Data="M12.993131,17.025467 C13.422401,17.025467 13.780059,17.142162 14.066007,17.375662 C14.351955,17.609154 14.494981,17.909346 14.494981,18.276333 C14.494981,18.626925 14.353157,18.925516 14.069708,19.172115 C13.786163,19.418705 13.4273,19.542002 12.993131,19.542002 C12.552253,19.542002 12.194195,19.422405 11.918949,19.183208 C11.643703,18.944017 11.50598,18.641726 11.50598,18.276333 C11.50598,17.915945 11.644901,17.617355 11.922649,17.38056 C12.200395,17.143864 12.557255,17.025467 12.993131,17.025467 z M11.820632,8.375001 L14.337655,8.375001 L14.023001,15.924498 L11.977957,15.924498 z M12.999998,2.9999998 L1.9999996,21 L24.000002,21 z M12.999998,0 L26.000002,22 L0,22 z" Fill="White" Height="22" Stretch="Fill" UseLayoutRounding="False" Width="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    				</Border>
+    				<TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Emergency Access" FontSize="10" TextAlignment="Center" Foreground="White" FontFamily="Arial" FontWeight="Bold" Margin="0,0,0,4"/>
+    			</Grid>
+    		</Button>
+    	</StackPanel>
+        
+        <Grid Grid.Column="1" Width="80" Margin="0,2" Visibility="{Binding EmergencyAccessEnabled, Converter={StaticResource BooleanToVisibilityConverterInstance}}">
+            <Border x:Name="OuterBackgroundBorder" Background="#FF911717" CornerRadius="3" Margin="2"/>
+            <Border x:Name="InnerBackgroundBorder" CornerRadius="3" Margin="2" BorderThickness="1">
+                <Border.Background>
+                    <RadialGradientBrush Center="0.854,0.936" GradientOrigin="0.854,0.936" RadiusY="1.363" RadiusX="1.557">
+                        <GradientStop Color="#0CFFFFFF" Offset="0.464"/>
+                        <GradientStop Color="#7FFFFFFF" Offset="0.794"/>
+                    </RadialGradientBrush>
+                </Border.Background>
+                <Border.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="135"/>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#19000000" Offset="0.5"/>
+                        <GradientStop Color="#BFFFFFFF" Offset="0.75"/>
+                        <GradientStop Color="#BFFFFFFF" Offset="0.25"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+            </Border>
+            <TextBlock Text="Emergency Access On!" Grid.Row="1" Foreground="White" FontFamily="Arial" TextAlignment="Center" FontSize="11" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Border Margin="0,2,0,0" Grid.Row="0" Opacity="0.35">
+                <Path Data="M12.993131,17.025467 C13.422401,17.025467 13.780059,17.142162 14.066007,17.375662 C14.351955,17.609154 14.494981,17.909346 14.494981,18.276333 C14.494981,18.626925 14.353157,18.925516 14.069708,19.172115 C13.786163,19.418705 13.4273,19.542002 12.993131,19.542002 C12.552253,19.542002 12.194195,19.422405 11.918949,19.183208 C11.643703,18.944017 11.50598,18.641726 11.50598,18.276333 C11.50598,17.915945 11.644901,17.617355 11.922649,17.38056 C12.200395,17.143864 12.557255,17.025467 12.993131,17.025467 z M11.820632,8.375001 L14.337655,8.375001 L14.023001,15.924498 L11.977957,15.924498 z M12.999998,2.9999998 L2.3009255,20.6875 L23.69908,20.6875 z M12.999998,0 L26.000002,22 L0,22 z" Fill="White" Height="44" Stretch="Fill" UseLayoutRounding="False" Width="54" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,4"/>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="2d0edf7c-2173-4b5d-ab75-185b19aefaf0" name="UMLUseCaseDiagram1" linkedPackageId="ff46990d-7eb7-4e23-9b2f-6e21ed30b0b0" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="1e8e0cfc-385a-4a51-b689-c5d710cc1b90">
+      <elementDefinition Id="39a77415-8046-41a8-a0de-7e182f235818" />
+      <body>As part of the clinical workflow, the clinician collects the detailed TEDS data as well as basic demographic information required for TEDS.</body>
+      <annotatedElements>
+        <actorMoniker Id="bdddc359-99fc-45bf-b28b-123b6776e3f7" LastKnownName="Clinician" />
+      </annotatedElements>
+    </comment>
+    <comment Id="dc3aa2e1-550a-43d8-b129-21d54ac1390d">
+      <elementDefinition Id="00973961-741f-48f2-88e3-d953d669a153" />
+      <body>[TEDS Data Collected]
+
+A clinician is better able to assess if a patient is co-occuring during course of treatment.
+
+Other TEDS data may be collected as part of other activities such as assessments and screeners</body>
+      <annotatedElements>
+        <useCaseMoniker Id="ecdaadd9-311e-4ef9-bef5-e611c6e4a69d" LastKnownName="Records Visits and Activities" />
+      </annotatedElements>
+    </comment>
+    <comment Id="03f8ccb1-c079-47d1-b147-54db07a5fdf0">
+      <elementDefinition Id="5b76fde4-af43-44c8-94a4-9867a2735050" />
+      <body>[TEDS Data Collected]
+
+TEDS data is collected at enrollment, change of modality, and concorrent programs.</body>
+      <annotatedElements>
+        <useCaseMoniker Id="2f4dbe29-bb1c-42f6-9fa7-ac86bc3df715" LastKnownName="Enrolls and Disenrolls Patient into Program(s)" />
+      </annotatedElements>
+    </comment>
+    <comment Id="2792aeef-d0c2-4fc1-bf52-05289793e5d7">
+      <elementDefinition Id="4fd1a570-e476-49b2-8148-b52e8bc1a6bc" />
+      <body>[TEDS Data Collected]</body>
+      <annotatedElements>
+        <useCaseMoniker Id="93c4d64a-816d-4822-b9ec-4ed0367bcafa" LastKnownName="Collects Insurance Information" />
+      </annotatedElements>
+    </comment>
+    <comment Id="2e29211b-5307-43e3-a0a4-39e40e0a4d26">
+      <elementDefinition Id="8f51afa3-afcc-43af-80bf-f23561115268" />
+      <body>[TEDS Data Collected]
+
+Some data collected are KEY FIELDS</body>
+      <annotatedElements>
+        <useCaseMoniker Id="62ed56de-49c5-4489-9b71-60af3cb40be3" LastKnownName="Collects demographic information" />
+      </annotatedElements>
+    </comment>
+    <comment Id="0416922f-7c9c-4f15-bf6d-ee19d5e3297c">
+      <elementDefinition Id="6580d0f0-a4da-48aa-8f7c-79f9fd2dc2b5" />
+      <body>[TEDS Data Collected]</body>
+      <annotatedElements>
+        <useCaseMoniker Id="4983e227-aabc-49e4-bac7-5c7af227194b" LastKnownName="Performs Patient Discharge" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="a2f329c9-a2df-467a-b56a-16270e0e2d19">
+      <profileInstance Id="07864812-5858-4cb6-bb8f-609e96fa432c" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="69d6515d-6a83-4fa1-a32b-a501eb48014b">
+      <profileInstance Id="d9b5835b-8b49-4e7a-bd26-9c60d5d62318" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="bdddc359-99fc-45bf-b28b-123b6776e3f7" name="Clinician" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="622843fb-57d8-48bc-a3f7-dad398557347" />
+        <generalsInternal>
+          <generalization Id="2bf19ce0-90a7-40a8-b00a-60363e11bb36" isSubstitutable="false">
+            <actorMoniker Id="4f4e6ea2-212e-4929-ba06-77c90278834d" LastKnownName="Front Desk" />
+            <elementDefinition Id="9941af78-7099-4db3-98c8-3344be0dec63" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="a925d4d2-47fe-4448-821d-4788a02966a1" isDerived="false" sourceEndRoleName="Clinician" targetEndRoleName="Patient Intake" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="7fe5a73a-a9d2-48ab-a7e0-4e5c184c65ee" LastKnownName="Performs Patient Intake" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d2365fb3-0836-446b-a206-458501cda953" name="Clinician" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3cb8835a-f589-4a34-b6e4-67149273e547" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ff553a16-dfac-4b3a-b6e1-2c7df20ddbde" name="Patient Intake" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6542e4b6-4aea-4f63-9b94-890496e58af5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="a6ece041-1197-4c8d-9fd3-7aa93bd189dd" />
+          </association>
+          <association Id="7166c382-a189-4fec-982e-fbf179454e50" isDerived="false" sourceEndRoleName="Clinician" targetEndRoleName="Records visits and Activits" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="ecdaadd9-311e-4ef9-bef5-e611c6e4a69d" LastKnownName="Records Visits and Activities" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fd50f65b-5718-4aca-bba6-21857e7495cc" name="Clinician" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c9138706-5f75-4eac-8d63-c6bb68c5317d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="670c4364-d9b0-4f29-b266-7874f50698a6" name="Records visits and Activits" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fc33abbc-7e5c-4e75-aac1-c9da8742b139" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2a99489e-e630-4759-b355-0ee87d67c856" />
+          </association>
+          <association Id="11781f65-c63a-487e-8b9d-d4560e08ead0" isDerived="false" sourceEndRoleName="Clinician" targetEndRoleName="Enrolls and Disenrolls Patient into Progrm" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="2f4dbe29-bb1c-42f6-9fa7-ac86bc3df715" LastKnownName="Enrolls and Disenrolls Patient into Program(s)" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="36009901-80f3-40fc-a202-0f78d3ab7b15" name="Clinician" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e8acbefd-603a-4b29-b9b9-d39446bf943b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ea6bddd1-6aed-46bf-bef2-8ac4dbf90a8b" name="Enrolls and Disenrolls Patient into Progrm" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fba6e3e8-0970-4550-9ef5-1991445b0080" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4b5e76aa-d8b4-453a-be57-f5c797b60f8c" />
+          </association>
+          <association Id="d63ca05e-d503-4817-bfdc-aa2a6cb04804" isDerived="false" sourceEndRoleName="Clinician" targetEndRoleName="Performs Patient Discharge" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="4983e227-aabc-49e4-bac7-5c7af227194b" LastKnownName="Performs Patient Discharge" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="91861b1e-6a85-4f36-9ffd-3dee2e8455a3" name="Clinician" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e88735ae-148c-4032-9c46-1159a3b7be17" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2e125a69-e048-4108-b7cf-da27d5abec1e" name="Performs Patient Discharge" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="72004568-fe29-46b1-9dd0-97f7a01331e0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="234f8ea9-13d6-4b95-b560-c041b2b9d804" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7fe5a73a-a9d2-48ab-a7e0-4e5c184c65ee" name="Performs Patient Intake" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5615ad52-2755-4e48-90a9-a7360d89d2e6" />
+        <additions>
+          <include Id="2a08ff8d-a98f-47c7-a3dc-21e86705a19c">
+            <useCaseMoniker Id="62ed56de-49c5-4489-9b71-60af3cb40be3" LastKnownName="Collects demographic information" />
+            <elementDefinition Id="a3a19349-f5c1-4697-b5a8-3f8c5dd53a57" />
+          </include>
+          <include Id="086d9138-8ff0-489c-b5a9-cab6ad8e0b81">
+            <useCaseMoniker Id="93c4d64a-816d-4822-b9ec-4ed0367bcafa" LastKnownName="Collects Insurance Information" />
+            <elementDefinition Id="3dd37b9c-13d6-48e0-82c7-f64ba39e7714" />
+          </include>
+          <include Id="b01cc203-f4d4-4941-93a9-21c0eb0f880f">
+            <useCaseMoniker Id="694b84e6-5816-46d1-8403-7ae943193c1c" LastKnownName="Performs Pre-Screener if Necessary" />
+            <elementDefinition Id="7882df6a-2669-4e7c-a0a5-500e342f4518" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="62ed56de-49c5-4489-9b71-60af3cb40be3" name="Collects demographic information" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="41e4dd83-1b93-4407-8a35-2de62cfc0a5a" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="93c4d64a-816d-4822-b9ec-4ed0367bcafa" name="Collects Insurance Information" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="91c9a966-f985-448d-abbf-924c93a9b646" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="4f4e6ea2-212e-4929-ba06-77c90278834d" name="Front Desk" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="94a45f0a-c10b-4626-bd66-6c065e2d9991" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ecdaadd9-311e-4ef9-bef5-e611c6e4a69d" name="Records Visits and Activities" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1aff0c1c-29a5-47e7-9ee9-6d6af69f033c" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2f4dbe29-bb1c-42f6-9fa7-ac86bc3df715" name="Enrolls and Disenrolls Patient into Program(s)" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b48f0ce0-88d9-43da-a56e-c8c0108603ec" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="694b84e6-5816-46d1-8403-7ae943193c1c" name="Performs Pre-Screener if Necessary" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="69ab4358-573a-4525-811f-7c718943ef17" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4983e227-aabc-49e4-bac7-5c7af227194b" name="Performs Patient Discharge" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ede6c233-f2b6-4eca-bbdc-fa2db9d54968" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="ff46990d-7eb7-4e23-9b2f-6e21ed30b0b0" name="Rem.Teds.AnalysisModel">
+    <elementDefinition Id="af32d734-bbd9-48a2-b006-f559ba075f3e" />
+  </package>
+</useCaseModelRoot>

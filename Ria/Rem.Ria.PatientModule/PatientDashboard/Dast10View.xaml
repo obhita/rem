@@ -1,0 +1,334 @@
+﻿<telerik:RadTileViewItem x:Class="Rem.Ria.PatientModule.PatientDashboard.Dast10View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+			 xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+             xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure" 
+             xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit" xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d" d:DesignHeight="1000"
+             d:DesignWidth="1000" Header="Drug Abuse Screening Test (DAST-10)" TileState="{Binding ElementName=frcContent,Path=State,Converter={StaticResource FluideStateToTileConverterInstance},Mode=TwoWay}" Style="{StaticResource DashboardTileViewStyle}" HeaderStyle="{StaticResource DashboardTileHeaderStyle}">
+ 
+    <telerik:RadTileViewItem.Resources>
+        <View:DataContextProxyElement x:Key="RootDataContext" />
+        <Controls:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <Converter:QuestionAnswerToVisibilityConverter x:Key="QuestionAnswerToVisibilityConverter"/>
+        <Controls:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" />
+        <Converter:InvertedNullableIntToNullableBooleanConverter x:Key="InvertedNullableIntToNullableBooleanConverter"/>
+        <Converter:InvertedBooleanIndexToCustomTextConverter x:Key="InvertedBooleanIndexToCustomTextConverter"/>
+        <toolkit:ObservableObjectCollection x:Key="YesNoList">
+            <System:String>Yes</System:String>
+            <System:String>No</System:String>
+        </toolkit:ObservableObjectCollection>
+    </telerik:RadTileViewItem.Resources>
+  
+  <telerik:RadTileViewItem.HeaderTemplate>
+    <DataTemplate>
+            <Grid Margin="0 0 10 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="0,0,2,0" Grid.Column="0" >
+                    <telerik:RadButton Style="{StaticResource TileDeleteButtonStyle}" Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.CloseViewCommand}" ToolTipService.ToolTip="Delete activity"></telerik:RadButton>
+                </StackPanel>
+                <Viewbox x:Name="Header"  Grid.Column="1" StretchDirection="DownOnly" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="0"/>
+                    </StackPanel>
+                </Viewbox>
+            </Grid>
+        </DataTemplate>
+  </telerik:RadTileViewItem.HeaderTemplate>
+  
+  <i:Interaction.Behaviors>
+      <Behavior:CloseViewBehavior />
+  </i:Interaction.Behaviors>
+
+    <telerik:RadFluidContentControl x:Name="frcContent"  Margin="0,0,0,0" State="{Binding IsCurrentActivity,Mode=OneWay, Converter={StaticResource BooleanToFluidContentControlStateLargeConverterInstance}}" ContentChangeMode="Manual" Style="{StaticResource RfccRemStyle}">
+        <telerik:RadFluidContentControl.SmallContent>
+            <Grid/>
+        </telerik:RadFluidContentControl.SmallContent>
+        <telerik:RadFluidContentControl.Content>
+            <Grid/>
+        </telerik:RadFluidContentControl.Content>
+        <telerik:RadFluidContentControl.LargeContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Margin="0" Padding="0" BorderThickness="0">
+                <Grid>
+                    <CustomControls:Editor MaximizeHeader="Drug Abuse Screening Test (DAST-10)" Style="{StaticResource TileEditorHeaderStyle}" StartOpen="True" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}" CanMaximize="True">
+                        <CustomControls:Editor.Expanders>
+                            <CustomControls:EditableExpander x:Name="Dast10" 
+                                     Content="{Binding EditingDto}" Width="Auto" MaxWidth="800" MinWidth="700" SaveCommand="{Binding SaveCommand}" CanMaximize="False"
+                                     CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}" IsExpanded="True" IsEditing="True">
+                                <CustomControls:EditableExpander.ContentTemplate>
+                                    <DataTemplate>
+                                        <Border>
+                                            <StackPanel>
+                                                <Controls:RadExpander Header="DAST-10 Instructions" IsExpanded="False" Style="{StaticResource ScreenerInstructionsRadExpanderStyle}">
+                                                    <TextBlock Text="Please answer every question.  If you have difficulty with a countyment, then choose the response that is mostly right." Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="26,0" TextAlignment="Left" />
+                                                </Controls:RadExpander>
+                                                <StackPanel>
+
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0" >
+                                                                <TextBlock Text="1. Have you used drugs other than those required for medical reasons?" Style="{StaticResource ScreenerLabelTextBlockStyle}" />
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding HaveYouUsedDrugsIndicator, ConverterParameter={StaticResource YesNoList}, Converter={StaticResource InvertedBooleanIndexToCustomTextConverter}}" Grid.Column="1"  Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0" >
+                                                                <TextBlock Text="2. Do you abuse more than one drug at a times?" Style="{StaticResource ScreenerLabelTextBlockStyle}"  />
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding DoYouAbuseMoreThanOneDrugIndicator, ConverterParameter={StaticResource YesNoList}, Converter={StaticResource InvertedBooleanIndexToCustomTextConverter}}"  Grid.Column="1" Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0" >
+                                                                <TextBlock Text="3. Are you always able to stop using drugs when you want to?" Style="{StaticResource ScreenerLabelTextBlockStyle}"  />
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding AreYouAbleToStopUsingDrugsIndicator, ConverterParameter={StaticResource YesNoList}, Converter={StaticResource InvertedBooleanIndexToCustomTextConverter}}" Grid.Column="1"  Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0" >
+                                                                <TextBlock Text="4. Have you had 'blackouts' or 'flashbacks' as a result of drug use?" Style="{StaticResource ScreenerLabelTextBlockStyle}"  />
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding HaveYouHadBlackoutsOrFlashbacksIndicator, ConverterParameter={StaticResource YesNoList}, Converter={StaticResource InvertedBooleanIndexToCustomTextConverter}}"  Grid.Column="1" Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0" >
+                                                                <TextBlock Text="5. Do you ever feel bad or guilty about your drug use?" Style="{StaticResource ScreenerLabelTextBlockStyle}" />
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding DoYouFeelBadOrGuiltyIndicator, ConverterParameter={StaticResource YesNoList}, Converter={StaticResource InvertedBooleanIndexToCustomTextConverter}}"  Grid.Column="1" Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0" >
+                                                                <TextBlock Text="6. Does your spouse (or parent) ever complain about your involvement with drugs?" Style="{StaticResource ScreenerLabelTextBlockStyle}"  />
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding DoesYourSpouseOrParentComplainIndicator, ConverterParameter={StaticResource YesNoList}, Converter={StaticResource InvertedBooleanIndexToCustomTextConverter}}"  Grid.Column="1" Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0" >
+                                                                <TextBlock Text="7. Have you neglected your family because of your use of drugs?" Style="{StaticResource ScreenerLabelTextBlockStyle}"   />
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding HaveYouNeglectedYourFamilyIndicator, ConverterParameter={StaticResource YesNoList}, Converter={StaticResource InvertedBooleanIndexToCustomTextConverter}}"  Grid.Column="1" Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0">
+                                                                <TextBlock Text="8. Have you engaged in illegal activities in order to obtain drugs?" Style="{StaticResource ScreenerLabelTextBlockStyle}"  />
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding HaveYouEngagedInIllegalActivitiesIndicator, ConverterParameter={StaticResource YesNoList}, Converter={StaticResource InvertedBooleanIndexToCustomTextConverter}}" Grid.Column="1"  Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0" >
+                                                                <TextBlock Text="9. Have you ever experienced withdrawal symptoms (felt sick) when you stopped taking drugs?" Style="{StaticResource ScreenerLabelTextBlockStyle}"/>
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding HaveYouEverExperiencedWithdrawalSymptomsIndicator, ConverterParameter={StaticResource YesNoList}, Converter={StaticResource InvertedBooleanIndexToCustomTextConverter}}" Grid.Column="1"  Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ScreenerMatrixQuestionBorderStyle}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="160"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Grid.Column="0" >
+                                                                <TextBlock Text="10. Have you had medical problems as a result of your drug use (e.g., memory loss, hepatitis, convulsions, bleeding etc.)?"  Style="{StaticResource ScreenerLabelTextBlockStyle}" />
+                                                            </StackPanel>
+                                                            <TextBlock Text="{Binding HaveYouHadMedicalProblemsIndicator, ConverterParameter={StaticResource YesNoList}, Converter={StaticResource InvertedBooleanIndexToCustomTextConverter}}"  Grid.Column="1" Style="{StaticResource ScreenerDataElementTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </Border>
+                                                </StackPanel>
+                                                <StackPanel  Visibility="{Binding IsDirty, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" Margin="0,10">
+                                                    <Border Style="{StaticResource HorizontalLineEditFormDivider}"/>
+                                                    <Grid>
+                                                        <Border Style="{StaticResource ScreenerCommentsBorderStyle}" VerticalAlignment="Stretch">
+                                                            <StackPanel Style="{StaticResource ScreenerStackPanelStyle}">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width=".2*"/>
+                                                                        <ColumnDefinition Width="0.8*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Border Grid.Column="0" Style="{StaticResource ScreenerScoreBorderStyle}" >
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock Text="Score: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}" VerticalAlignment="Top"/>
+                                                                            <TextBlock Text ="{Binding SeverityScore, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource ScreenerLabelTextBlockStyleL}" Margin="0" VerticalAlignment="Top" FontSize="18.667"/>
+                                                                        </StackPanel>
+                                                                    </Border>
+                                                                    <Border Grid.Column="1" Style="{StaticResource ScreenerScoreBorderStyle}" >
+                                                                        <StackPanel>
+                                                                            <StackPanel Orientation="Vertical" d:LayoutOverrides="Height">
+                                                                                <Grid>
+                                                                                    <telerik:RadButton Content="Guidance" Style="{StaticResource RemRadLinkButtonStyle}" d:LayoutOverrides="Height" VerticalAlignment="Top" HorizontalAlignment="Right">
+                                                                                        <i:Interaction.Triggers>
+                                                                                            <i:EventTrigger EventName="Click">
+                                                                                                <i:InvokeCommandAction Command="{Binding DataSource.ShowGuidanceCommand, Source={StaticResource RootDataContext}}" CommandParameter="{Binding}"/>
+                                                                                            </i:EventTrigger>
+                                                                                        </i:Interaction.Triggers>
+                                                                                    </telerik:RadButton>
+                                                                                    <TextBlock Text="Guidance Summary: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}" d:LayoutOverrides="Width" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                                                                </Grid>
+                                                                            </StackPanel>
+                                                                            <StackPanel>
+                                                                                <TextBlock Visibility="{Binding Dast10Result, ConverterParameter=null, Converter={StaticResource QuestionAnswerToVisibilityConverter}}" Text ="-"  Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                                                <TextBlock Visibility="{Binding Dast10Result, ConverterParameter=0, Converter={StaticResource QuestionAnswerToVisibilityConverter}}" Text ="Reassess annually." Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                                                                <TextBlock Visibility="{Binding Dast10Result, ConverterParameter=1, Converter={StaticResource QuestionAnswerToVisibilityConverter}}" Text ="Offer brief advice."  Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                                                                <TextBlock Visibility="{Binding Dast10Result, ConverterParameter=2, Converter={StaticResource QuestionAnswerToVisibilityConverter}}" Text ="Provide on-site/integrated specialized and intensive SUD treatment at the general medical setting. Monitor: Schedule a follow-up visit in 2-4 weeks." Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                                                            </StackPanel>
+                                                                        </StackPanel>
+                                                                    </Border>
+                                                                </Grid>
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentTemplate>
+                                <CustomControls:EditableExpander.ContentEditTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Controls:RadExpander Header="DAST-10 Instructions" IsExpanded="True" Style="{StaticResource ScreenerInstructionsRadExpanderStyle}">
+                                                <TextBlock Text="Please answer every question.  If you have difficulty with a countyment, then choose the response that is mostly right." Style="{StaticResource ScreenerMatrixHeaderTextBlockStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="26,0" TextAlignment="Left" />
+                                            </Controls:RadExpander>
+                                            <CustomControls:QuestionItem Question="1. Have you used drugs other than those required for medical reasons?" Value="{Binding HaveYouUsedDrugsIndicator,Converter={StaticResource InvertedNullableIntToNullableBooleanConverter},Mode=TwoWay}"
+                                                     ItemsSource="{Binding Source={StaticResource YesNoList}}"/>
+                                            <CustomControls:QuestionItem Question="2. Do you abuse more than one drug at a times?" Value="{Binding DoYouAbuseMoreThanOneDrugIndicator,Converter={StaticResource InvertedNullableIntToNullableBooleanConverter},Mode=TwoWay}"
+                                                     ItemsSource="{Binding Source={StaticResource YesNoList}}"/>
+                                            <CustomControls:QuestionItem Question="3. Are you always able to stop using drugs when you want to?" Value="{Binding AreYouAbleToStopUsingDrugsIndicator,Converter={StaticResource InvertedNullableIntToNullableBooleanConverter},Mode=TwoWay}"
+                                                     ItemsSource="{Binding Source={StaticResource YesNoList}}"/>
+                                            <CustomControls:QuestionItem Question="4. Have you had 'blackouts' or 'flashbacks' as a result of drug use?" Value="{Binding HaveYouHadBlackoutsOrFlashbacksIndicator,Converter={StaticResource InvertedNullableIntToNullableBooleanConverter},Mode=TwoWay}"
+                                                     ItemsSource="{Binding Source={StaticResource YesNoList}}"/>
+                                            <CustomControls:QuestionItem Question="5. Do you ever feel bad or guilty about your drug use?" Value="{Binding DoYouFeelBadOrGuiltyIndicator,Converter={StaticResource InvertedNullableIntToNullableBooleanConverter},Mode=TwoWay}"
+                                                     ItemsSource="{Binding Source={StaticResource YesNoList}}"/>
+                                            <CustomControls:QuestionItem Question="6. Does your spouse (or parent) ever complain about your involvement with drugs?" Value="{Binding DoesYourSpouseOrParentComplainIndicator,Converter={StaticResource InvertedNullableIntToNullableBooleanConverter},Mode=TwoWay}"
+                                                     ItemsSource="{Binding Source={StaticResource YesNoList}}"/>
+                                            <CustomControls:QuestionItem Question="7. Have you neglected your family because of your use of drugs?" Value="{Binding HaveYouNeglectedYourFamilyIndicator,Converter={StaticResource InvertedNullableIntToNullableBooleanConverter},Mode=TwoWay}"
+                                                     ItemsSource="{Binding Source={StaticResource YesNoList}}"/>
+                                            <CustomControls:QuestionItem Question="8. Have you engaged in illegal activities in order to obtain drugs?" Value="{Binding HaveYouEngagedInIllegalActivitiesIndicator,Converter={StaticResource InvertedNullableIntToNullableBooleanConverter},Mode=TwoWay}"
+                                                     ItemsSource="{Binding Source={StaticResource YesNoList}}"/>
+                                            <CustomControls:QuestionItem Question="9. Have you ever experienced withdrawal symptoms (felt sick) when you stopped taking drugs?" Value="{Binding HaveYouEverExperiencedWithdrawalSymptomsIndicator,Converter={StaticResource InvertedNullableIntToNullableBooleanConverter},Mode=TwoWay}"
+                                                     ItemsSource="{Binding Source={StaticResource YesNoList}}"/>
+                                            <CustomControls:QuestionItem Question="10. Have you had medical problems as a result of your drug use (e.g., memory loss, hepatitis, convulsions, bleeding etc.)?" Value="{Binding HaveYouHadMedicalProblemsIndicator,Converter={StaticResource InvertedNullableIntToNullableBooleanConverter},Mode=TwoWay}"
+                                                     ItemsSource="{Binding Source={StaticResource YesNoList}}"/>
+                                            <StackPanel  Visibility="{Binding IsDirty, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" Margin="0,10">
+                                                <Border Style="{StaticResource ScreenerCommentsBorderStyle}">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="0.2*"/>
+                                                            <ColumnDefinition Width="0.8*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Border Grid.Column="0" Style="{StaticResource ScreenerScoreBorderStyle}">
+                                                            <StackPanel Orientation="Horizontal" >
+                                                                <TextBlock Text="Score: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}" VerticalAlignment="Top"/>
+                                                                <TextBlock Text ="{Binding SeverityScore, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource ScreenerLabelTextBlockStyleL}" Margin="0" VerticalAlignment="Top"/>
+                                                            </StackPanel>
+                                                        </Border>
+                                                        <Border Grid.Column="1" Style="{StaticResource ScreenerResultsBorderStyle}">
+                                                            <StackPanel>
+                                                                <Grid >
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="0.535*"/>
+                                                                        <ColumnDefinition Width="0.465*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Text="Guidance Summary: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}" Grid.Column="0"/>
+                                                                    <telerik:RadButton Content="Guidance" Grid.Column="1" Style="{StaticResource RemRadLinkButtonStyle}">
+                                                                        <i:Interaction.Triggers>
+                                                                            <i:EventTrigger EventName="Click">
+                                                                                <i:InvokeCommandAction Command="{Binding DataSource.ShowGuidanceCommand, Source={StaticResource RootDataContext}}" CommandParameter="{Binding}"/>
+                                                                            </i:EventTrigger>
+                                                                        </i:Interaction.Triggers>
+                                                                    </telerik:RadButton>
+                                                                </Grid>
+                                                                <TextBlock Visibility="{Binding Dast10Result, ConverterParameter=null, Converter={StaticResource QuestionAnswerToVisibilityConverter}}" Text ="-"  Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                                                <TextBlock Visibility="{Binding Dast10Result, ConverterParameter=0, Converter={StaticResource QuestionAnswerToVisibilityConverter}}" Text ="Reassess annually." Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                                                <TextBlock Visibility="{Binding Dast10Result, ConverterParameter=1, Converter={StaticResource QuestionAnswerToVisibilityConverter}}" Text ="Offer brief advice."  Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                                                <TextBlock Visibility="{Binding Dast10Result, ConverterParameter=2, Converter={StaticResource QuestionAnswerToVisibilityConverter}}" Text ="Provide on-site/integrated specialized and intensive SUD treatment at the general medical setting. Monitor: Schedule a follow-up visit in 2-4 weeks." Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel Visibility="{Binding Source={StaticResource RootDataContext}, Path=DataSource.CanViewGuidance, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <StackPanel Style="{StaticResource ScreenerStackPanelStyle}"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentEditTemplate>
+                            </CustomControls:EditableExpander>
+                        </CustomControls:Editor.Expanders>
+                    </CustomControls:Editor>
+                    <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+                </Grid>
+            </ScrollViewer>
+        </telerik:RadFluidContentControl.LargeContent>
+    </telerik:RadFluidContentControl>
+</telerik:RadTileViewItem>

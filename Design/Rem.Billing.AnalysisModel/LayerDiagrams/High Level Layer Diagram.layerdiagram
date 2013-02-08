@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="588d3686-3d6c-481a-8670-3aba9ff82bf0" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="bfa67ae3-21db-4d03-98af-ca3a041a7b80" name="Client">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="8e322a38-0c69-4c10-a084-7be6e35e2c40" direction="Forward">
+          <layerMoniker Id="a20029c7-1b79-47e8-8808-117ed2b02370" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="a20029c7-1b79-47e8-8808-117ed2b02370" name="Web Server">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="a81bee4d-6013-4e4f-a937-e2ba3dd96102" direction="Forward">
+          <layerMoniker Id="1fcdb2c6-9662-4e21-b8e4-67ca816cbb35" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="5dbfe5d9-777c-4dcb-97ea-a6728c02c3c8" direction="Forward">
+          <layerMoniker Id="69ef8615-954e-4290-94d7-c8ea97e481dc" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="661f9656-596d-4c37-a97e-165ab981c0df" name="Infrastructure" />
+        <layer Id="94116b41-e5f5-4b85-90a1-5161a881c20c" name="Web Services " />
+        <layer Id="55ba8735-651a-4e50-9d64-debf07c4338b" name="Domain" />
+      </childLayers>
+    </layer>
+    <layer Id="f4d7f538-6f38-4d23-9120-23d73f46a7d3" name="Windows Service">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="f4f20836-81e0-4d9f-b931-015d1ced7fb0" direction="Bidirectional">
+          <layerMoniker Id="69ef8615-954e-4290-94d7-c8ea97e481dc" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="9e87f7b2-4dfb-4052-90ca-7124aaad9579" direction="Forward">
+          <layerMoniker Id="1fcdb2c6-9662-4e21-b8e4-67ca816cbb35" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="22b5c334-069d-4a4d-b70b-c01cb44ac5bb" name="NServiceBus Services " />
+        <layer Id="08d2c41e-3d4a-49f5-9edf-776b8a123b05" name="Domain" />
+        <layer Id="aadb0ffe-2aa9-4df1-8a34-b595b9e2d364" name="Infrastructure" />
+      </childLayers>
+    </layer>
+    <layer Id="69ef8615-954e-4290-94d7-c8ea97e481dc" name="Service Bus" />
+    <layer Id="1fcdb2c6-9662-4e21-b8e4-67ca816cbb35" name="Data">
+      <childLayers>
+        <layer Id="926fb4e0-e859-4f2f-a360-af0667a2b317" name="Microsoft SQL Server 2008 R2" />
+        <layer Id="25a84709-166c-4388-b094-8f8407732cd4" name="Apelon DTS" />
+        <layer Id="d199fa44-a03f-41b2-a873-e49bac19f86f" name="RavenDB" />
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

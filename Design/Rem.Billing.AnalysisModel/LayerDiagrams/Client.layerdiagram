@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="7e3b66a0-4f20-42ae-951f-461163e89784" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="61e9f43a-5b60-456a-8f1d-c528277e1e66" name="Client">
+      <childLayers>
+        <layer Id="2852a004-56bd-4023-aa9c-a46d5d05d4ec" name=" Browser">
+          <childLayers>
+            <layer Id="81638cce-add0-466b-9dfe-5e0247e0c5dd" name="Silverlight">
+              <childLayers>
+                <layer Id="ffb6d3ea-56ba-48f2-9fcf-92ebafeb1051" name="Rem.Ria.Infrastructure">
+                  <childLayers>
+                    <layer Id="d023f9a6-72cd-4522-9c44-59fa9648c9a2" name="Commands" />
+                    <layer Id="ee64960c-7404-4c24-9d78-1284cad56f4b" name="DTOs" />
+                    <layer Id="73c1d574-7083-4830-926d-ec18688beb0a" name="Navigation" />
+                    <layer Id="c46a2ce2-fbaf-4380-8b68-dc43bd1787bc" name="Security" />
+                    <layer Id="c025df27-492a-4ac0-ab2d-706ec80ae326" name="Agatha" />
+                    <layer Id="9ceb8eae-06f4-46d1-997a-0ac3e1fb01ec" name="Views" />
+                    <layer Id="898b3e99-9879-4b80-ad68-c5646d470cf6" name="ViewModels" />
+                    <layer Id="9413a89c-94d2-432f-b58a-7521594a1a7b" name="Themes" />
+                    <layer Id="667cce63-f4f3-4d25-8ec6-6f59c871969d" name="Logging" />
+                    <layer Id="11241d0d-8b2e-4162-803a-b3f465798338" name="Quick Pickers" />
+                  </childLayers>
+                </layer>
+                <layer Id="c3dd89af-680c-4732-944d-a229a8d9a022" name="Rem.Ria.AgencyModule">
+                  <childLayers>
+                    <layer Id="6ab08f9e-9e23-49e6-915b-e66e8c13a598" name="Agatha" />
+                    <layer Id="c6cede6b-0009-4d03-afce-bd05ea4ef522" name="DTOs" />
+                    <layer Id="9f2bd39a-496d-4c36-9e1b-d00581399f2b" name="Views" />
+                    <layer Id="f8bb1c75-6dbb-4fca-b55f-d5d2d0582102" name="View Models" />
+                    <layer Id="bcbc7f08-b034-493e-bf14-4f8e876c7db1" name="Permissions" />
+                  </childLayers>
+                </layer>
+                <layer Id="dce8ff7d-1428-4d1f-8930-1c03a2983273" name="Rem.Ria.PatientModule">
+                  <childLayers>
+                    <layer Id="f6dad42f-eca3-499e-9834-04baa2cc60ca" name="Agatha" />
+                    <layer Id="6440f426-58ed-4685-ab4c-25fe9829c6e2" name="DTOs" />
+                    <layer Id="f30ad0ec-c37e-4a22-a3ae-bb606e8d3905" name="Views" />
+                    <layer Id="592b0819-acd9-41f2-9100-0291e6a34431" name="View Models" />
+                    <layer Id="d2374e84-107d-4257-94e6-1c740bb4711d" name="Permissions" />
+                  </childLayers>
+                </layer>
+                <layer Id="db24920b-198a-4939-9526-62a87957aeb3" name="Rem.Ria.NewCropModule">
+                  <childLayers>
+                    <layer Id="954c9689-2560-4984-8bc7-b3447b8a0ce1" name="Agatha" />
+                    <layer Id="d6a753cc-9ccc-40e8-b1d8-1401f15bde8d" name="DTOs" />
+                    <layer Id="5ddfa54d-e9a5-4842-85e2-1caa55c7144a" name="Views" />
+                    <layer Id="7a70af6f-b6a0-4939-bd03-1687a344b81b" name="View Models" />
+                    <layer Id="8d1f8f76-6b7a-449e-a5df-8dae3a2e7371" name="Permissions" />
+                  </childLayers>
+                </layer>
+                <layer Id="f1ab0af9-a946-40bc-857f-82fa61f42018" name="Rem.Ria.ReportsModule">
+                  <childLayers>
+                    <layer Id="8e23c5a6-0cb8-4274-8131-7c4766ac5d7e" name="Agatha" />
+                    <layer Id="6720c8f2-bbce-4fb9-a491-218f70d20fc5" name="DTOs" />
+                    <layer Id="6dd19fa8-f1e8-4c91-9dd5-ced6c003e8d5" name="Views" />
+                    <layer Id="750e02c2-4ff5-400b-8a45-a7565e8028d3" name="View Models" />
+                    <layer Id="c36e37a0-83cc-4c5b-bb70-52d03ab7ccf3" name="Permissions" />
+                  </childLayers>
+                </layer>
+                <layer Id="e18ee8ad-46d0-40d5-aa4f-c060b125440b" name="Rem.Shell">
+                  <childLayers>
+                    <layer Id="2e57e6ee-1d52-43c5-ae6c-e9aae6e9f97a" name="Bootstrapper" />
+                    <layer Id="e20f1c45-bd2a-411b-84d9-3273287c8184" name="Shell" />
+                  </childLayers>
+                </layer>
+                <layer Id="025d6b43-0e66-44e5-a315-caee9a677779" name="Rem.Ria.BillingModule">
+                  <childLayers>
+                    <layer Id="4618d18a-6e0b-4f2e-ae55-11b82ccd543f" name="Agatha" />
+                    <layer Id="f6bdf66f-3e43-4484-a3db-c1c8b9c480a2" name="DTOs" />
+                    <layer Id="5771f003-5ea2-4ed5-9239-6bb366a02dbe" name="Views" />
+                    <layer Id="94f438b3-5416-487f-a53e-8387497a46b2" name="View Models" />
+                    <layer Id="27906083-f045-428d-abb6-367d240a256e" name="Permissions" />
+                  </childLayers>
+                </layer>
+              </childLayers>
+            </layer>
+          </childLayers>
+        </layer>
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

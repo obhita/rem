@@ -1,0 +1,153 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"             
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:behaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" xmlns:Controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls" xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" x:Class="Rem.Ria.PatientModule.PatientDashboard.CaseSummaryView"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400" Margin="0" >
+
+    <Border Style="{StaticResource TileCaseActivitiesBorderStyle}" Padding="0" BorderThickness="1,0,0,0" Background="{StaticResource PatientDashboardTileBackground}" CornerRadius="0,3,0,0" BorderBrush="#FF494949" Margin="0">
+        <Grid>
+        	<Grid.RowDefinitions>
+        		<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="*"/>     	
+			</Grid.RowDefinitions>
+        	<Border x:Name="HeaderBorder" Style="{StaticResource SidePanelHeaderBorderStyle}" CornerRadius="0,3,0,0" BorderThickness="0,0,0,1" Height="Auto">
+        		<i:Interaction.Behaviors>
+        			<behaviors:DoubleClickBehavior DoubleClickCommand="{Binding EditCaseCommand}"/>
+        		</i:Interaction.Behaviors>
+        		<Grid x:Name="HeaderStackPanel" >
+        			<Grid.ColumnDefinitions>
+        				<ColumnDefinition/>
+        				<ColumnDefinition Width="*"/>
+        				<ColumnDefinition Width="Auto"/>
+        			</Grid.ColumnDefinitions>
+        			<Grid.RowDefinitions>
+        				<RowDefinition Height="31"/>
+        				<RowDefinition Height="auto"/>
+        			</Grid.RowDefinitions>
+        			<StackPanel Margin="8,0,0,0" Orientation="Horizontal" d:LayoutOverrides="Height" VerticalAlignment="Center">
+
+        				<Grid Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,5,0" Visibility="Collapsed">
+        					<Path Data="M24.952654,17.247709 L26.666,17.247709 L26.666,22.263 L21.650856,22.263 L21.650856,20.549604 L24.952654,20.549604 z M0,17.247709 L1.7133665,17.247709 L1.7133665,20.549604 L5.0151753,20.549604 L5.0151753,22.263 L0,22.263 z M13.452271,3.5114536 C14.100802,3.5019612 14.870879,3.6403968 15.739004,4.0632019 C16.28701,4.0632019 16.469017,4.1441941 16.469017,4.1441946 L16.561012,4.6671963 C16.561012,4.6671968 16.772011,5.1741929 16.743019,5.713171 C16.689018,6.7211666 16.591011,7.0041513 16.382011,7.1991558 L16.42701,7.5621567 C16.444008,8.1981335 16.465019,8.6881323 16.375008,9.2491283 C16.351006,9.3331261 15.905005,10.651099 15.501013,11.16809 C15.466009,11.51809 15.437017,12.010088 15.545004,12.105087 C15.716009,12.256086 16.196007,12.860065 16.777016,12.981066 C17.359016,13.101059 19.687019,13.464061 20.337013,13.856052 C20.987007,14.248045 21.911018,16.120026 22.014015,16.754004 C22.117012,17.387997 22.117012,17.810995 22.117012,17.810995 L14.518011,17.810995 L12.794012,17.810995 L5.111011,17.810995 C5.1110115,17.810995 5.1110115,17.387997 5.2130013,16.754004 C5.3160133,16.120026 6.2400093,14.248045 6.8900037,13.856052 C7.5410047,13.464061 9.8680162,13.101059 10.450002,12.981066 C11.032003,12.860065 11.511007,12.256086 11.682013,12.105087 C11.790014,12.010088 11.762014,11.51809 11.726004,11.16809 C11.322012,10.651099 10.948003,10.00812 10.85201,9.2491283 C10.757009,8.4901371 10.767003,8.1561422 10.798009,7.5601425 L10.839009,7.2151623 C10.744008,7.169158 10.570012,7.0661621 10.537007,6.9211607 C10.492009,6.7201595 10.355016,4.5861893 11.222006,4.4251957 L11.187017,4.2691927 C11.187017,4.2691927 12.025503,3.532337 13.452271,3.5114536 z M21.650856,0 L26.666,0 L26.666,5.0152931 L24.952654,5.0152931 L24.952654,1.7133917 L21.650856,1.7133917 z M0,0 L5.0151753,0 L5.0151753,1.7133917 L1.7133665,1.7133917 L1.7133665,5.0152931 L0,5.0152931 z" Fill="#FF626262" HorizontalAlignment="Center" Height="16" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="20"/>
+        				</Grid>
+
+        				<TextBlock Text="Case Snapshot" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="0"/>
+        			</StackPanel>
+        			<Controls:RadButton Content="Case Detail" Grid.Column="2" Command="{Binding EditCaseCommand}" ToolTipService.ToolTip="Edit the patient case record."  Style="{StaticResource BorderlessButtonStyle}" VerticalAlignment="Center"/>
+        			<Border Grid.Row="1" Style="{StaticResource TileSubHeaderBackgroundBorderStyle}" Grid.ColumnSpan="3" BorderThickness="0,0,0,1" Height="30" Visibility="Collapsed">
+        				<StackPanel>
+        					<StackPanel >
+        						<Border BorderBrush="DarkGray" BorderThickness="0 0 0 1"/>
+        						<Border BorderBrush="White" BorderThickness="0 0 0 1" />
+        					</StackPanel>               	
+        				</StackPanel>
+        			</Border>
+        		</Grid>
+
+        	</Border>
+        	<Border BorderBrush="DarkGray" Grid.Row="1"  Margin="6,0" BorderThickness="0,0,0,0.75" HorizontalAlignment="Stretch">
+        		<Grid Margin="10,0,0,0">
+        			<StackPanel Margin="0,9,0,0" Orientation="Horizontal">
+        				<Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,4,2">
+        					<Path HorizontalAlignment="Left" VerticalAlignment="Top" Data="M2.5599928,14.965667 C2.2040062,14.965667 1.9150052,15.205608 1.9150052,15.502527 C1.9150052,15.798454 2.2040062,16.039389 2.5599928,16.039389 L3.3939838,16.039389 L3.3939838,14.965667 z M8.697998,13.968689 L16.489168,13.968689 L16.489168,15.438079 L8.697998,15.438079 z M2.5599928,9.4779997 C2.2040062,9.4779997 1.9150052,9.718997 1.9150052,10.015001 C1.9150052,10.311997 2.2040062,10.551988 2.5599928,10.551988 L3.3939838,10.551988 L3.3939838,9.4779997 z M8.697998,8.9428101 L16.489199,8.9428196 L16.489199,10.412201 L8.697998,10.412201 z M2.5599928,3.9909945 C2.2040062,3.9909945 1.9150052,4.2309847 1.9150052,4.5279818 C1.9150052,4.8249931 2.2040062,5.0649834 2.5599928,5.0649834 L3.3939838,5.0649834 L3.3939838,3.9909945 z M8.697998,3.9169922 L16.489199,3.9170074 L16.489199,5.3863821 L8.697998,5.3863821 z M23.066982,2.2549953 L24.311001,2.2549953 L24.311001,23.716999 L5.4260263,23.716999 L5.4260263,22.258991 L23.066982,22.258991 z M4.2469802,0.90701294 L4.2469802,5.0649834 L5.0299892,5.0649834 L5.0299892,5.075985 C5.4709978,5.1139936 5.814992,5.4239912 5.814992,5.801981 C5.814992,6.2049804 5.4219866,6.5319905 4.9379787,6.5319905 C4.8980007,6.5319905 4.8599758,6.5299916 4.8219824,6.525979 L4.2469802,6.525979 L4.2469802,10.551988 L5.0299892,10.551988 L5.0299892,10.562989 C5.4709978,10.600999 5.814992,10.911987 5.814992,11.288986 C5.814992,11.691986 5.4219866,12.018995 4.9379787,12.018995 C4.8980007,12.018995 4.8599758,12.016996 4.8219824,12.012984 L4.2469802,12.012984 L4.2469802,16.039389 L5.0299892,16.039389 L5.0299892,16.049379 C5.4709978,16.087379 5.814992,16.398287 5.814992,16.775187 C5.814992,17.179087 5.4219866,17.505995 4.9379787,17.505995 C4.8980007,17.505995 4.8599758,17.503998 4.8219824,17.498993 L4.2469802,17.498993 L4.2469802,19.693993 L20.456963,19.693993 L20.456963,0.90701294 z M3.3939838,0 L21.87896,0 L21.87896,21.329002 L3.3939838,21.329002 L3.3939838,17.498993 L2.3099933,17.498993 C0.98498344,17.498993 0,16.605232 0,15.502527 C0,14.398815 0.98498344,13.726995 2.3099933,13.726995 L3.3939838,13.726995 L3.3939838,12.012984 L2.3099933,12.012984 C0.98498344,12.012983 0,11.118988 0,10.015001 C0,8.9119911 0.98498344,8.239995 2.3099933,8.239995 L3.3939838,8.239995 L3.3939838,6.525979 L2.3099933,6.525979 C0.98498344,6.525979 0,5.630991 0,4.5279818 C0,3.4249859 0.98498344,2.7529898 2.3099933,2.7529898 L3.3939838,2.7529898 z" Fill="#FF626262" Height="15" Stretch="Fill" UseLayoutRounding="False" Width="15" Margin="0,0,0,1"/>
+        				</Grid>
+        				<TextBlock Text="Case Summary"  FontSize="14" Foreground="#FF626262" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+        			</StackPanel>
+        		</Grid>
+        	</Border>
+        	<Border Grid.Row="2" Margin="10,0" BorderThickness="0" BorderBrush="#FFC2C2C2" >
+        		<ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderThickness="0" Padding="0,0,4,0">
+        			<StackPanel  x:Name="ContentBorder">
+        				<Border Padding="0">
+        					<StackPanel>
+        						<StackPanel Orientation="Horizontal">
+        							<StackPanel Style="{StaticResource EditFormStackPanelStyleA}" VerticalAlignment="Top">
+        								<TextBlock Text="Status:"  Style="{StaticResource CaseSummaryLabelTextBlockStyle}"/>
+        							</StackPanel>
+        							<StackPanel Style="{StaticResource EditFormStackPanelStyleA}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,3,0,2">
+        								<TextBlock Text="{Binding CaseSummary.ClinicalCaseStatus.Name, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource CaseSummaryDataElementTextBlockStyle}" MaxWidth="250"/>
+        							</StackPanel>
+        						</StackPanel>
+        						<StackPanel Orientation="Horizontal">
+        							<StackPanel Style="{StaticResource EditFormStackPanelStyleA}" VerticalAlignment="Top">
+        								<TextBlock Text="Priority Population:"  Style="{StaticResource CaseSummaryLabelTextBlockStyle}"/>
+        							</StackPanel>
+        							<StackPanel Style="{StaticResource EditFormStackPanelStyleA}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,3,0,2">
+        								<ItemsControl ItemsSource="{Binding CaseSummary.PriorityPopulations}">
+        									<ItemsControl.ItemTemplate>
+        										<DataTemplate>
+        											<TextBlock Text="{Binding Name, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource CaseSummaryDataElementTextBlockStyle}" TextWrapping="Wrap" MaxWidth="250" VerticalAlignment="Center"/>
+        										</DataTemplate>
+        									</ItemsControl.ItemTemplate>
+        								</ItemsControl>
+        							</StackPanel>
+        						</StackPanel>
+        						<StackPanel Orientation="Horizontal">
+        							<StackPanel Style="{StaticResource EditFormStackPanelStyleA}" VerticalAlignment="Top">
+        								<TextBlock Text="Special Initiatives:"  Style="{StaticResource CaseSummaryLabelTextBlockStyle}" VerticalAlignment="Top"/>
+        							</StackPanel>
+        							<StackPanel Style="{StaticResource EditFormStackPanelStyleA}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,3,0,2">
+        								<ItemsControl ItemsSource="{Binding CaseSummary.SpecialInitiatives}">
+        									<ItemsControl.ItemTemplate>
+        										<DataTemplate>
+        											<TextBlock Text="{Binding Name, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource CaseSummaryDataElementTextBlockStyle}" TextWrapping="Wrap" MaxWidth="250" VerticalAlignment="Center"/>
+        										</DataTemplate>
+        									</ItemsControl.ItemTemplate>
+        								</ItemsControl>
+        							</StackPanel>
+        						</StackPanel>
+        						<StackPanel Orientation="Horizontal">
+        							<StackPanel Style="{StaticResource EditFormStackPanelStyleA}" VerticalAlignment="Top">
+        								<TextBlock Text="Program Enrollment(s):"  Style="{StaticResource CaseSummaryLabelTextBlockStyle}"/>
+        							</StackPanel>
+        						</StackPanel>
+        						<StackPanel Margin="0,8,0,4">
+        							<StackPanel Style="{StaticResource EditFormStackPanelStyleA}" VerticalAlignment="Top">
+        								<TextBlock Text="Presenting Problem" Style="{StaticResource CaseSummaryLabelTextBlockStyle}"/>
+        							</StackPanel>
+        							<StackPanel Style="{StaticResource EditFormStackPanelStyleA}"> 
+        								<TextBlock Text="{Binding CaseSummary.PatientPresentingProblemNote, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource CaseSummaryDataElementTextBlockStyle}"/>
+        							</StackPanel>
+        						</StackPanel>
+        					</StackPanel>
+        				</Border>
+        			</StackPanel>
+        		</ScrollViewer>
+        	</Border>
+        	<CustomControls:LoadingControl IsLoading="{Binding IsLoading}" Grid.Row="2" Background="{StaticResource PatientDashboardTileBackground}" Foreground="DarkGray" Margin="6,0,0,0"/>
+        	<Border VerticalAlignment="Top" Height="10" Margin="6,0,6,10" Grid.Row="2">
+        		<Border.Background>
+        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        				<GradientStop Color="#35474747"/>
+        				<GradientStop Color="#00F7F7F7" Offset="1"/>
+        			</LinearGradientBrush>
+        		</Border.Background>
+        	</Border>
+			<Border VerticalAlignment="Bottom" Height="10" Margin="6,0" Grid.Row="2">
+        		<Border.Background>
+        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        				<GradientStop Color="#35474747" Offset="1"/>
+        				<GradientStop Color="#00F7F7F7"/>
+        			</LinearGradientBrush>
+        		</Border.Background>
+        	</Border>
+			<Border Width="8" Grid.RowSpan="4" HorizontalAlignment="Left">
+				<Border.Background>
+        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        				<LinearGradientBrush.RelativeTransform>
+        					<CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="-90"/>
+        				</LinearGradientBrush.RelativeTransform>
+        				<GradientStop Color="#53474747"/>
+        				<GradientStop Color="#00F7F7F7" Offset="1"/>
+        				<GradientStop Color="#30545454" Offset="0.403"/>
+        			</LinearGradientBrush>
+        		</Border.Background>
+			</Border>
+        </Grid>
+    </Border>
+</UserControl>

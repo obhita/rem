@@ -1,0 +1,11 @@
+
+print '------------------------------------------------------------------------------------------'
+print 'LabModule_LabSpecimenTypeLkp.sql'
+print '------------------------------------------------------------------------------------------'
+
+INSERT INTO [LabModule].[LabSpecimenTypeLkp] ( [LabSpecimenTypeLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator], [CodedConceptCode] ) VALUES ( 1, current_timestamp, 1, current_timestamp, 1, 1, N'Blood, Capillary', N'Blood, Capillary', N'BLDC', N'BLDC', 1, '1/1/2000',  '1/1/2020', 1, 0, N'BLDC' )
+INSERT INTO [LabModule].[LabSpecimenTypeLkp] ( [LabSpecimenTypeLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator], [CodedConceptCode] ) VALUES ( 2, current_timestamp, 1, current_timestamp, 1, 1,    N'Blood, Venous',    N'Blood, Venous', N'BLDV', N'BLDV', 1, '1/1/2000',  '1/1/2020', 1, 0, N'BLDV' )
+INSERT INTO [LabModule].[LabSpecimenTypeLkp] ( [LabSpecimenTypeLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator], [CodedConceptCode] ) VALUES ( 3, current_timestamp, 1, current_timestamp, 1, 1,    N'Stool = Fecal',    N'Stool = Fecal',  N'STL',  N'STL', 1, '1/1/2000',  '1/1/2020', 1, 0,  N'STL' )
+INSERT INTO [LabModule].[LabSpecimenTypeLkp] ( [LabSpecimenTypeLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator], [CodedConceptCode] ) VALUES ( 4, current_timestamp, 1, current_timestamp, 1, 1,    N'Unknown',   N'Unknown',  N'Unknown',  N'UN', 1, '1/1/2000',  '1/1/2020', 1, 0,  N'UN' )
+
+GO

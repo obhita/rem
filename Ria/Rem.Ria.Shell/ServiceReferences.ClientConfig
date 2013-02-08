@@ -1,0 +1,18 @@
+﻿<configuration>
+  <system.serviceModel>
+    <bindings>
+      <customBinding>
+        <binding name="silverlightBinaryBinding">
+          <binaryMessageEncoding />
+          <httpsTransport maxBufferSize="62428800" maxReceivedMessageSize="62428800" transferMode="Buffered"  />
+        </binding>
+      </customBinding>
+    </bindings>
+    <client>
+      <endpoint binding="customBinding" bindingConfiguration="silverlightBinaryBinding"
+            contract="Agatha.Common.WCF.IWcfRequestProcessor"
+            name="Agatha_IWcfRequestProcessor" 
+            address="" /> <!-- address is configured in CustomAsyncRequestProcessorProxy -->
+    </client>
+  </system.serviceModel>
+</configuration>

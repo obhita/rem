@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Core.AgencyModule.Agency" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsAnswer&lt;T&gt;">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAIDAEgAAAAAAAAAAAAIAAAAAAAAAgCAA=</HashCode>
+      <FileName>TedsModule\TedsAnswer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsBatch">
+    <Position X="0.5" Y="3" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAASAAAAAAAAAAAAAAQgAAAAAAAAIAAAAAAAQEAgA=</HashCode>
+      <FileName>TedsModule\TedsBatch.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Agency" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsDischargeBatch">
+    <Position X="4.25" Y="7.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAIAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TedsModule\TedsDischargeBatch.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TedsBatch" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsAdmissionBatch">
+    <Position X="4.5" Y="2" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAIAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TedsModule\TedsAdmissionBatch.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TedsBatch" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsAdmissionRecord">
+    <Position X="7.5" Y="0.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>SToAIhBBBIEAQBAAAIEBLMwAJOEWgNAGBCAAQgAYEAA=</HashCode>
+      <FileName>TedsModule\TedsAdmissionRecord.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TedsAdmissionKeyFields" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="SubstanceUsages" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsDischargeInterview">
+    <Position X="14.25" Y="8.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ARogAAAAAAAgAAAgAAABAIDANGAEBAQMBAAAAgAAAEA=</HashCode>
+      <FileName>TedsModule\TedsDischargeInterview.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsAdmissionInterview">
+    <Position X="14" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AboAAACBBoEgQBAAAIEBLIDAFMAEwIAEBAAAQAAAMAA=</HashCode>
+      <FileName>TedsModule\TedsAdmissionInterview.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsDischargeKeyFields">
+    <Position X="11.25" Y="8.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAACAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>TedsModule\TedsDischargeKeyFields.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsAdmissionKeyFields">
+    <Position X="11.25" Y="3.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAABgAAAAAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>TedsModule\TedsAdmissionKeyFields.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsInterviewCoreKeyFields">
+    <Position X="11.25" Y="5.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAQAEgAQAAABAAEQAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>TedsModule\TedsInterviewCoreKeyFields.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsDischargeRecord">
+    <Position X="7.25" Y="10.25" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQogAIEAAAAgACAIIAABEICAFAAEAAAAJAAAAAYCIFA=</HashCode>
+      <FileName>TedsModule\TedsDischargeRecord.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="SubstanceUsages" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsDischargeRecordSubstanceUsage">
+    <Position X="7.5" Y="8" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TedsModule\TedsDischargeRecordSubstanceUsage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.TedsModule.TedsAdmissionRecordSubstanceUsage" Collapsed="true">
+    <Position X="11.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>TedsModule\TedsAdmissionRecordSubstanceUsage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

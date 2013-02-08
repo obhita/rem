@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="1c9ed15e-dd91-4980-8477-7317d9a3cc5f" name="Claim Domain" linkedPackageId="6f2a85ec-8ab9-4608-8b34-bb817ac72d6f" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="50786ad4-dab0-45b2-9b21-de61a94a4010">
+      <profileInstance Id="dbd75f39-524f-4972-b4bb-11e3df729e61" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="5ec7c700-3687-4152-9b8e-3987547511cf">
+      <profileInstance Id="58ed9b8b-0475-4e41-936c-d69041627320" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3f709f09-1b37-413a-bef3-a394b14d20a1" name="Claim" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f1680d90-50a3-423e-abb9-180d81c6aa30" />
+        <targetEnds>
+          <association Id="55e40fd0-a29d-4137-b8f1-e626f7239556" isDerived="false" sourceEndRoleName="Claim" targetEndRoleName="Claim Line Items" isLeaf="false" isAbstract="false">
+            <classMoniker Id="d2f00267-7dba-4d10-b80c-be652d2ac0f1" LastKnownName="Claim Line Item" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="caca21c4-ab5b-40be-82db-e73d6b55f78e" name="Claim" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8c60d96e-0143-407b-9774-64ed0836880e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="394a962a-3279-49d2-b3b0-275fb386dc59" name="Claim Line Items" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="32314e07-d23c-4272-95ed-9eda6348b3db" name="Lower" value="1">
+                      <elementDefinition Id="56b83279-1dae-4400-9af3-822f851d63a4" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="dc3a156c-2c85-4cb7-900d-aa431c96f8fa" name="Upper" value="*">
+                      <elementDefinition Id="f654e091-38ea-4951-bca3-3ee54250fb48" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="724dce22-973d-4a1f-9715-f91663b36dbd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0db9a3d3-f8d8-470a-bf0b-0155e433b1d8" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="eac83448-f15a-49fd-80bd-b3e5e9d13b8e" name="Service Date" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="70c89ed7-90c4-4367-a006-ca868764f08e" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="4855a7bc-89eb-41b1-9fcc-0533cbfcceda" LastKnownName="Datetime" />
+            </type_NamedElement>
+          </property>
+          <property Id="2542261b-7a99-4303-88a9-a4f9b9008d7c" name="Patient Account" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b3b4ad6e-90b9-491d-abac-d1a3a74229c4" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="5477bbba-14e6-4ef7-8903-54c18af8a58b" LastKnownName="Patient Account" />
+            </type_NamedElement>
+          </property>
+          <property Id="7261cbf8-76c6-4847-9e74-c4a7fd534677" name="Service Provider" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c46bc094-3f89-477c-8cb3-d3dbfd624767" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="760f2ff1-fad0-444f-a50c-28876c375a23" LastKnownName="Service Provider" />
+            </type_NamedElement>
+          </property>
+          <property Id="2e4998f8-d05b-45b3-80a6-25a9e36942f4" name="Place of Service" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2ebcc01c-94d6-4c34-819b-cab3d8ce2944" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="c1a21e6f-8102-4026-88e5-7bf7787cc37a" LastKnownName="Place of Service" />
+            </type_NamedElement>
+          </property>
+          <property Id="6ce356f4-f164-44d7-8df5-a28b5d763d02" name="Charge Amount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f2f47459-6a6e-4854-b876-9f4f3c0ed71c" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="114cd25e-6164-4bfc-b56a-fa7d358909f0" LastKnownName="Money" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="4855a7bc-89eb-41b1-9fcc-0533cbfcceda" name="Datetime" isAbstract="false" isLeaf="false" cachedFullName="Datetime">
+        <elementDefinition Id="9a459a83-5fac-4d82-b737-039e17b6943e" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="5477bbba-14e6-4ef7-8903-54c18af8a58b" name="Patient Account" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Billing::Patient Account">
+        <elementDefinition Id="1fa24bf8-9d7b-403e-97da-d57cb05d00d1" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="760f2ff1-fad0-444f-a50c-28876c375a23" name="Service Provider" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Billing::Service Provider">
+        <elementDefinition Id="e170380b-bd2c-4a93-9d76-25f6f79fcf82" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="c1a21e6f-8102-4026-88e5-7bf7787cc37a" name="Place of Service" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Billing::Place of Service">
+        <elementDefinition Id="15b842d7-9c14-410d-8d8f-90cdde97c017" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="114cd25e-6164-4bfc-b56a-fa7d358909f0" name="Money" isAbstract="false" isLeaf="false" cachedFullName="Money">
+        <elementDefinition Id="f069ea17-89dc-43bf-b1a3-5ee9e6116361" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d2f00267-7dba-4d10-b80c-be652d2ac0f1" name="Claim Line Item" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8c1559d6-48a0-4e11-8217-295ea338286a" />
+        <ownedAttributesInternal>
+          <property Id="3e2dd1aa-f288-4964-bbcc-e0347447eb53" name="Procedure" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f0b7d64c-3ac4-4395-918d-4eb242f6cc41" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8c4f34c1-716b-476e-ab25-1eb2ca3dd5a5" LastKnownName="CodedConcept" />
+            </type_NamedElement>
+          </property>
+          <property Id="356e453c-b9e6-40dc-8c95-2ea3637d1447" name="Charge Amount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d2ab9c58-302e-487a-8272-e3615d8668e4" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="114cd25e-6164-4bfc-b56a-fa7d358909f0" LastKnownName="Money" />
+            </type_NamedElement>
+          </property>
+          <property Id="765abe18-3da8-4264-ac19-223e5fc2982d" name="RatePerBillingUnit" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="320cb4d5-4864-4beb-bbb4-fb443dba96a1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="f1c83d22-ebea-4899-a924-34bde77c2b1a" LastKnownName="Currency" />
+            </type_NamedElement>
+          </property>
+          <property Id="fd69a133-1669-4d7d-b7e6-d9774d21a7e2" name="BillingUnitCount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="050cc543-f7e9-4b95-a054-d4c2f4b88437" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="868ab4b9-d494-45a9-ad09-f04ca0bb57cc" LastKnownName="BillingUnitCount" />
+            </type_NamedElement>
+          </property>
+          <property Id="ef9227ee-0eac-4de1-aa07-8d874fdd279b" name="Diagnosis" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ff4b8170-6c86-42c4-b2dc-bfc8f590c22d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8c4f34c1-716b-476e-ab25-1eb2ca3dd5a5" LastKnownName="CodedConcept" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="8c4f34c1-716b-476e-ab25-1eb2ca3dd5a5" name="CodedConcept" isAbstract="false" isLeaf="false" cachedFullName="CodedConcept">
+        <elementDefinition Id="f1ea0cab-876f-4e6a-b78c-30ceba135681" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="f1c83d22-ebea-4899-a924-34bde77c2b1a" name="Currency" isAbstract="false" isLeaf="false" cachedFullName="Currency">
+        <elementDefinition Id="ac6540ad-ec3a-40b2-a043-ef18d91cc015" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="868ab4b9-d494-45a9-ad09-f04ca0bb57cc" name="BillingUnitCount" isAbstract="false" isLeaf="false" cachedFullName="BillingUnitCount">
+        <elementDefinition Id="d9eab054-a403-4c5f-93cb-f6bae1ed0219" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b47740b9-624e-4700-8a84-48291550151f" name="Encounter" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6ce2f277-c311-4a37-9c37-5b963532bdea" />
+        <targetEnds>
+          <association Id="926d0416-ad25-4935-89f3-e57e801fc714" isDerived="false" sourceEndRoleName="Encounter" targetEndRoleName="Service" isLeaf="false" isAbstract="false">
+            <classMoniker Id="79d3ee1b-7098-4da8-8c10-4a8f34cf919d" LastKnownName="Service" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6c5039cd-6e08-4783-8b69-924e6785d8de" name="Encounter" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5766e3e9-ffed-40fa-b350-5d179d08a847" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b008b7f3-840e-481c-a576-5960d79220ad" name="Service" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="6cb7f870-ff43-4215-9775-60120da17feb" name="Lower" value="*">
+                      <elementDefinition Id="8771bff7-4ac1-4daf-adb8-730c5f1e2e6d" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="cce5d077-c5c6-42fb-90f1-64fbcc0565cb" name="Upper" value="*">
+                      <elementDefinition Id="f6185165-bde6-478b-a3a8-9d1133cae0a7" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="cf3f44f5-531f-46c1-a7c3-bd442d509e81" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b04a782a-6a35-4817-8192-b3f676cf589d" />
+          </association>
+          <association Id="23411401-6b08-4bce-af2d-ada33db518c4" isDerived="false" sourceEndRoleName="Encounter" targetEndRoleName="Claim" isLeaf="false" isAbstract="false">
+            <classMoniker Id="3f709f09-1b37-413a-bef3-a394b14d20a1" LastKnownName="Claim" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4e118b47-86e7-4740-8904-62760879512b" name="Encounter" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="bbfd4b4a-d2a4-43c3-a158-e921979dbcda" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b20e2981-6128-4522-b409-e406ea83a0ad" name="Claim" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="285198c2-3a7f-44df-abd9-b4ef558714e9" name="Lower" value="*">
+                      <elementDefinition Id="53f9fe6b-1162-4a00-9dd4-027881afd5a7" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="9dd0dcb7-918f-4009-91b0-1ef099d7e82e" name="Upper" value="*">
+                      <elementDefinition Id="1af1de2b-6fbf-4e5b-ad02-ea30bb400149" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="e574f5f2-4fc8-4184-bbd4-db0d4406fc03" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="cb010430-8ab1-49b2-84fc-d49d64a20a93" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="c902c7ee-d6d6-4150-a0f4-04e95c27d158" name="Date of Service" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d1477d06-a8e0-49eb-8649-94be1fd0de30" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="4855a7bc-89eb-41b1-9fcc-0533cbfcceda" LastKnownName="Datetime" />
+            </type_NamedElement>
+          </property>
+          <property Id="b67ab944-8bc1-4e1c-8b0a-7b047dc7817f" name="Charge Amount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="08864318-613f-4877-9ae2-82e14c18a052" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="114cd25e-6164-4bfc-b56a-fa7d358909f0" LastKnownName="Money" />
+            </type_NamedElement>
+          </property>
+          <property Id="f14990c4-6b03-411e-ae3f-c60ef4048040" name="Service Provider" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6cd22fef-84ef-491e-89fb-7978aa075a54" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="760f2ff1-fad0-444f-a50c-28876c375a23" LastKnownName="Service Provider" />
+            </type_NamedElement>
+          </property>
+          <property Id="24426763-bc92-48f2-89f5-13b9c0a48700" name="Place of Service" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7fea1553-4aa3-4cc4-8488-676e7d0192aa" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="c1a21e6f-8102-4026-88e5-7bf7787cc37a" LastKnownName="Place of Service" />
+            </type_NamedElement>
+          </property>
+          <property Id="5b0a921f-0f10-47d7-8240-339da9bf44e9" name="Tracking Number" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d1094bdc-2efb-4dac-815d-1292e7dfba82" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8922efd4-280a-4396-9ad3-f6d3253d637c" LastKnownName="long" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="8922efd4-280a-4396-9ad3-f6d3253d637c" name="long" isAbstract="false" isLeaf="false" cachedFullName="long">
+        <elementDefinition Id="cffcb105-b138-4fc3-9d64-9b829ecd1d9b" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="79d3ee1b-7098-4da8-8c10-4a8f34cf919d" name="Service" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0912bfb0-a66b-4da6-8c5d-a0bfddbec670" />
+        <targetEnds>
+          <association Id="a8521de0-2c7f-4059-a6f6-ee90c8d40e21" isDerived="false" sourceEndRoleName="Service" targetEndRoleName="Claim Line Item" isLeaf="false" isAbstract="false">
+            <classMoniker Id="d2f00267-7dba-4d10-b80c-be652d2ac0f1" LastKnownName="Claim Line Item" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="de1a8045-3582-4045-b824-eaedce8ad1d0" name="Service" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="341e12c4-7645-46e8-a766-19f736c954d4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7270deff-597f-4ac6-afdf-6b4c2ce99ca4" name="Claim Line Item" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="2aff589b-45e2-4cef-9eb0-7aae2bcbcaf7" name="Lower" value="*">
+                      <elementDefinition Id="a645d224-6469-4658-971b-8c78103ff5ab" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="9350e5a8-c6fc-4694-8a6e-149a776b7d0b" name="Upper" value="*">
+                      <elementDefinition Id="ada223f0-4ced-400a-b69f-a7955b227b17" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="8438683f-934e-44d1-ac55-61d05c2591b9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="327dee0b-a97b-4485-88f7-ace941ca502b" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="9a26aa73-cf99-4006-91e3-be2dcef6656e" name="Procedure" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="db8c795c-c71b-426a-86cf-8a15899953e1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8c4f34c1-716b-476e-ab25-1eb2ca3dd5a5" LastKnownName="CodedConcept" />
+            </type_NamedElement>
+          </property>
+          <property Id="ae44c8e5-d5fe-44c1-8a70-6ae0e3d3c9b2" name="First Modifier Code" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8e2ba3b4-3ac8-43ec-b112-687f68b0c7f5" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="1cb484a1-49b6-407a-8ca2-bc3c0605f0e3" LastKnownName="Coded Concept" />
+            </type_NamedElement>
+          </property>
+          <property Id="f82c38b9-b4a1-4124-9db3-1be5724a65e2" name="Fourth Modifier Code" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="df906f17-f259-40d7-b947-292ba3eb7e75" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="1cb484a1-49b6-407a-8ca2-bc3c0605f0e3" LastKnownName="Coded Concept" />
+            </type_NamedElement>
+          </property>
+          <property Id="1195c1eb-c067-4017-8bf4-50dde5e7e908" name="Second Modifier Code" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="abae0137-dc12-4100-96aa-d3a01965bc2b" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="1cb484a1-49b6-407a-8ca2-bc3c0605f0e3" LastKnownName="Coded Concept" />
+            </type_NamedElement>
+          </property>
+          <property Id="3a35d0cf-f19e-4fec-a5d9-02b4c9ebd82a" name="Third Modifier Code" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="37cf99a5-2429-42af-8227-acf6129b44c5" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="1cb484a1-49b6-407a-8ca2-bc3c0605f0e3" LastKnownName="Coded Concept" />
+            </type_NamedElement>
+          </property>
+          <property Id="de7d235c-be81-4c43-80f7-599584373e88" name="BillingUnitCount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7694ff49-9b29-4bbe-a77d-c06f52514d73" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="868ab4b9-d494-45a9-ad09-f04ca0bb57cc" LastKnownName="BillingUnitCount" />
+            </type_NamedElement>
+          </property>
+          <property Id="38e2d0cb-3446-4297-b99e-cda1f4900673" name="RatePerBillingUnit" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7fb89c8c-b391-498b-8015-1f700972c9dd" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="f1c83d22-ebea-4899-a924-34bde77c2b1a" LastKnownName="Currency" />
+            </type_NamedElement>
+          </property>
+          <property Id="56ef2d6d-b85e-4621-85a3-50ccd50854a0" name="Diagnosis" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="9f6fce6f-cb7e-4777-9a17-f3fad1eaf13e" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8c4f34c1-716b-476e-ab25-1eb2ca3dd5a5" LastKnownName="CodedConcept" />
+            </type_NamedElement>
+          </property>
+          <property Id="11bacd5d-51c1-46a2-ab27-df1b2041256b" name="Tracking Number" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ada80f5b-a65c-4636-b2a4-0d053bf262e3" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8922efd4-280a-4396-9ad3-f6d3253d637c" LastKnownName="long" />
+            </type_NamedElement>
+          </property>
+          <property Id="d8aacdfd-f279-425e-a8a0-ea9656f0631b" name="Charge Amount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="60a5019f-17e5-4566-b080-3c2b7e240d7d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="114cd25e-6164-4bfc-b56a-fa7d358909f0" LastKnownName="Money" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="1cb484a1-49b6-407a-8ca2-bc3c0605f0e3" name="Coded Concept" isAbstract="false" isLeaf="false" cachedFullName="Coded Concept">
+        <elementDefinition Id="84ca4034-60ab-4f5a-8262-6ad99e959fd0" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="f05b723e-af71-4990-a6b3-d07da856ba66" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+  </package>
+  <package Id="6f2a85ec-8ab9-4608-8b34-bb817ac72d6f" name="Rem.Domain.Billing">
+    <elementDefinition Id="e10ccdeb-bd61-4f8f-8b9e-5c3f762b18c3" />
+  </package>
+</logicalClassDesignerModel>

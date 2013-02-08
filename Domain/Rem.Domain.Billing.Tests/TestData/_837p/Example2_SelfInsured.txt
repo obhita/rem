@@ -1,0 +1,40 @@
+﻿ISA*00*          *00*          *ZZ*SUBMITTERS.ID  *ZZ*RECEIVERS.ID   *110213*1253*^*00501*000000001*1*T*:~
+  GS*HC*SENDER CODE*RECEIVER CODE*20110213*1253*1*X*005010X222~
+    ST*837*0001*005010X222~
+      BHT*0019*00*0*20061015*1023*CH~
+      NM1*41*2*SAFE HARBOR*****46*SAFEHARBOR_ETIN~
+        PER*IC*JERRY*TE*3055552222*EX*231~
+      NM1*40*2*KEY INSURANCE COMPANY*****46*KEY_INSURANCE_ETIN~
+      HL*1**20*1~
+        PRV*BI*PXC*203BF0100Y~
+        NM1*85*2*Safe Harbor*****XX*9876543210~
+          N3*234 SEAWAY ST~
+          N4*MIAMI*FL*33111~
+          REF*EI*587654321~
+        NM1*87*2~
+          N3*234 SEAWAY ST~
+          N4*MIAMI*FL*33111~
+        HL*2*1*22*0~
+          SBR*P*18~
+          NM1*IL*1*SMITH*JANE****MI*JS00111223333~
+            N3*234 SEAWAY ST~
+            N4*MIAMI*FL*33413~
+            DMG*D8*19430501*F~
+          NM1*PR*2*KEY INSURANCE COMPANY*****PI*999996666~
+          CLM*26463774*100***11:B:1*Y*A*Y*Y~
+            HI*BK:0340~
+            LX*1~
+              SV1*HC:99213*40*UN*1***1~
+              DTP*472*D8*20061003~
+            LX*2~
+              SV1*HC:87070*15*UN*1***1~
+              DTP*472*D8*20061003~
+            LX*3~
+              SV1*HC:99214*35*UN*1***1~
+              DTP*472*D8*20061010~
+            LX*4~
+              SV1*HC:86663*10*UN*1***1~
+              DTP*472*D8*20061010~
+    SE*36*0001~
+  GE*1*1~
+IEA*1*000000001~

@@ -1,0 +1,19 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             x:Class="Rem.Ria.Infrastructure.Tests.App">
+	
+<Application.Resources>
+        
+    	<ResourceDictionary>
+    		<ResourceDictionary.MergedDictionaries>
+    			<ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/Brushes.xaml"/>
+    			<ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/Styles.xaml"/>
+    			<ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/DataTemplates.xaml"/>
+    			<ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/DataGridResources.xaml"/>
+    			<ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/RadMenuResources.xaml"/>
+    			<ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/Tiles.xaml"/>
+    		</ResourceDictionary.MergedDictionaries>
+    	</ResourceDictionary>
+        
+    </Application.Resources>
+</Application>

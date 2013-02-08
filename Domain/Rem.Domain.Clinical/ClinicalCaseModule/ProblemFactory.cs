@@ -1,0 +1,93 @@
+﻿#region License
+// Open Behavioral Health Information Technology Architecture (OBHITA.org)
+// 
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the <organization> nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+// DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+// DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+// (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+// ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+// SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#endregion
+
+using Rem.Domain.Clinical.PatientModule;
+using Rem.Domain.Core.CommonModule;
+
+namespace Rem.Domain.Clinical.ClinicalCaseModule
+{
+    /// <summary>
+    /// The ProblemFactory implements lifetime management of the <see cref="T:Rem.Domain.Clinical.ClinicalCaseModule.Problem">Problem</see>.
+    /// </summary>
+    public class ProblemFactory : IProblemFactory
+    {
+        private readonly IProblemRepository _problemRepository;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProblemFactory"/> class.
+        /// </summary>
+        /// <param name="problemRepository">The problem repository.</param>
+        public ProblemFactory ( IProblemRepository problemRepository )
+        {
+            _problemRepository = problemRepository;
+        }
+
+        /// <summary>
+        /// Creates the problem.
+        /// </summary>
+        /// <param name="clinicalCase">The clinical case.</param>
+        /// <param name="problemCodeCodedConcept">The problem code coded concept.</param>
+        /// <returns>A Problem.</returns>
+        public Problem CreateProblem (
+            ClinicalCase clinicalCase,
+            CodedConcept problemCodeCodedConcept)
+        {
+            var problem = new Problem ( clinicalCase, problemCodeCodedConcept);
+            _problemRepository.MakePersistent ( problem );
+
+            return problem;
+        }
+
+        /// <summary>
+        /// Creates the problem.
+        /// </summary>
+        /// <param name="clinicalCase">The clinical case.</param>
+        /// <param name="problemCodeCodedConcept">The problem code coded concept.</param>
+        /// <param name="provenance">The provenance.</param>
+        /// <returns>
+        /// A Problem.
+        /// </returns>
+        public Problem CreateProblem(
+            ClinicalCase clinicalCase,
+            CodedConcept problemCodeCodedConcept,
+            Provenance provenance)
+        {
+            var problem = new Problem(clinicalCase, problemCodeCodedConcept, provenance);
+            _problemRepository.MakePersistent(problem);
+
+            return problem;
+        }
+
+        /// <summary>
+        /// Destroys the problem.
+        /// </summary>
+        /// <param name="problem">The problem.</param>
+        public void DestroyProblem ( Problem problem )
+        {
+            _problemRepository.MakeTransient ( problem );
+        }
+    }
+}

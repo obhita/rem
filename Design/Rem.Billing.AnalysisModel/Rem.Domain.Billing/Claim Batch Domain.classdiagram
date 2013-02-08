@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="25fd9157-2b04-4e8a-880f-0a20d7b76319" name="Claim Batch Domain" linkedPackageId="5da90a1a-b4c4-42b8-8fd1-0ab0b141467b" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="73f6e6ec-8839-4260-9f90-d4526ec1100a">
+      <profileInstance Id="4edee521-9ea9-4c43-bb79-2b51b8e6cf87" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="a26d4299-cd14-4077-b9e7-730542670473">
+      <profileInstance Id="04587d79-856a-4615-8fe1-ab12b0bf716c" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="986716f4-ce26-4ad6-9916-1ddab784b94c" name="Claim Batch" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0e275a64-e898-44bb-ade1-727c4cc6633e" />
+        <targetEnds>
+          <association Id="d8d3d9c6-baa1-4864-8ef0-26a7092251a5" isDerived="false" sourceEndRoleName="Claim Batch" targetEndRoleName="Claims" isLeaf="false" isAbstract="false">
+            <classMoniker Id="461bff1c-551a-4fc9-b02a-510d29991be8" LastKnownName="Claim" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f67c133d-befa-4d4a-a1fd-11b78a2c4bcf" name="Claim Batch" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2977ef06-41c5-4ae1-a46a-f8c507a3e892" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f6908461-40e3-4f77-95ff-ca1206d11125" name="Claims" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="08aa9318-efe4-43a3-b292-0000d2891f0d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2bbcf31f-a20f-42a2-98d3-74e0bba268b1" />
+          </association>
+          <association Id="95e2346e-fdb7-4e50-bf60-40020b8b5193" isDerived="false" sourceEndRoleName="Claim Batch" targetEndRoleName="Payor" isLeaf="false" isAbstract="false">
+            <classMoniker Id="3bc57031-3e2d-417c-9f02-364837220273" LastKnownName="Payor" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b1947c2b-fd28-4bb6-b3ae-7b38af24ff44" name="Claim Batch" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c3594786-0171-43e2-a5e2-4d21eeba7eda" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="79224c96-9624-4516-a1f5-2a50c7209243" name="Payor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="dff83c5f-5930-4787-a8c0-570f93ba30f4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="22a0b2ce-11e8-455c-bf07-be19b0fc3bf3" />
+          </association>
+          <association Id="0c3c8db7-f272-435c-91d4-7b541b2f7036" isDerived="false" sourceEndRoleName="Claim Batch" targetEndRoleName="H837" isLeaf="false" isAbstract="false">
+            <classMoniker Id="c26cd0de-10bf-4e99-a73d-55ca8583d40e" LastKnownName="Health Care Claim 837 Professional" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b7c1c16a-73f8-4453-a1ab-449ad982ac85" name="Claim Batch" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="cbfed4f6-0a75-4918-a2b3-eaedfe7adcf1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0f289b09-8819-4cd8-a96f-2c05b452457e" name="H837" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8353546e-1a2e-4993-8bf5-1efb35898ac2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="49f882cd-3650-4a6e-9f5c-0518ce647917" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="54d3802b-f32b-4e78-9a64-6e0f86cec055" name="Payor" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="72937e79-b754-4060-984f-832fb6b7d998" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="ec6dc32a-62e2-439c-9f58-231c76ae0dea" LastKnownName="Payor" />
+            </type_NamedElement>
+          </property>
+          <property Id="9836b26e-558e-4802-a767-65f5ccf9b06d" name="Charge Amount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c7d31287-c747-47c0-8775-c8780cca40d0" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="12a3af30-be48-4a64-b8c1-3b01eb52c691" LastKnownName="Money" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3bc57031-3e2d-417c-9f02-364837220273" name="Payor" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="806b13de-4795-48ed-a3b0-5b4ad1f59dae" />
+        <ownedAttributesInternal>
+          <property Id="b10de229-6b71-4319-b56e-dd9e192c804a" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ce4d7c84-b404-4264-b4a5-46f8a6742827" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="93bd38f2-65da-43ee-8f3d-b0ef5eff0b57" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="e841da40-e071-40ff-838c-843b507b6d0b" name="Payor Type" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="534a13e6-3740-44bd-87fb-aadd2b24c139" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="e574a7da-e2cc-4a15-8c58-bdb72e983467" LastKnownName="Payor Type" />
+            </type_NamedElement>
+          </property>
+          <property Id="a8e30877-ad95-45ba-8a39-3f2bd5d96b18" name="Billing Form" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="637aa636-e589-4000-9b22-2f3120f8248f" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="6ddfd9a4-ef85-424b-98c7-21f347d63a21" LastKnownName="Billing Form" />
+            </type_NamedElement>
+          </property>
+          <property Id="a1e131c8-8e3e-4df2-be5d-e3ec359d0bee" name="Health Care Claim 837 Setup" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="844123c9-8bfe-4a68-b43d-0ab27a570809" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="495e103f-97f2-480d-9187-8d6dd01bf539" LastKnownName="Health Care Claim 837 Setup" />
+            </type_NamedElement>
+          </property>
+          <property Id="95ef584a-3dc3-4283-919a-97070f79451d" name="Addresses" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="47b53d03-5f43-449e-b4f4-a04fb8960d6b" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="c4f85378-f3ff-4f8f-a3b5-ef190d4be17d" LastKnownName="IList&lt;Payor Address&gt;" />
+            </type_NamedElement>
+          </property>
+          <property Id="cc144a1d-9951-4405-a201-3030b3b64555" name="Phone Numbers" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="718dc42f-ddd2-411a-971a-02719f932c1d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="48125350-5580-4fa8-94db-b919fed57630" LastKnownName="IList&lt;Payor Phone Number&gt;" />
+            </type_NamedElement>
+          </property>
+          <property Id="d2857190-3573-4bae-a60c-a4d70c17610b" name="Email Addresses" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0648abf4-0dab-44b3-9848-34d2fe732ce5" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="2da59a78-3c45-4a5b-8f0f-53a33d460617" LastKnownName="IList&lt;Payor Email Address&gt;" />
+            </type_NamedElement>
+          </property>
+          <property Id="0903f874-92b3-4a0e-93a6-ce4782f61c66" name="Website Address" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="656bd3fa-a2d7-4d3b-90a3-07dabb91dd38" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="c03eed4b-a24e-435a-988b-b46ae97fb6f0" LastKnownName="URL" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="93bd38f2-65da-43ee-8f3d-b0ef5eff0b57" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="e574a7da-e2cc-4a15-8c58-bdb72e983467" name="Payor Type" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Billing::Payor Type">
+        <elementDefinition Id="8e753179-77f4-4b8d-9fe2-dd0d4e2ad2b1" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="6ddfd9a4-ef85-424b-98c7-21f347d63a21" name="Billing Form" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Billing::Billing Form">
+        <elementDefinition Id="dedeedaa-1a13-499b-b088-6a270b90a851" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="495e103f-97f2-480d-9187-8d6dd01bf539" name="Health Care Claim 837 Setup" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Billing::Health Care Claim 837 Setup">
+        <elementDefinition Id="228e03d9-426f-479f-a648-d98655c2699d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="c4f85378-f3ff-4f8f-a3b5-ef190d4be17d" name="IList&lt;Payor Address&gt;" isAbstract="false" isLeaf="false" cachedFullName="IList&lt;Payor Address&gt;">
+        <elementDefinition Id="dc157413-1a5e-457a-8b53-ad6d4162e6fa" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="48125350-5580-4fa8-94db-b919fed57630" name="IList&lt;Payor Phone Number&gt;" isAbstract="false" isLeaf="false" cachedFullName="IList&lt;Payor Phone Number&gt;">
+        <elementDefinition Id="640a65b5-9b9c-45a0-9651-ac50c707a9fb" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="2da59a78-3c45-4a5b-8f0f-53a33d460617" name="IList&lt;Payor Email Address&gt;" isAbstract="false" isLeaf="false" cachedFullName="IList&lt;Payor Email Address&gt;">
+        <elementDefinition Id="2bddc79e-8c2b-4039-958d-0be459a7d642" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="c03eed4b-a24e-435a-988b-b46ae97fb6f0" name="URL" isAbstract="false" isLeaf="false" cachedFullName="URL">
+        <elementDefinition Id="c5bc0a79-e79b-4e87-971b-48f51abebe79" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="ec6dc32a-62e2-439c-9f58-231c76ae0dea" name="Payor" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Billing::Payor">
+        <elementDefinition Id="806b13de-4795-48ed-a3b0-5b4ad1f59dae" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="461bff1c-551a-4fc9-b02a-510d29991be8" name="Claim" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f1680d90-50a3-423e-abb9-180d81c6aa30" />
+        <targetEnds>
+          <association Id="fa30009c-5b72-4e17-b591-b4e43c756c52" isDerived="false" sourceEndRoleName="Claims" targetEndRoleName="Payor" isLeaf="false" isAbstract="false">
+            <classMoniker Id="3bc57031-3e2d-417c-9f02-364837220273" LastKnownName="Payor" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="46c3cb18-ce8f-4402-b7d4-f25c9a52216d" name="Claims" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="63c4b347-2dc0-4799-8078-0cd7d68a858e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1d06fcbf-176f-4668-bb78-8c1326d0b201" name="Payor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6d536a94-2278-4950-8b77-2be1a503d33f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="90644e9f-52b0-4396-82ad-a9b90a913043" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="38c34c52-ab40-40c1-bdbd-5d45bbf21789" name="Service Date" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="70c89ed7-90c4-4367-a006-ca868764f08e" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="9eff6c62-08c4-4366-99c5-4a2c07293b16" LastKnownName="Datetime" />
+            </type_NamedElement>
+          </property>
+          <property Id="97ac7eda-6d10-4147-97f9-393890e9141a" name="Patient Account" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b3b4ad6e-90b9-491d-abac-d1a3a74229c4" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="37ec6f47-566c-4a95-90b0-4881432f05aa" LastKnownName="Patient Account" />
+            </type_NamedElement>
+          </property>
+          <property Id="f219dacb-4ad1-4bfc-9299-b5b862a2bd6d" name="Service Provider" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c46bc094-3f89-477c-8cb3-d3dbfd624767" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="762d3a16-979a-4e30-9906-131d876afd01" LastKnownName="Service Provider" />
+            </type_NamedElement>
+          </property>
+          <property Id="924e36e2-98ec-4f47-89aa-9222ef8390fb" name="Place of Service" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2ebcc01c-94d6-4c34-819b-cab3d8ce2944" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="951bf039-439a-4a1e-9f9b-88760d422340" LastKnownName="Place of Service" />
+            </type_NamedElement>
+          </property>
+          <property Id="47ad9633-9b23-4711-934d-0bd57ae527de" name="Charge Amount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f2f47459-6a6e-4854-b876-9f4f3c0ed71c" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="12a3af30-be48-4a64-b8c1-3b01eb52c691" LastKnownName="Money" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="9eff6c62-08c4-4366-99c5-4a2c07293b16" name="Datetime" isAbstract="false" isLeaf="false" cachedFullName="Datetime">
+        <elementDefinition Id="9a459a83-5fac-4d82-b737-039e17b6943e" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="37ec6f47-566c-4a95-90b0-4881432f05aa" name="Patient Account" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Billing::Patient Account">
+        <elementDefinition Id="1fa24bf8-9d7b-403e-97da-d57cb05d00d1" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="762d3a16-979a-4e30-9906-131d876afd01" name="Service Provider" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Billing::Service Provider">
+        <elementDefinition Id="e170380b-bd2c-4a93-9d76-25f6f79fcf82" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="951bf039-439a-4a1e-9f9b-88760d422340" name="Place of Service" isAbstract="false" isLeaf="false" cachedFullName="AnalysisModel::Rem.Domain.Billing::Place of Service">
+        <elementDefinition Id="15b842d7-9c14-410d-8d8f-90cdde97c017" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="12a3af30-be48-4a64-b8c1-3b01eb52c691" name="Money" isAbstract="false" isLeaf="false" cachedFullName="Money">
+        <elementDefinition Id="f069ea17-89dc-43bf-b1a3-5ee9e6116361" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="c26cd0de-10bf-4e99-a73d-55ca8583d40e" name="Health Care Claim 837 Professional" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="816e1cca-82b1-4051-8e4f-53d4a4bd7476" />
+        <ownedAttributesInternal>
+          <property Id="cd221bfb-5ff0-4d9a-97d4-c644eb4eee55" name="Key" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="804aa5e1-6905-4d8c-91a7-a59141eb7cdd" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="714021c7-2fe0-46d3-a8a8-6bd473462bc9" LastKnownName="long" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="714021c7-2fe0-46d3-a8a8-6bd473462bc9" name="long" isAbstract="false" isLeaf="false" cachedFullName="long">
+        <elementDefinition Id="cffcb105-b138-4fc3-9d64-9b829ecd1d9b" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="e2b1dc6c-17e8-4d93-b0a4-05cec0f50433" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+  </package>
+  <package Id="5da90a1a-b4c4-42b8-8fd1-0ab0b141467b" name="Rem.Domain.Billing">
+    <elementDefinition Id="e10ccdeb-bd61-4f8f-8b9e-5c3f762b18c3" />
+  </package>
+</logicalClassDesignerModel>

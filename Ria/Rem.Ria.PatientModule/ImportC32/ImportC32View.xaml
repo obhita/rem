@@ -1,0 +1,403 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.ImportC32.ImportC32View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+             xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+             xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <View:DataContextProxyElement x:Key="RootDataContext" />
+        <Converter:StringToNullableConverter x:Key="StringToNullableConverter"/>
+        <Style x:Key="GridViewRowSelectionStyle" TargetType="telerik:GridViewRow">
+            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+        </Style>
+        <Style x:Key="SectionGridViewStyle" TargetType="telerik:RadGridView">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="ShowGroupPanel" Value="False"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+            <Setter Property="RowIndicatorVisibility" Value="Collapsed"/>
+            <Setter Property="AutoExpandGroups" Value="True"/>
+            <Setter Property="IsSynchronizedWithCurrentItem" Value="false"/>
+            <Setter Property="SelectionMode" Value="Multiple"/>
+            <Setter Property="RowStyle" Value="{StaticResource GridViewRowSelectionStyle}"/>
+        </Style>    
+    </UserControl.Resources>
+    <Grid>        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>            
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource TileSubHeaderBackgroundBorderStyle}">
+            <CustomControls:ScrollToElementQuickPicker Margin="10" HorizontalAlignment="Left" Width="200" ScrollViewer="{Binding ElementName=svSections}">
+                <telerik:RadComboBoxItem>Provenance</telerik:RadComboBoxItem>
+                <telerik:RadComboBoxItem>Medications</telerik:RadComboBoxItem>
+                <telerik:RadComboBoxItem>Allergies</telerik:RadComboBoxItem>
+                <telerik:RadComboBoxItem>Problems</telerik:RadComboBoxItem>
+                <telerik:RadComboBoxItem>Immunizations</telerik:RadComboBoxItem>
+                <telerik:RadComboBoxItem>Lab Results</telerik:RadComboBoxItem>
+                <telerik:RadComboBoxItem>Vital Signs</telerik:RadComboBoxItem>
+            </CustomControls:ScrollToElementQuickPicker>
+        </Border>
+        <ScrollViewer x:Name="svSections" Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="0" Padding="0" BorderThickness="0" >
+            <Border Style="{StaticResource PopUpFormPanelStyle}" VerticalAlignment="Top" CornerRadius="0">
+                <Grid Margin="10" VerticalAlignment="Stretch">
+                    <StackPanel>
+                        <Border>
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel x:Name="Provenance" Orientation="Vertical" Margin="0,0,0,8">
+                                    <Border  Grid.Row="0" BorderBrush="DarkGray" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch" Margin="0 5 0 10">
+                                        <TextBlock Text="Provenance Information" Margin="10 0 0 0" FontSize="14" FontWeight="SemiBold" Foreground="#FF0E7094"/>
+                                    </Border>
+
+                                    <Border  Grid.Row="0" HorizontalAlignment="Stretch" Margin="0 5 0 0">
+                                        <TextBlock Text="Tagged Data Element Identifier" Margin="10 0 0 -1" FontSize="12" FontWeight="Medium" Foreground="SteelBlue"/>
+                                    </Border>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                            <TextBlock Text="Assigning Authority" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadMaskedTextBox MaskedText="{Binding Provenance.AssigningAuthority, Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                            <TextBlock Text="Extension" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadMaskedTextBox MaskedText="{Binding Provenance.Extension, Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top" Width="250">
+                                            <TextBlock Text="Signed Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadMaskedTextBox MaskedText="{Binding Provenance.SignedTimestamp, Mode=TwoWay, StringFormat='MM/dd/yy'}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <Border  Grid.Row="0" HorizontalAlignment="Stretch" Margin="0 18 0 0">
+                                        <TextBlock Text="Assigned Author" Margin="10 0 0 -1" FontSize="12" FontWeight="Medium" Foreground="SteelBlue"/>
+                                    </Border>
+                                    <StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleXL}" VerticalAlignment="Top">
+                                            <TextBlock Text="Provider Directive Entry Address" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadMaskedTextBox MaskedText="{Binding Provenance.ProviderDirectoryEntryAddress, Mode=TwoWay}" MaskType="None" EmptyContent="Provider Directive Entry Address" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                            <TextBlock Text="Prefix" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadMaskedTextBox MaskedText="{Binding Provenance.PrefixName, Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                            <TextBlock Text="First Name" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadMaskedTextBox MaskedText="{Binding Provenance.FirstName, Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top" Width="250">
+                                            <TextBlock Text="Last Name" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadMaskedTextBox MaskedText="{Binding Provenance.LastName, Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <Border  Grid.Row="0" HorizontalAlignment="Stretch" Margin="0 18 0 0">
+                                        <TextBlock Text="Represented Organization" Margin="10 0 0 -1" FontSize="12" FontWeight="Medium" Foreground="SteelBlue"/>
+                                    </Border>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                            <TextBlock Text="Name" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadMaskedTextBox MaskedText="{Binding Provenance.OrganizationName, Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" VerticalAlignment="Top">
+                                            <TextBlock Text="Phone Number" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                            <telerik:RadMaskedTextBox MaskedText="{Binding Provenance.PhoneNumber, Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                                <Border Style="{StaticResource HorizontalLineEditFormDivider}" Margin="10,5"/>
+                                <ContentControl x:Name="EditingContent">
+                                    <StackPanel Orientation="Vertical">
+                                        <Border Style="{StaticResource EditFormSectionBorderStyle}" Margin="0,5">
+                                            <StackPanel Orientation="Vertical">
+                                                <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch" Margin="0 5 0 5">
+                                                    <TextBlock Text="Medication List" Margin="10 0 0 0" FontSize="14" FontWeight="SemiBold" Foreground="#FF0E7094"/>
+                                                </Border>
+                                                <StackPanel x:Name="Medications" Orientation="Horizontal" Width="800">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top" Width="380">
+                                                        <telerik:RadGridView x:Name="ExistingMedicationsGridView" ItemsSource="{Binding ExistingMedicationList}" Style="{StaticResource SectionGridViewStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                            <telerik:RadGridView.Resources>
+                                                                <DataTemplate x:Key="MedicationToolTip">
+                                                                    <StackPanel Orientation="Horizontal" Visibility="{Binding MedicationCodeCodedConcept, Converter={StaticResource NullToVisibilityConverterInstance}}" >
+                                                                        <TextBlock Text="{Binding MedicationCodeCodedConcept}" />
+                                                                        <TextBlock Text=" " />
+                                                                        <TextBlock Text="{Binding MedicationStatus}" />
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </telerik:RadGridView.Resources>
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:RadGridViewRowToolTipBehavior ToolTipDataTemplate="{Binding Source={StaticResource MedicationToolTip}}" />
+                                                            </i:Interaction.Behaviors>
+                                                            <telerik:RadGridView.Columns>
+                                                                <telerik:GridViewDataColumn Width="*" Header="Existing Medication On File" HeaderTextAlignment="Center" DataMemberBinding="{Binding MedicationCodeCodedConcept}" TextWrapping="Wrap" />                                                                    
+                                                                <telerik:GridViewDataColumn Width="auto" Header="Status" HeaderTextAlignment="Center" DataMemberBinding="{Binding MedicationStatus}" />                                                                   
+                                                            </telerik:RadGridView.Columns>
+                                                        </telerik:RadGridView>
+                                                    </StackPanel>
+
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top" Width="390">
+                                                        <telerik:RadGridView x:Name="MedicationsGridView" ItemsSource="{Binding MedicationList}" Style="{StaticResource SectionGridViewStyle}" 
+                                                                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                            <telerik:RadGridView.Resources>
+                                                                <DataTemplate x:Key="MedicationToolTip">
+                                                                    <StackPanel Orientation="Horizontal" Visibility="{Binding MedicationCodeCodedConcept, Converter={StaticResource NullToVisibilityConverterInstance}}">
+                                                                        <TextBlock Text="{Binding MedicationCodeCodedConcept}" />
+                                                                        <TextBlock Text=" " />
+                                                                        <TextBlock Text="{Binding MedicationStatus}" />
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </telerik:RadGridView.Resources>
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:RadGridViewSelectionChangedCommandBehavior Command="{Binding SelectionChangedCommand}" />
+                                                                <Behavior:RadGridViewRowToolTipBehavior ToolTipDataTemplate="{Binding Source={StaticResource MedicationToolTip}}" />
+                                                            </i:Interaction.Behaviors>
+                                                            <telerik:RadGridView.Columns>
+                                                                <telerik:GridViewSelectColumn/>
+                                                                <telerik:GridViewDataColumn Width="*" Header="Medication From C32 Document" HeaderTextAlignment="Center" DataMemberBinding="{Binding MedicationCodeCodedConcept}" TextWrapping="Wrap" />                                                                
+                                                                <telerik:GridViewDataColumn Width="auto" Header="Status" HeaderTextAlignment="Center" DataMemberBinding="{Binding MedicationStatus}" />                                                                 
+                                                            </telerik:RadGridView.Columns>
+                                                        </telerik:RadGridView>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+
+                                        <Border Style="{StaticResource EditFormSectionBorderStyle}" Margin="0,5">
+                                            <StackPanel Orientation="Vertical">
+                                                <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch" Margin="0 5 0 5">
+                                                    <TextBlock Text="Allergy List" Margin="10 0 0 0" FontSize="14" FontWeight="SemiBold" Foreground="#FF0E7094"/>
+                                                </Border>
+                                                <StackPanel x:Name="Allergies" Orientation="Horizontal" Width="800">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top" Width="780">
+                                                        <telerik:RadGridView x:Name="AllergiesGridView" ItemsSource="{Binding AllergyList}" Style="{StaticResource SectionGridViewStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                                            <telerik:RadGridView.Resources>
+                                                                <DataTemplate x:Key="AllergyToolTip">
+                                                                    <StackPanel Orientation="Horizontal" Visibility="{Binding AllergenCodedConcept, Converter={StaticResource NullToVisibilityConverterInstance}}">
+                                                                        <TextBlock Text="{Binding AllergenCodedConcept}" />
+                                                                        <TextBlock Text=" " />
+                                                                        <TextBlock Text="{Binding AllergyStatus}" />
+                                                                        <TextBlock Text=" " />
+                                                                        <TextBlock Text="{Binding AllergyType}" />
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </telerik:RadGridView.Resources>
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:RadGridViewSelectionChangedCommandBehavior Command="{Binding SelectionChangedCommand}"/>
+                                                                <Behavior:RadGridViewRowToolTipBehavior ToolTipDataTemplate="{Binding Source={StaticResource AllergyToolTip}}" />
+                                                            </i:Interaction.Behaviors>
+                                                            <telerik:RadGridView.Columns>
+                                                                <telerik:GridViewSelectColumn/>
+                                                                <telerik:GridViewDataColumn Width="500" Header="Allergen" HeaderTextAlignment="Center" DataMemberBinding="{Binding AllergenCodedConcept}" />                                                             
+                                                                <telerik:GridViewDataColumn Width="100" Header="Type" HeaderTextAlignment="Center" DataMemberBinding="{Binding AllergyType}" />                                                                  
+                                                                <telerik:GridViewDataColumn Width="*" Header="Status" HeaderTextAlignment="Center" DataMemberBinding="{Binding AllergyStatus}" />
+                                                            </telerik:RadGridView.Columns>
+                                                        </telerik:RadGridView>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+
+                                        <Border Style="{StaticResource EditFormSectionBorderStyle}" Margin="0,5">
+                                            <StackPanel Orientation="Vertical">
+                                                <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch" Margin="0 5 0 5">
+                                                    <TextBlock Text="Problem List" Margin="10 0 0 0" FontSize="14" FontWeight="SemiBold" Foreground="#FF0E7094"/>
+                                                </Border>
+                                                <StackPanel x:Name="Problems" Orientation="Horizontal" Width="800">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top" Width="780">
+                                                        <telerik:RadGridView x:Name="ProblemsGridView" ItemsSource="{Binding ProblemList}" Style="{StaticResource SectionGridViewStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                            <telerik:RadGridView.Resources>
+                                                                <DataTemplate x:Key="ProblemToolTip">
+                                                                    <StackPanel Orientation="Horizontal" Visibility="{Binding ProblemCodeCodedConcept, Converter={StaticResource NullToVisibilityConverterInstance}}">
+                                                                        <TextBlock Text="{Binding ProblemCodeCodedConcept}" />
+                                                                        <TextBlock Text=" " />
+                                                                        <TextBlock Text="{Binding ProblemStatus}" />
+                                                                        <TextBlock Text=" " />
+                                                                        <TextBlock Text="{Binding ProblemType}" />
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </telerik:RadGridView.Resources>
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:RadGridViewSelectionChangedCommandBehavior Command="{Binding SelectionChangedCommand}"/>
+                                                                <Behavior:RadGridViewRowToolTipBehavior ToolTipDataTemplate="{Binding Source={StaticResource ProblemToolTip}}" />
+                                                            </i:Interaction.Behaviors>
+                                                            <telerik:RadGridView.Columns>
+                                                                <telerik:GridViewSelectColumn/>
+                                                                <telerik:GridViewDataColumn Width="500" Header="Problem" HeaderTextAlignment="Center" DataMemberBinding="{Binding ProblemCodeCodedConcept}" />                                                                   
+                                                                <telerik:GridViewDataColumn Width="100" Header="Type" HeaderTextAlignment="Center" DataMemberBinding="{Binding ProblemType}" />                                                                   
+                                                                <telerik:GridViewDataColumn Width="*" Header="Status" HeaderTextAlignment="Center" DataMemberBinding="{Binding ProblemStatus}" />                                                                   
+                                                            </telerik:RadGridView.Columns>
+                                                        </telerik:RadGridView>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+
+                                        <Border Style="{StaticResource EditFormSectionBorderStyle}" Margin="0,5">
+                                            <StackPanel Orientation="Vertical">
+                                                <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch" Margin="0 5 0 5">
+                                                    <TextBlock Text="Immunizations" Margin="10 0 0 0" FontSize="14" FontWeight="SemiBold" Foreground="#FF0E7094"/>
+                                                </Border>
+                                                <StackPanel x:Name="Immunizations" Orientation="Horizontal" Width="800">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top" Width="780">
+                                                        <telerik:RadGridView x:Name="ImmunizationsGridView" ItemsSource="{Binding ImmunizationList}" Style="{StaticResource SectionGridViewStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                            <telerik:RadGridView.Resources>
+                                                                <DataTemplate x:Key="ImmunizationToolTip">
+                                                                    <StackPanel Orientation="Horizontal" Visibility="{Binding VaccineCodedConcept, Converter={StaticResource NullToVisibilityConverterInstance}}">
+                                                                        <TextBlock Text="{Binding VaccineCodedConcept}" />
+                                                                        <TextBlock Text=" " />
+                                                                        <TextBlock Text="{Binding ActivityStartDateTime, StringFormat=\{0:M/d/yyyy\}}" />
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </telerik:RadGridView.Resources>
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:RadGridViewSelectionChangedCommandBehavior Command="{Binding SelectionChangedCommand}"/>
+                                                                <Behavior:RadGridViewRowToolTipBehavior ToolTipDataTemplate="{Binding Source={StaticResource ImmunizationToolTip}}" />
+                                                            </i:Interaction.Behaviors>
+                                                            <telerik:RadGridView.Columns>
+                                                                <telerik:GridViewSelectColumn/>
+                                                                <telerik:GridViewDataColumn Width="500" Header="Immunization" HeaderTextAlignment="Center" DataMemberBinding="{Binding VaccineCodedConcept}" />
+                                                                <telerik:GridViewDataColumn Width="*" Header="Administered Date" HeaderTextAlignment="Center" DataMemberBinding="{Binding ActivityStartDateTime, StringFormat=\{0:M/d/yyyy\}}" />                                                                                                                          
+                                                            </telerik:RadGridView.Columns>
+                                                        </telerik:RadGridView>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+
+                                        <Border Style="{StaticResource EditFormSectionBorderStyle}" Margin="0,5">
+                                            <StackPanel Orientation="Vertical">
+                                                <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch" Margin="0 5 0 5">
+                                                    <TextBlock Text="Lab Results" Margin="10 0 0 0" FontSize="14" FontWeight="SemiBold" Foreground="#FF0E7094"/>
+                                                </Border>
+                                                <StackPanel x:Name="LabResults" Orientation="Horizontal" Width="800">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top" Width="780">
+                                                        <telerik:RadGridView x:Name="LabResultsGridView" ItemsSource="{Binding LabSpecimen.LabResults}" Style="{StaticResource SectionGridViewStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                            <telerik:RadGridView.Resources>
+                                                                <DataTemplate x:Key="LabResultToolTip">
+                                                                    <StackPanel Orientation="Horizontal" Visibility="{Binding LabTestResultNameCodedConcept, Converter={StaticResource NullToVisibilityConverterInstance}}">
+                                                                        <TextBlock Text="{Binding LabTestResultNameCodedConcept}" />
+                                                                        <TextBlock Text=" " />
+                                                                        <TextBlock Text="{Binding Source={StaticResource RootDataContext}, Path=DataSource.LabSpecimen.LabTestDate, StringFormat=\{0:M/d/yyyy\}}" />
+                                                                        <TextBlock Text=" " />
+                                                                        <TextBlock Text="{Binding Result}" />
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </telerik:RadGridView.Resources>
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:RadGridViewSelectionChangedCommandBehavior Command="{Binding SelectionChangedCommand}"/>
+                                                                <Behavior:RadGridViewRowToolTipBehavior ToolTipDataTemplate="{Binding Source={StaticResource LabResultToolTip}}" />
+                                                            </i:Interaction.Behaviors>
+                                                            <telerik:RadGridView.Columns>
+                                                                <telerik:GridViewSelectColumn/>
+                                                                <telerik:GridViewDataColumn Width="500" Header="Lab Test" HeaderTextAlignment="Center" DataMemberBinding="{Binding LabTestResultNameCodedConcept}" />                                                                
+                                                                <telerik:GridViewDataColumn Width="*" Header="Report Date" HeaderTextAlignment="Center" DataMemberBinding="{Binding Source={StaticResource RootDataContext}, Path=DataSource.LabSpecimen.LabTestDate, StringFormat=\{0:M/d/yyyy\}}" />                                                                
+                                                                <telerik:GridViewDataColumn Width="*" Header="Result" HeaderTextAlignment="Center" DataMemberBinding="{Binding Result}" />                                                                 
+                                                            </telerik:RadGridView.Columns>
+                                                        </telerik:RadGridView>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+
+                                        <Border Style="{StaticResource EditFormSectionBorderStyle}" Margin="0,5">
+                                            <StackPanel Orientation="Vertical" Name="VitalSigns">
+                                                <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch" Margin="0 5 0 5">
+                                                    <TextBlock Text="Vital Signs" Margin="10 0 0 0" FontSize="14" FontWeight="SemiBold" Foreground="#FF0E7094"/>
+                                                </Border>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                        <TextBlock Text="Height" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock x:Name="HeightFeetMeasureTextBlock" Text="{Binding VitalSign.HeightFeetMeasure}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                                <TextBlock Text="Ft." Style="{StaticResource TileItemTextBlockStyle}" VerticalAlignment="Center" Margin="6,0,0,0" FontStyle="Italic" Foreground="Black"/>
+                                                            </StackPanel>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock x:Name="HeightInchesMeasureTextBlock" Text="{Binding VitalSign.HeightInchesMeasure}" Style="{StaticResource EditFormDataElementTextBlockStyle}"/>
+                                                                <TextBlock Text="In." Style="{StaticResource TileItemTextBlockStyle}" VerticalAlignment="Center" Margin="6,0,0,0" Foreground="Black" FontStyle="Italic"/>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}" >
+                                                        <TextBlock Text="Weight" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock x:Name="WeightLbsMeasureTextBlock" Text="{Binding VitalSign.WeightLbsMeasure}" Style="{StaticResource EditFormDataElementTextBlockStyle}" d:LayoutOverrides="Height, VerticalMargin"/>
+                                                            <TextBlock Text="Lb" Style="{StaticResource TileItemTextBlockStyle}" VerticalAlignment="Center" Margin="6,0,0,0" FontStyle="Italic"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel x:Name="BloodPressuresHeartRates" Orientation="Horizontal" Width="800">
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top" Width="510">
+                                                        <telerik:RadGridView x:Name="BloodPressuresView" ItemsSource="{Binding VitalSign.BloodPressures}" Style="{StaticResource SectionGridViewStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:RadGridViewSelectionChangedCommandBehavior Command="{Binding SelectionChangedCommand}"/>
+                                                            </i:Interaction.Behaviors>
+                                                            <telerik:RadGridView.Columns>
+                                                                <telerik:GridViewSelectColumn/>
+                                                                <telerik:GridViewDataColumn Width="1*" Header="Diastollic (mmHg)" HeaderTextAlignment="Center" DataMemberBinding="{Binding DiastollicMeasure}" TextWrapping="Wrap" />
+                                                                <telerik:GridViewDataColumn Width="1*" Header="Systollic (mmHg)" HeaderTextAlignment="Center" DataMemberBinding="{Binding SystollicMeasure}" />                                                                   
+                                                            </telerik:RadGridView.Columns>
+                                                        </telerik:RadGridView>
+                                                    </StackPanel>
+
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}" VerticalAlignment="Top" Width="260">
+                                                        <telerik:RadGridView x:Name="HeartRatesView" ItemsSource="{Binding VitalSign.HeartRates}" Style="{StaticResource SectionGridViewStyle}" 
+                                                                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:RadGridViewSelectionChangedCommandBehavior Command="{Binding SelectionChangedCommand}"/>
+                                                            </i:Interaction.Behaviors>
+                                                            <telerik:RadGridView.Columns>
+                                                                <telerik:GridViewSelectColumn/>
+                                                                <telerik:GridViewDataColumn Width="*" Header="Heart Rate (beats per minute)" HeaderTextAlignment="Center" DataMemberBinding="{Binding BeatsPerMinuteMeasure}" TextWrapping="Wrap" />                                                                  
+                                                            </telerik:RadGridView.Columns>
+                                                        </telerik:RadGridView>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+
+                                    </StackPanel>
+                                </ContentControl>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </ScrollViewer>
+        <Border Grid.Row="2" Style="{StaticResource TileSubHeaderBackgroundBorderBottomStyle}" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,10,10" >
+                <telerik:RadButton x:Name="ImportC32" Style="{StaticResource StaticBorderlessButtonStyle}" Command="{Binding ImportC32Command}">
+                    <ContentPresenter>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="10" Height="10" Grid.Column="0">
+                                <Path Stretch="Fill" Fill="{Binding Foreground, ElementName=ImportC32}" Data="F1 M 103.25,96.5L 105.25,96.5L 105.25,102.5L 111.25,102.5L 111.25,104.5L 105.25,104.5L 105.25,110.5L 103.25,110.5L 103.25,104.5L 97.25,104.5L 97.25,102.5L 103.25,102.5L 103.25,96.5 Z " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="6 0 0 0" Foreground="{Binding Foreground, ElementName=ImportC32}" Text="Import" FontFamily="{Binding FontFamily, ElementName=ImportC32}" FontSize="{Binding FontSize, ElementName=ImportC32}"/>
+                        </Grid>
+                    </ContentPresenter>
+                </telerik:RadButton>
+                <telerik:RadButton Style="{StaticResource StaticBorderlessButtonStyle}" Command="{Binding CancelCommand}" Content="Cancel" Width="60" Height="24" />
+            </StackPanel>
+        </Border>
+        <CustomControls:LoadingControl Grid.RowSpan="2" IsLoading="{Binding IsLoading}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#CCFFFFFF" Foreground="#FF666666"/>
+    </Grid>
+</UserControl>

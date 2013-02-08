@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.FrontDeskDashboard.EditPayorCoverageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:infrastructureBehaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+             xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism"
+             xmlns:ViewModel="clr-namespace:Rem.Ria.Infrastructure.ViewModel;assembly=Rem.Ria.Infrastructure"
+             mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <i:Interaction.Behaviors>
+        <infrastructureBehaviors:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <Border Style="{StaticResource PopUpFormPanelStyle}" CornerRadius="0">
+        <Grid Margin="10">
+            <StackPanel>
+            	<StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                <TextBlock Text="Payor Information" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+				</StackPanel>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" Height="auto" VerticalAlignment="Stretch">
+                            <ContentControl Regions:RegionManager.RegionName="PayorCacheQuickPicker" HorizontalContentAlignment="Stretch">
+                                <Regions:RegionManager.RegionContext>
+                                    <ViewModel:QuickPickerCommunicator CanAdd="false" SelectedItem="{Binding PayorCoverage.PayorCache, Mode=TwoWay}"/>
+                                </Regions:RegionManager.RegionContext>
+                            </ContentControl>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}" Margin="10,2,0,2" VerticalAlignment="Center">
+                            <telerik:RadDatePicker DateTimeWatermarkContent="Start Date" SelectedValue="{Binding PayorCoverage.StartDate,Mode=TwoWay}" />
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}" Margin="10,2,0,2" VerticalAlignment="Center">
+                            <telerik:RadDatePicker DateTimeWatermarkContent="End Date" SelectedValue="{Binding PayorCoverage.EndDate,Mode=TwoWay}" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}" Margin="10,2,0,2">
+                            <telerik:RadComboBox ItemsSource="{Binding LookupValueLists[PayorCoverageCacheType]}" EmptyText="Payor Type" EmptySelectionBoxTemplate="{StaticResource WatermarkTemplate}" SelectedItem="{Binding PayorCoverage.PayorCoverageCacheType,Mode=TwoWay}" DisplayMemberPath="Name"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}" Margin="10,2,0,2">
+                            <telerik:RadWatermarkTextBox Text="{Binding PayorCoverage.MemberNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" WatermarkContent="Member Number" WatermarkTemplate="{StaticResource WatermarkTemplate}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+				<Border Style="{StaticResource HorizontalLineFormDivider}" />
+				<StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                    	<TextBlock Text="Subscriber Information" Margin="0,10,0,0" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+						</StackPanel>
+                <StackPanel>
+                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                        <telerik:RadComboBox ItemsSource="{Binding LookupValueLists[PayorSubscriberRelationshipCacheType]}" SelectedItem="{Binding PayorCoverage.PayorSubscriberCache.PayorSubscriberRelationshipCacheType,Mode=TwoWay}" EmptyText="Payor Subscriber Relationship" EmptySelectionBoxTemplate="{StaticResource WatermarkTemplate}"/>
+                    </StackPanel>
+					<Border Style="{StaticResource HorizontalLineEditFormDivider}" />
+                    <StackPanel Orientation="Horizontal" DataContext="{Binding PayorCoverage.PayorSubscriberCache}">
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                            <telerik:RadWatermarkTextBox WatermarkContent="First Name" Text="{Binding FirstName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" WatermarkTemplate="{StaticResource WatermarkTemplate}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                            <telerik:RadWatermarkTextBox WatermarkContent="Middle Name" Text="{Binding MiddleName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" WatermarkTemplate="{StaticResource WatermarkTemplate}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                            <telerik:RadWatermarkTextBox WatermarkContent="Last Name" Text="{Binding LastName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" WatermarkTemplate="{StaticResource WatermarkTemplate}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,2,0,2" >
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                            <telerik:RadComboBox ItemsSource="{Binding LookupValueLists[AdministrativeGender]}" SelectedItem="{Binding PayorCoverage.PayorSubscriberCache.AdministrativeGender,Mode=TwoWay}" EmptyText="Gender" EmptySelectionBoxTemplate="{StaticResource WatermarkTemplate}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                            <telerik:RadDatePicker SelectedValue="{Binding PayorCoverage.PayorSubscriberCache.BirthDate,Mode=TwoWay}" DateTimeWatermarkContent="Birth Date" DateTimeWatermarkTemplate="{StaticResource WatermarkTemplate}" />
+                        </StackPanel>
+                    </StackPanel>
+					<Border Style="{StaticResource HorizontalLineEditFormDivider}" />
+                    <StackPanel Orientation="Horizontal" Margin="0,2,0,2">
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                            <telerik:RadWatermarkTextBox WatermarkContent="Address Line 1" Text="{Binding PayorCoverage.PayorSubscriberCache.Address.FirstStreetAddress,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" WatermarkTemplate="{StaticResource WatermarkTemplate}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                            <telerik:RadWatermarkTextBox WatermarkContent="Address Line 2" Text="{Binding PayorCoverage.PayorSubscriberCache.Address.SecondStreetAddress,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" WatermarkTemplate="{StaticResource WatermarkTemplate}" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                            <telerik:RadWatermarkTextBox WatermarkContent="City" Text="{Binding PayorCoverage.PayorSubscriberCache.Address.CityName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" WatermarkTemplate="{StaticResource WatermarkTemplate}" />
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                            <telerik:RadComboBox ItemsSource="{Binding LookupValueLists[StateProvince]}" EmptyText="State" SelectedItem="{Binding PayorCoverage.PayorSubscriberCache.Address.StateProvince,Mode=TwoWay}" DisplayMemberPath="Name"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                            <telerik:RadWatermarkTextBox WatermarkContent="Postal Code" Text="{Binding PayorCoverage.PayorSubscriberCache.Address.PostalCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" WatermarkTemplate="{StaticResource WatermarkTemplate}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Border Style="{StaticResource HorizontalLineFormDivider}" />
+                    <StackPanel Orientation="Horizontal">
+                        <telerik:RadButton Style="{StaticResource StaticBorderlessButtonStyle}" Command="{Binding SaveCommand}" Content="Save" Width="60" Height="22" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <CustomControls:LoadingControl IsLoading="{Binding IsLoading}"/>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,2127 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+    xmlns:Telerik_Windows_Controls_Chromes="clr-namespace:Telerik.Windows.Controls.Chromes;assembly=Telerik.Windows.Controls" 
+    xmlns:Rem_Ria_Infrastructure_View_Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+    xmlns:Primitives="clr-namespace:Telerik.Windows.Controls.Primitives;assembly=Telerik.Windows.Controls" 
+    xmlns:prism="clr-namespace:Microsoft.Practices.Prism.ViewModel;assembly=Microsoft.Practices.Prism"
+    xmlns:behaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior"
+    mc:Ignorable="d" >
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Rem.Ria.Infrastructure;component/themes/EditableExpander.xaml"/>
+        <ResourceDictionary Source="/Rem.Ria.Infrastructure;component/themes/FloatableWindow.xaml"/>
+        <ResourceDictionary Source="/Rem.Ria.Infrastructure;component/themes/SearchBox.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="local:PopupExpander">
+        <Setter Property="ButtonStyle" Value="{StaticResource WorkPadHeader_RibbonToggleButton_Style}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Background" Value="Black"/>
+        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PopupExpander">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}" HorizontalAlignment="Left">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="PopupStateGroup">
+                                <VisualState x:Name="CommonState"/>
+                                <VisualState x:Name="HideState">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.3" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="ToggleButtonPath" d:IsOptimized="True"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="RevealState">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.4" To="180" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="ToggleButtonPath" d:IsOptimized="True"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="LayoutRoot">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <ContentControl x:Name="PART_Header" Grid.Column="0" 
+                                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                                        VerticalAlignment="Stretch" VerticalContentAlignment="Stretch"
+                                        Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}"/>
+                            <telerik:RadToggleButton x:Name="PART_ToggleButton" Style="{TemplateBinding ButtonStyle}" Margin="0"
+                                                     VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                                                     IsChecked="{Binding IsPopupOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="1" Background="{StaticResource RibbonProfileSummaryControl_Background_Normal}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <ei:GoToStateAction StateName="HideState"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Checked">
+                                        <ei:ChangePropertyAction TargetName="Part_Popup" PropertyName="IsOpen" Value="True"/>
+                                        <ei:GoToStateAction StateName="RevealState"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Grid Margin="5">
+                                    <Path x:Name="ToggleButtonPath" Margin="2,2,0,0"
+                                          Data="M1.6666666,3.3333333 L17.833,3.3333333 L9.833168,15.167 z" Height="10" 
+                                          Stretch="Fill" Width="14" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="Black">
+                                        <Path.Effect>
+                                            <DropShadowEffect Color="#FF4D4D4D" Direction="100" BlurRadius="0" ShadowDepth="2"/>
+                                        </Path.Effect>
+                                        <Path.RenderTransform>
+                                            <CompositeTransform Rotation="0" TranslateX="-1" ScaleX="0.8" ScaleY="0.8"/>
+                                        </Path.RenderTransform>
+                                    </Path>
+                                </Grid>
+                            </telerik:RadToggleButton>
+                            <Primitives:Popup x:Name="Part_Popup" Grid.ColumnSpan="2"
+                                           CatchClickOutsidePopup="{TemplateBinding CloseOnOutsideClick}" HorizontalContentAlignment="Left"
+                                           Owner="{Binding ElementName=LayoutRoot}" PlacementTarget="{TemplateBinding PopupTarget}" Placement="Bottom" HorizontalAlignment="Left">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="ClickedOutsidePopup">
+                                        <ei:ChangePropertyAction TargetName="sccSlideOut" PropertyName="IsExpanded" Value="False"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <local:SlideoutContentControl x:Name="sccSlideOut" IsExpanded="{Binding IsChecked, ElementName=PART_ToggleButton}" MaxExpandedHeight="{TemplateBinding MaxDropDownHeight}"
+                            		Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}"
+                            		BorderBrush="{TemplateBinding BorderBrush}" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch"
+                            		BorderThickness="{TemplateBinding BorderThickness}" Width="auto" 
+                            		Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="0,-5,0,0" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Hidden">
+                                            <ei:ChangePropertyAction TargetName="Part_Popup" PropertyName="IsOpen" Value="False"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </local:SlideoutContentControl>
+                            </Primitives:Popup>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:DetailsSelector">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DetailsSelector">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <StackPanel x:Name="DetailCommandStackPanel" Orientation="Horizontal" VerticalAlignment="Center">
+                            <RadioButton x:Name="DetailLevel1Button" Style="{StaticResource DetailButtonStyle}" Height="16" IsChecked="True" Margin="0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding SelectDetailsCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding DetailsLevel1, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </RadioButton>
+                            <RadioButton x:Name="DetailLevel2Button" Style="{StaticResource DetailButtonStyle}" Height="20" Margin="1,0" Visibility="{Binding HasLevel2, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding SelectDetailsCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding DetailsLevel2, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </RadioButton>
+                            <RadioButton x:Name="DetailLevel3Button" Style="{StaticResource DetailButtonStyle}" Height="24" Margin="1,0" Visibility="{Binding HasLevel3, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding SelectDetailsCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding DetailsLevel3, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </RadioButton>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:SlideoutContentControl">
+        <Setter Property="SlideOutAnimation">
+            <Setter.Value>
+                <DoubleAnimation Duration="0:0:0.7">
+                    <DoubleAnimation.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:SlideoutContentControl">
+                    <Grid x:Name="Part_Expander">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ScrollViewer x:Name="Part_ScrollViewer" VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}" HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Padding="0"
+                                          
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                <ContentPresenter x:Name="Part_Host" Margin="{TemplateBinding Padding}" VerticalAlignment="Bottom" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:LoadingControl">
+        <Setter Property="Background" Value="#CC666666"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:LoadingControl">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+							CornerRadius="{TemplateBinding CornerRadius}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard x:Name="spinner" RepeatBehavior="ForEver" BeginTime="00:00:00">
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse01" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.25"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse12" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0.25"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:01.1000000" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse11" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0.25"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.9000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:01.1000000" Value="0.5"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse02" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.25"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse03" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0.25"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse04" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0.25"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.6000000" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse05" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.6000000" Value="0.25"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse06" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.6000000" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0.25"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse07" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.6000000" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0.25"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.9000000" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse08" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.6000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.9000000" Value="0.25"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse09" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.8000000" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.9000000" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0.25"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:01.1000000" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse10" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.9000000" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:01.1000000" Value="0.25"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <ei:GoToStateAction StateName="Normal" UseTransitions="True"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <Viewbox VerticalAlignment="Center" HorizontalAlignment="Center" MaxHeight="28" MaxWidth="28">
+                                <Canvas x:Name="spinner_1" HorizontalAlignment="Center" Width="12" Height="12">
+                                    <Ellipse x:Name="ellipse01" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top="5" Opacity="0" />
+                                    <Ellipse x:Name="ellipse02" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top="2.5" Opacity="0" Canvas.Left=".7" />
+                                    <Ellipse x:Name="ellipse03" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top=".7"  Opacity="0" Canvas.Left="2.5"/>
+                                    <Ellipse x:Name="ellipse04" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top="0"  Opacity="0" Canvas.Left="5"/>
+                                    <Ellipse x:Name="ellipse05" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top=".7"  Opacity="0" Canvas.Left="7.5"/>
+                                    <Ellipse x:Name="ellipse06" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top="2.5"  Opacity="0" Canvas.Left="9.33015"/>
+                                    <Ellipse x:Name="ellipse07" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top="5" Canvas.Left="10" Opacity="0" />
+                                    <Ellipse x:Name="ellipse08" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top="7.5" Canvas.Left="9.33015" Opacity="0" />
+                                    <Ellipse x:Name="ellipse09" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top="9.33015" Canvas.Left="7.5" Opacity="0"/>
+                                    <Ellipse x:Name="ellipse10" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top="10" Canvas.Left="5" Opacity="0"/>
+                                    <Ellipse x:Name="ellipse11" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top="9.33015" Canvas.Left="2.5" Opacity="0"/>
+                                    <Ellipse x:Name="ellipse12" Fill="{TemplateBinding Foreground}" Height="2" Width="2" Canvas.Top="7.5" Canvas.Left=".7" Opacity="0"/>
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:EditableItemsControl">
+        <Setter Property="AddButtonMargin" Value="0,0,0,0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:EditableItemsControl">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" VerticalAlignment="Top">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel VerticalAlignment="Top" Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding ShowAddRowOnTop, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}" Height="0" Width="250" d:LayoutOverrides="VerticalAlignment">
+                                    <local:EditableContentPresenter IsReadOnly="{TemplateBinding IsReadOnly}" MinWidth="100"                                       
+                    				Content="{TemplateBinding AddingItem}" ContentTemplate="{TemplateBinding AddingItemTemplate}" />
+                                    <Button Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}" Style="{StaticResource TileAddButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    				Command="{Binding AddAddingItemCommand, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </StackPanel>
+                                <ItemsPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                <StackPanel Orientation="Horizontal">
+                                    <Grid Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}">
+                                        <local:EditableItemsControlItem IsReadOnly="{TemplateBinding IsReadOnly}" Parent="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                    				    Visibility="{Binding ShowAddRowOnTop, Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}"                                        
+                    				    Content="{TemplateBinding AddingItem}" ContentTemplate="{TemplateBinding AddingItemTemplate}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                            <local:EditableItemsControlItem.Template>
+                                                <ControlTemplate TargetType="local:EditableItemsControlItem">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                            <StackPanel Orientation="Vertical">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <local:EditableContentPresenter IsReadOnly="{TemplateBinding IsReadOnly}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                                                    <Grid Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}">
+                                                                        <Button Style="{StaticResource TileDeleteButtonStyle}" VerticalAlignment="Center" Margin="15,0,0,0" Command="{Binding Parent.RemoveItemCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{TemplateBinding Content}"
+                                                                            Visibility="{Binding Content,Converter={StaticResource NullToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                                    </Grid>
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </StackPanel>
+                                                </ControlTemplate>
+                                            </local:EditableItemsControlItem.Template>
+                                        </local:EditableItemsControlItem>
+                                    </Grid>
+                                    <Grid Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=AddingItem,Converter={StaticResource NullToVisibilityConverterInstance}}">
+                                        <Grid Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}">
+                                        <Button Style="{StaticResource TileAddButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding ShowAddRowOnTop, Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}"
+                    				Command="{Binding AddAddingItemCommand, RelativeSource={RelativeSource TemplatedParent}}" Margin="2,0,0,0"/>
+                                        </Grid>
+                                    </Grid>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:EditableItemsControlItem">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:EditableItemsControlItem">
+                    <StackPanel Orientation="Vertical">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <local:EditableContentPresenter IsReadOnly="{TemplateBinding IsReadOnly}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                    <Button Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}" Style="{StaticResource TileDeleteButtonStyle}" VerticalAlignment="Center" Margin="15,0,0,0" Command="{Binding Parent.RemoveItemCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{TemplateBinding Content}"/>
+                                </StackPanel>
+                                <Border Style="{StaticResource HorizontalLineAddFormDivider}"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="QuickPickerTemplate" TargetType="local:QuickPicker">
+
+        <Grid x:Name="VisualRoot">
+
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderBrush">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource ControlOuterBorder_Disabled}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="MouseOverVisual" Storyboard.TargetProperty="Opacity">
+                                <LinearDoubleKeyFrame KeyTime="0:0:0.050" Value="0" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MouseOverVisual" Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.050">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_EditableTextBox" Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource PickerForeground_Disabled}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Background" Storyboard.TargetProperty="Background">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ControlBackground_Disabled}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="MouseOverVisual" Storyboard.TargetProperty="Opacity">
+                                <LinearDoubleKeyFrame KeyTime="0:0:0.150" Value="0" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MouseOverVisual" Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.150">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="MouseOverVisual" Storyboard.TargetProperty="Opacity">
+                                <LinearDoubleKeyFrame KeyTime="0" Value="1" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MouseOverVisual" Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Visible</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="DropDownOpen">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderBrush">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource ControlOuterBorder_Pressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="MouseOverVisual" Storyboard.TargetProperty="Opacity">
+                                <LinearDoubleKeyFrame KeyTime="0:0:0.050" Value="0" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MouseOverVisual" Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.050">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FocusVisual" Storyboard.TargetProperty="Opacity">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="0" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="FocusStates">
+                    <VisualState x:Name="Focused">
+
+                    </VisualState>
+                    <VisualState x:Name="Unfocused" />
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="ValidationStates">
+                    <VisualState x:Name="Valid"/>
+                    <VisualState x:Name="InvalidUnfocused">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationTooltip"
+                                    Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Visible</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="InvalidFocused">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames
+                                    Storyboard.TargetName="ValidationTooltip"
+                                    Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Visible</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames
+                                    Storyboard.TargetName="ValidationTooltip"
+                                    Storyboard.TargetProperty="IsOpen">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <sys:Boolean>True</sys:Boolean>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="WatermarkStates">
+                    <VisualState x:Name="WatermarkVisible">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Watermark" Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Visible</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="WatermarkInvisible" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Border x:Name="Background" Grid.Column="0" Width="{Binding Width}" HorizontalAlignment="Stretch" IsHitTestVisible="False" Background="{StaticResource PickerBackground_Normal}" CornerRadius="3" d:IsHidden="True" BorderThickness="1" BorderBrush="{StaticResource GlobalNavButtonBevelGradient}" />
+            <Border Grid.ColumnSpan="2" IsHitTestVisible="False" Width="30" Background="{TemplateBinding Background}" CornerRadius="{StaticResource SplitButton_SpanCornerRadius}" Height="30" />
+            <Border x:Name="Border" Grid.ColumnSpan="2" IsHitTestVisible="False" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" CornerRadius="{StaticResource SplitButton_SpanCornerRadius}" />
+            <Border x:Name="MouseOverVisual" Grid.Column="0" Width="{Binding Width}" HorizontalAlignment="Stretch" IsHitTestVisible="False" BorderBrush="#FF6DBDD1" BorderThickness="2" Opacity="0" Visibility="Collapsed" CornerRadius="3" />
+            <telerik:PickerTextBox x:Name="PART_EditableTextBox"
+			Margin="1"
+                    Grid.Column="0"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="{TemplateBinding Padding}"
+                    Background="Red"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                    IsReadOnly="{TemplateBinding IsReadOnly}"
+                    telerik:StyleManager.Theme="{StaticResource Theme}" />
+
+
+            <telerik:RadToggleButton Margin="2 0 0 0" Padding="2" Style="{StaticResource QuickSearchToggleButton}" BorderThickness="0"
+                    Grid.Column="1" IsTabStop="False" ClickMode="Press" IsChecked="{Binding IsAddOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding CanAdd, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}">
+                <Grid Width="20" Height="20" Margin="3, 0">
+                    <ContentPresenter>
+                        <Canvas>
+                            <Rectangle Width="2" Height="10" Canvas.Left="9" Canvas.Top="5" Stretch="Fill" Fill="{TemplateBinding Foreground}"/>
+                            <Rectangle Width="10" Height="2" Canvas.Left="5" Stretch="Fill" Fill="{TemplateBinding Foreground}" Canvas.Top="9"/>
+                        </Canvas>
+                    </ContentPresenter>
+                </Grid>
+            </telerik:RadToggleButton>
+            <telerik:RadButton Margin="2,0" Padding="0" CornerRadius="3" Style="{StaticResource QuickSearchButton}"
+                    Grid.Column="2" Visibility="{TemplateBinding ShowListButtonVisibility}" Command="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowListCommand}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}" PropertyName="IsDropDownOpen" Value="True"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Grid Width="26" Height="20">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Rectangle Width="10" Height="2" Margin="0" Stretch="Fill" Fill="{TemplateBinding Foreground}"/>
+                        <Rectangle Width="10" Height="2" Margin="0,2,0,0" Stretch="Fill" Fill="{TemplateBinding Foreground}"/>
+                        <Rectangle Width="10" Height="2" Margin="0,2,0,0" Stretch="Fill" Fill="{TemplateBinding Foreground}"/>
+                    </StackPanel>
+                </Grid>
+            </telerik:RadButton>
+
+            <Border x:Name="FocusVisual" Grid.ColumnSpan="2" Visibility="Collapsed" IsHitTestVisible="False" BorderBrush="{StaticResource ControlOuterBorder_Focused}" CornerRadius="3" BorderThickness="{TemplateBinding BorderThickness}" >
+                <Border BorderBrush="{StaticResource ControlInnerBorder_Focused}" CornerRadius="{StaticResource SplitButton_SpanInnerCornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" />
+            </Border>
+            <TextBlock x:Name="Watermark" Grid.Column="0" Text="{TemplateBinding EmptyText}" FontStyle="Italic" Opacity=".5" IsHitTestVisible="False" 
+                       VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Visibility="Collapsed" />
+            <Telerik_Windows_Controls_Chromes:ValidationTooltip x:Name="ValidationTooltip" 
+                    Visibility="Collapsed"
+                    telerik:StyleManager.Theme="{StaticResource Theme}"
+                    TooltipPlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" TooltipContent="{Binding (Validation.Errors), RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Primitives:Popup Owner="{Binding RelativeSource={RelativeSource TemplatedParent}}" CloseOnOutsideClick="True" 
+                                  IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                <Grid x:Name="PopupRoot">
+                    <Telerik_Windows_Controls_Chromes:ShadowChrome telerik:StyleManager.Theme="{StaticResource Theme}" Margin="0 0 0 3" />
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            MinWidth="{TemplateBinding MinDropDownWidth}"
+                            MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                            Background="{StaticResource PickerPopupBackground}"
+                            CornerRadius="{StaticResource SplitButton_SpanCornerRadius}"
+                            Margin="0 0 0 3"
+                         >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <telerik:RadButton x:Name="PART_ClearButton" Grid.Row="0"
+                                Margin="-1 -1 -1 0"
+                                Visibility="{TemplateBinding ClearSelectionButtonVisibility}"
+                                Content="{TemplateBinding ClearSelectionButtonContent}"
+                                telerik:StyleManager.Theme="{StaticResource Theme}" />
+                            <ScrollViewer x:Name="PART_ScrollViewer" Grid.Row="1"
+                                Padding="2" BorderThickness="0"
+                                VerticalScrollBarVisibility="Auto"
+                                telerik:StyleManager.Theme="{StaticResource Theme}"								
+                                telerik:ScrollViewerExtensions.EnableMouseWheel="True"								
+                                 >
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                            <telerik:RadDataPager x:Name="PART_DataPager" Grid.Row="2" PageSize="{Binding PageSize, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
+                    						ItemCount="{Binding TotalItemCount, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
+                    						PageIndex="{Binding PageIndex, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
+                    						HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                <i:Interaction.Behaviors>
+                                    <behaviors:DataPagerVisibilityBehavior NumberOfPages="{Binding PageCount, ElementName=PART_DataPager}"/>
+                                </i:Interaction.Behaviors>
+                            </telerik:RadDataPager>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Primitives:Popup>
+            <Primitives:Popup Owner="{Binding RelativeSource={RelativeSource TemplatedParent}}" CloseOnOutsideClick="True" Placement="Bottom"
+                                  IsOpen="{Binding IsAddOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                <Grid x:Name="PopupAddRoot">
+                    <Telerik_Windows_Controls_Chromes:ShadowChrome telerik:StyleManager.Theme="{StaticResource Theme}" Margin="0 0 0 3" />
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            MinWidth="{TemplateBinding MinDropDownWidth}"
+                            MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                            Background="{StaticResource PickerPopupBackground}"
+                            CornerRadius="{StaticResource SplitButton_SpanCornerRadius}"
+                            Margin="0 0 0 3"
+                         >
+                        <Grid>
+                            <ContentPresenter Content="{TemplateBinding AddContent}" ContentTemplate="{TemplateBinding AddContentTemplate}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Primitives:Popup>
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="local:QuickPicker">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="22" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="Padding" Value="2 0" />
+        <Setter Property="Foreground" Value="{StaticResource PickerForeground_Normal}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="LightGray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="telerik:AnimationManager.AnimationSelector">
+            <Setter.Value>
+                <telerik:AnimationSelector>
+                    <telerik:AnimationGroup AnimationName="Expand">
+                        <telerik:SlideAnimation Direction="In" SlideMode="Top" TargetElementName="PopupRoot" />
+                    </telerik:AnimationGroup>
+                    <telerik:AnimationGroup AnimationName="Collapse">
+                        <telerik:SlideAnimation Direction="Out" SlideMode="Top" TargetElementName="PopupRoot" />
+                    </telerik:AnimationGroup>
+                </telerik:AnimationSelector>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template" Value="{StaticResource QuickPickerTemplate}"/>
+        <Setter Property="EditableTemplate" Value="{StaticResource QuickPickerTemplate}" />
+        <Setter Property="NonEditableTemplate" Value="{StaticResource QuickPickerTemplate}" />
+    </Style>
+
+    <Style TargetType="local:Editor">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Editor">
+                    <Grid x:Name="PART_RootGrid">
+                        <Grid x:Name="PART_MaximizeGrid">
+                            <Grid x:Name="PrintGrid">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="34"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Border Style="{StaticResource MainHeaderBorder}" Grid.Row="0" CornerRadius="8,8,0,0" Height="Auto" />
+                                <Grid Grid.Row="0" Margin="4,0,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ContentPresenter Grid.Column="0" VerticalAlignment="Center" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}"/>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="2" Margin="0,0,10,0">
+                                        <local:PrintControl VerticalAlignment="Center" ControlToPrint="{Binding ElementName=PrintGrid}" Title="{TemplateBinding Header}"/>
+                                        <Border BorderBrush="DarkGray" BorderThickness="1,0,0,0" Margin="0,4"/>
+                                        <Border BorderBrush="White" BorderThickness="1,0,0,0" Margin="0,4"/>
+                                        <telerik:RadButton Style="{StaticResource BorderlessButtonStyle}" x:Name="ExpandAllButton" Command="{Binding ExpandAllCommand, RelativeSource={RelativeSource TemplatedParent}}" Content="Expand All" VerticalAlignment="Center" />
+                                        <Border BorderBrush="DarkGray" BorderThickness="1,0,0,0" Margin="0,4"/>
+                                        <Border BorderBrush="White" BorderThickness="1,0,0,0" Margin="0,4"/>
+                                        <telerik:RadButton Style="{StaticResource BorderlessButtonStyle}" x:Name="CollapseAllButton" Content="Collapse All"  Command="{Binding CollapseAllCommand, RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Center"/>
+                                        <StackPanel Visibility="{Binding CanMaximize, Converter={StaticResource BooleanToVisibilityConverterInstance}, RelativeSource={RelativeSource TemplatedParent}}">
+                                            <Border BorderBrush="DarkGray" BorderThickness="1,0,0,0" Margin="0,4"/>
+                                            <Border BorderBrush="White" BorderThickness="1,0,0,0" Margin="0,4"/>
+                                            <telerik:RadButton Style="{StaticResource MaximizeButtonStyle}" Command="{Binding MaximizeCommand, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                                <Border CornerRadius="0,0,9,9" Grid.Row="1" BorderBrush="Black" BorderThickness="1 0 1 1" Background="{StaticResource EditFormWorkSpaceBackground}"/>
+                                <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent">
+                                    <ItemsControl x:Name="PART_ItemsHost" BorderThickness="0" Padding="0" Margin="10" ItemsSource="{Binding Expanders, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </ScrollViewer>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="local:ToolSetGroup">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ToolSetGroup">
+                    <local:CollapsingContentControl VerticalAlignment="{TemplateBinding VerticalAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" State="{TemplateBinding State}">
+
+
+                        <local:CollapsingContentControl.SmallContent>
+                            <Grid>
+
+
+                                <telerik:RadToggleButton x:Name="PART_DropDownButton" ToolTipService.ToolTip="{TemplateBinding ToolTip}" ClickMode="Press" IsTabStop="False" Margin="0" Padding="0">
+
+                                    <telerik:RadToggleButton.Template>
+                                        <ControlTemplate TargetType="telerik:RadToggleButton">
+                                            <Border Background="Transparent" HorizontalAlignment="Stretch">
+                                                <ContentPresenter/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </telerik:RadToggleButton.Template>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Telerik_Windows_Controls_Chromes:ButtonChrome x:Name="ButtonChrome" 
+                                                                                       Style="{StaticResource  WorkPadNavigationButtonBaseStyle}" Grid.ColumnSpan="2" 
+                                                                                       Background="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                                       BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                                       BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                                       CornerRadius="{StaticResource SplitButton_SpanCornerRadius}"
+                                                                                       RenderPressed="{Binding IsChecked, ElementName=PART_DropDownButton}" 
+                                                                                       RenderFocused="{Binding IsFocused, ElementName=PART_DropDownButton}" 
+                                                                                       RenderEnabled="{Binding IsEnabled, ElementName=PART_DropDownButton}" 
+                                                                                       RenderMouseOver="{Binding IsMouseOver, ElementName=PART_DropDownButton}"
+                                                                                       HorizontalAlignment="Stretch"
+                                                                                        Width="100"
+                                                                                       Margin="0,0,-1,0"/>
+                                        <!--<ContentControl x:Name="Content" Grid.Row="0" Margin="5" Content="{TemplateBinding RootIcon}"/>-->
+                                        <TextBlock Margin="5" IsHitTestVisible="False" FontSize="12" TextAlignment="Center" TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource BorderlessButtonForeground}"   FontFamily="Arial" FontWeight="Bold" Text="{TemplateBinding Text}">
+                                            <TextBlock.Effect>
+                                                <DropShadowEffect Color="White" ShadowDepth="1" BlurRadius="0" Direction="323"/>
+                                            </TextBlock.Effect>
+                                        </TextBlock>
+                                        <ContentControl x:Name="DropDownIcon" Background="{StaticResource BaseButtonForeground_MouseOver}" Foreground="{StaticResource BorderlessButtonForeground}" Grid.Column="1" IsTabStop="False" Template="{StaticResource ArrowTemplateNonEditableCombobox}"/>
+                                    </Grid>
+                                </telerik:RadToggleButton>
+
+
+                                <Primitives:Popup CloseOnOutsideClick="True" IsOpen="{Binding IsChecked, ElementName=PART_DropDownButton, Mode=TwoWay}" Owner="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                                    <Grid x:Name="PopupRoot">
+                                        <Telerik_Windows_Controls_Chromes:ShadowChrome Margin="0 0 0 3" telerik:StyleManager.Theme="{StaticResource Theme}"/>
+                                        <Border BorderBrush="{Binding BorderBrush, ElementName=ButtonChrome}" BorderThickness="0" Background="{StaticResource PickerPopupBackground}" CornerRadius="{StaticResource SplitButton_SpanCornerRadius}" Margin="0 0 0 3">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <ScrollViewer x:Name="PART_ScrollViewer" BorderThickness="0" telerik:ScrollViewerExtensions.EnableMouseWheel="True" Padding="1 1 1 0" Grid.Row="1" telerik:StyleManager.Theme="{StaticResource Theme}" VerticalScrollBarVisibility="Auto">
+                                                    <ItemsControl ItemsSource="{TemplateBinding Items}">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <prism:DataTemplateSelector Content="{Binding}" IsTabStop="False" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                                                                    <prism:DataTemplateSelector.Resources>
+                                                                        <DataTemplate x:Key="ToolSetButton">
+                                                                            <Grid>
+                                                                                <telerik:RadButton Style="{StaticResource BorderlessGrayButtonStyle}" Width="Auto" HorizontalContentAlignment="Left" CornerRadius="0" HorizontalAlignment="Stretch" Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" ToolTipService.ToolTip="{Binding ToolTip}">
+                                                                                    <Grid>
+                                                                                        <Grid.ColumnDefinitions>
+                                                                                            <ColumnDefinition Width="auto"/>
+                                                                                            <ColumnDefinition Width="auto"/>
+                                                                                            <ColumnDefinition Width="10"/>
+                                                                                        </Grid.ColumnDefinitions>
+                                                                                        <Viewbox Grid.Column="0" Width="10" Height="10" Child="{Binding Icon}"/>
+                                                                                        <Border Grid.Column="0" Width="10" Height="10"/>
+                                                                                        <ContentPresenter Grid.Column="1" HorizontalAlignment="Left" Content="{Binding Text}">
+                                                                                            <ContentPresenter.ContentTemplate>
+                                                                                                <DataTemplate>
+                                                                                                    <TextBlock Text="{Binding}" TextAlignment="Left" FontSize="12" Margin="2"/>
+                                                                                                </DataTemplate>
+                                                                                            </ContentPresenter.ContentTemplate>
+                                                                                        </ContentPresenter>
+                                                                                    </Grid>
+                                                                                </telerik:RadButton>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+
+                                                                        <DataTemplate x:Key="ToolSetListButton">
+                                                                            <telerik:RadComboBox Style="{StaticResource WorkPadRibbonComboBoxStyle}"	
+                                                                                                         HorizontalAlignment="Stretch"
+                                                                                        EmptyText="{Binding Text}"
+                                                                                        ToolTipService.ToolTip="{Binding ToolTip}"
+                                                                                        ItemsSource="{Binding ItemsSource}"
+                                                                                        DisplayMemberPath="{Binding DisplayMemberPath}"
+                                                                                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                                                                        MinWidth="100" Margin="0,0,0,0" 
+                                                                                        >
+                                                                                <i:Interaction.Triggers>
+                                                                                    <i:EventTrigger EventName="{Binding EventName}">
+                                                                                        <i:InvokeCommandAction Command="{Binding Command}" CommandParameter="{Binding CommandParameter}"/>
+                                                                                    </i:EventTrigger>
+                                                                                </i:Interaction.Triggers>
+                                                                            </telerik:RadComboBox>
+                                                                        </DataTemplate>
+                                                                    </prism:DataTemplateSelector.Resources>
+                                                                </prism:DataTemplateSelector>
+
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </ScrollViewer>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </Primitives:Popup>
+                            </Grid>
+                        </local:CollapsingContentControl.SmallContent>
+
+
+                        <local:CollapsingContentControl.NormalContent>
+                            <Grid Margin="0,0,0,0">
+                                <ItemsControl ItemsSource="{TemplateBinding Items}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <prism:DataTemplateSelector Content="{Binding}" IsTabStop="False" VerticalContentAlignment="Stretch">
+                                                <prism:DataTemplateSelector.Resources>
+                                                    <DataTemplate x:Key="ToolSetButton">
+                                                        <telerik:RadButton Style="{StaticResource WorkPadNavigationStyle}" Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" ToolTipService.ToolTip="{Binding ToolTip}">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="auto"/>
+                                                                    <ColumnDefinition Width="auto"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Viewbox Visibility="{Binding Icon, Converter={StaticResource NullToVisibilityConverterInstance}}" Grid.Column="0" Width="10" Height="10" Child="{Binding Icon}"/>
+                                                                <ContentPresenter Grid.Column="1" HorizontalAlignment="Center" Content="{Binding Text}">
+                                                                    <ContentPresenter.ContentTemplate>
+                                                                        <DataTemplate>
+                                                                            <TextBlock Text="{Binding}"  TextWrapping="Wrap"/>
+                                                                        </DataTemplate>
+                                                                    </ContentPresenter.ContentTemplate>
+                                                                </ContentPresenter>
+                                                            </Grid>
+                                                        </telerik:RadButton>
+                                                    </DataTemplate>
+
+                                                    <DataTemplate x:Key="ToolSetListButton">
+                                                        <telerik:RadComboBox Style="{StaticResource WorkPadRibbonComboBoxStyle}"						    
+                                                                                        EmptyText="{Binding Text}"
+                                                                                        ToolTipService.ToolTip="{Binding ToolTip}"
+                                                                                        ItemsSource="{Binding ItemsSource}"
+                                                                                        DisplayMemberPath="{Binding DisplayMemberPath}"
+                                                                                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                                                                        MinWidth="100" Margin="0,0,-1,0" 
+                                                                                        >
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="{Binding EventName}">
+                                                                    <i:InvokeCommandAction Command="{Binding Command}" CommandParameter="{Binding CommandParameter}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </telerik:RadComboBox>
+                                                    </DataTemplate>
+                                                </prism:DataTemplateSelector.Resources>
+                                            </prism:DataTemplateSelector>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                        </local:CollapsingContentControl.NormalContent>
+
+
+                        <local:CollapsingContentControl.LargeContent>
+                            <Grid Margin="0,0,0,0">
+                                <ItemsControl ItemsSource="{TemplateBinding Items}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <prism:DataTemplateSelector Content="{Binding}" IsTabStop="False" VerticalContentAlignment="Stretch">
+                                                <prism:DataTemplateSelector.Resources>
+                                                    <DataTemplate x:Key="ToolSetButton">
+                                                        <telerik:RadButton Style="{StaticResource WorkPadNavigationStyle}" Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" ToolTipService.ToolTip="{Binding ToolTip}">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="auto"/>
+                                                                    <ColumnDefinition Width="auto"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Viewbox Visibility="{Binding Icon, Converter={StaticResource NullToVisibilityConverterInstance}}" Grid.Column="0" Width="10" Height="10" Child="{Binding Icon}"/>
+                                                                <ContentPresenter Grid.Column="1" HorizontalAlignment="Center" Content="{Binding Text}">
+                                                                    <ContentPresenter.ContentTemplate>
+                                                                        <DataTemplate>
+                                                                            <TextBlock Text="{Binding}" TextAlignment="Center" TextWrapping="Wrap" Width="80" />
+                                                                        </DataTemplate>
+                                                                    </ContentPresenter.ContentTemplate>
+                                                                </ContentPresenter>
+                                                            </Grid>
+                                                        </telerik:RadButton>
+                                                    </DataTemplate>
+
+                                                    <DataTemplate x:Key="ToolSetListButton">
+                                                        <telerik:RadComboBox Style="{StaticResource WorkPadRibbonComboBoxStyle}"					    
+                                                                                        EmptyText="{Binding Text}"
+                                                                                        ToolTipService.ToolTip="{Binding ToolTip}"
+                                                                                        ItemsSource="{Binding ItemsSource}"
+                                                                                        DisplayMemberPath="{Binding DisplayMemberPath}"
+                                                                                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                                                                        MinWidth="100" Margin="0,0,-1,0" 
+                                                                                        >
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="{Binding EventName}">
+                                                                    <i:InvokeCommandAction Command="{Binding Command}" CommandParameter="{Binding CommandParameter}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </telerik:RadComboBox>
+                                                    </DataTemplate>
+                                                </prism:DataTemplateSelector.Resources>
+                                            </prism:DataTemplateSelector>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                        </local:CollapsingContentControl.LargeContent>
+                    </local:CollapsingContentControl>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TileHeaderToolSetStyle" TargetType="local:ToolSetGroup">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ToolSetGroup">
+                    <local:CollapsingContentControl VerticalAlignment="{TemplateBinding VerticalAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" State="{TemplateBinding State}">
+
+
+                        <local:CollapsingContentControl.SmallContent>
+                            <Grid>
+                                <telerik:RadToggleButton x:Name="PART_DropDownButton" ToolTipService.ToolTip="{TemplateBinding ToolTip}" ClickMode="Press" IsTabStop="False" Margin="0" Padding="0">
+
+                                    <telerik:RadToggleButton.Template>
+                                        <ControlTemplate TargetType="telerik:RadToggleButton">
+                                            <Border Background="Transparent" HorizontalAlignment="Stretch">
+                                                <ContentPresenter/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </telerik:RadToggleButton.Template>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Telerik_Windows_Controls_Chromes:ButtonChrome x:Name="ButtonChrome" 
+                                                                                       Style="{StaticResource  WorkPadNavigationButtonBaseStyle}" Grid.ColumnSpan="2" 
+                                                                                       Background="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                                       BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                                       BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                                       CornerRadius="8"
+                                                                                       RenderPressed="{Binding IsChecked, ElementName=PART_DropDownButton}" 
+                                                                                       RenderFocused="{Binding IsFocused, ElementName=PART_DropDownButton}" 
+                                                                                       RenderEnabled="{Binding IsEnabled, ElementName=PART_DropDownButton}" 
+                                                                                       RenderMouseOver="{Binding IsMouseOver, ElementName=PART_DropDownButton}"
+                                                                                       HorizontalAlignment="Stretch"
+                                                                                        Width="auto"/>
+                                        <!--<ContentControl x:Name="Content" Grid.Row="0" Margin="5" Content="{TemplateBinding RootIcon}"/>-->
+                                        <TextBlock Margin="5" IsHitTestVisible="False" FontSize="12" TextAlignment="Center" TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource BorderlessButtonForeground}"   FontFamily="Arial" FontWeight="Bold" Text="{TemplateBinding Text}">
+                                            <TextBlock.Effect>
+                                                <DropShadowEffect Color="White" ShadowDepth="1" BlurRadius="0" Direction="323"/>
+                                            </TextBlock.Effect>
+                                        </TextBlock>
+                                        <ContentControl x:Name="DropDownIcon" Background="{StaticResource BaseButtonForeground_MouseOver}" Foreground="{StaticResource BorderlessButtonForeground}" Grid.Column="1" IsTabStop="False" Template="{StaticResource ArrowTemplateNonEditableCombobox}"/>
+                                    </Grid>
+                                </telerik:RadToggleButton>
+
+
+                                <Primitives:Popup CloseOnOutsideClick="True" IsOpen="{Binding IsChecked, ElementName=PART_DropDownButton, Mode=TwoWay}" Owner="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                                    <Grid x:Name="PopupRoot">
+                                        <Telerik_Windows_Controls_Chromes:ShadowChrome Margin="0 0 0 3" telerik:StyleManager.Theme="{StaticResource Theme}"/>
+                                        <Border BorderBrush="{Binding BorderBrush, ElementName=ButtonChrome}" BorderThickness="0" Background="{StaticResource PickerPopupBackground}" CornerRadius="{StaticResource SplitButton_SpanCornerRadius}" Margin="0 0 0 3">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <ScrollViewer x:Name="PART_ScrollViewer" BorderThickness="0" telerik:ScrollViewerExtensions.EnableMouseWheel="True" Padding="1 1 1 0" Grid.Row="1" telerik:StyleManager.Theme="{StaticResource Theme}" VerticalScrollBarVisibility="Auto">
+                                                    <ItemsControl ItemsSource="{TemplateBinding Items}">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <prism:DataTemplateSelector Content="{Binding}" IsTabStop="False" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                                                                    <prism:DataTemplateSelector.Resources>
+                                                                        <DataTemplate x:Key="ToolSetButton">
+                                                                            <Grid>
+                                                                                <telerik:RadButton Style="{StaticResource BorderlessGrayButtonStyle}" Width="Auto" HorizontalContentAlignment="Left" CornerRadius="0" HorizontalAlignment="Stretch" Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" ToolTipService.ToolTip="{Binding ToolTip}">
+                                                                                    <Grid>
+                                                                                        <Grid.ColumnDefinitions>
+                                                                                            <ColumnDefinition Width="auto"/>
+                                                                                            <ColumnDefinition Width="auto"/>
+                                                                                        </Grid.ColumnDefinitions>
+                                                                                        <Viewbox Grid.Column="0" Width="10" Height="10" Child="{Binding Icon}"/>
+                                                                                        <Border Grid.Column="0" Width="10" Height="10"/>
+                                                                                        <ContentPresenter Grid.Column="1" HorizontalAlignment="Left" Content="{Binding Text}">
+                                                                                            <ContentPresenter.ContentTemplate>
+                                                                                                <DataTemplate>
+                                                                                                    <TextBlock Text="{Binding}" TextAlignment="Left" FontSize="12" Margin="2"/>
+                                                                                                </DataTemplate>
+                                                                                            </ContentPresenter.ContentTemplate>
+                                                                                        </ContentPresenter>
+                                                                                    </Grid>
+                                                                                </telerik:RadButton>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+
+                                                                        <DataTemplate x:Key="ToolSetListButton">
+                                                                            <telerik:RadComboBox Style="{StaticResource WorkPadRibbonComboBoxStyle}"	
+                                                                                                         HorizontalAlignment="Stretch"
+                                                                                        EmptyText="{Binding Text}"
+                                                                                        ToolTipService.ToolTip="{Binding ToolTip}"
+                                                                                        ItemsSource="{Binding ItemsSource}"
+                                                                                        DisplayMemberPath="{Binding DisplayMemberPath}"
+                                                                                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                                                                        MinWidth="100" Margin="0,0,0,0" 
+                                                                                        >
+                                                                                <i:Interaction.Triggers>
+                                                                                    <i:EventTrigger EventName="{Binding EventName}">
+                                                                                        <i:InvokeCommandAction Command="{Binding Command}" CommandParameter="{Binding CommandParameter}"/>
+                                                                                    </i:EventTrigger>
+                                                                                </i:Interaction.Triggers>
+                                                                            </telerik:RadComboBox>
+                                                                        </DataTemplate>
+                                                                    </prism:DataTemplateSelector.Resources>
+                                                                </prism:DataTemplateSelector>
+
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </ScrollViewer>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </Primitives:Popup>
+                            </Grid>
+                        </local:CollapsingContentControl.SmallContent>
+
+
+                        <local:CollapsingContentControl.NormalContent>
+                            <Grid Margin="0,0,0,0">
+                                <ItemsControl ItemsSource="{TemplateBinding Items}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <prism:DataTemplateSelector Content="{Binding}" IsTabStop="False" VerticalContentAlignment="Stretch">
+                                                <prism:DataTemplateSelector.Resources>
+                                                    <DataTemplate x:Key="ToolSetButton">
+                                                        <telerik:RadButton Style="{StaticResource BorderlessGrayButtonStyle}" Margin="10 4" Height="18" Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" ToolTipService.ToolTip="{Binding ToolTip}">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="auto"/>
+                                                                    <ColumnDefinition Width="auto"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Viewbox Visibility="{Binding Icon, Converter={StaticResource NullToVisibilityConverterInstance}}" Grid.Column="0" Width="16" Height="16" Child="{Binding Icon}"/>
+                                                                <ContentPresenter Grid.Column="1" HorizontalAlignment="Center" Content="{Binding Text}">
+                                                                    <ContentPresenter.ContentTemplate>
+                                                                        <DataTemplate>
+                                                                            <TextBlock Text="{Binding}"  TextWrapping="Wrap"/>
+                                                                        </DataTemplate>
+                                                                    </ContentPresenter.ContentTemplate>
+                                                                </ContentPresenter>
+                                                            </Grid>
+                                                        </telerik:RadButton>
+                                                    </DataTemplate>
+
+                                                    <DataTemplate x:Key="ToolSetListButton">
+                                                        <telerik:RadComboBox Style="{StaticResource WorkPadRibbonComboBoxStyle}"						    
+                                                                                        EmptyText="{Binding Text}"
+                                                                                        ToolTipService.ToolTip="{Binding ToolTip}"
+                                                                                        ItemsSource="{Binding ItemsSource}"
+                                                                                        DisplayMemberPath="{Binding DisplayMemberPath}"
+                                                                                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                                                                        MinWidth="100" Margin="0,0,-1,0" 
+                                                                                        >
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="{Binding EventName}">
+                                                                    <i:InvokeCommandAction Command="{Binding Command}" CommandParameter="{Binding CommandParameter}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </telerik:RadComboBox>
+                                                    </DataTemplate>
+                                                </prism:DataTemplateSelector.Resources>
+                                            </prism:DataTemplateSelector>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                        </local:CollapsingContentControl.NormalContent>
+
+
+                        <local:CollapsingContentControl.LargeContent>
+                            <Grid Margin="0,0,0,0">
+                                <ItemsControl ItemsSource="{TemplateBinding Items}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <prism:DataTemplateSelector Content="{Binding}" IsTabStop="False" VerticalContentAlignment="Stretch">
+                                                <prism:DataTemplateSelector.Resources>
+                                                    <DataTemplate x:Key="ToolSetButton">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <telerik:RadButton Style="{StaticResource BorderlessGrayButtonStyle}" Margin="10 4"  Height="18" Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" ToolTipService.ToolTip="{Binding ToolTip}">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="auto"/>
+                                                                        <ColumnDefinition Width="auto"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Viewbox Visibility="{Binding Icon, Converter={StaticResource NullToVisibilityConverterInstance}}" Grid.Column="0" Width="16" Height="16" Child="{Binding Icon}"/>
+                                                                    <ContentPresenter Grid.Column="1" HorizontalAlignment="Center" Content="{Binding Text}">
+                                                                        <ContentPresenter.ContentTemplate>
+                                                                            <DataTemplate>
+                                                                                <TextBlock Text="{Binding}" TextAlignment="Center" TextWrapping="Wrap"/>
+                                                                            </DataTemplate>
+                                                                        </ContentPresenter.ContentTemplate>
+                                                                    </ContentPresenter>
+                                                                </Grid>
+                                                            </telerik:RadButton>
+                                                            <Border BorderBrush="DarkGray" BorderThickness="1,0,0,0" Margin="0,4"/>
+                                                            <Border BorderBrush="White" BorderThickness="1,0,0,0" Margin="0,4"/>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+
+                                                    <DataTemplate x:Key="ToolSetListButton">
+                                                        <telerik:RadComboBox Style="{StaticResource WorkPadRibbonComboBoxStyle}"					    
+                                                                                        EmptyText="{Binding Text}"
+                                                                                        ToolTipService.ToolTip="{Binding ToolTip}"
+                                                                                        ItemsSource="{Binding ItemsSource}"
+                                                                                        DisplayMemberPath="{Binding DisplayMemberPath}"
+                                                                                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                                                                        MinWidth="100" Margin="0,0,-1,0" 
+                                                                                        >
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="{Binding EventName}">
+                                                                    <i:InvokeCommandAction Command="{Binding Command}" CommandParameter="{Binding CommandParameter}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </telerik:RadComboBox>
+                                                    </DataTemplate>
+                                                </prism:DataTemplateSelector.Resources>
+                                            </prism:DataTemplateSelector>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                        </local:CollapsingContentControl.LargeContent>
+                    </local:CollapsingContentControl>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:QuestionItem">
+        <Setter Property="QuestionTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" Style="{StaticResource ScreenerLabelTextBlockStyle}"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:QuestionItem">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" BorderThickness="0">
+                            <StackPanel Style="{StaticResource ScreenerMatrixStackPanelStyle}" Margin="0,0,15,0">
+                                <ContentPresenter Content="{TemplateBinding Question}" ContentTemplate="{TemplateBinding QuestionTemplate}" Margin="0,5,0,5"/>
+                            </StackPanel>
+                        </Border>
+                        <ListBox x:Name="PART_ListBox"  ItemsSource="{TemplateBinding ItemsSource}" ItemTemplate="{TemplateBinding ItemTemplate}" Grid.Column="1" Background="Transparent" BorderThickness="0" Margin="0" Padding="0">
+                            <i:Interaction.Behaviors>
+                                <Rem_Ria_Infrastructure_View_Behavior:ListBoxSelectionBehavior />
+                            </i:Interaction.Behaviors>
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <Border  Style="{StaticResource ScreenerMatrixResultsBorderStyle}" BorderThickness="0" Background="Transparent" >
+                                                    <StackPanel  VerticalAlignment="Center">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextWrapping" Value="Wrap"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <RadioButton IsHitTestVisible="False" Content="{Binding}" ContentTemplate="{TemplateBinding ContentTemplate}" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:NotificationTongue">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFDBE44A" Offset="0.129"/>
+                    <GradientStop Color="#FFF4FF8E" Offset="0.382"/>
+                    <GradientStop Color="#FFFAFDE0" Offset="0.021"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MinWidth" Value="200"/>
+        <Setter Property="Padding" Value="5,15,5,5"/>
+        <Setter Property="CornerRadius" Value="5,5,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NotificationTongue">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+                                    CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="sccSlideOut" Storyboard.TargetProperty="IsExpanded">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <sys:Boolean>False</sys:Boolean>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="sccSlideOut" Storyboard.TargetProperty="IsExpanded">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <sys:Boolean>True</sys:Boolean>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <local:SlideoutContentControl x:Name="sccSlideOut" MaxExpandedHeight="{TemplateBinding MaxExpandedHeight}" IsExpanded="False" ExpandDirection="Up"
+                                        Background="Transparent" BorderThickness="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                            <ItemsPresenter />
+                        </local:SlideoutContentControl>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:NotificationItem">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NotificationItem">
+                    <Border x:Name="Border" Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{TemplateBinding Background}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Button" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <SolidColorBrush Color="Black"/>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <SolidColorBrush Color="#660000"/>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Button" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <SolidColorBrush Color="White"/>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Button x:Name="Button" Foreground="Black" MinHeight="10" Content="{Binding Content.DataContext.Title}" Command="{Binding ShowDetailsPopupCommand, RelativeSource={RelativeSource TemplatedParent}}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <TextBlock Text="{TemplateBinding Content}"  Style="{StaticResource ScreenerDataElementTextBlockStyle}" HorizontalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:NonResponseQuestionControl"> 
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="MaxQuestionColumnWidth" Value="290"/>
+        <Setter Property="NonResponseColumnWidth" Value="NaN"/>
+        <Setter Property="Margin" Value="0 0 20 75"/>
+		<Setter Property="Padding" Value="0,0,30,0"/>
+        <Setter Property="BorderThickness" Value=" 0 0 0 0"/>
+        <Setter Property="BorderBrush" Value="DarkGray"/>
+        <Setter Property="QuestionTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" Margin="0,0,10,0" Style="{StaticResource ScreenerLabelTextBlockStyle}"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="NonResponseItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding ShortName}" FontWeight="Bold" TextWrapping="Wrap" FontFamily="Portable User Interface"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="NonResponseItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NonResponseQuestionControl">
+                    <Grid x:Name="LayoutRoot">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="ValidationStates">
+                                <VisualState x:Name="Valid"/>
+                                <VisualState x:Name="InvalidUnfocused">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationTooltip" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="InvalidFocused">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationTooltip" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationTooltip" Storyboard.TargetProperty="IsOpen">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <sys:Boolean>True</sys:Boolean>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid Rem_Ria_Infrastructure_View_Behavior:SharedGridLength.GroupName="{TemplateBinding SharedGridLengthGroupName}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Name="QuestionColumn" Width="*" MaxWidth="{Binding MaxQuestionColumnWidth,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Rem_Ria_Infrastructure_View_Behavior:SharedGridLength.SharedName="ValueColumnGroup" Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentControl IsTabStop="False" Grid.Column="0" Content="{TemplateBinding Question}" ContentTemplate="{TemplateBinding QuestionTemplate}"/>
+                                <StackPanel VerticalAlignment="Center" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}" Width="14" Margin="2 0 0 0" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Grid.Column="1">
+                                    <local:HintControl IsTabStop="False" VerticalAlignment="Top" Text="{TemplateBinding Hint}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Hint,Converter={StaticResource NullToVisibilityConverterInstance}}">
+                                        <local:HintControl.RenderTransform>
+                                            <TranslateTransform Y="-10"/>
+                                        </local:HintControl.RenderTransform>
+                                    </local:HintControl>
+                                </StackPanel>
+                                <ContentPresenter VerticalAlignment="Center" Grid.Column="2" Margin="0" Content="{TemplateBinding NonResponseDto}" HorizontalAlignment="Left" ContentTemplate="{TemplateBinding ValueTemplate}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"/>
+                                <Grid Grid.Column="2" VerticalAlignment="Center" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=NonResponseDto.NonResponse,Converter={StaticResource InvertedNullToVisibilityConverterInstance}}">
+                                    <ContentPresenter Margin="0" Content="{Binding RelativeSource={RelativeSource TemplatedParent},Path=NonResponseDto}" VerticalAlignment="Top" HorizontalAlignment="Center" ContentTemplate="{TemplateBinding ReadOnlyValueTemplate}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"/>
+                                </Grid>
+                                <TextBlock Grid.Column="2" VerticalAlignment="Center" Margin="0" Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=NonResponseDto.NonResponse.Name}" TextAlignment="Center" Width="{TemplateBinding NonResponseColumnWidth}" HorizontalAlignment="Center" FontWeight="Bold" Style="{StaticResource ScreenerDataElementTextBlockStyle}"  Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"/>
+                                <ListBox x:Name="PART_NonResponse" IsTabStop="False" IsSynchronizedWithCurrentItem="False" Grid.Column="3" VerticalAlignment="Center"
+                                         BorderThickness="0" Margin="0" HorizontalAlignment="Left"
+                                         Padding="0" Background="Transparent" ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent},Path=NonResponseItems.View}" 
+                                         Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}" 
+                                         ItemTemplate="{TemplateBinding NonResponseItemTemplate}" ItemsPanel="{TemplateBinding NonResponseItemsPanel}">
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="IsTabStop" Value="False"/>
+                                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ListBoxItem">
+                                                        <Border HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                            <StackPanel Orientation="Horizontal" >
+                                                                <StackPanel.Resources>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="TextWrapping" Value="Wrap"/>
+                                                                    </Style>
+                                                                </StackPanel.Resources>
+                                                                <telerik:RadToggleButton VerticalAlignment="Center" Style="{StaticResource FormToggleButtonRemStyle}" FontWeight="Bold" BorderThickness="1" MinWidth="15" Content="{TemplateBinding Content}" ToolTipService.ToolTip="{Binding Name}"
+                                                                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                                                 IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" />
+                                                                    <!--<TextBlock Visibility="{Binding FullNonResponseTextVisibility, RelativeSource={RelativeSource AncestorType=local:NonResponseQuestionControl}}" Text="{Binding Name}" FontWeight="Normal" Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>-->
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                </ListBox>
+                            </Grid>
+                        </Border>
+                        <Telerik_Windows_Controls_Chromes:ValidationTooltip x:Name="ValidationTooltip" IsTabStop="False" 
+                                Visibility="Collapsed"
+                                telerik:StyleManager.Theme="{StaticResource Theme}"
+                                TooltipPlacementTarget="{Binding ElementName=LayoutRoot}" TooltipContent="{Binding (Validation.Errors), RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource EditableExpanderValidationTooltipStyle}" d:LayoutOverrides="GridBox">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <ei:ChangePropertyAction TargetName="ValidationTooltip" PropertyName="IsOpen" Value="True"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseLeave">
+                                    <ei:ChangePropertyAction TargetName="ValidationTooltip" PropertyName="IsOpen" Value="False"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Telerik_Windows_Controls_Chromes:ValidationTooltip>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:ScreenerHeaderItem">
+        <Setter Property="Padding" Value="6"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ScreenerHeaderItem">
+                    <Grid>
+                        <Border Width="{TemplateBinding Width}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Content,Converter={StaticResource NullToVisibilityConverterInstance}}" Style="{StaticResource ScreenerMatrixHeaderBorderStyle}"/>
+                        <ContentPresenter
+                          Content="{TemplateBinding Content}"
+                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                          Cursor="{TemplateBinding Cursor}"
+                          Margin="{TemplateBinding Padding}"
+                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:ScreenerHeaderItemsControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ScreenerHeaderItemsControl">
+                    <ItemsPresenter x:Name="ItemsPresenter" Margin="0"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <Grid/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:BasicScreenQuestionControl">
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0 0 0 75"/>
+        <Setter Property="Padding" Value="0 0 60 0"/>
+        <Setter Property="QuestionTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" Margin="0,0,10,0" Style="{StaticResource ScreenerLabelTextBlockStyle}"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:BasicScreenQuestionControl">
+                    <Grid x:Name="LayoutRoot">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="ValidationStates">
+                                <VisualState x:Name="Valid"/>
+                                <VisualState x:Name="InvalidUnfocused">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationTooltip" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="InvalidFocused">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationTooltip" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationTooltip" Storyboard.TargetProperty="IsOpen">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <sys:Boolean>True</sys:Boolean>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="0"
+                            Margin="{Binding Margin}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="290" />
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentControl Grid.Column="0" Content="{TemplateBinding Question}" Margin="{TemplateBinding Padding}" HorizontalAlignment="Left" ContentTemplate="{TemplateBinding QuestionTemplate}"/>
+                                <StackPanel VerticalAlignment="Center" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}" Width="14" Margin="2 0 0 0" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Grid.Column="1">
+                                    <local:HintControl IsTabStop="False" VerticalAlignment="Top" Text="{TemplateBinding Hint}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Hint,Converter={StaticResource NullToVisibilityConverterInstance}}">
+                                        <local:HintControl.RenderTransform>
+                                            <TranslateTransform Y="-10"/>
+                                        </local:HintControl.RenderTransform>
+                                    </local:HintControl>
+                                </StackPanel>
+                                <ContentPresenter Grid.Column="2" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Content="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ValueWrapper}" ContentTemplate="{TemplateBinding ValueTemplate}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"/>
+                                <ContentPresenter Grid.Column="2" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="Center" Content="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ValueWrapper}" ContentTemplate="{TemplateBinding ReadOnlyValueTemplate}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"/>
+                            </Grid>
+                        </Border>
+                        <Telerik_Windows_Controls_Chromes:ValidationTooltip x:Name="ValidationTooltip" 
+                                Visibility="Collapsed" IsTabStop="False"
+                                telerik:StyleManager.Theme="{StaticResource Theme}"
+                                TooltipPlacementTarget="{Binding ElementName=LayoutRoot}" TooltipContent="{Binding (Validation.Errors), RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource EditableExpanderValidationTooltipStyle}" d:LayoutOverrides="GridBox"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:TimeSpanPicker">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TimeSpanPicker">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Margin="0 0 20 0">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                            <telerik:RadWatermarkTextBox  x:Name="PART_YearsTextBox" FontWeight="Normal" MaxLength="2" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Years, Mode=TwoWay}" WatermarkContent="Years"  Margin="0,0,10,0" WatermarkTemplate="{StaticResource WatermarkTemplate}" Width="60"/>
+                            <telerik:RadWatermarkTextBox  x:Name="PART_MonthsTextBox" FontWeight="Normal" MaxLength="2" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Months, Mode=TwoWay}" WatermarkContent="Months" WatermarkTemplate="{StaticResource WatermarkTemplate}" Width="60"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:ExtendedChildWindow">
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="TabNavigation" Value="Cycle" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderThickness" Value="1" />
+
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#FFA3AEB9" Offset="0" />
+                    <GradientStop Color="#FF8399A9" Offset="0.375" />
+                    <GradientStop Color="#FF718597" Offset="0.375" />
+                    <GradientStop Color="#FF617584" Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="OverlayBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="#7F000000" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="OverlayOpacity" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ExtendedChildWindow">
+                    <Grid x:Name="Root">
+                        <Grid.Resources>
+                            <Style x:Key="ButtonStyle" TargetType="Button">
+                                <Setter Property="Background" Value="#FF1F3B53" />
+                                <Setter Property="Foreground" Value="#FF000000" />
+                                <Setter Property="Padding" Value="3" />
+                                <Setter Property="BorderThickness" Value="1" />
+                                <Setter Property="IsTabStop" Value="False"/>
+                                <Setter Property="BorderBrush">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFA3AEB9" Offset="0" />
+                                            <GradientStop Color="#FF8399A9" Offset="0.375" />
+                                            <GradientStop Color="#FF718597" Offset="0.375" />
+                                            <GradientStop Color="#FF617584" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="15" Height="14" Background="#02FFFFFF" x:Name="grid">
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates">
+                                                        <VisualState x:Name="Normal" />
+                                                        <VisualState x:Name="MouseOver">
+                                                            <Storyboard>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="X_Fuzz2" Storyboard.TargetProperty="Visibility">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="X_Fuzz1" Storyboard.TargetProperty="Visibility">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="X_Fuzz0" Storyboard.TargetProperty="Visibility">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                                <DoubleAnimation Duration="0" Storyboard.TargetName="X" Storyboard.TargetProperty="Opacity" To="0.95" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Pressed">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Duration="0" Storyboard.TargetName="X" Storyboard.TargetProperty="Opacity" To="0.85" />
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="X_Fuzz2" Storyboard.TargetProperty="Visibility">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="X_Fuzz1" Storyboard.TargetProperty="Visibility">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="X_Fuzz0" Storyboard.TargetProperty="Visibility">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Disabled">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Duration="0" Storyboard.TargetName="X" Storyboard.TargetProperty="Opacity" To="0.5" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Path HorizontalAlignment="Center" Margin="0,-1,0,0" Width="9" Fill="#14C51900" Stretch="Fill" Data="F1 M 6.742676,3.852539 L 9.110840,1.559570 L 8.910645,0.500000 L 6.838379,0.500000 L 4.902832,2.435547 L 2.967285,0.500000 L 0.895020,0.500000 L 0.694824,1.559570 L 3.062988,3.852539 L 0.527832,6.351563 L 0.689941,7.600586 L 2.967285,7.600586 L 4.897949,5.575195 L 6.854004,7.600586 L 9.115723,7.600586 L 9.277832,6.351563 L 6.742676,3.852539 Z" x:Name="X_Fuzz2" Stroke="#14C51900" Height="8" VerticalAlignment="Center" Opacity="1" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                                                    <Path.RenderTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform ScaleX="1.3" ScaleY="1.3" />
+                                                        </TransformGroup>
+                                                    </Path.RenderTransform>
+                                                </Path>
+                                                <Path HorizontalAlignment="Center" Margin="0,-1,0,0" Width="9" Fill="#1EC51900" Stretch="Fill" Data="F1 M 6.742676,3.852539 L 9.110840,1.559570 L 8.910645,0.500000 L 6.838379,0.500000 L 4.902832,2.435547 L 2.967285,0.500000 L 0.895020,0.500000 L 0.694824,1.559570 L 3.062988,3.852539 L 0.527832,6.351563 L 0.689941,7.600586 L 2.967285,7.600586 L 4.897949,5.575195 L 6.854004,7.600586 L 9.115723,7.600586 L 9.277832,6.351563 L 6.742676,3.852539 Z" x:Name="X_Fuzz1" Stroke="#1EC51900" Height="8" VerticalAlignment="Center" Opacity="1" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                                                    <Path.RenderTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                                                        </TransformGroup>
+                                                    </Path.RenderTransform>
+                                                </Path>
+                                                <Path HorizontalAlignment="Center" Margin="0,-1,0,0" Width="9" Fill="#FFC51900" Stretch="Fill" Data="F1 M 6.742676,3.852539 L 9.110840,1.559570 L 8.910645,0.500000 L 6.838379,0.500000 L 4.902832,2.435547 L 2.967285,0.500000 L 0.895020,0.500000 L 0.694824,1.559570 L 3.062988,3.852539 L 0.527832,6.351563 L 0.689941,7.600586 L 2.967285,7.600586 L 4.897949,5.575195 L 6.854004,7.600586 L 9.115723,7.600586 L 9.277832,6.351563 L 6.742676,3.852539 Z" x:Name="X_Fuzz0" Stroke="#FFC51900" Height="8" VerticalAlignment="Center" Opacity="1" Visibility="Collapsed" />
+                                                <Path HorizontalAlignment="Center" Margin="0,-1,0,0" Width="9" Fill="#FFFFFFFF" Stretch="Fill" Data="F1 M 6.742676,3.852539 L 9.110840,1.559570 L 8.910645,0.500000 L 6.838379,0.500000 L 4.902832,2.435547 L 2.967285,0.500000 L 0.895020,0.500000 L 0.694824,1.559570 L 3.062988,3.852539 L 0.527832,6.351563 L 0.689941,7.600586 L 2.967285,7.600586 L 4.897949,5.575195 L 6.854004,7.600586 L 9.115723,7.600586 L 9.277832,6.351563 L 6.742676,3.852539 Z" x:Name="X" Height="8" VerticalAlignment="Center" Opacity="0.7">
+                                                    <Path.Stroke>
+                                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                            <GradientStop Color="#FF313131" Offset="1" />
+                                                            <GradientStop Color="#FF8E9092" Offset="0" />
+                                                        </LinearGradientBrush>
+                                                    </Path.Stroke>
+                                                </Path>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="WindowStates">
+                                <VisualState x:Name="Open">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetName="Overlay" Storyboard.TargetProperty="Opacity">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.3" Value="1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetName="ContentRoot" Storyboard.TargetProperty="(RenderTransform).(Children)[0].ScaleX">
+                                            <SplineDoubleKeyFrame KeyTime="0" Value="0" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.25" Value="0" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.4" Value="1" />
+                                            <SplineDoubleKeyFrame KeySpline="0,0,0.5,1" KeyTime="00:00:00.45" Value="1.05" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.55" Value="1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetName="ContentRoot" Storyboard.TargetProperty="(RenderTransform).(Children)[0].ScaleY">
+                                            <SplineDoubleKeyFrame KeyTime="0" Value="0" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.25" Value="0" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.4" Value="1" />
+                                            <SplineDoubleKeyFrame KeySpline="0,0,0.5,1" KeyTime="00:00:00.45" Value="1.05" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.55" Value="1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Closed">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetName="Overlay" Storyboard.TargetProperty="Opacity">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                            <EasingDoubleKeyFrame KeyTime="00:00:00.3" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetName="ContentRoot" Storyboard.TargetProperty="(RenderTransform).(Children)[0].ScaleX">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.2" Value="1" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.25" Value="1.05" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.45" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetName="ContentRoot" Storyboard.TargetProperty="(RenderTransform).(Children)[0].ScaleY">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.2" Value="1" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.25" Value="1.05" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.45" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="Overlay" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Background="{x:Null}" Opacity="{TemplateBinding OverlayOpacity}">
+                            <i:Interaction.Triggers>
+                                <ei:DataTrigger Binding="{Binding ElementName=Overlay,Path=Background}" Comparison="NotEqual" Value="{x:Null}">
+                                    <ei:ChangePropertyAction TargetName="Overlay" PropertyName="Background" Value="{x:Null}"/>
+                                </ei:DataTrigger>
+                            </i:Interaction.Triggers>
+                        </Grid>
+                        <Grid x:Name="ModalOverlay" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsModal,Converter={StaticResource BooleanToVisibilityConverterInstance}}" Background="{TemplateBinding OverlayBrush}" Opacity="1" />
+                        <Grid x:Name="ContentRoot" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" RenderTransformOrigin="0.5,0.5" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Border BorderThickness="1" CornerRadius="2.75" BorderBrush="#0A000000" Background="#14000000" HorizontalAlignment="Center" Padding="1">
+                                <Border BorderThickness="1" CornerRadius="2.5" BorderBrush="#0c000000" Background="#0F000000"  HorizontalAlignment="Center" Padding="1" >
+                                    <Border BorderThickness="1" CornerRadius="2.25" BorderBrush="#0F000000" Background="#0C000000"  HorizontalAlignment="Center" Padding="1" >
+                                        <Border BorderThickness="1" CornerRadius="2.00" BorderBrush="#14000000" Background="#0A000000" HorizontalAlignment="Center" Padding="1">
+                                            <Border Background="#FFFFFFFF" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="#FF1D1D1D" CornerRadius="2" HorizontalAlignment="Center">
+                                                <Border CornerRadius="1.5" Margin="1" HorizontalAlignment="Center">
+                                                    <Border.Background>
+                                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                            <GradientStop Color="#FFE5E8EB" Offset="1" />
+                                                            <GradientStop Color="#FFF6F8F9" Offset="0" />
+                                                        </LinearGradientBrush>
+                                                    </Border.Background>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Border x:Name="Chrome" Width="Auto" Style="{StaticResource TileHeaderBorderStyle}" Height="Auto">
+                                                            <Grid Height="Auto" Width="Auto" Margin="0,0,4,0" >
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*"/>
+                                                                    <ColumnDefinition Width="auto" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <ContentControl IsTabStop="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,4" >
+                                                                    <ContentPresenter>
+                                                                        <TextBlock Text="{TemplateBinding Title}" Style="{StaticResource TileHeaderTextBlockStyle}" FontSize="12"/>
+                                                                    </ContentPresenter>
+                                                                </ContentControl>
+                                                                <telerik:RadButton x:Name="CloseButton" Grid.Column="1" IsTabStop="False" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource CloseRadButtonStyle}" />
+                                                            </Grid>
+                                                        </Border>
+                                                        <Border Background="{TemplateBinding Background}" Grid.Row="1">
+                                                            <ContentPresenter x:Name="ContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                                        </Border>
+                                                    </Grid>
+                                                </Border>
+                                            </Border>
+                                        </Border>
+                                    </Border>
+                                </Border>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:HintControl">
+        <Setter Property="Background" Value="#FF1F3B53"/>
+        <Setter Property="Foreground" Value="#FF000000"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                    <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                    <GradientStop Color="#FF718597" Offset="0.375"/>
+                    <GradientStop Color="#FF617584" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:HintControl">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard
+                                >
+                                        <ColorAnimation
+                                			Duration="0" To="White" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path" d:IsOptimized="True"/>
+
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Content_Copy1" d:IsOptimized="True"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Content_Copy" d:IsOptimized="True"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused"/>
+                                <VisualState x:Name="Unfocused" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="14" Height="14" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
+                            </Grid.RenderTransform>
+                            <Ellipse x:Name="Content" Width="14" Height="14" StrokeThickness="2">
+                                <Ellipse.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFD0D0D0"/>
+                                        <GradientStop Color="#FF4D5666" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <Ellipse x:Name="Content_Copy1" Width="14" Height="14" StrokeThickness="2" Opacity="0">
+                                <Ellipse.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF2468EF"/>
+                                        <GradientStop Color="#FF13316C" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <Ellipse x:Name="Content_Copy" Width="14" Height="14" StrokeThickness="2" Opacity="0">
+                                <Ellipse.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF1C4FB4"/>
+                                        <GradientStop Color="#FF0A1E45" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <Path x:Name="path" Data="M3.2228808,6.473187 C3.3399975,6.4731874 3.4375834,6.517674 3.5156388,6.606647 C3.5936937,6.6956205 3.6327214,6.8204002 3.6327217,6.9809866 C3.6327214,7.2891388 3.4916658,7.9228034 3.2095551,8.8819809 L2.9959376,9.5850887 C2.671103,10.670131 2.5086856,11.355877 2.5086856,11.642328 C2.5086856,11.789894 2.5693123,11.863677 2.6905658,11.863677 C2.8032067,11.863677 3.174088,11.655349 3.8032091,11.238693 L3.9789858,11.583736 L2.6320753,12.482151 C2.2725873,12.70784 2.0019031,12.851066 1.8200229,12.911828 C1.6943613,12.95957 1.5773124,12.98344 1.468876,12.98344 C1.3039496,12.98344 1.1769997,12.928103 1.0880262,12.81743 C0.99905264,12.706755 0.95456594,12.527723 0.954566,12.280334 C0.95456594,11.954821 1.0240086,11.538164 1.162894,11.030365 L1.5990812,9.4809246 C1.8184631,8.7040339 1.9281541,8.1984043 1.9281541,7.964035 C1.9281541,7.8511906 1.8782421,7.7947683 1.7784183,7.7947683 C1.7089754,7.7947683 1.6048114,7.8294897 1.4659261,7.8989325 C1.1273929,8.0725393 0.82575113,8.2591667 0.56100076,8.4588146 L0.40475476,8.1072607 C1.4550756,7.3433909 2.1211898,6.889843 2.4030974,6.7466173 C2.7674005,6.5643306 3.0406616,6.4731874 3.2228808,6.473187 z M3.5639572,3.4719601 C3.775744,3.471961 3.9475706,3.5381479 4.0794373,3.6705227 C4.2113037,3.8028975 4.2772369,3.9775896 4.2772369,4.1945982 C4.2772369,4.4984102 4.1918573,4.7479696 4.0210991,4.9432769 C3.8503404,5.1385851 3.6309586,5.236239 3.3629532,5.2362385 C3.1468263,5.236239 2.9728293,5.1700516 2.8409629,5.0376759 C2.7090964,4.9053011 2.6431632,4.7392893 2.6431632,4.5396414 C2.6431632,4.2097883 2.7296274,3.949378 2.9025559,3.7584105 C3.0754843,3.5674438 3.2959514,3.471961 3.5639572,3.4719601 z" RenderTransformOrigin="0.5,0.5" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Center" HorizontalAlignment="Center" Height="9" Width="4.5">
+                                <Path.Fill>
+                                    <SolidColorBrush Color="White">
+                                        <SolidColorBrush.RelativeTransform>
+                                            <MatrixTransform Matrix="Identity"/>
+                                        </SolidColorBrush.RelativeTransform>
+                                        <SolidColorBrush.Transform>
+                                            <MatrixTransform Matrix="Identity"/>
+                                        </SolidColorBrush.Transform>
+                                    </SolidColorBrush>
+                                </Path.Fill>
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:AddRemoveCommentControl">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="0 0 0 20"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:AddRemoveCommentControl">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="EditStates">
+                                <VisualState x:Name="ReadOnly">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_AddRemoveButton" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="spEdit" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_CommentTextBlock" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Editable">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_AddRemoveButton" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="spEdit" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_CommentTextBlock" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CommentStates">
+                                <VisualState x:Name="Hide">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Show">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <StackPanel>
+                            <telerik:RadButton x:Name="PART_AddRemoveButton" Width="auto" Margin="0 0 0 2" FontSize="10" Height="20" HorizontalAlignment="Left" Style="{StaticResource ScreenerCommentButtonStyle}"/>
+                            <Border x:Name="Border" CornerRadius="0"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Margin="{Binding Margin}"
+                            Padding="10 5 10 10"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+							Style="{StaticResource EditFormCommentsBorderStyle}">
+                                <Grid MaxWidth="770">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="*" MaxHeight="100"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="PART_CommentTextBlock" Grid.Row="0" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                    <StackPanel x:Name="spEdit" Grid.Row="1" HorizontalAlignment="Stretch">
+                                        <TextBlock Text="Comments" Style="{StaticResource EditFormLabelTextBlockStyle}" TextWrapping="Wrap" HorizontalAlignment="Stretch"/>
+                                        <telerik:RadWatermarkTextBox x:Name="PART_CommentTextBox" WatermarkContent="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=WatermarkText, Mode=TwoWay}" Background="White" AcceptsReturn="True" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text, Mode=TwoWay}" HorizontalAlignment="Stretch" Style="{StaticResource ScreenerCommentTextBoxStyle}" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" MaxHeight="100" VerticalContentAlignment="Top"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:PrintControl">
+        <Setter Property="ButtonStyle" Value="{StaticResource BorderlessButtonStyle}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PrintControl">
+                    <Grid x:Name="LayoutRoot">
+                        <Grid x:Name="PART_GridPrintPageContainer" Visibility="Collapsed"/>
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <telerik:RadButton Style="{TemplateBinding ButtonStyle}" x:Name="PART_PrintButton" Content="Print"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

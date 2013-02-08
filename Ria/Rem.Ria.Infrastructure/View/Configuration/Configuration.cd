@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Ria.Infrastructure.View.Configuration.Configuration">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAQAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Configuration\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.Infrastructure.View.Configuration.ConfigurationBehaviorService">
+    <Position X="11.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAIAgAAAgEAEAggAQAAAgAAAAAIAAAAACCAAA=</HashCode>
+      <FileName>View\Configuration\ConfigurationBehaviorService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.Infrastructure.View.Configuration.ConfigurationBehavior">
+    <Position X="7.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAEACAAFAAAAACAAAAQAAQAAACAAAAAAAAAAMAMAAA=</HashCode>
+      <FileName>View\Configuration\ConfigurationBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Ria.Infrastructure.View.Configuration.ConfigurationBehaviorExtensions">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>View\Configuration\ConfigurationBehaviorExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

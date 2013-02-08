@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.GainShortScreenerModule.GainShortScreener">
+    <Position X="2.5" Y="1.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AQCAAAQAEAQAAAAAACCAQAAIAAAQAAAAAAAACAAARQA=</HashCode>
+      <FileName>GainShortScreenerModule\GainShortScreener.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GainShortScreenerModule.GainShortScreenerCalculationService" Collapsed="true">
+    <Position X="9.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAQAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAgA=</HashCode>
+      <FileName>GainShortScreenerModule\GainShortScreenerCalculationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GainShortScreenerModule.GainShortScreenerCrimeViolence" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAAAAAAAAgIABAAAAAAAAAIgEAACAAkAIQiA=</HashCode>
+      <FileName>GainShortScreenerModule\GainShortScreenerCrimeViolence.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GainShortScreenerModule.GainShortScreenerExternalizingDisorder" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAgAAAAAEAAAAwAIACAAEAACAAAiA=</HashCode>
+      <FileName>GainShortScreenerModule\GainShortScreenerExternalizingDisorder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.GainShortScreenerModule.GainShortScreenerSubstanceDisorder" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAKAAAAAAAAAAAgAAAAACAAIgAAIAQgAAACAAAAiA=</HashCode>
+      <FileName>GainShortScreenerModule\GainShortScreenerSubstanceDisorder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Rem.Domain.Clinical.GainShortScreenerModule.IGainShortScreenerRepository">
+    <Position X="6.5" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GainShortScreenerModule\IGainShortScreenerRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

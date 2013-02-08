@@ -1,0 +1,68 @@
+{
+  "MetadataLayerId": 1,
+  "ResourceName": "Rem.Ria.PatientModule.Web.Common.PatientProfileDto",
+  "Children": {
+    "$type": "System.Collections.ObjectModel.ReadOnlyCollection`1[[Rem.Common.Metadata.IMetadata, Rem.Common]], mscorlib",
+    "$values": [
+      {
+        "$type": "Rem.Common.Metadata.MetadataNode, Rem.Common",
+        "ResourceName": "FirstName",
+        "Children": {
+          "$type": "System.Collections.ObjectModel.ReadOnlyCollection`1[[Rem.Common.Metadata.IMetadata, Rem.Common]], mscorlib",
+          "$values": []
+        },
+        "MetadataItems": {
+          "$type": "System.Collections.Generic.List`1[[Rem.Common.Metadata.IMetadataItem, Rem.Common]], mscorlib",
+          "$values": [
+            {
+              "$type": "Rem.Common.Metadata.DisplayNameMetadataItem, Rem.Common",
+              "Name": "The Patient's First Name"
+            },
+            {
+              "$type": "Rem.Common.Metadata.ReadonlyMetadataItem, Rem.Common",
+              "IsReadonly": true
+            }
+          ]
+        }
+      },
+      {
+        "$type": "Rem.Common.Metadata.MetadataNode, Rem.Common",
+        "ResourceName": "MiddleName",
+        "Children": {
+          "$type": "System.Collections.ObjectModel.ReadOnlyCollection`1[[Rem.Common.Metadata.IMetadata, Rem.Common]], mscorlib",
+          "$values": []
+        },
+        "MetadataItems": {
+          "$type": "System.Collections.Generic.List`1[[Rem.Common.Metadata.IMetadataItem, Rem.Common]], mscorlib",
+          "$values": [
+            {
+              "$type": "Rem.Common.Metadata.HiddenMetadataItem, Rem.Common",
+              "IsHidden": true
+            }
+          ]
+        }
+      },
+      {
+        "$type": "Rem.Common.Metadata.MetadataNode, Rem.Common",
+        "ResourceName": "LastName",
+        "Children": {
+          "$type": "System.Collections.ObjectModel.ReadOnlyCollection`1[[Rem.Common.Metadata.IMetadata, Rem.Common]], mscorlib",
+          "$values": []
+        },
+        "MetadataItems": {
+          "$type": "System.Collections.Generic.List`1[[Rem.Common.Metadata.IMetadataItem, Rem.Common]], mscorlib",
+          "$values": [
+            {
+              "$type": "Rem.Common.Metadata.RequiredMetadataItem, Rem.Common",
+              "IsRequired": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "MetadataItems": {
+    "$type": "System.Collections.Generic.List`1[[Rem.Common.Metadata.IMetadataItem, Rem.Common]], mscorlib",
+    "$values": []
+  }
+}

@@ -1,0 +1,250 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.DirectMessageCenter.SaveMailAttachmentPatientDocumentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+             xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism"
+             xmlns:ViewModel="clr-namespace:Rem.Ria.Infrastructure.ViewModel;assembly=Rem.Ria.Infrastructure"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:infrastructureBehaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+             xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure"
+             xmlns:Common="clr-namespace:Rem.Ria.PatientModule.Web.Common"
+             xmlns:PatientEditor="clr-namespace:Rem.Ria.PatientModule.Web.PatientEditor"
+             xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=System.Windows" mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="400">
+
+    <i:Interaction.Behaviors>
+        <infrastructureBehaviors:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+
+    <UserControl.Resources>
+        <View:DataContextProxyElement x:Key="RootDataContext" />
+        <Converter:LongToVisibilityConverter x:Key="LongToVisibilityConverterInstance"/>
+        <Converter:LongToBooleanConverter x:Key="LongToBooleanConverter"/>
+  </UserControl.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="0" Padding="0" BorderThickness="0" >
+        <Border Style="{StaticResource PopUpFormPanelStyle}" VerticalAlignment="Top" CornerRadius="0">
+            <Grid x:Name="LayoutRoot" >
+                <Grid.Resources>
+                    <CollectionViewSource x:Key="AddressesSource" Source="{Binding EditingDto.Patient.Addresses}">
+                        <CollectionViewSource.SortDescriptions>
+                            <ComponentModel:SortDescription PropertyName="PatientAddressType.SortOrderNumber" Direction="Ascending"/>
+                            <ComponentModel:SortDescription PropertyName="PatientAddressType.Name" Direction="Ascending"/>
+                        </CollectionViewSource.SortDescriptions>
+                    </CollectionViewSource>
+                    <CollectionViewSource x:Key="PhoneNumberSource" Source="{Binding EditingDto.Patient.PhoneNumbers}">
+                        <CollectionViewSource.SortDescriptions>
+                            <ComponentModel:SortDescription PropertyName="PatientPhoneType.SortOrderNumber" Direction="Ascending"/>
+                            <ComponentModel:SortDescription PropertyName="PatientPhoneType.Name" Direction="Ascending"/>
+                        </CollectionViewSource.SortDescriptions>
+                    </CollectionViewSource>
+                </Grid.Resources>
+    <StackPanel DataContext="{Binding EditingDto}">
+        <StackPanel Margin="10">
+            <ContentControl x:Name="PatientInfo" IsEnabled="{Binding Patient.Key, Converter={StaticResource LongToBooleanConverter}, ConverterParameter=WhenZeroTrue}">
+                <ContentControl.Resources>
+                    
+                </ContentControl.Resources>
+                <CustomControls:EditableStackPanel>
+                    <CustomControls:EditableStackPanel Orientation="Horizontal">
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                            <TextBlock Text="First Name"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            <telerik:RadMaskedTextBox x:Name="FirstName" EmptyContent="First Name" MaskedText="{Binding Patient.FirstName,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                            <TextBlock Text="Middle Name"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            <telerik:RadMaskedTextBox x:Name="MiddleName" EmptyContent="Middle Name" MaskedText="{Binding Patient.MiddleName,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                            <TextBlock Text="Last Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            <telerik:RadMaskedTextBox x:Name="LastName" EmptyContent="Last Name" MaskedText="{Binding Patient.LastName,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                            <TextBlock Text="Suffix Name" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            <telerik:RadMaskedTextBox x:Name="Suffix" EmptyContent="Suffix Name" MaskedText="{Binding Patient.SuffixName,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                        </StackPanel>
+                    </CustomControls:EditableStackPanel>
+                    <CustomControls:EditableStackPanel Orientation="Horizontal">
+                        <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleS}" x:Name="BirthDate">
+                            <TextBlock Text="Birth Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                            <CustomControls:EditableDatePicker SelectedValue="{Binding Patient.BirthDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                        </CustomControls:EditableStackPanel>
+                        <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                            <TextBlock Text="Gender" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            <telerik:RadComboBox x:Name="Gender" ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[PatientGender]}" DisplayMemberPath="Name" SelectedItem="{Binding Patient.PatientGender,Mode=TwoWay}"/>
+                        </StackPanel>
+                    </CustomControls:EditableStackPanel>
+                    <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                <TextBlock Text="Phone Type" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                <TextBlock Text="Phone Number" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}">
+                                <TextBlock Text="Ext." Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <CustomControls:EditableItemsControl ItemsSource="{Binding Source={StaticResource PhoneNumberSource}}">
+                                <CustomControls:EditableItemsControl.AddingItem>
+                                    <Common:PatientPhoneDto/>
+                                </CustomControls:EditableItemsControl.AddingItem>
+                                <CustomControls:EditableItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                    <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[PatientPhoneType]}" SelectedItem="{Binding PatientPhoneType, Mode=TwoWay}" DisplayMemberPath="Name" EmptyText="Phone Type"/>
+                                                </StackPanel>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                    <telerik:RadMaskedTextBox x:Name="PhoneNumber" EmptyContent="Phone Number" MaskedText="{Binding PhoneNumber,Mode=TwoWay}"  MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                                </StackPanel>
+                                                <StackPanel Style="{StaticResource EditFormStackPanelStyleXS}">
+                                                    <telerik:RadMaskedTextBox x:Name="PhoneExtensionNumber" EmptyContent="Ext" MaskedText="{Binding PhoneExtensionNumber,Mode=TwoWay}"  MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </CustomControls:EditableItemsControl.ItemTemplate>
+                            </CustomControls:EditableItemsControl>
+                        </StackPanel>
+                    </StackPanel>
+                    <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                    <StackPanel Orientation="Vertical">
+                        <CustomControls:EditableItemsControl ItemsSource="{Binding Source={StaticResource AddressesSource}}">
+                            <CustomControls:EditableItemsControl.ItemContainerStyle>
+                                <Style TargetType="CustomControls:EditableItemsControlItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="CustomControls:EditableItemsControlItem">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                        <StackPanel Orientation="Vertical">
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                                                <Button Style="{StaticResource TileDeleteButtonStyle}" VerticalAlignment="Center" Margin="15,0,0,0" Command="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Parent.RemoveItemCommand}" CommandParameter="{TemplateBinding Content}"/>
+                                                            </StackPanel>
+                                                            <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </StackPanel>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </CustomControls:EditableItemsControl.ItemContainerStyle>
+                            <CustomControls:EditableItemsControl.AddingItem>
+                                <PatientEditor:PatientAddressDto/>
+                            </CustomControls:EditableItemsControl.AddingItem>
+                            <CustomControls:EditableItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                                                <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[PatientAddressType]}" EmptyText="Address Type" SelectedItem="{Binding PatientAddressType,Mode=TwoWay}" DisplayMemberPath="Name"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                <telerik:RadMaskedTextBox EmptyContent="Address Line 1" MaskedText="{Binding FirstStreetAddress,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                <telerik:RadMaskedTextBox EmptyContent="Address Line 2" MaskedText="{Binding SecondStreetAddress,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                <telerik:RadMaskedTextBox EmptyContent="City" MaskedText="{Binding CityName,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}" />
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                                                <telerik:RadComboBox ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[StateProvince]}" EmptyText="State" SelectedItem="{Binding StateProvince,Mode=TwoWay}" DisplayMemberPath="Name"/>
+                                            </StackPanel>
+                                            <StackPanel Style="{StaticResource EditFormStackPanelStyleS}">
+                                                <telerik:RadMaskedTextBox EmptyContent="Postal Code" MaskedText="{Binding PostalCode,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </CustomControls:EditableItemsControl.ItemTemplate>
+                        </CustomControls:EditableItemsControl>
+                    </StackPanel>
+                </CustomControls:EditableStackPanel>
+            </ContentControl>
+        </StackPanel>
+        <CustomControls:EditableStackPanel Margin="10" x:Name="ProfileStackPanel">
+            <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleS}">
+                    <TextBlock Text="Document Info" Style="{StaticResource EditFormLabelTextBlockStyle}"></TextBlock>
+                </CustomControls:EditableStackPanel>
+                    <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleXL}"
+                    x:Name="NameStackPanel">
+            <TextBlock Text="Attachment File Name" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+            <TextBlock Text="{Binding Source={StaticResource RootDataContext}, Path=DataSource.MailAttachmentName}" Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+        </CustomControls:EditableStackPanel>
+
+            <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+
+                                                <CustomControls:EditableStackPanel Orientation="Horizontal" >
+            <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleL}" x:Name="DocumentTypeStackPanel">
+                <TextBlock Text="Document Type" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                <telerik:RadComboBox x:Name="DocumentTypeRadComboBox" SelectedValue="{Binding PatientDocumentType, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[PatientDocumentType]}"  Style="{StaticResource FormComboBoxRemStyle}" IsMouseWheelEnabled="False" FontWeight="Normal" EmptyText="Select" HorizontalAlignment="Stretch" VerticalAlignment="Top" DisplayMemberPath="Name" ClearSelectionButtonVisibility="Visible" ClearSelectionButtonContent="Clear"/>
+            </CustomControls:EditableStackPanel>
+            <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleS}" x:Name="OtherTypeStackPanel">
+                <TextBlock Text="Specify Other Type" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                <telerik:RadWatermarkTextBox Text="{Binding OtherDocumentTypeName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+            </CustomControls:EditableStackPanel>
+        </CustomControls:EditableStackPanel>
+                                <CustomControls:EditableStackPanel Orientation="Horizontal">
+            <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleL}" x:Name="DecriptionStackPanel">
+                <TextBlock Text="Document Description" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                <telerik:RadWatermarkTextBox x:Name="DescriptionTextBox" Background="White" AcceptsReturn="True" Text="{Binding Description, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" Style="{StaticResource ScreenerCommentTextBoxStyle}" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" MaxHeight="100" VerticalContentAlignment="Top"/>
+            </CustomControls:EditableStackPanel>
+        </CustomControls:EditableStackPanel>
+
+                                                <CustomControls:EditableStackPanel Orientation="Horizontal">
+            <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleS}" x:Name="ClinicalStartDateStackPanel">
+                <TextBlock Text="Clinical Start Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                <CustomControls:EditableDatePicker SelectedValue="{Binding ClinicalStartDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+            </CustomControls:EditableStackPanel>
+            <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleS}" x:Name="ClinicalEndDateStackPanel">
+                <TextBlock Text="Clinical End Date" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                <CustomControls:EditableDatePicker SelectedValue="{Binding ClinicalEndDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+            </CustomControls:EditableStackPanel>
+        </CustomControls:EditableStackPanel>
+                                <CustomControls:EditableStackPanel Orientation="Horizontal">
+            <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleL}" x:Name="DocumentProviderNameStackPanel">
+                <TextBlock Text="Document Provider" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                <telerik:RadWatermarkTextBox Text="{Binding DocumentProviderName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+            </CustomControls:EditableStackPanel>
+        </CustomControls:EditableStackPanel>
+
+            <StackPanel Orientation="Vertical" Visibility="{Binding IsDirty, Converter={StaticResource BooleanToVisibilityConverterInstance}}">
+                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0">
+                                <telerik:RadButton Style="{StaticResource StaticBorderlessButtonStyle}" Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.SaveCommand}" CommandParameter="{Binding Source={StaticResource RootDataContext}, Path=DataSource.EditingDto}" Content="Add" Width="60" Height="22" Visibility="{Binding Patient.Key, Converter={StaticResource LongToVisibilityConverterInstance}, ConverterParameter=WhenZeroCollapsed}">
+                                   
+                                </telerik:RadButton>
+                                <telerik:RadButton Style="{StaticResource StaticBorderlessButtonStyle}" Content="Create New" Width="120" Height="22" Visibility="{Binding Patient.Key, Converter={StaticResource LongToVisibilityConverterInstance}, ConverterParameter=WhenNonZeroCollapsed}">
+                                    <i:Interaction.Behaviors>
+                                        <infrastructureBehaviors:AddEditableItemsControlItemBehavior EditableItemsControlContainer="{Binding ElementName=PatientInfo}" SaveCommand="{Binding Source={StaticResource RootDataContext}, Path=DataSource.CreatePatientImportDocumentCommand}" />
+                                    </i:Interaction.Behaviors>
+                                </telerik:RadButton>
+                                    <telerik:RadButton Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.CloseViewCommand}" Content="Cancel" Width="60" Style="{StaticResource StaticBorderlessButtonStyle}"  Height="22" />
+                </StackPanel>
+            </StackPanel>
+
+        </CustomControls:EditableStackPanel>
+    </StackPanel>
+        
+    <CustomControls:LoadingControl IsLoading="{Binding IsLoading}"/>
+
+  </Grid>
+        </Border>
+    </ScrollViewer>
+</UserControl>

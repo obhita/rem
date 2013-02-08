@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A42748A6-FE1C-465C-BA57-1D2DBCE0EE1F}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Mvc</RootNamespace>
+    <AssemblyName>Rem.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Agatha.Common, Version=1.3.0.0, Culture=neutral, PublicKeyToken=6f21cf452a4ffa13, processorArchitecture=MSIL">
+      <HintPath>..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Agatha.StructureMap, Version=1.3.0.0, Culture=neutral, PublicKeyToken=6f21cf452a4ffa13, processorArchitecture=MSIL">
+      <HintPath>..\packages\Agatha-Common-StructureMap.1.3\lib\net40\Agatha.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Thinktecture.IdentityServer.WebService">
+      <HintPath>..\lib\Server\IdentityServer\Thinktecture.IdentityServer.WebService.dll</HintPath>
+    </Reference>
+    <Reference Include="Thinktecture.IdentityServer.WebService.Client">
+      <HintPath>..\lib\Server\IdentityServer\Thinktecture.IdentityServer.WebService.Client.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PatientDashboardController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\PatientDashboardModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\960Grid.css" />
+    <Content Include="Content\themes\base\images\back_disabled.png" />
+    <Content Include="Content\themes\base\images\back_enabled.png" />
+    <Content Include="Content\themes\base\images\back_enabled_hover.png" />
+    <Content Include="Content\themes\base\images\forward_disabled.png" />
+    <Content Include="Content\themes\base\images\forward_enabled.png" />
+    <Content Include="Content\themes\base\images\forward_enabled_hover.png" />
+    <Content Include="Content\themes\base\images\sort_asc.png" />
+    <Content Include="Content\themes\base\images\sort_asc_disabled.png" />
+    <Content Include="Content\themes\base\images\sort_both.png" />
+    <Content Include="Content\themes\base\images\sort_desc.png" />
+    <Content Include="Content\themes\base\images\sort_desc_disabled.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="FederationMetadata\2007-06\dev.FederationMetadata.xml" />
+    <Content Include="FederationMetadata\2007-06\demo.FederationMetadata.xml" />
+    <Content Include="FederationMetadata\2007-06\qa.FederationMetadata.xml" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\dashboard-tile-gradient.png" />
+    <Content Include="Images\globalnav-tile-gradient.png" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\media\css\demo_page.css" />
+    <Content Include="Scripts\media\css\demo_table.css" />
+    <Content Include="Scripts\media\css\demo_table_jui.css" />
+    <Content Include="Scripts\media\css\jquery.dataTables.css" />
+    <Content Include="Scripts\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Scripts\media\images\back_disabled.png" />
+    <Content Include="Scripts\media\images\back_enabled.png" />
+    <Content Include="Scripts\media\images\back_enabled_hover.png" />
+    <Content Include="Scripts\media\images\favicon.ico" />
+    <Content Include="Scripts\media\images\forward_disabled.png" />
+    <Content Include="Scripts\media\images\forward_enabled.png" />
+    <Content Include="Scripts\media\images\forward_enabled_hover.png" />
+    <Content Include="Scripts\media\images\sort_asc.png" />
+    <Content Include="Scripts\media\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\media\images\sort_both.png" />
+    <Content Include="Scripts\media\images\sort_desc.png" />
+    <Content Include="Scripts\media\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\media\js\jquery.dataTables.js" />
+    <Content Include="Scripts\media\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\media\js\jquery.js" />
+    <Content Include="Scripts\media\src\api\api.internal.js" />
+    <Content Include="Scripts\media\src\api\api.methods.js" />
+    <Content Include="Scripts\media\src\api\api.static.js" />
+    <Content Include="Scripts\media\src\core\core.ajax.js" />
+    <Content Include="Scripts\media\src\core\core.columns.js" />
+    <Content Include="Scripts\media\src\core\core.constructor.js" />
+    <Content Include="Scripts\media\src\core\core.data.js" />
+    <Content Include="Scripts\media\src\core\core.draw.js" />
+    <Content Include="Scripts\media\src\core\core.filter.js" />
+    <Content Include="Scripts\media\src\core\core.info.js" />
+    <Content Include="Scripts\media\src\core\core.init.js" />
+    <Content Include="Scripts\media\src\core\core.length.js" />
+    <Content Include="Scripts\media\src\core\core.page.js" />
+    <Content Include="Scripts\media\src\core\core.processing.js" />
+    <Content Include="Scripts\media\src\core\core.scrolling.js" />
+    <Content Include="Scripts\media\src\core\core.sizing.js" />
+    <Content Include="Scripts\media\src\core\core.sort.js" />
+    <Content Include="Scripts\media\src\core\core.state.js" />
+    <Content Include="Scripts\media\src\core\core.support.js" />
+    <Content Include="Scripts\media\src\DataTables.js" />
+    <Content Include="Scripts\media\src\ext\ext.classes.js" />
+    <Content Include="Scripts\media\src\ext\ext.paging.js" />
+    <Content Include="Scripts\media\src\ext\ext.sorting.js" />
+    <Content Include="Scripts\media\src\ext\ext.types.js" />
+    <Content Include="Scripts\media\src\model\model.column.js" />
+    <Content Include="Scripts\media\src\model\model.defaults.columns.js" />
+    <Content Include="Scripts\media\src\model\model.defaults.js" />
+    <Content Include="Scripts\media\src\model\model.ext.js" />
+    <Content Include="Scripts\media\src\model\model.row.js" />
+    <Content Include="Scripts\media\src\model\model.search.js" />
+    <Content Include="Scripts\media\src\model\model.settings.js" />
+    <Content Include="Scripts\media\unit_testing\controller.js" />
+    <Content Include="Scripts\media\unit_testing\index.html" />
+    <Content Include="Scripts\media\unit_testing\performance\draw.html" />
+    <Content Include="Scripts\media\unit_testing\performance\page.html" />
+    <Content Include="Scripts\media\unit_testing\performance\sort.html" />
+    <Content Include="Scripts\media\unit_testing\tests\1_dom\_zero_config.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\-complex_header.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\-iDraw.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\2512.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\2530-2.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\2530.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\2569.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\2600.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\2608.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\2635.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\2746-stable-sort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\2799.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\2840-restore-table-width.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\2914-state-save-sort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\5396-fnUpdate-arrays.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\5508-xscroll-zero-content.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\6776-scrolling-table-grows.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aaSorting.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aaSortingFixed.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoColumns.bSearchable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoColumns.bSortable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoColumns.bUseRendered.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoColumns.bVisible.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoColumns.bVisible2.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoColumns.fnRender.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoColumns.iDataSort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoColumns.sClass.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoColumns.sName.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoColumns.sTitle.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoColumns.sWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\aoSearchCols.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\asStripClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bAutoWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bFilter.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bInfiniteScroll.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bJQueryUI.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bLengthChange.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bServerSide.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bSort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bSortCellsTop.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\bSortClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnCookieCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnCreatedCell.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnCreatedRow.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnDeleteRow.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnDrawCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnFilter.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnFooterCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnHeaderCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnInfoCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnInitComplete.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnRowCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnSetColumnVis.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\fnSetColumnVis2.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\html-autodetect-sort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\iDisplayLength.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\oLanguage.oPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\oLanguage.sInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\oLanguage.sInfoEmpty.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\oLanguage.sInfoPostFix.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\oLanguage.sLengthMenu.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\oLanguage.sProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\oLanguage.sSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\oLanguage.sUrl.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\oLanguage.sZeroRecords.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\oSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\sAjaxSource.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\sDom.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\sPaginationType.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\sScrollXY.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\th_in_body.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\1_dom\_zero_config.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\6872-default-content-missing-props.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\8549--string-sorting-nonstrings.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aaSorting.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aaSortingFixed.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aoColumns.bSearchable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aoColumns.bSortable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aoColumns.bUseRendered.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aoColumns.bVisible.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aoColumns.fnRender.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aoColumns.iDataSort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aoColumns.sClass.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aoColumns.sName.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aoColumns.sTitle.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aoColumns.sWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\aoSearchCols.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\asStripClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\bAutoWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\bFilter.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\bInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\bLengthChange.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\bPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\bProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\bServerSide.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\bSort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\bSortClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\fnCreatedCell.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\fnCreatedRow.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\fnDrawCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\fnFooterCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\fnHeaderCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\fnInitComplete.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\fnRowCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\iDisplayLength.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\js_data_mixed_types.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\oLanguage.oPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\oLanguage.sInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\oLanguage.sInfoEmpty.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\oLanguage.sInfoPostFix.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\oLanguage.sLengthMenu.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\oLanguage.sProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\oLanguage.sSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\oLanguage.sUrl.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\oLanguage.sZeroRecords.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\oSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\sAjaxSource.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\sDom.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\sPaginationType.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\2_js\_zero_config.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aaSorting.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aaSortingFixed.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aoColumns.bSearchable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aoColumns.bSortable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aoColumns.bUseRendered.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aoColumns.bVisible.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aoColumns.fnRender.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aoColumns.iDataSort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aoColumns.sClass.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aoColumns.sName.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aoColumns.sTitle.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aoColumns.sWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\aoSearchCols.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\asStripClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\bAutoWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\bFilter.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\bInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\bLengthChange.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\bPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\bProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\bServerSide.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\bSort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\bSortClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\fnCreatedCell.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\fnCreatedRow.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\fnDrawCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\fnHeaderCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\fnInitComplete.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\fnRowCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\fnServerData.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\iDisplayLength.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\oLanguage.oPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\oLanguage.sInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\oLanguage.sInfoEmpty.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\oLanguage.sInfoPostFix.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\oLanguage.sLengthMenu.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\oLanguage.sLoadingRecords.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\oLanguage.sProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\oLanguage.sSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\oLanguage.sUrl.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\oLanguage.sZeroRecords.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\oSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\sAjaxDataProp.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\sAjaxDataProp2.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\sAjaxSource.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\sDom.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\sPaginationType.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\3_ajax\_zero_config.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\-iDraw.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\2440.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\2569.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\2600.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aaSorting.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aaSortingFixed.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aoColumns.bSearchable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aoColumns.bSortable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aoColumns.bUseRendered.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aoColumns.bVisible.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aoColumns.fnRender.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aoColumns.sClass.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aoColumns.sName.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aoColumns.sTitle.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aoColumns.sWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\aoSearchCols.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\asStripClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\bAutoWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\bFilter.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\bInfiniteScroll.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\bInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\bLengthChange.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\bPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\bProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\bServerSide.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\bSort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\bSortClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\fnCreatedCell.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\fnCreatedRow.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\fnDrawCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\fnHeaderCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\fnInitComplete.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\fnRowCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\iDeferLoading.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\iDisplayLength.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\oLanguage.oPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\oLanguage.sInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\oLanguage.sInfoEmpty.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\oLanguage.sInfoPostFix.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\oLanguage.sLengthMenu.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\oLanguage.sProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\oLanguage.sSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\oLanguage.sUrl.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\oLanguage.sZeroRecords.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\oSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\sAjaxDataProp.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\sAjaxSource.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\sDom.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\sPaginationType.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\4_server-side\_zero_config.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aaSorting.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aaSortingFixed.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bSearchable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bSortable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bUseRendered.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bVisible.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.fnRender.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.iDataSort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sClass.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sName.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sTitle.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\aoSearchCols.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\asStripClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\bAutoWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\bFilter.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\bInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\bLengthChange.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\bPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\bProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\bServerSide.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\bSort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\bSortClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\fnDrawCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\fnHeaderCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\fnInitComplete.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\fnRowCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\fnServerData.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\iDisplayLength.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.oPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sInfoEmpty.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sInfoPostFix.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sLengthMenu.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sUrl.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sZeroRecords.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\oSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\sAjaxSource.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\sDom.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\sPaginationType.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_arrays_subobjects.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_deep.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_null_source.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_objects.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_objects_subarrays.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aaSorting.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aaSortingFixed.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bSearchable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bSortable.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bUseRendered.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bVisible.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.fnRender.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.iDataSort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sClass.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sName.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sTitle.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\aoSearchCols.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\asStripClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\bAutoWidth.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\bFilter.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\bInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\bLengthChange.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\bPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\bProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\bServerSide.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\bSort.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\bSortClasses.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\fnDrawCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\fnHeaderCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\fnInitComplete.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\fnRowCallback.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\fnServerData.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\iDisplayLength.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.oPaginate.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sInfo.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sInfoEmpty.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sInfoPostFix.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sLengthMenu.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sProcessing.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sUrl.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sZeroRecords.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\oSearch.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\sAjaxDataProp.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\sAjaxDataProp2.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\sAjaxSource.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\sDom.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\sPaginationType.js" />
+    <Content Include="Scripts\media\unit_testing\tests_onhold\6_delayed_rendering\_zero_config.js" />
+    <Content Include="Scripts\media\unit_testing\unit_test.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\rem-common.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Scripts\media\images\Sorting icons.psd" />
+    <None Include="Scripts\media\unit_testing\controller.php" />
+    <None Include="Scripts\media\unit_testing\performance\large.php" />
+    <None Include="Scripts\media\unit_testing\templates\-complex_header.php" />
+    <None Include="Scripts\media\unit_testing\templates\2512.php" />
+    <None Include="Scripts\media\unit_testing\templates\6776.php" />
+    <None Include="Scripts\media\unit_testing\templates\complex_header_2.php" />
+    <None Include="Scripts\media\unit_testing\templates\deferred_table.php" />
+    <None Include="Scripts\media\unit_testing\templates\dom_data.php" />
+    <None Include="Scripts\media\unit_testing\templates\dom_data_th.php" />
+    <None Include="Scripts\media\unit_testing\templates\dom_data_two_headers.php" />
+    <None Include="Scripts\media\unit_testing\templates\dymanic_table.php" />
+    <None Include="Scripts\media\unit_testing\templates\empty_table.php" />
+    <None Include="Scripts\media\unit_testing\templates\html_table.php" />
+    <None Include="Scripts\media\unit_testing\templates\js_data.php" />
+    <None Include="Scripts\media\unit_testing\templates\js_data_mixed_types.php" />
+    <None Include="Scripts\media\unit_testing\templates\two_tables.php" />
+    <Content Include="Views\Shared\_UserContextPartial.cshtml" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Mvc.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration\Client\demo.client.config" />
+    <Content Include="Configuration\Client\qa.client.config" />
+    <Content Include="Configuration\dev.settings.config" />
+    <Content Include="Configuration\demo.settings.config" />
+    <Content Include="Configuration\qa.settings.config" />
+    <Content Include="Configuration\Wif\dev.wif.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configuration\Wif\demo.wif.config" />
+    <Content Include="Configuration\Wif\qa.wif.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration\Client\dev.client.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Rem.Infrastructure.Mvc\Rem.Infrastructure.Mvc.csproj">
+      <Project>{89F23EEC-0FA2-4B79-9C46-C84ADF256BA4}</Project>
+      <Name>Rem.Infrastructure.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Rem.Infrastructure\Rem.Infrastructure.csproj">
+      <Project>{ADDD4155-DFBE-4450-96E4-0E730CE38861}</Project>
+      <Name>Rem.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pillar\Pillar.Common\Pillar.Common.csproj">
+      <Project>{6761BABC-8D45-4D08-B112-088FA47AB625}</Project>
+      <Name>Pillar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pillar\Pillar.Security\Pillar.Security.csproj">
+      <Project>{450A9049-224E-47D2-ADF8-D57A168DC266}</Project>
+      <Name>Pillar.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ria\Rem.Ria.PatientModule.Web\Rem.Ria.PatientModule.Web.csproj">
+      <Project>{D47EDC6B-0BE3-4BC8-A43A-B0DA90CCF465}</Project>
+      <Name>Rem.Ria.PatientModule.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Rem.WellKnownNames\Rem.WellKnownNames.csproj">
+      <Project>{0CA1E92B-B1E0-4E22-8FA5-747753AA8E72}</Project>
+      <Name>Rem.WellKnownNames</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PatientDashboard\EditSocialHistory.cshtml" />
+    <Content Include="Views\PatientDashboard\EditVitals.cshtml" />
+    <Content Include="Views\PatientDashboard\GetAllClinicalCasesWithActivitiesForSelectedClinicalCase.cshtml" />
+    <Content Include="Views\PatientDashboard\_ActivityListPartial.cshtml" />
+    <Content Include="Views\PatientDashboard\_Layout.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57422</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost/Rem.Mvc</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

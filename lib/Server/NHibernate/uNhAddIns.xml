@@ -1,0 +1,1585 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>uNhAddIns</name>
+    </assembly>
+    <members>
+        <member name="M:uNhAddIns.DynQuery.DetachedDynQuery.GetExecutableQuery(NHibernate.ISession)">
+            <summary>
+            Get an executable instance of <see cref="T:NHibernate.IQuery"/>, to actually run the query.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:uNhAddIns.Inflector.ItalianInflector" -->
+        <member name="T:uNhAddIns.Inflector.AbstractInflector">
+            <summary>
+            Base implementation.
+            </summary>
+            <remarks>
+            Originally implemented by http://andrewpeters.net/inflectornet/
+            </remarks>
+        </member>
+        <member name="T:uNhAddIns.Inflector.IInflector">
+            <summary>
+            Inflector for pluralize and singularize nouns.
+            It also provides method for helping to create programs 
+            based on common used naming conventions (like on Ruby on Rails).
+            </summary>
+            <remarks>
+            Inspired from Bermi Ferrer Martinez python implementation.
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.Inflector.IInflector.Pluralize(System.String)">
+            <summary>
+            Pluralizes nouns.
+            </summary>
+            <param name="word">Singular noun.</param>
+            <returns>Plural noun.</returns>
+        </member>
+        <member name="M:uNhAddIns.Inflector.IInflector.Singularize(System.String)">
+            <summary>
+            Singularizes nouns.
+            </summary>
+            <param name="word">Plural noun.</param>
+            <returns>Singular noun.</returns>
+        </member>
+        <member name="M:uNhAddIns.Inflector.IInflector.Titleize(System.String)">
+            <summary>
+            Converts an underscored or CamelCase word into a sentence.
+            </summary>
+            <param name="word">sentence to convert.</param>
+            <returns>Titleized word.</returns>
+            <remarks>
+            The titleize function converts text like "WelcomePage","welcome_page" or  "welcome page" 
+            to this "Welcome Page".
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.Inflector.IInflector.Humanize(System.String)">
+            <summary>
+            Returns a human-readable string from word Returns a human-readable string from word, 
+            by replacing underscores with a space, and by upper-casing the initial character by default.
+            </summary>
+            <param name="lowercaseAndUnderscoredWord">string to convert.</param>
+            <returns>human-readable string</returns>
+        </member>
+        <member name="M:uNhAddIns.Inflector.IInflector.Pascalize(System.String)">
+            <summary>
+            Returns given word as pascalCased
+            </summary>
+            <param name="lowercaseAndUnderscoredWord">string to convert.</param>
+            <returns>
+            Converts a word like "send_email" to "SendEmail". 
+            </returns>
+        </member>
+        <member name="M:uNhAddIns.Inflector.IInflector.Camelize(System.String)">
+            <summary>
+            Returns given word as CamelCased
+            </summary>
+            <param name="lowercaseAndUnderscoredWord">string to convert.</param>
+            <returns>
+            Converts a word like "send_email" to "sendEmail". 
+            </returns>
+        </member>
+        <member name="M:uNhAddIns.Inflector.IInflector.Unaccent(System.String)">
+            <summary>
+            Transforms a string to its unaccented version.
+            </summary>
+            <param name="word">string to transform.</param>
+            <returns>unaccented version</returns>
+        </member>
+        <member name="M:uNhAddIns.Inflector.IInflector.Tableize(System.String)">
+            <summary>
+            Converts a class name to its table name.
+            </summary>
+            <param name="className">The class name (unqualified)</param>
+            <returns>The table name.</returns>
+            <remarks>
+            Convetion :
+            CostomerOrder -> CostomerOrders
+            Costomer_Order -> Costomer_Orders
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.Inflector.IInflector.ForeignKey(System.String,System.Boolean)">
+            <summary>
+            Converts a class name to its ForeignKey column name.
+            </summary>
+            <param name="className">The class name (unqualified)</param>
+            <param name="separateClassNameAndId">true if an underscore is needed before "id"</param>
+            <returns><paramref name="className"/>, with "id" tacked on at the end.</returns>
+        </member>
+        <member name="T:uNhAddIns.UserTypes.TrimString">
+            <summary>
+            Convert the String to Upper when the object it's saved
+            or when you get it from the base.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.TrimString.NullSafeGet(System.Data.IDataReader,System.String[],System.Object)">
+            <summary>
+            Retrieve an instance of the mapped class from a Ado.Net resultset. 
+            Implementors should handle possibility of null values. 
+            </summary>
+            <param name="rs"></param>
+            <param name="names"></param>
+            <param name="owner"></param>
+            <returns></returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.TrimString.NullSafeSet(System.Data.IDbCommand,System.Object,System.Int32)">
+            <summary>
+            Write an instance of the mapped class to a prepared statement. 
+            Handle possibility of null values. 
+            A multi-column type should be written to parameters starting from index. 
+            </summary>
+            <param name="cmd"></param>
+            <param name="value"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.TrimString.DeepCopy(System.Object)">
+            <summary>
+            Return a deep copy of the persistent state, 
+            stopping at entities and at collections. 
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.TrimString.Replace(System.Object,System.Object,System.Object)">
+            <summary>
+            During merge, replace the existing (target) value in the entity we are 
+            merging to with a new (original) value from the detached entity we are 
+            merging. For immutable objects, or null values, it is safe to simply 
+            return the first parameter. For mutable objects, it is safe to return a 
+            copy of the first parameter. For objects with component values, it might 
+            make sense to recursively replace component values. 
+            </summary>
+            <param name="original">the value from the detached entity being merged</param>
+            <param name="target">the value in the managed entity</param>
+            <param name="owner">the managed entity</param>
+            <returns>Returns the first parameter because it is inmutable</returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.TrimString.Assemble(System.Object,System.Object)">
+            <summary>
+            Reconstruct an object from the cacheable representation. 
+            At the very least this method should perform a deep copy if the type is mutable. 
+            (optional operation) 
+            </summary>
+            <param name="cached">the object to be cached</param>
+            <param name="owner">the owner of the cached object</param>
+            <returns>a reconstructed string from the cachable representation</returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.TrimString.Disassemble(System.Object)">
+            <summary>
+            Transform the object into its cacheable representation. 
+            At the very least this method should perform a deep copy if the type is mutable. 
+            That may not be enough for some implementations, however; 
+            for example, associations must be cached as identifier values. 
+            (optional operation) 
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.TrimString.Equals(System.Object,System.Object)">
+            <summary>
+            Compare two <see cref="T:System.String"/>
+            </summary>
+            <param name="x">string to compare 1</param>
+            <param name="y">string to compare 2</param>
+            <returns>If are equals or not</returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.TrimString.GetHashCode(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="P:uNhAddIns.UserTypes.TrimString.SqlTypes">
+            <summary>
+            The SQL types for the columns mapped by this type. 
+            In this case just a SQL Type will be returned:<seealso cref="F:System.Data.DbType.String"/>
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.UserTypes.TrimString.ReturnedType">
+            <summary>
+            The returned type is a <see cref="T:System.String"/>
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.UserTypes.TrimString.IsMutable">
+            <summary>
+            The strings are not mutables.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.IQueryPart.Clause">
+            <summary>
+            The query complete clause.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.IQueryPart.Expression">
+            <summary>
+            The query part.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.LogicalExpression.Clause">
+            <summary>
+            The query complete clause.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.LogicalExpression.Expression">
+            <summary>
+            The query part.
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.Conversations.IConversationsContainerAccessor">
+            <summary>
+            This interface should be implemented by classes that are available in a bigger context, exposing
+            the container to different areas in the same application.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.Criterions.StartsWithExpression.#ctor(System.String,System.Object)">
+            <summary>
+            Initialize a new instance of the <see cref="T:uNhAddIns.Criterions.EqOrNullExpression"/> class for a named
+            Property and its value.
+            </summary>
+            <param name="propertyName">The name of the Property in the class.</param>
+            <param name="value">The value for the Property.</param>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.Conversations.IConversation">
+            <summary>
+            Contract of a pesistence conversation.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversation.Start">
+            <summary>
+            Start the conversation.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversation.Pause">
+            <summary>
+            Pause the conversation.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversation.FlushAndPause">
+            <summary>
+            Pause and Flushes the conversation.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversation.Resume">
+            <summary>
+            Resume the conversation.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversation.End">
+            <summary>
+            Finalize the conversation.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversation.Abort">
+            <summary>
+            Abort the conversation
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.SessionEasier.Conversations.IConversation.Id">
+            <summary>
+            Conversation identifier.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.SessionEasier.Conversations.IConversation.Context">
+            <summary>
+            Conversation context.
+            </summary>
+        </member>
+        <member name="E:uNhAddIns.SessionEasier.Conversations.IConversation.Starting">
+            <summary>
+            Fired before start the conversation.
+            </summary>
+        </member>
+        <member name="E:uNhAddIns.SessionEasier.Conversations.IConversation.Started">
+            <summary>
+            Fired after start the conversation.
+            </summary>
+        </member>
+        <member name="E:uNhAddIns.SessionEasier.Conversations.IConversation.Pausing">
+            <summary>
+            Fired before pause the conversation.
+            </summary>
+        </member>
+        <member name="E:uNhAddIns.SessionEasier.Conversations.IConversation.Paused">
+            <summary>
+            Fired after pause the conversation.
+            </summary>
+        </member>
+        <member name="E:uNhAddIns.SessionEasier.Conversations.IConversation.Resuming">
+            <summary>
+            Fired before resume the conversation.
+            </summary>
+        </member>
+        <member name="E:uNhAddIns.SessionEasier.Conversations.IConversation.Resumed">
+            <summary>
+            Fired after resume the conversation.
+            </summary>
+        </member>
+        <member name="E:uNhAddIns.SessionEasier.Conversations.IConversation.Ending">
+            <summary>
+            Fired before end the conversation.
+            </summary>
+        </member>
+        <member name="E:uNhAddIns.SessionEasier.Conversations.IConversation.Aborting">
+            <summary>
+            Fired before abort the conversation.
+            </summary>
+        </member>
+        <member name="E:uNhAddIns.SessionEasier.Conversations.IConversation.Ended">
+            <summary>
+            Fired after end the conversation.
+            </summary>
+        </member>
+        <member name="E:uNhAddIns.SessionEasier.Conversations.IConversation.OnException">
+            <summary>
+            Fired when a conversation-method exits with an exception.
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.Inflector.SpanishInflector">
+            <summary>
+            Inflector for pluralize and singularize Spanish nouns.
+            </summary>
+            <remarks>
+            Inspired from Bermi Ferrer Martinez python implementation.
+            </remarks>
+        </member>
+        <member name="T:uNhAddIns.Pagination.IPaginable`1">
+            <summary>
+            Interface for paginable results.
+            </summary>
+            <typeparam name="T">The type of DAO.</typeparam>
+            <remarks>
+            The interface was inspired from some where on the NET, but now I can't found it anymore.
+            Even if this interface is not the same, if somebody else found it, please let me know.
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.Pagination.IPaginable`1.GetSession">
+            <summary>
+            Session getter.
+            </summary>
+            <returns>The <see cref="T:NHibernate.ISession"/>.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.IPaginable`1.ListAll">
+            <summary>
+            All results without paging.
+            </summary>
+            <returns>The list of all instances.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.IPaginable`1.GetPage(System.Int32,System.Int32)">
+            <summary>
+            Page result getter.
+            </summary>
+            <param name="pageSize">The page's elements quantity.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>The page's elements list.</returns>
+            <remarks>The max size of the list is <paramref name="pageSize"/>.</remarks>
+        </member>
+        <member name="T:uNhAddIns.Pagination.IRowsCounter">
+            <summary>
+            Interface for the row counter provider.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.Pagination.IRowsCounter.GetRowsCount(NHibernate.ISession)">
+            <summary>
+            Get the row count.
+            </summary>
+            <param name="session">The <see cref="T:NHibernate.ISession"/>.</param>
+            <returns>The row count.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.AbstractPaginableRowsCounterQuery`1.GetRowsCount(NHibernate.ISession)">
+            <summary>
+            Get the row count.
+            </summary>
+            <param name="session">The <see cref="T:NHibernate.ISession"/>.</param>
+            <returns>The row count.</returns>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.Conversations.IConversationCreationInterceptor">
+            <summary>
+            A contract for a persistent conversation configurator.
+            </summary>
+            <remarks>
+            In a implementor you can use the <see cref="M:uNhAddIns.SessionEasier.Conversations.IConversationCreationInterceptor.Configure(uNhAddIns.SessionEasier.Conversations.IConversation)"/> method to subscribe your class
+            to the conversation events (see also uNhAddIns.Adapters.PersistenceConversationAttribute).
+            </remarks>
+            <seealso cref="T:uNhAddIns.SessionEasier.Conversations.IConversation"/>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversationCreationInterceptor.Configure(uNhAddIns.SessionEasier.Conversations.IConversation)">
+            <summary>
+            Configure a new fresh conversation.
+            </summary>
+            <param name="conversation">The new conversation.</param>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.Conversations.IConversationCreationInterceptorConvention`1">
+            <summary>
+            A contract for a persistent conversation configurator.
+            </summary>
+            <typeparam name="T">The type of the class involved to the persistent-conversation</typeparam>
+            <remarks>
+            Implementor of this class should be injected trough IoC and managed by IoC/AOP adapters.
+            </remarks>
+            <seealso cref="T:uNhAddIns.SessionEasier.Conversations.IConversationCreationInterceptor"/>
+        </member>
+        <member name="T:uNhAddIns.DynQuery.IDynClause">
+            <summary>
+            Interface for Dynamic query clause.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.IDynClause.HasMembers">
+            <summary>
+            The clause has some meber or not?
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.UserTypes.EncryptedString">
+            <summary>
+            Hashes a string when it's saved
+            and salt hashes it when it gets it from the database.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.EncryptedString.NullSafeGet(System.Data.IDataReader,System.String[],System.Object)">
+            <summary>
+            Retrieve an instance of the mapped class from a Ado.Net resultset. 
+            Implementors should handle possibility of null values. 
+            </summary>
+            <param name="rs"></param>
+            <param name="names"></param>
+            <param name="owner"></param>
+            <returns></returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.EncryptedString.NullSafeSet(System.Data.IDbCommand,System.Object,System.Int32)">
+            <summary>
+            Write an instance of the mapped class to a prepared statement. 
+            Handle possibility of null values. 
+            A multi-column type should be written to parameters starting from index. 
+            </summary>
+            <param name="cmd"></param>
+            <param name="value"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.EncryptedString.DeepCopy(System.Object)">
+            <summary>
+            Return a deep copy of the persistent state, 
+            stopping at entities and at collections. 
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.EncryptedString.Replace(System.Object,System.Object,System.Object)">
+            <summary>
+            During merge, replace the existing (target) value in the entity we are 
+            merging to with a new (original) value from the detached entity we are 
+            merging. For immutable objects, or null values, it is safe to simply 
+            return the first parameter. For mutable objects, it is safe to return a 
+            copy of the first parameter. For objects with component values, it might 
+            make sense to recursively replace component values. 
+            </summary>
+            <param name="original">the value from the detached entity being merged</param>
+            <param name="target">the value in the managed entity</param>
+            <param name="owner">the managed entity</param>
+            <returns>Returns the first parameter because it is inmutable</returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.EncryptedString.Assemble(System.Object,System.Object)">
+            <summary>
+            Reconstruct an object from the cacheable representation. 
+            At the very least this method should perform a deep copy if the type is mutable. 
+            (optional operation) 
+            </summary>
+            <param name="cached">the object to be cached</param>
+            <param name="owner">the owner of the cached object</param>
+            <returns>a reconstructed string from the cachable representation</returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.EncryptedString.Disassemble(System.Object)">
+            <summary>
+            Transform the object into its cacheable representation. 
+            At the very least this method should perform a deep copy if the type is mutable. 
+            That may not be enough for some implementations, however; 
+            for example, associations must be cached as identifier values. 
+            (optional operation) 
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.EncryptedString.Equals(System.Object,System.Object)">
+            <summary>
+            Compare two <see cref="T:System.String"/>
+            </summary>
+            <param name="x">string to compare 1</param>
+            <param name="y">string to compare 2</param>
+            <returns>If are equals or not</returns>
+        </member>
+        <member name="P:uNhAddIns.UserTypes.EncryptedString.SqlTypes">
+            <summary>
+            The SQL types for the columns mapped by this type. 
+            In this case just a SQL Type will be returned:<seealso cref="F:System.Data.DbType.String"/>
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.UserTypes.EncryptedString.ReturnedType">
+            <summary>
+            The returned type is a <see cref="T:System.String"/>
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.UserTypes.EncryptedString.IsMutable">
+            <summary>
+            The strings are not mutables.
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.GenericImpl.PaginableRowsCounterQuery`1">
+            <summary>
+            Generic implementation of <see cref="T:uNhAddIns.Pagination.IPaginable`1"/> and <see cref="T:uNhAddIns.Pagination.IRowsCounter"/> 
+            based on <see cref="T:NHibernate.Impl.DetachedQuery"/>.
+            </summary>
+            <typeparam name="T">The type of DAO.</typeparam>
+            <seealso cref="T:NHibernate.Impl.DetachedQuery"/>
+            <remarks>
+            Use this class only if you are secure that the DetachedQuery is based on a HQL that can be trasformed
+            to it's row count.
+            An HQL is supported if contain only 'from' clause and/or 'where' clause.
+            Any other clause throw an exception.
+            </remarks>
+        </member>
+        <member name="T:uNhAddIns.Criterions.EqOrNullExpression">
+            <summary>
+            An <see cref="T:NHibernate.Criterion.ICriterion"/> that represents an "equal" or "null" constraint dependig on
+            the value of the property.
+            </summary>
+            <seealso cref="M:NHibernate.Criterion.Restrictions.Eq(System.String,System.Object)"/>
+            <seealso cref="T:NHibernate.Criterion.NullExpression"/>
+        </member>
+        <member name="M:uNhAddIns.Criterions.EqOrNullExpression.#ctor(System.String,System.Object)">
+            <summary>
+            Initialize a new instance of the <see cref="T:uNhAddIns.Criterions.EqOrNullExpression"/> class for a named
+            Property and its value.
+            </summary>
+            <param name="propertyName">The name of the Property in the class.</param>
+            <param name="value">The value for the Property.</param>
+        </member>
+        <member name="T:uNhAddIns.Criterions.Criterion">
+            <summary>
+            Built in criterions.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.Criterions.Criterion.EqOrNull(System.String,System.Object)">
+            <summary>
+            Apply an "equal" or "is null" constraint to the named property
+            </summary>
+            <param name="propertyName">The name of the Property in the class.</param>
+            <param name="value">The value for the Property.</param>
+            <returns>An <see cref="T:uNhAddIns.Criterions.EqOrNullExpression"/>.</returns>
+            <remarks>
+            If the <paramref name="value"/> is null the criterion apply the "is null" constraint;
+            otherwise apply the "equal" constraint
+            </remarks>
+            <seealso cref="M:NHibernate.Criterion.Restrictions.Eq(System.String,System.Object)"/>
+            <seealso cref="T:NHibernate.Criterion.NullExpression"/>
+        </member>
+        <member name="M:uNhAddIns.Criterions.Criterion.StartsWith(System.String,System.Object)">
+            <summary>
+            Generic StartsWith, will try also for non string data
+            </summary>
+            <param name="propertyName">The name of the Property in the class.</param>
+            <param name="value">The value for the Property.</param>
+            <returns>An <see cref="T:uNhAddIns.Criterions.EqOrNullExpression"/>.</returns>
+            <remarks>
+            If the <paramref name="value"/> is null the criterion apply the "is null" constraint;
+            otherwise apply the "equal" constraint
+            </remarks>
+            <seealso cref="M:NHibernate.Criterion.Restrictions.Eq(System.String,System.Object)"/>
+            <seealso cref="T:NHibernate.Criterion.NullExpression"/>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.ConfiguringEventArgs">
+            <summary>
+            Provides data for the <see cref="E:uNhAddIns.SessionEasier.IConfigurationProvider.BeforeConfigure"/> event.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.ConfiguringEventArgs.#ctor(NHibernate.Cfg.Configuration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:uNhAddIns.SessionEasier.ConfiguringEventArgs"/> class.
+            </summary>
+            <param name="configuration">An istance of <see cref="T:NHibernate.Cfg.Configuration"/> not configured.</param>
+            <remarks>
+            At this point the method <see cref="M:NHibernate.Cfg.Configuration.Configure"/> 
+            should not be called.
+            </remarks>
+        </member>
+        <member name="P:uNhAddIns.SessionEasier.ConfiguringEventArgs.Configuration">
+            <summary>
+            The not-configured <see cref="T:NHibernate.Cfg.Configuration"/>
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.SessionEasier.ConfiguringEventArgs.Configured">
+            <summary>
+            Set to <see langword="true"/> if your event handler are managing the whole NHibernate 
+            configuration process (it call <see cref="M:NHibernate.Cfg.Configuration.Configure"/> or one of
+            its overloads).
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.ConfigurationEventArgs">
+            <summary>
+            Provides data for the <see cref="E:uNhAddIns.SessionEasier.IConfigurationProvider.AfterConfigure"/> event.
+            </summary>
+            <seealso cref="T:uNhAddIns.SessionEasier.ConfiguringEventArgs"/>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.ConfigurationEventArgs.#ctor(NHibernate.Cfg.Configuration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:uNhAddIns.SessionEasier.ConfigurationEventArgs"/> class.
+            </summary>
+            <param name="configuration">An istance of <see cref="T:NHibernate.Cfg.Configuration"/> <b>(configured)</b>.</param>
+        </member>
+        <member name="P:uNhAddIns.SessionEasier.ConfigurationEventArgs.Configuration">
+            <summary>
+            The <b>configured</b> <see cref="T:NHibernate.Cfg.Configuration"/>
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.UserTypes.WellKnownInstanceType`1">
+            <summary>
+            A <see cref="T:NHibernate.UserTypes.IUserType"/> to manage relationships with a well know entities.
+            </summary>
+            <typeparam name="T">The type of the wellknow entity</typeparam>
+            <remarks>
+            <typeparamref name="T"/> is the type tp use in the entity owning the relation, the type in the persistence is <see cref="T:System.Int32"/>.
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.#ctor(System.Collections.Generic.IEnumerable{`0},System.Func{`0,`1,System.Boolean},System.Func{`0,`1})">
+            <summary>
+            Base constructor
+            </summary>
+            <param name="repository">The collection that represent a in-memory repository.</param>
+            <param name="findPredicate">The predicate an instance by the persisted value.</param>
+            <param name="idGetter">The getter of the persisted value.</param>
+        </member>
+        <member name="P:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.SqlTypes">
+            <summary>
+            The SQL types for the columns mapped by this type. 
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.WellKnownInstanceType`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Func{`0,System.Int32,System.Boolean},System.Func{`0,System.Int32})">
+            <summary>
+            Base constructor
+            </summary>
+            <param name="repository">The collection that represent a in-memory repository.</param>
+            <param name="findPredicate">The predicate an instance by the persisted value.</param>
+            <param name="idGetter">The getter of the persisted value.</param>
+        </member>
+        <member name="T:uNhAddIns.Pagination.BasePaginator">
+            <summary>
+            General purpose paginator.
+            </summary>
+            <remarks>
+            It can be useful if you think to hold the state of pagination in some kind of cache.
+            </remarks>
+        </member>
+        <member name="T:uNhAddIns.Pagination.IPaginator">
+            <summary>
+            Classic basic interface for any type of general purpose paginator.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.IPaginator.CurrentPageNumber">
+            <summary>
+            The number of the current page.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.IPaginator.LastPageNumber">
+            <summary>
+            The number of the last page.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.IPaginator.NextPageNumber">
+            <summary>
+            The number of the next page.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.IPaginator.PreviousPageNumber">
+            <summary>
+            The number of the previous page.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.IPaginator.FirstPageNumber">
+            <summary>
+            The number of the first page.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.IPaginator.HasPrevious">
+            <summary>
+            True if has a previous page; false otherwise.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.IPaginator.HasNext">
+            <summary>
+            True if has a next page; false otherwise.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.Pagination.BasePaginator.#ctor(System.Int32)">
+            <summary>
+            Create a new instance of <see cref="T:uNhAddIns.Pagination.BasePaginator"/>.
+            </summary>
+            <param name="lastPageNumber">The las available page.</param>
+            <remarks>
+            The <see cref="P:uNhAddIns.Pagination.BasePaginator.CurrentPageNumber"/> is set to the first available page.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="lastPageNumber"/> is less than zero.</exception>
+        </member>
+        <member name="M:uNhAddIns.Pagination.BasePaginator.GotoPageNumber(System.Int32)">
+            <summary>
+            Move the curret page to a given page number.
+            </summary>
+            <param name="pageNumber">The page number.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">When the <paramref name="pageNumber"/> is great
+            then <see cref="P:uNhAddIns.Pagination.BasePaginator.LastPageNumber"/>.
+            </exception>
+        </member>
+        <member name="P:uNhAddIns.Pagination.BasePaginator.CurrentPageNumber">
+            <summary>
+            The number of the current page.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.BasePaginator.LastPageNumber">
+            <summary>
+            The number of the last page.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.BasePaginator.NextPageNumber">
+            <summary>
+            The number of the next page.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.BasePaginator.PreviousPageNumber">
+            <summary>
+            The number of the previous page.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.BasePaginator.FirstPageNumber">
+            <summary>
+            The number of the first page.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.BasePaginator.HasPrevious">
+            <summary>
+            True if has a previous page; false otherwise.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.BasePaginator.HasNext">
+            <summary>
+            True if has a next page; false otherwise.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.Pagination.AbstractPaginableCriteria`1.GetSession">
+            <summary>
+            Session getter.
+            </summary>
+            <returns>The <see cref="T:NHibernate.ISession"/>.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.AbstractPaginableCriteria`1.ListAll">
+            <summary>
+            All results without paging.
+            </summary>
+            <returns>The list of all instances.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.AbstractPaginableCriteria`1.GetPage(System.Int32,System.Int32)">
+            <summary>
+            Page result getter.
+            </summary>
+            <param name="pageSize">The page's elements quantity.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>The page's elements list.</returns>
+            <remarks>The max size of the list is <paramref name="pageSize"/>.</remarks>
+        </member>
+        <member name="P:uNhAddIns.Pagination.AbstractPaginableCriteria`1.Criteria">
+            <summary>
+            Take care <see cref="T:NHibernate.Criterion.DetachedCriteria"/> is not <see cref="T:NHibernate.Criterion.DetachedCriteria"/>.
+            The official 1.2.x DetachedCriteria don't ha methods for pagination.
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.GenericImpl.PaginableQuery`1">
+            <summary>
+            Generic implementation of <see cref="T:uNhAddIns.Pagination.IPaginable`1"/> based on <see cref="T:NHibernate.IDetachedQuery"/>.
+            </summary>
+            <typeparam name="T">The type of entity.</typeparam>
+            <seealso cref="T:NHibernate.IDetachedQuery"/>
+            <seealso cref="T:NHibernate.Impl.DetachedQuery"/>
+            <seealso cref="T:NHibernate.Impl.DetachedNamedQuery"/>
+        </member>
+        <member name="M:uNhAddIns.GenericImpl.PaginableQuery`1.#ctor(NHibernate.ISession,NHibernate.IDetachedQuery)">
+            <summary>
+            Create a new instance of <see cref="T:uNhAddIns.GenericImpl.PaginableQuery`1"/>.
+            </summary>
+            <param name="session">The session (may be the same session of the DAO).</param>
+            <param name="detachedQuery">The detached query.</param>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.FakeSessionWrapper">
+            <summary>
+            A fake session wrapper
+            </summary>
+            <remarks>
+            It can be used only in session-per-request or in others simples 
+            session management pattern where you don't want a transaction-protection.
+            <b>Not allowed in Coversation-per-BusinessTransaction.</b>
+            </remarks>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.Conversations.IConversationContainer">
+            <summary>
+            The context adapter to hold conversations.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversationContainer.Get(System.String)">
+            <summary>
+            Get a <see cref="T:uNhAddIns.SessionEasier.Conversations.IConversation"/> instance for a given ID.
+            </summary>
+            <param name="conversationId">the id of the conversation.</param>
+            <returns>The conversation.</returns>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversationContainer.Unbind(System.String)">
+            <summary>
+            Remove a conversation from the container.
+            </summary>
+            <param name="conversationId">The conversation id.</param>
+            <returns>The conversation removed.</returns>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversationContainer.Bind(uNhAddIns.SessionEasier.Conversations.IConversation)">
+            <summary>
+            Hold a conversation in the container.
+            </summary>
+            <param name="conversation">The conversation.</param>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversationContainer.SetAsCurrent(uNhAddIns.SessionEasier.Conversations.IConversation)">
+            <summary>
+            Set a conversation as current.
+            </summary>
+            <param name="conversation">The conversation to set as current.</param>
+            <remarks>
+            If the conversation is not contained it will be binded too.
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.IConversationContainer.SetAsCurrent(System.String)">
+            <summary>
+            Set as current the conversation with the given id.
+            </summary>
+            <param name="conversationId">The given id of the conversation.</param>
+        </member>
+        <member name="P:uNhAddIns.SessionEasier.Conversations.IConversationContainer.CurrentConversation">
+            <summary>
+            Currente conversation.
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.Conversations.IConversationFactory">
+            <summary>
+            Factory for conversations.
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.Transform.PositionalToBeanResultTransformer">
+            <summary>
+            Result transformer that allows to transform a result to 
+            a user specified class which will be populated via setter  
+            methods or fields matching the alias names. 
+            </summary>
+            <example>
+            <code>
+            IList resultWithAliasedBean = s.CreateQuery(select f.Name, f.Description from Foo f)
+            			.SetResultTransformer(new PositionalToBeanResultTransformer(typeof (NoFoo), new string[] {"_name", "_description"}))
+            			.List();
+            
+            NoFoo dto = (NoFoo)resultWithAliasedBean[0];
+            </code>
+            </example>
+            <remarks>
+            If you have a <see cref="T:NHibernate.ICriteria"/> or a <see cref="T:NHibernate.IQuery"/> with aliases you can use
+            <see cref="T:NHibernate.Transform.AliasToBeanResultTransformer"/> class.
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.Transform.PositionalToBeanResultTransformer.#ctor(System.Type,System.String[])">
+            <summary>
+            Initializes a new instance of the PositionalToBeanResultTransformer class.
+            </summary>
+            <param name="resultClass">The return <see cref="T:System.Type"/>.</param>
+            <param name="positionalAliases">Alias for each position of the query.</param>
+        </member>
+        <member name="T:uNhAddIns.Transform.DelegateTransformer`1">
+            <summary>
+            Result transformer that allows to transform a result
+            to an specific suplied <see cref="!:TEntity"/> with a 
+            custom transform function based on a tuple that returns a <see cref="!:TEntity"/>.
+            </summary>
+            <example>
+            <code>
+            IList result = s.CreateQuery(select f.Name, f.Description from Foo f)
+            			.SetResultTransformer(new DelegateTransformer[Foo](t =&gt; new Foo(t[0], t[1]))
+            			.List[Foo]();
+            
+            NoFoo dto = result[0];
+            </code>
+            </example>
+            <remarks>
+            If you have a <see cref="T:NHibernate.ICriteria"/> or a <see cref="T:NHibernate.IQuery"/> with aliases you can use
+            <see cref="T:NHibernate.Transform.AliasToBeanResultTransformer"/> class.
+            </remarks>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.SerializedSessionFactoryConfigurationProvider">
+            <summary>
+            Serialize the first time the configuration to a file. 
+            Use the serialized version until the assembly or configuration change.
+            This class was extracted from the Effectus sample of Ayende:
+            http://msdn.microsoft.com/en-us/magazine/ee819139.aspx
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.Pagination.QueryRowsCounter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.Pagination.AbstractQueryRowsCounter">
+            <summary>
+            The <see cref="T:uNhAddIns.Pagination.AbstractQueryRowsCounter"/> object is a base class used for HQL based Row counters. 
+            </summary>
+            <seealso cref="T:uNhAddIns.Pagination.IRowsCounter"/>
+        </member>
+        <member name="M:uNhAddIns.Pagination.AbstractQueryRowsCounter.GetDetachedQuery">
+            <summary>
+            Get the <see cref="T:NHibernate.IDetachedQuery"/> representing the query for rowcount.
+            </summary>
+            <returns>The the query for rowcount.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.AbstractQueryRowsCounter.GetRowsCount(NHibernate.ISession)">
+            <summary>
+            Get the row count.
+            </summary>
+            <param name="session">The <see cref="T:NHibernate.ISession"/>.</param>
+            <returns>The row count.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.QueryRowsCounter.#ctor(System.String)">
+            <summary>
+            Create a new instance of <see cref="T:uNhAddIns.Pagination.QueryRowsCounter"/>.
+            </summary>
+            <param name="hqlRowsCount">The HQL.</param>
+            <remarks>
+            If the query is invalid an exception is throw only when <see cref="M:uNhAddIns.Pagination.IRowsCounter.GetRowsCount(NHibernate.ISession)"/>
+            is called.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="hqlRowsCount"/> is null or empty.</exception>
+        </member>
+        <member name="M:uNhAddIns.Pagination.QueryRowsCounter.#ctor(NHibernate.IDetachedQuery)">
+            <summary>
+            Create a new instance of <see cref="T:uNhAddIns.Pagination.QueryRowsCounter"/>.
+            </summary>
+            <param name="queryRowCount">The query.</param>
+            <remarks>
+            If the query is invalid an exception is throw only when <see cref="M:uNhAddIns.Pagination.IRowsCounter.GetRowsCount(NHibernate.ISession)"/>
+            is called.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="queryRowCount"/> is null.</exception>
+        </member>
+        <member name="M:uNhAddIns.Pagination.QueryRowsCounter.Transforming(NHibernate.Impl.DetachedQuery)">
+            <summary>
+            Transform an gigen <see cref="T:NHibernate.Impl.DetachedQuery"/> (HQL query) to it's rows count.
+            </summary>
+            <param name="origin">The given <see cref="T:NHibernate.Impl.DetachedQuery"/>.</param>
+            <returns>
+            A <see cref="T:uNhAddIns.Pagination.QueryRowsCounter"/> based on <paramref name="origin"/>, with row count, using
+            same parameters and it's values.
+            </returns>
+            <exception cref="T:NHibernate.HibernateException">When the query don't start with 'from' clause.</exception>
+            <remarks>
+            Take care to the query; it can't contain any other clause than "from" and "where".
+            Set the parameters and it's values, of <paramref name="origin"/> befor call this method.
+            </remarks>
+        </member>
+        <member name="T:uNhAddIns.Pagination.NamedQueryRowsCounter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.Pagination.NamedQueryRowsCounter.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="queryRowsCount"></param>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.BasicTransactionProtectionWrapper.HandleMissingTransaction(System.String)">
+            <summary>
+            Method to handle the absence of transaction.
+            </summary>
+            <param name="methodName"></param>
+            <returns>Return true if the interceptor must proceed with the transaction.</returns>
+        </member>
+        <member name="T:uNhAddIns.Audit.IAuditableMetaDataStore">
+            <summary>
+            Metadata store for auditable entities.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.Audit.IAuditableMetaDataStore.RegisterAuditableEntityIfNeeded(System.String)">
+            <summary>
+            Register metadata in the store where the entity is auditable.
+            </summary>
+            <param name="entityName">The entity name.</param>
+            <returns>true if the entity was register as auditable; false otherwise.</returns>
+        </member>
+        <member name="M:uNhAddIns.Audit.IAuditableMetaDataStore.Contains(System.String)">
+            <summary>
+            Returns a Boolean value that indicates whether the store contains the metadata for the specific entity.
+            </summary>
+            <param name="entityName">The entity name.</param>
+            <returns>true if the the store contains metadata for the given entity; false otherwise.</returns>
+        </member>
+        <member name="M:uNhAddIns.Audit.IAuditableMetaDataStore.GetAuditableMetaData(System.String)">
+            <summary>
+            Returns a <see cref="T:uNhAddIns.Audit.IAuditableMetaData"/> for the specific entity.
+            </summary>
+            <param name="entityName">The entity name.</param>
+            <returns><see cref="T:uNhAddIns.Audit.IAuditableMetaData"/> if the the store contains metadata for the given entity; null otherwise.</returns>
+        </member>
+        <member name="T:uNhAddIns.UserTypes.UpperString">
+            <summary>
+            Convert the String to Upper when the object it's saved
+            or when you get it from the base.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.UpperString.NullSafeGet(System.Data.IDataReader,System.String[],System.Object)">
+            <summary>
+            Retrieve an instance of the mapped class from a Ado.Net resultset. 
+            Implementors should handle possibility of null values. 
+            </summary>
+            <param name="rs"></param>
+            <param name="names"></param>
+            <param name="owner"></param>
+            <returns></returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.UpperString.NullSafeSet(System.Data.IDbCommand,System.Object,System.Int32)">
+            <summary>
+            Write an instance of the mapped class to a prepared statement. 
+            Handle possibility of null values. 
+            A multi-column type should be written to parameters starting from index. 
+            </summary>
+            <param name="cmd"></param>
+            <param name="value"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.UpperString.DeepCopy(System.Object)">
+            <summary>
+            Return a deep copy of the persistent state, 
+            stopping at entities and at collections. 
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.UpperString.Replace(System.Object,System.Object,System.Object)">
+            <summary>
+            During merge, replace the existing (target) value in the entity we are 
+            merging to with a new (original) value from the detached entity we are 
+            merging. For immutable objects, or null values, it is safe to simply 
+            return the first parameter. For mutable objects, it is safe to return a 
+            copy of the first parameter. For objects with component values, it might 
+            make sense to recursively replace component values. 
+            </summary>
+            <param name="original">the value from the detached entity being merged</param>
+            <param name="target">the value in the managed entity</param>
+            <param name="owner">the managed entity</param>
+            <returns>Returns the first parameter because it is inmutable</returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.UpperString.Assemble(System.Object,System.Object)">
+            <summary>
+            Reconstruct an object from the cacheable representation. 
+            At the very least this method should perform a deep copy if the type is mutable. 
+            (optional operation) 
+            </summary>
+            <param name="cached">the object to be cached</param>
+            <param name="owner">the owner of the cached object</param>
+            <returns>a reconstructed string from the cachable representation</returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.UpperString.Disassemble(System.Object)">
+            <summary>
+            Transform the object into its cacheable representation. 
+            At the very least this method should perform a deep copy if the type is mutable. 
+            That may not be enough for some implementations, however; 
+            for example, associations must be cached as identifier values. 
+            (optional operation) 
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.UpperString.Equals(System.Object,System.Object)">
+            <summary>
+            Compare two <see cref="T:System.String"/>
+            </summary>
+            <param name="x">string to compare 1</param>
+            <param name="y">string to compare 2</param>
+            <returns>If are equals or not</returns>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.UpperString.GetHashCode(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="P:uNhAddIns.UserTypes.UpperString.SqlTypes">
+            <summary>
+            The SQL types for the columns mapped by this type. 
+            In this case just a SQL Type will be returned:<seealso cref="F:System.Data.DbType.String"/>
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.UserTypes.UpperString.ReturnedType">
+            <summary>
+            The returned type is a <see cref="T:System.String"/>
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.UserTypes.UpperString.IsMutable">
+            <summary>
+            The strings are not mutables.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Contexts.CurrentSessionContext.GetContextDictionary">
+            <summary>
+            Get the dicitonary mapping session factory to its current session.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Contexts.CurrentSessionContext.SetContextDictionary(System.Collections.Generic.IDictionary{NHibernate.ISessionFactory,NHibernate.ISession})">
+            <summary>
+            Set the map mapping session factory to its current session.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Contexts.CurrentSessionContext.BuildOrObtainSession">
+            <summary> 
+            Strictly provided for subclassing purposes; specifically to allow long-session support.
+            </summary>
+            <returns> the built or (re)obtained session. </returns>
+            <remarks>This implementation always just opens a new session.</remarks>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Contexts.CurrentSessionContext.Bind(NHibernate.ISession)">
+            <summary> Associates the given session with the current thread of execution. </summary>
+            <param name="session">The session to bind. </param>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Contexts.CurrentSessionContext.Unbind(NHibernate.ISessionFactory)">
+            <summary> Unassociate a previously bound session from the current thread of execution. </summary>
+            <returns> The session which was unbound. </returns>
+        </member>
+        <member name="P:uNhAddIns.SessionEasier.Contexts.CurrentSessionContext.AutoCloseEnabled">
+            <summary> Mainly for subclass usage.  This impl always returns true. </summary>
+            <returns> Whether or not the the session should be closed by transaction completion. </returns>
+        </member>
+        <member name="P:uNhAddIns.SessionEasier.Contexts.CurrentSessionContext.AutoFlushEnabled">
+            <summary> Mainly for subclass usage.  This impl always returns true. </summary>
+            <returns> Whether or not the the session should be flushed prior transaction completion. </returns>
+        </member>
+        <member name="P:uNhAddIns.SessionEasier.Contexts.CurrentSessionContext.ConnectionReleaseMode">
+            <summary> Mainly for subclass usage. This impl always returns after_transaction. </summary>
+            <returns> The connection release mode for any built sessions. </returns>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.Contexts.CurrentSessionContext.CleanupSynch">
+            <summary> Transaction synch used for cleanup of the internal session dictionary.</summary>
+        </member>
+        <member name="T:uNhAddIns.Pagination.Paginator`1">
+            <summary>
+            Results paginator.
+            </summary>
+            <typeparam name="T">The type of Entity.</typeparam>
+            <seealso cref="T:uNhAddIns.Pagination.IPaginator"/>
+            <seealso cref="T:uNhAddIns.Pagination.BasePaginator"/>
+            <seealso cref="T:uNhAddIns.Pagination.IPageProvider`1"/>
+        </member>
+        <member name="T:uNhAddIns.Pagination.IPageProvider`1">
+            <summary>
+            Interface for pages provider.
+            </summary>
+            <typeparam name="T">The type of each row of the page.</typeparam>
+            <seealso cref="T:uNhAddIns.Pagination.IPaginator"/>
+        </member>
+        <member name="M:uNhAddIns.Pagination.IPageProvider`1.GetPage(System.Int32)">
+            <summary>
+            Get the list of objects for a given page number.
+            </summary>
+            <param name="pageNumber">The page number.</param>
+            <returns>The list of objects.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.IPageProvider`1.GetFirstPage">
+            <summary>
+            Get the list of objects of the first page.
+            </summary>
+            <returns>The list of objects.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.IPageProvider`1.GetLastPage">
+            <summary>
+            Get the list of objects of the last page.
+            </summary>
+            <returns>The list of objects.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.IPageProvider`1.GetNextPage">
+            <summary>
+            Get the list of objects of the next page.
+            </summary>
+            <returns>The list of objects.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.IPageProvider`1.GetPreviousPage">
+            <summary>
+            Get the list of objects of the previous page.
+            </summary>
+            <returns>The list of objects.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.IPageProvider`1.GetCurrentPage">
+            <summary>
+            Get the list of objects of the current page.
+            </summary>
+            <returns>The list of objects.</returns>
+        </member>
+        <member name="P:uNhAddIns.Pagination.IPageProvider`1.PageSize">
+            <summary>
+            Number of visible objects of each page.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.IPageProvider`1.RowsCount">
+            <summary>
+            The total rows count.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.IPageProvider`1.HasPages">
+            <summary>
+            Get True if the paginator has query results. False in other case.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.Pagination.Paginator`1.#ctor(System.Int32,uNhAddIns.Pagination.IPaginable{`0})">
+            <summary>
+            Create a new instance of <see cref="T:uNhAddIns.Pagination.Paginator`1"/>.
+            </summary>
+            <param name="pageSize">The page's elements size.</param>
+            <param name="paginable">The paginable.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="paginable"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="pageSize"/> equal or less than zero.</exception>
+            <remarks>
+            If the <paramref name="paginable"/> implements <see cref="T:uNhAddIns.Pagination.IRowsCounter"/> the <see cref="P:uNhAddIns.Pagination.Paginator`1.Counter"/> 
+            property is set and the paginator work in "AutoCalcPages mode".
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.Pagination.Paginator`1.#ctor(System.Int32,uNhAddIns.Pagination.IPaginable{`0},System.Boolean)">
+            <summary>
+            Create a new instance of <see cref="T:uNhAddIns.Pagination.Paginator`1"/>.
+            </summary>
+            <param name="pageSize">The page's elements size.</param>
+            <param name="paginable">The paginable.</param>
+            <param name="autoCalcPages">Enable or disable the "AutoCalcPages mode"; for more detail <see cref="P:uNhAddIns.Pagination.Paginator`1.AutoCalcPages"/>.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="paginable"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="pageSize"/> equal or less than zero.</exception>
+        </member>
+        <member name="M:uNhAddIns.Pagination.Paginator`1.#ctor(System.Int32,uNhAddIns.Pagination.IPaginable{`0},uNhAddIns.Pagination.IRowsCounter)">
+            <summary>
+            Create a new instance of <see cref="T:uNhAddIns.Pagination.Paginator`1"/>.
+            </summary>
+            <param name="pageSize">The page's elements quantity.</param>
+            <param name="paginable">The paginable.</param>
+            <param name="counter">The rows counter.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="paginable"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="pageSize"/> equal or less than zero.</exception>
+            <remarks> 
+            If <paramref name="counter"/> is null it is simply ignored.
+            If <paramref name="counter"/> is available the paginator work with "AutoCalcPages mode" enabled.
+            <para>
+            The Paginator don't make any check about queries. 
+            This mean, for example, that the resposablity to check if the <paramref name="counter"/> query 
+            work according the <paramref name="paginable"/> query is by the paginator user.
+            Write your tests to be sure.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.Pagination.Paginator`1.GetPage(System.Int32)">
+            <summary>
+            Get the list of objects for a given page number and move the current page.
+            </summary>
+            <param name="pageNumber">The page number.</param>
+            <returns>The list of objects.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:uNhAddIns.Pagination.Paginator`1.GetFirstPage">
+            <summary>
+            Get the list of objects of the first page and move the current page.
+            </summary>
+            <returns>The list of objects.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.Paginator`1.GetLastPage">
+            <summary>
+            Get the list of objects of the last page and move the current page.
+            </summary>
+            <returns>The list of objects.</returns>
+            <exception cref="T:System.NotSupportedException">When <see cref="P:uNhAddIns.Pagination.Paginator`1.AutoCalcPages"/> is false</exception>
+        </member>
+        <member name="M:uNhAddIns.Pagination.Paginator`1.GetNextPage">
+            <summary>
+            Get the list of objects of the next page and move the current page.
+            </summary>
+            <returns>The list of objects.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.Paginator`1.GetPreviousPage">
+            <summary>
+            Get the list of objects of the previous page and move the current page.
+            </summary>
+            <returns>The list of objects.</returns>
+        </member>
+        <member name="M:uNhAddIns.Pagination.Paginator`1.GetCurrentPage">
+            <summary>
+            Get the list of objects of the current page.
+            </summary>
+            <returns>The list of objects.</returns>
+            <exception cref="T:System.NotSupportedException">When the current page is not available.</exception>
+        </member>
+        <member name="M:uNhAddIns.Pagination.Paginator`1.GotoPageNumber(System.Int32)">
+            <summary>
+            Move the current page to a given page number.
+            </summary>
+            <param name="pageNumber">The page number.</param>
+        </member>
+        <member name="P:uNhAddIns.Pagination.Paginator`1.AutoCalcPages">
+            <summary>
+            State of "AutoCalcPages mode".
+            </summary>
+            <remarks>
+            Default = false.
+            "AutoCalcPages mode" is enabled automatically when a <see cref="P:uNhAddIns.Pagination.Paginator`1.Counter"/> is available.
+            If <see cref="P:uNhAddIns.Pagination.Paginator`1.Counter"/> is null and "AutoCalcPages mode" is enabled the paginator use 
+            the <see cref="M:uNhAddIns.Pagination.IPaginable`1.ListAll"/> to know the amount of availables pages.
+            <para>
+            Be carefully enabling "AutoCalcPages mode", without a specific <see cref="T:uNhAddIns.Pagination.IRowsCounter"/>,
+            because the first time you try to get <see cref="P:uNhAddIns.Pagination.Paginator`1.LastPageNumber"/> or <see cref="P:uNhAddIns.Pagination.Paginator`1.RowsCount"/> 
+            the paginator automatically fecth all entities only to know the value to return.
+            </para>
+            The best practice is: use the constructor with <see cref="T:uNhAddIns.Pagination.IRowsCounter"/>.
+            </remarks>
+        </member>
+        <member name="P:uNhAddIns.Pagination.Paginator`1.Counter">
+            <summary>
+            The <see cref="T:uNhAddIns.Pagination.IRowsCounter"/> settled by constructor.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.Paginator`1.PageSize">
+            <summary>
+            Number of visible objects of each page.
+            </summary>
+            <remarks>Change PageSize mean reset the <see cref="P:uNhAddIns.Pagination.Paginator`1.RowsCount"/>.</remarks>
+        </member>
+        <member name="P:uNhAddIns.Pagination.Paginator`1.RowsCount">
+            <summary>
+            The total rows count.
+            </summary>
+            <remarks>Return null if rows count is not available.</remarks>
+        </member>
+        <member name="P:uNhAddIns.Pagination.Paginator`1.HasPages">
+            <summary>
+            Get True if the paginator has query results. False in other case.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.Pagination.Paginator`1.LastPageNumber">
+            <summary>
+            The number of the last page if available; otherwise null.
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.GenericImpl.PaginableCriteria`1">
+            <summary>
+            Generic implementation of <see cref="T:uNhAddIns.Pagination.IPaginable`1"/> based on <see cref="T:NHibernate.Criterion.DetachedCriteria"/>.
+            </summary>
+            <typeparam name="T">The type of DAO.</typeparam>
+            <seealso cref="T:NHibernate.Criterion.DetachedCriteria"/>
+        </member>
+        <member name="M:uNhAddIns.GenericImpl.PaginableCriteria`1.#ctor(NHibernate.ISession,NHibernate.Criterion.DetachedCriteria)">
+            <summary>
+            Create a new instance of <see cref="T:uNhAddIns.GenericImpl.PaginableCriteria`1"/>.
+            </summary>
+            <param name="session">The session (may be the same session of the DAO).</param>
+            <param name="detachedCriteria">The detached criteria.</param>
+        </member>
+        <member name="T:uNhAddIns.SessionEasier.Conversations.EndedEventArgs">
+            <summary>
+            An <see cref="T:System.EventArgs"/> for <see cref="E:uNhAddIns.SessionEasier.Conversations.IConversation.Ended"/>
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.SessionEasier.Conversations.EndedEventArgs.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:uNhAddIns.SessionEasier.Conversations.EndedEventArgs"/> class
+            </summary>
+            <param name="disposing">true if the event happen during disposing</param>
+        </member>
+        <member name="P:uNhAddIns.SessionEasier.Conversations.EndedEventArgs.Disposing">
+            <summary>
+            true if the event happen during disposing; false when the <see cref="M:uNhAddIns.SessionEasier.Conversations.IConversation.End"/>
+            is explicit called. 
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.Serialization.Cloner">
+            <summary>
+            Helper to clone objects using Serialization.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.Serialization.Cloner.Clone(System.Object)">
+            <summary>
+            Clone a object via Binary Serializing/Deserializing.
+            The object to clone must have the attribute [Serializable]
+            <example>
+            Here it's an example to make a simple object clone:
+            <code>
+            Foo foo = new Foo();
+            Foo clonedFoo = (Foo)Cloner.Clone(foo);  
+            </code>
+            Then the class Foo in order to work must implement [Serializable]
+            <code>
+            [Serializable]
+            public class Foo
+            {
+             ...
+            } 
+            </code>
+            </example>
+            <seealso cref="T:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter"/>
+            </summary>
+            <param name="obj">Object to clone</param>
+            <returns>Clone object</returns>
+        </member>
+        <member name="M:uNhAddIns.Serialization.Cloner.Clone(System.Object,System.Runtime.Serialization.IFormatter)">
+            <summary>
+            Clone a object with via Serializing/Deserializing
+            using a implementation of IFormatter. 
+            <seealso cref="T:System.Runtime.Serialization.IFormatter"/> 
+            </summary>
+            <param name="obj">Object to clone</param>
+            <param name="formatter">IFormatter implementation in order to Serialize/Deserialize</param>
+            <returns>Clone object</returns>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.Where.Clause">
+            <summary>
+            The query clause.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.Where.Expression">
+            <summary>
+            The query part.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.Where.HasMembers">
+            <summary>
+            The clause has some meber or not?
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.GenericImpl.PaginableDynQuery`1">
+            <summary>
+            Generic implementation of <see cref="T:uNhAddIns.Pagination.IPaginable`1"/> based on <see cref="T:uNhAddIns.DynQuery.DetachedDynQuery"/>.
+            </summary>
+            <typeparam name="T">The type of entity.</typeparam>
+            <seealso cref="T:uNhAddIns.DynQuery.DetachedDynQuery"/>
+            <remarks>
+            A <see cref="T:uNhAddIns.DynQuery.DetachedDynQuery"/> can be used with <see cref="T:uNhAddIns.GenericImpl.PaginableQuery`1"/> too but
+            with <see cref="T:uNhAddIns.GenericImpl.PaginableDynQuery`1"/> you can a query with "SELECT" and "ORDER BY" clauses
+            because the <see cref="T:uNhAddIns.DynQuery.DetachedDynQuery"/> know each query part.
+            </remarks>
+        </member>
+        <member name="T:uNhAddIns.DynQuery.OrderBy">
+            <summary>
+            The class that represent the "order by" clause of a HQL/SQL.
+            </summary>
+            <remarks>
+            The syntax is cheked when the HQL/SQL will be parsed.
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.DynQuery.OrderBy.Add(System.String,System.Boolean)">
+            <summary>
+            Add a property path to the "order by" clause.
+            </summary>
+            <param name="propertyPath">The property path (ex: f.Name).</param>
+            <param name="isDescending">True if the direction is DESCENDING.</param>
+            <returns>The <see cref="T:uNhAddIns.DynQuery.OrderBy"/> it self.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="propertyPath"/> is null or empty.</exception>
+        </member>
+        <member name="M:uNhAddIns.DynQuery.OrderBy.Add(System.String)">
+            <summary>
+            Add a property path to the order by clause.
+            </summary>
+            <param name="propertyPath">The property path (ex: f.Name).</param>
+            <returns>The <see cref="T:uNhAddIns.DynQuery.OrderBy"/> it self.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="propertyPath"/> is null or empty.</exception>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.OrderBy.Clause">
+            <summary>
+            The query clause.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.OrderBy.Expression">
+            <summary>
+            The query part.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.OrderBy.HasMembers">
+            <summary>
+            The clause has some members or not?
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.DynQuery.Select">
+            <summary>
+            The class that represent the "select" clause of a HQL/SQL.
+            </summary>
+            <remarks>
+            The syntax is cheked when the HQL/SQL will be parsed.
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.DynQuery.Select.#ctor(System.String)">
+            <summary>
+            Create a new instance of <see cref="T:uNhAddIns.DynQuery.Select"/>.
+            </summary>
+            <param name="partialClause">
+            The "select" clause, of the query, without the "select" word.
+            </param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="partialClause"/> is null or empty.</exception>
+        </member>
+        <member name="M:uNhAddIns.DynQuery.Select.Distinct(System.String)">
+            <summary>
+            Create a new instance of <see cref="T:uNhAddIns.DynQuery.Select"/>.
+            </summary>
+            <param name="partialClause">
+            The "select" clause, of the query, without the "select distinct" words.
+            </param>
+            <returns>A new instance of <see cref="T:uNhAddIns.DynQuery.Select"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="partialClause"/> is null or empty.</exception>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.Select.Clause">
+            <summary>
+            The query clause.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.Select.Expression">
+            <summary>
+            The query part.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.Select.HasMembers">
+            <summary>
+            The clause has some meber or not?
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.DynQuery.From">
+            <summary>
+            The class that represent the "from" clause of a HQL/SQL.
+            </summary>
+            <remarks>
+            The syntax is cheked when the HQL/SQL will be parsed.
+            </remarks>
+        </member>
+        <member name="M:uNhAddIns.DynQuery.From.#ctor(System.String)">
+            <summary>
+            Create a new instance of <see cref="T:uNhAddIns.DynQuery.From"/>.
+            </summary>
+            <param name="partialClause">The "from" clause, of the query, without the "from" word.</param>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.From.Clause">
+            <summary>
+            The query clause.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.From.Expression">
+            <summary>
+            The query part.
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.DynQuery.From.HasMembers">
+            <summary>
+            The clause has some meber or not?
+            </summary>
+        </member>
+        <member name="T:uNhAddIns.Inflector.EnglishInflector">
+            <summary>
+            Inflector implementation for english.
+            </summary>
+            <remarks>
+            Originally implemented by http://andrewpeters.net/inflectornet/
+            </remarks>
+        </member>
+    </members>
+</doc>

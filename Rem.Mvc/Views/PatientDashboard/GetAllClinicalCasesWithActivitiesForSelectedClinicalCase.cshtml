@@ -1,0 +1,32 @@
+﻿@model Rem.Mvc.Models.GetAllClinicalCasesWithActivitiesForSelectedClinicalCaseModel
+           
+@{
+    ViewBag.Title = "All Activities for Clinical Case #1";
+    Layout = "_Layout.cshtml";
+}
+
+@section DashboardToolbar
+{
+    <div>
+        @Html.ActionLink("Home", "Index", "Home")
+    </div>
+}
+
+@{
+    var clinicalCaseItems = new SelectList ( Model.ClinicalCases, "Key", "CaseDisplayInformation", Model.SelectedClinicalCaseKey );
+}
+
+<div id="clinicalcase">
+    <div>
+        @Html.LabelFor(m => m.SelectedClinicalCaseKey, "Clinical Case:")
+    </div>
+    <div>
+        @Html.DropDownListFor(m => m.SelectedClinicalCaseKey, clinicalCaseItems)
+    </div>
+</div>
+
+@*TODO: Ajax updates activitylist when clinical case selection is changed*@
+
+<div id="activitylist" style="margin: 0 auto">
+    @Html.Partial("_ActivityListPartial", Model.Activities)
+</div>

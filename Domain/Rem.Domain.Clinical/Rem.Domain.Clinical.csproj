@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C7837BA2-B4EC-40B6-96B6-00F9BE462A60}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rem.Domain.Clinical</RootNamespace>
+    <AssemblyName>Rem.Domain.Clinical</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\..\bin\debug\Rem.Domain.Clinical.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="ClinicalCaseModule\ClinicalCaseAdmission.cs" />
+    <Compile Include="ClinicalCaseModule\ClinicalCaseCloseInfo.cs" />
+    <Compile Include="ClinicalCaseModule\ClinicalCaseDischarge.cs" />
+    <Compile Include="ClinicalCaseModule\ClinicalCaseProfile.cs" />
+    <Compile Include="ClinicalCaseModule\ClinicalCaseProfileBuilder.cs" />
+    <Compile Include="ClinicalCaseModule\Rule\ClinicalCaseRuleCollection.cs" />
+    <Compile Include="ClinicalCaseModule\Rule\ProblemRuleCollection.cs" />
+    <Compile Include="DensAsiModule\DensAsiClosureSection.cs" />
+    <Compile Include="DensAsiModule\DensAsiDrugAlcoholUseSectionBuilder.cs" />
+    <Compile Include="DensAsiModule\DensAsiDrugAlcoholUseSection.cs" />
+    <Compile Include="DensAsiModule\DensAsiDsmIvSectionBuilder.cs" />
+    <Compile Include="DensAsiModule\DensAsiDsmIvSection.cs" />
+    <Compile Include="DensAsiModule\DensAsiEmploymentStatusSection.cs" />
+    <Compile Include="DensAsiModule\DensAsiFamilySocialRelationshipsSectionBuilder.cs" />
+    <Compile Include="DensAsiModule\DensAsiFamilySocialRelationshipsSection.cs" />
+    <Compile Include="DensAsiModule\DensAsiHasParentalRelationshipOption.cs" />
+    <Compile Include="DensAsiModule\DensAsiHasRelationshipOption.cs" />
+    <Compile Include="DensAsiModule\DensAsiInterviewSectionAggregateNodeBase.cs" />
+    <Compile Include="DensAsiModule\DensAsiInterviewSectionBase.cs" />
+    <Compile Include="DensAsiModule\DensAsiLegalStatusSection.cs" />
+    <Compile Include="DensAsiModule\DensAsiMedicalStatusSectionBuilder.cs" />
+    <Compile Include="DensAsiModule\DensAsiMedicalStatusSection.cs" />
+    <Compile Include="DensAsiModule\DensAsiPatientProfileSectionBuilder.cs" />
+    <Compile Include="DensAsiModule\DensAsiEmploymentStatusSectionBuilder.cs" />
+    <Compile Include="DensAsiModule\DensAsiLegalStatusSectionBuilder.cs" />
+    <Compile Include="DensAsiModule\DensAsiClosureSectionBuilder.cs" />
+    <Compile Include="DensAsiModule\DensAsiPatientProfileSection.cs" />
+    <Compile Include="DensAsiModule\DensAsiPsychiatricStatusSectionBuilder.cs" />
+    <Compile Include="DensAsiModule\DensAsiPsychiatricStatusSection.cs" />
+    <Compile Include="DensAsiModule\DensAsiPsychiatricStatus.cs" />
+    <Compile Include="DensAsiModule\DensAsiSatisfaction.cs" />
+    <Compile Include="DensAsiModule\NamingStrategy\DensAsiNonResponseTypeNamingStrategy.cs" />
+    <Compile Include="GainShortScreenerModule\GainShortScreenerCalculationService.cs" />
+    <Compile Include="GainShortScreenerModule\GainShortScreenerCrimeViolence.cs" />
+    <Compile Include="GainShortScreenerModule\GainShortScreenerExternalizingDisorder.cs" />
+    <Compile Include="GainShortScreenerModule\GainShortScreenerInternalizingDisorder.cs" />
+    <Compile Include="GainShortScreenerModule\GainShortScreenerSubstanceDisorder.cs" />
+    <Compile Include="GpraModule\GpraCrimeCriminalJusticeSection.cs" />
+    <Compile Include="GpraModule\GpraDemographicsSection.cs" />
+    <Compile Include="GpraModule\GpraDischargeSection.cs" />
+    <Compile Include="GpraModule\GpraDrugAlcoholUseSection.cs" />
+    <Compile Include="GpraModule\GpraFamilyLivingConditionsSection.cs" />
+    <Compile Include="GpraModule\GpraFollowUpSection.cs" />
+    <Compile Include="GpraModule\GpraInterviewInformation.cs" />
+    <Compile Include="GpraModule\GpraInterviewSectionBase.cs" />
+    <Compile Include="GpraModule\GpraPlannedServicesSection.cs" />
+    <Compile Include="GpraModule\GpraProblemsTreatmentRecoverySection.cs" />
+    <Compile Include="GpraModule\GpraProfessionalInformationSection.cs" />
+    <Compile Include="GpraModule\GpraSocialConnectednessSection.cs" />
+    <Compile Include="GpraModule\NamingStrategy\GpraNonResponseTypeNamingStrategy.cs" />
+    <Compile Include="ImmunizationModule\ImmunizationAdministration.cs" />
+    <Compile Include="ImmunizationModule\ImmunizationVaccineInfo.cs" />
+    <Compile Include="ImmunizationModule\ImmunizationVaccineManufacturer.cs" />
+    <Compile Include="LabModule\LabResultBuilder.cs" />
+    <Compile Include="LabModule\LabTestInfo.cs" />
+    <Compile Include="LabModule\LabTestInfoBuilder.cs" />
+    <Compile Include="NamespaceDoc.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="PatientModule\AssignedAuthor.cs" />
+    <Compile Include="PatientModule\AuditPatientReadAccessService.cs" />
+    <Compile Include="PatientModule\BillingOfficeCache.cs" />
+    <Compile Include="PatientModule\BillingOfficeCacheFactory.cs" />
+    <Compile Include="PatientModule\IProvenanceFactory.cs" />
+    <Compile Include="PatientModule\IProvenanceRepository.cs" />
+    <Compile Include="PatientModule\ProvenanceFactory.cs" />
+    <Compile Include="PatientModule\IAuditPatientReadAccessService.cs" />
+    <Compile Include="PatientModule\IHasProvenance.cs" />
+    <Compile Include="PatientModule\IPatientUniqueIdentifierGenerator.cs" />
+    <Compile Include="PatientModule\IPayorCoverageCacheFactory.cs" />
+    <Compile Include="PatientModule\IPayorCoverageCacheRepository.cs" />
+    <Compile Include="PatientModule\PatientUniqueIdentifierGenerator.cs" />
+    <Compile Include="PatientModule\PayorCacheFactory.cs" />
+    <Compile Include="PatientModule\IBillingOfficeCacheFactory.cs" />
+    <Compile Include="PatientModule\IBillingOfficeCacheRepository.cs" />
+    <Compile Include="PatientModule\IPayorCacheFactory.cs" />
+    <Compile Include="PatientModule\IPayorCacheRepository.cs" />
+    <Compile Include="PatientModule\ISelfPaymentFactory.cs" />
+    <Compile Include="PatientModule\ISelfPaymentRepository.cs" />
+    <Compile Include="PatientModule\NamingStrategy\MotherNameTypeNamingStrategy.cs" />
+    <Compile Include="PatientModule\NamingStrategy\PatientAssignedAreaTypeNamingStrategy.cs" />
+    <Compile Include="PatientModule\PatientAssignedArea.cs" />
+    <Compile Include="PatientModule\Event\PatientCreatedEvent.cs" />
+    <Compile Include="PatientModule\Event\PatientProfileRevisedEvent.cs" />
+    <Compile Include="PatientModule\Event\PatientRenamedEvent.cs" />
+    <Compile Include="PatientModule\MotherName.cs" />
+    <Compile Include="PatientModule\PatientAssignedAreaPostalCodeNamingStrategy.cs" />
+    <Compile Include="PatientModule\PatientBirthInfo.cs" />
+    <Compile Include="PatientModule\PatientBirthInfoBuilder.cs" />
+    <Compile Include="PatientModule\PatientConfidentialInfo.cs" />
+    <Compile Include="PatientModule\PatientConfidentialInfoBuilder.cs" />
+    <Compile Include="PatientModule\PatientEthnicity.cs" />
+    <Compile Include="PatientModule\PatientLanguage.cs" />
+    <Compile Include="PatientModule\PatientLegalInfo.cs" />
+    <Compile Include="PatientModule\PatientModuleExtensions.cs" />
+    <Compile Include="PatientModule\PatientProfile.cs" />
+    <Compile Include="PatientModule\PatientAddressBuilder.cs" />
+    <Compile Include="PatientModule\PatientIdentifierBuilder.cs" />
+    <Compile Include="PatientModule\PatientProfileBuilder.cs" />
+    <Compile Include="PatientModule\PatientProfileEmailAddressNamingStrategy.cs" />
+    <Compile Include="PatientModule\PayorCache.cs" />
+    <Compile Include="PatientModule\PayorCoverageCache.cs" />
+    <Compile Include="PatientModule\PayorCoverageCacheFactory.cs" />
+    <Compile Include="PatientModule\PayorCoverageCacheType.cs" />
+    <Compile Include="PatientModule\PayorSubscriberCache.cs" />
+    <Compile Include="PatientModule\PayorSubscriberRelationshipCacheType.cs" />
+    <Compile Include="PatientModule\Provenance.cs" />
+    <Compile Include="PatientModule\RepresentedOrganization.cs" />
+    <Compile Include="PatientModule\Rule\PatientContactRuleCollection.cs" />
+    <Compile Include="PatientModule\Rule\PatientDocumentRuleCollection.cs" />
+    <Compile Include="ClinicalCaseModule\ClinicalCaseStatus.cs" />
+    <Compile Include="ClinicalCaseModule\Problem.cs" />
+    <Compile Include="ClinicalCaseModule\ProblemStatus.cs" />
+    <Compile Include="ClinicalCaseModule\ProblemFactory.cs" />
+    <Compile Include="ClinicalCaseModule\ProblemType.cs" />
+    <Compile Include="ClinicalCaseModule\IProblemFactory.cs" />
+    <Compile Include="ClinicalCaseModule\IProblemRepository.cs" />
+    <Compile Include="DensAsiModule\DensAsiClosure.cs" />
+    <Compile Include="DensAsiModule\DensAsiDsmIv.cs" />
+    <Compile Include="DensAsiModule\DensAsiDrugAlcoholAdministrationRoute.cs" />
+    <Compile Include="DensAsiModule\DensAsiControlledEnvironment.cs" />
+    <Compile Include="DensAsiModule\DensAsiDrugAlcoholUse.cs" />
+    <Compile Include="DensAsiModule\DensAsiEmploymentPattern.cs" />
+    <Compile Include="DensAsiModule\DensAsiEmploymentStatus.cs" />
+    <Compile Include="DensAsiModule\DensAsiFamilySocialRelationships.cs" />
+    <Compile Include="DensAsiModule\DensAsiFreeTimeSpentType.cs" />
+    <Compile Include="DensAsiModule\DensAsiIncompleteInterviewReason.cs" />
+    <Compile Include="DensAsiModule\DensAsiInterview.cs" />
+    <Compile Include="DensAsiModule\DensAsiInterviewClass.cs" />
+    <Compile Include="DensAsiModule\DensAsiInterviewContactType.cs" />
+    <Compile Include="DensAsiModule\DensAsiInterviewerRating.cs" />
+    <Compile Include="DensAsiModule\DensAsiInterviewFactory.cs" />
+    <Compile Include="DensAsiModule\DensAsiTreatmentModality.cs" />
+    <Compile Include="DensAsiModule\IDensAsiInterviewRepository.cs" />
+    <Compile Include="DensAsiModule\DensAsiLegalStatus.cs" />
+    <Compile Include="DensAsiModule\DensAsiLivingArrangementType.cs" />
+    <Compile Include="DensAsiModule\DensAsiMaritalStatus.cs" />
+    <Compile Include="DensAsiModule\DensAsiMedicalStatus.cs" />
+    <Compile Include="DensAsiModule\DensAsiNonResponse.cs" />
+    <Compile Include="DensAsiModule\DensAsiNonResponseType.cs" />
+    <Compile Include="DensAsiModule\DensAsiOccupationType.cs" />
+    <Compile Include="DensAsiModule\DensAsiPatientProfile.cs" />
+    <Compile Include="DensAsiModule\DensAsiPatientRating.cs" />
+    <Compile Include="DensAsiModule\DensAsiProblematicSubstance.cs" />
+    <Compile Include="DensAsiModule\DensAsiReligion.cs" />
+    <Compile Include="DensAsiModule\DensAsiViolationType.cs" />
+    <Compile Include="DensAsiModule\IDensAsiInterviewFactory.cs" />
+    <Compile Include="GainShortScreenerModule\GainShortScreenerFactory.cs" />
+    <Compile Include="GainShortScreenerModule\GainShortScreener.cs" />
+    <Compile Include="GainShortScreenerModule\IGainShortScreenerFactory.cs" />
+    <Compile Include="GainShortScreenerModule\IGainShortScreenerRepository.cs" />
+    <Compile Include="GpraModule\GpraInterviewSectionAggregateNodeBase.cs" />
+    <Compile Include="GpraModule\GpraCrimeCriminalJustice.cs" />
+    <Compile Include="GpraModule\GpraDemographics.cs" />
+    <Compile Include="GpraModule\GpraDetoxificationLocation.cs" />
+    <Compile Include="GpraModule\GpraDischargeTerminationReason.cs" />
+    <Compile Include="GpraModule\GpraDrugAlcoholUse.cs" />
+    <Compile Include="GpraModule\GpraDrugRoute.cs" />
+    <Compile Include="GpraModule\GpraEducationLevel.cs" />
+    <Compile Include="GpraModule\GpraEffectDueToDrugUse.cs" />
+    <Compile Include="GpraModule\GpraEmploymentStatus.cs" />
+    <Compile Include="GpraModule\GpraFamilyLivingConditions.cs" />
+    <Compile Include="GpraModule\GpraFollowUp.cs" />
+    <Compile Include="GpraModule\GpraFollowUpStatus.cs" />
+    <Compile Include="GpraModule\GpraFrequencyOfUseOfUsedItems.cs" />
+    <Compile Include="GpraModule\GpraHousingType.cs" />
+    <Compile Include="GpraModule\GpraInterview.cs" />
+    <Compile Include="GpraModule\GpraInterviewFactory.cs" />
+    <Compile Include="GpraModule\GpraInterviewType.cs" />
+    <Compile Include="GpraModule\GpraJobTrainingProgram.cs" />
+    <Compile Include="GpraModule\GpraNonResponse.cs" />
+    <Compile Include="GpraModule\GpraNonResponseType.cs" />
+    <Compile Include="GpraModule\GpraOverallHealth.cs" />
+    <Compile Include="GpraModule\GpraPatientGender.cs" />
+    <Compile Include="GpraModule\GpraPatientType.cs" />
+    <Compile Include="GpraModule\GpraPlaceToLive.cs" />
+    <Compile Include="GpraModule\GpraPlannedServices.cs" />
+    <Compile Include="GpraModule\GpraProblemsTreatmentRecovery.cs" />
+    <Compile Include="GpraModule\GpraProfessionalInformation.cs" />
+    <Compile Include="GpraModule\GpraPsychologicalImpact.cs" />
+    <Compile Include="GpraModule\GpraSexualActivity.cs" />
+    <Compile Include="GpraModule\GpraSocialConnectedness.cs" />
+    <Compile Include="GpraModule\GpraTroubleContact.cs" />
+    <Compile Include="GpraModule\GpraDischarge.cs" />
+    <Compile Include="GpraModule\GpraDischargeStatus.cs" />
+    <Compile Include="GpraModule\IGpraInterviewFactory.cs" />
+    <Compile Include="GpraModule\IGpraInterviewRepository.cs" />
+    <Compile Include="ImmunizationModule\IImmunizationFactory.cs" />
+    <Compile Include="ImmunizationModule\IImmunizationRepository.cs" />
+    <Compile Include="ImmunizationModule\Immunization.cs" />
+    <Compile Include="ImmunizationModule\ImmunizationFactory.cs" />
+    <Compile Include="ImmunizationModule\ImmunizationNotGivenReason.cs" />
+    <Compile Include="ImmunizationModule\ImmunizationUnitOfMeasure.cs" />
+    <Compile Include="LabModule\ILabSpecimenFactory.cs" />
+    <Compile Include="LabModule\ILabSpecimenRepository.cs" />
+    <Compile Include="LabModule\ILabSpecimenTypeRepository.cs" />
+    <Compile Include="LabModule\ILabTestNameRepository.cs" />
+    <Compile Include="LabModule\LabFacility.cs" />
+    <Compile Include="LabModule\LabResult.cs" />
+    <Compile Include="LabModule\LabSpecimen.cs" />
+    <Compile Include="LabModule\LabSpecimenAggregateNodeBase.cs" />
+    <Compile Include="LabModule\LabSpecimenFactory.cs" />
+    <Compile Include="LabModule\LabSpecimenType.cs" />
+    <Compile Include="LabModule\LabTest.cs" />
+    <Compile Include="LabModule\LabTestName.cs" />
+    <Compile Include="PatientModule\Allergy.cs" />
+    <Compile Include="PatientModule\AllergyFactory.cs" />
+    <Compile Include="PatientModule\AllergyReaction.cs" />
+    <Compile Include="PatientModule\AllergyStatus.cs" />
+    <Compile Include="PatientModule\AllergyType.cs" />
+    <Compile Include="PatientModule\CdsRule.cs" />
+    <Compile Include="PatientModule\CdsRuleFactory.cs" />
+    <Compile Include="PatientModule\DetailedEthnicity.cs" />
+    <Compile Include="PatientModule\DiscontinuedReason.cs" />
+    <Compile Include="PatientModule\EducationStatus.cs" />
+    <Compile Include="PatientModule\Ethnicity.cs" />
+    <Compile Include="PatientModule\IAllergyFactory.cs" />
+    <Compile Include="PatientModule\IAllergyRepository.cs" />
+    <Compile Include="PatientModule\ICdsRuleFactory.cs" />
+    <Compile Include="PatientModule\ICdsRuleRepository.cs" />
+    <Compile Include="PatientModule\IMedicationFactory.cs" />
+    <Compile Include="PatientModule\IMedicationRepository.cs" />
+    <Compile Include="PatientModule\ImmigrationStatus.cs" />
+    <Compile Include="PatientModule\IPatientAccessAuditable.cs" />
+    <Compile Include="PatientModule\IPatientAccessEventFactory.cs" />
+    <Compile Include="PatientModule\IPatientAccessEventRepository.cs" />
+    <Compile Include="PatientModule\IPatientAccessEventTypeRepository.cs" />
+    <Compile Include="PatientModule\IPatientAlertFactory.cs" />
+    <Compile Include="PatientModule\IPatientAlertRepository.cs" />
+    <Compile Include="PatientModule\IPatientDocumentFactory.cs" />
+    <Compile Include="PatientModule\IPatientDocumentRepository.cs" />
+    <Compile Include="PatientModule\MaritalStatus.cs" />
+    <Compile Include="PatientModule\Medication.cs" />
+    <Compile Include="PatientModule\MedicationDoseUnit.cs" />
+    <Compile Include="PatientModule\MedicationFactory.cs" />
+    <Compile Include="PatientModule\MedicationRoute.cs" />
+    <Compile Include="PatientModule\MedicationStatus.cs" />
+    <Compile Include="PatientModule\PatientAccessEvent.cs" />
+    <Compile Include="PatientModule\PatientAccessEventFactory.cs" />
+    <Compile Include="PatientModule\PatientAccessEventType.cs" />
+    <Compile Include="PatientModule\PatientAddress.cs" />
+    <Compile Include="PatientModule\PatientAlert.cs" />
+    <Compile Include="PatientModule\PatientAlertFactory.cs" />
+    <Compile Include="PatientModule\PatientContactAggregateNodeBase.cs" />
+    <Compile Include="PatientModule\PatientContactPhone.cs" />
+    <Compile Include="PatientModule\PatientContactPhoneType.cs" />
+    <Compile Include="PatientModule\PatientDocument.cs" />
+    <Compile Include="PatientModule\PatientDocumentFactory.cs" />
+    <Compile Include="PatientModule\PatientDocumentType.cs" />
+    <Compile Include="PatientModule\PatientGender.cs" />
+    <Compile Include="PatientModule\PatientPhone.cs" />
+    <Compile Include="PatientModule\ContactPreference.cs" />
+    <Compile Include="PatientModule\PatientRace.cs" />
+    <Compile Include="PatientModule\PatientAddressType.cs" />
+    <Compile Include="PatientModule\PatientPhoneType.cs" />
+    <Compile Include="PatientModule\Race.cs" />
+    <Compile Include="PatientModule\RaceDetailedEthnicity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PatientModule\Reaction.cs" />
+    <Compile Include="PatientModule\ReligiousAffiliation.cs" />
+    <Compile Include="PatientModule\AllergySeverityType.cs" />
+    <Compile Include="PatientModule\Rule\PatientRuleCollection.cs" />
+    <Compile Include="PatientModule\Rule\PayorCoverageRuleCollection.cs" />
+    <Compile Include="PatientModule\Rule\SelfPaymentRuleCollection.cs" />
+    <Compile Include="PatientModule\SelfPayment.cs" />
+    <Compile Include="PatientModule\SelfPaymentFactory.cs" />
+    <Compile Include="PatientModule\TaggedDataElement.cs" />
+    <Compile Include="PatientModule\VeteranStatus.cs" />
+    <Compile Include="ClinicalCaseModule\ClinicalCaseAggregateNodeBase.cs" />
+    <Compile Include="PatientModule\VeteranDischargeStatus.cs" />
+    <Compile Include="PatientModule\PatientVeteranInformation.cs" />
+    <Compile Include="PatientModule\VeteranServiceBranch.cs" />
+    <Compile Include="PatientModule\PatientAggregateNodeBase.cs" />
+    <Compile Include="ProgramModule\AgeGroup.cs" />
+    <Compile Include="ProgramModule\CapacityType.cs" />
+    <Compile Include="ProgramModule\DisenrollReason.cs" />
+    <Compile Include="ProgramModule\GenderSpecification.cs" />
+    <Compile Include="ProgramModule\IProgramEnrollmentFactory.cs" />
+    <Compile Include="ProgramModule\IProgramEnrollmentRepository.cs" />
+    <Compile Include="ProgramModule\IProgramFactory.cs" />
+    <Compile Include="ProgramModule\IProgramOfferingFactory.cs" />
+    <Compile Include="ProgramModule\IProgramOfferingRepository.cs" />
+    <Compile Include="ProgramModule\IProgramRepository.cs" />
+    <Compile Include="ProgramModule\Program.cs" />
+    <Compile Include="ProgramModule\ProgramCategory.cs" />
+    <Compile Include="ProgramModule\ProgramCharacteristics.cs" />
+    <Compile Include="ProgramModule\ProgramEnrollment.cs" />
+    <Compile Include="ProgramModule\ProgramEnrollmentFactory.cs" />
+    <Compile Include="ProgramModule\ProgramFactory.cs" />
+    <Compile Include="ProgramModule\ProgramOffering.cs" />
+    <Compile Include="ProgramModule\ProgramOfferingFactory.cs" />
+    <Compile Include="ProgramModule\Rule\ProgramEnrollmentRuleCollection.cs" />
+    <Compile Include="ProgramModule\Rule\ProgramOfferingRuleCollection.cs" />
+    <Compile Include="ProgramModule\Rule\ProgramRuleCollection.cs" />
+    <Compile Include="ProgramModule\TreatmentApproach.cs" />
+    <Compile Include="RadiologyModule\IRadiologyOrderFactory.cs" />
+    <Compile Include="RadiologyModule\IRadiologyOrderRepository.cs" />
+    <Compile Include="RadiologyModule\RadiologyOrder.cs" />
+    <Compile Include="RadiologyModule\RadiologyOrderFactory.cs" />
+    <Compile Include="RadiologyModule\RadiologyTestType.cs" />
+    <Compile Include="ReportsModule\IReportFactory.cs" />
+    <Compile Include="ReportsModule\IReportRepository.cs" />
+    <Compile Include="ReportsModule\Report.cs" />
+    <Compile Include="ReportsModule\ReportFactory.cs" />
+    <Compile Include="SbirtModule\Audit.cs" />
+    <Compile Include="SbirtModule\AuditC.cs" />
+    <Compile Include="SbirtModule\AuditCFactory.cs" />
+    <Compile Include="SbirtModule\AuditFactory.cs" />
+    <Compile Include="SbirtModule\Dast10.cs" />
+    <Compile Include="SbirtModule\Dast10Factory.cs" />
+    <Compile Include="SbirtModule\Event\AuditCCreatedEvent.cs" />
+    <Compile Include="SbirtModule\Event\Dast10CreatedEvent.cs" />
+    <Compile Include="SbirtModule\Event\NidaDrugQuestionnaireCreatedEvent.cs" />
+    <Compile Include="SbirtModule\Event\NidaDrugQuestionnaireIndicatorCalculatedEvent.cs" />
+    <Compile Include="SbirtModule\Event\NidaDrugQuestionnaireIndicatorCalculatedEventHandler.cs" />
+    <Compile Include="SbirtModule\Event\Phq9CreatedEvent.cs" />
+    <Compile Include="SbirtModule\IAuditFactory.cs" />
+    <Compile Include="SbirtModule\IAuditRepository.cs" />
+    <Compile Include="SbirtModule\INidaDrugQuestionnaireRepository.cs" />
+    <Compile Include="SbirtModule\NidaDrugQuestionnaire.cs" />
+    <Compile Include="SbirtModule\NidaDrugQuestionnaireDrugTypeAndFrequencyOfUse.cs" />
+    <Compile Include="SbirtModule\NidaDrugQuestionnaireFactory.cs" />
+    <Compile Include="SbirtModule\INidaDrugQuestionnaireFactory.cs" />
+    <Compile Include="SbirtModule\IAuditCFactory.cs" />
+    <Compile Include="SbirtModule\IAuditCRepository.cs" />
+    <Compile Include="SbirtModule\IIndividualCounselingFactory.cs" />
+    <Compile Include="SbirtModule\IIndividualCounselingRepository.cs" />
+    <Compile Include="SbirtModule\IndividualCounseling.cs" />
+    <Compile Include="SbirtModule\IndividualCounselingFactory.cs" />
+    <Compile Include="SbirtModule\IDast10Factory.cs" />
+    <Compile Include="SbirtModule\IDast10Repository.cs" />
+    <Compile Include="SbirtModule\IPhq9Factory.cs" />
+    <Compile Include="SbirtModule\IPhq9Repository.cs" />
+    <Compile Include="SbirtModule\NidaDrugQuestionnaireInjectionDrugUse.cs" />
+    <Compile Include="SbirtModule\NidaDrugQuestionnaireOtherDrugInfo.cs" />
+    <Compile Include="SbirtModule\Phq9.cs" />
+    <Compile Include="SbirtModule\Phq9Factory.cs" />
+    <Compile Include="TedsModule\TedsAdmissionBatch.cs" />
+    <Compile Include="TedsModule\TedsAdmissionRecord.cs" />
+    <Compile Include="TedsModule\TedsAdmissionRecordAggregateNodeBase.cs" />
+    <Compile Include="TedsModule\TedsAdmissionRecordSubstanceUsage.cs" />
+    <Compile Include="TedsModule\TedsDischargeBatch.cs" />
+    <Compile Include="TedsModule\TedsBatch.cs" />
+    <Compile Include="TedsModule\TedsBatchStatus.cs" />
+    <Compile Include="TedsModule\TedsDischargeRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TedsModule\TedsDischargeInterviewSubstanceUsage.cs" />
+    <Compile Include="TedsModule\TedsDischargeInterviewAggregateNodeBase.cs" />
+    <Compile Include="TedsModule\TedsDischargeKeyFields.cs" />
+    <Compile Include="TedsModule\NamingStrategy\TedsAnswerTypeNamingStrategy.cs" />
+    <Compile Include="TedsModule\TedsAdmissionInterviewSubstanceUsage.cs" />
+    <Compile Include="TedsModule\TedsAdmissionInterviewAggregateNodeBase.cs" />
+    <Compile Include="TedsModule\PrincipalReferralSourceInformation.cs" />
+    <Compile Include="TedsModule\Rule\TedsAdmissionInterviewRuleCollection.cs" />
+    <Compile Include="TedsModule\Rule\TedsDischargeInterviewRuleCollection.cs" />
+    <Compile Include="TedsModule\TedsAdmissionKeyFields.cs" />
+    <Compile Include="TedsModule\TedsAnswer.cs" />
+    <Compile Include="TedsModule\DetailedCriminalJusticeReferral.cs" />
+    <Compile Include="TedsModule\DetailedDrugCode.cs" />
+    <Compile Include="TedsModule\DsmDiagnosisResponse.cs" />
+    <Compile Include="TedsModule\ParticipatedSelfHelpGroupInPastThirtyDaysType.cs" />
+    <Compile Include="TedsModule\HealthInsuranceType.cs" />
+    <Compile Include="TedsModule\TedsDischargeRecordAggregateNodeBase.cs" />
+    <Compile Include="TedsModule\TedsDischargeRecordSubstanceUsage.cs" />
+    <Compile Include="TedsModule\TedsEmploymentStatusInformation.cs" />
+    <Compile Include="TedsModule\TedsInterviewCoreKeyFields.cs" />
+    <Compile Include="TedsModule\TedsLookupBase.cs" />
+    <Compile Include="TedsModule\TedsMaritalStatus.cs" />
+    <Compile Include="TedsModule\PrimaryPaymentSourceType.cs" />
+    <Compile Include="TedsModule\IncomeSourceType.cs" />
+    <Compile Include="TedsModule\ClientTransactionType.cs" />
+    <Compile Include="TedsModule\TedsDischargeReason.cs" />
+    <Compile Include="TedsModule\ITedsAdmissionInterviewFactory.cs" />
+    <Compile Include="TedsModule\ITedsAdmissionInterviewRepository.cs" />
+    <Compile Include="TedsModule\ITedsDischargeInterviewFactory.cs" />
+    <Compile Include="TedsModule\ITedsDischargeInterviewRepository.cs" />
+    <Compile Include="TedsModule\TedsAdmissionInterview.cs" />
+    <Compile Include="TedsModule\TedsAdmissionInterviewFactory.cs" />
+    <Compile Include="TedsModule\TedsDischargeInterview.cs" />
+    <Compile Include="TedsModule\TedsDischargeInterviewFactory.cs" />
+    <Compile Include="TedsModule\TedsNonResponse.cs" />
+    <Compile Include="TedsModule\DetailedNotInLaborForce.cs" />
+    <Compile Include="TedsModule\LivingArrangementsType.cs" />
+    <Compile Include="TedsModule\TedsServiceType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TedsModule\PrincipalReferralSourceType.cs" />
+    <Compile Include="TedsModule\TedsEmploymentStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TedsModule\TedsGender.cs" />
+    <Compile Include="TedsModule\TedsRace.cs" />
+    <Compile Include="TedsModule\TedsEthnicity.cs" />
+    <Compile Include="TedsModule\PriorTreatmentEpisodesCountType.cs" />
+    <Compile Include="TedsModule\TedsIdentifier.cs" />
+    <Compile Include="TedsModule\TedsGenderInformation.cs" />
+    <Compile Include="TedsModule\UsualAdministrationRouteType.cs" />
+    <Compile Include="TedsModule\SubstanceUsageAtAdmission.cs" />
+    <Compile Include="TedsModule\SystemTransactionType.cs" />
+    <Compile Include="TedsModule\UseFrequencyType.cs" />
+    <Compile Include="TedsModule\SubstanceProblemAndFrequency.cs" />
+    <Compile Include="TedsModule\SubstanceProblemType.cs" />
+    <Compile Include="TedsModule\SystemDataSet.cs" />
+    <Compile Include="VisitModule\ActivitySchedulerService.cs" />
+    <Compile Include="VisitModule\BloodPressure.cs" />
+    <Compile Include="ClinicalCaseModule\ClinicalCaseFactory.cs" />
+    <Compile Include="ClinicalCaseModule\ClinicalCase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClinicalCaseModule\DischargeReason.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClinicalCaseModule\IClinicalCaseFactory.cs" />
+    <Compile Include="ClinicalCaseModule\InitialContactMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClinicalCaseModule\ClinicalCasePriorityPopulation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClinicalCaseModule\PriorityPopulation.cs" />
+    <Compile Include="ClinicalCaseModule\ReferralType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClinicalCaseModule\IClinicalCaseRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClinicalCaseModule\ClinicalCaseSpecialInitiative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClinicalCaseModule\ClinicalCaseSignedComment.cs" />
+    <Compile Include="ClinicalCaseModule\SpecialInitiative.cs" />
+    <Compile Include="Friends.cs" />
+    <Compile Include="VisitModule\Activity.cs" />
+    <Compile Include="VisitModule\ActivityType.cs" />
+    <Compile Include="VisitModule\BriefIntervention.cs" />
+    <Compile Include="VisitModule\BriefInterventionFactory.cs" />
+    <Compile Include="VisitModule\CodingContext.cs" />
+    <Compile Include="VisitModule\CodingContextAggregateNodeBase.cs" />
+    <Compile Include="VisitModule\CodingStatus.cs" />
+    <Compile Include="VisitModule\IImportedActivityFactory.cs" />
+    <Compile Include="VisitModule\Event\SocialHistorySmokingChangedEvent.cs" />
+    <Compile Include="VisitModule\Event\SocialHistorySmokingChangedEventHandler.cs" />
+    <Compile Include="VisitModule\Event\VisitReviewedEvent.cs" />
+    <Compile Include="VisitModule\HeartRate.cs" />
+    <Compile Include="PatientModule\Disability.cs" />
+    <Compile Include="PatientModule\IPatientContactFactory.cs" />
+    <Compile Include="PatientModule\IPatientFactory.cs" />
+    <Compile Include="PatientModule\PatientContactContactType.cs" />
+    <Compile Include="PatientModule\PatientContactFactory.cs" />
+    <Compile Include="PatientModule\PatientDisability.cs" />
+    <Compile Include="PatientModule\PatientFactory.cs" />
+    <Compile Include="PatientModule\IPatientContactRepository.cs" />
+    <Compile Include="PatientModule\SmokingStatus.cs" />
+    <Compile Include="VisitModule\Height.cs" />
+    <Compile Include="VisitModule\IActivityFactory.cs" />
+    <Compile Include="VisitModule\IActivityRepository.cs" />
+    <Compile Include="VisitModule\IActivitySchedulerService.cs" />
+    <Compile Include="VisitModule\IBriefInterventionFactory.cs" />
+    <Compile Include="VisitModule\IBriefInterventionRepository.cs" />
+    <Compile Include="VisitModule\ICodingContextRepository.cs" />
+    <Compile Include="VisitModule\ISocialHistoryFactory.cs" />
+    <Compile Include="VisitModule\ISocialHistoryRepository.cs" />
+    <Compile Include="VisitModule\IVisitFactory.cs" />
+    <Compile Include="VisitModule\IVisitRepository.cs" />
+    <Compile Include="VisitModule\IVisitStatusRepository.cs" />
+    <Compile Include="VisitModule\IVisitTemplateRepository.cs" />
+    <Compile Include="VisitModule\IVitalSignFactory.cs" />
+    <Compile Include="VisitModule\IVitalSignRepository.cs" />
+    <Compile Include="PatientModule\PatientContactType.cs" />
+    <Compile Include="PatientModule\CustodialStatus.cs" />
+    <Compile Include="PatientModule\IPatientRepository.cs" />
+    <Compile Include="PatientModule\LegalAuthorizationType.cs" />
+    <Compile Include="PatientModule\PatientContactRelationshipType.cs" />
+    <Compile Include="PatientModule\SpecialNeed.cs" />
+    <Compile Include="PatientModule\PatientPhoto.cs" />
+    <Compile Include="PatientModule\PatientPhotoType.cs" />
+    <Compile Include="PatientModule\PatientContact.cs" />
+    <Compile Include="PatientModule\PatientAliasType.cs" />
+    <Compile Include="PatientModule\Patient.cs" />
+    <Compile Include="PatientModule\PatientAlias.cs" />
+    <Compile Include="PatientModule\PatientIdentifierType.cs" />
+    <Compile Include="PatientModule\PatientIdentifier.cs" />
+    <Compile Include="PatientModule\PatientSpecialNeed.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisitModule\Procedure.cs" />
+    <Compile Include="VisitModule\ProcedureType.cs" />
+    <Compile Include="VisitModule\Rule\ActivityRuleCollection.cs" />
+    <Compile Include="VisitModule\SocialHistory.cs" />
+    <Compile Include="VisitModule\SocialHistoryAuditC.cs" />
+    <Compile Include="VisitModule\SocialHistoryDast10.cs" />
+    <Compile Include="VisitModule\SocialHistoryFactory.cs" />
+    <Compile Include="VisitModule\SocialHistoryPhq2.cs" />
+    <Compile Include="VisitModule\SocialHistorySmoking.cs" />
+    <Compile Include="VisitModule\VisitProblem.cs" />
+    <Compile Include="VisitModule\Visit.cs" />
+    <Compile Include="VisitModule\VisitAggregateNodeBase.cs" />
+    <Compile Include="VisitModule\VisitFactory.cs" />
+    <Compile Include="VisitModule\VisitStatus.cs" />
+    <Compile Include="VisitModule\VisitTemplate.cs" />
+    <Compile Include="VisitModule\VisitTemplateActivityType.cs" />
+    <Compile Include="VisitModule\VitalSign.cs" />
+    <Compile Include="VisitModule\VitalSignAggregateNodeBase.cs" />
+    <Compile Include="VisitModule\VitalSignFactory.cs" />
+    <Compile Include="VisitModule\VitalSignPhysicalExamNotDoneReason.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pillar\Pillar.Common\Pillar.Common.csproj">
+      <Project>{6761BABC-8D45-4D08-B112-088FA47AB625}</Project>
+      <Name>Pillar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.Domain\Pillar.Domain.csproj">
+      <Project>{88257D62-7FE9-4128-A39B-1FF4511C8B3A}</Project>
+      <Name>Pillar.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pillar\Pillar.FluentRuleEngine\Pillar.FluentRuleEngine.csproj">
+      <Project>{26BEFDB1-9762-4132-9F45-06CABE14D43C}</Project>
+      <Name>Pillar.FluentRuleEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Rem.WellKnownNames\Rem.WellKnownNames.csproj">
+      <Project>{0CA1E92B-B1E0-4E22-8FA5-747753AA8E72}</Project>
+      <Name>Rem.WellKnownNames</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rem.Domain.Core\Rem.Domain.Core.csproj">
+      <Project>{AB046CD6-556B-4023-BAC1-3F0F3183B630}</Project>
+      <Name>Rem.Domain.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClinicalCaseModule\ClinicalCaseAggregate.cd" />
+    <None Include="ClinicalCaseModule\ClinicalCaseModule.cd" />
+    <None Include="ClinicalCaseModule\ProblemAggregate.cd" />
+    <None Include="DensAsiModule\DensAsiModule.cd" />
+    <None Include="GainShortScreenerModule\GainShortScreenerModule.cd" />
+    <None Include="GpraModule\GpraModule.cd" />
+    <None Include="ImmunizationModule\ImmunizationModule.cd" />
+    <None Include="LabModule\LabSpecimenAggregate.cd" />
+    <None Include="packages.config" />
+    <None Include="PatientModule\AllergyAggregate.cd" />
+    <None Include="PatientModule\MedicationaAggregate.cd" />
+    <None Include="PatientModule\PatientModule.cd" />
+    <None Include="ProgramModule\ProgramModule.cd" />
+    <None Include="RadiologyModule\RadiologyModule.cd" />
+    <None Include="ReportsModule\ReportsModule.cd" />
+    <None Include="SbirtModule\SbirtModule.cd" />
+    <None Include="TedsModule\TedsModule.cd" />
+    <None Include="VisitModule\SocialHistoryAggregate.cd" />
+    <None Include="VisitModule\VisitModule.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\lib\Shared\Stylecop\StyleCop.Targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

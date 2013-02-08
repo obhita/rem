@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/Styles.xaml"/>
+		<ResourceDictionary Source="/Rem.Ria.PatientModule;component/Properties/DesignTimeResources.xaml"/>
+		<ResourceDictionary Source="/Rem.Ria.Shell;component/AppResources.xaml"/>
+		<ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/Tiles.xaml"/>
+		<ResourceDictionary Source="/Rem.Ria.Infrastructure;component/themes/generic.xaml"/>
+	</ResourceDictionary.MergedDictionaries>
+	<!-- Resource dictionary entries should be defined here. -->
+</ResourceDictionary>

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="63dddae6-a06d-40df-b211-0d3505c939fa" name="Use Case Brain Storming" linkedPackageId="e8e3c8cd-62d3-45d3-915c-d6083ec7153f" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="bb3868a1-51f6-491a-b1ae-8d8e39f9a098">
+      <elementDefinition Id="1079cdb3-e3c8-4490-af5a-bb33b183b3a3" />
+      <body>As part of the clinical workflow, the clinician collects the detailed TEDS data as well as basic demographic information required for TEDS.</body>
+      <annotatedElements>
+        <actorMoniker Id="06fbdf4e-7c70-4d02-a06c-646ab09a3792" LastKnownName="Clinician" />
+      </annotatedElements>
+    </comment>
+    <comment Id="c6f3377d-2b34-4161-b91b-97984fb24ce2">
+      <elementDefinition Id="1497ac83-e84d-496b-8fc2-ea0f9e526d36" />
+      <body>The frondesk staff will collect patient demographic details that are required for TEDS, inlcuding payment and insurance information.</body>
+      <annotatedElements>
+        <actorMoniker Id="4c4d8070-4dd8-49a1-9ce4-4064463391dd" LastKnownName="Front Desk" />
+      </annotatedElements>
+    </comment>
+    <comment Id="f9e9e9c3-d4c7-4029-b7e1-bae0c652e242">
+      <elementDefinition Id="258bd50c-f8bf-4a0d-a386-e49c055d84d2" />
+      <body>The Agency Administrator is responsbile for submitting the TEDS Data to the FEDS</body>
+      <annotatedElements>
+        <actorMoniker Id="2269f0c5-f8b8-4cdc-929c-6c7a0087d16a" LastKnownName="Agency Administrator" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="06fbdf4e-7c70-4d02-a06c-646ab09a3792" name="Clinician" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4b34eca7-7e49-4f04-a590-936946a86c97" />
+        <targetEnds>
+          <association Id="36e0670b-c4b3-4b9e-bbc8-f3b871d668a6" isDerived="false" sourceEndRoleName="Clinician" targetEndRoleName="TEDS" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="a9ab0102-4150-426e-a9e6-ed331cd6efaf" LastKnownName="TEDS" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="105903f3-083a-4131-ab30-eced8caeb279" name="Clinician" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8db4a1f2-a5e8-4363-895e-0ccb8abb614d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6202f1c8-b9ab-4480-aa19-a2b8abaeb15d" name="TEDS" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b73f159f-9f5b-4968-931d-23d7e44ff52f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4040a3c7-4112-4d78-97a8-fbb6b5fcb3ed" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="4c4d8070-4dd8-49a1-9ce4-4064463391dd" name="Front Desk" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ed90aa48-77da-49fa-9076-13daf9c707bf" />
+        <targetEnds>
+          <association Id="36eb892c-2a34-4e21-b708-724414d5c38c" isDerived="false" sourceEndRoleName="Front Desk" targetEndRoleName="TEDS" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="a9ab0102-4150-426e-a9e6-ed331cd6efaf" LastKnownName="TEDS" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="521fd746-5d83-44f7-a4d7-5feaaeb4e7a4" name="Front Desk" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b55bd8ab-8341-4a34-824e-2b8b9c699a1d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="30ae6a8e-c04d-4b8f-8867-7155d818455d" name="TEDS" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="50602b05-fc15-43d3-8be1-a8d0722f6aa8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7bce8213-0844-4380-b301-597995e922b0" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="a11636dc-9a17-41b8-a76e-7576d2cf0fc7" name="Time" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="23631d16-6c47-462b-8d3e-a597dca83d31" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="a9ab0102-4150-426e-a9e6-ed331cd6efaf" name="TEDS" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <ownedCommentsInternal>
+          <comment Id="11db81a7-6cf4-4485-9720-a34271a3e352">
+            <elementDefinition Id="cd901eaa-6d43-43d3-a5a2-84c63e1dc029" />
+            <body>The purpose of TEDS module is to provide an electronic method for collecting and reporting substance abuse data for the support of National Outcome Measures (NOMS) research and programs to lead to   development of better services, substance abuse prevention and care.</body>
+          </comment>
+        </ownedCommentsInternal>
+        <elementDefinition Id="94637106-3d23-4760-8c5d-f5d85fba17cf" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="2269f0c5-f8b8-4cdc-929c-6c7a0087d16a" name="Agency Administrator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="49f95462-ddb9-420b-831b-5810873282a6" />
+        <targetEnds>
+          <association Id="c26f2538-691b-4b20-be0e-974858b6a9d7" isDerived="false" sourceEndRoleName="Agency Administrator" targetEndRoleName="TEDS" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="a9ab0102-4150-426e-a9e6-ed331cd6efaf" LastKnownName="TEDS" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="edbc88dd-9d7b-4f35-9ed5-55b6b12be052" name="Agency Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="740e2d60-20a8-4405-b93c-392774fae458" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="69e3ad03-32e9-4d6c-bfd8-49e79798e9c3" name="TEDS" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="112c8dc4-3eea-4a68-995a-3cc3d8d55d39" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d52f138d-8a07-4fea-8c33-193022514d26" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="e8e3c8cd-62d3-45d3-915c-d6083ec7153f" name="Rem.Teds.AnalysisModel">
+    <elementDefinition Id="af32d734-bbd9-48a2-b006-f559ba075f3e" />
+    <profileInstances>
+      <packageHasProfileInstances Id="0cee00b3-afd9-46d0-8944-b20dfbbbeace">
+        <profileInstance Id="57e860aa-5025-4219-b350-687f35a95656" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="30bbee5f-a5c1-4782-b941-29add2da64a1">
+        <profileInstance Id="57fee7d6-896f-4c9f-b3bb-9adc904d95ed" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

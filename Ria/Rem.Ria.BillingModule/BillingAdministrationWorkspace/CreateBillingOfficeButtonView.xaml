@@ -1,0 +1,15 @@
+﻿<CustomControls:ToolSetGroup
+x:Class="Rem.Ria.BillingModule.BillingAdministrationWorkspace.CreateBillingOfficeButtonView"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+mc:Ignorable="d" ToolTip="Billing options" Text="Billing Office" Margin="10,-6,0,0" HorizontalAlignment="Stretch">
+  <CustomControls:ToolSetGroup.RootIcon>
+    <Rectangle Width="40" Height="40" Fill="Azure" />
+  </CustomControls:ToolSetGroup.RootIcon>
+  <CustomControls:ToolSetGroup.Items>
+    <CustomControls:ToolSetButton Text="Create Billing Office" Command="{Binding CreateBillingOfficeCommand}"
+                                  ToolTip="Create Billing Office." />
+  </CustomControls:ToolSetGroup.Items>
+</CustomControls:ToolSetGroup>

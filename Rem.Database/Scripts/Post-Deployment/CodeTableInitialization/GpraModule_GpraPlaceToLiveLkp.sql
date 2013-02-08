@@ -1,0 +1,11 @@
+
+print '------------------------------------------------------------------------------------------'
+print 'GpraModule_GpraPlaceToLiveLkp.sql'
+print '------------------------------------------------------------------------------------------'
+
+INSERT INTO [GpraModule].[GpraPlaceToLiveLkp] ( [GpraPlaceToLiveLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 1, current_timestamp, 1, current_timestamp, 1, 1,         N'Shelter',         N'Shelter',        N'Shelter', NULL, 1, '3/31/2011',       NULL, 0, 0 )
+INSERT INTO [GpraModule].[GpraPlaceToLiveLkp] ( [GpraPlaceToLiveLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 2, current_timestamp, 1, current_timestamp, 1, 1, N'Street/Outdoors', N'Street/Outdoors', N'StreetOutdoors', NULL, 2, '3/31/2011',       NULL, 0, 0 )
+INSERT INTO [GpraModule].[GpraPlaceToLiveLkp] ( [GpraPlaceToLiveLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 3, current_timestamp, 1, current_timestamp, 1, 1,     N'Institution',     N'Institution',    N'Institution', NULL, 3, '3/31/2011',       NULL, 0, 0 )
+INSERT INTO [GpraModule].[GpraPlaceToLiveLkp] ( [GpraPlaceToLiveLkpKey], [CreatedTimestamp], [CreatedBySystemAccountKey], [UpdatedTimestamp], [UpdatedBySystemAccountKey], [Version], [Name], [Description], [WellKnownName], [ShortName], [SortOrderNumber], [EffectiveStartDate], [EffectiveEndDate], [SystemOwnedIndicator], [DefaultIndicator]  ) VALUES ( 4, current_timestamp, 1, current_timestamp, 1, 1,          N'Housed',          N'Housed',         N'Housed', NULL, 4, '3/31/2011',       NULL, 0, 0 )
+
+GO

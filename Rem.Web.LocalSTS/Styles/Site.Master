@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Rem.Web.LocalSTS.Site" %>
+
+<%
+    // Stop Caching in IE   
+    Response.Cache.SetCacheability ( System.Web.HttpCacheability.NoCache );
+    // Stop Caching in Firefox   
+    Response.Cache.SetNoStore ();
+%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <div class="page" style="float:none" >
+        <div style="width: 1024px; height: 170px; background-image: url('Styles/images/Authentication-Login-Page_01.png')">
+        </div>
+        <div style="width: 180px; height: 340px; background-image: url('Styles/images/Authentication-Login-Page_02.png')">
+        </div>
+        <div style="width: 210px; height: 340px; background-image: url('Styles/images/Authentication-Login-Page_03.png')">
+        </div>
+        <div style="width: 54px; height: 340px; background-image: url('Styles/images/Authentication-Login-Page_04.png')">
+        </div>
+        <div style="width: 400px; height: 340px; background-image: url('Styles/images/Authentication-Login-Page_05.png')">
+            
+
+
+
+              <div style="width: 400px; height: 235px">
+                <div class="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div style="width: 400px; height: 105px">
+                <p style="margin:25px"><b>WARNING</b><br />
+                Access to this system is restricted to authorized users only. Continuing beyond this point certifies your understanding and compliance with all applicable restrictions and regulations.
+                </p>
+            </div>
+
+
+
+        </div>
+        <div style="width: 180px; height: 340px; background-image: url('Styles/images/Authentication-Login-Page_06.png')">
+        </div>
+        <div style="width: 1024px; height: 400px; background-image: url('Styles/images/Authentication-Login-Page_11.png')">
+        </div>
+       </div>
+    </form>
+</body>
+</html>

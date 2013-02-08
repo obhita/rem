@@ -1,0 +1,776 @@
+﻿<Controls:RadTileViewItem x:Class="Rem.Ria.PatientModule.PatientDashboard.AuditView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure" xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Behavior="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure" xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure" xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit" xmlns:System="clr-namespace:System;assembly=mscorlib"
+                         xmlns:Controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400" Header="AUDIT" ScrollViewer.VerticalScrollBarVisibility="Auto" Style="{StaticResource DashboardTileViewStyle}" HeaderStyle="{StaticResource DashboardTileHeaderStyle}" TileState="{Binding ElementName=frcContent,Path=State,Converter={StaticResource FluideStateToTileConverterInstance},Mode=TwoWay}">
+
+    <Controls:RadTileViewItem.Resources>
+        <View:DataContextProxyElement x:Key="RootDataContext"/>
+        <telerik:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
+        <Converter:RangeToVisibilityConverter x:Key="RangeToVisibilityConverter" />
+        <Converter:IntegerToCsvValueConverter x:Key="IntegerToCsvValueConverter"/>
+        <Converter:ListIndexToValueConverter x:Key="ListIndexToValueConverter" />
+        <toolkit:ObservableObjectCollection x:Key="HowOftenYouDrinkChoices">
+            <System:String>Never</System:String>
+            <System:String>Monthly or less</System:String>
+            <System:String>2-4 times a month</System:String>
+            <System:String>2-3 times a week</System:String>
+            <System:String>4 or more times a week</System:String>
+        </toolkit:ObservableObjectCollection>
+        <toolkit:ObservableObjectCollection x:Key="AlcoholicDrinksPerDayChoices">
+            <System:String>1 or 2</System:String>
+            <System:String>3 or 4</System:String>
+            <System:String>5 or 6</System:String>
+            <System:String>7 or 9</System:String>
+            <System:String>10 or more</System:String>
+        </toolkit:ObservableObjectCollection>
+        <toolkit:ObservableObjectCollection x:Key="DrinkingScenarioChoices">
+            <System:String>Never</System:String>
+            <System:String>Less than monthly</System:String>
+            <System:String>Monthly</System:String>
+            <System:String>Weekly</System:String>
+            <System:String>Daily or almost daily</System:String>
+        </toolkit:ObservableObjectCollection>
+        <toolkit:ObservableObjectCollection x:Key="YesNoChoices">
+            <System:String>No</System:String>
+            <System:String>Yes, but not in the past year</System:String>
+            <System:String>Yes, during the past year</System:String>
+        </toolkit:ObservableObjectCollection>
+    </Controls:RadTileViewItem.Resources>
+
+    <Controls:RadTileViewItem.HeaderTemplate>
+        <DataTemplate>
+            <Grid Margin="0 0 10 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="0,0,2,0" Grid.Column="0" >
+                    <telerik:RadButton Style="{StaticResource TileDeleteButtonStyle}" Command="{Binding Source={StaticResource RootDataContext}, Path=DataSource.CloseViewCommand}" ToolTipService.ToolTip="Delete activity"></telerik:RadButton>
+                </StackPanel>
+                <Viewbox x:Name="Header"  Grid.Column="1" StretchDirection="DownOnly" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" Style="{StaticResource TileHeaderTextBlockStyle}" Margin="0"/>
+                    </StackPanel>
+                </Viewbox>
+            </Grid>
+        </DataTemplate>
+    </Controls:RadTileViewItem.HeaderTemplate>
+
+    <i:Interaction.Behaviors>
+        <Behavior:CloseViewBehavior />
+    </i:Interaction.Behaviors>
+    <telerik:RadFluidContentControl x:Name="frcContent"  Margin="0,0,0,0" State="{Binding IsCurrentActivity,Mode=OneWay, Converter={StaticResource BooleanToFluidContentControlStateLargeConverterInstance}}" ContentChangeMode="Manual" Style="{StaticResource RfccRemStyle}">
+        <telerik:RadFluidContentControl.SmallContent>
+            <Grid/>
+        </telerik:RadFluidContentControl.SmallContent>
+        <telerik:RadFluidContentControl.Content>
+            <Grid/>
+        </telerik:RadFluidContentControl.Content>
+        <telerik:RadFluidContentControl.LargeContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Margin="0" Padding="0" BorderThickness="0">
+                <Grid>
+                    <CustomControls:Editor MaximizeHeader="Audit" Style="{StaticResource TileEditorHeaderStyle}" StartOpen="True" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}" CanMaximize="True">
+                        <CustomControls:Editor.Expanders>
+                            <CustomControls:EditableExpander x:Name="Audit" CanMaximize="False"
+                                         Content="{Binding EditingDto}" 
+                                         SaveCommand="{Binding SaveCommand}" 
+                                         CancelCommand="{Binding CancelCommand}" 
+                                         AccessControlManager="{Binding AccessControlManager}" IsExpanded="True"  MaxWidth="800" MinWidth="700"  Width="Auto" IsEditing="True" ShowNext="False">
+                                <i:Interaction.Triggers>
+                                    <ei:DataTrigger Binding="{Binding IsCreate}" Comparison="Equal" Value="True">
+                                        <ei:ChangePropertyAction TargetName="Audit" PropertyName="IsExpanded" Value="True"/>
+                                        <i:InvokeCommandAction Command="{Binding ElementName=Audit,Path=SetAsNextCommand}"/>
+                                    </ei:DataTrigger>
+                                </i:Interaction.Triggers>
+
+                                <CustomControls:EditableExpander.HeaderTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <TextBlock Text="{Binding}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.HeaderTemplate>
+                                <CustomControls:EditableExpander.ContentTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{StaticResource ScreenerSectionBorderStyle}">
+                                            <StackPanel>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="1. How often do you have a drink containing alcohol?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                        <TextBlock Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:MultiBindingsBehavior>
+                                                            <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                                <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ListIndexToValueConverter}">
+                                	                                <Behavior:MultiBinding.Bindings>
+                                		                                <Behavior:BindingCollection>
+                                			                                <Binding Path="HowOftenYouDrinkNumber" Converter="{StaticResource IntegerToCsvValueConverter}" ConverterParameter="0,1,2,3,4"/>
+                                                                            <Binding Source="{StaticResource AlcoholicDrinksPerDayChoices}"/>
+                                		                                </Behavior:BindingCollection>
+                                	                                </Behavior:MultiBinding.Bindings>
+                                                                </Behavior:MultiBinding>
+                                                            </Behavior:MultiBindingsBehavior.MultiBindings>
+                                                        </Behavior:MultiBindingsBehavior>
+                                                    </i:Interaction.Behaviors>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="2. How many standard drinks containing alcohol do you have on a typical day?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                        <TextBlock Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:MultiBindingsBehavior>
+                                                            <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                                <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ListIndexToValueConverter}">
+                                	                                <Behavior:MultiBinding.Bindings>
+                                		                                <Behavior:BindingCollection>
+                                			                                <Binding Path="AlcoholicDrinksPerDayNumber" Converter="{StaticResource IntegerToCsvValueConverter}" ConverterParameter="0,1,2,3,4"/>
+                                                                            <Binding Source="{StaticResource AlcoholicDrinksPerDayChoices}"/>
+                                		                                </Behavior:BindingCollection>
+                                	                                </Behavior:MultiBinding.Bindings>
+                                                                </Behavior:MultiBinding>
+                                                            </Behavior:MultiBindingsBehavior.MultiBindings>
+                                                        </Behavior:MultiBindingsBehavior>
+                                                    </i:Interaction.Behaviors>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="3. How often do you have six or more drinks on one occasion?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                        <TextBlock Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:MultiBindingsBehavior>
+                                                            <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                                <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ListIndexToValueConverter}">
+                                	                                <Behavior:MultiBinding.Bindings>
+                                		                                <Behavior:BindingCollection>
+                                			                                <Binding Path="HowOftenYouHaveSixOrMoreDrinksNumber" Converter="{StaticResource IntegerToCsvValueConverter}" ConverterParameter="0,1,2,3,4"/>
+                                                                            <Binding Source="{StaticResource DrinkingScenarioChoices}"/>
+                                		                                </Behavior:BindingCollection>
+                                	                                </Behavior:MultiBinding.Bindings>
+                                                                </Behavior:MultiBinding>
+                                                            </Behavior:MultiBindingsBehavior.MultiBindings>
+                                                        </Behavior:MultiBindingsBehavior>
+                                                    </i:Interaction.Behaviors>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="4. How often during the last year have you found that you were not able to stop drinking once you had started?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                        <TextBlock Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:MultiBindingsBehavior>
+                                                            <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                                <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ListIndexToValueConverter}">
+                                	                                <Behavior:MultiBinding.Bindings>
+                                		                                <Behavior:BindingCollection>
+                                			                                <Binding Path="PastYearHowOftenYouWereUnableToStopDrinkingNumber" Converter="{StaticResource IntegerToCsvValueConverter}" ConverterParameter="0,1,2,3,4"/>
+                                                                            <Binding Source="{StaticResource DrinkingScenarioChoices}"/>
+                                		                                </Behavior:BindingCollection>
+                                	                                </Behavior:MultiBinding.Bindings>
+                                                                </Behavior:MultiBinding>
+                                                            </Behavior:MultiBindingsBehavior.MultiBindings>
+                                                        </Behavior:MultiBindingsBehavior>
+                                                    </i:Interaction.Behaviors>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="5. How often during the last year have you failed to do what was normally expected from you because of drinking?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                        <TextBlock Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:MultiBindingsBehavior>
+                                                            <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                                <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ListIndexToValueConverter}">
+                                	                                <Behavior:MultiBinding.Bindings>
+                                		                                <Behavior:BindingCollection>
+                                			                                <Binding Path="PastYearHowOftenYouFailedNormalExpectationNumber" Converter="{StaticResource IntegerToCsvValueConverter}" ConverterParameter="0,1,2,3,4"/>
+                                                                            <Binding Source="{StaticResource DrinkingScenarioChoices}"/>
+                                		                                </Behavior:BindingCollection>
+                                	                                </Behavior:MultiBinding.Bindings>
+                                                                </Behavior:MultiBinding>
+                                                            </Behavior:MultiBindingsBehavior.MultiBindings>
+                                                        </Behavior:MultiBindingsBehavior>
+                                                    </i:Interaction.Behaviors>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="6. How often during the last year have you needed a first drink in the morning to get yourself going after a heavy drinking session?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                        <TextBlock Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:MultiBindingsBehavior>
+                                                            <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                                <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ListIndexToValueConverter}">
+                                	                                <Behavior:MultiBinding.Bindings>
+                                		                                <Behavior:BindingCollection>
+                                			                                <Binding Path="PastYearHowOftenYouDrinkInMorningNumber" Converter="{StaticResource IntegerToCsvValueConverter}" ConverterParameter="0,1,2,3,4"/>
+                                                                            <Binding Source="{StaticResource DrinkingScenarioChoices}"/>
+                                		                                </Behavior:BindingCollection>
+                                	                                </Behavior:MultiBinding.Bindings>
+                                                                </Behavior:MultiBinding>
+                                                            </Behavior:MultiBindingsBehavior.MultiBindings>
+                                                        </Behavior:MultiBindingsBehavior>
+                                                    </i:Interaction.Behaviors>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="7. How often during the last year have you had a feeling of guilt or remorse after drinking?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                        <TextBlock Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:MultiBindingsBehavior>
+                                                            <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                                <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ListIndexToValueConverter}">
+                                	                                <Behavior:MultiBinding.Bindings>
+                                		                                <Behavior:BindingCollection>
+                                			                                <Binding Path="PastYearHowOftenYouHadGuiltAfterDrinkingNumber" Converter="{StaticResource IntegerToCsvValueConverter}" ConverterParameter="0,1,2,3,4"/>
+                                                                            <Binding Source="{StaticResource DrinkingScenarioChoices}"/>
+                                		                                </Behavior:BindingCollection>
+                                	                                </Behavior:MultiBinding.Bindings>
+                                                                </Behavior:MultiBinding>
+                                                            </Behavior:MultiBindingsBehavior.MultiBindings>
+                                                        </Behavior:MultiBindingsBehavior>
+                                                    </i:Interaction.Behaviors>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="8. How often during the last year have you been unable to remember what happened the night before because you had been drinking?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                        <TextBlock Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:MultiBindingsBehavior>
+                                                            <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                                <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ListIndexToValueConverter}">
+                                	                                <Behavior:MultiBinding.Bindings>
+                                		                                <Behavior:BindingCollection>
+                                			                                <Binding Path="PastYearHowOftenYouForgotNightBeforeNumber" Converter="{StaticResource IntegerToCsvValueConverter}" ConverterParameter="0,1,2,3,4"/>
+                                                                            <Binding Source="{StaticResource DrinkingScenarioChoices}"/>
+                                		                                </Behavior:BindingCollection>
+                                	                                </Behavior:MultiBinding.Bindings>
+                                                                </Behavior:MultiBinding>
+                                                            </Behavior:MultiBindingsBehavior.MultiBindings>
+                                                        </Behavior:MultiBindingsBehavior>
+                                                    </i:Interaction.Behaviors>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="9. Have you or someone else been injured as a result of your drinking?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                        <TextBlock Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:MultiBindingsBehavior>
+                                                            <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                                <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ListIndexToValueConverter}">
+                                	                                <Behavior:MultiBinding.Bindings>
+                                		                                <Behavior:BindingCollection>
+                                			                                <Binding Path="YouOrSomeoneInjuredDueToYourDrinkingNumber" Converter="{StaticResource IntegerToCsvValueConverter}" ConverterParameter="0,2,4"/>
+                                                                            <Binding Source="{StaticResource YesNoChoices}"/>
+                                		                                </Behavior:BindingCollection>
+                                	                                </Behavior:MultiBinding.Bindings>
+                                                                </Behavior:MultiBinding>
+                                                            </Behavior:MultiBindingsBehavior.MultiBindings>
+                                                        </Behavior:MultiBindingsBehavior>
+                                                    </i:Interaction.Behaviors>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="10. Has a relative or friend or a doctor or other health worker been concerned about your drinking or suggested you cut down?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" Width="Auto" VerticalAlignment="Top" Margin="20,2,0,2">
+                                                        <TextBlock Style="{StaticResource ScreenerDataElementTextBlockStyle}">
+                                                    <i:Interaction.Behaviors>
+                                                        <Behavior:MultiBindingsBehavior>
+                                                            <Behavior:MultiBindingsBehavior.MultiBindings>
+                                                                <Behavior:MultiBinding TargetProperty="Text" Converter="{StaticResource ListIndexToValueConverter}">
+                                	                                <Behavior:MultiBinding.Bindings>
+                                		                                <Behavior:BindingCollection>
+                                			                                <Binding Path="HealthWorkerSuggestedToCutDownDrinkingNumber" Converter="{StaticResource IntegerToCsvValueConverter}" ConverterParameter="0,2,4"/>
+                                                                            <Binding Source="{StaticResource YesNoChoices}"/>
+                                		                                </Behavior:BindingCollection>
+                                	                                </Behavior:MultiBinding.Bindings>
+                                                                </Behavior:MultiBinding>
+                                                            </Behavior:MultiBindingsBehavior.MultiBindings>
+                                                        </Behavior:MultiBindingsBehavior>
+                                                    </i:Interaction.Behaviors>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel  Visibility="{Binding IsDirty, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" Margin="0,10">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="0.2*"/>
+                                                            <ColumnDefinition Width="0.8*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Border Style="{StaticResource ScreenerCommentsBorderStyle}" Grid.ColumnSpan="2" VerticalAlignment="Stretch"/>
+                                                        <Border Style="{StaticResource ScreenerScoreBorderStyle}" Grid.Column="0">
+                                                            <StackPanel  Orientation="Horizontal"  VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" >
+                                                                <TextBlock Text="Score: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                                <TextBlock Text ="{Binding AuditScore, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource ScreenerLabelTextBlockStyleL}" Margin="0" VerticalAlignment="Center"/>
+                                                            </StackPanel>
+                                                        </Border>
+                                                        <Border Style="{StaticResource ScreenerScoreBorderStyle}" Grid.Column="2" >
+                                                            <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" d:LayoutOverrides="Height">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="0.535*"/>
+                                                                        <ColumnDefinition Width="0.465*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Text="Guidance Summary: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}" Grid.Column="0" />
+                                                                    <telerik:RadButton Content="Guidance" HorizontalAlignment="Right" Style="{StaticResource RemRadLinkButtonStyle}" Grid.Column="1">
+                                                                        <i:Interaction.Triggers>
+                                                                            <i:EventTrigger EventName="Click">
+                                                                                <i:InvokeCommandAction Command="{Binding DataSource.ShowGuidanceCommand, Source={StaticResource RootDataContext}}" CommandParameter="{Binding}"/>
+                                                                            </i:EventTrigger>
+                                                                        </i:Interaction.Triggers>
+                                                                    </telerik:RadButton>
+                                                                </Grid>
+                                                                <StackPanel>
+                                                                    <TextBlock Text="-" Visibility ="{Binding AuditScore, ConverterParameter=null, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                                                                    <TextBlock Visibility ="{Binding AuditScore, ConverterParameter='min, 7', Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Advise staying within the recommended drinking limits."/></TextBlock>
+                                                                    <TextBlock Visibility ="{Binding AuditScore, ConverterParameter='8, 15', Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Offer simple advice and advise staying within the recommended drinking limits."/></TextBlock>
+                                                                    <TextBlock Visibility ="{Binding AuditScore, ConverterParameter='16, 19', Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Simple Advice plus Brief Counseling and Continued Monitoring."/></TextBlock>
+                                                                    <TextBlock Visibility ="{Binding AuditScore, ConverterParameter='20, max', Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Further diagnostic evaluation for alcohol dependence."/></TextBlock>
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentTemplate>
+                                <CustomControls:EditableExpander.ContentEditTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{StaticResource ScreenerSectionBorderStyle}">
+                                            <StackPanel>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="1. How often do you have a drink containing alcohol?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                                        <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource HowOftenYouDrinkChoices}}" SelectedIndex="{Binding HowOftenYouDrinkNumber, Mode=TwoWay, Converter={StaticResource IntegerToCsvValueConverter}, ConverterParameter='0,1,2,3,4'}" >
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:ListBoxSelectionBehavior />
+                                                            </i:Interaction.Behaviors>
+                                                            <ListBox.ItemContainerStyle>
+                                                                <Style TargetType="ListBoxItem">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="ListBoxItem">
+                                                                                <Border Background="Transparent">
+                                                                                    <RadioButton Content="{Binding}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}"  HorizontalAlignment="Center" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                        <RadioButton.ContentTemplate>
+                                                                                            <DataTemplate>
+                                                                                                <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                            </DataTemplate>
+                                                                                        </RadioButton.ContentTemplate>
+                                                                                    </RadioButton>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </ListBox.ItemContainerStyle>
+                                                            <ListBox.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ListBox.ItemsPanel>
+                                                        </ListBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="2. How many standard drinks containing alcohol do you have on a typical day?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                                        <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource AlcoholicDrinksPerDayChoices}}" SelectedIndex="{Binding AlcoholicDrinksPerDayNumber, Mode=TwoWay, Converter={StaticResource IntegerToCsvValueConverter}, ConverterParameter='0,1,2,3,4'}" >
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:ListBoxSelectionBehavior />
+                                                            </i:Interaction.Behaviors>
+                                                            <ListBox.ItemContainerStyle>
+                                                                <Style TargetType="ListBoxItem">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="ListBoxItem">
+                                                                                <Border Background="Transparent">
+                                                                                    <RadioButton Content="{Binding}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}"  HorizontalAlignment="Center" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                        <RadioButton.ContentTemplate>
+                                                                                            <DataTemplate>
+                                                                                                <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                            </DataTemplate>
+                                                                                        </RadioButton.ContentTemplate>
+                                                                                    </RadioButton>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </ListBox.ItemContainerStyle>
+                                                            <ListBox.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ListBox.ItemsPanel>
+                                                        </ListBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="3. How often do you have six or more drinks on one occasion?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                                        <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource DrinkingScenarioChoices}}" SelectedIndex="{Binding HowOftenYouHaveSixOrMoreDrinksNumber, Mode=TwoWay, Converter={StaticResource IntegerToCsvValueConverter}, ConverterParameter='0,1,2,3,4'}" >
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:ListBoxSelectionBehavior />
+                                                            </i:Interaction.Behaviors>
+                                                            <ListBox.ItemContainerStyle>
+                                                                <Style TargetType="ListBoxItem">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="ListBoxItem">
+                                                                                <Border Background="Transparent">
+                                                                                    <RadioButton Content="{Binding}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}"  HorizontalAlignment="Center" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                        <RadioButton.ContentTemplate>
+                                                                                            <DataTemplate>
+                                                                                                <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                            </DataTemplate>
+                                                                                        </RadioButton.ContentTemplate>
+                                                                                    </RadioButton>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </ListBox.ItemContainerStyle>
+                                                            <ListBox.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ListBox.ItemsPanel>
+                                                        </ListBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="4. How often during the last year have you found that you were not able to stop drinking once you had started?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                                        <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource DrinkingScenarioChoices}}" SelectedIndex="{Binding PastYearHowOftenYouWereUnableToStopDrinkingNumber, Mode=TwoWay, Converter={StaticResource IntegerToCsvValueConverter}, ConverterParameter='0,1,2,3,4'}" >
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:ListBoxSelectionBehavior />
+                                                            </i:Interaction.Behaviors>
+                                                            <ListBox.ItemContainerStyle>
+                                                                <Style TargetType="ListBoxItem">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="ListBoxItem">
+                                                                                <Border Background="Transparent">
+                                                                                    <RadioButton Content="{Binding}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}"  HorizontalAlignment="Center" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                        <RadioButton.ContentTemplate>
+                                                                                            <DataTemplate>
+                                                                                                <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                            </DataTemplate>
+                                                                                        </RadioButton.ContentTemplate>
+                                                                                    </RadioButton>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </ListBox.ItemContainerStyle>
+                                                            <ListBox.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ListBox.ItemsPanel>
+                                                        </ListBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="5. How often during the last year have you failed to do what was normally expected from you because of drinking?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                                        <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource DrinkingScenarioChoices}}" SelectedIndex="{Binding PastYearHowOftenYouFailedNormalExpectationNumber, Mode=TwoWay, Converter={StaticResource IntegerToCsvValueConverter}, ConverterParameter='0,1,2,3,4'}" >
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:ListBoxSelectionBehavior />
+                                                            </i:Interaction.Behaviors>
+                                                            <ListBox.ItemContainerStyle>
+                                                                <Style TargetType="ListBoxItem">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="ListBoxItem">
+                                                                                <Border Background="Transparent">
+                                                                                    <RadioButton Content="{Binding}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}"  HorizontalAlignment="Center" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                        <RadioButton.ContentTemplate>
+                                                                                            <DataTemplate>
+                                                                                                <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                            </DataTemplate>
+                                                                                        </RadioButton.ContentTemplate>
+                                                                                    </RadioButton>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </ListBox.ItemContainerStyle>
+                                                            <ListBox.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ListBox.ItemsPanel>
+                                                        </ListBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="6. How often during the last year have you needed a first drink in the morning to get yourself going after a heavy drinking session?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                                        <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource DrinkingScenarioChoices}}" SelectedIndex="{Binding PastYearHowOftenYouDrinkInMorningNumber, Mode=TwoWay, Converter={StaticResource IntegerToCsvValueConverter}, ConverterParameter='0,1,2,3,4'}" >
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:ListBoxSelectionBehavior />
+                                                            </i:Interaction.Behaviors>
+                                                            <ListBox.ItemContainerStyle>
+                                                                <Style TargetType="ListBoxItem">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="ListBoxItem">
+                                                                                <Border Background="Transparent">
+                                                                                    <RadioButton Content="{Binding}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}"  HorizontalAlignment="Center" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                        <RadioButton.ContentTemplate>
+                                                                                            <DataTemplate>
+                                                                                                <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                            </DataTemplate>
+                                                                                        </RadioButton.ContentTemplate>
+                                                                                    </RadioButton>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </ListBox.ItemContainerStyle>
+                                                            <ListBox.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ListBox.ItemsPanel>
+                                                        </ListBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="7. How often during the last year have you had a feeling of guilt or remorse after drinking?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                                        <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource DrinkingScenarioChoices}}" SelectedIndex="{Binding PastYearHowOftenYouHadGuiltAfterDrinkingNumber, Mode=TwoWay, Converter={StaticResource IntegerToCsvValueConverter}, ConverterParameter='0,1,2,3,4'}" >
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:ListBoxSelectionBehavior />
+                                                            </i:Interaction.Behaviors>
+                                                            <ListBox.ItemContainerStyle>
+                                                                <Style TargetType="ListBoxItem">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="ListBoxItem">
+                                                                                <Border Background="Transparent">
+                                                                                    <RadioButton Content="{Binding}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}"  HorizontalAlignment="Center" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                        <RadioButton.ContentTemplate>
+                                                                                            <DataTemplate>
+                                                                                                <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                            </DataTemplate>
+                                                                                        </RadioButton.ContentTemplate>
+                                                                                    </RadioButton>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </ListBox.ItemContainerStyle>
+                                                            <ListBox.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ListBox.ItemsPanel>
+                                                        </ListBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="8. How often during the last year have you been unable to remember what happened the night before because you had been drinking?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                                        <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource DrinkingScenarioChoices}}" SelectedIndex="{Binding PastYearHowOftenYouForgotNightBeforeNumber, Mode=TwoWay, Converter={StaticResource IntegerToCsvValueConverter}, ConverterParameter='0,1,2,3,4'}" >
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:ListBoxSelectionBehavior />
+                                                            </i:Interaction.Behaviors>
+                                                            <ListBox.ItemContainerStyle>
+                                                                <Style TargetType="ListBoxItem">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="ListBoxItem">
+                                                                                <Border Background="Transparent">
+                                                                                    <RadioButton Content="{Binding}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}"  HorizontalAlignment="Center" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                        <RadioButton.ContentTemplate>
+                                                                                            <DataTemplate>
+                                                                                                <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                            </DataTemplate>
+                                                                                        </RadioButton.ContentTemplate>
+                                                                                    </RadioButton>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </ListBox.ItemContainerStyle>
+                                                            <ListBox.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ListBox.ItemsPanel>
+                                                        </ListBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="9. Have you or someone else been injured as a result of your drinking?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                                        <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource YesNoChoices}}" SelectedIndex="{Binding YouOrSomeoneInjuredDueToYourDrinkingNumber, Mode=TwoWay, Converter={StaticResource IntegerToCsvValueConverter}, ConverterParameter='0,2,4'}" >
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:ListBoxSelectionBehavior />
+                                                            </i:Interaction.Behaviors>
+                                                            <ListBox.ItemContainerStyle>
+                                                                <Style TargetType="ListBoxItem">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="ListBoxItem">
+                                                                                <Border Background="Transparent">
+                                                                                    <RadioButton Content="{Binding}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}"  HorizontalAlignment="Center" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                        <RadioButton.ContentTemplate>
+                                                                                            <DataTemplate>
+                                                                                                <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                            </DataTemplate>
+                                                                                        </RadioButton.ContentTemplate>
+                                                                                    </RadioButton>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </ListBox.ItemContainerStyle>
+                                                            <ListBox.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ListBox.ItemsPanel>
+                                                        </ListBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Border Style="{StaticResource HorizontalLineFormDivider}"/>
+                                                <StackPanel Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal">
+                                                    <TextBlock Text="10. Has a relative or friend or a doctor or other health worker been concerned about your drinking or suggested you cut down?" Style="{StaticResource ScreenerLabelTextBlockStyleS}" Margin="10 0 0 0"/>
+                                                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                                        <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Source={StaticResource YesNoChoices}}" SelectedIndex="{Binding HealthWorkerSuggestedToCutDownDrinkingNumber, Mode=TwoWay, Converter={StaticResource IntegerToCsvValueConverter}, ConverterParameter='0,2,4'}" >
+                                                            <i:Interaction.Behaviors>
+                                                                <Behavior:ListBoxSelectionBehavior />
+                                                            </i:Interaction.Behaviors>
+                                                            <ListBox.ItemContainerStyle>
+                                                                <Style TargetType="ListBoxItem">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="ListBoxItem">
+                                                                                <Border Background="Transparent">
+                                                                                    <RadioButton Content="{Binding}" IsHitTestVisible="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IsSelected}"  HorizontalAlignment="Center" Style="{StaticResource ScreenerRadioButtonStyle}">
+                                                                                        <RadioButton.ContentTemplate>
+                                                                                            <DataTemplate>
+                                                                                                <TextBlock Text="{Binding}" FontSize="9.333" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                                                                                            </DataTemplate>
+                                                                                        </RadioButton.ContentTemplate>
+                                                                                    </RadioButton>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </ListBox.ItemContainerStyle>
+                                                            <ListBox.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ListBox.ItemsPanel>
+                                                        </ListBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel  Visibility="{Binding IsDirty, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" Margin="0,10">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="0.2*"/>
+                                                            <ColumnDefinition Width="0.8*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Border Style="{StaticResource ScreenerCommentsBorderStyle}" d:LayoutOverrides="Width" VerticalAlignment="Stretch" Grid.ColumnSpan="2"/>
+                                                        <Border Style="{StaticResource ScreenerScoreBorderStyle}" >
+                                                            <StackPanel Orientation="Vertical">
+
+                                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" Orientation="Horizontal" Margin="0" VerticalAlignment="Stretch">
+                                                                    <TextBlock Text="Score: "  Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                                    <TextBlock Text ="{Binding AuditScore, FallbackValue=-, TargetNullValue=-}" Style="{StaticResource ScreenerLabelTextBlockStyleL}" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </Border>
+                                                        <Border Grid.Column="1"  Style="{StaticResource ScreenerResultsBorderStyle}">
+                                                            <StackPanel Orientation="Vertical">
+                                                                <StackPanel  Style="{StaticResource ScreenerStackPanelStyle}" d:LayoutOverrides="Width">
+                                                                    <Grid>
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="0.535*"/>
+                                                                            <ColumnDefinition Width="0.465*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <telerik:RadButton Content="Guidance" Style="{StaticResource RemRadLinkButtonStyle}" d:LayoutOverrides="Height" Grid.Column="1">
+                                                                            <i:Interaction.Triggers>
+                                                                                <i:EventTrigger EventName="Click">
+                                                                                    <i:InvokeCommandAction Command="{Binding DataSource.ShowGuidanceCommand, Source={StaticResource RootDataContext}}" CommandParameter="{Binding}"/>
+                                                                                </i:EventTrigger>
+                                                                            </i:Interaction.Triggers>
+                                                                        </telerik:RadButton>
+                                                                        <TextBlock Text="Guidance Summary "  Style="{StaticResource ScreenerDataElementTextBlockStyle}"/>
+                                                                    </Grid>
+                                                                    <StackPanel>
+                                                                        <TextBlock Text="-" Visibility ="{Binding AuditScore, ConverterParameter=null, Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                                                                        <TextBlock Visibility ="{Binding AuditScore, ConverterParameter='min, 7', Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Advise staying within the recommended drinking limits."/></TextBlock>
+                                                                        <TextBlock Visibility ="{Binding AuditScore, ConverterParameter='8, 15', Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Offer simple advice and advise staying within the recommended drinking limits."/></TextBlock>
+                                                                        <TextBlock Visibility ="{Binding AuditScore, ConverterParameter='16, 19', Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Simple Advice plus Brief Counseling and Continued Monitoring."/></TextBlock>
+                                                                        <TextBlock Visibility ="{Binding AuditScore, ConverterParameter='20, max', Converter={StaticResource RangeToVisibilityConverter}}" Style="{StaticResource ScreenerLabelTextBlockStyle}" Margin="0" VerticalAlignment="Center"><Run Text="Further diagnostic evaluation for alcohol dependence."/></TextBlock>
+                                                                    </StackPanel>
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </CustomControls:EditableExpander.ContentEditTemplate>
+                            </CustomControls:EditableExpander>
+                        </CustomControls:Editor.Expanders>
+                    </CustomControls:Editor>
+                    <CustomControls:LoadingControl IsLoading="{Binding IsLoading}" />
+                </Grid>
+            </ScrollViewer>
+        </telerik:RadFluidContentControl.LargeContent>
+    </telerik:RadFluidContentControl>
+</Controls:RadTileViewItem>

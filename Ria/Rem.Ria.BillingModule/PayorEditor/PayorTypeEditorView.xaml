@@ -1,0 +1,313 @@
+﻿<UserControl x:Class="Rem.Ria.BillingModule.PayorEditor.PayorTypeEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:View="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure"
+             xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=System.Windows"
+             xmlns:Converter="clr-namespace:Rem.Ria.Infrastructure.View.Converter;assembly=Rem.Ria.Infrastructure" mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="400">
+
+  <UserControl.Resources>
+    <View:DataContextProxyElement x:Key="RootDataContext" />
+    <Converter:EnumListConverter x:Key="EnumListConverterInstance" />
+  </UserControl.Resources>
+
+  <Grid x:Name="LayoutRoot">
+    <CustomControls:Editor Style="{StaticResource TileEditorHeaderStyle}" StartOpen="{Binding IsCreateMode}" SaveCommand="{Binding SaveCommand}" CancelCommand="{Binding CancelCommand}" AccessControlManager="{Binding AccessControlManager}">
+      <CustomControls:Editor.Expanders>
+        <CustomControls:EditableExpander x:Name="Profile" Header="Payor Type Profile"  Content="{Binding EditingDto}" IsExpanded="True">
+          <CustomControls:EditableExpander.ContentTemplate>
+            <DataTemplate>
+              <CustomControls:EditableStackPanel Margin="10" x:Name="PayorTypeStackPanel">
+                <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleXL}" x:Name="NameStackPanel">
+                  <TextBlock Text="Name" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  <TextBlock Text="{Binding Name, FallbackValue='-', TargetNullValue='-'}"
+                             Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                </CustomControls:EditableStackPanel>
+
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}">
+                    <TextBlock Text="Billing Form"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <CustomControls:EditableGrid x:Name="gFormType">
+                      <TextBlock
+Text="{Binding BillingForm, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                    </CustomControls:EditableGrid>
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}" x:Name="SubmitterIdentifierStackPanel">
+                    <TextBlock Text="Submitter Identifier"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock
+Text="{Binding SubmitterIdentifier, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+
+                <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleL}" x:Name="FtpAddressStackPanel">
+                    <TextBlock Text="FTP Address"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock Text="{Binding FtpAddress, FallbackValue='-', TargetNullValue='-'}"
+                               Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}">
+                    <TextBlock Text="Interchange Receiver Number"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock
+Text="{Binding InterchangeReceiverNumber, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}">
+                    <TextBlock Text="Interchange Sender Number"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock
+Text="{Binding InterchangeSenderNumber, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyle}" x:Name="CompositeDelimiterStackPanel">
+                    <TextBlock Text="Composite Delimiter"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock
+Text="{Binding CompositeDelimiter, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyle}" x:Name="ElementDelimiterStackPanel">
+                    <TextBlock Text="Element Delimiter"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock
+Text="{Binding ElementDelimiter, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyle}" x:Name="SegmentDelimiterStackPanel">
+                    <TextBlock Text="Segment Delimiter"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock
+Text="{Binding SegmentDelimiter, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyle}" x:Name="RepetitionDelimiterStackPanel">
+                    <TextBlock Text="Repetition Delimiter"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock
+Text="{Binding RepetitionDelimiter, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+
+                <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleL}" x:Name="AddressLine1StackPanel">
+                    <TextBlock Text="Billing Address Line 1"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock
+Text="{Binding FirstStreetAddress, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleL}" x:Name="AddressLine2StackPanel">
+                    <TextBlock Text="Address Line 2"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock
+Text="{Binding SecondStreetAddress, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleS}" x:Name="CityNameStackPanel">
+                    <TextBlock Text="City Name"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock Text="{Binding CityName, FallbackValue='-', TargetNullValue='-'}"
+                               Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleM}">
+                    <TextBlock Text="State" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <CustomControls:EditableGrid x:Name="gState">
+                      <TextBlock
+Text="{Binding StateProvince, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                    </CustomControls:EditableGrid>
+                  </CustomControls:EditableStackPanel>
+
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleS}">
+                    <TextBlock Text="Postal Code"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock Text="{Binding PostalCode, FallbackValue='-', TargetNullValue='-'}"
+                               Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+
+                <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleL}">
+                    <TextBlock Text="Billing Phone Number"
+                               Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock Text="{Binding PhoneNumber, FallbackValue='-', TargetNullValue='-'}"
+                               Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleL}">
+                    <TextBlock Text="Ext" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    <TextBlock
+Text="{Binding PhoneExtensionNumber, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormDataElementTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+
+              </CustomControls:EditableStackPanel>
+            </DataTemplate>
+          </CustomControls:EditableExpander.ContentTemplate>
+          <CustomControls:EditableExpander.ContentEditTemplate>
+            <DataTemplate>
+              <CustomControls:EditableStackPanel Margin="10" x:Name="PayorTypeStackPanel"
+                                                 IsReadOnly="False">
+                <CustomControls:EditableStackPanel
+Style="{StaticResource EditableFormStackPanelStyleXL}" x:Name="NameStackPanel">
+                  <TextBlock Text="Name" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  <telerik:RadWatermarkTextBox
+Text="{Binding Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                </CustomControls:EditableStackPanel>
+
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                        <TextBlock  Text="Billing Form" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                        <telerik:RadComboBox x:Name="BillingForm" ClearSelectionButtonVisibility="Collapsed" ItemsSource="{Binding BillingForm,Converter={StaticResource EnumListConverterInstance}}" SelectedItem="{Binding BillingForm,Mode=TwoWay}"/>
+                    </StackPanel>  
+                    
+                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                        <TextBlock Text="Submitter Identifier"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                        <telerik:RadMaskedTextBox x:Name="SubmitterIdentifier" MaskedText="{Binding SubmitterIdentifier,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                    </StackPanel>
+                </CustomControls:EditableStackPanel>
+
+                <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                    <StackPanel Style="{StaticResource EditFormStackPanelStyleL}">
+                        <TextBlock Text="FTP Address"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                        <telerik:RadMaskedTextBox x:Name="FtpAddress" EmptyContent="ftp://abc.com" MaskedText="{Binding FtpAddress,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                    </StackPanel>
+                </CustomControls:EditableStackPanel>
+
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                    <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                        <TextBlock Text="Interchange Receiver Number"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                        <telerik:RadMaskedTextBox x:Name="InterchangeReceiverNumber" MaskedText="{Binding InterchangeReceiverNumber,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource EditFormStackPanelStyleM}">
+                        <TextBlock Text="Interchange Sender Number"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                        <telerik:RadMaskedTextBox x:Name="InterchangeSenderNumber" MaskedText="{Binding InterchangeSenderNumber,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                    </StackPanel>
+                </CustomControls:EditableStackPanel>
+
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                        <TextBlock Text="Composite Delimiter"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                        <telerik:RadMaskedTextBox x:Name="CompositeDelimiter" MaxLength="1" EmptyContent=":" MaskedText="{Binding CompositeDelimiter,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                        <TextBlock Text="Element Delimiterr"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                        <telerik:RadMaskedTextBox x:Name="ElementDelimiter" MaxLength="1"  EmptyContent="*" MaskedText="{Binding ElementDelimiter,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                    </StackPanel>                    
+                </CustomControls:EditableStackPanel>
+
+                <CustomControls:EditableStackPanel Orientation="Horizontal">
+                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                        <TextBlock Text="Segment Delimiter"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                        <telerik:RadMaskedTextBox x:Name="SegmentDelimiter" MaxLength="1"  EmptyContent="~" MaskedText="{Binding SegmentDelimiter,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                        <TextBlock Text="Repetition Delimiter"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>                                        <telerik:RadMaskedTextBox x:Name="RepetitionDelimiter" MaxLength="1" EmptyContent="^" MaskedText="{Binding RepetitionDelimiter,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                    </StackPanel>              
+                </CustomControls:EditableStackPanel>
+
+                <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                <CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleM}">
+                    <TextBlock Text="Billing Address"  Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel Orientation="Horizontal">
+                      <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                         <TextBlock Text="Address line 1"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                         <telerik:RadMaskedTextBox x:Name="FirstStreetAddress" EmptyContent="Address Line 1" MaskedText="{Binding FirstStreetAddress,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                      </StackPanel>
+
+                    <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                        <TextBlock Text="Address line 2"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                        <telerik:RadMaskedTextBox x:Name="SecondStreetAddress" EmptyContent="Address Line 2" MaskedText="{Binding SecondStreetAddress,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                    </StackPanel>                                        
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel Orientation="Horizontal">
+                      <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                          <TextBlock Text="City"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                          <telerik:RadMaskedTextBox x:Name="City" EmptyContent="City" MaskedText="{Binding CityName,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                      </StackPanel>
+                      <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                          <TextBlock  Text="State" Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                          <telerik:RadComboBox x:Name="State" ItemsSource="{Binding Source={StaticResource RootDataContext},Path=DataSource.LookupValueLists[StateProvince]}" DisplayMemberPath="Name" SelectedItem="{Binding StateProvince,Mode=TwoWay}"/>
+                      </StackPanel>
+                      <StackPanel Style="{StaticResource EditFormStackPanelStyle}">
+                          <TextBlock Text="Postal Code"  Style="{StaticResource EditFormLabelTextBlockStyle}"/>
+                          <telerik:RadMaskedTextBox x:Name="Postal Code" EmptyContent="Postal Code" MaskedText="{Binding PostalCode,Mode=TwoWay}" MaskType="None" EmptyContentTemplate="{StaticResource WatermarkTemplate}"/>
+                      </StackPanel>
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+
+                <Border Style="{StaticResource HorizontalLineReadFormDivider}" />
+                <CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleListS}">
+                    <TextBlock Text="Billling Phone" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                  </CustomControls:EditableStackPanel>
+                  <CustomControls:EditableStackPanel Orientation="Horizontal">
+                    <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleListS}" x:Name="PhoneNumberStackPanel">
+                      <telerik:RadWatermarkTextBox Visibility="{Binding ElementName=PhoneNumberStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+x:Name="PhoneNumber" WatermarkContent="Phone Number" Text="{Binding PhoneNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                      <TextBlock Visibility="{Binding ElementName=PhoneNumberStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding PhoneNumber, FallbackValue='-', TargetNullValue='-'}" Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    </CustomControls:EditableStackPanel>
+                    <CustomControls:EditableStackPanel Style="{StaticResource EditableFormStackPanelStyleListS}" x:Name="PhoneExtensionNumberStackPanel">
+                      <telerik:RadWatermarkTextBox Visibility="{Binding ElementName=PhoneExtensionNumberStackPanel,Path=IsReadOnly,Converter={StaticResource InvertedBooleanToVisibilityConverterInstance}}"
+x:Name="PhoneExtensionNumber" WatermarkContent="Ext" Text="{Binding PhoneExtensionNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+WatermarkTemplate="{StaticResource WatermarkTemplate}" Style="{StaticResource EditableWatermarkTextBoxStyle}" />
+                      <TextBlock Visibility="{Binding ElementName=PhoneExtensionNumberStackPanel,Path=IsReadOnly,Converter={StaticResource BooleanToVisibilityConverterInstance}}"
+Text="{Binding PhoneExtensionNumber, FallbackValue='-', TargetNullValue='-'}"
+Style="{StaticResource EditFormLabelTextBlockStyle}" />
+                    </CustomControls:EditableStackPanel>
+                  </CustomControls:EditableStackPanel>
+                </CustomControls:EditableStackPanel>
+              </CustomControls:EditableStackPanel>
+            </DataTemplate>
+          </CustomControls:EditableExpander.ContentEditTemplate>
+        </CustomControls:EditableExpander>
+
+
+      </CustomControls:Editor.Expanders>
+    </CustomControls:Editor>
+
+  </Grid>
+</UserControl>

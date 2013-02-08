@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm12="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="790e92e9-dcf6-455a-a363-eae9eedec213" name="Billing Office" linkedPackageId="38245b3d-c6eb-41f1-a577-d916285cc93b" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8ef371f2-359e-4815-8cb2-5c141ce8b2b4" name="Billing Office" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="be28ae5b-2742-431d-a9ce-c36c9a8a5835" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="60c4938c-e1ec-4262-be25-10a96a945d59" name="Agency" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="44f6509a-ea4b-4973-833c-140d71aaa20f" />
+        <targetEnds>
+          <association Id="c0abfb6d-0649-417e-970a-d5a75a8e1ab7" isDerived="false" sourceEndRoleName="Agency" targetEndRoleName="Billing Offices" isLeaf="false" isAbstract="false">
+            <classMoniker Id="8ef371f2-359e-4815-8cb2-5c141ce8b2b4" LastKnownName="Billing Office" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d77b98b0-b695-425d-99f2-c57747d95808" name="Agency" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="422bee8c-840f-4d38-a09c-7b4f3f62d201" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f553ad7c-7e52-4346-9b43-efcc09d3d2e5" name="Billing Offices" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="45e13c2c-48c3-4052-a0d5-001cb6fc7d54" name="Lower" value="0">
+                      <elementDefinition Id="eb3a9fac-00e3-4f73-9506-639b48fd279e" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="286d6346-edaa-4bc2-9501-f10d3eb01e53" name="Upper" value="1">
+                      <elementDefinition Id="1cf8b9ec-2748-42a5-95a3-15445e42be1e" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="b1c10dfe-cba3-4d29-b906-9780594b2ff5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c03171a9-40bc-46cf-a34e-81c01723eb25" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="2df39fe4-f2f7-4385-810e-a8da66b50674" name="AnalysisModel">
+    <elementDefinition Id="510212e2-8665-4a82-b239-6f1cf0de67db" />
+    <profileInstances>
+      <packageHasProfileInstances Id="beca5d24-c90f-4323-b89e-6e526f9d49ec">
+        <profileInstance Id="bbcb3c2e-cfbb-4122-8225-7f05ad950f94" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="616acdf4-485a-4749-b256-51d589208d5f">
+        <profileInstance Id="b2aa8902-d0e5-4c4f-a308-c59210cfb205" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="55b9a41e-d289-469a-8638-5ac285c82007">
+        <profileInstance Id="81c5edfb-f7e3-4ba3-b066-42c7d1cbb656" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="b6ad2c1f-1d37-4b30-9e06-f2b354c874c7">
+        <profileInstance Id="2a889500-fd70-4a97-86bb-109b7c726b54" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+  <package Id="38245b3d-c6eb-41f1-a577-d916285cc93b" name="Rem.Domain.Billing">
+    <elementDefinition Id="e10ccdeb-bd61-4f8f-8b9e-5c3f762b18c3" />
+  </package>
+</logicalClassDesignerModel>

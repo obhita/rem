@@ -1,0 +1,2 @@
+﻿[assembly: System.Runtime.CompilerServices.InternalsVisibleTo ( "Rem.Infrastructure.Tests" )]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo ( "System.Runtime.Serialization", AllInternalsVisible = true )]

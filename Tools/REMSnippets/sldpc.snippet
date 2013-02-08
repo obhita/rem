@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Silverlight DependencyProperty</Title>
+      <Author>Robby Ingebretsen</Author>
+      <Description>Create a Silverlight DependencyProperty</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>sldpc</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>type</ID>
+          <ToolTip>Property Type</ToolTip>
+          <Default>int</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>property</ID>
+          <ToolTip>Property Name</ToolTip>
+          <Default>MyChangingProperty</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>defaultvalue</ID>
+          <ToolTip>Default Value</ToolTip>
+          <Default>0</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="false">
+          <ID>ownerclass</ID>
+          <ToolTip>The owning class of this Property.  Typically the class that it is declared in.</ToolTip>
+          <Default>ClassNamePlaceholder</Default>
+          <Function>ClassName()</Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>description</ID>
+          <ToolTip>Property Description</ToolTip>
+          <Default>A description of the property.</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[
+public $type$ $property$
+{
+    get { return ($type$)GetValue($property$Property); }
+    set { SetValue($property$Property, value); }
+}
+public static readonly DependencyProperty $property$Property = 
+    DependencyProperty.Register("$property$", typeof($type$), typeof($ownerclass$), 
+    new PropertyMetadata($defaultvalue$, new PropertyChangedCallback(On$property$Changed)));
+    
+private static void On$property$Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+{
+    (($ownerclass$)d).On$property$Changed(e);
+}
+
+protected virtual void On$property$Changed(DependencyPropertyChangedEventArgs e)
+{
+}
+$end$]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

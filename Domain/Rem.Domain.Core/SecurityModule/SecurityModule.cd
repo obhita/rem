@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Core.SecurityModule.SystemAccount">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAEgEAAwAAABAgAAkBAAiAQAAAABgAEAABCgQgAAAAE=</HashCode>
+      <FileName>SecurityModule\SystemAccount.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="SystemAccountRoles" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Core.AgencyModule.Staff" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAPWEHghDwIIQAz0AhGTw44mYMgKBouFFkQEIkcCgRg=</HashCode>
+      <FileName>AgencyModule\Staff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Core.SecurityModule.SystemRole">
+    <Position X="7.5" Y="2" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABAAIAAgAAChAAAEAAAAAAQAAAQAGEAAABAgIAABAAA=</HashCode>
+      <FileName>SecurityModule\SystemRole.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="GrantedSystemPermissions" />
+      <Property Name="GrantedSystemRoleRelationships" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Core.SecurityModule.SystemAccountRole">
+    <Position X="4.5" Y="2" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAIAAAAIAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>SecurityModule\SystemAccountRole.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SystemAccount" />
+      <Property Name="SystemRole" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Core.SecurityModule.SystemRolePermission">
+    <Position X="12" Y="2" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAQIAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>SecurityModule\SystemRolePermission.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SystemRole" />
+      <Property Name="SystemPermission" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Core.SecurityModule.SystemPermission">
+    <Position X="15.5" Y="2" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAgAAAgAAAEAAAAAAQAAAAAAAAAAAAgIAAAAAA=</HashCode>
+      <FileName>SecurityModule\SystemPermission.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Core.SecurityModule.SystemRoleRelationship">
+    <Position X="12" Y="4.25" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAIAAAAACAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>SecurityModule\SystemRoleRelationship.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GrantedSystemRole" />
+      <Property Name="SystemRole" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Core.SecurityModule.SecurityQuestion">
+    <Position X="5" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAARAAAAAAAAAAAAAAAAEAAAAAgAAAAA=</HashCode>
+      <FileName>SecurityModule\SecurityQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Core.SecurityModule.SystemAccountAggregateNodeBase">
+    <Position X="1.25" Y="5.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>SecurityModule\SystemAccountAggregateNodeBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

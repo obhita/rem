@@ -1,0 +1,25 @@
+﻿<controls:ChildWindow x:Class="Rem.Ria.Infrastructure.LogOutWarning.LogOutWarningView"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+           Width="400" 
+           Height="150" 
+           Title="REM Automatic Logout Warning"
+           HasCloseButton="False">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <ContentControl Width="350">
+                <TextBlock Loaded="StartTimer" TextWrapping="Wrap" Text="{Binding Path=WarningTimeLeft, StringFormat='You will be automatically logged out of the REM application in \{0\} seconds. To remain logged in select &quot;Stay Logged In&quot;. To log out immediately select &quot;LogOut Now&quot;.'}" />
+            </ContentControl>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <telerik:RadButton x:Name="CancelButton" Style="{StaticResource StaticBorderlessButtonStyle}" Content="Stay Logged In" Click="CancelButtonClick" Width="103" Height="23" Grid.Row="1" />
+            <telerik:RadButton x:Name="OKButton" Style="{StaticResource StaticBorderlessButtonStyle}" Content="LogOut Now" Click="OKButtonClick" Width="88" Height="23" Grid.Row="1" />
+        </StackPanel>
+    </Grid>
+</controls:ChildWindow>

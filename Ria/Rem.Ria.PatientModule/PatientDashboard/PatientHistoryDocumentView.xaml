@@ -1,0 +1,193 @@
+﻿<UserControl x:Class="Rem.Ria.PatientModule.PatientDashboard.PatientHistoryDocumentView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:InfrastructureView="clr-namespace:Rem.Ria.Infrastructure.View;assembly=Rem.Ria.Infrastructure" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:PatientDashboard="clr-namespace:Rem.Ria.PatientModule.PatientDashboard"
+             xmlns:infrastructureBehaviors="clr-namespace:Rem.Ria.Infrastructure.View.Behavior;assembly=Rem.Ria.Infrastructure"
+             xmlns:CustomControls="clr-namespace:Rem.Ria.Infrastructure.View.CustomControls;assembly=Rem.Ria.Infrastructure"
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <InfrastructureView:DataContextProxyElement x:Key="RootDataContextProxy" />
+        <PatientDashboard:OtherTypeRequiredConverter x:Key="OtherTypeRequiredConverter" />
+    </UserControl.Resources>
+    
+    <Grid>
+        <telerik:RadGridView x:Name="PatientDocumentsDataGrid" ItemsSource="{Binding PatientDocumentDtos}" IsReadOnly="false" RowDetailsVisibilityMode="Collapsed"
+                         ShowGroupPanel="False" AutoGenerateColumns="False" SelectedItem="{Binding SelectedDocument, Mode=TwoWay}" CanUserReorderColumns="False" IsFilteringAllowed="False"
+                         FontSize="9.333" BorderBrush="{x:Null}" BorderThickness="0" RowIndicatorVisibility="Collapsed">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="RowEditEnded">
+                    <i:InvokeCommandAction Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.UpdateDocumentCommand}" CommandParameter="{Binding SelectedItem, ElementName=PatientDocumentsDataGrid}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            
+            <i:Interaction.Behaviors>
+                <infrastructureBehaviors:RadGridViewBeginningEditBehavior CanCancel="{Binding CanCancelBeginningEdit}"/>
+                <infrastructureBehaviors:RadGridViewSelectionChangingBehavior CanCancel="{Binding CanCancelSelectionChanging}"/>
+            </i:Interaction.Behaviors>
+
+            <telerik:RadGridView.Resources>
+                <DataTemplate x:Key="PatientDocumentTypeCellTemplate">
+                    <TextBlock Text="{Binding PatientDocumentType.Name}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5" />
+                </DataTemplate>
+                <DataTemplate x:Key="PatientDocumentTypeEditTemplate">
+                    <telerik:RadComboBox Name="DocumentTypeCombobox" ItemsSource="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.DocumentTypeDtos}" DisplayMemberPath="Name" 
+                                                 SelectedValue="{Binding Path=PatientDocumentType, Mode=TwoWay}" MinWidth="100" 
+                                                 HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Left" Margin="5,5,5,5" ClearSelectionButtonVisibility="Collapsed">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.DocumentTypeChangedCommand}" CommandParameter="{Binding SelectedItem, ElementName=DocumentTypeCombobox}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </telerik:RadComboBox>
+                </DataTemplate>
+
+                <PatientDashboard:PatientDocumentListCellTemplateSelector x:Key="PatientDocumentTypeCellTemplateSelector" 
+                                                                          ReadOnlyTemplate="{StaticResource PatientDocumentTypeCellTemplate}" 
+                                                                          EditTemplate="{StaticResource PatientDocumentTypeEditTemplate}"/>
+
+                <DataTemplate x:Key="OtherDocumentTypeNameCellTemplate">
+                    <TextBlock Text="{Binding OtherDocumentTypeName}" TextWrapping="NoWrap" TextTrimming="WordEllipsis" ToolTipService.ToolTip="{Binding OtherDocumentTypeName}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5" />
+                </DataTemplate>
+                <DataTemplate x:Key="OtherDocumentTypeNameEditTemplate">
+                    <TextBox Text="{Binding Path=OtherDocumentTypeName, Mode=TwoWay}" 
+                                     IsReadOnly="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.SelectedDocument.PatientDocumentType, Converter={StaticResource OtherTypeRequiredConverter}}" 
+                                     MinWidth="70" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="5,5,5,5" />
+                </DataTemplate>
+
+                <PatientDashboard:PatientDocumentListCellTemplateSelector x:Key="OtherDocumentTypeNameCellTemplateSelector" 
+                                                                          ReadOnlyTemplate="{StaticResource OtherDocumentTypeNameCellTemplate}" 
+                                                                          EditTemplate="{StaticResource OtherDocumentTypeNameEditTemplate}"/>
+
+                <DataTemplate x:Key="DescriptionCellTemplate">
+                    <TextBlock Text="{Binding Description}" TextWrapping="NoWrap" TextTrimming="WordEllipsis" ToolTipService.ToolTip="{Binding Description}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5" />
+                </DataTemplate>
+                <DataTemplate x:Key="DescriptionEditTemplate">
+                    <TextBox Text="{Binding Path=Description, Mode=TwoWay}" 
+                                     HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Center" VerticalScrollBarVisibility="Auto" Margin="5,5,5,5" />
+                    <!--Style="{StaticResource CommentTextBox}"-->
+                </DataTemplate>
+
+                <PatientDashboard:PatientDocumentListCellTemplateSelector x:Key="DescriptionCellTemplateSelector" 
+                                                                          ReadOnlyTemplate="{StaticResource DescriptionCellTemplate}" 
+                                                                          EditTemplate="{StaticResource DescriptionEditTemplate}"/>
+
+                <DataTemplate x:Key="DocumentProviderNameCellTemplate">
+                    <TextBlock Text="{Binding DocumentProviderName}" TextWrapping="NoWrap" TextTrimming="WordEllipsis" ToolTipService.ToolTip="{Binding DocumentProviderName}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5" />
+                </DataTemplate>
+                <DataTemplate x:Key="DocumentProviderNameEditTemplate">
+                    <TextBox Text="{Binding Path=DocumentProviderName, Mode=TwoWay}" VerticalScrollBarVisibility="Auto" 
+                                     HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="5,5,5,5" />
+                </DataTemplate>
+
+                <PatientDashboard:PatientDocumentListCellTemplateSelector x:Key="DocumentProviderNameCellTemplateSelector" 
+                                                                          ReadOnlyTemplate="{StaticResource DocumentProviderNameCellTemplate}" 
+                                                                          EditTemplate="{StaticResource DocumentProviderNameEditTemplate}"/>
+
+                <DataTemplate x:Key="ClinicalStartDateCellTemplate">
+                    <TextBlock Text="{Binding ClinicalStartDate, StringFormat=\{0:d\}}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5" />
+                </DataTemplate>
+                <DataTemplate x:Key="ClinicalStartDateEditTemplate">
+                    <telerik:RadDateTimePicker InputMode="DatePicker" Name="ClinicalStartDate" SelectedValue="{Binding Path=ClinicalStartDate, Mode=TwoWay}" 
+                                                       HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.ClinicalStartDateChangedCommand}" CommandParameter="{Binding ElementName=ClinicalStartDate}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </telerik:RadDateTimePicker>
+                </DataTemplate>
+
+                <PatientDashboard:PatientDocumentListCellTemplateSelector x:Key="ClinicalStartDateCellTemplateSelector" 
+                                                                          ReadOnlyTemplate="{StaticResource ClinicalStartDateCellTemplate}" 
+                                                                          EditTemplate="{StaticResource ClinicalStartDateEditTemplate}"/>
+
+                <DataTemplate x:Key="ClinicalEndDateCellTemplate">
+                    <TextBlock Text="{Binding ClinicalEndDate, StringFormat=\{0:d\}}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5" />
+                </DataTemplate>
+                <DataTemplate x:Key="ClinicalEndDateEditTemplate">
+                    <telerik:RadDateTimePicker InputMode="DatePicker" SelectedValue="{Binding Path=SelectedDocument.ClinicalEndDate, Mode=TwoWay}" 
+                                                       HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5" />
+                </DataTemplate>
+
+                <PatientDashboard:PatientDocumentListCellTemplateSelector x:Key="ClinicalEndDateCellTemplateSelector" 
+                                                                          ReadOnlyTemplate="{StaticResource ClinicalEndDateCellTemplate}" 
+                                                                          EditTemplate="{StaticResource ClinicalEndDateEditTemplate}"/>
+
+                <DataTemplate x:Key="CommandColumnCellTemplate">
+                    <StackPanel Orientation="Horizontal">
+                        <telerik:RadButton Content="Download" ToolTipService.ToolTip="Download Document" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.OpenDocumentCommand}" 
+                                           CommandParameter="{Binding}" Style="{StaticResource TileRoundedCornerButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,5,5,5"/>
+
+                        <telerik:RadButton Content="Encrypt &amp; Download" ToolTipService.ToolTip="Download Encrypted Document" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.OpenEncryptedDocumentCommand}" 
+                                                    CommandParameter="{Binding}" Style="{StaticResource TileRoundedCornerButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,5,5,5"/>
+
+                        <telerik:RadButton Content="Delete" ToolTipService.ToolTip="Delete Document" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.DeleteDocumentCommand}" 
+                                                    CommandParameter="{Binding}" Style="{StaticResource TileRoundedCornerButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,5,5,5"/>
+
+                        <telerik:RadButton Content="Import C32"  ToolTipService.ToolTip="Import C32 Document" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.ImportC32DocumentCommand}" 
+                                                    CommandParameter="{Binding}" Style="{StaticResource TileRoundedCornerButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,5,5,5"/>
+                    </StackPanel>
+                </DataTemplate>
+
+                <DataTemplate x:Key="CommandColumnEditTemplate">
+                    <StackPanel Orientation="Horizontal">
+                        <telerik:RadButton Content="Save" ToolTipService.ToolTip="Save New Document" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.SaveNewDocumentCommand}" 
+                                        CommandParameter="{Binding}" Style="{StaticResource TileRoundedCornerButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,5,5,5" />
+                        <telerik:RadButton Content="Cancel" ToolTipService.ToolTip="Cancel New Document" Command="{Binding Source={StaticResource RootDataContextProxy},Path=DataSource.CancelNewDocumentCommand}" 
+                                        CommandParameter="{Binding}" Style="{StaticResource TileRoundedCornerButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,5,5,5" />
+                    </StackPanel>
+                </DataTemplate>
+
+                <PatientDashboard:PatientDocumentListCellTemplateSelector x:Key="CommandColumnCellTemplateSelector" 
+                                                                          ReadOnlyTemplate="{StaticResource CommandColumnCellTemplate}" 
+                                                                          EditTemplate="{StaticResource CommandColumnEditTemplate}"/>
+            </telerik:RadGridView.Resources>
+            
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="Type" Width="*" DataMemberBinding="{Binding PatientDocumentType.Name}" 
+                                            CellTemplate="{x:Null}" CellTemplateSelector="{StaticResource PatientDocumentTypeCellTemplateSelector}"
+                                            CellEditTemplate="{StaticResource PatientDocumentTypeEditTemplate}"/>
+
+                <telerik:GridViewDataColumn Header="Other Type" Width="Auto"  DataMemberBinding="{Binding OtherDocumentTypeName}"
+                                            CellTemplate="{x:Null}" CellTemplateSelector="{StaticResource OtherDocumentTypeNameCellTemplateSelector}"
+                                            CellEditTemplate="{StaticResource OtherDocumentTypeNameEditTemplate}"/>
+
+                <telerik:GridViewDataColumn Header="Description" Width="*" DataMemberBinding="{Binding Description}"
+                                            CellTemplate="{x:Null}" CellTemplateSelector="{StaticResource DescriptionCellTemplateSelector}"
+                                            CellEditTemplate="{StaticResource DescriptionEditTemplate}"/>
+
+                <telerik:GridViewDataColumn Header="Source" Width="130" DataMemberBinding="{Binding DocumentProviderName}" 
+                                            CellTemplate="{x:Null}" CellTemplateSelector="{StaticResource DocumentProviderNameCellTemplateSelector}"
+                                            CellEditTemplate="{StaticResource DocumentProviderNameEditTemplate}"/>
+
+                <telerik:GridViewDataColumn Header="Start Date" Width="125" HeaderTextAlignment="Center" DataMemberBinding="{Binding ClinicalStartDate}" 
+                                            CellTemplate="{x:Null}" CellTemplateSelector="{StaticResource ClinicalStartDateCellTemplateSelector}"
+                                            CellEditTemplate="{StaticResource ClinicalStartDateEditTemplate}"/>
+
+                <telerik:GridViewDataColumn Header="End Date" Width="125" HeaderTextAlignment="Center" DataMemberBinding="{Binding ClinicalEndDate}" 
+                                            CellTemplate="{x:Null}" CellTemplateSelector="{StaticResource ClinicalEndDateCellTemplateSelector}"
+                                            CellEditTemplate="{StaticResource ClinicalEndDateEditTemplate}"/>
+
+                    <telerik:GridViewDataColumn Header="Created Date" Width="80" HeaderTextAlignment="Center" DataMemberBinding="{Binding CreatedDate}" IsReadOnly="True">
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CreatedDate, StringFormat=\{0:d\}}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+
+                    <telerik:GridViewDataColumn Header="Hash" Width="270" HeaderTextAlignment="Center" DataMemberBinding="{Binding DocumentHashValue}" IsReadOnly="True">
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DocumentHashValue}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+
+                <telerik:GridViewDataColumn Header="" Width="Auto" IsReadOnly="True" CellTemplate="{x:Null}" 
+                                            CellTemplateSelector="{StaticResource CommandColumnCellTemplateSelector}"/>
+
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        
+        <CustomControls:LoadingControl IsLoading="{Binding IsLoading}"/>
+    </Grid>
+</UserControl>

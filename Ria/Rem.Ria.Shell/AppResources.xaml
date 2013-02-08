@@ -1,0 +1,16 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <ResourceDictionary x:Name="Brushes" Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/Brushes.xaml"/>
+        <ResourceDictionary x:Name="Styles" Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/Styles.xaml"/>
+        <ResourceDictionary x:Name="Tiles" Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/Tiles.xaml"/>
+        <ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/DataTemplates.xaml"/>
+        <ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/DataGridResources.xaml"/>
+        <ResourceDictionary Source="/Rem.Ria.Infrastructure;component/View/Theme/RemDefault/RadMenuResources.xaml"/>
+
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

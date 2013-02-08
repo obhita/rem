@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCase">
+    <Position X="9" Y="4" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="PerformedByStaff" Type="Rem.Domain.Core.AgencyModule.Staff">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.517" Y="-0.671" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="AdmittedByStaff" Type="Rem.Domain.Core.AgencyModule.Staff">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.972" Y="-0.503" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="DischargedByStaff" Type="Rem.Domain.Core.AgencyModule.Staff">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.368" Y="-0.251" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AYADIULkIkAQAAWUACYADAICABAIAIBwCCMABQ2LjIE=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Patient" />
+      <Property Name="ReferralType" />
+      <Property Name="InitialContactMethod" />
+      <Property Name="DischargeReason" />
+      <Property Name="PerformedByStaff" />
+      <Property Name="AdmittedByStaff" />
+      <Property Name="DischargedByStaff" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="PriorityPopulations" />
+      <Property Name="SpecialInitiatives" />
+      <Property Name="SignedComments" />
+      <Property Name="Visits" />
+      <Property Name="Diagnoses" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.SpecialInitiative" Collapsed="true">
+    <Position X="20.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClinicalCaseModule\SpecialInitiative.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCaseFactory" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="1.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCaseFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCasePriorityPopulation" BaseTypeListCollapsed="true">
+    <Position X="9" Y="10.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCasePriorityPopulation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PriorityPopulation" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCaseSignedComment" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="8.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAEAAAAAAQBACAAABAAAAAAAAAAIAA=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCaseSignedComment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ClinicalCaseSpecialInitiative" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>ClinicalCaseModule\ClinicalCaseSpecialInitiative.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SpecialInitiative" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.DischargeReason" Collapsed="true">
+    <Position X="15" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClinicalCaseModule\DischargeReason.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.InitialContactMethod" Collapsed="true">
+    <Position X="15" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClinicalCaseModule\InitialContactMethod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.PriorityPopulation" Collapsed="true">
+    <Position X="5.75" Y="11" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClinicalCaseModule\PriorityPopulation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.ReferralType" Collapsed="true">
+    <Position X="15" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClinicalCaseModule\ReferralType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.PatientModule.Patient" Collapsed="true">
+    <Position X="5.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DJNlVVNuTBLPgiL8XxGxyqUmMomcfIIpAWgoQicuGQo=</HashCode>
+      <FileName>PatientModule\Patient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Clinical.VisitModule.Visit" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJTIQAgAAKAABkAAAYAAAQIQAEAAAAAADFIAIEAAIQ=</HashCode>
+      <FileName>VisitModule\Visit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rem.Domain.Clinical.ClinicalCaseModule.Problem" Collapsed="true">
+    <Position X="15" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAIAIgIAAAAAAAAAAAUAQAAACAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>ClinicalCaseModule\Problem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rem.Domain.Core.AgencyModule.Staff">
+    <Position X="1.5" Y="2.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAPwEGBhCQIIgCj0AlGTwwwiAIAABIOBFEAEAkcAARg=</HashCode>
+      <FileName>AgencyModule\Staff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Rem.Domain.Clinical.ClinicalCaseModule.IClinicalCaseFactory">
+    <Position X="18.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClinicalCaseModule\IClinicalCaseFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Rem.Domain.Clinical.ClinicalCaseModule.IClinicalCaseRepository" Collapsed="true">
+    <Position X="18.5" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAQAQAAAAAAAAAAIAAQAAA=</HashCode>
+      <FileName>ClinicalCaseModule\IClinicalCaseRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
